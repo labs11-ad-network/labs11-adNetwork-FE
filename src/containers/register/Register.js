@@ -26,8 +26,8 @@ class Register extends Component {
     this.props.registerUser(this.state);
 
     this.setState({
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       email: "",
       password: "",
       phone: "",
