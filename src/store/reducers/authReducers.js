@@ -16,7 +16,8 @@ const initialState = {
   fbData: {},
   isLoggingIn: false,
   isRegistering: false,
-  loading: false
+  loading: false,
+  oAuthClicked: false
 }
 
 export default function authReducer(state = initialState, action) {
@@ -66,6 +67,7 @@ export default function authReducer(state = initialState, action) {
       return {
         ...state,
         fbData: action.payload,
+        oAuthClicked: true
       }
     default:
       return state

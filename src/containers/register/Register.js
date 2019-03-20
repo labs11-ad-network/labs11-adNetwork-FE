@@ -21,7 +21,22 @@ class Register extends Component {
   };
 
   register = e => {
+    const { oAuthClicked, fbData } = this.props
+
+    if (oAuthClicked) {
+      this.state = {
+        first_name: fbData.first_name,
+        last_name: fbData.last_name,
+        email: fbData.email,
+        phone: "",
+        acct_type: "",
+        oauth_token: fbData.oauth_token,
+        image_url: fbData.image_url,
+      }
+    }
+
     e.preventDefault();
+
 
     this.props.registerUser(this.state);
 
@@ -36,9 +51,6 @@ class Register extends Component {
   };
 
   render() {
-    const { fbData } = this.props
-
-    console.log('fbData', fbData);
 
     return (
       <RegisterForm
@@ -52,7 +64,8 @@ class Register extends Component {
 
 
 const mapStateToProps = state => ({
-  fbData: state.authReducer.fbData
+  fbData: state.authReducer.fbData,
+  oAuthClicked: state.authReducer.oAuthClicked,
 });
 
 
