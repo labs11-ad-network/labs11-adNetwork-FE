@@ -54,6 +54,7 @@ export const RegisterForm = props => {
         />
         <label htmlFor="password" />
         <input
+          hidden={props.oAuthClicked ? true : false}
           type="password"
           value={props.userInfo.password}
           onChange={props.handleChange}

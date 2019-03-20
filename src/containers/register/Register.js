@@ -11,8 +11,27 @@ class Register extends Component {
     email: "",
     password: "",
     phone: "",
-    acct_type: "admin"
+    acct_type: "admin",
+    oauth_token: "",
+    image_url: "",
   };
+
+  componentDidUpdate(prevProps, prevState) {
+    const { fbData } = this.props
+    if (!prevProps.oAuthClicked) {
+      this.setState({
+        first_name: fbData.first_name,
+        last_name: fbData.last_name,
+        email: fbData.email,
+        phone: "",
+        acct_type: "",
+        oauth_token: fbData.oauth_token,
+        image_url: fbData.image_url,
+      });
+    }
+  }
+
+
 
   handleChange = e => {
     this.setState({
@@ -21,47 +40,38 @@ class Register extends Component {
   };
 
   register = e => {
-    const { oAuthClicked, fbData } = this.props
-
-    if (oAuthClicked) {
-      this.state = {
-        first_name: fbData.first_name,
-        last_name: fbData.last_name,
-        email: fbData.email,
-        phone: "",
-        acct_type: "",
-        oauth_token: fbData.oauth_token,
-        image_url: fbData.image_url,
-      }
-    }
-
     e.preventDefault();
-
-
+    console.log('this.state', this.state);
     this.props.registerUser(this.state);
 
     this.setState({
-      firstName: "",
-      lastName: "",
+      first_name: "",
+      last_name: "",
       email: "",
       password: "",
       phone: "",
-      acctType: "",
+      acct_type: "admin",
+      oauth_token: "",
+      image_url: "",
     })
   };
 
+
   render() {
+    const { oAuthClicked } = this.props
 
     return (
-      <RegisterForm
-        userInfo={this.state}
-        handleChange={this.handleChange}
-        register={this.register}
-      />
+      <div>
+        <RegisterForm
+          oAuthClicked={oAuthClicked}
+          userInfo={this.state}
+          handleChange={this.handleChange}
+          register={this.register}
+        />
+      </div>
     );
   }
 }
-
 
 const mapStateToProps = state => ({
   fbData: state.authReducer.fbData,
