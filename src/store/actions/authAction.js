@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "https://71.65.239.221:5000";
+const URL = "http://71.65.239.221:5000";
 
 // setloading 
 export const SET_LOADING = 'SET_LOADING';
@@ -40,11 +40,24 @@ export const registerUser = user => async dispatch => {
 }
 
 
-// ---------------------- Fb & Googl action --------------------------
+// ---------------------- Fb new user action --------------------------
 export const FB_DATA_SUCCESS = 'FB_DATA_SUCCESS'
-export const facebookUserData = (user) => {
+
+export const facebookUserData = (user) => dispatch => {
+  dispatch(setLoading())
   return {
     type: FB_DATA_SUCCESS,
+    payload: user
+  }
+}
+
+// ---------------------- Fb & Googl action --------------------------
+export const GOOGLE_DATA_SUCCESS = 'GOOGLE_DATA_SUCCESS'
+
+export const googleUserData = (user) => dispatch => {
+  dispatch(setLoading())
+  return {
+    type: GOOGLE_DATA_SUCCESS,
     payload: user
   }
 }

@@ -22,10 +22,16 @@ const initialState = {
 
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
+      }
     case LOGIN_USER_START:
       return {
         ...state,
         isLoggingIn: true,
+        loading: true,
       }
     case LOGIN_USER_SUCCESS:
       localStorage.setItem('jwt', action.payload.token);
@@ -34,40 +40,41 @@ export default function authReducer(state = initialState, action) {
         ...state,
         user: action.payload,
         isLoggingIn: false,
+        loading: false,
       }
     case LOGIN_USER_FAILURE:
       toast.error(action.payload.message);
       return {
         ...state,
         isLoggingIn: false,
+        loading: false,
       }
     case REGISTER_USER_START:
       return {
         ...state,
         isRegistering: true,
+        loading: true,
       }
     case REGISTER_USER_SUCCESS:
       toast.success(`You have successfully registered`);
       return {
         ...state,
         isRegistering: false,
+        loading: false,
       }
     case REGISTER_USER_FAILURE:
       toast.error(action.payload.message);
       return {
         ...state,
         isRegistering: false,
-      }
-    case SET_LOADING:
-      return {
-        ...state,
-        loading: true,
+        loading: false,
       }
     case FB_DATA_SUCCESS:
       return {
         ...state,
         fbData: action.payload,
-        oAuthClicked: true
+        oAuthClicked: true,
+        loading: false
       }
     default:
       return state

@@ -7,8 +7,18 @@ import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 
 class oauth extends Component {
-  responseGoogle = (response) => {
-    console.log("-- google --", response);
+  responseGoogle = (res) => {
+    console.log("-- google --", res);
+    const user = {
+      first_name: "",
+      last_name: "",
+      email: "",
+      phone: "",
+      acct_type: "",
+      oauth_token: "",
+      image_url: "",
+    }
+
   }
 
   responseFacebook = (res) => {
