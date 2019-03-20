@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Form } from './formStyles.js';
 
-export const AdForm = (props) => {
+const AdForm = (props) => {
   return (
     <Form>
       <div>
@@ -12,6 +12,7 @@ export const AdForm = (props) => {
             placeholder="Headline"
             name="headline"
             value={props.productData.headline}
+            onChange={props.handleChange}
         />
         <label htmlFor="tagline"/>
         <input 
@@ -19,6 +20,7 @@ export const AdForm = (props) => {
             placeholder="Tagline"
             name="tagline"
             value={props.productData.tagline}
+            onChange={props.handleChange}
         />
         <label htmlFor="message"/>
         <input 
@@ -26,6 +28,7 @@ export const AdForm = (props) => {
             placeholder="Message"
             name="message"
             value={props.productData.message}
+            onChange={props.handleChange}
         />
         <label htmlFor="cta_button"/>
         <input 
@@ -33,6 +36,7 @@ export const AdForm = (props) => {
             placeholder="CTA Button"
             name="cta_button"
             value={props.productData.cta_button}
+            onChange={props.handleChange}
         />
         <label htmlFor="destination_url"/>
         <input 
@@ -40,7 +44,7 @@ export const AdForm = (props) => {
             placeholder="Destination Url"
             name="destination_url"
             value={props.productData.destination_url}
-
+            onChange={props.handleChange}
         />
         <label htmlFor="back_img"/>
         <input 
@@ -48,8 +52,11 @@ export const AdForm = (props) => {
             placeholder="Background Image"
             name="back_img"
             value={props.productData.back_img}
+            onChange={props.handleChange}
         />
       </div>
     </Form>
   )
 }
+
+export default AdForm;

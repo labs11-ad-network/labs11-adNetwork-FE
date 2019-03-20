@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-import { AdForm } from '../../../components/ad-generator/forms';
+import AdForm from '../../../components/ad-generator/forms/AdForm.js';
+import { HorizontalBanner } from '../../../components/ad-generator/templates';
 
 export class AdGenerator extends Component {
   state = {
@@ -10,7 +11,8 @@ export class AdGenerator extends Component {
         message: "",
         cta_button: "",
         destination_url: "",
-        back_img: ""
+        back_img: "",
+        size: ""
     }
   }
 
@@ -20,9 +22,10 @@ export class AdGenerator extends Component {
 
   handleChange = e => {
     this.setState({
-        productData:{
-            [e.target.name]: e.target.value,
-        }
+      productData:{
+        ...this.state.productData,
+        [e.target.name]: e.target.value,
+      }
     })
   }
 
@@ -30,9 +33,12 @@ export class AdGenerator extends Component {
     return (
       <>
         <AdForm
-            createAd={this.createAd}
-            handleChange={this.handleChange}
-            productData={this.state.productData}
+          createAd={this.createAd}
+          handleChange={this.handleChange}
+          productData={this.state.productData}
+        />
+        <HorizontalBanner 
+          ad={this.state.productData}
         />
       </>
     )
