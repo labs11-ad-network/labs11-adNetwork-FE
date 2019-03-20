@@ -30,9 +30,9 @@ class Login extends Component {
   render() {
     return (
       <ContentContainer>
-        <LeftSection/>
-        <LoginForm 
-          userInfo={this.state} 
+        <LeftSection />
+        <LoginForm
+          userInfo={this.state}
           handleChange={this.handleChange}
           login={this.login}
         />

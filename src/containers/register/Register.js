@@ -11,7 +11,7 @@ class Register extends Component {
     email: "",
     password: "",
     phone: "",
-    acct_type: "admin" 
+    acct_type: "admin"
   };
 
   handleChange = e => {
@@ -20,7 +20,7 @@ class Register extends Component {
     });
   };
 
-  register = async e => {
+  register = e => {
     e.preventDefault();
 
     this.props.registerUser(this.state);
@@ -34,11 +34,15 @@ class Register extends Component {
       acctType: "",
     })
   };
-  
+
   render() {
+    const { fbData } = this.props
+
+    console.log('fbData', fbData);
+
     return (
       <RegisterForm
-        userInfo={this.state} 
+        userInfo={this.state}
         handleChange={this.handleChange}
         register={this.register}
       />
@@ -46,8 +50,14 @@ class Register extends Component {
   }
 }
 
+
+const mapStateToProps = state => ({
+  fbData: state.authReducer.fbData
+});
+
+
 export default connect(
-  null,
+  mapStateToProps,
   {
     registerUser
   }
