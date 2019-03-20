@@ -50,7 +50,7 @@ export const RegisterForm = props => {
           name="email"
           id="email"
           placeholder="Email"
-          required
+        // required
         />
         <label htmlFor="password" />
         <input
@@ -61,7 +61,7 @@ export const RegisterForm = props => {
           name="password"
           id="password"
           placeholder="Password"
-          required
+        // required
         />
         <label htmlFor="first_name" />
         <input
@@ -71,7 +71,7 @@ export const RegisterForm = props => {
           name="first_name"
           id="first_name"
           placeholder="First Name"
-          required
+        // required
         />
         <label htmlFor="last_name" />
         <input
@@ -81,7 +81,7 @@ export const RegisterForm = props => {
           name="last_name"
           id="last_name"
           placeholder="Last Name"
-          required
+        // required
         />
         <label htmlFor="phone" />
         <input
@@ -91,7 +91,7 @@ export const RegisterForm = props => {
           name="phone"
           id="phone"
           placeholder="Phone"
-          required
+        // required
         />
         <button type="submit">Register</button>
         {/* ------------ OAUTH ------------------- */}

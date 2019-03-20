@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "http://71.65.239.221:5000";
+const URL = "https://71.65.239.221:5000";
 
 // setloading 
 export const SET_LOADING = 'SET_LOADING';
