@@ -18,9 +18,17 @@ class AdServer extends Component {
     return (
       <>
         {this.props.ad &&
+        <>
           <HorizontalBanner //this needs to render either a horizontal, square, or vertical banner based on the size of the ad
               ad={this.props.ad}
           />
+          <SquareBanner
+              ad={this.props.ad}
+          />
+          <VerticalBanner
+              ad={this.props.ad}
+          />
+        </>
         }
       </>
     )
