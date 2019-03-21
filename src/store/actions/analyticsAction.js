@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000";
+const URL = "https://lad-network.herokuapp.com/";
 
 export const AD_ACTION_START = "AD_ACTION_START";
 export const AD_ACTION_SUCCESS = "AD_ACTION_SUCCESS";

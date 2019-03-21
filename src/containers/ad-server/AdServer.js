@@ -16,7 +16,7 @@ class AdServer extends Component {
     this.props.addStats({
       action: "impression",
       browser: navigator.userAgent,
-      ip: "127.0.0.1",
+      ip: window.location.hostname,
       referrer: "google.com",
       agreement_id: 1
     });
@@ -26,7 +26,7 @@ class AdServer extends Component {
     this.props.addStats({
       action: "click",
       browser: navigator.userAgent,
-      ip: "127.0.0.1",
+      ip: window.location.hostname,
       referrer: "google.com",
       agreement_id: 1
     });
