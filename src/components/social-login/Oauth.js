@@ -9,20 +9,20 @@ import GoogleLogin from 'react-google-login';
 class oauth extends Component {
   responseGoogle = (res) => {
     console.log("-- google --", res);
-    const user = {
-      first_name: "",
-      last_name: "",
-      email: "",
-      phone: "",
-      acct_type: "",
-      oauth_token: "",
-      image_url: "",
-    }
+    // const user = {
+    //   first_name: "",
+    //   last_name: "",
+    //   email: "",
+    //   phone: "",
+    //   acct_type: "",
+    //   oauth_token: "",
+    //   image_url: "",
+    // }
 
   }
 
   responseFacebook = (res) => {
-    console.log('--- facebook ---- ');
+    console.log('--- facebook ---- ', res);
 
     const user = {
       first_name: res.name.split(" ")[0],
