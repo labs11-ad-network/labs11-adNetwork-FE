@@ -9,14 +9,14 @@ import { withRouter } from 'react-router-dom';
 
 class Oauth extends Component {
   responseGoogle = (res) => {
-    //console.log("-- google --", res);
+    console.log("-- google --", res);
     const user = {
       first_name: res.profileObj.givenName,
       last_name: res.profileObj.familyName,
       email: res.profileObj.email,
       phone: "",
       acct_type: "",
-      oauth_token: res.accessToken,
+      oauth_token: res.googleId,
       image_url: res.profileObj.imageUrl,
     }
     this.props.googleUserData(user)
@@ -30,14 +30,14 @@ class Oauth extends Component {
   }
 
   responseFacebook = (res) => {
-    //console.log('--- facebook ---- ', res);
+    console.log('--- facebook ---- ', res);
     const user = {
       first_name: res.name.split(" ")[0],
       last_name: res.name.split(" ")[1],
       email: res.email,
       phone: "",
       acct_type: "",
-      oauth_token: res.accessToken,
+      oauth_token: res.userID,
       image_url: res.picture.data.url,
     }
     this.props.facebookUserData(user)
@@ -48,6 +48,7 @@ class Oauth extends Component {
       })
     }
   }
+
 
   fbclicked = () => {
     console.log("fbclicked");
