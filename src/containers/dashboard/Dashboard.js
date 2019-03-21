@@ -9,6 +9,8 @@ import DashboardLeft from '../../components/dashboard/dashboard-left/DashboardLe
 import TopNav from '../../components/dashboard/dashboard-top/DashboardTop.js';
 import ChatWidget from '../../components/chat-widget/ChatWidget.js';
 import AdGenerator from './ad-generator/AdGenerator';
+import Offers from './offers/Offers.js'
+import AdGenerator from './ad-generator/AdGenerator.js';
 
 
 const DashboardContainer = styled.div`
@@ -31,16 +33,14 @@ class Dashboard extends Component {
       <DashboardContainer>
         <DashboardLeft />
         <div className="main-content">
-
-
           {/* ------------------- chat widget tseting ------------------ */}
-
           <TopNav {...this.props} />
           <Route exact path="/dashboard" render={props => <h1 {...props}>This is the dashboard view</h1>} />
+          <Route path="/dashboard/offers" component={Offers} />
           <Route path="/dashboard/settings" render={props => <h1 {...props}>This is the settings view</h1>} />
           <Route path="/dashboard/create-ad" component={AdGenerator} />
-
           <ChatWidget />
+
         </div>
       </DashboardContainer>
     );

@@ -19,7 +19,9 @@ const AdGeneratorContainer = styled.div`
 
 export class AdGenerator extends Component {
   state = {
+    offers: [],
     productData: {
+      offer_id: "",
       headline: "",
       tagline: "",
       message: "",
@@ -33,6 +35,10 @@ export class AdGenerator extends Component {
     }
   }
 
+  componentDidMount(){
+    //get all users offers and set them to state
+  }
+
   createAd = e => {
     e.preventDefault();
 
@@ -40,6 +46,7 @@ export class AdGenerator extends Component {
 
     this.setState({
       productData: {
+        offer_id: "",
         headline: "",
         tagline: "",
         message: "",
@@ -70,6 +77,20 @@ export class AdGenerator extends Component {
           createAd={this.createAd}
           handleChange={this.handleChange}
           productData={this.state.productData}
+          offers={[
+            {
+              offer_id: 1,
+              name: "Offer1"
+            },
+            {
+              offer_id: 2,
+              name: "Offer2"
+            },
+            {
+              offer_id: 3,
+              name: "Offer3"
+            }
+          ]}
         />
         {this.state.productData.size.includes('horizontal_banner') ?
           <HorizontalBanner 

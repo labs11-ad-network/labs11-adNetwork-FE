@@ -16,7 +16,7 @@ export const Form = styled.form`
             font-size: 1.5rem;
             margin: 10px 0;
         }
-        input, button{
+        input, button, select{
             font-size: 1.3rem;
             font-weight: 100;
             padding: 15px;

@@ -39,8 +39,6 @@ export const registerUser = user => dispatch => {
     })
 }
 
-
-
 // ---------------------- Fb new user action --------------------------
 export const FB_DATA_SUCCESS = 'FB_DATA_SUCCESS'
 
@@ -65,15 +63,9 @@ export const googleUserData = (user) => dispatch => {
   })
 }
 
-
-
-
-
-
 // ---------------------- Loading action --------------------------
 export const setLoading = () => {
   return {
     type: SET_LOADING,
   }
 }
-
