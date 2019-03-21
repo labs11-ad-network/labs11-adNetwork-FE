@@ -19,7 +19,8 @@ export const LoginForm = props => {
           placeholder="Email"
 
         />
-        <label htmlFor="password" />
+        <label htmlFor="password"
+        />
         <input
           type="password"
           value={props.userInfo.password}
@@ -30,6 +31,10 @@ export const LoginForm = props => {
 
         />
         <button type="submit">Login</button>
+        {/* ------------ OAUTH ------------------- */}
+        <br />
+        <br />
+        <Oauth />
 
         <h3>Don't have an account? <Link to="/register">Register.</Link></h3>
       </div>

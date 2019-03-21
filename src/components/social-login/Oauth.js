@@ -8,20 +8,21 @@ import GoogleLogin from 'react-google-login';
 
 class Oauth extends Component {
   responseGoogle = (res) => {
-    // console.log("-- google --", res);
+    console.log("-- google --", res);
     const user = {
-      first_name: "test",
-      last_name: "",
-      email: "",
+      first_name: res.profileObj.givenName,
+      last_name: res.profileObj.familyName,
+      email: res.profileObj.email,
       phone: "",
       acct_type: "",
-      oauth_token: "",
-      image_url: "",
+      oauth_token: res.accessToken,
+      image_url: res.profileObj.imageUrl,
     }
     this.props.googleUserData(user)
   }
 
   responseFacebook = (res) => {
+    // console.log('--- facebook ---- ', res);
     const user = {
       first_name: res.name.split(" ")[0],
       last_name: res.name.split(" ")[1],
@@ -33,6 +34,7 @@ class Oauth extends Component {
     }
     this.props.facebookUserData(user)
   }
+
   componentClicked = () => {
     console.log("clicked");
   }
@@ -64,3 +66,4 @@ export default connect(
   null,
   { facebookUserData, googleUserData }
 )(Oauth);
+
