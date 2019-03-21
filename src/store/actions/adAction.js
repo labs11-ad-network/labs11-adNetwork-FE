@@ -6,7 +6,7 @@ const authHeaders = {
     }
 }
 
-const URL = "http://71.65.239.221:5000";
+const URL = "https://lad-network.herokuapp.com";
 
 // ------------------------------------ Get All Ads ------------------------------------
 
