@@ -10,7 +10,6 @@ import TopNav from '../../components/dashboard/dashboard-top/DashboardTop.js';
 import ChatWidget from '../../components/chat-widget/ChatWidget.js';
 import AdGenerator from './ad-generator/AdGenerator';
 import Offers from './offers/Offers.js'
-import AdGenerator from './ad-generator/AdGenerator.js';
 
 
 const DashboardContainer = styled.div`

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
-import { facebookUserData, googleUserData,loginUser } from '../../store/actions/authAction'
+import { facebookUserData, googleUserData, loginUser } from '../../store/actions/authAction'
 
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
@@ -20,7 +20,7 @@ class Oauth extends Component {
       image_url: res.profileObj.imageUrl,
     }
     this.props.googleUserData(user)
-    if(this.props.location.pathname === "/login"){
+    if (this.props.location.pathname === "/login") {
       this.props.loginUser({
         email: res.profileObj.email,
         oauth_token: res.accessToken,
@@ -41,12 +41,12 @@ class Oauth extends Component {
       image_url: res.picture.data.url,
     }
     this.props.facebookUserData(user)
-    if(this.props.location.pathname === "/login"){
+    if (this.props.location.pathname === "/login") {
       this.props.loginUser({
         email: res.email,
         oauth_token: res.accessToken,
       })
-    } 
+    }
   }
 
   fbclicked = () => {
@@ -79,6 +79,6 @@ class Oauth extends Component {
 
 export default connect(
   null,
-  { facebookUserData, googleUserData,loginUser }
+  { facebookUserData, googleUserData, loginUser }
 )(withRouter(Oauth));
 
