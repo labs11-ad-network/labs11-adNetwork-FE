@@ -33,6 +33,8 @@ class Oauth extends Component {
       image_url: res.picture.data.url,
     }
     this.props.facebookUserData(user)
+    console.log( 'this.props', this.props );
+    
   }
 
   componentClicked = () => {

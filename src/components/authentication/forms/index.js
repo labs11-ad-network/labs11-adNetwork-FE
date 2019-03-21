@@ -35,7 +35,6 @@ export const LoginForm = props => {
         <br />
         <br />
         <Oauth />
-
         <h3>Don't have an account? <Link to="/register">Register.</Link></h3>
       </div>
     </Form>
