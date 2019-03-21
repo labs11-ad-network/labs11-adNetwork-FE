@@ -13,13 +13,13 @@ export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
 
 export const loginUser = user => dispatch => {
   dispatch({ type: LOGIN_USER_START });
-    axios.post(`${URL}/api/auth/login`, user)
-      .then(res => {
-        dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({ type: LOGIN_USER_FAILURE, payload: err.response.data });
-      })
+  axios.post(`${URL}/api/auth/login`, user)
+    .then(res => {
+      dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: LOGIN_USER_FAILURE, payload: err.response.data });
+    })
 }
 
 // ---------------------- register action --------------------------
@@ -32,7 +32,7 @@ export const registerUser = user => dispatch => {
   dispatch({ type: REGISTER_USER_START });
   axios.post(`${URL}/api/auth/register`, user)
     .then(res => {
-      dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data });             
+      dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: REGISTER_USER_FAILURE, payload: err.response.data });

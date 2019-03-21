@@ -4,11 +4,13 @@ import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 
 import { } from '../../store/actions/authAction.js';
-import privateRoute from '../auth-HOC';
+// import privateRoute from '../auth-HOC';
 import DashboardLeft from '../../components/dashboard/dashboard-left/DashboardLeft.js';
 import TopNav from '../../components/dashboard/dashboard-top/DashboardTop.js';
+import ChatWidget from '../../components/chat-widget/ChatWidget.js';
+import AdGenerator from './ad-generator/AdGenerator';
 import Offers from './offers/Offers.js'
-import AdGenerator from './ad-generator/AdGenerator.js';
+
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -21,20 +23,23 @@ const DashboardContainer = styled.div`
 `;
 
 class Dashboard extends Component {
-  componentDidMount(){
+  componentDidMount() {
     //get user data from backend 
   }
 
   render() {
     return (
       <DashboardContainer>
-        <DashboardLeft/>
+        <DashboardLeft />
         <div className="main-content">
-          <TopNav {...this.props}/>
-          <Route exact path="/dashboard" render={props => <h1 {...props}>This is the dashboard view</h1>}/>
-          <Route path="/dashboard/offers" component={Offers}/>          
-          <Route path="/dashboard/settings" render={props => <h1 {...props}>This is the settings view</h1>}/>
-          <Route path="/dashboard/create-ad" component={AdGenerator}/>
+          {/* ------------------- chat widget tseting ------------------ */}
+          <TopNav {...this.props} />
+          <Route exact path="/dashboard" render={props => <h1 {...props}>This is the dashboard view</h1>} />
+          <Route path="/dashboard/offers" component={Offers} />
+          <Route path="/dashboard/settings" render={props => <h1 {...props}>This is the settings view</h1>} />
+          <Route path="/dashboard/create-ad" component={AdGenerator} />
+          <ChatWidget />
+
         </div>
       </DashboardContainer>
     );
@@ -46,4 +51,4 @@ export default connect(
   {
 
   }
-)(privateRoute(Dashboard));
+)(Dashboard);
