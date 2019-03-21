@@ -7,6 +7,19 @@ const AdForm = (props) => {
     <Form onSubmit={props.createAd}>
       <div>
         <h2>Create your ad.</h2>
+        <label htmlFor="offer_id"/>
+        <select
+            type="text"
+            placeholder="Offer"
+            name="offer_id"
+            value={props.productData.offer_id}
+            onChange={props.handleChange}
+        >
+            <option value="" disabled>Select an offer</option>
+            {props.offers.map(offer => {
+                return <option value={offer.offer_id}>{offer.name}</option>
+            })}
+        </select>
         <label htmlFor="headline"/>
         <input 
             type="text"

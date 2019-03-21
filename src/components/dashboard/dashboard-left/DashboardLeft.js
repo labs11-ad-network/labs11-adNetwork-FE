@@ -27,6 +27,10 @@ export class DashboardNav extends Component {
                   pathExtension="/dashboard"
               />
               <NavButton 
+                  iconClass="fas fa-list" 
+                  pathExtension="/dashboard/offers"
+              />
+              <NavButton 
                   iconClass="fas fa-cog"
                   pathExtension="/dashboard/settings"
               />
