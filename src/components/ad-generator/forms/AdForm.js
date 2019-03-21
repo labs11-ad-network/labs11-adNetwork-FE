@@ -4,7 +4,7 @@ import { Form } from './formStyles.js';
 
 const AdForm = (props) => {
   return (
-    <Form>
+    <Form onSubmit={props.createAd}>
       <div>
         <label htmlFor="headline"/>
         <input 
@@ -54,6 +54,7 @@ const AdForm = (props) => {
             value={props.productData.back_img}
             onChange={props.handleChange}
         />
+        <button type="submit">Create Ad</button>
       </div>
     </Form>
   )

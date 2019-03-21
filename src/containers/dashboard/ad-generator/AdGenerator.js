@@ -1,11 +1,30 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 
+import { createAd } from '../../../store/actions/adAction.js'
 import AdForm from '../../../components/ad-generator/forms/AdForm.js';
 import { HorizontalBanner } from '../../../components/ad-generator/templates';
 
 export class AdGenerator extends Component {
   state = {
     productData: {
+      headline: "",
+      tagline: "",
+      message: "",
+      cta_button: "",
+      destination_url: "",
+      back_img: "",
+      size: "horizontal_banner"
+    }
+  }
+
+  createAd = e => {
+    e.preventDefault();
+
+    this.props.createAd(this.state.productData)
+
+    this.setState({
+      productData: {
         headline: "",
         tagline: "",
         message: "",
@@ -13,11 +32,8 @@ export class AdGenerator extends Component {
         destination_url: "",
         back_img: "",
         size: ""
-    }
-  }
-
-  createAd = () => {
-      
+      }
+    })
   }
 
   handleChange = e => {
@@ -45,4 +61,9 @@ export class AdGenerator extends Component {
   }
 }
 
-export default AdGenerator
+export default connect(
+  null,
+  {
+    createAd
+  }
+)(AdGenerator)
