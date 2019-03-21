@@ -10,10 +10,6 @@ import {
 } from '../../components/ad-generator/templates';
 
 class AdServer extends Component {
-  state = {
-      ad: {}
-  }
-
   componentDidMount(){
     this.props.getAd(this.props.match.params.id)
   }
@@ -21,8 +17,8 @@ class AdServer extends Component {
   render() {
     return (
       <>
-        {this.state.ad &&
-          <HorizontalBanner
+        {this.props.ad &&
+          <HorizontalBanner //this needs to render either a horizontal, square, or vertical banner based on the size of the ad
               ad={this.props.ad}
           />
         }

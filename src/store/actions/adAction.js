@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "https://lad-network.herokuapp.com";
+const URL = "http://71.65.239.221:5000";
 
 // ------------------------------------ Get All Ads ------------------------------------
 

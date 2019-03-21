@@ -6,12 +6,31 @@ import {
   VerticalBannerContainer
 } from './adStyles.js';
 
+export const PlainImg = props => {
+  return(
+    <a 
+      href={props.ad.destination_url} 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      <img src={props.ad.image} alt={props.ad.headline}/>
+    </a>
+  )
+}
+
 export const HorizontalBanner = props => {
   return (
-    <HorizontalBannerContainer bg={props.ad.back_img}>
+    <HorizontalBannerContainer 
+      bg={props.ad.back_img} 
+      text_color={'white'}
+      btn_color={'white'}
+      main_color={'blue'}
+    >
+    <div>
       <h1>{props.ad.headline}</h1>
       <h3>{props.ad.tagline}</h3>
       <p>{props.ad.message}</p>
+    </div>
       <a 
         href={props.ad.destination_url} 
         target="_blank" 
