@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { createAd } from '../../../store/actions/adAction.js'
+import { createAd } from '../../../store/actions/adAction.js';
+import { getUserOffers } from '../../../store/actions/offersAction.js';
 import AdForm from '../../../components/ad-generator/forms/AdForm.js';
 import { 
   HorizontalBanner,
@@ -19,7 +20,6 @@ const AdGeneratorContainer = styled.div`
 
 export class AdGenerator extends Component {
   state = {
-    offers: [],
     productData: {
       offer_id: "",
       headline: "",
@@ -36,7 +36,7 @@ export class AdGenerator extends Component {
   }
 
   componentDidMount(){
-    //get all users offers and set them to state
+    this.props.getUserOffers();
   }
 
   createAd = e => {
@@ -72,25 +72,13 @@ export class AdGenerator extends Component {
 
   render() {
     return (
+      this.props.userOffers.length ?
       <AdGeneratorContainer>
         <AdForm
           createAd={this.createAd}
           handleChange={this.handleChange}
           productData={this.state.productData}
-          offers={[
-            {
-              offer_id: 1,
-              name: "Offer1"
-            },
-            {
-              offer_id: 2,
-              name: "Offer2"
-            },
-            {
-              offer_id: 3,
-              name: "Offer3"
-            }
-          ]}
+          offers={this.props.userOffers}
         />
         {this.state.productData.size.includes('horizontal_banner') ?
           <HorizontalBanner 
@@ -108,14 +96,22 @@ export class AdGenerator extends Component {
             ad={this.state.productData}
           />
         }
-      </AdGeneratorContainer>
+      </AdGeneratorContainer> :
+      <h1>Create an offer before you create an ad.</h1>
     )
   }
 }
 
+const mapStateToProps = state => {
+  return{
+    userOffers: state.offersReducer.userOffers
+  }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   {
-    createAd
+    createAd,
+    getUserOffers
   }
 )(AdGenerator)
