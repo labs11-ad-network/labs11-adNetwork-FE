@@ -8,7 +8,7 @@ import GoogleLogin from 'react-google-login';
 
 class Oauth extends Component {
   responseGoogle = (res) => {
-    console.log("-- google --", res);
+    // console.log("-- google --", res);
     const user = {
       first_name: "test",
       last_name: "",
@@ -22,7 +22,7 @@ class Oauth extends Component {
   }
 
   responseFacebook = (res) => {
-    console.log('--- facebook ---- ', res);
+    // console.log('--- facebook ---- ', res);
 
     const user = {
       first_name: res.name.split(" ")[0],
@@ -44,7 +44,7 @@ class Oauth extends Component {
       <React.Fragment>
         <FacebookLogin
           appId="2303023946606812"
-          autoLoad={true}
+          autoLoad={false}
           fields="name,email,picture"
           onClick={this.componentClicked}
           callback={this.responseFacebook} />

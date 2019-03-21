@@ -45,7 +45,6 @@ export const FB_DATA_SUCCESS = 'FB_DATA_SUCCESS'
 
 export const facebookUserData = (user) => dispatch => {
   dispatch(setLoading())
-
   dispatch({
     type: FB_DATA_SUCCESS,
     payload: user
@@ -55,9 +54,8 @@ export const facebookUserData = (user) => dispatch => {
 
 // ---------------------- Fb & Googl action --------------------------
 export const GOOGLE_DATA_SUCCESS = 'GOOGLE_DATA_SUCCESS'
-
 export const googleUserData = (user) => dispatch => {
-  console.log('google - user', user);
+  // console.log('google - user', user);
 
   dispatch(setLoading())
   dispatch({

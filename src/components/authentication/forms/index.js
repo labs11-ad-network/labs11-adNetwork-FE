@@ -17,7 +17,7 @@ export const LoginForm = props => {
           name="email"
           id="email"
           placeholder="Email"
-          required
+
         />
         <label htmlFor="password" />
         <input
@@ -27,7 +27,7 @@ export const LoginForm = props => {
           name="password"
           id="password"
           placeholder="Password"
-          required
+
         />
         <button type="submit">Login</button>
 
@@ -50,18 +50,16 @@ export const RegisterForm = props => {
           name="email"
           id="email"
           placeholder="Email"
-        // required
         />
         <label htmlFor="password" />
         <input
-          hidden={props.oAuthClicked ? true : false}
+          hidden={props.fbClicked || props.googleClicked ? true : false}
           type="password"
           value={props.userInfo.password}
           onChange={props.handleChange}
           name="password"
           id="password"
           placeholder="Password"
-        // required
         />
         <label htmlFor="first_name" />
         <input
@@ -71,7 +69,6 @@ export const RegisterForm = props => {
           name="first_name"
           id="first_name"
           placeholder="First Name"
-        // required
         />
         <label htmlFor="last_name" />
         <input
@@ -81,7 +78,6 @@ export const RegisterForm = props => {
           name="last_name"
           id="last_name"
           placeholder="Last Name"
-        // required
         />
         <label htmlFor="phone" />
         <input
@@ -91,7 +87,6 @@ export const RegisterForm = props => {
           name="phone"
           id="phone"
           placeholder="Phone"
-        // required
         />
         <button type="submit">Register</button>
         {/* ------------ OAUTH ------------------- */}
