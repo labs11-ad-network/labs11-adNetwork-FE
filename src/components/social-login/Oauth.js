@@ -22,8 +22,6 @@ class Oauth extends Component {
   }
 
   responseFacebook = (res) => {
-    // console.log('--- facebook ---- ', res);
-
     const user = {
       first_name: res.name.split(" ")[0],
       last_name: res.name.split(" ")[1],

@@ -17,8 +17,6 @@ class Register extends Component {
   };
 
 
-
-
   componentDidUpdate(prevProps, prevState) {
     const { fbData, googleData, fbClicked, googleClicked } = this.props
     if (prevProps.googleClicked !== googleClicked && !fbClicked) {
@@ -43,12 +41,7 @@ class Register extends Component {
         image_url: fbData.image_url,
       }));
     }
-
   }
-
-
-
-
 
   handleChange = e => {
     this.setState({
