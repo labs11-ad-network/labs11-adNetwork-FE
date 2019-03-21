@@ -4,11 +4,18 @@ export const Form = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15px 35px;
     div{
         display: flex;
         flex-direction: column;
         width: 500px;
         margin: 0 auto;
+        h2{
+            color: #6F6F6F;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
         input, button{
             font-size: 1.3rem;
             font-weight: 100;

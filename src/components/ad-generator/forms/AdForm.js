@@ -4,8 +4,9 @@ import { Form } from './formStyles.js';
 
 const AdForm = (props) => {
   return (
-    <Form>
+    <Form onSubmit={props.createAd}>
       <div>
+        <h2>Create your ad.</h2>
         <label htmlFor="headline"/>
         <input 
             type="text"
@@ -30,12 +31,36 @@ const AdForm = (props) => {
             value={props.productData.message}
             onChange={props.handleChange}
         />
+        <label htmlFor="text_color"/>
+        <input 
+            type="text"
+            placeholder="Text Color"
+            name="text_color"
+            value={props.productData.text_color}
+            onChange={props.handleChange}
+        />
         <label htmlFor="cta_button"/>
         <input 
             type="text"
             placeholder="CTA Button"
             name="cta_button"
             value={props.productData.cta_button}
+            onChange={props.handleChange}
+        />
+        <label htmlFor="btn_color"/>
+        <input 
+            type="text"
+            placeholder="Button Color"
+            name="btn_color"
+            value={props.productData.btn_color}
+            onChange={props.handleChange}
+        />
+        <label htmlFor="btn_text_color"/>
+        <input 
+            type="text"
+            placeholder="Button Text Color"
+            name="btn_text_color"
+            value={props.productData.btn_text_color}
             onChange={props.handleChange}
         />
         <label htmlFor="destination_url"/>
@@ -54,6 +79,7 @@ const AdForm = (props) => {
             value={props.productData.back_img}
             onChange={props.handleChange}
         />
+        <button type="submit">Create Ad</button>
       </div>
     </Form>
   )
