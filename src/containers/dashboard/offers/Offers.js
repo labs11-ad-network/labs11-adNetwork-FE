@@ -1,9 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { getUserOffers } from '../../../store/actions/offersAction.js'
 
 export class Offers extends Component {
-  componentDidMount(){
-    //get all the users offers
+  state = {
+    offers: []
+  }
 
+  componentDidMount(){
+    this.props.getUserOffers();
   }
   render() {
     return (
@@ -14,4 +20,9 @@ export class Offers extends Component {
   }
 }
 
-export default Offers
+export default connect(
+  null,
+  {
+    getUserOffers
+  }
+)(Offers)

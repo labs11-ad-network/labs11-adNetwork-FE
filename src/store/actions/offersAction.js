@@ -14,9 +14,9 @@ export const GET_USER_OFFERS_START = "GET_USER_OFFERS_START";
 export const GET_USER_OFFERS_SUCCESS = "GET_USER_OFFERS_SUCCESS";
 export const GET_USER_OFFERS_FAILURE = "GET_USER_OFFERS_FAILURE";
 
-export const getUserOffers = dispatch => {
+export const getUserOffers = () => dispatch => {
     dispatch({ type: GET_USER_OFFERS_START })
-    axios.get(`${URL}/api/offers`, authHeaders)
+    axios.get(`${URL}/api/advertisers`, authHeaders)
         .then(res => {
             dispatch({ type: GET_USER_OFFERS_SUCCESS, payload: res.data })
         })
