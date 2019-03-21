@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.8.4",
+    "react-chat-widget": "^2.1.4-1",
     "react-dom": "^16.8.4",
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.0.2",
