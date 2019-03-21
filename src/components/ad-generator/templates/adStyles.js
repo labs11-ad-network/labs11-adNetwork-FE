@@ -31,9 +31,9 @@ export const HorizontalBannerContainer = styled.div`
     }
     a{
         font-size: 1rem;
-        color: ${props => props.btn_color};
+        color: ${props => props.btn_text_color};
         text-decoration: none;
-        background-color: ${props => props.main_color};
+        background-color: ${props => props.btn_color};
         padding: 8px 15px;
         border-radius: 3px;
         transition: .2s;
@@ -74,9 +74,9 @@ export const SquareBannerContainer = styled.div`
     }
     a{
         font-size: 1rem;
-        color: ${props => props.btn_color};
+        color: ${props => props.btn_text_color};
         text-decoration: none;
-        background-color: ${props => props.main_color};
+        background-color: ${props => props.btn_color};
         padding: 8px 15px;
         border-radius: 3px;
         transition: .2s;
@@ -121,9 +121,9 @@ export const VerticalBannerContainer = styled.div`
     a{
         width: 100%;
         font-size: 1rem;
-        color: ${props => props.btn_color};
+        color: ${props => props.btn_text_color};
         text-decoration: none;
-        background-color: ${props => props.main_color};
+        background-color: ${props => props.btn_color};
         padding: 8px 0;
         border-radius: 3px;
         transition: .2s;

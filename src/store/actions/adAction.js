@@ -1,5 +1,11 @@
 import axios from 'axios';
 
+const authHeaders = {
+    headers: {
+        authorization: localStorage.getItem('jwt')
+    }
+}
+
 const URL = "http://71.65.239.221:5000";
 
 // ------------------------------------ Get All Ads ------------------------------------
@@ -31,7 +37,7 @@ export const CREATE_AD_FAILURE = "CREATE_AD_FAILURE";
 
 export const createAd = ad => dispatch => {
     dispatch({ type: CREATE_AD_START });
-    axios.post(`${URL}/api/ads`, ad)
+    axios.post(`${URL}/api/ads`, ad, authHeaders)
         .then(res => {
             dispatch({ type: CREATE_AD_SUCCESS, payload: res.data });
         })

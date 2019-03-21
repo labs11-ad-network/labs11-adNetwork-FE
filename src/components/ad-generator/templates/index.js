@@ -6,7 +6,7 @@ import {
   VerticalBannerContainer
 } from './adStyles.js';
 
-export const PlainImg = props => {
+export const PlainImage = props => {
   return(
     <a 
       href={props.ad.destination_url} 
@@ -24,7 +24,7 @@ export const HorizontalBanner = props => {
       bg={props.ad.back_img} 
       text_color={props.ad.text_color}
       btn_color={props.ad.btn_color}
-      main_color={props.ad.main_color}
+      btn_text_color={props.ad.btn_text_color}
     >
     <div>
       <h1>{props.ad.headline}</h1>
@@ -48,7 +48,7 @@ export const SquareBanner = props => {
       bg={props.ad.back_img}
       text_color={props.ad.text_color}
       btn_color={props.ad.btn_color}
-      main_color={props.ad.main_color}
+      btn_text_color={props.ad.btn_text_color}
     >
       <div>
         <h1>{props.ad.headline}</h1>
@@ -72,7 +72,7 @@ export const VerticalBanner = props => {
       bg={props.ad.back_img}
       text_color={props.ad.text_color}
       btn_color={props.ad.btn_color}
-      main_color={props.ad.main_color}
+      btn_text_color={props.ad.btn_text_color}
     >
       <div>
         <h1>{props.ad.headline}</h1>
