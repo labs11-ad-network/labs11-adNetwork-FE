@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
-import { facebookUserData, googleUserData } from '../../store/actions/authAction'
+import { facebookUserData, googleUserData,loginUser } from '../../store/actions/authAction'
 
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
+import { withRouter } from 'react-router-dom';
 
 class Oauth extends Component {
   responseGoogle = (res) => {
-    console.log("-- google --", res);
+    //console.log("-- google --", res);
     const user = {
       first_name: res.profileObj.givenName,
       last_name: res.profileObj.familyName,
@@ -19,10 +20,17 @@ class Oauth extends Component {
       image_url: res.profileObj.imageUrl,
     }
     this.props.googleUserData(user)
+    if(this.props.location.pathname === "/login"){
+      this.props.loginUser({
+        email: res.profileObj.email,
+        oauth_token: res.accessToken,
+      })
+    }
+
   }
 
   responseFacebook = (res) => {
-    // console.log('--- facebook ---- ', res);
+    //console.log('--- facebook ---- ', res);
     const user = {
       first_name: res.name.split(" ")[0],
       last_name: res.name.split(" ")[1],
@@ -33,13 +41,18 @@ class Oauth extends Component {
       image_url: res.picture.data.url,
     }
     this.props.facebookUserData(user)
-    console.log( 'this.props', this.props );
-    
+    if(this.props.location.pathname === "/login"){
+      this.props.loginUser({
+        email: res.email,
+        oauth_token: res.accessToken,
+      })
+    } 
   }
 
-  componentClicked = () => {
-    console.log("clicked");
+  fbclicked = () => {
+    console.log("fbclicked");
   }
+
 
   render() {
     return (
@@ -48,7 +61,7 @@ class Oauth extends Component {
           appId="2303023946606812"
           autoLoad={false}
           fields="name,email,picture"
-          onClick={this.componentClicked}
+          onClick={this.fbclicked}
           callback={this.responseFacebook} />
 
         <GoogleLogin
@@ -66,6 +79,6 @@ class Oauth extends Component {
 
 export default connect(
   null,
-  { facebookUserData, googleUserData }
-)(Oauth);
+  { facebookUserData, googleUserData,loginUser }
+)(withRouter(Oauth));
 

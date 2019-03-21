@@ -12,6 +12,8 @@ export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
 
 
 export const loginUser = user => async dispatch => {
+  console.log('------ login action testing ------', user);
+
   dispatch({ type: LOGIN_USER_START });
   try {
     const res = await axios.post(`${URL}/api/users/login`, user);
