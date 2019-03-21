@@ -8,16 +8,19 @@ import {
   REGISTER_USER_SUCCESS,
   REGISTER_USER_FAILURE,
   SET_LOADING,
-  FB_DATA_SUCCESS
+  FB_DATA_SUCCESS,
+  GOOGLE_DATA_SUCCESS
 } from '../actions/authAction';
 
 const initialState = {
   user: {},
   fbData: {},
+  googleData: {},
   isLoggingIn: false,
   isRegistering: false,
   loading: false,
-  oAuthClicked: false
+  fbClicked: false,
+  googleClicked: false
 }
 
 export default function authReducer(state = initialState, action) {
@@ -70,11 +73,19 @@ export default function authReducer(state = initialState, action) {
 
       }
     case FB_DATA_SUCCESS:
-      console.log('fbdata', action.payload.user);
+      console.log('fbdata', action.payload);
       return {
         ...state,
         fbData: action.payload,
-        oAuthClicked: true,
+        fbClicked: true,
+        loading: false
+      }
+    case GOOGLE_DATA_SUCCESS:
+
+      return {
+        ...state,
+        googleData: action.payload,
+        googleClicked: true,
         loading: false
       }
     default:

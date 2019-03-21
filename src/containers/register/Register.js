@@ -18,7 +18,7 @@ class Register extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { fbData } = this.props
-    if (!prevProps.oAuthClicked) {
+    if (!prevProps.fbClicked) {
       this.setState({
         first_name: fbData.first_name,
         last_name: fbData.last_name,
@@ -75,7 +75,7 @@ class Register extends Component {
 
 const mapStateToProps = state => ({
   fbData: state.authReducer.fbData,
-  oAuthClicked: state.authReducer.oAuthClicked,
+  fbClicked: state.authReducer.fbClicked,
 });
 
 

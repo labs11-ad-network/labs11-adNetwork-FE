@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux'
-import { facebookUserData } from '../../store/actions/authAction'
+import { facebookUserData, googleUserData } from '../../store/actions/authAction'
 
 import FacebookLogin from 'react-facebook-login';
 import GoogleLogin from 'react-google-login';
 
-class oauth extends Component {
+class Oauth extends Component {
   responseGoogle = (res) => {
     console.log("-- google --", res);
-    // const user = {
-    //   first_name: "",
-    //   last_name: "",
-    //   email: "",
-    //   phone: "",
-    //   acct_type: "",
-    //   oauth_token: "",
-    //   image_url: "",
-    // }
-
+    const user = {
+      first_name: "test",
+      last_name: "",
+      email: "",
+      phone: "",
+      acct_type: "",
+      oauth_token: "",
+      image_url: "",
+    }
+    this.props.googleUserData(user)
   }
 
   responseFacebook = (res) => {
@@ -60,12 +60,9 @@ class oauth extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  stateName: state.stateName
-});
 
 
 export default connect(
-  mapStateToProps,
-  { facebookUserData }
-)(oauth);
+  null,
+  { facebookUserData, googleUserData }
+)(Oauth);

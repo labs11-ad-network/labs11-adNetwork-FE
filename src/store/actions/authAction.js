@@ -43,27 +43,28 @@ export const registerUser = user => async dispatch => {
 // ---------------------- Fb new user action --------------------------
 export const FB_DATA_SUCCESS = 'FB_DATA_SUCCESS'
 
-export const facebookUserData = () => dispatch => {
-  //dispatch(setLoading())
-  const user = {
-    mikko: 'test'
-  }
-  return {
+export const facebookUserData = (user) => dispatch => {
+  dispatch(setLoading())
+
+  dispatch({
     type: FB_DATA_SUCCESS,
     payload: user
-  }
+  })
+
 }
 
 // ---------------------- Fb & Googl action --------------------------
-// export const GOOGLE_DATA_SUCCESS = 'GOOGLE_DATA_SUCCESS'
+export const GOOGLE_DATA_SUCCESS = 'GOOGLE_DATA_SUCCESS'
 
-// export const googleUserData = (user) => dispatch => {
-//   dispatch(setLoading())
-//   return {
-//     type: GOOGLE_DATA_SUCCESS,
-//     payload: user
-//   }
-// }
+export const googleUserData = (user) => dispatch => {
+  console.log('google - user', user);
+
+  dispatch(setLoading())
+  dispatch({
+    type: GOOGLE_DATA_SUCCESS,
+    payload: user
+  })
+}
 
 
 
