@@ -17,7 +17,7 @@ const AdForm = (props) => {
         >
             <option value="" disabled>Select an offer</option>
             {props.offers.map(offer => {
-                return <option value={offer.offer_id}>{offer.name}</option>
+                return <option value={offer.id}>{offer.name}</option>
             })}
         </select>
         <label htmlFor="headline"/>
