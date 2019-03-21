@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URL = "http://71.65.239.221:5000";
+const URL = "https://lad-network.herokuapp.com";
 
 // setloading 
 export const SET_LOADING = 'SET_LOADING';
@@ -11,16 +11,15 @@ export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
 
 
-export const loginUser = user => async dispatch => {
-  console.log('------ login action testing ------', user);
-
+export const loginUser = user => dispatch => {
   dispatch({ type: LOGIN_USER_START });
-  try {
-    const res = await axios.post(`${URL}/api/users/login`, user);
-    dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
-  } catch (error) {
-    dispatch({ type: LOGIN_USER_FAILURE, payload: error.response.data });
-  }
+  axios.post(`${URL}/api/auth/login`, user)
+    .then(res => {
+      dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: LOGIN_USER_FAILURE, payload: err.response.data });
+    })
 }
 
 // ---------------------- register action --------------------------
@@ -29,17 +28,17 @@ export const REGISTER_USER_START = 'REGISTER_USER_START';
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const REGISTER_USER_FAILURE = 'REGISTER_USER_FAILURE';
 
-export const registerUser = user => async dispatch => {
+export const registerUser = user => dispatch => {
   dispatch({ type: REGISTER_USER_START });
-
-  const res = await axios.post(`${URL}/api/users/register`, user);
-
-  if (res.status !== 201) {
-    dispatch({ type: REGISTER_USER_FAILURE, payload: res.data });
-  } else {
-    dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data });
-  }
+  axios.post(`${URL}/api/auth/register`, user)
+    .then(res => {
+      dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: REGISTER_USER_FAILURE, payload: err.response.data });
+    })
 }
+
 
 
 // ---------------------- Fb new user action --------------------------
@@ -77,3 +76,4 @@ export const setLoading = () => {
     type: SET_LOADING,
   }
 }
+
