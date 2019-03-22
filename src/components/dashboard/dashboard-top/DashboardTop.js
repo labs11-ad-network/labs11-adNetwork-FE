@@ -24,7 +24,7 @@ const DashboardTop = props => {
                         return <option key={offer.id} value={offer.id}>{offer.name}</option>
                     })}
                 </select>
-                <Link to="/create-ad">Create Advertisement</Link>
+                <Link to="/dashboard/create-ad">Create Advertisement</Link>
             </LeftSection>
             <RightSection>
                 {props.currentUser && 

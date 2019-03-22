@@ -18,7 +18,7 @@ export const loginUser = (user, props) => dispatch => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
     })
     .then(() => {
-      props.history.push("/");
+      props.history.push("/dashboard");
     })
     .catch(err => {
       dispatch({ type: LOGIN_USER_FAILURE, payload: err.response.data });

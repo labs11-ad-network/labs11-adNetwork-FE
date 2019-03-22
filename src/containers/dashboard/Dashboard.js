@@ -52,10 +52,10 @@ class Dashboard extends Component {
         <div className="main-content">
           <TopNav {...this.props} handleOfferSelect={this.handleOfferSelect}/>
           <div className="dashboard-view">
-            <Route exact path="/" render={props => <Analytics {...props} currentOffer={this.state.currentOffer}/>} />
-            <Route path="/offers" component={Offers} />
-            <Route path="/settings" render={props => <h1 {...props}>This is the settings view</h1>} />
-            <Route path="/create-ad" component={AdGenerator} />
+            <Route exact path="/dashboard" render={props => <Analytics {...props} currentOffer={this.state.currentOffer}/>} />
+            <Route path="/dashboard/offers" component={Offers} />
+            <Route path="/dashboard/settings" render={props => <h1 {...props}>This is the settings view</h1>} />
+            <Route path="/dashboard/create-ad" component={AdGenerator} />
             <ChatWidget />
           </div>
         </div>
