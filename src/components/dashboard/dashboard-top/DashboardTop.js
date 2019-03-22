@@ -17,7 +17,10 @@ const DashboardTop = props => {
                     name="selectedAdvertisement" 
                     required
                 >
-                    <option value>Select advertisement...</option>
+                    <option value>Select offer...</option>
+                    {props.userOffers.length && props.userOffers.map(offer => {
+                        return <option key={offer.id} value={offer.id}>{offer.name}</option>
+                    })}
                 </select>
                 <Link to="/dashboard/create-ad">Create Advertisement</Link>
             </LeftSection>

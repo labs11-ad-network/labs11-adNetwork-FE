@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 
-import { } from '../../store/actions/authAction.js';
+import { getUserOffers } from '../../store/actions/offersAction.js';
 import privateRoute from '../auth-HOC';
 import DashboardLeft from '../../components/dashboard/dashboard-left/DashboardLeft.js';
 import TopNav from '../../components/dashboard/dashboard-top/DashboardTop.js';
@@ -23,8 +23,14 @@ const DashboardContainer = styled.div`
 `;
 
 class Dashboard extends Component {
+  state = {
+    currentOffer: {},
+  }
+
   componentDidMount() {
     //get user data from backend 
+
+    this.props.getUserOffers();
   }
 
   render() {
@@ -44,9 +50,15 @@ class Dashboard extends Component {
   }
 }
 
-export default connect(
-  null,
-  {
+const mapStateToProps = state => {
+  return{
+    userOffers: state.offersReducer.userOffers
+  }
+}
 
+export default connect(
+  mapStateToProps,
+  {
+    getUserOffers
   }
 )(privateRoute(Dashboard));
