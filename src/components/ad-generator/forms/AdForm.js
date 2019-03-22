@@ -7,6 +7,7 @@ const AdForm = props => {
     <Form onSubmit={props.createAd}>
       <div>
         <h2>Create your ad.</h2>
+
         <label htmlFor="offer_id" />
         <select
           type="text"
@@ -19,9 +20,10 @@ const AdForm = props => {
             Select an offer
           </option>
           {props.offers.map(offer => {
-            return <option value={offer.id}>{offer.name}</option>;
+            return <option key={offer.id} value={offer.id}>{offer.name}</option>;
           })}
         </select>
+
         <label htmlFor="headline" />
         <input
           type="text"
@@ -30,6 +32,7 @@ const AdForm = props => {
           value={props.productData.headline}
           onChange={props.handleChange}
         />
+
         <label htmlFor="tagline" />
         <input
           type="text"
@@ -38,6 +41,7 @@ const AdForm = props => {
           value={props.productData.tagline}
           onChange={props.handleChange}
         />
+
         <label htmlFor="message" />
         <input
           type="text"
@@ -46,6 +50,7 @@ const AdForm = props => {
           value={props.productData.message}
           onChange={props.handleChange}
         />
+        
         <label htmlFor="text_color" />
         <input
           type="text"
@@ -54,6 +59,7 @@ const AdForm = props => {
           value={props.productData.text_color}
           onChange={props.handleChange}
         />
+
         <label htmlFor="cta_button" />
         <input
           type="text"
@@ -62,6 +68,7 @@ const AdForm = props => {
           value={props.productData.cta_button}
           onChange={props.handleChange}
         />
+        
         <label htmlFor="btn_color" />
         <input
           type="text"
@@ -70,6 +77,7 @@ const AdForm = props => {
           value={props.productData.btn_color}
           onChange={props.handleChange}
         />
+
         <label htmlFor="btn_text_color" />
         <input
           type="text"
@@ -78,6 +86,7 @@ const AdForm = props => {
           value={props.productData.btn_text_color}
           onChange={props.handleChange}
         />
+
         <label htmlFor="destination_url" />
         <input
           type="text"
@@ -86,6 +95,7 @@ const AdForm = props => {
           value={props.productData.destination_url}
           onChange={props.handleChange}
         />
+
         <label htmlFor="back_img" />
         <input
           type="text"
@@ -94,6 +104,7 @@ const AdForm = props => {
           value={props.productData.back_img}
           onChange={props.handleChange}
         />
+        
         <button type="submit">Create Ad</button>
       </div>
     </Form>

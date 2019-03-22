@@ -1,18 +1,18 @@
-import axios from 'axios';
+import axios from "axios";
 
 const URL = "https://lad-network.herokuapp.com";
 
-// setloading 
-export const SET_LOADING = 'SET_LOADING';
+// setloading
+export const SET_LOADING = "SET_LOADING";
 
 // ---------------------- login action --------------------------
-export const LOGIN_USER_START = 'LOGIN_USER_START';
-export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
-export const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
+export const LOGIN_USER_START = "LOGIN_USER_START";
+export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
+export const LOGIN_USER_FAILURE = "LOGIN_USER_FAILURE";
 
-
-export const loginUser = user => dispatch => {
+export const loginUser = (user, props) => dispatch => {
   dispatch({ type: LOGIN_USER_START });
+<<<<<<< HEAD
   axios.post(`${URL}/api/auth/login`, user)
     .then(res => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
@@ -21,51 +21,71 @@ export const loginUser = user => dispatch => {
       dispatch({ type: LOGIN_USER_FAILURE, payload: err.response.data });
     })
 }
+=======
+  axios
+    .post(`${URL}/api/auth/login`, user)
+    .then(res => {
+      dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
+    })
+    .then(() => {
+      props.history.push("/dashboard");
+    })
+    .catch(err => {
+      dispatch({ type: LOGIN_USER_FAILURE, payload: err.response.data });
+    });
+};
+>>>>>>> 4aba75ee4abf65bcadae710559663a95bbadc889
 
 // ---------------------- register action --------------------------
 
-export const REGISTER_USER_START = 'REGISTER_USER_START';
-export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
-export const REGISTER_USER_FAILURE = 'REGISTER_USER_FAILURE';
+export const REGISTER_USER_START = "REGISTER_USER_START";
+export const REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS";
+export const REGISTER_USER_FAILURE = "REGISTER_USER_FAILURE";
 
-export const registerUser = user => dispatch => {
+export const registerUser = (user, props) => dispatch => {
   dispatch({ type: REGISTER_USER_START });
-  axios.post(`${URL}/api/auth/register`, user)
+  axios
+    .post(`${URL}/api/auth/register`, user)
     .then(res => {
       dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data });
+<<<<<<< HEAD
+=======
+    })
+    .then(() => {
+      props.history.push("/login");
+>>>>>>> 4aba75ee4abf65bcadae710559663a95bbadc889
     })
     .catch(err => {
       dispatch({ type: REGISTER_USER_FAILURE, payload: err.response.data });
-    })
-}
+    });
+};
 
 // ---------------------- Fb new user action --------------------------
-export const FB_DATA_SUCCESS = 'FB_DATA_SUCCESS'
+export const FB_DATA_SUCCESS = "FB_DATA_SUCCESS";
 
-export const facebookUserData = (user) => dispatch => {
-  dispatch(setLoading())
+export const facebookUserData = user => dispatch => {
+  dispatch(setLoading());
   dispatch({
     type: FB_DATA_SUCCESS,
     payload: user
-  })
-
-}
+  });
+};
 
 // ---------------------- Fb & Googl action --------------------------
-export const GOOGLE_DATA_SUCCESS = 'GOOGLE_DATA_SUCCESS'
-export const googleUserData = (user) => dispatch => {
+export const GOOGLE_DATA_SUCCESS = "GOOGLE_DATA_SUCCESS";
+export const googleUserData = user => dispatch => {
   // console.log('google - user', user);
 
-  dispatch(setLoading())
+  dispatch(setLoading());
   dispatch({
     type: GOOGLE_DATA_SUCCESS,
     payload: user
-  })
-}
+  });
+};
 
 // ---------------------- Loading action --------------------------
 export const setLoading = () => {
   return {
-    type: SET_LOADING,
-  }
-}
+    type: SET_LOADING
+  };
+};

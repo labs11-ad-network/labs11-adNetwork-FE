@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import { loginUser } from '../../store/actions/authAction.js';
-import { LoginForm } from '../../components/authentication/forms';
-import { ContentContainer, LeftSection } from './loginStyles.js'
+import { loginUser } from "../../store/actions/authAction.js";
+import { LoginForm } from "../../components/authentication/forms";
+import { ContentContainer, LeftSection } from "./loginStyles.js";
 
 class Login extends Component {
   state = {
@@ -20,12 +20,12 @@ class Login extends Component {
   login = async e => {
     e.preventDefault();
 
-    this.props.loginUser(this.state);
+    this.props.loginUser(this.state, this.props);
 
     this.setState({
       email: "",
       password: ""
-    })
+    });
   };
   render() {
     return (
