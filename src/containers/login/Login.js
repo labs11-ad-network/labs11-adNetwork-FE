@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { loginUser } from "../../store/actions/authAction.js";
 import { LoginForm } from "../../components/authentication/forms";
 import { ContentContainer, LeftSection } from "./loginStyles.js";
+import { withRouter } from 'react-router-dom';
 
 class Login extends Component {
   state = {
@@ -48,4 +49,4 @@ export default connect(
   {
     loginUser
   }
-)(Login);
+)(withRouter(Login));
