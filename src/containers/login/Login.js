@@ -20,15 +20,16 @@ class Login extends Component {
   login = async e => {
     e.preventDefault();
 
-    this.props.loginUser(this.state, this.props);
+    this.props.loginUser(this.state, this.props, this.props.history);
 
     this.setState({
       email: "",
       password: ""
     });
   };
-  
+
   render() {
+
     return (
       <ContentContainer>
         <LeftSection />

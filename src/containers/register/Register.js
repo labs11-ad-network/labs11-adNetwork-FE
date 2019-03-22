@@ -66,7 +66,7 @@ class Register extends Component {
 
   register = e => {
     e.preventDefault();
-    this.props.registerUser(this.state, this.props);
+    this.props.registerUser(this.state, this.props.history);
 
     this.setState({
       first_name: "",

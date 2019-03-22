@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from 'react-toastify';
 
 const URL = "https://lad-network.herokuapp.com";
 
@@ -10,7 +11,7 @@ export const LOGIN_USER_START = "LOGIN_USER_START";
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_FAILURE = "LOGIN_USER_FAILURE";
 
-export const loginUser = (user, props) => dispatch => {
+export const loginUser = (user, history) => dispatch => {
   dispatch({ type: LOGIN_USER_START });
   axios
     .post(`${URL}/api/auth/login`, user)
@@ -18,7 +19,7 @@ export const loginUser = (user, props) => dispatch => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
     })
     .then(() => {
-      window.location.href = "/dashboard"
+      history.push('/dashboard')
     })
     .catch(err => {
       console.log('err', err.response.data);
@@ -32,7 +33,7 @@ export const REGISTER_USER_START = "REGISTER_USER_START";
 export const REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS";
 export const REGISTER_USER_FAILURE = "REGISTER_USER_FAILURE";
 
-export const registerUser = (user, props) => dispatch => {
+export const registerUser = (user, history) => dispatch => {
   dispatch({ type: REGISTER_USER_START });
   axios
     .post(`${URL}/api/auth/register`, user)
@@ -40,7 +41,7 @@ export const registerUser = (user, props) => dispatch => {
       dispatch({ type: REGISTER_USER_SUCCESS, payload: res.data });
     })
     .then(() => {
-      window.location.href = "/login"
+      history.push('/login')
     })
     .catch(err => {
       console.log(err.response)
