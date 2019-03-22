@@ -98,7 +98,9 @@ export const RegisterForm = props => {
         <br />
         <Oauth />
 
-        <h3>Already have an account? <Link to="/login">Login.</Link></h3>
+        <h3>Already have an account? <Link to="/login"
+          onClick={() => window.location.reload()}
+        >Login.</Link></h3>
       </div>
     </Form>
   )
