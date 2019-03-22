@@ -19,7 +19,7 @@ class Oauth extends Component {
       oauth_token: res.googleId,
       image_url: res.profileObj.imageUrl,
     }
-    this.props.googleUserData(user)
+    this.props.googleUserData(res)
     if (this.props.location.pathname === "/login") {
       this.props.loginUser({
         email: res.profileObj.email,
