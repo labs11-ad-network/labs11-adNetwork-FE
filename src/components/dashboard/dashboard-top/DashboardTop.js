@@ -15,6 +15,8 @@ const DashboardTop = props => {
                 <Header><i className="fas fa-chart-line"/>Dashboard</Header>
                 <select
                     name="selectedAdvertisement" 
+                    value={props.currentOffer}
+                    on
                     required
                 >
                     <option value>Select offer...</option>
