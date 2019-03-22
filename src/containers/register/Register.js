@@ -78,16 +78,16 @@ class Register extends Component {
     });
   };
 
-
+  goToLogin = () => {
+    window.location.href = "/login"
+  }
 
   render() {
     const { fbClicked, googleClicked } = this.props;
-
-
-
     return (
       <div>
         <RegisterForm
+          goToLogin={this.goToLogin}
           googleClicked={googleClicked}
           fbClicked={fbClicked}
           userInfo={this.state}

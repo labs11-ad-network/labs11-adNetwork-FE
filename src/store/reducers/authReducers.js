@@ -35,8 +35,11 @@ async function errMessage(message) {
   await setTimeout(() => {
     console.log('--- setimeout hit -----')
     window.location.href = "/register"
-  }, 3000);
+  }, 2000);
 }
+
+
+
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
     case SET_LOADING:

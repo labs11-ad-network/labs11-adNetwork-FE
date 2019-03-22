@@ -52,4 +52,7 @@ export const Form = styled.form`
             }
         }
     }
+    .login-btn {
+      cursor:pointer
+    }
 `;
