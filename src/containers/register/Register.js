@@ -17,10 +17,6 @@ class Register extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-<<<<<<< HEAD
-    const { fbData, googleData, fbClicked, googleClicked, location } = this.props
-
-=======
     const {
       fbData,
       googleData,
@@ -28,7 +24,6 @@ class Register extends Component {
       googleClicked,
       location
     } = this.props;
->>>>>>> 4aba75ee4abf65bcadae710559663a95bbadc889
     if (location.pathname === "/register") {
       console.log("------ register ---------");
 
