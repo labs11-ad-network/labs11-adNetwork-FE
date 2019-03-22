@@ -52,9 +52,7 @@ class Register extends Component {
     }
   }
 
-  componentWillUnmount() {
-    window.location.reload()
-  }
+
 
 
 
@@ -90,7 +88,6 @@ class Register extends Component {
     return (
       <div>
         <RegisterForm
-
           googleClicked={googleClicked}
           fbClicked={fbClicked}
           userInfo={this.state}

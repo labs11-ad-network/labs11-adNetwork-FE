@@ -29,7 +29,7 @@ const initialState = {
 
 }
 async function errMessage(message) {
-  if (message === "User already exists" && initialState.fbClicked || initialState.googleClicked)
+  if (message === "User already exists")
     console.log('--- user not exist hit -----')
   toast.error(message);
   await setTimeout(() => {
