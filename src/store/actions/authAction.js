@@ -57,7 +57,6 @@ export const getUserData = () => dispatch => {
   axios
     .get(`${URL}/api/users`)
     .then(res => {
-      console.log(res.data)
       dispatch({ type: GET_USER_SUCCESS, payload: res.data });
     })
     .catch(err => {

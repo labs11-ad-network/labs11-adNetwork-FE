@@ -35,7 +35,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.getUserData()
+    this.props.getUserData();
     this.props.getUserOffers();
   }
 
