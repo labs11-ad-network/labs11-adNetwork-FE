@@ -21,7 +21,7 @@ class Login extends Component {
   login = async e => {
     e.preventDefault();
 
-    this.props.loginUser(this.state, this.props, this.props.history);
+    this.props.loginUser(this.state, this.props);
 
     this.setState({
       email: "",
