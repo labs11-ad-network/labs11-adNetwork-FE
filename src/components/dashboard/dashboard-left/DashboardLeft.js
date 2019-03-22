@@ -19,7 +19,7 @@ export class DashboardNav extends Component {
           <HamburgerButton onClick={() => this.setState({
               navOpen: !this.state.navOpen
           })}>
-              <i className="fas fa-bars"/>
+              <i className="fas fa-home"/>
           </HamburgerButton>
           <ButtonContainer>
               <NavButton 
