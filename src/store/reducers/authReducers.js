@@ -37,6 +37,10 @@ export default function authReducer(state = initialState, action) {
       }
     case LOGIN_USER_SUCCESS:
       localStorage.setItem('jwt', action.payload.token || action.payload.oauth_token);
+<<<<<<< HEAD
+=======
+      //console.log(action.payload['first_name'])
+>>>>>>> 69c9617c418b155521f1cdbb5fcdda5f8a3cca75
       toast.success(`Welcome ${action.payload['first_name'] || action.payload.user['first_name']}`);
       return {
         ...state,
