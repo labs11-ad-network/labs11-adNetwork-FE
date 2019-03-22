@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000";
+const URL = "https://lad-network.herokuapp.com";
 
 // ------------------------------------ Get All User Offers ------------------------------------
 
@@ -29,12 +29,7 @@ export const CREATE_OFFER_FAILURE = "CREATE_OFFER_FAILURE";
 export const createOffer = offer => dispatch => {
   dispatch({ type: CREATE_OFFER_START });
   axios
-    .post(`${URL}/api/offers`, offer, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: window.localStorage.jwt
-      }
-    })
+    .post(`${URL}/api/offers`, offer)
     .then(res => {
       dispatch({ type: CREATE_OFFER_SUCCESS, payload: res.data });
     })
