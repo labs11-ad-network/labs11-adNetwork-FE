@@ -24,15 +24,15 @@ export class DashboardNav extends Component {
           <ButtonContainer>
               <NavButton 
                   iconClass="fas fa-chart-line" 
-                  pathExtension="/dashboard"
+                  pathExtension="/"
               />
               <NavButton 
                   iconClass="fas fa-list" 
-                  pathExtension="/dashboard/offers"
+                  pathExtension="/offers"
               />
               <NavButton 
                   iconClass="fas fa-cog"
-                  pathExtension="/dashboard/settings"
+                  pathExtension="/settings"
               />
           </ButtonContainer>   
         </Nav>

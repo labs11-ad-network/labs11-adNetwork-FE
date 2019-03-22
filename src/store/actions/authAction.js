@@ -18,7 +18,7 @@ export const loginUser = (user, props) => dispatch => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
     })
     .then(() => {
-      props.history.push("/dashboard");
+      props.history.push("/");
     })
     .catch(err => {
       dispatch({ type: LOGIN_USER_FAILURE, payload: err.response.data });
@@ -45,6 +45,25 @@ export const registerUser = (user, props) => dispatch => {
       dispatch({ type: REGISTER_USER_FAILURE, payload: err.response.data });
     });
 };
+
+// ------------------------------------ Get user data ------------------------------------
+
+export const GET_USER_START = "GET_USER_START";
+export const GET_USER_SUCCESS = "GET_USER_SUCCESS";
+export const GET_USER_FAILURE = "GET_USER_FAILURE";
+
+export const getUserData = () => dispatch => {
+  dispatch({ type: GET_USER_START });
+  axios
+    .get(`${URL}/api/users`)
+    .then(res => {
+      console.log(res.data)
+      dispatch({ type: GET_USER_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: GET_USER_FAILURE, payload: err.response.message });
+    })
+}
 
 // ---------------------- Fb new user action --------------------------
 export const FB_DATA_SUCCESS = "FB_DATA_SUCCESS";
