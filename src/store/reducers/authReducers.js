@@ -8,7 +8,7 @@ import {
   REGISTER_USER_SUCCESS,
   REGISTER_USER_FAILURE,
   GET_USER_START,
-  GET_USER_SUCCESS,  
+  GET_USER_SUCCESS,
   GET_USER_FAILURE,
   SET_LOADING, FB_DATA_SUCCESS,
   GOOGLE_DATA_SUCCESS
@@ -24,7 +24,8 @@ const initialState = {
   isFetchingUser: false,
   loading: false,
   fbClicked: false,
-  googleClicked: false
+  googleClicked: false,
+
 }
 
 export default function authReducer(state = initialState, action) {
@@ -49,6 +50,7 @@ export default function authReducer(state = initialState, action) {
         isLoggingIn: false,
       }
     case LOGIN_USER_FAILURE:
+      toast.error(action.payload.email);
       toast.error(action.payload.message);
       return {
         ...state,
@@ -66,24 +68,28 @@ export default function authReducer(state = initialState, action) {
         isRegistering: false,
       }
     case REGISTER_USER_FAILURE:
-      toast.error(action.payload.message);
+      toast.error(action.payload.email);
+      toast.error(action.payload.first_name);
+      toast.error(action.payload.last_name);
+      toast.error(action.payload.phone);
       return {
         ...state,
         isRegistering: false,
+
       }
     case GET_USER_START:
-      return{
+      return {
         ...state,
         isFetchingUser: true
       }
     case GET_USER_SUCCESS:
-      return{
+      return {
         ...state,
         currentUser: action.payload,
         isFetchingUser: false,
       }
     case GET_USER_FAILURE:
-      return{
+      return {
         ...state,
         isFetchingUser: false,
       }

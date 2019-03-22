@@ -52,6 +52,12 @@ class Register extends Component {
     }
   }
 
+  componentWillUnmount() {
+    window.location.reload()
+  }
+
+
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -60,7 +66,6 @@ class Register extends Component {
 
   register = e => {
     e.preventDefault();
-    console.log("this.state", this.state);
     this.props.registerUser(this.state, this.props);
 
     this.setState({
@@ -75,12 +80,17 @@ class Register extends Component {
     });
   };
 
+
+
   render() {
     const { fbClicked, googleClicked } = this.props;
+
+
 
     return (
       <div>
         <RegisterForm
+
           googleClicked={googleClicked}
           fbClicked={fbClicked}
           userInfo={this.state}

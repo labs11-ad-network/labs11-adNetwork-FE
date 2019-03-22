@@ -21,7 +21,8 @@ export const loginUser = (user, props) => dispatch => {
       window.location.href = "/dashboard"
     })
     .catch(err => {
-      dispatch({ type: LOGIN_USER_FAILURE, payload: err || err.response.data });
+      console.log('err', err.response.data);
+      dispatch({ type: LOGIN_USER_FAILURE, payload: err.response.data || err });
     });
 };
 
@@ -42,7 +43,8 @@ export const registerUser = (user, props) => dispatch => {
       window.location.href = "/login"
     })
     .catch(err => {
-      dispatch({ type: REGISTER_USER_FAILURE, payload: err || err.response.data });
+      console.log(err.response)
+      dispatch({ type: REGISTER_USER_FAILURE, payload: err.response.data || err });
     });
 };
 
