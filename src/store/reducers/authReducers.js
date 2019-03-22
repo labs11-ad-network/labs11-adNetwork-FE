@@ -54,7 +54,7 @@ export default function authReducer(state = initialState, action) {
 
       }
     case LOGIN_USER_SUCCESS:
-      localStorage.setItem('jwt', action.payload.token || action.payload.oauth_token);
+      localStorage.setItem('jwt', action.payload.token);
       toast.success(`Welcome ${action.payload['first_name'] || action.payload.user['first_name']}`);
       return {
         ...state,
@@ -80,12 +80,11 @@ export default function authReducer(state = initialState, action) {
         isRegistering: false,
       }
     case REGISTER_USER_FAILURE:
-      errMessage(action.payload.message)
-      // toast.error(action.payload.message);
       toast.error(action.payload.email);
       toast.error(action.payload.first_name);
       toast.error(action.payload.last_name);
       toast.error(action.payload.phone);
+      action.payload.message && errMessage(action.payload.message)
 
       return {
         ...state,

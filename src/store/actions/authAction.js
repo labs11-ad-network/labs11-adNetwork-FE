@@ -11,19 +11,17 @@ export const LOGIN_USER_START = "LOGIN_USER_START";
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_FAILURE = "LOGIN_USER_FAILURE";
 
-export const loginUser = (user, history) => dispatch => {
+export const loginUser = (user, props) => dispatch => {
   dispatch({ type: LOGIN_USER_START });
   axios
     .post(`${URL}/api/auth/login`, user)
     .then(res => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
     })
-    .then(() => {
-      history.push('/dashboard')
-    })
+    .then(() => props.history.push('/dashboard'))
     .catch(err => {
-      console.log('err', err.response.data);
-      dispatch({ type: LOGIN_USER_FAILURE, payload: err.response.data || err });
+      console.log('err', err);
+      dispatch({ type: LOGIN_USER_FAILURE, payload: err });
     });
 };
 

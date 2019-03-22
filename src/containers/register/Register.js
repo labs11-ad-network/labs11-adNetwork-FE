@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { registerUser } from "../../store/actions/authAction.js";
 import { RegisterForm } from "../../components/authentication/forms";
+import { withRouter } from 'react-router-dom';
 
 class Register extends Component {
   state = {
@@ -111,4 +112,4 @@ export default connect(
   {
     registerUser
   }
-)(Register);
+)(withRouter(Register));

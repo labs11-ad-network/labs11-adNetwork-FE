@@ -24,7 +24,7 @@ class Oauth extends Component {
       this.props.loginUser({
         email: res.profileObj.email,
         oauth_token: res.googleId,
-      }, this.props.history)
+      }, this.props)
     }
 
   }
@@ -46,7 +46,7 @@ class Oauth extends Component {
       this.props.loginUser({
         email: res.email,
         oauth_token: res.userID,
-      }, this.props.history)
+      }, this.props)
     }
   }
 
