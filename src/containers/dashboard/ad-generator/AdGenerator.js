@@ -31,7 +31,7 @@ export class AdGenerator extends Component {
       text_color: "",
       btn_color: "",
       btn_text_color: "",
-      size: "square_banner"
+      size: "horizontal_banner"
     }
   }
 

@@ -102,7 +102,7 @@ const AdForm = props => {
         {/* --------------------- image upload --------------------- */}
         <ImageUpload />
         <input
-          type="file"
+          type="text"
           placeholder="Background Image"
           name="back_img"
           value={props.productData.back_img}

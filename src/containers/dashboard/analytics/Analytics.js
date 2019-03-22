@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+
+import { getOfferAnalytics } from '../../../store/actions/analyticsAction.js';
 
 class Analytics extends Component {
+  componentDidMount(){
+    this.props.getOfferAnalytics(this.props.currentOffer)
+  }
+
   render() {
     return (
       <div>
@@ -10,4 +17,15 @@ class Analytics extends Component {
   }
 }
 
-export default Analytics
+const mapStateToProps = state => {
+  return{
+    offerAnalytics: state.analyticsReducer.offerAnalytics
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  {
+    getOfferAnalytics
+  }
+)(Analytics);

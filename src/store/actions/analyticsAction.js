@@ -34,3 +34,21 @@ export const addStats = stats => dispatch => {
       dispatch({ type: AD_ACTION_FAILED, payload: error });
     });
 };
+
+// ------------------------------ Get analytics for given offer ------------------------------
+
+export const OFFER_ANALYTICS_START = "OFFER_ANALYTICS_START";
+export const OFFER_ANALYTICS_SUCCESS = "OFFER_ANALYTICS_SUCCESS";
+export const OFFER_ANALYTICS_FAILURE = "OFFER_ANALYTICS_FAILURE";
+
+export const getOfferAnalytics = offerId => dispatch => {
+  dispatch({ type: OFFER_ANALYTICS_START })
+  axios
+    .get(`${URL}/api/analytics/${offerId}`)
+    .then(res => {
+      dispatch({ type: OFFER_ANALYTICS_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: OFFER_ANALYTICS_FAILURE, payload: err.response.data })
+    })
+}
