@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 
 import { } from '../../store/actions/authAction.js';
-// import privateRoute from '../auth-HOC';
+import privateRoute from '../auth-HOC';
 import DashboardLeft from '../../components/dashboard/dashboard-left/DashboardLeft.js';
 import TopNav from '../../components/dashboard/dashboard-top/DashboardTop.js';
 import ChatWidget from '../../components/chat-widget/ChatWidget.js';
@@ -32,14 +32,12 @@ class Dashboard extends Component {
       <DashboardContainer>
         <DashboardLeft />
         <div className="main-content">
-          {/* ------------------- chat widget tseting ------------------ */}
           <TopNav {...this.props} />
           <Route exact path="/dashboard" render={props => <h1 {...props}>This is the dashboard view</h1>} />
           <Route path="/dashboard/offers" component={Offers} />
           <Route path="/dashboard/settings" render={props => <h1 {...props}>This is the settings view</h1>} />
           <Route path="/dashboard/create-ad" component={AdGenerator} />
           <ChatWidget />
-
         </div>
       </DashboardContainer>
     );
@@ -51,4 +49,4 @@ export default connect(
   {
 
   }
-)(Dashboard);
+)(privateRoute(Dashboard));
