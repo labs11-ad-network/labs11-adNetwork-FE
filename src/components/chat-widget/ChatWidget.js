@@ -9,14 +9,15 @@ import 'react-chat-widget/lib/styles.css';
 const logo = "https://image.flaticon.com/icons/png/512/64/64572.png"
 class ChatWidget extends Component {
 
-  componentDidMount() {
-    addResponseMessage('Hello , Welcome to Very Creepy AD network 👋')
-    axios.get('http://localhost:5000/api/chat').then(res => {
-      res.data.map((item) => {
-        addUserMessage(item.text);
-      })
-    }).catch(err => console.log(err))
-  }
+  // componentDidMount() {
+  //   addResponseMessage('Hello , Welcome to Very Creepy AD network 👋')
+  //   axios.get('http://localhost:5000/api/chat').then(res => {
+  //     res.data.map((item) => {
+  //       addUserMessage(item.text);
+  //     })
+  //   }).catch(err => console.log(err))
+  // }
+  
   handleNewUserMessage = (newMessage) => {
     console.log('newMessage', newMessage);
     const payload = {

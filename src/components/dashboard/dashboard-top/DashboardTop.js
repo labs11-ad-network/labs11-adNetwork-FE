@@ -14,19 +14,28 @@ const DashboardTop = props => {
             <LeftSection>
                 <Header><i className="fas fa-chart-line"/>Dashboard</Header>
                 <select
-                    name="selectedAdvertisement" 
+                    name="selected_offer" 
+                    value={props.currentOffer}
+                    onChange={props.handleOfferSelect}
                     required
                 >
-                    <option value>Select advertisement...</option>
+                    <option value>Select offer...</option>
+                    {props.userOffers.length && props.userOffers.map(offer => {
+                        return <option key={offer.id} value={offer.id}>{offer.name}</option>
+                    })}
                 </select>
                 <Link to="/dashboard/create-ad">Create Advertisement</Link>
             </LeftSection>
             <RightSection>
+                {props.currentUser && 
+                <>
                 <i className="fas fa-bell"/>
                 <div>
-                    <img alt=""/>
-                    <h2>John Doe</h2>
+                    <img src={props.currentUser.image_url} alt=""/>
+                    <h2>{`${props.currentUser.first_name} ${props.currentUser.last_name}`}</h2>
                 </div>
+                </>
+                }
             </RightSection>
         </NavContainer>
     )

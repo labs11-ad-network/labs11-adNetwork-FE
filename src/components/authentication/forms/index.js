@@ -42,11 +42,12 @@ export const LoginForm = props => {
 }
 
 export const RegisterForm = props => {
+
   return (
     <Form onSubmit={props.register}>
       <div>
         <h2>Register with your information.</h2>
-        <label htmlFor="email" />
+        <label />
         <input
           type="email"
           value={props.userInfo.email}
@@ -98,7 +99,9 @@ export const RegisterForm = props => {
         <br />
         <Oauth />
 
-        <h3>Already have an account? <Link to="/login">Login.</Link></h3>
+        <h3>Already have an account? <a
+          className="login-btn"
+          onClick={() => props.goToLogin()}>Login.</a></h3>
       </div>
     </Form>
   )

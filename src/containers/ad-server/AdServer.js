@@ -17,7 +17,7 @@ class AdServer extends Component {
       action: "impression",
       browser: navigator.userAgent,
       ip: window.location.hostname,
-      referrer: "google.com",
+      referrer: document.referrer,
       agreement_id: 1
     });
   }
@@ -27,7 +27,7 @@ class AdServer extends Component {
       action: "click",
       browser: navigator.userAgent,
       ip: window.location.hostname,
-      referrer: "google.com",
+      referrer: document.referrer,
       agreement_id: 1
     });
   };
