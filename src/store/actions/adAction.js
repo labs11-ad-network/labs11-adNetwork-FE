@@ -26,7 +26,7 @@ export const getAd = adId => dispatch => {
       dispatch({ type: GET_AD_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_AD_FAILURE, payload: err.response.data });
+      dispatch({ type: GET_AD_FAILURE, payload: err || err.response.data });
     });
 };
 

@@ -50,7 +50,7 @@ const AdForm = props => {
           value={props.productData.message}
           onChange={props.handleChange}
         />
-        
+
         <label htmlFor="text_color" />
         <input
           type="text"
@@ -68,7 +68,7 @@ const AdForm = props => {
           value={props.productData.cta_button}
           onChange={props.handleChange}
         />
-        
+
         <label htmlFor="btn_color" />
         <input
           type="text"
@@ -97,14 +97,16 @@ const AdForm = props => {
         />
 
         <label htmlFor="back_img" />
+        {/* --------------------- image upload --------------------- */}
         <input
-          type="text"
+          type="file"
           placeholder="Background Image"
           name="back_img"
           value={props.productData.back_img}
           onChange={props.handleChange}
         />
-        
+        {/* --------------------- image upload --------------------- */}
+
         <button type="submit">Create Ad</button>
       </div>
     </Form>
