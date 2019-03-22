@@ -14,7 +14,7 @@ export const LOGIN_USER_FAILURE = "LOGIN_USER_FAILURE";
 export const loginUser = (user, props) => dispatch => {
   dispatch({ type: LOGIN_USER_START });
   axios
-    .post(`${URL}/api/auth/login`, {response: user})
+    .post(`${URL}/api/auth/login`, user)
     .then(res => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
     })
