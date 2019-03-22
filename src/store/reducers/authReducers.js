@@ -27,7 +27,15 @@ const initialState = {
   googleClicked: false,
 
 }
-
+async function errMessage(message) {
+  if (message === "User already exists")
+    console.log('--- user not exist hit -----')
+  toast.error(message);
+  await setTimeout(() => {
+    console.log('--- setimeout hit -----')
+    window.location.href = "/register"
+  }, 3000);
+}
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
     case SET_LOADING:
@@ -68,10 +76,13 @@ export default function authReducer(state = initialState, action) {
         isRegistering: false,
       }
     case REGISTER_USER_FAILURE:
+      errMessage(action.payload.message)
+      // toast.error(action.payload.message);
       toast.error(action.payload.email);
       toast.error(action.payload.first_name);
       toast.error(action.payload.last_name);
       toast.error(action.payload.phone);
+
       return {
         ...state,
         isRegistering: false,
