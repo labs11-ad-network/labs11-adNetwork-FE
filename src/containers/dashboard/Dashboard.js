@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { Route } from 'react-router-dom';
 
+import { getOfferAnalytics } from '../../store/actions/analyticsAction.js';
 import { getUserOffers } from '../../store/actions/offersAction.js';
 import { getUserData } from '../../store/actions/authAction.js'
 import privateRoute from '../auth-HOC';
@@ -40,6 +41,7 @@ class Dashboard extends Component {
   }
 
   handleOfferSelect = e => {
+    this.props.getOfferAnalytics(e.target.value)
     this.setState({
       currentOffer: e.target.value
     })
@@ -52,7 +54,7 @@ class Dashboard extends Component {
         <div className="main-content">
           <TopNav {...this.props} handleOfferSelect={this.handleOfferSelect}/>
           <div className="dashboard-view">
-            <Route exact path="/dashboard" render={props => <Analytics {...props} currentOffer={this.state.currentOffer}/>} />
+            <Route exact path="/dashboard" render={props => <Analytics {...props} offerAnalytics={this.props.offerAnalytics}/>} />
             <Route path="/dashboard/offers" component={Offers} />
             <Route path="/dashboard/settings" render={props => <h1 {...props}>This is the settings view</h1>} />
             <Route path="/dashboard/create-ad" component={AdGenerator} />
@@ -67,13 +69,15 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
   return{
     userOffers: state.offersReducer.userOffers,
-    currentUser: state.authReducer.currentUser
+    currentUser: state.authReducer.currentUser,
+    offerAnalytics: state.analyticsReducer.offerAnalytics,
   }
 }
 
 export default connect(
   mapStateToProps,
   {
+    getOfferAnalytics,
     getUserOffers,
     getUserData
   }
