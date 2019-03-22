@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import { toast } from 'react-toastify';
 
 import {
@@ -28,7 +29,7 @@ const initialState = {
 
 }
 async function errMessage(message) {
-  if (message === "User already exists")
+  if (message === "User already exists" && initialState.fbClicked || initialState.googleClicked)
     console.log('--- user not exist hit -----')
   toast.error(message);
   await setTimeout(() => {
