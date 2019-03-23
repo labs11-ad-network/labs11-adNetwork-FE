@@ -125,7 +125,6 @@ class OffersList extends React.Component{
           title={"Ads List"}
           data={offerAds}
           columns={adColumns}
-          options={options}
         />}
       </div>
     )
