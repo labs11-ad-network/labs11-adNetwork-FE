@@ -38,6 +38,17 @@ class Dashboard extends Component {
   componentDidMount() {
     this.props.getUserData();
     this.props.getUserOffers();
+    // this.analyticsInterval = setInterval(() => {
+    //   return this.props.getOfferAnalytics(this.state.currentOffer)
+    // }, 1000 * 60 * 1)
+  }
+  
+  // componentWillUnmount() {
+  //   clearInterval(this.analyticsInterval)
+  // }
+  
+  refreshStats = e => {
+    this.props.getOfferAnalytics(this.state.currentOffer)
   }
 
   handleOfferSelect = e => {
@@ -46,13 +57,13 @@ class Dashboard extends Component {
       currentOffer: e.target.value
     })
   }
-
+  
   render() {
     return (
       <DashboardContainer>
         <DashboardLeft />
         <div className="main-content">
-          <TopNav {...this.props} handleOfferSelect={this.handleOfferSelect}/>
+          <TopNav {...this.props} handleOfferSelect={this.handleOfferSelect} refreshStats={this.refreshStats}/>
           <div className="dashboard-view">
             <Route exact path="/dashboard" render={props => <Analytics {...props} offerAnalytics={this.props.offerAnalytics}/>} />
             <Route path="/dashboard/offers" component={Offers} />

@@ -58,13 +58,13 @@ class Offers extends Component {
   render() {
     return (
       <div>
+        <OffersList offers={this.props.userOffers}/>
         <CreateForm 
           hidden={this.state.hidden} 
           offerData={this.state.offerData}
           handleChange={this.handleChange}
           createOffer={this.createOffer}
         />
-        <OffersList offers={this.props.userOffers}/>
       </div>
     )
   }

@@ -42,8 +42,8 @@ export class AdGenerator extends Component {
   createAd = e => {
     e.preventDefault();
 
-    this.props.createAd(this.state.productData)
-
+    this.props.createAd(this.state.productData, this.props)
+    
     this.setState({
       productData: {
         offer_id: "",
@@ -70,12 +70,22 @@ export class AdGenerator extends Component {
     })
   }
 
+  handleFileChange = e => {
+    this.setState({
+      productData:{
+        ...this.state.productData,
+      back_img: e.target.files[0]
+      }
+    })
+  }
+
   render() {
     return (
       this.props.userOffers.length ?
       <AdGeneratorContainer>
         <AdForm
           createAd={this.createAd}
+          handleFileChange={this.handleFileChange}
           handleChange={this.handleChange}
           productData={this.state.productData}
           offers={this.props.userOffers}

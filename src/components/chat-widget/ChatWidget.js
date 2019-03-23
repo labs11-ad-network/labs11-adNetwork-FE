@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-import { Widget, addResponseMessage, addUserMessage } from 'react-chat-widget';
+import { 
+  Widget, 
+  //addResponseMessage, 
+  //addUserMessage 
+} from 'react-chat-widget';
 import 'react-chat-widget/lib/styles.css';
 
 

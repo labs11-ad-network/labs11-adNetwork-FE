@@ -1,8 +1,6 @@
 import React from "react";
 
 import { Form } from "./formStyles.js";
-import { ImageUploader } from 'react-images-upload';
-import ImageUpload from "../../image-upload/ImageUpload.js";
 
 const AdForm = props => {
   return (
@@ -100,13 +98,13 @@ const AdForm = props => {
 
         <label htmlFor="back_img" />
         {/* --------------------- image upload --------------------- */}
-        <ImageUpload />
         <input
-          type="text"
+          accept="image/*"
+          type="file"
           placeholder="Background Image"
           name="back_img"
-          value={props.productData.back_img}
-          onChange={props.handleChange}
+          multiple
+          onChange={props.handleFileChange}
         />
         {/* --------------------- image upload --------------------- */}
 

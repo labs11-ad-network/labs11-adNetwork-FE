@@ -99,9 +99,7 @@ export const RegisterForm = props => {
         <br />
         <Oauth />
 
-        <h3>Already have an account? <a
-          className="login-btn"
-          onClick={() => props.goToLogin()}>Login.</a></h3>
+        <h3>Already have an account? <Link to="/login" className="login-btn">Login.</Link></h3>
       </div>
     </Form>
   )

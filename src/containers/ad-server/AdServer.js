@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { getAd } from "../../store/actions/adAction.js";
-import { addStats, getStats } from "../../store/actions/analyticsAction";
+import { addStats } from "../../store/actions/analyticsAction";
 
 import {
   HorizontalBanner,
-  SquareBanner,
-  VerticalBanner
+  //SquareBanner,
+  //VerticalBanner,
+  //PlainImage
 } from "../../components/ad-generator/templates";
 
 class AdServer extends Component {
@@ -18,7 +19,7 @@ class AdServer extends Component {
       browser: navigator.userAgent,
       ip: window.location.hostname,
       referrer: document.referrer,
-      agreement_id: 1
+      agreement_id: 2
     });
   }
 
@@ -28,7 +29,7 @@ class AdServer extends Component {
       browser: navigator.userAgent,
       ip: window.location.hostname,
       referrer: document.referrer,
-      agreement_id: 1
+      agreement_id: 2
     });
   };
 
@@ -58,7 +59,6 @@ export default connect(
   mapStateToProps,
   {
     getAd,
-    addStats,
-    getStats
+    addStats
   }
 )(AdServer);
