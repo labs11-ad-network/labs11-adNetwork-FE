@@ -33,15 +33,30 @@ const offerColumns = [
   },
   {
       name: 'Budget', 
-      field: 'budget'
+      field: 'budget',
+      options: {
+        customBodyRender: (value) => {
+          return <h1>{`$${value.budget} ${value.currency}`}</h1>; 
+        }
+      }
   },
   {
       name: 'Price Per Click', 
-      field: 'price_per_click'
+      field: 'price_per_click',
+      options: {
+        customBodyRender: (value) => {
+          return <h1>{`$${value.price_per_click} ${value.currency}`}</h1>; 
+        }
+      }
   },
   {
       name: 'Price Per Impression', 
       field: 'price_per_impression',
+      options: {
+        customBodyRender: (value) => {
+          return <h1>{`$${value.price_per_impression} ${value.currency}`}</h1>; 
+        }
+      }
   }
 ];
 
@@ -64,10 +79,10 @@ const adColumns = [
       name: 'Preview', 
       field: 'back_img',
       options: {
-          width: 170,            
-          customBodyRender: (value) => {
-            console.log(value)
-            return <HorizontalBanner ad={value}/>; 
+        width: 170,            
+        customBodyRender: (value) => {
+          console.log(value)
+          return <HorizontalBanner ad={value}/>; 
         }
       },
   },
