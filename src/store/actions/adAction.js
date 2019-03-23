@@ -51,3 +51,21 @@ export const createAd = ad => dispatch => {
 // ------------------------------------ Get User Ads ------------------------------------
 
 // "GET /api/ads/myads" gets personal users ads (provide token)
+
+// ------------------------------------ Get Offer Ads ------------------------------------
+
+export const GET_OFFER_ADS_START = "GET_OFFER_ADS_START"
+export const GET_OFFER_ADS_SUCCESS = "GET_OFFER_ADS_SUCCESS"
+export const GET_OFFER_ADS_FAILURE = "GET_OFFER_ADS_FAILURE"
+
+export const getOfferAds = offer_id => dispatch => {
+  dispatch({ type: GET_OFFER_ADS_START })
+  axios
+    .get(`${URL}/api/ads/offers/${offer_id}`)
+    .then(res => {
+      dispatch({ type: GET_OFFER_ADS_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: GET_OFFER_ADS_FAILURE, payload: err.response.data})
+    })
+}

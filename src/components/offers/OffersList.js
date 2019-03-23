@@ -4,9 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
 
-const columns = [
+import { getOfferAds } from '../../store/actions/adAction.js'
+import { HorizontalBanner } from '../ad-generator/templates';
+
+const offerColumns = [
   {   
       name: 'Name', 
       field: 'name',
@@ -42,6 +45,34 @@ const columns = [
   }
 ];
 
+const adColumns = [
+  {   
+      name: 'Size', 
+      field: 'size',
+      options: {
+          width: 70,
+      },
+  },
+  {
+      name: 'Ad', 
+      field: 'message',
+      options: {
+          width: 150,
+      },
+  },
+  {
+      name: 'Preview', 
+      field: 'back_img',
+      options: {
+          width: 170,            
+          customBodyRender: (value) => {
+            console.log(value)
+            return <HorizontalBanner ad={value}/>; 
+        }
+      },
+  },
+];
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -55,13 +86,14 @@ const styles = theme => ({
 class OffersList extends React.Component{
   state = {
     value: 0,
+    offer_id: '',
     options: { 
       filterType: 'checkbox',
       onRowClick: (offer) => {
         this.setState({
           value: 1,
-          offer_id: offer.id
-        })
+        });
+        this.props.getOfferAds(offer.id);
       }
     }
   }
@@ -71,8 +103,8 @@ class OffersList extends React.Component{
   };
 
   render(){
-    const { classes } = this.props;
-    const { value } = this.state;
+    const { classes, offerAds, offers } = this.props;
+    const { value, options } = this.state;
     return (
       <div className={classes.root}>
         <AppBar position="static">
@@ -84,20 +116,31 @@ class OffersList extends React.Component{
         {value === 0 &&
         <MaterialDatatable
           title={"Offers List"}
-          data={this.props.offers}
-          columns={columns}
-          options={this.state.options}
+          data={offers}
+          columns={offerColumns}
+          options={options}
         />}
         {value === 1 && 
           <MaterialDatatable
           title={"Ads List"}
-          data={{name: 'juan'}}
-          columns={columns}
-          options={this.state.options}
+          data={offerAds}
+          columns={adColumns}
+          options={options}
         />}
       </div>
     )
   }
 }
 
-export default withStyles(styles)(OffersList);
+const mapStateToProps = state => {
+  return{
+    offerAds: state.adReducer.offerAds
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  {
+    getOfferAds
+  }
+)(withStyles(styles)(OffersList));
