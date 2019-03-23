@@ -78,6 +78,7 @@ export default function authReducer(state = initialState, action) {
     case GET_OFFER_ADS_FAILURE:
       return{
         ...state,
+        offerAds: [],
         isGetingOfferAds: false
       }
 
