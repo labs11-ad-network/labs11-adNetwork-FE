@@ -18,14 +18,23 @@ class Analytics extends Component {
           <Card
             icon="fas fa-eye"
             dataType="Impressions"
-            data="12534"
+            data={
+              this.props.offerAnalytics.filter(offer => {
+                return offer.action === "impression"
+              }).length
+            }
             firstColor="#ffa726"
             secondColor="#fb8c00"
+
           />
           <Card
             icon="fas fa-mouse-pointer"
             dataType="Clicks"
-            data="4532"
+            data={
+              this.props.offerAnalytics.filter(offer => {
+                return offer.action === "click"
+              }).length
+            }
             firstColor="#66bb6a"
             secondColor="#43a047"
           />
