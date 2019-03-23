@@ -1,5 +1,3 @@
-import { toast } from "react-toastify";
-
 import {
   AD_ACTION_SUCCESS,
   AD_ACTION_FAILED,

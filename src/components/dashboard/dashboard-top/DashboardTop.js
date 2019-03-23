@@ -29,7 +29,10 @@ const DashboardTop = props => {
             <RightSection>
                 {props.currentUser && 
                 <>
-                <i className="fas fa-bell"/>
+                <i className="fas fa-sign-out-alt" onClick={() => {
+                    localStorage.clear();
+                    props.history.push('/login')
+                }}/>
                 <div>
                     <img src={props.currentUser.image_url} alt=""/>
                     <h2>{`${props.currentUser.first_name} ${props.currentUser.last_name}`}</h2>
