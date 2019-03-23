@@ -36,7 +36,7 @@ const offerColumns = [
       field: 'budget',
       options: {
         customBodyRender: (value) => {
-          return <h1>{`$${value.budget} ${value.currency}`}</h1>; 
+          return `$${value.budget} ${value.currency}`; 
         }
       }
   },
@@ -45,7 +45,7 @@ const offerColumns = [
       field: 'price_per_click',
       options: {
         customBodyRender: (value) => {
-          return <h1>{`$${value.price_per_click} ${value.currency}`}</h1>; 
+          return `$${value.price_per_click} ${value.currency}`; 
         }
       }
   },
@@ -54,7 +54,7 @@ const offerColumns = [
       field: 'price_per_impression',
       options: {
         customBodyRender: (value) => {
-          return <h1>{`$${value.price_per_impression} ${value.currency}`}</h1>; 
+          return `$${value.price_per_impression} ${value.currency}`; 
         }
       }
   }
@@ -94,7 +94,9 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
   },
   tab: {
-    width: '50%'
+    width: '100%',
+    fontSize: '0.9rem',
+    fontWeight: '500'
   }
 });
 
@@ -126,7 +128,7 @@ class OffersList extends React.Component{
     return (
       <div className={classes.root}>
         <AppBar position="static">
-          <Tabs value={value} onChange={this.handleChange} className={classes.tabContainer}>
+          <Tabs value={value} onChange={this.handleChange}>
             <Tab label="Offers" className={classes.tab}/>
             <Tab label="Ads" className={classes.tab}/>
           </Tabs>

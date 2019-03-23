@@ -63,7 +63,7 @@ export const NavContainer = styled.nav`
     width: 100%;
     min-height: 65px;
     background-color: #ffffff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
 `;
 
 export const LeftSection = styled.div`

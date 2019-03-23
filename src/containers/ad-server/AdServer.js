@@ -19,7 +19,7 @@ class AdServer extends Component {
       browser: navigator.userAgent,
       ip: window.location.hostname,
       referrer: document.referrer,
-      agreement_id: 1
+      agreement_id: 2
     });
   }
 
@@ -29,7 +29,7 @@ class AdServer extends Component {
       browser: navigator.userAgent,
       ip: window.location.hostname,
       referrer: document.referrer,
-      agreement_id: 1
+      agreement_id: 2
     });
   };
 

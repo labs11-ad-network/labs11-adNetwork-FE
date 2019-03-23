@@ -1,11 +1,5 @@
 import axios from "axios";
 
-const authHeaders = {
-  headers: {
-    authorization: localStorage.getItem("jwt")
-  }
-};
-
 const URL = "https://lad-network.herokuapp.com";
 
 // ------------------------------------ Get All Ads ------------------------------------
@@ -37,13 +31,21 @@ export const CREATE_AD_SUCCESS = "CREATE_AD_SUCCESS";
 export const CREATE_AD_FAILURE = "CREATE_AD_FAILURE";
 
 export const createAd = (ad, props) => dispatch => {
-  console.log(ad)
   dispatch({ type: CREATE_AD_START });
   let newAd = new FormData();
-  newAd.append("image", ad.back_img);
   newAd.append("offer_id", ad.offer_id);
+  newAd.append("headline", ad.headline);
+  newAd.append("tagline", ad.tagline);
+  newAd.append("message", ad.message);
+  newAd.append("cta_button", ad.cta_button);
+  newAd.append("destination_url", ad.destination_url);
+  newAd.append("image", ad.back_img);
+  newAd.append("text_color", ad.text_color);
+  newAd.append("btn_color", ad.btn_color);
+  newAd.append("btn_text_color", ad.btn_text_color);
+  newAd.append("size", ad.size);
   axios
-    .post(`${URL}/api/ads`, newAd, authHeaders)
+    .post(`${URL}/api/ads`, newAd)
     .then(res => {
       dispatch({ type: CREATE_AD_SUCCESS, payload: res.data });
     })
