@@ -87,7 +87,7 @@ class OffersList extends React.Component{
   state = {
     value: 0,
     offer_id: '',
-    options: { 
+    offerOptions: { 
       filterType: 'checkbox',
       onRowClick: (offer) => {
         this.setState({
@@ -95,6 +95,9 @@ class OffersList extends React.Component{
         });
         this.props.getOfferAds(offer.id);
       }
+    },
+    adOptions: { 
+      filterType: 'checkbox'
     }
   }
 
@@ -104,7 +107,7 @@ class OffersList extends React.Component{
 
   render(){
     const { classes, offerAds, offers } = this.props;
-    const { value, options } = this.state;
+    const { value, offerOptions, adOptions } = this.state;
     return (
       <div className={classes.root}>
         <AppBar position="static">
@@ -118,13 +121,14 @@ class OffersList extends React.Component{
           title={"Offers List"}
           data={offers}
           columns={offerColumns}
-          options={options}
+          options={offerOptions}
         />}
         {value === 1 && 
           <MaterialDatatable
           title={"Ads List"}
           data={offerAds}
           columns={adColumns}
+          options={adOptions}
         />}
       </div>
     )

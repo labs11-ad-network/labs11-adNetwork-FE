@@ -42,7 +42,7 @@ export class AdGenerator extends Component {
   createAd = e => {
     e.preventDefault();
 
-    this.props.createAd(this.state.productData)
+    this.props.createAd(this.state.productData, this.props)
     
     this.setState({
       productData: {

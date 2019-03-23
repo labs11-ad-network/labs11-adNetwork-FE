@@ -36,7 +36,7 @@ export const CREATE_AD_START = "CREATE_AD_START";
 export const CREATE_AD_SUCCESS = "CREATE_AD_SUCCESS";
 export const CREATE_AD_FAILURE = "CREATE_AD_FAILURE";
 
-export const createAd = ad => dispatch => {
+export const createAd = (ad, props) => dispatch => {
   console.log(ad)
   dispatch({ type: CREATE_AD_START });
   let newAd = new FormData();
@@ -46,6 +46,9 @@ export const createAd = ad => dispatch => {
     .post(`${URL}/api/ads`, newAd, authHeaders)
     .then(res => {
       dispatch({ type: CREATE_AD_SUCCESS, payload: res.data });
+    })
+    .then(() => {
+      props.history.push('/dashboard/offers')
     })
     .catch(err => {
       dispatch({ type: CREATE_AD_FAILURE, payload: err.response.data });
