@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "axios": "^0.18.0",
+    "material-datatable": "^0.3.8",
     "react": "^16.8.4",
     "react-chat-widget": "^2.1.4-1",
     "react-dom": "^16.8.4",
