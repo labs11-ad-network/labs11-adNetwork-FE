@@ -19,9 +19,9 @@ const Top = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 100px;
-    margin-top: -25px;
+    width: 95px;
+    height: 95x;
+    margin-top: -35px;
     border-radius: 3px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     background: ${props => `linear-gradient(60deg, ${props.firstColor}, ${props.secondColor})`};
