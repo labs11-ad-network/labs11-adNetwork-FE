@@ -9,14 +9,18 @@ import{
   CREATE_OFFER_FAILURE,
   CHANGE_OFFER_STATUS_START,
   CHANGE_OFFER_STATUS_SUCCESS,
-  CHANGE_OFFER_STATUS_FAILURE
+  CHANGE_OFFER_STATUS_FAILURE,
+  DELETE_OFFER_START,
+  DELETE_OFFER_SUCCESS,
+  DELETE_OFFER_FAILURE
 } from '../actions/offersAction';
 
 const initialState = {
   userOffers: [],
   isFetchingOffers: false,
   isCreatingOffer: false,
-  isUpdatingOfferStatus: false
+  isUpdatingOfferStatus: false,
+  isDeletingOffer: false,
 }
 
 export default function authReducer(state = initialState, action) {
@@ -80,6 +84,26 @@ export default function authReducer(state = initialState, action) {
       return{
         ...state,
         isUpdatingOfferStatus: false,
+      }
+
+    case DELETE_OFFER_START:
+      return{
+        ...state,
+        isDeletingOffer: true
+      }
+
+    case DELETE_OFFER_SUCCESS:
+      toast.success(`Offer was deleted`)
+      return{
+        ...state,
+        isDeletingOffer: false
+      }
+
+    case DELETE_OFFER_FAILURE:
+      toast.error(action.payload.message)
+      return{
+        ...state,
+        isDeletingOffer: false
       }
 
     default:

@@ -8,7 +8,7 @@ import Switch from '@material-ui/core/Switch';
 import { connect } from 'react-redux';
 
 import { getOfferAds } from '../../store/actions/adAction.js';
-import { getUserOffers, changeOfferStatus } from '../../store/actions/offersAction.js';
+import { getUserOffers, changeOfferStatus, deleteOffer } from '../../store/actions/offersAction.js';
 import AdHoc from '../ad-generator/AdHoc.js';
 
 const styles = theme => ({
@@ -30,7 +30,12 @@ class OffersList extends React.Component{
     offerOptions: { 
       filterType: 'checkbox',
       onlyOneRowCanBeSelected: true,
-      rowCursorHand: true
+      rowCursorHand: true,
+      onRowsDelete: (value) => {
+        if(window.confirm(`Are you sure you want to delete ${this.props.offers[value.data[0].dataIndex].name}`)){
+          this.props.deleteOffer(this.props.offers[value.data[0].dataIndex])
+        }
+      }
     },
     adOptions: { 
       filterType: 'checkbox',
@@ -192,6 +197,7 @@ export default connect(
   {
     getOfferAds,
     getUserOffers,
-    changeOfferStatus
+    changeOfferStatus,
+    deleteOffer
   }
 )(withStyles(styles)(OffersList));
