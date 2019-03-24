@@ -5,12 +5,7 @@ import UAParser from 'ua-parser-js';
 import { getAd } from "../../store/actions/adAction.js";
 import { addStats } from "../../store/actions/analyticsAction";
 
-import {
-  HorizontalBanner,
-  //SquareBanner,
-  //VerticalBanner,
-  //PlainImage
-} from "../../components/ad-generator/templates";
+import AdHoc from "../../components/ad-generator/AdHoc.js";
 
 class AdServer extends Component {
   componentDidMount() {
@@ -38,14 +33,7 @@ class AdServer extends Component {
   render() {
     return (
       <>
-        {this.props.ad && (
-          <>
-            <HorizontalBanner //this needs to render either a horizontal, square, or vertical banner based on the size of the ad
-              ad={this.props.ad}
-              recordAction={this.recordAction}
-            />
-          </>
-        )}
+        <AdHoc ad={this.props.ad} recordAction={this.recordAction}/>
       </>
     );
   }

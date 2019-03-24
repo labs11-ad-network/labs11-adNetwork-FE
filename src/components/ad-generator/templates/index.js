@@ -12,6 +12,7 @@ export const PlainImage = props => {
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={props.recordAction}
     >
       <img src={props.ad.image} alt={props.ad.headline} />
     </a>
@@ -60,6 +61,7 @@ export const SquareBanner = props => {
         href={props.ad.destination_url}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={props.recordAction}
       >
         {props.ad.cta_button}
       </a>
@@ -84,6 +86,7 @@ export const VerticalBanner = props => {
         href={props.ad.destination_url}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={props.recordAction}
       >
         {props.ad.cta_button}
       </a>

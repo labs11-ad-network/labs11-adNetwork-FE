@@ -5,12 +5,7 @@ import styled from 'styled-components';
 import { createAd } from '../../../store/actions/adAction.js';
 import { getUserOffers } from '../../../store/actions/offersAction.js';
 import AdForm from '../../../components/ad-generator/forms/AdForm.js';
-import { 
-  HorizontalBanner,
-  SquareBanner,
-  VerticalBanner,
-  PlainImage
-} from '../../../components/ad-generator/templates';
+import AdHoc from '../../../components/ad-generator/AdHoc.js';
 
 const AdGeneratorContainer = styled.div`
   display: flex;
@@ -31,7 +26,7 @@ export class AdGenerator extends Component {
       text_color: "",
       btn_color: "",
       btn_text_color: "",
-      size: "horizontal_banner"
+      size: "square_banner"
     }
   }
 
@@ -90,22 +85,7 @@ export class AdGenerator extends Component {
           productData={this.state.productData}
           offers={this.props.userOffers}
         />
-        {this.state.productData.size.includes('horizontal_banner') ?
-          <HorizontalBanner 
-            ad={this.state.productData}
-          /> :
-          this.state.productData.size.includes('vertical_banner') ?
-          <VerticalBanner 
-            ad={this.state.productData}
-          /> :
-          this.state.productData.size.includes('square_banner') ?
-          <SquareBanner 
-            ad={this.state.productData}
-          /> :
-          <PlainImage 
-            ad={this.state.productData}
-          />
-        }
+        <AdHoc ad={this.state.productData}/>
       </AdGeneratorContainer> :
       <h1>Create an offer before you create an ad.</h1>
     )

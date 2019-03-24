@@ -10,7 +10,7 @@ const GraphContainer = styled.div`
     background-color: #FFFFFF;
     width: 350px;
     height: auto;
-    border-radius: 15px;
+    border-radius: 8px;
     margin: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     .labels{
