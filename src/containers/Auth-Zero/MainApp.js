@@ -36,7 +36,9 @@ class MainApp extends Component {
         <Navbar fluid>
           <Navbar.Header>
             <Navbar.Brand>
-              <a onClick={this.goTo.bind(this, 'home')}>Auth0 - React</a>
+              <a onClick={this.goTo.bind(this, 'home')}
+                href='/#'
+              >Auth0 - React</a>
             </Navbar.Brand>
             <Button
               bsStyle="primary"
