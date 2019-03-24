@@ -38,19 +38,21 @@ const handleAuthentication = ({ location }) => {
 };
 
 class App extends Component {
+
   render() {
+
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">
           <Route path="/" render={props => <MainApp auth={auth} {...props} />} />
-          <Route path="/home" render={props => <Home auth={auth} {...props} />} />
+          {/* <Route path="/home" render={props => <Home auth={auth} {...props} />} />
           <Route
             path="/profile"
             render={props =>
               !auth.isAuthenticated()
                 ? <Redirect to="/home" />
                 : <Profile auth={auth} {...props} />}
-          />
+          /> */}
           <Route
             path="/callback"
             render={props => {
@@ -58,7 +60,6 @@ class App extends Component {
               return <Callback {...props} />;
             }}
           />
-
 
 
           <Route path="/dashboard" component={Dashboard} />

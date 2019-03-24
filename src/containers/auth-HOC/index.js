@@ -3,11 +3,11 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 axios.interceptors.request.use(
-  function(options) {
-    options.headers.authorization = localStorage.getItem("jwt");
+  function (options) {
+    options.headers.authorization = localStorage.getItem("id_token");
     return options;
   },
-  function(error) {
+  function (error) {
     return Promise.reject(error);
   }
 );
@@ -15,14 +15,14 @@ axios.interceptors.request.use(
 const privateRoute = Component => {
   return class Authenticated extends Component {
     render() {
-      const token = localStorage.getItem("jwt");
+      const token = localStorage.getItem("id_token");
       return (
         <>
           {token ? (
             <Component {...this.props} />
           ) : (
-            <Redirect to={{ pathname: "/login" }} />
-          )}
+              <Redirect to={{ pathname: "/home" }} />
+            )}
         </>
       );
     }

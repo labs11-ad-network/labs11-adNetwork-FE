@@ -39,7 +39,7 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        history.replace('/home');
+        history.replace('/dashboard');
         console.log(err);
         alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -55,21 +55,23 @@ export default class Auth {
     return this.idToken;
   }
   setSession(authResult) {
-    // Set isLoggedIn flag in localStorage
-    localStorage.setItem('isLoggedIn', 'true');
-
 
     // Set the time that the access token will expire at
     let expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
     this.accessToken = authResult.accessToken;
     this.idToken = authResult.idToken;
     this.expiresAt = expiresAt;
+    // Set isLoggedIn flag in localStorage
+    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('access_token', authResult.accessToken);
+    localStorage.setItem('id_token', authResult.idToken);
+    localStorage.setItem('expires_at', expiresAt);
 
     // schedule a token renewal
     this.scheduleRenewal();
 
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/dashboard');
   }
 
   renewSession() {
@@ -83,6 +85,8 @@ export default class Auth {
       }
     });
   }
+
+
 
   getProfile(cb) {
     this.auth0.client.userInfo(this.accessToken, (err, profile) => {
@@ -107,9 +111,12 @@ export default class Auth {
 
     // Remove isLoggedIn flag from localStorage
     localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('id_token');
+    localStorage.removeItem('expires_at');
 
     // navigate to the home route
-    history.replace('/home');
+    history.replace('/');
   }
 
   isAuthenticated() {

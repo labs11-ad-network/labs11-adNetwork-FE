@@ -15,12 +15,9 @@ class MainApp extends Component {
     this.props.auth.logout();
   }
 
-  renewToken() {
-    const { renewSession } = this.props.auth;
-    renewSession();
-  }
-
   componentDidMount() {
+    console.log('this.props.auth', this.props.auth);
+
     const { renewSession } = this.props.auth;
 
     if (localStorage.getItem('isLoggedIn') === 'true') {
@@ -35,17 +32,12 @@ class MainApp extends Component {
       <div>
         <Navbar fluid>
           <Navbar.Header>
-            <Navbar.Brand>
-              <a onClick={this.goTo.bind(this, 'home')}
-                href='/#'
-              >Auth0 - React</a>
-            </Navbar.Brand>
             <Button
               bsStyle="primary"
               className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
+              onClick={this.goTo.bind(this, 'dashboard')}
             >
-              Home
+              Dashboard
             </Button>
             {!isAuthenticated() &&
               <Button
@@ -64,15 +56,8 @@ class MainApp extends Component {
               >
                 Profile
               </Button>}
-            {isAuthenticated() &&
-              <Button
-                bsStyle="primary"
-                className="btn-margin"
-                onClick={this.renewToken.bind(this)}
-              >
-                Renew Token
-              </Button>}
-            {isAuthenticated() &&
+
+            {localStorage.id_token &&
               <Button
                 id="qsLogoutBtn"
                 bsStyle="primary"
