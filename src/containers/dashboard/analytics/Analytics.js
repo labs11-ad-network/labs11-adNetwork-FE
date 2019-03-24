@@ -11,7 +11,20 @@ const PageContainer = styled.div`
 `;
 
 class Analytics extends Component {
+
+  getCTR = () => {
+    const clicks = this.props.offerAnalytics.filter(offer => {
+      return offer.action === "click";
+    }).length;
+    const impressions = this.props.offerAnalytics.filter(offer => {
+      return offer.action === "impression";
+    }).length;
+
+    return Math.round((clicks / impressions * 100) * 100) / 100
+  }
+
   render() {
+    console.log(this.getCTR())
     return (
       <PageContainer>
         <div className="card-container">
@@ -34,16 +47,24 @@ class Analytics extends Component {
             secondColor="#43a047"
           />
           <Card
+            icon="fas fa-percentage"
+            dataType="Click Through Rate (CTR)"
+            data={this.props.offerAnalytics}
+            ctr={this.getCTR()}
+            firstColor="#ef5350"
+            secondColor="#e53935"
+          />
+          <Card
             icon="fas fa-exchange-alt"
             dataType="Conversions"
             data={this.props.offerAnalytics.filter(offer => {
               return offer.action === "conversions";
             })}
-            firstColor="#ef5350"
-            secondColor="#e53935"
+            firstColor="#26c6da"
+            secondColor="#00acc1"
           />
         </div>
-        <BrowserInfo />
+        <BrowserInfo data={this.props.offerAnalytics}/>
       </PageContainer>
     );
   }

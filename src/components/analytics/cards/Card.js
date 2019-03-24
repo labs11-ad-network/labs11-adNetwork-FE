@@ -71,7 +71,7 @@ export const Card = props => {
           </div>
           <div className="right-section">
             <h2>{props.dataType}</h2>
-            <h1>{props.data.length}</h1>
+            <h1>{props.ctr ? `${props.ctr}%` : props.data.length}</h1>
           </div>
         </Top>
         <Bottom>

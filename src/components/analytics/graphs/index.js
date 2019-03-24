@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-    PieChart, Pie, Cell,
-} from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
 import styled from 'styled-components';
 
 const GraphContainer = styled.div`
@@ -49,10 +47,10 @@ const GraphContainer = styled.div`
 
 export const BrowserInfo = props => {
     const data = [
-        { name: 'Group A', value: 400 },
-        { name: 'Group B', value: 300 },
-        { name: 'Group C', value: 300 },
-        { name: 'Group D', value: 200 },
+        { name: 'Chrome', value: props.data.filter(i => i.browser === 'Chrome').length },
+        { name: 'Safari', value: props.data.filter(i => i.browser === 'Safari').length },
+        { name: 'Firefox', value: props.data.filter(i => i.browser === 'Firefox').length },
+        { name: 'Edge', value: props.data.filter(i => i.browser === 'Edge').length },
     ];
     
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -98,15 +96,15 @@ export const BrowserInfo = props => {
             </div>
             <div className="label">
                 <div className="circle safari"/>
-                <p>Safari</p>
-            </div>
-            <div className="label">
-                <div className="circle firefox"/>
                 <p>Firefox</p>
             </div>
             <div className="label">
+                <div className="circle firefox"/>
+                <p>Safari</p>
+            </div>
+            <div className="label">
                 <div className="circle other"/>
-                <p>Other</p>
+                <p>Edge</p>
             </div>
         </div>
     </GraphContainer>
