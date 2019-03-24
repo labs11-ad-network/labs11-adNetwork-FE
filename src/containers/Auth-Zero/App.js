@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Navbar, Button } from 'react-bootstrap';
+import './App.css';
 
-
-class MainApp extends Component {
+class App extends Component {
   goTo(route) {
     this.props.history.replace(`/${route}`);
   }
@@ -32,47 +33,57 @@ class MainApp extends Component {
 
     return (
       <div>
-        <div >
-          <div>
-            <div>
+        <Navbar fluid>
+          <Navbar.Header>
+            <Navbar.Brand>
               <a onClick={this.goTo.bind(this, 'home')}>Auth0 - React</a>
-            </div>
-            <button
+            </Navbar.Brand>
+            <Button
+              bsStyle="primary"
+              className="btn-margin"
               onClick={this.goTo.bind(this, 'home')}
             >
               Home
-            </button>
+            </Button>
             {!isAuthenticated() &&
-              <button
+              <Button
                 id="qsLoginBtn"
+                bsStyle="primary"
+                className="btn-margin"
                 onClick={this.login.bind(this)}
               >
                 Log In
-              </button>}
+              </Button>}
             {isAuthenticated() &&
-              <button
+              <Button
+                bsStyle="primary"
+                className="btn-margin"
                 onClick={this.goTo.bind(this, 'profile')}
               >
                 Profile
-              </button>}
+              </Button>}
             {isAuthenticated() &&
-              <button
+              <Button
+                bsStyle="primary"
+                className="btn-margin"
                 onClick={this.renewToken.bind(this)}
               >
                 Renew Token
-              </button>}
+              </Button>}
             {isAuthenticated() &&
-              <button
+              <Button
                 id="qsLogoutBtn"
+                bsStyle="primary"
+                className="btn-margin"
                 onClick={this.logout.bind(this)}
               >
                 Log Out
-              </button>}
-          </div>
-        </div>
+              </Button>}
+          </Navbar.Header>
+        </Navbar>
       </div>
     );
   }
 }
 
-export default MainApp;
+export default App;

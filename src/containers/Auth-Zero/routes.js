@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom';
+import { Redirect, Route, Router } from 'react-router-dom';
 import App from './App';
 import Home from './Home/Home';
 import Profile from './Profile/Profile';
@@ -9,7 +9,7 @@ import history from './history';
 
 const auth = new Auth();
 
-const handleAuthentication = ({ location }) => {
+const handleAuthentication = ({location}) => {
   if (/access_token|id_token|error/.test(location.hash)) {
     auth.handleAuthentication();
   }
@@ -17,7 +17,7 @@ const handleAuthentication = ({ location }) => {
 
 export const makeMainRoutes = () => {
   return (
-    <React.Fragment >
+    <Router history={history}>
       <div>
         <Route path="/" render={props => <App auth={auth} {...props} />} />
         <Route path="/home" render={props => <Home auth={auth} {...props} />} />
@@ -36,6 +36,6 @@ export const makeMainRoutes = () => {
           }}
         />
       </div>
-    </React.Fragment>
+    </Router>
   );
 };
