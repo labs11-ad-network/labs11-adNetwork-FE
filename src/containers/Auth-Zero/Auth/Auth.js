@@ -27,7 +27,7 @@ export default class Auth {
     this.renewSession = this.renewSession.bind(this);
     this.getProfile = this.getProfile.bind(this);
     this.getExpiryDate = this.getExpiryDate.bind(this);
-    this.scheduleRenewal();
+    // this.scheduleRenewal();
   }
 
   login() {
