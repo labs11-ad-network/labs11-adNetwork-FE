@@ -6,7 +6,8 @@ import Dashboard from './containers/dashboard/Dashboard.js';
 import Login from './containers/login/Login.js';
 import Register from './containers/register/Register.js';
 import AdServer from './containers/ad-server/AdServer.js'
-import MainApp from './containers/Auth-Zero/Main-App/index';
+import MainApp from './containers/Auth-Zero/MainApp';
+
 
 
 const theme = createMuiTheme({

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import Auth from './Auth/Auth';
-import MainApp from './Main-App/index';
 import Home from './Home/Home';
-import Callback from './Callback/Callback';
 import Profile from './Profile/Profile';
+import Callback from './Callback/Callback';
+import MainApp from './MainApp';
+
 
 
 const auth = new Auth();
