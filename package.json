@@ -8,6 +8,7 @@
     "axios": "^0.18.0",
     "install": "^0.12.2",
     "material-datatable": "^0.3.8",
+    "moment": "^2.24.0",
     "npm": "^6.9.0",
     "react": "^16.8.4",
     "react-chat-widget": "^2.1.4-1",
