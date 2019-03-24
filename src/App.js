@@ -6,6 +6,7 @@ import Dashboard from './containers/dashboard/Dashboard.js';
 import Login from './containers/login/Login.js';
 import Register from './containers/register/Register.js';
 import AdServer from './containers/ad-server/AdServer.js'
+import MainApp from './containers/Auth-Zero/Main-App/index';
 
 const theme = createMuiTheme({
   palette: {
@@ -24,6 +25,8 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">
+
+          <Route path="/" component={MainApp} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
