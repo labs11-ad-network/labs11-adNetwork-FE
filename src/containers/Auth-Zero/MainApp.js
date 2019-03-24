@@ -16,7 +16,6 @@ class MainApp extends Component {
   }
 
   componentDidMount() {
-    console.log('this.props.auth', this.props.auth);
 
     const { renewSession } = this.props.auth;
 
@@ -39,7 +38,7 @@ class MainApp extends Component {
             >
               Dashboard
             </Button>
-            {!isAuthenticated() &&
+            {!localStorage.id_token &&
               <Button
                 id="qsLoginBtn"
                 bsStyle="primary"

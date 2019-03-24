@@ -41,8 +41,8 @@ export default class Auth {
         this.setSession(authResult);
       } else if (err) {
         history.replace('/dashboard');
-        console.log(err);
-        alert(`Error: ${err.error}. Check the console for further details.`);
+        // console.log(err);
+        // alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
   }
@@ -88,7 +88,7 @@ export default class Auth {
     this.auth0.checkSession({},
       function (err, result) {
         if (err) {
-          console.log(err);
+          // console.log(err);
         } else {
           this.localLogin(result);
         }
