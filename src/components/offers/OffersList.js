@@ -7,7 +7,7 @@ import Tab from '@material-ui/core/Tab';
 import { connect } from 'react-redux';
 
 import { getOfferAds } from '../../store/actions/adAction.js'
-import { HorizontalBanner } from '../ad-generator/templates';
+import AdHoc from '../ad-generator/AdHoc.js'
 
 const offerColumns = [
   {   
@@ -82,7 +82,7 @@ const adColumns = [
         width: 170,            
         customBodyRender: (value) => {
           console.log(value)
-          return <HorizontalBanner ad={value}/>; 
+          return <AdHoc ad={value}/>; 
         }
       },
   },
@@ -111,10 +111,12 @@ class OffersList extends React.Component{
           value: 1,
         });
         this.props.getOfferAds(offer.id);
-      }
+      },
+      rowCursorHand: true
     },
     adOptions: { 
-      filterType: 'checkbox'
+      filterType: 'checkbox',
+
     }
   }
 

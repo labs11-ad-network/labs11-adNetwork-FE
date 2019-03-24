@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-    PieChart, Pie, Cell,
-} from 'recharts';
+import { PieChart, Pie, Cell } from 'recharts';
 import styled from 'styled-components';
 
 const GraphContainer = styled.div`
@@ -12,7 +10,7 @@ const GraphContainer = styled.div`
     background-color: #FFFFFF;
     width: 350px;
     height: auto;
-    border-radius: 15px;
+    border-radius: 8px;
     margin: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     .labels{
@@ -31,10 +29,10 @@ const GraphContainer = styled.div`
                 background-color: #0088FE
             }
             .firefox{
-                background-color: #00C49F
+                background-color: #FFBB28
             }
             .safari{
-                background-color: #FFBB28
+                background-color: #00C49F
             }
             .other{
                 background-color: #FF8042
@@ -49,10 +47,10 @@ const GraphContainer = styled.div`
 
 export const BrowserInfo = props => {
     const data = [
-        { name: 'Group A', value: 400 },
-        { name: 'Group B', value: 300 },
-        { name: 'Group C', value: 300 },
-        { name: 'Group D', value: 200 },
+        { name: 'Chrome', value: props.data.filter(i => i.browser === 'Chrome').length },
+        { name: 'Safari', value: props.data.filter(i => i.browser === 'Safari').length },
+        { name: 'Firefox', value: props.data.filter(i => i.browser === 'Firefox').length },
+        { name: 'Edge', value: props.data.filter(i => i.browser === 'Edge').length },
     ];
     
     const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -97,16 +95,16 @@ export const BrowserInfo = props => {
                 <p>Chrome</p>
             </div>
             <div className="label">
-                <div className="circle safari"/>
-                <p>Safari</p>
-            </div>
-            <div className="label">
                 <div className="circle firefox"/>
                 <p>Firefox</p>
             </div>
             <div className="label">
+                <div className="circle safari"/>
+                <p>Safari</p>
+            </div>
+            <div className="label">
                 <div className="circle other"/>
-                <p>Other</p>
+                <p>Edge</p>
             </div>
         </div>
     </GraphContainer>
