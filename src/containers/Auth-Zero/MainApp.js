@@ -4,7 +4,7 @@ import { Navbar, Button } from 'react-bootstrap';
 
 class MainApp extends Component {
   goTo(route) {
-    this.props.history.replace(`/auth/${route}`);
+    this.props.history.replace(`/${route}`);
   }
 
   login() {
