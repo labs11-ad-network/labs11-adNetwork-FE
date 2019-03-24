@@ -16,7 +16,7 @@ class Offers extends Component {
       description: "",
       category: "",
       currency: "",
-      status: ""
+      status: true
     }
   }
 
@@ -24,10 +24,10 @@ class Offers extends Component {
     this.props.getUserOffers();
   }
 
-  createOffer = e => {
+  createOffer = async e => {
     e.preventDefault();
 
-    this.props.createOffer(this.state.offerData);
+    await this.props.createOffer(this.state.offerData);
 
     this.setState({
       hidden: true,
@@ -39,7 +39,7 @@ class Offers extends Component {
         description: "",
         category: "",
         currency: "",
-        status: ""
+        status: true
       }
     })
 

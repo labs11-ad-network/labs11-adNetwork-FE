@@ -37,3 +37,21 @@ export const createOffer = offer => dispatch => {
       dispatch({ type: CREATE_OFFER_FAILURE, payload: err.response.data });
     });
 };
+
+// ------------------------------------ Update Offer Status ------------------------------------
+
+export const CHANGE_OFFER_STATUS_START = "UPDATE_OFFER_STATUS_START";
+export const CHANGE_OFFER_STATUS_SUCCESS = "UPDATE_OFFER_STATUS_SUCCESS";
+export const CHANGE_OFFER_STATUS_FAILURE = "UPDATE_OFFER_STATUS_FAILURE";
+
+export const changeOfferStatus = offer => dispatch => {
+  dispatch({ type: CHANGE_OFFER_STATUS_START });
+  axios
+    .put(`${URL}/api/offers/${offer.id}`, {status: !offer.status})
+    .then(res => {
+      dispatch({ type: CHANGE_OFFER_STATUS_SUCCESS, payload: {res: res.data, offer} });
+    })
+    .catch(err => {
+      dispatch({ type: CHANGE_OFFER_STATUS_FAILURE, payload: err.response.data });
+    });
+};
