@@ -53,6 +53,8 @@ export const HorizontalBanner = props => {
       btn_color={props.ad.btn_color}
       btn_text_color={props.ad.btn_text_color}
       href={props.ad.destination_url}
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={props.recordAction}
     >
       <div>
@@ -75,6 +77,8 @@ export const SquareBanner = props => {
       btn_color={props.ad.btn_color}
       btn_text_color={props.ad.btn_text_color}
       href={props.ad.destination_url}
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={props.recordAction}
     >
       <div>
@@ -97,6 +101,8 @@ export const VerticalBanner = props => {
       btn_color={props.ad.btn_color}
       btn_text_color={props.ad.btn_text_color}
       href={props.ad.destination_url}
+      target="_blank"
+      rel="noopener noreferrer"
       onClick={props.recordAction}
     >
       <div>

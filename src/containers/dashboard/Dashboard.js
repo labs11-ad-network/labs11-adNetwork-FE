@@ -44,7 +44,7 @@ class Dashboard extends Component {
       } else {
         return null;
       }
-    }, 1000);
+    }, 6000);
   }
 
   componentWillUnmount() {
