@@ -19,11 +19,9 @@ class AdServer extends Component {
     this.props.addStats({
       action: "impression",
       browser: this.parser.getBrowser().name,
-      os: this.parser.getOS().name,
-      device: this.parser.getDevice().type,
       ip: window.location.hostname,
       referrer: document.referrer,
-      agreement_id: 2
+      agreement_id: 1
     });
   }
 
@@ -31,11 +29,9 @@ class AdServer extends Component {
     this.props.addStats({
       action: "click",
       browser: this.parser.getBrowser().name,
-      os: this.parser.getOS().name,
-      device: this.parser.getDevice().type,
       ip: window.location.hostname,
       referrer: document.referrer,
-      agreement_id: 2
+      agreement_id: 1
     });
   };
 
