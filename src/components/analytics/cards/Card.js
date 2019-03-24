@@ -3,11 +3,17 @@ import styled from "styled-components";
 import moment from "moment";
 
 const CardContainer = styled.div`
-  width: 400px;
+  width: 24%;
   margin: 40px 15px 15px 15px;
   border-radius: 8px;
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+  @media (max-width: 1600px){
+    width: 47%;
+  }
+  @media (max-width: 970px){
+    width: 100%;
+  }
 `;
 
 const Top = styled.div`

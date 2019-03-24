@@ -7,6 +7,10 @@ import Card from "../../../components/analytics/cards/Card.js";
 const PageContainer = styled.div`
   .card-container {
     display: flex;
+    @media (max-width: 1600px){
+      flex-wrap: wrap;
+      justify-content: space-between
+    }
   }
 `;
 
@@ -24,7 +28,6 @@ class Analytics extends Component {
   }
 
   render() {
-    console.log(this.getCTR())
     return (
       <PageContainer>
         <div className="card-container">
