@@ -9,6 +9,7 @@ export default class Auth {
   userProfile;
   tokenRenewalTimeout;
 
+
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
@@ -27,7 +28,7 @@ export default class Auth {
     this.renewSession = this.renewSession.bind(this);
     this.getProfile = this.getProfile.bind(this);
     this.getExpiryDate = this.getExpiryDate.bind(this);
-    // this.scheduleRenewal();
+    this.scheduleRenewal();
   }
 
   login() {
@@ -75,16 +76,44 @@ export default class Auth {
   }
 
   renewSession() {
-    this.auth0.checkSession({}, (err, authResult) => {
-      if (authResult && authResult.accessToken && authResult.idToken) {
-        this.setSession(authResult);
-      } else if (err) {
-        this.logout();
-        console.log(err);
-        alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
+    // this.auth0.checkSession({}, (err, authResult) => {
+    //   if (authResult && authResult.accessToken && authResult.idToken) {
+    //     this.setSession(authResult);
+    //   } else if (err) {
+    //     this.logout();
+    //     console.log(err);
+    //     alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
+    //   }
+    // });
+    this.auth0.checkSession({},
+      function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          this.localLogin(result);
+        }
       }
-    });
+    );
   }
+
+  localLogin = (authResult) => {
+    // Set isLoggedIn flag in localStorage
+    localStorage.setItem('isLoggedIn', 'true');
+    // Set the time that the access token will expire at
+    this.expiresAt = JSON.stringify(
+      authResult.expiresIn * 1000 + new Date().getTime()
+    );
+    this.accessToken = authResult.accessToken;
+    this.idToken = authResult.idToken;
+    this.scheduleRenewal();
+  }
+
+
+
+
+
+
+
 
 
 
@@ -127,6 +156,7 @@ export default class Auth {
   }
 
   scheduleRenewal() {
+
     let expiresAt = this.expiresAt;
     const timeout = expiresAt - Date.now();
     if (timeout > 0) {

@@ -21,7 +21,7 @@ const privateRoute = Component => {
           {token ? (
             <Component {...this.props} />
           ) : (
-              <Redirect to={{ pathname: "/home" }} />
+              <Redirect to={{ pathname: "/" }} />
             )}
         </>
       );

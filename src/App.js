@@ -34,6 +34,7 @@ const handleAuthentication = ({ location }) => {
 };
 
 class App extends Component {
+
   render() {
 
     return (
