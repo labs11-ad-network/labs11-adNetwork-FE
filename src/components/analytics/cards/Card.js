@@ -62,9 +62,6 @@ const Bottom = styled.div`
 `;
 
 export const Card = props => {
-  if (!props.data.length) {
-    return <h1>NO DATA</h1>;
-  }
   return (
     <CardContainer>
       <div>
@@ -80,11 +77,13 @@ export const Card = props => {
         <Bottom>
           <h1>
             <i className="far fa-clock" />
-
-            {`Last ${props.data.pop().action} ${moment(
+            {props.data.length ?
+            `Last ${props.data.pop().action} ${moment(
               props.data.pop().created_at,
               "YYYY-MM-DO, hh:mm:ss Z"
-            ).fromNow()}`}
+            ).fromNow()}`:
+              'No data yet :('
+            }
           </h1>
         </Bottom>
       </div>

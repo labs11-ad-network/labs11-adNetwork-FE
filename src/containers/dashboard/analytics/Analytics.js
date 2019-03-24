@@ -37,7 +37,7 @@ class Analytics extends Component {
             icon="fas fa-exchange-alt"
             dataType="Conversions"
             data={this.props.offerAnalytics.filter(offer => {
-              return offer.action === "impression";
+              return offer.action === "conversions";
             })}
             firstColor="#ef5350"
             secondColor="#e53935"

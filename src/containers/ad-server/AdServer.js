@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import UAParser from 'ua-parser-js';
 
 import { getAd } from "../../store/actions/adAction.js";
 import { addStats } from "../../store/actions/analyticsAction";
@@ -13,10 +14,13 @@ import {
 
 class AdServer extends Component {
   componentDidMount() {
+    this.parser = new UAParser([navigator.userAgent]);
     this.props.getAd(this.props.match.params.id);
     this.props.addStats({
       action: "impression",
-      browser: navigator.userAgent,
+      browser: this.parser.getBrowser().name,
+      os: this.parser.getOS().name,
+      device: this.parser.getDevice().type,
       ip: window.location.hostname,
       referrer: document.referrer,
       agreement_id: 2
@@ -26,7 +30,9 @@ class AdServer extends Component {
   recordAction = () => {
     this.props.addStats({
       action: "click",
-      browser: navigator.userAgent,
+      browser: this.parser.getBrowser().name,
+      os: this.parser.getOS().name,
+      device: this.parser.getDevice().type,
       ip: window.location.hostname,
       referrer: document.referrer,
       agreement_id: 2
