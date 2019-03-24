@@ -3,19 +3,45 @@ import React from "react";
 import {
   HorizontalBannerContainer,
   SquareBannerContainer,
-  VerticalBannerContainer
+  VerticalBannerContainer,
+  PlainHorizontalContainer,
+  PlainSquareContainer,
+  PlainVerticalContainer
 } from "./adStyles.js";
 
-export const PlainImage = props => {
+export const PlainHorizontalBanner = props => {
   return (
-    <a
+    <PlainHorizontalContainer
+      bg={props.ad.back_img}
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
-    >
-      <img src={props.ad.image} alt={props.ad.headline} />
-    </a>
+    />
+  );
+};
+
+export const PlainSquareBanner = props => {
+  return (
+    <PlainSquareContainer
+      bg={props.ad.back_img}
+      href={props.ad.destination_url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={props.recordAction}
+    />
+  );
+};
+
+export const PlainVerticalBanner = props => {
+  return (
+    <PlainVerticalContainer
+      bg={props.ad.back_img}
+      href={props.ad.destination_url}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={props.recordAction}
+    />
   );
 };
 
@@ -26,20 +52,17 @@ export const HorizontalBanner = props => {
       text_color={props.ad.text_color}
       btn_color={props.ad.btn_color}
       btn_text_color={props.ad.btn_text_color}
+      href={props.ad.destination_url}
+      onClick={props.recordAction}
     >
       <div>
         <h1>{props.ad.headline}</h1>
         <h3>{props.ad.tagline}</h3>
         <p>{props.ad.message}</p>
       </div>
-      <a
-        href={props.ad.destination_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={props.recordAction}
-      >
+      <button>
         {props.ad.cta_button}
-      </a>
+      </button>
     </HorizontalBannerContainer>
   );
 };
@@ -51,20 +74,17 @@ export const SquareBanner = props => {
       text_color={props.ad.text_color}
       btn_color={props.ad.btn_color}
       btn_text_color={props.ad.btn_text_color}
+      href={props.ad.destination_url}
+      onClick={props.recordAction}
     >
       <div>
         <h1>{props.ad.headline}</h1>
         <h3>{props.ad.tagline}</h3>
         <p>{props.ad.message}</p>
       </div>
-      <a
-        href={props.ad.destination_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={props.recordAction}
-      >
+      <button>
         {props.ad.cta_button}
-      </a>
+      </button>
     </SquareBannerContainer>
   );
 };
@@ -76,20 +96,17 @@ export const VerticalBanner = props => {
       text_color={props.ad.text_color}
       btn_color={props.ad.btn_color}
       btn_text_color={props.ad.btn_text_color}
+      href={props.ad.destination_url}
+      onClick={props.recordAction}
     >
       <div>
         <h1>{props.ad.headline}</h1>
         <h3>{props.ad.tagline}</h3>
         <p>{props.ad.message}</p>
       </div>
-      <a
-        href={props.ad.destination_url}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={props.recordAction}
-      >
+      <button>
         {props.ad.cta_button}
-      </a>
+      </button>
     </VerticalBannerContainer>
   );
 };

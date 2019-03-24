@@ -29,10 +29,10 @@ const GraphContainer = styled.div`
                 background-color: #0088FE
             }
             .firefox{
-                background-color: #00C49F
+                background-color: #FFBB28
             }
             .safari{
-                background-color: #FFBB28
+                background-color: #00C49F
             }
             .other{
                 background-color: #FF8042
@@ -95,11 +95,11 @@ export const BrowserInfo = props => {
                 <p>Chrome</p>
             </div>
             <div className="label">
-                <div className="circle safari"/>
+                <div className="circle firefox"/>
                 <p>Firefox</p>
             </div>
             <div className="label">
-                <div className="circle firefox"/>
+                <div className="circle safari"/>
                 <p>Safari</p>
             </div>
             <div className="label">

@@ -4,7 +4,9 @@ import {
     HorizontalBanner,
     SquareBanner,
     VerticalBanner,
-    PlainImage
+    PlainHorizontalBanner,
+    PlainSquareBanner,
+    PlainVerticalBanner
   } from "./templates";
 
 const AdHoc = (props) => {
@@ -26,10 +28,22 @@ const AdHoc = (props) => {
                 ad={props.ad}
                 recordAction={props.recordAction}
             /> :
-            <PlainImage 
+            props.ad.size.includes('plain_horizontal') ?
+            <PlainHorizontalBanner 
                 ad={props.ad}
                 recordAction={props.recordAction}
-            />
+            /> :
+            props.ad.size.includes('plain_square') ?
+            <PlainSquareBanner 
+                ad={props.ad}
+                recordAction={props.recordAction}
+            /> :
+            props.ad.size.includes('plain_vertical') ?
+            <PlainVerticalBanner 
+                ad={props.ad}
+                recordAction={props.recordAction}
+            /> :
+            <h1>Ad size not valid, please contact a site administrator or create a new ad</h1>
         )}
     </>
   )

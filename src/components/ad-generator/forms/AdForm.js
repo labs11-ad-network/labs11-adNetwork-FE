@@ -30,11 +30,27 @@ const AdForm = props => {
       </button>
 
       <button 
-        value="plain_image"
+        value="plain_horizontal"
         name="size"
         onClick={props.handleChange}
       >
-      Plain Image Banner
+      Plain Horizontal Banner
+      </button>
+
+      <button 
+        value="plain_square"
+        name="size"
+        onClick={props.handleChange}
+      >
+      Plain Square Banner
+      </button>
+
+      <button 
+        value="plain_vertical"
+        name="size"
+        onClick={props.handleChange}
+      >
+      Plain Vertical Banner
       </button>
       <Form onSubmit={props.createAd}>
         <div>
