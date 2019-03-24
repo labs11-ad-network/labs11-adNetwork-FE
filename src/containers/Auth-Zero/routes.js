@@ -1,15 +1,15 @@
 import React from 'react';
-import { Redirect, Route, Router } from 'react-router-dom';
-import App from './App';
-import Home from './Home/Home';
-import Profile from './Profile/Profile';
-import Callback from './Callback/Callback';
+import { Redirect, Route } from 'react-router-dom';
 import Auth from './Auth/Auth';
-import history from './history';
+import MainApp from './Main-App/index';
+import Home from './Home/Home';
+import Callback from './Callback/Callback';
+import Profile from './Profile/Profile';
+
 
 const auth = new Auth();
 
-const handleAuthentication = ({location}) => {
+const handleAuthentication = ({ location }) => {
   if (/access_token|id_token|error/.test(location.hash)) {
     auth.handleAuthentication();
   }
@@ -17,25 +17,25 @@ const handleAuthentication = ({location}) => {
 
 export const makeMainRoutes = () => {
   return (
-    <Router history={history}>
+    <div>
       <div>
-        <Route path="/" render={props => <App auth={auth} {...props} />} />
-        <Route path="/home" render={props => <Home auth={auth} {...props} />} />
+        <Route path="/auth" render={props => <MainApp auth={auth} {...props} />} />
+        <Route path="/auth/home" render={props => <Home auth={auth} {...props} />} />
         <Route
-          path="/profile"
+          path="/auth/profile"
           render={props =>
             !auth.isAuthenticated()
-              ? <Redirect to="/home" />
+              ? <Redirect to="/auth/home" />
               : <Profile auth={auth} {...props} />}
         />
         <Route
-          path="/callback"
+          path="/auth/callback"
           render={props => {
             handleAuthentication(props);
             return <Callback {...props} />;
           }}
         />
       </div>
-    </Router>
+    </div>
   );
 };
