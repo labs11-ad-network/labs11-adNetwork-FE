@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Form } from './offersStyles.js';
 
-const CreateForm = props => {
+const OfferForm = props => {
   return (
     <Form onSubmit={e => props.createOffer(e)}>
         <div>
@@ -23,7 +23,7 @@ const CreateForm = props => {
                 name="price_per_click"
                 value={props.offerData.price_per_click}
                 onChange={props.handleChange}
-                step="0.01"
+                step="0.001"
             />
 
             <label htmlFor="price_per_impression"/>
@@ -33,7 +33,7 @@ const CreateForm = props => {
                 name="price_per_impression"
                 value={props.offerData.price_per_impression}
                 onChange={props.handleChange}
-                step="0.01"
+                step="0.001"
             />
 
             <label htmlFor="name"/>
@@ -90,4 +90,4 @@ const CreateForm = props => {
   )
 }
 
-export default CreateForm;
+export default OfferForm;
