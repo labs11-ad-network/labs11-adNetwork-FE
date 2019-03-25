@@ -68,7 +68,6 @@ export const deleteOffer = offer => dispatch => {
   axios
     .delete(`${URL}/api/offers/${offer.id}`)
     .then(res => {
-      console.log(res)
       dispatch({ type: DELETE_OFFER_SUCCESS, payload: {res: res.data, offer} })
     })
     .catch(err => {
