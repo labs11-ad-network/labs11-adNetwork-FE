@@ -7,7 +7,7 @@ import Card from "../../../components/analytics/cards/Card.js";
 const PageContainer = styled.div`
   .card-container {
     display: flex;
-    @media (max-width: 1600px){
+    @media (max-width: 1370px){
       flex-wrap: wrap;
       justify-content: space-between
     }
@@ -51,7 +51,7 @@ class Analytics extends Component {
           />
           <Card
             icon="fas fa-percentage"
-            dataType="Click Through Rate (CTR)"
+            dataType="Click Through Rate"
             data={this.props.offerAnalytics}
             ctr={this.getCTR()}
             firstColor="#ef5350"

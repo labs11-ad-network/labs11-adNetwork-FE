@@ -103,6 +103,7 @@ export default function authReducer(state = initialState, action) {
         isFetchingUser: false,
       }
     case GET_USER_FAILURE:
+    localStorage.clear();
       return {
         ...state,
         isFetchingUser: false,
