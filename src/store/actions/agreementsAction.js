@@ -8,10 +8,10 @@ export const CREATE_AGREEMENT_START = "CREATE_AGREEMENT_START";
 export const CREATE_AGREEMENT_SUCCESS = "CREATE_AGREEMENT_SUCCESS";
 export const CREATE_AGREEMENT_FAILURE = "CREATE_AGREEMENT_FAILURE";
 
-export const createAgreement = agreement => dispatch => {
+export const createAgreement = offer => dispatch => {
   dispatch({ type: CREATE_AGREEMENT_START });
   axios
-    .post(`${URL}/api/agreements`, agreement)
+    .post(`${URL}/api/agreements`, {offer_id: offer.id})
     .then(res => {
       dispatch({ type: CREATE_AGREEMENT_SUCCESS, payload: res.data });
     })
