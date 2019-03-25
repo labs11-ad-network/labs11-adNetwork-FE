@@ -99,6 +99,7 @@ export const RightSection = styled.div`
     i{
         color: #6F6F6F;
         font-size: 1.4rem;
+        margin-left: 15px;
         &:hover{
             cursor: pointer;
         }
