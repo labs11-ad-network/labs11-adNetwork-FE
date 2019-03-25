@@ -104,6 +104,7 @@ export default function authReducer(state = initialState, action) {
       }
     case GET_USER_FAILURE:
     localStorage.clear();
+    window.location.href = '/login';
       return {
         ...state,
         isFetchingUser: false,
