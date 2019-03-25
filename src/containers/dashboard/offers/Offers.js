@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { getUserOffers, createOffer } from '../../../store/actions/offersAction.js'
 import OffersList from '../../../components/offers/OffersList.js';
-import CreateForm from '../../../components/offers/CreateForm.js'
+import OfferForm from '../../../components/offers/OfferForm.js'
 
 class Offers extends Component {
   state={
@@ -16,7 +16,7 @@ class Offers extends Component {
       description: "",
       category: "",
       currency: "",
-      status: ""
+      status: true
     }
   }
 
@@ -24,10 +24,10 @@ class Offers extends Component {
     this.props.getUserOffers();
   }
 
-  createOffer = e => {
+  createOffer = async e => {
     e.preventDefault();
 
-    this.props.createOffer(this.state.offerData);
+    await this.props.createOffer(this.state.offerData);
 
     this.setState({
       hidden: true,
@@ -39,7 +39,7 @@ class Offers extends Component {
         description: "",
         category: "",
         currency: "",
-        status: ""
+        status: true
       }
     })
 
@@ -59,7 +59,7 @@ class Offers extends Component {
     return (
       <div>
         <OffersList offers={this.props.userOffers}/>
-        <CreateForm 
+        <OfferForm 
           hidden={this.state.hidden} 
           offerData={this.state.offerData}
           handleChange={this.handleChange}
