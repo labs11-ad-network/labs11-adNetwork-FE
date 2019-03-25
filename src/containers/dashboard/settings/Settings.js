@@ -1,13 +1,21 @@
 import React, { Component } from 'react'
+import styled from 'styled-components';
 
-import ProfileCard from '../../../components/settings/ProfileCard/ProfileCard.js';
+import ProfileCard from '../../../components/settings/profile-card/ProfileCard.js';
+import TabContainer from '../../../components/settings/tab-container/TabContainer.js';
+
+const PageContainer = styled.div`
+  display: flex;
+  margin: 10px;
+`
 
 class Settings extends Component {
   render() {
     return (
-      <div>
+      <PageContainer>
         <ProfileCard currentUser={this.props.currentUser}/>
-      </div>
+        <TabContainer />
+      </PageContainer>
     )
   }
 }
