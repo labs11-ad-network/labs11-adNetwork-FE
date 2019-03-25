@@ -35,7 +35,6 @@ const handleAuthentication = ({ location }) => {
 
 class App extends Component {
   render() {
-    // console.log('profile', this.state.profile);
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">

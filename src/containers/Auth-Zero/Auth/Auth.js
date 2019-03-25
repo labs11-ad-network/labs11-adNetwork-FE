@@ -45,8 +45,6 @@ export default class Auth {
 
       } else if (err) {
         history.replace('/');
-        // console.log(err);
-        // alert(`Error: ${err.error}. Check the console for further details.`);
       }
     });
   }
@@ -79,10 +77,22 @@ export default class Auth {
     const user = {
       name: decoded.name,
       email: decoded.email,
-      picture: decoded.picture,
+      image_url: decoded.picture,
       nickname: decoded.nickname,
+      sub: decoded.sub,
       acct_type: "admin"
     }
+
+
+    /*
+    "jbmiranda22796@gmail.com"  google,
+    "jbmiranda22796@gmail.com" linkedin,
+    "Benedictmiranda27@yahoo.com" github,
+    "jm_miranda27@rocketmail.com" fb,
+    */
+
+    console.log('------ decoded -----', decoded);
+
     console.log('user', user);
     console.log('TOKEN ---', `Bearer ${localStorage.id_token}`);
     const config = {
