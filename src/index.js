@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, withRouter } from 'react-router-dom';
+import { Router, withRouter } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import history from './containers/Auth-Zero/history'
 
 import './index.css';
 import App from './App';
@@ -12,10 +14,10 @@ import Toasts from './components/toasts/Toasts.js'
 const AppWithRouter = withRouter(App);
 const app = (
   <Provider store={store}>
-    <Router>
+    <Router history={history}>
       <AppWithRouter />
     </Router>
-    <Toasts/>
+    <Toasts />
   </Provider>
 );
 ReactDOM.render(app, document.getElementById('root'));
