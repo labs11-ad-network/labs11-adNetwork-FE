@@ -83,16 +83,7 @@ export default class Auth {
       acct_type: "admin"
     }
 
-
-    /*
-    "jbmiranda22796@gmail.com"  google,
-    "jbmiranda22796@gmail.com" linkedin,
-    "Benedictmiranda27@yahoo.com" github,
-    "jm_miranda27@rocketmail.com" fb,
-    */
-
     console.log('------ decoded -----', decoded);
-
     console.log('user', user);
     console.log('TOKEN ---', `Bearer ${localStorage.id_token}`);
     const config = {
@@ -101,24 +92,14 @@ export default class Auth {
       }
     }
     axios
-      .post(`http://71.65.239.221:5000/api/auth/register`, user)
+      .post(`https://lad-network.herokuapp.com/api/auth/registerV2`, user, config)
       .then(res => {
         console.log('--- hit response -- ', res.data)
       }).catch(err => console.log(err.response))
-    // navigate to the dashboard route
     history.replace('/dashboard');
   }
 
   renewSession() {
-    // this.auth0.checkSession({}, (err, authResult) => {
-    //   if (authResult && authResult.accessToken && authResult.idToken) {
-    //     this.setSession(authResult);
-    //   } else if (err) {
-    //     this.logout();
-    //     console.log(err);
-    //     alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
-    //   }
-    // });
     this.auth0.checkSession({},
       function (err, result) {
         if (err) {
