@@ -96,6 +96,7 @@ export default class Auth {
       .then(res => {
         console.log('--- hit response -- ', res.data)
       }).catch(err => console.log(err.response))
+
     history.replace('/dashboard');
   }
 
