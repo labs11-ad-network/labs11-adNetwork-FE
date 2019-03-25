@@ -4,7 +4,7 @@ export const ProfileCardContainer = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #FFFFFF;
-    width: 520px;
+    width: 420px;
     height: 200px;
     padding: 15px;
     margin: 15px;
@@ -69,4 +69,40 @@ export const MainTabContainer = styled.div`
     margin: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);    
+`;
+
+export const BillingCardContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFFFFF;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35); 
+    div{
+        h1{
+            font-size: 0.9rem;
+            font-weight: 100;
+        }
+        h2{
+            color: #0A88DC;
+            font-size: 2rem;
+            font-weight: 100;
+            margin: 5px 0; 
+        }
+        button{
+            font-size: 0.8rem;
+            width: 100%;
+            padding: 5px 0;
+            background-color: #0A88DC;
+            color: #FFFFFF;
+            border: unset;
+            border-radius: 3px;
+            transition: .2s;
+            &:hover{
+                cursor: pointer;
+                background-color: #097AC6;
+            }
+        }
+    }   
 `;
