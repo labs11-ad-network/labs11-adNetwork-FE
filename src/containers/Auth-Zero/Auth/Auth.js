@@ -1,6 +1,8 @@
 import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from './auth0-variables';
 import history from '../history';
+import jwtDecode from 'jwt-decode'
+import axios from 'axios';
 
 export default class Auth {
   accessToken;
@@ -15,7 +17,7 @@ export default class Auth {
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: 'token id_token',
-    scope: 'openid profile'
+    scope: 'openid profile email'
   });
 
   constructor() {
@@ -31,6 +33,7 @@ export default class Auth {
     this.scheduleRenewal();
   }
 
+
   login() {
     this.auth0.authorize();
   }
@@ -39,8 +42,9 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
+
       } else if (err) {
-        history.replace('/dashboard');
+        history.replace('/');
         // console.log(err);
         // alert(`Error: ${err.error}. Check the console for further details.`);
       }
@@ -70,8 +74,28 @@ export default class Auth {
 
     // schedule a token renewal
     this.scheduleRenewal();
-
-    // navigate to the home route
+    // const 
+    const decoded = jwtDecode(localStorage.id_token && localStorage.id_token)
+    const user = {
+      name: decoded.name,
+      email: decoded.email,
+      picture: decoded.picture,
+      nickname: decoded.nickname,
+      acct_type: "admin"
+    }
+    console.log('user', user);
+    console.log('TOKEN ---', `Bearer ${localStorage.id_token}`);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${localStorage.id_token}`
+      }
+    }
+    axios
+      .post(`http://71.65.239.221:5000/api/auth/register`, user)
+      .then(res => {
+        console.log('--- hit response -- ', res.data)
+      }).catch(err => console.log(err.response))
+    // navigate to the dashboard route
     history.replace('/dashboard');
   }
 
@@ -107,15 +131,6 @@ export default class Auth {
     this.idToken = authResult.idToken;
     this.scheduleRenewal();
   }
-
-
-
-
-
-
-
-
-
 
   getProfile(cb) {
     this.auth0.client.userInfo(this.accessToken, (err, profile) => {
@@ -170,3 +185,17 @@ export default class Auth {
     return JSON.stringify(new Date(this.expiresAt));
   }
 }
+
+
+
+
+/*
+Live chat widget
+
+<script>
+  (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
+    t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
+  })(window, document, '_gscq','script','//widgets.getsitecontrol.com/178476/script.js');
+</script>
+-
+*/

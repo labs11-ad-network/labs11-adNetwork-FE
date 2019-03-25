@@ -14,6 +14,7 @@ import Analytics from "./analytics/Analytics.js";
 import AdGenerator from "./ad-generator/AdGenerator.js";
 import Offers from "./offers/Offers.js";
 
+
 const DashboardContainer = styled.div`
   display: flex;
   .main-content {
@@ -31,7 +32,8 @@ const DashboardContainer = styled.div`
 
 class Dashboard extends Component {
   state = {
-    currentOffer: ""
+    currentOffer: "",
+
   };
 
   componentDidMount() {
@@ -63,6 +65,8 @@ class Dashboard extends Component {
   };
 
   render() {
+
+
     return (
       <DashboardContainer>
         <DashboardLeft />
@@ -110,6 +114,6 @@ export default connect(
   {
     getOfferAnalytics,
     getUserOffers,
-    getUserData
+    getUserData,
   }
 )(privateRoute(Dashboard));
