@@ -16,7 +16,7 @@ class AdServer extends Component {
       browser: this.parser.getBrowser().name,
       ip: window.location.hostname,
       referrer: document.referrer,
-      agreement_id: 3
+      agreement_id: 1
     });
   }
 
@@ -26,7 +26,7 @@ class AdServer extends Component {
       browser: this.parser.getBrowser().name,
       ip: window.location.hostname,
       referrer: document.referrer,
-      agreement_id: 3
+      agreement_id: 1
     });
   };
 
