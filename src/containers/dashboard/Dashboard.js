@@ -13,7 +13,7 @@ import ChatWidget from "../../components/chat-widget/ChatWidget.js";
 import Analytics from "./analytics/Analytics.js";
 import AdGenerator from "./ad-generator/AdGenerator.js";
 import Offers from "./offers/Offers.js";
-import Settings from './settings/Settings.js';
+import Settings from "./settings/Settings.js";
 
 
 const DashboardContainer = styled.div`
@@ -78,9 +78,28 @@ class Dashboard extends Component {
             refreshStats={this.refreshStats}
           />
           <div className="dashboard-view">
-            <Route exact path="/dashboard" render={props => <Analytics {...props} offerAnalytics={this.props.offerAnalytics}/> }/>
-            <Route path="/dashboard/offers" component={Offers} />
-            <Route path="/dashboard/settings" render={props => <Settings {...props} currentUser={this.props.currentUser} /> }/>
+            <Route
+              exact
+              path="/dashboard"
+              render={props => (
+                <Analytics
+                  {...props}
+                  offerAnalytics={this.props.offerAnalytics}
+                />
+              )}
+            />
+            <Route
+              path="/dashboard/offers"
+              render={props => (
+                <Offers {...props} currentUser={this.props.currentUser} />
+              )}
+            />
+            <Route
+              path="/dashboard/settings"
+              render={props => (
+                <Settings {...props} currentUser={this.props.currentUser} />
+              )}
+            />
             <Route path="/dashboard/create-ad" component={AdGenerator} />
             <ChatWidget />
           </div>

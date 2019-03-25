@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-import { getUserOffers, createOffer } from '../../../store/actions/offersAction.js'
-import OffersList from '../../../components/offers/OffersList.js';
-import OfferForm from '../../../components/offers/OfferForm.js'
+import {
+  getUserOffers,
+  createOffer
+} from "../../../store/actions/offersAction.js";
+import { getUserAgreements } from "../../../store/actions/agreementsAction.js";
+import OffersList from "../../../components/offers/OffersList.js";
+import OfferForm from "../../../components/offers/OfferForm.js";
 
 class Offers extends Component {
-  state={
+  state = {
     hidden: true,
     offerData: {
       budget: "",
@@ -18,10 +22,12 @@ class Offers extends Component {
       currency: "",
       status: true
     }
-  }
+  };
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.getUserOffers();
+    // this.props.currentUser.acct_type === "affiliate" &&
+    this.props.getUserAgreements();
   }
 
   createOffer = async e => {
@@ -41,10 +47,10 @@ class Offers extends Component {
         currency: "",
         status: true
       }
-    })
+    });
 
     this.props.getUserOffers();
-  }
+  };
 
   handleChange = e => {
     this.setState({
@@ -52,34 +58,41 @@ class Offers extends Component {
         ...this.state.offerData,
         [e.target.name]: e.target.value
       }
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <div>
-        <OffersList offers={this.props.userOffers}/>
-        <OfferForm 
-          hidden={this.state.hidden} 
-          offerData={this.state.offerData}
-          handleChange={this.handleChange}
-          createOffer={this.createOffer}
+        <OffersList
+          offers={this.props.userOffers}
+          agreements={this.props.userAgreements}
         />
+        {this.props.currentUser.acct_type === "advertiser" && (
+          <OfferForm
+            hidden={this.state.hidden}
+            offerData={this.state.offerData}
+            handleChange={this.handleChange}
+            createOffer={this.createOffer}
+          />
+        )}
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
-  return{
-    userOffers: state.offersReducer.userOffers
-  }
-}
+  return {
+    userOffers: state.offersReducer.userOffers,
+    userAgreements: state.agreementsReducer.userAgreements
+  };
+};
 
 export default connect(
   mapStateToProps,
   {
     getUserOffers,
-    createOffer
+    createOffer,
+    getUserAgreements
   }
-)(Offers)
+)(Offers);
