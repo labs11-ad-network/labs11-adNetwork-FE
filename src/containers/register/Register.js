@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { registerUser } from "../../store/actions/authAction.js";
 import { RegisterForm } from "../../components/authentication/forms";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 
 class Register extends Component {
   state = {
@@ -53,10 +53,6 @@ class Register extends Component {
     }
   }
 
-
-
-
-
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -80,8 +76,8 @@ class Register extends Component {
   };
 
   goToLogin = () => {
-    window.location.href = "/login"
-  }
+    window.location.href = "/login";
+  };
 
   render() {
     const { fbClicked, googleClicked } = this.props;
