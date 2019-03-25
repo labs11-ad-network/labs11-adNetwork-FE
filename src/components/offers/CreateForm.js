@@ -13,6 +13,7 @@ const CreateForm = props => {
                 name="budget"
                 value={props.offerData.budget}
                 onChange={props.handleChange}
+                step="0.01"
             />
 
             <label htmlFor="price_per_click"/>
@@ -22,6 +23,7 @@ const CreateForm = props => {
                 name="price_per_click"
                 value={props.offerData.price_per_click}
                 onChange={props.handleChange}
+                step="0.01"
             />
 
             <label htmlFor="price_per_impression"/>
@@ -31,6 +33,7 @@ const CreateForm = props => {
                 name="price_per_impression"
                 value={props.offerData.price_per_impression}
                 onChange={props.handleChange}
+                step="0.01"
             />
 
             <label htmlFor="name"/>
