@@ -8,7 +8,7 @@ import {
 
 class TabContainer extends React.Component{
   state = {
-      tabValue: 2,
+    tabValue: 0,
   };
     
   handleChange = (event, tabValue) => {
@@ -18,18 +18,28 @@ class TabContainer extends React.Component{
   render(){
     return (
     <MainTabContainer>
-        <Tabs
-          value={this.state.tabValue}
-          indicatorColor="primary"
-          textColor="primary"
-          onChange={this.handleChange}
-        >
-          <Tab label="User Settings"/>
-          <Tab label="Payments"/>
-        </Tabs>
+      <Tabs
+        value={this.state.tabValue}
+        indicatorColor="primary"
+        textColor="primary"
+        onChange={this.handleChange}
+      >
+      <Tab label="User Settings"/>
+      <Tab label="Payments"/>
+      </Tabs>
+
+      {this.state.tabValue === 0 && 
+      <div> 
+        <h1>This is user Settings</h1>
+      </div>}
+
+      {this.state.tabValue === 1 && 
+      <div> 
+        <h1>This is user Payments</h1>
+      </div>}
+
     </MainTabContainer>
     )
-
   }
 }
 
