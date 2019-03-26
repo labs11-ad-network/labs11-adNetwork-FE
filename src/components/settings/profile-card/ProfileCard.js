@@ -14,7 +14,7 @@ const ProfileCard = props => {
   return (
     <ProfileCardContainer>
       <ProfileCardTop>
-        <img alt=""/>
+        <img src={currentUser.image_url} alt=""/>
         <div>
           <h1>{currentUser.name}</h1>
           <h2>{currentUser.acct_type}</h2>
