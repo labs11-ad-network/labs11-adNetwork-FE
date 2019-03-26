@@ -33,6 +33,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">
+
           <Route path="/" render={props => <MainApp auth={auth} {...props} />} />
           <Route
             path="/callback"
@@ -41,6 +42,7 @@ class App extends Component {
               return <Callback {...props} />;
             }}
           />
+
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/ad/:id" component={AdServer} />
         </div>

@@ -15,7 +15,7 @@ axios.interceptors.request.use(
 const privateRoute = Component => {
   return class Authenticated extends Component {
     render() {
-      const token = localStorage.getItem("id_token");
+      const token = `Bearer ${localStorage.getItem("id_token")}`;
       return (
         <>
           {token ? (

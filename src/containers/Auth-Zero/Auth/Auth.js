@@ -82,7 +82,10 @@ export default class Auth {
       sub: decoded.sub,
       acct_type: "advertiser"
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> clean up time boii
     const config = {
       headers: {
         Authorization: `Bearer ${localStorage.id_token}`
