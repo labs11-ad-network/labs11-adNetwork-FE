@@ -15,7 +15,6 @@ import AdGenerator from "./ad-generator/AdGenerator.js";
 import Offers from "./offers/Offers.js";
 import Settings from "./settings/Settings.js";
 
-
 const DashboardContainer = styled.div`
   display: flex;
   .main-content {
@@ -33,8 +32,7 @@ const DashboardContainer = styled.div`
 
 class Dashboard extends Component {
   state = {
-    currentOffer: "",
-
+    currentOffer: ""
   };
 
   componentDidMount() {
@@ -66,8 +64,6 @@ class Dashboard extends Component {
   };
 
   render() {
-
-
     return (
       <DashboardContainer>
         <DashboardLeft />
@@ -78,7 +74,7 @@ class Dashboard extends Component {
             refreshStats={this.refreshStats}
           />
           <div className="dashboard-view">
-            <Route
+            {/* <Route
               exact
               path="/dashboard"
               render={props => (
@@ -87,7 +83,7 @@ class Dashboard extends Component {
                   offerAnalytics={this.props.offerAnalytics}
                 />
               )}
-            />
+            /> */}
             <Route
               path="/dashboard/offers"
               render={props => (
@@ -122,6 +118,6 @@ export default connect(
   {
     getOfferAnalytics,
     getUserOffers,
-    getUserData,
+    getUserData
   }
 )(privateRoute(Dashboard));
