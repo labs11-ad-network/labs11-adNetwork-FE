@@ -16,11 +16,13 @@ const PageContainer = styled.div`
 
 class Analytics extends Component {
 
-  getCTR = offerAnalytics => {
-    const clicks = offerAnalytics.actionCount.clicks;
-    const impressions = offerAnalytics.actionCount.impressions;
+  getCTR = () => {
+    const clicks = this.props.offerAnalytics.actionCount.clicks;
+    const impressions = this.props.offerAnalytics.actionCount.impressions;
 
-    return Math.round((clicks / impressions * 100) * 100) / 100
+    const ctr = Math.round((clicks / impressions * 100) * 100) / 100
+
+    return ctr || "0";
   }
 
   render() {
@@ -47,7 +49,7 @@ class Analytics extends Component {
             icon="fas fa-percentage"
             dataType="Click Through Rate"
             data={offerAnalytics}
-            ctr={this.getCTR(offerAnalytics)}
+            ctr={this.getCTR()}
             firstColor="#ef5350"
             secondColor="#e53935"
           />

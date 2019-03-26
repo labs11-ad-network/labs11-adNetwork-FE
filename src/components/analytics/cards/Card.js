@@ -17,7 +17,7 @@ export const Card = props => {
           </div>
           <div className="right-section">
             <h2>{props.dataType}</h2>
-            <h1>{props.ctr ? `${props.ctr}%` : props.data || 0}</h1>
+            <h1>{props.ctr <= 0 ? `${props.ctr}%` : props.data || 0}</h1>
           </div>
         </Top>
         <Bottom>

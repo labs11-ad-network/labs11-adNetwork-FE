@@ -49,6 +49,6 @@ export const getOfferAnalytics = id => dispatch => {
       dispatch({ type: OFFER_ANALYTICS_SUCCESS, payload: res.data })
     })
     .catch(err => {
-      dispatch({ type: OFFER_ANALYTICS_FAILURE, payload: err.response.data })
+      // dispatch({ type: OFFER_ANALYTICS_FAILURE, payload: err.response.data })
     })
 }
