@@ -80,7 +80,7 @@ export default class Auth {
       image_url: decoded.picture,
       nickname: decoded.nickname,
       sub: decoded.sub,
-      acct_type: "advertiser"
+      acct_type: "affiliate"
     }
 
     const config = {
