@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
-
 
 class MainApp extends Component {
   goTo(route) {
@@ -25,48 +23,28 @@ class MainApp extends Component {
   }
 
   render() {
-    const { isAuthenticated } = this.props.auth;
 
     return (
       <div>
-        <Navbar fluid>
-          <Navbar.Header>
-            <Button
-              bsStyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'dashboard')}
-            >
-              Dashboard
-            </Button>
-            {!localStorage.id_token &&
-              <Button
-                id="qsLoginBtn"
-                bsStyle="primary"
-                className="btn-margin"
-                onClick={this.login.bind(this)}
-              >
-                Log In
-              </Button>}
-            {isAuthenticated() &&
-              <Button
-                bsStyle="primary"
-                className="btn-margin"
-                onClick={this.goTo.bind(this, 'profile')}
-              >
-                Profile
-              </Button>}
+        <button
+          onClick={this.goTo.bind(this, 'dashboard')}
+        >
+          Dashboard
+        </button>
+        
+        {!localStorage.id_token &&
+          <button
+            onClick={this.login.bind(this)}
+          >
+            Log In
+          </button>}
 
-            {localStorage.id_token &&
-              <Button
-                id="qsLogoutBtn"
-                bsStyle="primary"
-                className="btn-margin"
-                onClick={this.logout.bind(this)}
-              >
-                Log Out
-              </Button>}
-          </Navbar.Header>
-        </Navbar>
+        {localStorage.id_token &&
+          <button
+            onClick={this.logout.bind(this)}
+          >
+            Log Out
+          </button>}
       </div>
     );
   }

@@ -50,9 +50,7 @@ const DashboardTop = props => {
             />
             <div>
               <img src={props.currentUser.image_url} alt="" />
-              <h2>{`${props.currentUser.first_name} ${
-                props.currentUser.last_name
-              }`}</h2>
+              <h2>{props.currentUser.name}</h2>
             </div>
           </>
         )}

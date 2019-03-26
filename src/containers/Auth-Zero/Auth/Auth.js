@@ -80,22 +80,20 @@ export default class Auth {
       image_url: decoded.picture,
       nickname: decoded.nickname,
       sub: decoded.sub,
-      acct_type: "admin"
+      acct_type: "advertiser"
     }
 
-    console.log('------ decoded -----', decoded);
-    console.log('user', user);
-    console.log('TOKEN ---', `Bearer ${localStorage.id_token}`);
     const config = {
       headers: {
         Authorization: `Bearer ${localStorage.id_token}`
       }
     }
+
     axios
       .post(`https://lad-network.herokuapp.com/api/auth/registerV2`, user, config)
       .then(res => {
-        console.log('--- hit response -- ', res.data)
-      }).catch(err => console.log(err.response))
+        // console.log('--- hit response -- ', res.data)
+      }).catch(err => console.error(err))
 
     history.replace('/dashboard');
   }
@@ -104,7 +102,7 @@ export default class Auth {
     this.auth0.checkSession({},
       function (err, result) {
         if (err) {
-          // console.log(err);
+          console.error(err);
         } else {
           this.localLogin(result);
         }
@@ -177,17 +175,3 @@ export default class Auth {
     return JSON.stringify(new Date(this.expiresAt));
   }
 }
-
-
-
-
-/*
-Live chat widget
-
-<script>
-  (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
-    t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
-  })(window, document, '_gscq','script','//widgets.getsitecontrol.com/178476/script.js');
-</script>
--
-*/

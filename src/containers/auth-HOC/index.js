@@ -4,7 +4,7 @@ import axios from "axios";
 
 axios.interceptors.request.use(
   function (options) {
-    options.headers.authorization = localStorage.getItem("id_token");
+    options.headers.authorization = `Bearer ${localStorage.getItem("id_token")}`;
     return options;
   },
   function (error) {
