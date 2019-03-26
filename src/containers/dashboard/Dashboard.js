@@ -62,7 +62,6 @@ class Dashboard extends Component {
   };
 
   render() {
-
     return (
       <DashboardContainer>
         <DashboardLeft />

@@ -41,7 +41,7 @@ const DashboardTop = props => {
               className="fas fa-sign-out-alt"
               onClick={() => {
                 localStorage.clear();
-                props.history.push("/login");
+                props.history.push("/");
               }}
             />
             <div>
