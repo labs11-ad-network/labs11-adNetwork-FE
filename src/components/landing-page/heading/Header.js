@@ -8,7 +8,9 @@ import bgStars from '../../../assets/bg_stars.svg';
 
 
 const HeroHome = styled.section`
- margin-bottom:1000px;
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+font-family: 'Roboto', sans-serif;
+  margin-bottom:1000px;
   position: relative;
   padding-top: 10vh;
   background-image: url(${bgStars}),
@@ -16,7 +18,7 @@ const HeroHome = styled.section`
   background-repeat: repeat-x, no-repeat;
   background-position: center 70px, 50%;
   background-size: 1440px auto, 100% auto;
-  height: 80vh;
+  height: 60vh;
 
   .border_bottom {
     display: block;
@@ -27,19 +29,64 @@ const HeroHome = styled.section`
     background: url(${borderBottom}) repeat top;
     background-size: 1440px auto;
   } 
-
-  body {
-    bacground:#ffffff !important;
+  .container {
+    display:flex;
+    max-width: 100%;
+    border: 1px solid red;
+    /* temp fixed */
+    overflow:hidden; 
   }
 
+  .container_illustration {
+    max-width:100%;
+  }
+
+   .hero-content{
+    border: 1px solid red;
+    min-width: 600px;
+  }
+  .hero-content h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1.33;
+    color: #fff;
+    margin-top: 22px;
+    letter-spacing: normal;
+  }
+  .hero-content .btn_blue {
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
+    padding: 15px 20.5px 13px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+    outline: 0;
+    border: 0;
+    -webkit-apparience: none;
+    cursor: pointer;
+    background-color: #0e4de3;
+    box-shadow: 0 2px 4px 0 rgba(0,25,85,.1);
+    line-height:1rem;
+    text-decoration:none;
+}
 `;
 
 const Header = () => (
   <>
     <HeroHome>
-      <div className="container">
-        <h1>tesitng</h1>
-
+       <div className="container">
+        <div className="hero-content">
+          <h1>Creepy Ads
+  We are a non creepy ad network that presents itself as actually very creepy.</h1>
+    <a className="btn_scroll btn_blue" href="#">Start a Free Trial</a>
+          </div>
       <div className="container_illustration">
         <div className="animation">
                 <span className="piio_float_left">
