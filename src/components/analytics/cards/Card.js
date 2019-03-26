@@ -17,19 +17,19 @@ export const Card = props => {
           </div>
           <div className="right-section">
             <h2>{props.dataType}</h2>
-            <h1>{props.ctr ? `${props.ctr}%` : props.data.length}</h1>
+            <h1>{props.ctr ? `${props.ctr}%` : props.data || 0}</h1>
           </div>
         </Top>
         <Bottom>
           <h1>
             <i className="far fa-clock" />
-            {props.data.length ?
+            {/* {props.data ?
             `Last ${props.data.pop().action} ${moment(
               props.data.pop().created_at,
               "YYYY-MM-DO, hh:mm:ss Z"
             ).fromNow()}`:
               'No data yet :('
-            }
+            } */}
           </h1>
         </Bottom>
       </div>

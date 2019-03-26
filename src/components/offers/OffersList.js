@@ -300,7 +300,7 @@ class OffersList extends React.Component {
             options={offerOptions}
           />
         )}
-        {tabValue === (currentUser.acct_type === "advertiser" ? 1 : 2) && (
+        {tabValue === (currentUser.acct_type === "affiliate" ? 2 : 1) && (
           <MaterialDatatable
             title={"Ads List"}
             data={offerAds}

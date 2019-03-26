@@ -38,14 +38,10 @@ const DashboardTop = props => {
         {props.currentUser && (
           <>
             <i
-              className="fas fa-sync-alt"
-              onClick={e => props.refreshStats(e)}
-            />
-            <i
               className="fas fa-sign-out-alt"
               onClick={() => {
                 localStorage.clear();
-                props.history.push("/login");
+                props.history.push("/");
               }}
             />
             <div>

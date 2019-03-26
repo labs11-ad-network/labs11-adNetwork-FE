@@ -16,58 +16,51 @@ const PageContainer = styled.div`
 
 class Analytics extends Component {
 
-  getCTR = () => {
-    const clicks = this.props.offerAnalytics.filter(offer => {
-      return offer.action === "click";
-    }).length;
-    const impressions = this.props.offerAnalytics.filter(offer => {
-      return offer.action === "impression";
-    }).length;
+  getCTR = offerAnalytics => {
+    const clicks = offerAnalytics.actionCount.clicks;
+    const impressions = offerAnalytics.actionCount.impressions;
 
     return Math.round((clicks / impressions * 100) * 100) / 100
   }
 
   render() {
+    const { offerAnalytics } = this.props
     return (
       <PageContainer>
+        {offerAnalytics.length !== 0 && <>
         <div className="card-container">
           <Card
             icon="fas fa-eye"
             dataType="Impressions"
-            data={this.props.offerAnalytics.filter(offer => {
-              return offer.action === "impression";
-            })}
+            data={offerAnalytics.actionCount.impressions}
             firstColor="#ffa726"
             secondColor="#fb8c00"
           />
           <Card
             icon="fas fa-mouse-pointer"
             dataType="Clicks"
-            data={this.props.offerAnalytics.filter(offer => {
-              return offer.action === "click";
-            })}
+            data={offerAnalytics.actionCount.clicks}
             firstColor="#66bb6a"
             secondColor="#43a047"
           />
           <Card
             icon="fas fa-percentage"
             dataType="Click Through Rate"
-            data={this.props.offerAnalytics}
-            ctr={this.getCTR()}
+            data={offerAnalytics}
+            ctr={this.getCTR(offerAnalytics)}
             firstColor="#ef5350"
             secondColor="#e53935"
           />
           <Card
             icon="fas fa-exchange-alt"
             dataType="Conversions"
-            data={this.props.offerAnalytics.filter(offer => {
-              return offer.action === "conversions";
-            })}
+            data={offerAnalytics.actionCount.conversions}
             firstColor="#26c6da"
             secondColor="#00acc1"
           />
-        </div>
-        <BrowserInfo data={this.props.offerAnalytics}/>
+        </div> 
+        {/* <BrowserInfo data={offerAnalytics}/> */}
+        </>}
       </PageContainer>
     );
   }

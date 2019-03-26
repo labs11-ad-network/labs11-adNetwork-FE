@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">
-          <Route path="/" render={props => <MainApp auth={auth} {...props} />} />
+          <Route exact path="/" render={props => <MainApp auth={auth} {...props} />} />
           <Route
             path="/callback"
             render={props => {
