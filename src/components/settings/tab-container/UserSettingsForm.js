@@ -42,7 +42,7 @@ class UserSettingsForm extends Component {
   render() {
     const { name, email, image_url, nickname, phone } = this.state.userData;
     return (
-      <Form>
+      <Form onSubmit={[]}>
         <div>
           <label htmlFor="name" />
           <input
@@ -84,6 +84,7 @@ class UserSettingsForm extends Component {
             value={phone}
             onChange={this.handleChange}
           />
+          <button type="submit">Save Changes</button>
         </div>
       </Form>
     );

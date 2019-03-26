@@ -74,7 +74,7 @@ class Dashboard extends Component {
             refreshStats={this.refreshStats}
           />
           <div className="dashboard-view">
-            {/* <Route
+            <Route
               exact
               path="/dashboard"
               render={props => (
@@ -83,7 +83,7 @@ class Dashboard extends Component {
                   offerAnalytics={this.props.offerAnalytics}
                 />
               )}
-            /> */}
+            />
             <Route
               path="/dashboard/offers"
               render={props => (
