@@ -43,7 +43,7 @@ class Dashboard extends Component {
     this.props.getOfferAnalytics(this.state.currentOffer);
     this.analyticsInterval = setInterval(() => {
       if (this.state.currentOffer) {
-        this.refreshStats();
+        this.props.getOfferAnalytics(this.state.currentOffer);
       } else {
         return null;
       }
@@ -54,10 +54,6 @@ class Dashboard extends Component {
     clearInterval(this.analyticsInterval);
   }
 
-  refreshStats = e => {
-    this.props.getOfferAnalytics(this.state.currentOffer);
-  };
-
   handleOfferSelect = e => {
     this.props.getOfferAnalytics(e.target.value);
     this.setState({
@@ -67,7 +63,6 @@ class Dashboard extends Component {
 
   render() {
 
-
     return (
       <DashboardContainer>
         <DashboardLeft />
@@ -75,7 +70,6 @@ class Dashboard extends Component {
           <TopNav
             {...this.props}
             handleOfferSelect={this.handleOfferSelect}
-            refreshStats={this.refreshStats}
           />
           <div className="dashboard-view">
             <Route
