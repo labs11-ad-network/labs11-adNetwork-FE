@@ -5,9 +5,10 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Dashboard from './containers/dashboard/Dashboard.js';
 import AdServer from './containers/ad-server/AdServer.js';
 
-import MainApp from './containers/auth-zero/MainApp';
-import Callback from './containers/auth-zero/Callback/Callback';
-import Auth from './containers/auth-zero/Auth/Auth';
+
+import Auth from './containers/Auth-Zero/Auth/Auth';
+import Callback from './containers/Auth-Zero/Callback/Callback';
+import MainApp from './containers/Auth-Zero/MainApp';
 
 const theme = createMuiTheme({
   palette: {

@@ -82,10 +82,6 @@ export default class Auth {
       sub: decoded.sub,
       acct_type: "advertiser"
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> clean up time boii
     const config = {
       headers: {
         Authorization: `Bearer ${localStorage.id_token}`
@@ -105,7 +101,7 @@ export default class Auth {
     this.auth0.checkSession({},
       function (err, result) {
         if (err) {
-          console.error(err);
+          // console.error(err);
         } else {
           this.localLogin(result);
         }
