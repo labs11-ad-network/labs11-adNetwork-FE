@@ -26,7 +26,6 @@ class Offers extends Component {
 
   componentDidMount() {
     this.props.getUserOffers();
-    // this.props.currentUser.acct_type === "affiliate" &&
     this.props.getUserAgreements();
   }
 
