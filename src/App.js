@@ -3,15 +3,11 @@ import { Route } from "react-router-dom"
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Dashboard from './containers/dashboard/Dashboard.js';
-import Login from './containers/login/Login.js';
-import Register from './containers/register/Register.js';
-import AdServer from './containers/ad-server/AdServer.js'
-import MainApp from './containers/Auth-Zero/MainApp';
-import Callback from './containers/Auth-Zero/Callback/Callback';
-import Auth from './containers/Auth-Zero/Auth/Auth';
+import AdServer from './containers/ad-server/AdServer.js';
 
-
-
+import MainApp from './containers/auth-zero/MainApp';
+import Callback from './containers/auth-zero/Callback/Callback';
+import Auth from './containers/auth-zero/Auth/Auth';
 
 const theme = createMuiTheme({
   palette: {
@@ -24,7 +20,6 @@ const theme = createMuiTheme({
   },
   typography: { useNextVariants: true },
 });
-
 
 const auth = new Auth();
 const handleAuthentication = ({ location }) => {
@@ -47,8 +42,6 @@ class App extends Component {
             }}
           />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
           <Route path="/ad/:id" component={AdServer} />
         </div>
       </MuiThemeProvider>

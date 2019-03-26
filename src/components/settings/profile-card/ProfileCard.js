@@ -16,7 +16,7 @@ const ProfileCard = props => {
       <ProfileCardTop>
         <img alt=""/>
         <div>
-          <h1>{`${currentUser.first_name} ${currentUser.last_name}`}</h1>
+          <h1>{currentUser.name}</h1>
           <h2>{currentUser.acct_type}</h2>
           <h3>{currentUser.email}</h3>
         </div>

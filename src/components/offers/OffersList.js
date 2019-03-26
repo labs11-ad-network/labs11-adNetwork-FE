@@ -226,7 +226,7 @@ class OffersList extends React.Component {
                 this.setState({
                   tabValue: 2
                 });
-                this.props.getOfferAds(value.id);
+                this.props.getOfferAds(value.offer_id);
               }}
             >
               View Ads
