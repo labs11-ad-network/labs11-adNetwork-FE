@@ -1,8 +1,7 @@
-import React from 'react'
+import React from "react";
+import Checkout from "../../checkout/Checkout.js";
 
-import {
-    BillingCardContainer
-} from '../settingsStyles.js';
+import { BillingCardContainer } from "../settingsStyles.js";
 
 const BillingCard = props => {
   return (
@@ -16,9 +15,10 @@ const BillingCard = props => {
         <h1>Amount Due</h1>
         <h2>$ 505.23 USD</h2>
         <button>Pay Now</button>
+        <Checkout />
       </div>
     </BillingCardContainer>
-  )
-}
+  );
+};
 
 export default BillingCard;
