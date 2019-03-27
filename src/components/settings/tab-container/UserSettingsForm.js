@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getUserData } from "../../../store/actions/authAction.js";
+import { changeUserData } from "../../../store/actions/authAction.js";
 import { Form } from "../settingsStyles.js";
 
 class UserSettingsForm extends Component {
@@ -11,13 +11,12 @@ class UserSettingsForm extends Component {
       email: "",
       image_url: "",
       nickname: "",
-      phone: ""
+      phone: "",
+      user_img: ""
     }
   };
 
   componentDidMount() {
-    // this.props.getUserData();
-
     const { name, email, image_url, nickname, phone } = this.props.currentUser;
     this.setState({
       userData: {
@@ -39,10 +38,24 @@ class UserSettingsForm extends Component {
       }
     }));
   };
+
+  handleFileChange = e => {
+    this.setState({
+      userData:{
+        ...this.state.userData,
+      user_img: e.target.files[0]
+      }
+    })
+  }
+
+  changeUserData = e => {
+    e.preventDefault();
+    this.props.changeUserData(this.state.userData);
+  };
   render() {
     const { name, email, image_url, nickname, phone } = this.state.userData;
     return (
-      <Form onSubmit={[]}>
+      <Form onSubmit={this.changeUserData}>
         <div>
           <label htmlFor="name" />
           <input
@@ -84,6 +97,16 @@ class UserSettingsForm extends Component {
             value={phone}
             onChange={this.handleChange}
           />
+          {/* --------------------- image upload --------------------- */}
+          <input
+            accept="image/*"
+            type="file"
+            placeholder="Avatar"
+            name="user_img"
+            multiple
+            onChange={this.handleFileChange}
+          />
+          {/* --------------------- image upload --------------------- */}
           <button type="submit">Save Changes</button>
         </div>
       </Form>
@@ -97,5 +120,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getUserData }
+  { changeUserData }
 )(UserSettingsForm);

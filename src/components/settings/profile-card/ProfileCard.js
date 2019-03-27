@@ -1,20 +1,21 @@
-import React from 'react'
+import React from "react";
 
 import {
-  ProfileCardContainer ,
+  ProfileCardContainer,
   ProfileCardTop,
   ProfileCardBottom
-} from '../settingsStyles.js';
+} from "../settingsStyles.js";
 
 const ProfileCard = props => {
   const { currentUser } = props;
-  if(!currentUser){
-    return <h1>No User Found</h1>
+  if (!currentUser) {
+    return <h1>No User Found</h1>;
   }
+  
   return (
     <ProfileCardContainer>
       <ProfileCardTop>
-        <img src={currentUser.image_url} alt=""/>
+        <img src={currentUser.image_url} alt="" />
         <div>
           <h1>{currentUser.name}</h1>
           <h2>{currentUser.acct_type}</h2>
@@ -36,7 +37,7 @@ const ProfileCard = props => {
         </div>
       </ProfileCardBottom>
     </ProfileCardContainer>
-  )
-}
+  );
+};
 
 export default ProfileCard;
