@@ -2,24 +2,6 @@ import axios from "axios";
 
 const URL = "https://lad-network.herokuapp.com";
 
-// ------------------------------------ Create Offers ------------------------------------
-
-export const CREATE_OFFER_START = "CREATE_OFFER_START";
-export const CREATE_OFFER_SUCCESS = "CREATE_OFFER_SUCCESS";
-export const CREATE_OFFER_FAILURE = "CREATE_OFFER_FAILURE";
-
-export const createOffer = offer => dispatch => {
-  dispatch({ type: CREATE_OFFER_START });
-  axios
-    .post(`${URL}/api/offers`, offer)
-    .then(res => {
-      dispatch({ type: CREATE_OFFER_SUCCESS, payload: res.data });
-    })
-    .catch(err => {
-      dispatch({ type: CREATE_OFFER_FAILURE, payload: err.response.data });
-    });
-};
-
 // ------------------------------------ Get All User Offers ------------------------------------
 
 export const GET_USER_OFFERS_START = "GET_USER_OFFERS_START";
@@ -38,6 +20,26 @@ export const getUserOffers = () => dispatch => {
     });
 };
 
+// ------------------------------------ Create Offers ------------------------------------
+
+export const CREATE_OFFER_START = "CREATE_OFFER_START";
+export const CREATE_OFFER_SUCCESS = "CREATE_OFFER_SUCCESS";
+export const CREATE_OFFER_FAILURE = "CREATE_OFFER_FAILURE";
+
+export const createOffer = offer => dispatch => {
+  dispatch({ type: CREATE_OFFER_START });
+  axios
+    .post(`${URL}/api/offers`, offer)
+    .then(res => {
+      dispatch({ type: CREATE_OFFER_SUCCESS, payload: res.data });
+    })
+    .then(() => {
+      dispatch(getUserOffers())
+    })
+    .catch(err => {
+      dispatch({ type: CREATE_OFFER_FAILURE, payload: err.response.data });
+    });
+};
 
 // ------------------------------------ Update Offer Status ------------------------------------
 
