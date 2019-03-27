@@ -31,6 +31,18 @@ class MainApp extends Component {
         >
           Dashboard
         </button>
+
+        <button onClick={() => {
+          localStorage.setItem('acct_type', "advertiser")
+        }}>
+          Advertiser
+        </button>
+
+        <button onClick={() => {
+          localStorage.setItem('acct_type', "affiliate")
+        }}>
+          Affiliate
+        </button>
         
         {!localStorage.id_token &&
           <button
