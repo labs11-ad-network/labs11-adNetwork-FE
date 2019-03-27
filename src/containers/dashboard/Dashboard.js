@@ -117,11 +117,7 @@ export default connect(
   {
     getOfferAnalytics,
     getUserOffers,
-<<<<<<< HEAD
     getUserData,
     getAgreements
-=======
-    getUserData
->>>>>>> origin
   }
 )(privateRoute(Dashboard));
