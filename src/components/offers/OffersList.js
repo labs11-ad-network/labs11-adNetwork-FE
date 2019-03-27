@@ -278,7 +278,14 @@ class OffersList extends React.Component {
                       name: "Code Snippet",
                       options: {
                         customBodyRender: value => {
-                          return `<iframe src="https://kieranlabs.netlify.com/ad/${value.id}/${this.state.currentAgreement}"></iframe>`;
+                          return `<iframe src="https://kieranlabs.netlify.com/ad/${value.id}/${this.state.currentAgreement}" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    ${value.size.includes('horizontal') ? 'height="100" width="670"' 
+                                    : value.size.includes('vertical') ? 'height="670" width="100"' 
+                                    : value.size.includes('square') && 'height="265" width="265"'}
+                                  ></iframe>`
+                          ;
                         }
                       }
                     }
