@@ -61,7 +61,7 @@ class Analytics extends Component {
             secondColor="#00acc1"
           />
         </div> 
-        {/* <BrowserInfo data={offerAnalytics}/> */}
+        <BrowserInfo data={offerAnalytics.browserCount}/>
         </>}
       </PageContainer>
     );

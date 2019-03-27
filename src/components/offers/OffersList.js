@@ -81,15 +81,6 @@ class OffersList extends React.Component {
       }
     },
     {
-      name: "Budget",
-      field: "budget",
-      options: {
-        customBodyRender: value => {
-          return `$${value.budget} ${value.currency}`;
-        }
-      }
-    },
-    {
       name: "Price Per Click",
       field: "price_per_click",
       options: {
