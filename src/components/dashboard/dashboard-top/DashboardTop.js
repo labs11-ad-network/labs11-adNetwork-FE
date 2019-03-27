@@ -22,6 +22,8 @@ const DashboardTop = props => {
           onChange={props.handleOfferSelect}
           required
         >
+        {props.currentUser.acct_type === "advertiser" ?
+          <>
           <option value="">All Offers</option>
           {props.userOffers.length &&
             props.userOffers.map(offer => {
@@ -31,8 +33,23 @@ const DashboardTop = props => {
                 </option>
               );
             })}
+          </>:
+          <>
+          <option value="">All Agreements</option>
+          {props.agreements.length && 
+            props.agreements.map(a => {
+              return(
+                <option key={a.id} value={a.id}>
+                  {a.name}
+                </option>
+              )
+            })
+          }
+          </>
+            }
         </select>
-        <Link to="/dashboard/create-ad">Create Advertisement</Link>
+        {props.currentUser.acct_type === "advertiser" &&
+        <Link to="/dashboard/create-ad">Create Advertisement</Link>}
       </LeftSection>
       <RightSection>
         {props.currentUser && (
