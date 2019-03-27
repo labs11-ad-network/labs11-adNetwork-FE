@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getUserOffers } from "./offersAction.js"
 
 const URL = "https://lad-network.herokuapp.com";
 
@@ -14,6 +15,9 @@ export const createAgreement = offer => dispatch => {
     .post(`${URL}/api/agreements`, {offer_id: offer.id})
     .then(res => {
       dispatch({ type: CREATE_AGREEMENT_SUCCESS, payload: res.data });
+    })
+    .then(() => {
+      dispatch(getUserOffers())
     })
     .catch(err => {
       dispatch({ type: CREATE_AGREEMENT_FAILURE, payload: err.response.data });

@@ -32,7 +32,7 @@ class Offers extends Component {
   createOffer = async e => {
     e.preventDefault();
 
-    await this.props.createOffer(this.state.offerData);
+    this.props.createOffer(this.state.offerData);
 
     this.setState({
       hidden: true,
@@ -47,8 +47,6 @@ class Offers extends Component {
         status: true
       }
     });
-
-    this.props.getUserOffers();
   };
 
   handleChange = e => {
