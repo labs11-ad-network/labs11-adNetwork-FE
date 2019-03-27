@@ -23,7 +23,7 @@ export const ProfileCardTop = styled.div`
         height: 120px;
         margin: 0 15px 10px 0;
         border-radius: 70px;
-        border: 1px solid rgba(0, 0, 0, 0.1)
+        border: 2px solid rgba(0, 0, 0, 0.1)
     }
     div{
         h1{

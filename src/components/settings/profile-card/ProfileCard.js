@@ -8,10 +8,10 @@ import {
 
 const ProfileCard = props => {
   const { currentUser } = props;
+  const { offers, ads, agreements } = props.currentUser;
   if (!currentUser) {
     return <h1>No User Found</h1>;
   }
-  
   return (
     <ProfileCardContainer>
       <ProfileCardTop>
@@ -24,15 +24,15 @@ const ProfileCard = props => {
       </ProfileCardTop>
       <ProfileCardBottom>
         <div>
-          <h1>05</h1>
+          <h1>{offers}</h1>
           <h2>Offers</h2>
         </div>
         <div>
-          <h1>15</h1>
+          <h1>{ads}</h1>
           <h2>Advertisements</h2>
         </div>
         <div>
-          <h1>40</h1>
+          <h1>{agreements}</h1>
           <h2>Agreements</h2>
         </div>
       </ProfileCardBottom>
