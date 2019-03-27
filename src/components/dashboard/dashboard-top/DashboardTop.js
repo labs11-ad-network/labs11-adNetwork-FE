@@ -13,9 +13,12 @@ const DashboardTop = props => {
     <NavContainer>
       <LeftSection>
         <Header>
-          <i className="fas fa-chart-line" />
-          Dashboard
+          {props.location.pathname.includes("offers") ? <><i className="fas fa-list" /> Offers</>
+          : props.location.pathname.includes("settings") ? <><i className="fas fa-cog" /> Settings</>
+          : props.location.pathname.includes("create") ? <><i className="fas fa-pencil-alt" /> Create Ad</>
+          :<><i className="fas fa-chart-line" /> Dashboard</>}
         </Header>
+        {!props.location.pathname.includes("dashboard/") &&
         <select
           name="selected_offer"
           value={props.currentOffer}
@@ -48,6 +51,7 @@ const DashboardTop = props => {
           </>
             }
         </select>
+        }
         {props.currentUser.acct_type === "advertiser" &&
         <Link to="/dashboard/create-ad">Create Advertisement</Link>}
       </LeftSection>
