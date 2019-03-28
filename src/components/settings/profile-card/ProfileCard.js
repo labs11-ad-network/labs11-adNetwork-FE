@@ -6,6 +6,8 @@ import {
   ProfileCardBottom
 } from "../settingsStyles.js";
 
+import Checkout from "../../checkout/Checkout.js";
+
 const ProfileCard = props => {
   const { currentUser } = props;
   const { offers, ads, agreements } = props.currentUser;
@@ -20,6 +22,9 @@ const ProfileCard = props => {
           <h1>{currentUser.name}</h1>
           <h2>{currentUser.acct_type}</h2>
           <h3>{currentUser.email}</h3>
+          <Checkout
+            btn_text="Change Payment Method"
+          />
         </div>
       </ProfileCardTop>
       <ProfileCardBottom>

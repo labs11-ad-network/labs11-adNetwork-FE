@@ -41,6 +41,21 @@ export const ProfileCardTop = styled.div`
             font-size: 1.2rem;
             margin-top: 4px;
         }
+        button{
+            font-size: 0.8rem;
+            width: 100%;
+            margin-top: 10px;
+            padding: 5px 0;
+            background-color: #0A88DC;
+            color: #FFFFFF;
+            border: unset;
+            border-radius: 3px;
+            transition: .2s;
+            &:hover{
+                cursor: pointer;
+                background-color: #097AC6;
+            }
+        }
     }
 `;
 

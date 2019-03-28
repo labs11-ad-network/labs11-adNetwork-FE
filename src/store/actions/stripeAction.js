@@ -25,9 +25,9 @@ export const CHARGE_CUSTOMER_START = "CHARGE_CUSTOMER_START";
 export const CHARGE_CUSTOMER_SUCCESS = "CHARGE_CUSTOMER_SUCCESS";
 export const CHARGE_CUSTOMER_FAILURE = "CHARGE_CUSTOMER_FAILURE";
 
-export const chargeCustomer = () => dispatch => {
+export const chargeCustomer = amount => dispatch => {
     dispatch({ type: CHARGE_CUSTOMER_START })
-    axios.post(`${URL}/api/checkout/charge_customer`)
+    axios.post(`${URL}/api/checkout/charge_customer`, {amount})
         .then(res => {
             dispatch({ type: CHARGE_CUSTOMER_SUCCESS, payload: res.data })
         })
