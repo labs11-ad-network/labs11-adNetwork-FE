@@ -34,8 +34,11 @@ const GraphContainer = styled.div`
             .safari{
                 background-color: #00C49F
             }
-            .other{
+            .edge{
                 background-color: #FF8042
+            }
+            .other{
+                background-color: gray
             }
             p{
                 margin-left: 5px;
@@ -47,13 +50,14 @@ const GraphContainer = styled.div`
 
 export const BrowserInfo = props => {
     const data = [
-        { name: 'Chrome', value: props.data.filter(i => i.browser === 'Chrome').length },
-        { name: 'Safari', value: props.data.filter(i => i.browser === 'Safari').length },
-        { name: 'Firefox', value: props.data.filter(i => i.browser === 'Firefox').length },
-        { name: 'Edge', value: props.data.filter(i => i.browser === 'Edge').length },
+        { name: 'Chrome', value: props.data.chrome },
+        { name: 'Safari', value: props.data.safari },
+        { name: 'Firefox', value: props.data.firefox },
+        { name: 'Edge', value: props.data.edge },
+        { name: 'Other', value: props.data.other },
     ];
     
-    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+    const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#686868'];
     
     const RADIAN = Math.PI / 180;
     
@@ -103,8 +107,12 @@ export const BrowserInfo = props => {
                 <p>Safari</p>
             </div>
             <div className="label">
-                <div className="circle other"/>
+                <div className="circle edge"/>
                 <p>Edge</p>
+            </div>
+            <div className="label">
+                <div className="circle other"/>
+                <p>Other</p>
             </div>
         </div>
     </GraphContainer>

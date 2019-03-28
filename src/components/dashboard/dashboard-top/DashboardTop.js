@@ -13,15 +13,20 @@ const DashboardTop = props => {
     <NavContainer>
       <LeftSection>
         <Header>
-          <i className="fas fa-chart-line" />
-          Dashboard
+          {props.location.pathname.includes("offers") ? <><i className="fas fa-list" /> Offers</>
+          : props.location.pathname.includes("settings") ? <><i className="fas fa-cog" /> Settings</>
+          : props.location.pathname.includes("create") ? <><i className="fas fa-pencil-alt" /> Create Ad</>
+          :<><i className="fas fa-chart-line" /> Dashboard</>}
         </Header>
+        {!props.location.pathname.includes("dashboard/") &&
         <select
           name="selected_offer"
           value={props.currentOffer}
           onChange={props.handleOfferSelect}
           required
         >
+        {props.currentUser.acct_type === "advertiser" ?
+          <>
           <option value="">All Offers</option>
           {props.userOffers.length &&
             props.userOffers.map(offer => {
@@ -31,21 +36,33 @@ const DashboardTop = props => {
                 </option>
               );
             })}
+          </>:
+          <>
+          <option value="">All Agreements</option>
+          {props.agreements.length && 
+            props.agreements.map(a => {
+              return(
+                <option key={a.id} value={a.id}>
+                  {a.name}
+                </option>
+              )
+            })
+          }
+          </>
+            }
         </select>
-        <Link to="/dashboard/create-ad">Create Advertisement</Link>
+        }
+        {props.currentUser.acct_type === "advertiser" &&
+        <Link to="/dashboard/create-ad">Create Advertisement</Link>}
       </LeftSection>
       <RightSection>
         {props.currentUser && (
           <>
             <i
-              className="fas fa-sync-alt"
-              onClick={e => props.refreshStats(e)}
-            />
-            <i
               className="fas fa-sign-out-alt"
               onClick={() => {
                 localStorage.clear();
-                props.history.push("/login");
+                props.history.push("/");
               }}
             />
             <div>
