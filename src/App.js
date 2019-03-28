@@ -6,9 +6,22 @@ import LandingPage from "./containers/landing-page/LandingPage.js";
 import Dashboard from "./containers/dashboard/Dashboard.js";
 import AdServer from "./containers/ad-server/AdServer.js";
 
+<<<<<<< HEAD
 import MainApp from "./containers/auth-zero/MainApp.js";
 import Callback from "./containers/auth-zero/Callback/Callback.js";
 import Auth from "./containers/auth-zero/Auth/Auth.js";
+=======
+<<<<<<< HEAD
+import MainApp from './containers/auth-zero/MainApp.js';
+import Callback from './containers/auth-zero/Callback/Callback.js';
+import Auth from './containers/auth-zero/Auth/Auth.js';
+=======
+
+import Auth from './containers/Auth-Zero/Auth/Auth';
+import Callback from './containers/Auth-Zero/Callback/Callback';
+import MainApp from './containers/Auth-Zero/MainApp';
+>>>>>>> commented out console.error in Auth.js
+>>>>>>> addddd
 
 const theme = createMuiTheme({
   palette: {
