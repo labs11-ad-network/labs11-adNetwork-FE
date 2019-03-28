@@ -35,7 +35,7 @@ const TimelineContainer = props => {
             title={`Paid`}
             createdAt={Date(p.created)}
             subtitle={`Amount: ${p.amount / 100} Last 4 Digits: ${p.payment_method_details.card.brand} ${p.payment_method_details.card.last4}`}
-            icon={<i className="fas fa-money-bill-wave"/>}
+            icon={<i className="fas fa-receipt"/>}
             style={{
               fontSize: "1rem",
               color: !p.paid && "red"
