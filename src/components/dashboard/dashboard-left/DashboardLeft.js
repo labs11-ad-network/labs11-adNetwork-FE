@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 import { 
     Nav,
@@ -16,10 +17,10 @@ export class DashboardNav extends Component {
     return (
       <>
         <Nav>
-          <HamburgerButton onClick={() => this.setState({
-              navOpen: !this.state.navOpen
-          })}>
-              <i className="fas fa-home"/>
+          <HamburgerButton>
+            <Link to="/">
+                <i className="fas fa-home"/>
+            </Link>
           </HamburgerButton>
           <ButtonContainer>
               <NavButton 

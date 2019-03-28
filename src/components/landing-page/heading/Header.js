@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-// import Curve from '../../../assets/curve.svg';
 import Graphs from '../../../assets/graphs.png';
 
 const HeaderContainer = styled.div`
@@ -8,11 +7,6 @@ const HeaderContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    /* .curve{
-        width: 100%;
-        height: auto;
-        margin-top:50px;
-    } */
 `;
 
 const LeftSection = styled.div`
@@ -53,7 +47,6 @@ const Header = () => {
         <RightSection>
             <img src={Graphs} alt="" draggable={false}/>
         </RightSection>
-        {/* <img src={Curve} alt="" className="curve"/> */}
     </HeaderContainer>
   )
 }

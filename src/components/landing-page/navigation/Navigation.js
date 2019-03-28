@@ -22,12 +22,12 @@ const NavBar = styled.header`
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 300px;
             button{
                 background-color: unset;
                 border: unset;
                 font-size: 1rem;
                 padding: 5px 10px;
+                margin-left: 10px;
                 border-radius: 4px;
                 text-decoration: none;
                 color: #FFFFFF;
@@ -60,10 +60,12 @@ export class Navigation extends Component {
                 <button>Home</button>
                 <button>About</button>
                 {!localStorage.id_token ?
-                <button onClick={() => this.props.login()}>Login</button> :
-                <button onClick={() => this.props.logout()}>Logout</button>
-                }
+                <>
+                <button onClick={() => this.props.login()}>Login</button> 
                 <button className="sign-up">Sign Up</button>
+                </>:
+                <button onClick={() => this.props.logout()} className="sign-up">Logout</button>
+                }
             </nav>
         </div>
       </NavBar>
