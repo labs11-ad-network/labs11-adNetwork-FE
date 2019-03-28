@@ -18,8 +18,8 @@ const theme = createMuiTheme({
     secondary: {
       main: '#F1F1F1',
     },
-  },
-  typography: { useNextVariants: true },
+  }, 
+   typography: { useNextVariants: true },
 });
 
 const auth = new Auth();
