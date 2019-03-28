@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+
 import {
     CREATE_CUSTOMER_START,
     CREATE_CUSTOMER_SUCCESS,
@@ -14,7 +16,7 @@ const initialState = {
 
 const stripeReducer = (state = initialState, action) => {
     switch(action.type){
-        
+
         case CREATE_CUSTOMER_START:
             return{
                 ...state,
@@ -22,12 +24,14 @@ const stripeReducer = (state = initialState, action) => {
             }
 
         case CREATE_CUSTOMER_SUCCESS:
+            toast.success(action.payload.status)
             return{
                 ...state,
                 isCreatingCustomer: false
             }
 
         case CREATE_CUSTOMER_FAILURE:
+            toast.error(action.payload.message)            
             return{
                 ...state,
                 isCreatingCustomer: false
@@ -40,12 +44,14 @@ const stripeReducer = (state = initialState, action) => {
             }
 
         case CHARGE_CUSTOMER_SUCCESS:
+            toast.success(action.payload.status)            
             return{
                 ...state,
                 isChargingCustomer: false
             }
 
         case CHARGE_CUSTOMER_FAILURE:
+            toast.error(action.payload.message)                        
             return{
                 ...state,
                 isChargingCustomer: false

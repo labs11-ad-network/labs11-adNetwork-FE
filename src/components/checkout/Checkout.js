@@ -3,14 +3,12 @@ import { connect } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 
 import {
-  createCustomer,
-  chargeCustomer
+  createCustomer
 } from '../../store/actions/stripeAction.js';
 
 class Checkout extends React.Component {
   onToken = token => {
     this.props.createCustomer()
-    // this.props.chargeCustomer()
   };
 
   render() {
@@ -30,7 +28,6 @@ class Checkout extends React.Component {
 export default connect(
   null,
   {
-    createCustomer,
-    chargeCustomer
+    createCustomer
   }
 )(Checkout)
