@@ -44,7 +44,7 @@ export const OFFER_ANALYTICS_FAILURE = "OFFER_ANALYTICS_FAILURE";
 export const getOfferAnalytics = offerId => dispatch => {
   dispatch({ type: OFFER_ANALYTICS_START });
   axios
-    .get(`${URL}/api/analytics/${id}`)
+    .get(`${URL}/api/analytics/${offerId}`)
     .then(res => {
       dispatch({ type: OFFER_ANALYTICS_SUCCESS, payload: res.data });
     })
