@@ -58,13 +58,15 @@ export class Navigation extends Component {
             <h1>Creepy Ads</h1>
             <nav>
                 <button>Home</button>
-                <button>About</button>
                 {!localStorage.id_token ?
                 <>
-                <button onClick={() => this.props.login()}>Login</button> 
-                <button className="sign-up">Sign Up</button>
+                    <button onClick={() => this.props.login()}>Login</button> 
+                    <button className="sign-up">Sign Up</button>
                 </>:
-                <button onClick={() => this.props.logout()} className="sign-up">Logout</button>
+                <>
+                    <button onClick={() => this.props.history.push('/dashboard')}>Dashboard</button>
+                    <button onClick={() => this.props.logout()} className="sign-up">Logout</button>
+                </>
                 }
             </nav>
         </div>

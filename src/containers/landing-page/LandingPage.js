@@ -23,7 +23,7 @@ class LandingPage extends Component {
     render() {
         return (
             <div>
-                <Navigation login={this.login} logout={this.logout}/>
+                <Navigation login={this.login} logout={this.logout} history={this.props.history}/>
                 <Header/>
                 <button onClick={() => {
                     localStorage.setItem('acct_type', "advertiser")
