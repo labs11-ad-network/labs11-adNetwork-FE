@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { changeUserData } from "../../../store/actions/authAction.js";
-import { Form } from "../settingsStyles.js";
+import { changeUserData } from "../../../../store/actions/authAction.js";
+import { Form } from "../../settingsStyles.js";
 
 class UserSettingsForm extends Component {
   state = {

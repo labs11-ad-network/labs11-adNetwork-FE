@@ -2,7 +2,7 @@ import React from "react";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
-import UserSettingsForm from "./UserSettingsForm.js";
+import UserSettingsForm from "./user-settings/UserSettingsForm.js";
 import { MainTabContainer } from "../settingsStyles.js";
 
 class TabContainer extends React.Component {
