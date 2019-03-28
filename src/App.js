@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+import LandingPage from './containers/landing-page/LandingPage.js';
 import Dashboard from './containers/dashboard/Dashboard.js';
 import AdServer from './containers/ad-server/AdServer.js';
 
@@ -33,6 +34,7 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">
+          <Route exact path="/" render={props => <LandingPage auth={auth} {...props} />} />        
           <Route exact path="/" render={props => <MainApp auth={auth} {...props} />} />
           <Route
             path="/callback"

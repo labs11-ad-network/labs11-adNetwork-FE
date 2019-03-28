@@ -2,7 +2,7 @@ import React from "react";
 import Checkout from "../../checkout/Checkout.js";
 import { connect } from 'react-redux';
 
-import { chargeCustomer } from '../../../store/actions/stripeAction.js';
+import { chargeCustomer, payoutCustomer } from '../../../store/actions/stripeAction.js';
 import { BillingCardContainer } from "../settingsStyles.js";
 
 const BillingCard = props => {
@@ -13,7 +13,9 @@ const BillingCard = props => {
       <div>
         <h1>Current Balance</h1>
         <h2>{`$ ${amount} USD`}</h2>
-        <button>Withdraw</button>
+        <button onClick={() => {
+          props.payoutCustomer()
+        }}>Withdraw</button>
       </div> 
       : acct_type === "advertiser" &&
       <div>
@@ -21,7 +23,7 @@ const BillingCard = props => {
         <h2>{`$ ${amount} USD`}</h2>
         {stripe_cust_id ? 
         <button onClick={() => {
-          props.chargeCustomer(Math.floor(Math.abs(amount) * 100))
+          props.chargeCustomer()
         }}>
           Pay Now
         </button>:
@@ -38,6 +40,7 @@ const BillingCard = props => {
 export default connect(
   null,
   {
-    chargeCustomer
+    chargeCustomer,
+    payoutCustomer
   }
 )(BillingCard);

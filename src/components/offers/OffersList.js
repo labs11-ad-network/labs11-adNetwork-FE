@@ -33,7 +33,7 @@ class OffersList extends React.Component {
     tabValue: 0,
     currentAgreement: 0,
     offer_id: "",
-    offerOptions: {
+    advertiserOfferOptions: {
       filterType: "checkbox",
       onlyOneRowCanBeSelected: true,
       rowCursorHand: true,
@@ -49,9 +49,16 @@ class OffersList extends React.Component {
         }
       }
     },
+    affiliateOfferOptions: {
+      filterType: "checkbox",
+      onlyOneRowCanBeSelected: true,
+      rowCursorHand: true,
+      showSelectedRowsToolbar: false
+    },
     adOptions: {
       filterType: "checkbox",
-      onlyOneRowCanBeSelected: true
+      onlyOneRowCanBeSelected: true,
+      showSelectedRowsToolbar: false
     }
   };
 
@@ -243,7 +250,7 @@ class OffersList extends React.Component {
 
   render() {
     const { classes, offerAds, offers, currentUser } = this.props;
-    const { tabValue, offerOptions, adOptions } = this.state;
+    const { tabValue, advertiserOfferOptions, affiliateOfferOptions, adOptions } = this.state;
 
     return (
       <div className={classes.root}>
@@ -262,7 +269,7 @@ class OffersList extends React.Component {
                 ? this.affiliateOfferColumns
                 : this.advertiserOfferColumns
             }
-            options={offerOptions}
+            options={currentUser.acct_type === "affiliate" ? affiliateOfferOptions : advertiserOfferOptions}
           />
         )}
 

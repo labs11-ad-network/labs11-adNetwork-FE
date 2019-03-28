@@ -23,7 +23,9 @@ const ProfileCard = props => {
           <h2>{currentUser.acct_type}</h2>
           <h3>{currentUser.email}</h3>
           <Checkout
-            btn_text="Change Payment Method"
+            btn_text={currentUser.acct_type === "advertiser" ? 
+            "Change Payment Info" :
+            "Change Payout Method" }
           />
         </div>
       </ProfileCardTop>

@@ -5,7 +5,7 @@ export const ProfileCardContainer = styled.div`
     flex-direction: column;
     background-color: #FFFFFF;
     width: 420px;
-    height: 200px;
+    min-height: 200px;
     padding: 15px;
     margin: 15px;
     border-radius: 8px;
@@ -14,22 +14,23 @@ export const ProfileCardContainer = styled.div`
 
 export const ProfileCardTop = styled.div`
     display: flex;
+    align-items: center;
     width: 100%;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     img{
         background-color: #0A88DC;
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
         margin: 0 15px 10px 0;
         border-radius: 70px;
-        border: 2px solid rgba(0, 0, 0, 0.1)
+        border: 3px solid rgba(0, 0, 0, 0.1)
     }
     div{
+        margin: auto 0;
         h1{
             font-size: 1rem;
             font-weight: 600;
-            margin-top: 5px;
         }
         h2{
             font-size: 1rem;
