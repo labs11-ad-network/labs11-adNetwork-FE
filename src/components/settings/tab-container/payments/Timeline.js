@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import { Timeline, TimelineEvent, TimelineBlip } from "react-event-timeline";
+import { Timeline, TimelineEvent } from "react-event-timeline";
 
 const TimelineContainer = props => {
   const { currentUser, payouts, payments } = props
