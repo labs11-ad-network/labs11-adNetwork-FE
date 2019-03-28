@@ -5,6 +5,7 @@ import Header from "../../components/landing-page/heading/Header.js";
 import styled from "styled-components";
 import checks from "../../assets/checks.svg";
 import desktopGiff from "../../assets/desktopAds.gif";
+import CustomerStoriesCarousel from "../../components/landing-page/CustomerStoriesCarousel.js";
 const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 
@@ -140,15 +141,16 @@ const LandingPageStyle = styled.div`
     }
   }
   @media (min-width: 940px) {
-    .landing-parent:last-child {
-      padding: 0 0 1000px 0;
-    }
     .landing-parent:nth-child(2) {
       flex-direction: row-reverse;
     }
     .landing-item-left {
       max-width: 500px;
     }
+  }
+
+  .costumer-stories {
+    padding-bottom: 100vh;
   }
 `;
 class LandingPage extends Component {
@@ -174,7 +176,7 @@ class LandingPage extends Component {
         /> */}
         <Header />
         <section className="landing-info container">
-          {/* -------------------------- first item -------------------------- */}
+          {/* ------------ first item ------------ */}
           <div className="landing-parent">
             <div className="landing-item-left">
               <h5 className="blue-subtitle first-blue-subtitle">
@@ -208,7 +210,7 @@ class LandingPage extends Component {
               />
             </div>
           </div>
-          {/* -------------------------- second item -------------------------- */}
+          {/* ------------ second item ------------ */}
           <div className="landing-parent">
             <div className="landing-item-left landing-item-second">
               <h5 className="blue-subtitle first-blue-subtitle">
@@ -242,7 +244,7 @@ class LandingPage extends Component {
               />
             </div>
           </div>
-          {/* -------------------------- third item -------------------------- */}
+          {/* ------------ third item ------------ */}
           <div className="landing-parent">
             <div className="landing-item-left ">
               <h5 className="blue-subtitle first-blue-subtitle">
@@ -277,7 +279,14 @@ class LandingPage extends Component {
           </div>
         </section>
 
-        <button
+        <section className="costumer-stories">
+          <h5 className="blue-subtitle first-blue-subtitle">
+            Earn even more with mobile and App traffic
+          </h5>
+          <CustomerStoriesCarousel />
+        </section>
+
+        {/* <button
           type="button"
           onClick={() => {
             localStorage.setItem("acct_type", "advertiser");
@@ -292,7 +301,7 @@ class LandingPage extends Component {
           }}
         >
           Affiliate
-        </button>
+        </button> */}
       </LandingPageStyle>
     );
   }
