@@ -8,8 +8,6 @@ class UserSettingsForm extends Component {
   state = {
     userData: {
       name: "",
-      email: "",
-      image_url: "",
       nickname: "",
       phone: "",
       user_img: ""
@@ -17,14 +15,13 @@ class UserSettingsForm extends Component {
   };
 
   componentDidMount() {
-    const { name, email, image_url, nickname, phone } = this.props.currentUser;
+    const { name, nickname, phone } = this.props.currentUser;
     this.setState({
       userData: {
         name,
-        email,
-        image_url,
         nickname,
-        phone
+        phone: phone || "",
+        user_img: ""
       }
     });
   }
@@ -41,19 +38,19 @@ class UserSettingsForm extends Component {
 
   handleFileChange = e => {
     this.setState({
-      userData:{
+      userData: {
         ...this.state.userData,
-      user_img: e.target.files[0]
+        user_img: e.target.files[0]
       }
-    })
-  }
+    });
+  };
 
   changeUserData = e => {
     e.preventDefault();
     this.props.changeUserData(this.state.userData);
   };
   render() {
-    const { name, email, image_url, nickname, phone } = this.state.userData;
+    const { name, nickname, phone } = this.state.userData;
     return (
       <Form onSubmit={this.changeUserData}>
         <div>
@@ -63,22 +60,6 @@ class UserSettingsForm extends Component {
             placeholder="Name"
             name="name"
             value={name}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="email" />
-          <input
-            type="email"
-            placeholder="Email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="image_url" />
-          <input
-            type="text"
-            placeholder="Image Url"
-            name="image_url"
-            value={image_url}
             onChange={this.handleChange}
           />
           <label htmlFor="nickname" />
