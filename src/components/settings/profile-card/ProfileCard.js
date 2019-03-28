@@ -6,12 +6,14 @@ import {
   ProfileCardBottom
 } from "../settingsStyles.js";
 
+import Checkout from "../../checkout/Checkout.js";
+
 const ProfileCard = props => {
   const { currentUser } = props;
+  const { offers, ads, agreements } = props.currentUser;
   if (!currentUser) {
     return <h1>No User Found</h1>;
   }
-  
   return (
     <ProfileCardContainer>
       <ProfileCardTop>
@@ -20,19 +22,22 @@ const ProfileCard = props => {
           <h1>{currentUser.name}</h1>
           <h2>{currentUser.acct_type}</h2>
           <h3>{currentUser.email}</h3>
+          <Checkout
+            btn_text="Change Payment Method"
+          />
         </div>
       </ProfileCardTop>
       <ProfileCardBottom>
         <div>
-          <h1>05</h1>
+          <h1>{offers}</h1>
           <h2>Offers</h2>
         </div>
         <div>
-          <h1>15</h1>
+          <h1>{ads}</h1>
           <h2>Advertisements</h2>
         </div>
         <div>
-          <h1>40</h1>
+          <h1>{agreements}</h1>
           <h2>Agreements</h2>
         </div>
       </ProfileCardBottom>

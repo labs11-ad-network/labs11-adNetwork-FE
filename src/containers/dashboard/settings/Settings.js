@@ -16,7 +16,7 @@ class Settings extends Component {
       <PageContainer>
         <div>
           <ProfileCard currentUser={this.props.currentUser}/>
-          <BillingCard/>
+          <BillingCard currentUser={this.props.currentUser}/>
         </div>
         <TabContainer />
       </PageContainer>

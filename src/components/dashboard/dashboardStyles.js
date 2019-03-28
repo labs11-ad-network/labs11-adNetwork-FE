@@ -9,14 +9,21 @@ export const Nav = styled.div`
     background-color: #0A88DC;
 `;
 
-export const HamburgerButton = styled.button`
+export const HamburgerButton = styled.div`
     width: 65px;
     height: 65px;
-    border: unset;
     background-color: #0B6FB2;
-    color: white;
-    font-size: 1.7rem;
     transition: .2s;
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 65px;
+        height: 65px;
+        text-decoration: none;
+        color: white;
+        font-size: 1.7rem;
+    }
     &:hover{
         cursor: pointer;
         background-color: #0B67A4;

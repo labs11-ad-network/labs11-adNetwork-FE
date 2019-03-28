@@ -28,8 +28,16 @@ export const CHANGE_USER_FAILURE = "CHANGE_USER_FAILURE";
 
 export const changeUserData = user => dispatch => {
   dispatch({ type: CHANGE_USER_START });
+  let newUser = new FormData();
+  newUser.append("name", user.name);
+  if (user.user_img) {
+    newUser.append("image_url", user.user_img);
+  }
+  newUser.append("nickname", user.nickname);
+  newUser.append("phone", user.phone);
+
   axios
-    .put(`${URL}/api/users`, user)
+    .put(`${URL}/api/users`, newUser)
     .then(res => {
       dispatch({ type: CHANGE_USER_SUCCESS, payload: { res: res.data, user } });
     })
@@ -39,7 +47,7 @@ export const changeUserData = user => dispatch => {
     .catch(err => {
       dispatch({
         type: CHANGE_USER_FAILURE,
-        payload: err.response.data
+        payload: err.response.message
       });
     });
 };

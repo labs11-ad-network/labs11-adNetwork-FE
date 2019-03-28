@@ -14,22 +14,23 @@ export const ProfileCardContainer = styled.div`
 
 export const ProfileCardTop = styled.div`
     display: flex;
+    align-items: center;
     width: 100%;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     img{
         background-color: #0A88DC;
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
         margin: 0 15px 10px 0;
         border-radius: 70px;
-        border: 1px solid rgba(0, 0, 0, 0.1)
+        border: 3px solid rgba(0, 0, 0, 0.1)
     }
     div{
+        margin: auto 0;
         h1{
             font-size: 1rem;
             font-weight: 600;
-            margin-top: 5px;
         }
         h2{
             font-size: 1rem;
@@ -40,6 +41,21 @@ export const ProfileCardTop = styled.div`
         h3{
             font-size: 1.2rem;
             margin-top: 4px;
+        }
+        button{
+            font-size: 0.8rem;
+            width: 100%;
+            margin-top: 10px;
+            padding: 5px 0;
+            background-color: #0A88DC;
+            color: #FFFFFF;
+            border: unset;
+            border-radius: 3px;
+            transition: .2s;
+            &:hover{
+                cursor: pointer;
+                background-color: #097AC6;
+            }
         }
     }
 `;
