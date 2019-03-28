@@ -13,6 +13,7 @@
     "moment": "^2.24.0",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-event-timeline": "^1.6.3",
     "react-images-upload": "^1.2.6",
     "react-livechat": "^1.1.1",
     "react-redux": "^6.0.1",
