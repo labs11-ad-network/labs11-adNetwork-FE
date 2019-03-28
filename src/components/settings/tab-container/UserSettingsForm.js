@@ -120,5 +120,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { changeUserData }
+  { 
+    changeUserData,
+  }
 )(UserSettingsForm);

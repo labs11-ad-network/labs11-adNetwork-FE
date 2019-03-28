@@ -21,13 +21,12 @@ const BillingCard = props => {
         <h2>{`$ ${amount} USD`}</h2>
         {stripe_cust_id ? 
         <button onClick={() => {
-          props.chargeCustomer(Math.abs(amount).toString().split('.').join(''))
+          props.chargeCustomer(Math.floor(Math.abs(amount) * 100))
         }}>
           Pay Now
         </button>:
         <Checkout 
           btn_text="Add Payment Method"
-          amount={Math.abs(amount).toString().split('.').join('')}
         />
         }
       </div>
