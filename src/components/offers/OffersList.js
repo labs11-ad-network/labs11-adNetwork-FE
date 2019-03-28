@@ -31,8 +31,9 @@ const styles = theme => ({
 class OffersList extends React.Component {
   state = {
     tabValue: 0,
+    currentAgreement: 0,
     offer_id: "",
-    offerOptions: {
+    advertiserOfferOptions: {
       filterType: "checkbox",
       onlyOneRowCanBeSelected: true,
       rowCursorHand: true,
@@ -48,9 +49,16 @@ class OffersList extends React.Component {
         }
       }
     },
+    affiliateOfferOptions: {
+      filterType: "checkbox",
+      onlyOneRowCanBeSelected: true,
+      rowCursorHand: true,
+      showSelectedRowsToolbar: false
+    },
     adOptions: {
       filterType: "checkbox",
-      onlyOneRowCanBeSelected: true
+      onlyOneRowCanBeSelected: true,
+      showSelectedRowsToolbar: false
     }
   };
 
@@ -81,15 +89,6 @@ class OffersList extends React.Component {
       }
     },
     {
-      name: "Budget",
-      field: "budget",
-      options: {
-        customBodyRender: value => {
-          return `$${value.budget} ${value.currency}`;
-        }
-      }
-    },
-    {
       name: "Price Per Click",
       field: "price_per_click",
       options: {
@@ -108,11 +107,25 @@ class OffersList extends React.Component {
       }
     },
     {
-      name: "Accept Agreement",
+      name: "Agreement",
       options: {
         customBodyRender: value => {
           return (
-            <button onClick={() => this.props.createAgreement(value)}>
+            value.accepted ?
+            <button
+              onClick={() => {
+                this.setState({
+                  tabValue: 1,
+                  currentAgreement: value.agreement_id
+                });
+                this.props.getOfferAds(value.id);
+              }}
+            >
+              View Ads
+            </button>:
+            <button onClick={() => {
+              this.props.createAgreement(value);
+            }}>
               Accept Agreement
             </button>
           );
@@ -208,35 +221,6 @@ class OffersList extends React.Component {
     }
   ];
 
-  agreementsColumns = [
-    {
-      name: "Name",
-      field: "name",
-      options: {
-        width: 70
-      }
-    },
-    {
-      name: "View Ads",
-      options: {
-        customBodyRender: value => {
-          return (
-            <button
-              onClick={() => {
-                this.setState({
-                  tabValue: 2
-                });
-                this.props.getOfferAds(value.offer_id);
-              }}
-            >
-              View Ads
-            </button>
-          );
-        }
-      }
-    }
-  ];
-
   adColumns = [
     {
       name: "Size",
@@ -265,42 +249,31 @@ class OffersList extends React.Component {
   ];
 
   render() {
-    const { classes, offerAds, offers, agreements, currentUser } = this.props;
-    const { tabValue, offerOptions, adOptions } = this.state;
+    const { classes, offerAds, offers, currentUser } = this.props;
+    const { tabValue, advertiserOfferOptions, affiliateOfferOptions, adOptions } = this.state;
 
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
             <Tab label="Offers" className={classes.tab} />
-            {currentUser.acct_type === "affiliate" && (
-              <Tab label="Agreements" className={classes.tab} />
-            )}
-            <Tab label="Ads" className={classes.tab} />
+            <Tab label="Ads" className={classes.tab} disabled />
           </Tabs>
         </AppBar>
         {tabValue === 0 && (
           <MaterialDatatable
             title={"Offers List"}
-            data={offers}
+            data={currentUser.acct_type === "affiliate" ? offers.filter(offer => offer.status) : offers}
             columns={
               currentUser.acct_type === "affiliate"
                 ? this.affiliateOfferColumns
                 : this.advertiserOfferColumns
             }
-            options={offerOptions}
+            options={currentUser.acct_type === "affiliate" ? affiliateOfferOptions : advertiserOfferOptions}
           />
         )}
 
-        {tabValue === 1 && currentUser.acct_type === "affiliate" && (
-          <MaterialDatatable
-            title={"Agreements List"}
-            data={agreements}
-            columns={this.agreementsColumns}
-            options={offerOptions}
-          />
-        )}
-        {tabValue === (currentUser.acct_type === "advertiser" ? 1 : 2) && (
+        {tabValue === 1 && (
           <MaterialDatatable
             title={"Ads List"}
             data={offerAds}
@@ -312,9 +285,14 @@ class OffersList extends React.Component {
                       name: "Code Snippet",
                       options: {
                         customBodyRender: value => {
-                          return `<iframe src="https://kieranlabs.netlify.com/ad/${
-                            value.id
-                          }"></iframe>`;
+                          return `<iframe src="https://kieranlabs.netlify.com/ad/${value.id}/${this.state.currentAgreement}" 
+                                    frameborder="0" 
+                                    scrolling="no" 
+                                    ${value.size.includes('horizontal') ? 'height="100" width="670"' 
+                                    : value.size.includes('vertical') ? 'height="670" width="100"' 
+                                    : value.size.includes('square') && 'height="265" width="265"'}
+                                  ></iframe>`
+                          ;
                         }
                       }
                     }

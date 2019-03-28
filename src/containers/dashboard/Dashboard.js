@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import { getOfferAnalytics } from "../../store/actions/analyticsAction.js";
 import { getUserOffers } from "../../store/actions/offersAction.js";
 import { getUserData } from "../../store/actions/authAction.js";
+import { getAgreements } from "../../store/actions/agreementsAction.js";
 import privateRoute from "../auth-HOC";
 import DashboardLeft from "../../components/dashboard/dashboard-left/DashboardLeft.js";
 import TopNav from "../../components/dashboard/dashboard-top/DashboardTop.js";
@@ -14,7 +15,6 @@ import Analytics from "./analytics/Analytics.js";
 import AdGenerator from "./ad-generator/AdGenerator.js";
 import Offers from "./offers/Offers.js";
 import Settings from "./settings/Settings.js";
-
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -34,16 +34,16 @@ const DashboardContainer = styled.div`
 class Dashboard extends Component {
   state = {
     currentOffer: "",
-
   };
 
   componentDidMount() {
     this.props.getUserData();
     this.props.getUserOffers();
+    this.props.getAgreements();
     this.props.getOfferAnalytics(this.state.currentOffer);
     this.analyticsInterval = setInterval(() => {
       if (this.state.currentOffer) {
-        this.refreshStats();
+        this.props.getOfferAnalytics(this.state.currentOffer);
       } else {
         return null;
       }
@@ -54,10 +54,6 @@ class Dashboard extends Component {
     clearInterval(this.analyticsInterval);
   }
 
-  refreshStats = e => {
-    this.props.getOfferAnalytics(this.state.currentOffer);
-  };
-
   handleOfferSelect = e => {
     this.props.getOfferAnalytics(e.target.value);
     this.setState({
@@ -66,8 +62,6 @@ class Dashboard extends Component {
   };
 
   render() {
-
-
     return (
       <DashboardContainer>
         <DashboardLeft />
@@ -75,7 +69,7 @@ class Dashboard extends Component {
           <TopNav
             {...this.props}
             handleOfferSelect={this.handleOfferSelect}
-            refreshStats={this.refreshStats}
+            agreements={this.props.agreements}
           />
           <div className="dashboard-view">
             <Route
@@ -113,7 +107,8 @@ const mapStateToProps = state => {
   return {
     userOffers: state.offersReducer.userOffers,
     currentUser: state.authReducer.currentUser,
-    offerAnalytics: state.analyticsReducer.offerAnalytics
+    offerAnalytics: state.analyticsReducer.offerAnalytics,
+    agreements: state.agreementsReducer.agreements
   };
 };
 
@@ -123,5 +118,6 @@ export default connect(
     getOfferAnalytics,
     getUserOffers,
     getUserData,
+    getAgreements
   }
 )(privateRoute(Dashboard));

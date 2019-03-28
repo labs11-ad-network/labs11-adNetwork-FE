@@ -26,25 +26,7 @@ class MainApp extends Component {
 
     return (
       <div>
-        <button
-          onClick={this.goTo.bind(this, 'dashboard')}
-        >
-          Dashboard
-        </button>
-        
-        {!localStorage.id_token &&
-          <button
-            onClick={this.login.bind(this)}
-          >
-            Log In
-          </button>}
 
-        {localStorage.id_token &&
-          <button
-            onClick={this.logout.bind(this)}
-          >
-            Log Out
-          </button>}
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import { toast } from 'react-toastify';
 
 import{
-  GET_USER_AGREEMENTS_START,
-  GET_USER_AGREEMENTS_SUCCESS,
-  GET_USER_AGREEMENTS_FAILURE,
+  GET_AGREEMENTS_START,
+  GET_AGREEMENTS_SUCCESS,
+  GET_AGREEMENTS_FAILURE,
   CREATE_AGREEMENT_START,
   CREATE_AGREEMENT_SUCCESS,
   CREATE_AGREEMENT_FAILURE,
@@ -16,7 +16,7 @@ import{
 } from '../actions/agreementsAction';
 
 const initialState = {
-  userAgreements: [],
+  agreements: [],
   isFetchingAgreements: false,
   isCreatingAgreement: false,
   isUpdatingAgreement: false,
@@ -26,20 +26,20 @@ const initialState = {
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
 
-    case GET_USER_AGREEMENTS_START:
+    case GET_AGREEMENTS_START:
       return{
         ...state,
         isFetchingAgreements: true
       }
 
-    case GET_USER_AGREEMENTS_SUCCESS:
+    case GET_AGREEMENTS_SUCCESS:
       return{
         ...state,
-        userAgreements: action.payload,
+        agreements: action.payload,
         isFetchingAgreements: false,
       }
 
-    case GET_USER_AGREEMENTS_FAILURE:
+    case GET_AGREEMENTS_FAILURE:
       return{
         ...state,
         isFetchingAgreements: false,

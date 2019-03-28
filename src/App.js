@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Route } from "react-router-dom"
+import { Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
+import LandingPage from './containers/landing-page/LandingPage.js';
 import Dashboard from './containers/dashboard/Dashboard.js';
 import AdServer from './containers/ad-server/AdServer.js';
 
-
-import Auth from './containers/Auth-Zero/Auth/Auth';
-import Callback from './containers/Auth-Zero/Callback/Callback';
-import MainApp from './containers/Auth-Zero/MainApp';
+import MainApp from './containers/auth-zero/MainApp.js';
+import Callback from './containers/auth-zero/Callback/Callback.js';
+import Auth from './containers/auth-zero/Auth/Auth.js';
 
 const theme = createMuiTheme({
   palette: {
@@ -34,8 +34,8 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">
-
-          <Route path="/" render={props => <MainApp auth={auth} {...props} />} />
+          <Route exact path="/" render={props => <LandingPage auth={auth} {...props} />} />        
+          <Route exact path="/" render={props => <MainApp auth={auth} {...props} />} />
           <Route
             path="/callback"
             render={props => {
@@ -45,7 +45,7 @@ class App extends Component {
           />
 
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/ad/:id" component={AdServer} />
+          <Route path="/ad/:id/:agreement_id" component={AdServer} />
         </div>
       </MuiThemeProvider>
     );

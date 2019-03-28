@@ -1,46 +1,55 @@
-import React from 'react';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+import React from "react";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
 
-import {
-    MainTabContainer
-} from '../settingsStyles.js';
+import UserSettingsForm from "./user-settings/UserSettingsForm.js";
+import { MainTabContainer } from "../settingsStyles.js";
+import Timeline from "./payments/Timeline.js";
 
-class TabContainer extends React.Component{
+class TabContainer extends React.Component {
   state = {
-    tabValue: 0,
+    tabValue: 0
   };
-    
+
   handleChange = (event, tabValue) => {
     this.setState({ tabValue });
   };
 
-  render(){
+  render() {
+
+    const { tabValue } = this.state;
+    const { currentUser, payments, payouts } = this.props;
+
     return (
-    <MainTabContainer>
-      <Tabs
-        value={this.state.tabValue}
-        indicatorColor="primary"
-        textColor="primary"
-        onChange={this.handleChange}
-      >
-      <Tab label="User Settings"/>
-      <Tab label="Payments"/>
-      </Tabs>
+      <MainTabContainer>
+        <Tabs
+          value={tabValue}
+          indicatorColor="primary"
+          textColor="primary"
+          onChange={this.handleChange}
+        >
+          <Tab label="User Settings" />
+          <Tab label={currentUser.acct_type === "advertiser" ? "Payments" : "Payouts"} />
+        </Tabs>
 
-      {this.state.tabValue === 0 && 
-      <div> 
-        <h1>This is user Settings</h1>
-      </div>}
+        {tabValue === 0 && (
+          <div>
+            <UserSettingsForm />
+          </div>
+        )}
 
-      {this.state.tabValue === 1 && 
-      <div> 
-        <h1>This is user Payments</h1>
-      </div>}
-
-    </MainTabContainer>
-    )
+        {tabValue === 1 && (
+          <div>
+            <Timeline 
+              payouts={payouts}
+              payments={payments}
+              currentUser={currentUser}
+            />
+          </div>
+        )}
+      </MainTabContainer>
+    );
   }
 }
 
-export default TabContainer
+export default TabContainer;
