@@ -9,13 +9,23 @@ import {
     CHARGE_CUSTOMER_FAILURE,
     PAYOUT_CUSTOMER_START,
     PAYOUT_CUSTOMER_SUCCESS,
-    PAYOUT_CUSTOMER_FAILURE
+    PAYOUT_CUSTOMER_FAILURE,
+    GET_PAYOUT_START,
+    GET_PAYOUT_SUCCESS,
+    GET_PAYOUT_FAILURE,
+    GET_PAYMENTS_START,
+    GET_PAYMENTS_SUCCESS,
+    GET_PAYMENTS_FAILURE
 } from '../actions/stripeAction.js';
 
 const initialState = {
+    payouts: [],
+    payments: [],
     isCreatingCustomer: false,
     isChargingCustomer: false,
     isPayingCustomer: false,
+    isGettingPayouts: false,
+    isGettingPayments: false
 }
 
 const stripeReducer = (state = initialState, action) => {
@@ -79,6 +89,44 @@ const stripeReducer = (state = initialState, action) => {
             return{
                 ...state,
                 isPayingCustomer: false
+            }
+
+        case GET_PAYOUT_START:
+            return{
+                ...state,
+                isGettingPayouts: true
+            }
+
+        case GET_PAYOUT_SUCCESS:
+            return{
+                ...state,
+                payouts: action.payload.payouts.data,
+                isGettingPayouts: false
+            }
+
+        case GET_PAYOUT_FAILURE:
+            return{
+                ...state,
+                isGettingPayouts: false
+            }
+
+        case GET_PAYMENTS_START:
+            return{
+                ...state,
+                isGettingPayments: true
+            }
+
+        case GET_PAYMENTS_SUCCESS:
+            return{
+                ...state,
+                payments: action.payload,
+                isGettingPayments: false
+            }
+
+        case GET_PAYMENTS_FAILURE:
+            return{
+                ...state,
+                isGettingPayments: false
             }
 
         default: 

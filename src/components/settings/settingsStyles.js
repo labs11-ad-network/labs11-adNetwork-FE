@@ -81,7 +81,7 @@ export const MainTabContainer = styled.div`
     flex-direction: column;
     background-color: #FFFFFF;
     width: 100%;
-    height: 85vh;
+    min-height: 85vh;
     margin: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);    
