@@ -4,7 +4,7 @@ import Tab from "@material-ui/core/Tab";
 
 import UserSettingsForm from "./user-settings/UserSettingsForm.js";
 import { MainTabContainer } from "../settingsStyles.js";
-import Timeline from "../timeline/Timeline";
+import Timeline from "./payments/Timeline.js";
 
 class TabContainer extends React.Component {
   state = {
@@ -36,7 +36,11 @@ class TabContainer extends React.Component {
 
         {this.state.tabValue === 1 && (
           <div>
-            <Timeline />
+            <Timeline 
+              payouts={this.props.payouts}
+              payments={this.props.payments}
+              currentUser={this.props.currentUser}
+            />
           </div>
         )}
       </MainTabContainer>
