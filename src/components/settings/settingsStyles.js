@@ -5,7 +5,7 @@ export const ProfileCardContainer = styled.div`
     flex-direction: column;
     background-color: #FFFFFF;
     width: 420px;
-    height: 200px;
+    min-height: 200px;
     padding: 15px;
     margin: 15px;
     border-radius: 8px;
