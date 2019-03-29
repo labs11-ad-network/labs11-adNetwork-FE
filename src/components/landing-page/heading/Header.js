@@ -33,12 +33,10 @@ const HeroHome = styled.section`
     margin: 0 auto;
     margin-top: 111px;
   }
-
   .container_illustration {
     width: 100%;
     display: block;
   }
-
   .container_illustration .big_svg {
     position: absolute;
     top: 400px;
@@ -51,19 +49,20 @@ const HeroHome = styled.section`
   }
   .container_illustration .animation {
     position: relative;
-  }
-  .container_illustration .animation .piio_float_left {
-    position: relative;
-    z-index: 2;
-    right: -34px;
-  }
-  .container_illustration .animation .piio_float_right {
-    position: relative;
-    top: 138px;
-    z-index: 2;
-    right: -84px;
-  }
+    .piio_float_left {
+      position: absolute;
+      right: 252px;
+      top: 69px;
+    }
 
+    .piio_float_right {
+      position: absolute;
+      top: 135px;
+      z-index: 2;
+      right: 26px;
+    }
+  }
+  /* --------------------- Hero Content ---------------------------- */
   .hero-content {
     min-width: 500px;
   }
@@ -74,6 +73,9 @@ const HeroHome = styled.section`
     color: #fff;
     margin-top: 22px;
     letter-spacing: normal;
+  }
+  .hero-content .button {
+    margin: 40px auto 0;
   }
   .hero-content .btn_blue {
     display: inline-block;
@@ -97,20 +99,77 @@ const HeroHome = styled.section`
     box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.1);
     line-height: 1rem;
     text-decoration: none;
+    transition: 0.3s ease;
+    transition-property: background-color, box-shadow;
+    &:hover {
+      background: #007bff;
+    }
+  }
+
+  .hero-sub-title {
+    color: #fdba5f;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.56;
+  }
+
+  /* -------------------------------------- nav -------------------------------------- */
+  nav {
+    width: 95%;
+    display: flex;
+    margin: 0 auto;
+    margin-top: -100px;
+    padding: 10px 0;
+    justify-content: space-between;
+    position: relative;
+    z-index: 999;
+    a {
+      text-decoration: none;
+      margin: 0 0 0 15px;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: 0.3s ease;
+      &:hover {
+        color: #99a6c8;
+      }
+    }
+    .middle-anchors a {
+      margin-right: 25px;
+    }
   }
 `;
 const Header = () => (
   <>
     <HeroHome>
+      <nav>
+        <a href="#">Logo</a>
+
+        <div className="middle-anchors">
+          <a href="#">Team</a>
+          <a href="#">Contact</a>
+          <a href="#">About</a>
+          <a href="#">Dashboard</a>
+        </div>
+
+        <div>
+          <a href="#">Login</a>
+          <a href="#">Signup</a>
+        </div>
+      </nav>
       <div className="container">
         <div className="hero-content">
+          <p className="hero-sub-title">
+            #Lad Network #faster websites #improve SEO
+          </p>
           <h1>
             Creepy Ads We are a non creepy ad network that presents itself as
             actually very creepy.
           </h1>
-          <a className="btn_scroll btn_blue" href="#">
-            Start a Free Trial
-          </a>
+          <div className="button">
+            <a className="btn_scroll btn_blue" href="#">
+              Start a Free Trial
+            </a>
+          </div>
         </div>
         <div className="container_illustration">
           <svg
