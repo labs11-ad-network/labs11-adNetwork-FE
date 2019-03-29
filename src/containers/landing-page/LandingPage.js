@@ -1,44 +1,56 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import Navigation from "../../components/landing-page/navigation/Navigation.js";
-import Header from "../../components/landing-page/heading/Header.js";
+import Navigation from '../../components/landing-page/navigation/Navigation.js';
+import Header from '../../components/landing-page/heading/Header.js';
 
 class LandingPage extends Component {
-    login = () => {
-        this.props.auth.login();
+  // login = () => {
+  //   this.props.auth.login();
+  // };
+
+  // logout = () => {
+  //   this.props.auth.logout();
+  // };
+
+  componentDidMount() {
+    const { renewSession } = this.props.auth;
+
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      renewSession();
     }
+  }
 
-    logout = () => {
-        this.props.auth.logout();
-    }
+  render() {
+    const { history, auth } = this.props;
 
-    componentDidMount() {
-        const { renewSession } = this.props.auth;
+    return (
+      <div>
+        <Navigation
+          login={() => auth.login()}
+          logout={() => auth.logout()}
+          history={history}
+        />
+        <Header />
+        <button
+          type="button"
+          onClick={() => {
+            localStorage.setItem('acct_type', 'advertiser');
+          }}
+        >
+          Advertiser
+        </button>
 
-        if (localStorage.getItem('isLoggedIn') === 'true') {
-            renewSession();
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                <Navigation login={this.login} logout={this.logout} history={this.props.history}/>
-                <Header/>
-                <button onClick={() => {
-                    localStorage.setItem('acct_type', "advertiser")
-                    }}>
-                    Advertiser
-                </button>
-
-                <button onClick={() => {
-                    localStorage.setItem('acct_type', "affiliate")
-                    }}>
-                    Affiliate
-                </button>
-            </div>
-        )
-    }
+        <button
+          type="button"
+          onClick={() => {
+            localStorage.setItem('acct_type', 'affiliate');
+          }}
+        >
+          Affiliate
+        </button>
+      </div>
+    );
+  }
 }
 
-export default LandingPage
+export default LandingPage;
