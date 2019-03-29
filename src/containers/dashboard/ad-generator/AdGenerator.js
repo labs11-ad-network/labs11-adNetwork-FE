@@ -51,7 +51,8 @@ export class AdGenerator extends Component {
       text_color: "",
       btn_color: "",
       btn_text_color: "",
-      size: "square_banner"
+      size: "square_banner",
+      file: ""
     }
   };
 
@@ -94,16 +95,13 @@ export class AdGenerator extends Component {
   };
 
   handleFileChange = e => {
-    this.setState(
-      {
-        productData: {
-          ...this.state.productData,
-          back_img: e.target.files[0],
-          file: URL.createObjectURL(e.target.files[0])
-        }
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      productData: {
+        ...this.state.productData,
+        back_img: e.target.files[0],
+        file: URL.createObjectURL(e.target.files[0])
+      }
+    });
   };
 
   render() {
