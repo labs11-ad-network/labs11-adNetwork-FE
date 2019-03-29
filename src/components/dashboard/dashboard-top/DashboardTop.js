@@ -5,13 +5,30 @@ import {
   NavContainer,
   LeftSection,
   RightSection,
-  Header
+  Header,
+  MobileHamburger,
+  MobileCreate
 } from "../dashboardStyles.js";
 
 const DashboardTop = props => {
   return (
     <NavContainer>
       <LeftSection>
+      {/* --------------------- Mobile navigation ------------------ */}
+      <div>
+        <MobileHamburger>
+          <a>
+            <i className="fas fa-bars"/>
+          </a>
+        </MobileHamburger>
+        {!props.location.pathname.includes("dashboard/") &&
+        <MobileCreate>
+          <Link to="/dashboard/create-ad">
+            <i class="fas fa-pencil-alt"/>
+          </Link>
+        </MobileCreate>}
+      </div>
+      {/* ---------------------------------------------------------- */}
         <Header>
           {props.location.pathname.includes("offers") ? <><i className="fas fa-list" /> Offers</>
           : props.location.pathname.includes("settings") ? <><i className="fas fa-cog" /> Settings</>

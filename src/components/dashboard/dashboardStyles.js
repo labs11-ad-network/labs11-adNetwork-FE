@@ -7,9 +7,12 @@ export const Nav = styled.div`
     width: 65px;
     height: 100vh;
     background-color: #0A88DC;
+    @media (max-width: 900px){
+        display: none;
+    }
 `;
 
-export const HamburgerButton = styled.div`
+export const HomeButton = styled.div`
     width: 65px;
     height: 65px;
     background-color: #0B6FB2;
@@ -76,20 +79,30 @@ export const NavContainer = styled.nav`
 export const LeftSection = styled.div`
     display: flex;
     align-items: center;
+    height: 35px;
     select{
         color:  rgba(103, 103, 103, 0.5);
         width: 250px;
-        padding: 8px 5px;
+        height: 100%;
         border: 1px solid rgba(103, 103, 103, 0.5);
         border-radius: 8px;
         font-size: 0.9rem;
+        @media (max-width: 900px){
+            margin-right: unset;
+        }
+        @media (max-width: 560px){
+            width: 100%;
+        }
     }
     a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         color: white;
         background-color: #0A88DC;
-        padding: 8px 25px;
+        height: 100%;
+        padding: 0 25px;
         margin: 0 15px;
-        border: 1px solid rgba(103, 103, 103, 0.5);
         border-radius: 8px; 
         font-size: 0.9rem;
         text-decoration: none;
@@ -97,6 +110,12 @@ export const LeftSection = styled.div`
         &:hover{
             background-color: #097AC6;
         }
+        @media (max-width: 900px){
+            display: none;
+        }
+    }
+    @media (max-width: 900px){
+        width: 80%;
     }
 `;
 
@@ -128,6 +147,12 @@ export const RightSection = styled.div`
             margin: unset;
             font-size: 1.1rem;
             font-weight: 100;
+            @media (max-width: 900px){
+                display: none;
+            }
+        }
+        @media (max-width: 900px){
+            margin: 0 0 0 10px;
         }
     }
 `;
@@ -139,5 +164,68 @@ export const Header = styled.h1`
     font-weight: 500;
     i{
         margin-right: 5px;
+    }
+    @media (max-width: 900px){
+        display: none;
+    }
+`;
+
+export const MobileHamburger = styled.div`
+    display: none;
+    width: 65px;
+    height: 65px;
+    transition: .2s;
+    margin-right: 15px;
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #0B6FB2;
+        width: 65px;
+        height: 65px;
+        margin: unset;
+        padding: unset;
+        border-radius: unset;
+        text-decoration: none;
+        color: white;
+        font-size: 1.7rem;
+    }
+    &:hover{
+        cursor: pointer;
+        background-color: #0B67A4;
+    }
+    @media (max-width: 900px){
+        display: flex;
+    }
+`;
+
+export const MobileCreate = styled.div`
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: 60px;
+    height: 60px;
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 60px;
+        height: 60px;
+        padding: unset;
+        margin: unset;
+        border-radius: 30px;
+        background-color: #0A88DC;
+        color: white;
+        font-size: 1.6rem;
+        transition: .2s;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+        &:hover{
+            cursor: pointer;
+            background-color: #0B67A4;
+        }
+    }
+    @media (max-width: 900px){
+        display: flex;
     }
 `;
