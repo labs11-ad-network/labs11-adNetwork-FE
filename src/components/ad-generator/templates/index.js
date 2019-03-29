@@ -17,6 +17,7 @@ export const PlainHorizontalBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
+      file={props.ad.file}
     />
   );
 };
@@ -29,6 +30,7 @@ export const PlainSquareBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
+      file={props.ad.file}
     />
   );
 };
@@ -41,6 +43,7 @@ export const PlainVerticalBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
+      file={props.ad.file}
     />
   );
 };
@@ -56,15 +59,17 @@ export const HorizontalBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
+      headline_color={props.ad.headline_color}
+      tagline_color={props.ad.tagline_color}
+      message_color={props.ad.message_color}
+      file={props.ad.file}
     >
       <div>
         <h1>{props.ad.headline}</h1>
         <h3>{props.ad.tagline}</h3>
         <p>{props.ad.message}</p>
       </div>
-      <button>
-        {props.ad.cta_button}
-      </button>
+      <button>{props.ad.cta_button}</button>
     </HorizontalBannerContainer>
   );
 };
@@ -80,15 +85,17 @@ export const SquareBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
+      headline_color={props.ad.headline_color}
+      tagline_color={props.ad.tagline_color}
+      message_color={props.ad.message_color}
+      file={props.ad.file}
     >
       <div>
         <h1>{props.ad.headline}</h1>
         <h3>{props.ad.tagline}</h3>
         <p>{props.ad.message}</p>
       </div>
-      <button>
-        {props.ad.cta_button}
-      </button>
+      <button>{props.ad.cta_button}</button>
     </SquareBannerContainer>
   );
 };
@@ -104,15 +111,17 @@ export const VerticalBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
+      headline_color={props.ad.headline_color}
+      tagline_color={props.ad.tagline_color}
+      message_color={props.ad.message_color}
+      file={props.ad.file}
     >
       <div>
         <h1>{props.ad.headline}</h1>
         <h3>{props.ad.tagline}</h3>
         <p>{props.ad.message}</p>
       </div>
-      <button>
-        {props.ad.cta_button}
-      </button>
+      <button>{props.ad.cta_button}</button>
     </VerticalBannerContainer>
   );
 };

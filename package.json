@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
+    "@material-ui/lab": "^3.0.0-alpha.30",
     "auth0-js": "^9.10.1",
     "axios": "^0.18.0",
     "install": "^0.12.2",
@@ -12,6 +13,7 @@
     "material-datatable": "^0.3.8",
     "moment": "^2.24.0",
     "react": "^16.8.5",
+    "react-color": "^2.17.0",
     "react-dom": "^16.8.5",
     "react-event-timeline": "^1.6.3",
     "react-images-upload": "^1.2.6",
