@@ -1,20 +1,13 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import Navigation from '../../components/landing-page/navigation/Navigation.js';
 import Header from '../../components/landing-page/heading/Header.js';
 
 class LandingPage extends Component {
-  // login = () => {
-  //   this.props.auth.login();
-  // };
-
-  // logout = () => {
-  //   this.props.auth.logout();
-  // };
-
   componentDidMount() {
-    const { renewSession } = this.props.auth;
-
+    const {
+      auth: { renewSession },
+    } = this.props;
     if (localStorage.getItem('isLoggedIn') === 'true') {
       renewSession();
     }
@@ -22,6 +15,7 @@ class LandingPage extends Component {
 
   render() {
     const { history, auth } = this.props;
+    console.log('history', history);
 
     return (
       <div>
@@ -52,5 +46,10 @@ class LandingPage extends Component {
     );
   }
 }
+
+LandingPage.propTypes = {
+  history: PropTypes.object,
+  auth: PropTypes.object,
+};
 
 export default LandingPage;
