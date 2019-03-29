@@ -1,7 +1,6 @@
-/* eslint-disable react/button-has-type */
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const NavBar = styled.header`
   position: fixed;
@@ -71,7 +70,7 @@ class Navigation extends Component {
               </>
             ) : (
               <>
-                <button onClick={() => history.push('/dashboard')}>
+                <button onClick={() => history.push("/dashboard")}>
                   Dashboard
                 </button>
                 <button onClick={() => logout()} className="sign-up">
@@ -88,7 +87,7 @@ class Navigation extends Component {
 Navigation.propTypes = {
   history: PropTypes.object,
   login: PropTypes.func,
-  logout: PropTypes.func,
+  logout: PropTypes.func
 };
 
 export default Navigation;

@@ -1,27 +1,25 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-import LandingPage from './containers/landing-page/LandingPage.js';
-import Dashboard from './containers/dashboard/Dashboard.js';
-import AdServer from './containers/ad-server/AdServer.js';
+import LandingPage from "./containers/landing-page/LandingPage.js";
+import Dashboard from "./containers/dashboard/Dashboard.js";
+import AdServer from "./containers/ad-server/AdServer.js";
 
-import MainApp from './containers/auth-zero/MainApp.js';
-import Callback from './containers/auth-zero/Callback/Callback.js';
-import Auth from './containers/auth-zero/Auth/Auth.js';
+import MainApp from "./containers/auth-zero/MainApp.js";
+import Callback from "./containers/auth-zero/Callback/Callback.js";
+import Auth from "./containers/auth-zero/Auth/Auth.js";
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#0A88DC',
+      main: "#0A88DC"
     },
     secondary: {
-      main: '#F1F1F1',
-    },
+      main: "#F1F1F1"
+    }
   },
-  typography: {
-    useNextVariants: true,
-  },
+  typography: { useNextVariants: true }
 });
 
 const auth = new Auth();
