@@ -1,61 +1,70 @@
 import React from "react";
-
-import { Form } from "./formStyles.js";
+import {
+  Form,
+  TemplateSelectors,
+  FormContainer,
+  InputGroup
+} from "./formStyles.js";
+import HorizontalSlider from "../form-components/HorizontalSlider";
+import VericalSlider from "../form-components/VerticalSlider";
 
 const AdForm = props => {
   return (
     <>
-      <button 
-        value="horizontal_banner"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Horizontal banner
-      </button>
+      {/* <HorizontalSlider /> */}
 
-      <button 
-        value="vertical_banner"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Vertical banner
-      </button>
+      <TemplateSelectors>
+        <h2>Create your ad.</h2>
 
-      <button 
-        value="square_banner"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Square banner
-      </button>
+        <div>
+          <button
+            value="horizontal_banner"
+            name="size"
+            onClick={props.handleChange}
+          >
+            Horizontal banner
+          </button>
 
-      <button 
-        value="plain_horizontal"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Plain Horizontal Banner
-      </button>
+          <button
+            value="vertical_banner"
+            name="size"
+            onClick={props.handleChange}
+          >
+            Vertical banner
+          </button>
 
-      <button 
-        value="plain_square"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Plain Square Banner
-      </button>
+          <button
+            value="square_banner"
+            name="size"
+            onClick={props.handleChange}
+          >
+            Square banner
+          </button>
+        </div>
+        <div>
+          <button
+            value="plain_horizontal"
+            name="size"
+            onClick={props.handleChange}
+          >
+            Plain Horizontal Banner
+          </button>
 
-      <button 
-        value="plain_vertical"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Plain Vertical Banner
-      </button>
+          <button value="plain_square" name="size" onClick={props.handleChange}>
+            Plain Square Banner
+          </button>
+
+          <button
+            value="plain_vertical"
+            name="size"
+            onClick={props.handleChange}
+          >
+            Plain Vertical Banner
+          </button>
+        </div>
+      </TemplateSelectors>
       <Form onSubmit={props.createAd}>
         <div>
-          <h2>Create your ad.</h2>
-
           <label htmlFor="offer_id" />
           <select
             type="text"
@@ -68,82 +77,112 @@ const AdForm = props => {
               Select an offer
             </option>
             {props.offers.map(offer => {
-              return <option key={offer.id} value={offer.id}>{offer.name}</option>;
+              return (
+                <option key={offer.id} value={offer.id}>
+                  {offer.name}
+                </option>
+              );
             })}
           </select>
+          <InputGroup>
+            <label htmlFor="headline" />
+            <input
+              type="text"
+              placeholder="Headline"
+              name="headline"
+              value={props.productData.headline}
+              onChange={props.handleChange}
+            />
+            <label htmlFor="headline-color" />
+            <input
+              type="color"
+              placeholder="Headline"
+              name="headline_color"
+              onChange={props.handleChange}
+            />
+          </InputGroup>
+          <HorizontalSlider handleChange={props.handleChange} />
 
-          <label htmlFor="headline" />
-          <input
-            type="text"
-            placeholder="Headline"
-            name="headline"
-            value={props.productData.headline}
-            onChange={props.handleChange}
-          />
+          <InputGroup>
+            <label htmlFor="tagline" />
+            <input
+              type="text"
+              placeholder="Tagline"
+              name="tagline"
+              value={props.productData.tagline}
+              onChange={props.handleChange}
+            />
+            <label htmlFor="tagline-color" />
+            <input
+              type="color"
+              placeholder="Tagline"
+              name="tagline_color"
+              value={props.productData.tagline}
+              onChange={props.handleChange}
+            />
+          </InputGroup>
+          <HorizontalSlider />
 
-          <label htmlFor="tagline" />
-          <input
-            type="text"
-            placeholder="Tagline"
-            name="tagline"
-            value={props.productData.tagline}
-            onChange={props.handleChange}
-          />
+          <InputGroup>
+            <label htmlFor="message" />
+            <input
+              type="text"
+              placeholder="Message"
+              name="message"
+              value={props.productData.message}
+              onChange={props.handleChange}
+            />
+            <label htmlFor="message_color" />
 
-          <label htmlFor="message" />
-          <input
-            type="text"
-            placeholder="Message"
-            name="message"
-            value={props.productData.message}
-            onChange={props.handleChange}
-          />
+            <input
+              type="color"
+              placeholder="Message Color"
+              name="message_color"
+              value={props.productData.message_color}
+              onChange={props.handleChange}
+            />
+          </InputGroup>
+          <HorizontalSlider />
 
-          <label htmlFor="text_color" />
-          <input
-            type="text"
-            placeholder="Text Color"
-            name="text_color"
-            value={props.productData.text_color}
-            onChange={props.handleChange}
-          />
+          <InputGroup>
+            <label htmlFor="cta_button" />
+            <input
+              type="text"
+              placeholder="CTA Button"
+              name="cta_button"
+              value={props.productData.cta_button}
+              onChange={props.handleChange}
+            />
 
-          <label htmlFor="cta_button" />
-          <input
-            type="text"
-            placeholder="CTA Button"
-            name="cta_button"
-            value={props.productData.cta_button}
-            onChange={props.handleChange}
-          />
+            <label htmlFor="btn_color" />
+            <input
+              type="color"
+              placeholder="Button Color"
+              name="btn_color"
+              value={props.productData.btn_color}
+              onChange={props.handleChange}
+            />
+            <input
+              type="color"
+              placeholder="Button Color"
+              name="btn_text_color"
+              value={props.productData.btn_text_color}
+              onChange={props.handleChange}
+            />
+          </InputGroup>
+          <HorizontalSlider />
 
-          <label htmlFor="btn_color" />
-          <input
-            type="text"
-            placeholder="Button Color"
-            name="btn_color"
-            value={props.productData.btn_color}
-            onChange={props.handleChange}
-          />
-
-          <label htmlFor="btn_text_color" />
-          <input
-            type="text"
-            placeholder="Button Text Color"
-            name="btn_text_color"
-            value={props.productData.btn_text_color}
-            onChange={props.handleChange}
-          />
-
-          <label htmlFor="destination_url" />
-          <input
-            type="text"
-            placeholder="Destination Url"
-            name="destination_url"
-            value={props.productData.destination_url}
-            onChange={props.handleChange}
-          />
-
+          <InputGroup>
+            <label htmlFor="destination_url" />
+            <input
+              type="text"
+              placeholder="Destination Url"
+              name="destination_url"
+              value={props.productData.destination_url}
+              onChange={props.handleChange}
+            />
+          </InputGroup>
+          <HorizontalSlider />
           <label htmlFor="back_img" />
           {/* --------------------- image upload --------------------- */}
           <input
