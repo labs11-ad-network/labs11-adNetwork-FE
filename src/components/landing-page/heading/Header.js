@@ -15,7 +15,7 @@ const HeroHome = styled.section`
   background-repeat: repeat-x, no-repeat;
   background-position: center 70px, 50%;
   background-size: 1440px auto, 100% auto;
-  height: 60vh;
+  height: 80vh;
   overflow: hidden;
 
   .border_bottom {
@@ -29,7 +29,8 @@ const HeroHome = styled.section`
   }
   .container {
     display: flex;
-    max-width: 95%;
+    max-width: 1200px;
+    border: 1px solid red;
     margin: 0 auto;
     margin-top: 111px;
   }
@@ -40,7 +41,7 @@ const HeroHome = styled.section`
   .container_illustration .big_svg {
     position: absolute;
     top: 400px;
-    right: -172px;
+    right: -142px;
     z-index: 1;
   }
   .container_illustration .bg_cloud_window {
@@ -73,6 +74,10 @@ const HeroHome = styled.section`
     color: #fff;
     margin-top: 22px;
     letter-spacing: normal;
+    span {
+      font-weight: 500;
+      font-size: 4rem;
+    }
   }
   .hero-content .button {
     margin: 40px auto 0;
@@ -115,11 +120,12 @@ const HeroHome = styled.section`
 
   /* -------------------------------------- nav -------------------------------------- */
   nav {
-    width: 95%;
+    max-width: 1200px;
+    border: 1px solid red;
     display: flex;
     margin: 0 auto;
     margin-top: -100px;
-    padding: 10px 0;
+    padding: 15px 0;
     justify-content: space-between;
     position: relative;
     z-index: 999;
@@ -162,8 +168,8 @@ const Header = () => (
             #Lad Network #faster websites #improve SEO
           </p>
           <h1>
-            Creepy Ads We are a non creepy ad network that presents itself as
-            actually very creepy.
+            <span>Creepy Ads</span> <br /> We are a non creepy ad network that
+            presents itself as actually very creepy.
           </h1>
           <div className="button">
             <a className="btn_scroll btn_blue" href="#">
