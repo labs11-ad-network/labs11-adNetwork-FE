@@ -7,7 +7,8 @@ import {
   RightSection,
   Header,
   MobileHamburger,
-  MobileCreate
+  MobileCreate,
+  MobileNav
 } from "../dashboardStyles.js";
 
 const DashboardTop = props => {
@@ -27,6 +28,9 @@ const DashboardTop = props => {
             <i class="fas fa-pencil-alt"/>
           </Link>
         </MobileCreate>}
+        <MobileNav>
+
+        </MobileNav>
       </div>
       {/* ---------------------------------------------------------- */}
         <Header>

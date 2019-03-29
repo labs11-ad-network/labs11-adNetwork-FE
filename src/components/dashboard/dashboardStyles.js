@@ -170,6 +170,8 @@ export const Header = styled.h1`
     }
 `;
 
+// Mobile navigation
+
 export const MobileHamburger = styled.div`
     display: none;
     width: 65px;
@@ -228,4 +230,8 @@ export const MobileCreate = styled.div`
     @media (max-width: 900px){
         display: flex;
     }
+`;
+
+export const MobileNav = styled.div`
+
 `;
