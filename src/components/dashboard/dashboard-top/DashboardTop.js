@@ -17,26 +17,30 @@ class DashboardTop extends React.Component{
     movileNavOpen: false
   }
 
+  toggleNav = () => {
+    this.setState({ movileNavOpen: !this.state.movileNavOpen })
+  }
+
   render(){
     return (
       <NavContainer>
         <MobileNav status={this.state.movileNavOpen}>
-          <button onClick={() => this.setState({ movileNavOpen: !this.state.movileNavOpen })}>
+          <button onClick={() => this.toggleNav()}>
             <i className="fas fa-times"/>
           </button>
-          <MobileNavButton>
+          <MobileNavButton onClick={() => this.toggleNav()}>
             <Link to="/dashboard">
               <i className="fas fa-chart-line"/>
               Dashboard
             </Link>
           </MobileNavButton>
-          <MobileNavButton>
+          <MobileNavButton onClick={() => this.toggleNav()}>
             <Link to="/dashboard/offers">
               <i className="fas fa-list"/>
               Offers
             </Link>
           </MobileNavButton>
-          <MobileNavButton>
+          <MobileNavButton onClick={() => this.toggleNav()}>
             <Link to="/dashboard/settings">
               <i className="fas fa-cog"/>
               Settings
