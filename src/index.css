@@ -138,3 +138,7 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #fff;
 }
+
+img {
+  max-width: 100%;
+}

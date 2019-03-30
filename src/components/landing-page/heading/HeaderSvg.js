@@ -1,8 +1,8 @@
 import React from "react";
-export const SkyCloudSvg = () => (
+export const SkyCloudSvg = ({ className }) => (
   <svg
     style={{ position: "absolute", right: "-140px" }}
-    className="bg_cloud_window"
+    className={className}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width={820}
@@ -543,9 +543,9 @@ export const SkyCloudSvg = () => (
   </svg>
 );
 
-export const BirdSvg = () => (
+export const BirdSvg = ({ style1, style2 }) => (
   <>
-    <span className="piio_float_left">
+    <span className={style1}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -817,7 +817,7 @@ export const BirdSvg = () => (
         </g>
       </svg>
     </span>
-    <span className="piio_float_right">
+    <span className={style2}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"

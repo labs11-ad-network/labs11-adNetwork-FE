@@ -3,7 +3,7 @@ import borderBottom from "../../../assets/border_botom.svg";
 import bgStars from "../../../assets/bg_stars.svg";
 
 export const HeroHome = styled.section`
-  @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
   font-family: "Roboto", sans-serif;
   position: relative;
   background-image: url(${bgStars}),
@@ -11,7 +11,7 @@ export const HeroHome = styled.section`
   background-repeat: repeat-x, no-repeat;
   background-position: center 70px, 50%;
   background-size: 1440px auto, 100% auto;
-  padding: 10px 0 300px 0;
+  padding: 10px 0 380px 0;
   overflow: hidden;
 
   .container {
@@ -22,34 +22,28 @@ export const HeroHome = styled.section`
   }
   .container_illustration {
     width: 100%;
-    display: block;
+    display: flex;
+    justify-content: center;
   }
   .container_illustration .big_svg {
     position: absolute;
     top: 400px;
-    right: -142px;
     z-index: 1;
+    width: 600px;
+    left: -43px;
+    top: 699px;
+}
   }
   .container_illustration .bg_cloud_window {
     position: absolute;
     top: 1px;
   }
-  .container_illustration .animation {
-    position: relative;
-    .piio_float_left {
-      position: absolute;
-      right: 252px;
-      top: 69px;
-    }
 
-    .piio_float_right {
-      position: absolute;
-      top: 135px;
-      z-index: 2;
-      right: 26px;
-    }
+  /* --------------- Bird style --------------- */
+  .piio_float_left{
+    margin: 0 15px 0 0;
   }
-  /* --------------------- Hero Content ---------------------------- */
+  /* --------------- Hero Content --------------- */
   .hero-content {
     min-width: 500px;
   }
@@ -73,37 +67,20 @@ export const HeroHome = styled.section`
     padding: 50px 0 20px 0;
   }
 
-  /* -------------------------------------- nav -------------------------------------- */
-  /* nav {
-    max-width: 1200px;
-    width: 95%;
-    border: 1px solid red;
-    display: flex;
-    margin: 0 auto;
-    margin-top: -100px;
-    padding: 15px 0;
-    justify-content: space-between;
-    position: relative;
-    z-index: 999;
-    a {
-      text-decoration: none;
-      margin: 0 0 0 15px;
-      color: #fff;
-      font-size: 1.1rem;
-      transition: 0.3s ease;
-      &:hover {
-        color: #99a6c8;
-      }
-    }
-    .middle-anchors a {
-      margin-right: 25px;
-    }
-  } */
+  /* --------------- nav ----------------- */
   nav {
     display: flex;
     justify-content: space-between;
+    align-items:center;
+    
+    a {
+      text-decoration:none;
+      color:#fff;
+      text-transform:uppercase;
+      font-size:16px;
+    }
   }
-  /* --------------------------------global button -------------------------------- */
+  /* ---------------global button --------------- */
   .hero-content .button {
     margin: 40px auto 0;
   }
@@ -140,8 +117,11 @@ export const HeroHome = styled.section`
   .hero-content .yellow-btn {
     background-color: #fdba5f;
     color: #001759;
+    &:hover {
+      background-color: #ffc107;
+    }
   }
-  /* -------------------------------- bottom wave  -------------------------------- */
+  /*--------------- bottom wave  ---------------*/
   .border_bottom {
     display: block;
     width: 100%;

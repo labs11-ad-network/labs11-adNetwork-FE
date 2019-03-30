@@ -6,29 +6,17 @@ import styled from "styled-components";
 import checks from "../../assets/checks.svg";
 const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
-  /* ------------------------ landing-info section ------------------------ */
-  .landing-info {
-    background: #fff;
-    border: 1px solid red;
-    max-width: 1200px;
-    margin: 0 auto;
-    .container {
-      padding-bottom: 1000px;
-
-      width: 95%;
-      margin: 0 auto;
-    }
-  }
 
   /* ----------------------- global landing info style ----------------------- */
   .blue-subtitle {
-    font-weight: 400;
+    font-weight: 500;
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
     font-size: 18px;
     letter-spacing: normal;
     color: #0e4de3;
+    text-align: center;
   }
   .landing-info-title {
     margin-top: 24px;
@@ -38,6 +26,7 @@ const LandingPageStyle = styled.div`
     font-stretch: normal;
     font-size: 33px;
     line-height: 1.33;
+    text-align: center;
   }
   .first-blue-subtitle {
     padding-top: 100px;
@@ -46,15 +35,14 @@ const LandingPageStyle = styled.div`
     max-width: 100%;
     margin-top: 150px;
   }
-
   .landing-ptag {
-    padding-left: 33px;
+    padding: 0 0 0 33px;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.56;
     color: #62748a;
     position: relative;
-    margin-top: 25px;
+    margin: 25px 0 0 0;
 
     &:before {
       content: url(${checks});
@@ -68,14 +56,13 @@ const LandingPageStyle = styled.div`
       top: 1px;
     }
   }
-  .buttons_container {
-    margin-top: 30px;
-  }
   .buttons_container .btn_blue {
+    display: block;
+    max-width: 279px;
+    margin: 30px auto 0 auto;
     transition: 0.3s ease;
     transition-property: background-color, box-shadow;
     font-family: Roboto, sans-serif;
-    display: inline-block;
     color: #fff;
     font-size: 14px;
     text-align: center;
@@ -102,6 +89,7 @@ const LandingPageStyle = styled.div`
     }
   }
 
+  /* thid image with code  */
   .image-box {
     position: relative;
     .code_piio-image-third {
@@ -116,20 +104,18 @@ const LandingPageStyle = styled.div`
       position: absolute;
       left: 0;
       top: 82px;
-      max-width: 414px;
+      max-width: 314px;
     }
   }
 
   /* ----------------------- Landing Parent ----------------------- */
   .landing-parent {
     display: flex;
-    justify-content: space-around;
-  }
-  .landing-item-left {
-    max-width: 500px;
-  }
-  .landing-item-second {
-    order: 1;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
   }
 `;
 class LandingPage extends Component {
@@ -155,120 +141,112 @@ class LandingPage extends Component {
         /> */}
         <Header />
         <section className="landing-info">
-          <div className="container">
-            {/* -------------------------- first item -------------------------- */}
-            <div className="landing-parent">
-              <div className="landing-item-left">
-                <h5 className="blue-subtitle first-blue-subtitle">
-                  Lorem-ipsum
-                </h5>
-                <h3 className="landing-info-title">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
-                  natus id ab vero, veniam fuga labore.
-                </h3>
-                <p className="landing-ptag">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  incidunt eligendi ea Autem incidunt eligendi.
-                </p>
-                <p className="landing-ptag">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  incidunt eligendi ea Autem incidunt eligendi.
-                </p>
-                <p className="landing-ptag">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  incidunt eligendi ea Autem incidunt eligendi.
-                </p>
-                <div className="buttons_container">
-                  <a href="#" className="btn_blue">
-                    Learn More
-                  </a>
-                </div>
-              </div>
-
-              <div className="landing-item-right image-box">
-                <img
-                  src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2FEcommerce_buyer.svg"
-                  alt="girl pressing button"
-                />
+          {/* -------------------------- first item -------------------------- */}
+          <div className="landing-parent">
+            <div className="landing-item-left">
+              <h5 className="blue-subtitle first-blue-subtitle">Lorem-ipsum</h5>
+              <h3 className="landing-info-title">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
+                natus id ab vero, veniam fuga labore.
+              </h3>
+              <p className="landing-ptag">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                incidunt eligendi ea Autem incidunt eligendi.
+              </p>
+              <p className="landing-ptag">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                incidunt eligendi ea Autem incidunt eligendi.
+              </p>
+              <p className="landing-ptag">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                incidunt eligendi ea Autem incidunt eligendi.
+              </p>
+              <div className="buttons_container">
+                <a href="#" className="btn_blue">
+                  Learn More
+                </a>
               </div>
             </div>
-            {/* -------------------------- second item -------------------------- */}
-            <div className="landing-parent">
-              <div className="landing-item-left landing-item-second">
-                <h5 className="blue-subtitle first-blue-subtitle">
-                  Lorem-ipsum
-                </h5>
-                <h3 className="landing-info-title">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
-                  natus id ab vero, veniam fuga labore.
-                </h3>
-                <p className="landing-ptag">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  incidunt eligendi ea Autem incidunt eligendi.
-                </p>
-                <p className="landing-ptag">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  incidunt eligendi ea Autem incidunt eligendi.
-                </p>
-                <p className="landing-ptag">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  incidunt eligendi ea Autem incidunt eligendi.
-                </p>
-                <div className="buttons_container">
-                  <a href="#" className="btn_blue">
-                    Learn More
-                  </a>
-                </div>
-              </div>
 
-              <div className="landing-item-right image-box">
-                <img
-                  src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2Fillustration-marketing.svg"
-                  alt="graphic and person with balloons"
-                />
+            <div className="landing-item-right image-box">
+              <img
+                src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2FEcommerce_buyer.svg"
+                alt="girl pressing button"
+              />
+            </div>
+          </div>
+          {/* -------------------------- second item -------------------------- */}
+          <div className="landing-parent">
+            <div className="landing-item-left landing-item-second">
+              <h5 className="blue-subtitle first-blue-subtitle">Lorem-ipsum</h5>
+              <h3 className="landing-info-title">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
+                natus id ab vero, veniam fuga labore.
+              </h3>
+              <p className="landing-ptag">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                incidunt eligendi ea Autem incidunt eligendi.
+              </p>
+              <p className="landing-ptag">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                incidunt eligendi ea Autem incidunt eligendi.
+              </p>
+              <p className="landing-ptag">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                incidunt eligendi ea Autem incidunt eligendi.
+              </p>
+              <div className="buttons_container">
+                <a href="#" className="btn_blue">
+                  Learn More
+                </a>
               </div>
             </div>
-            {/* -------------------------- third item -------------------------- */}
-            <div className="landing-parent">
-              <div className="landing-item-left ">
-                <h5 className="blue-subtitle first-blue-subtitle">
-                  Lorem-ipsum
-                </h5>
-                <h3 className="landing-info-title">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
-                  natus id ab vero, veniam fuga labore.
-                </h3>
-                <p className="landing-ptag">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  incidunt eligendi ea Autem incidunt eligendi.
-                </p>
-                <p className="landing-ptag">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  incidunt eligendi ea Autem incidunt eligendi.
-                </p>
-                <p className="landing-ptag">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                  incidunt eligendi ea Autem incidunt eligendi.
-                </p>
-                <div className="buttons_container">
-                  <a href="#" className="btn_blue">
-                    Learn More
-                  </a>
-                </div>
-              </div>
 
-              <div className="landing-item-right image-box">
-                <img
-                  className="code_piio-image-third"
-                  src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2Fillustration-developers.svg"
-                  alt="code piio in console"
-                />
-                <img
-                  className="code_piio"
-                  alt="console code piio"
-                  src="https://pcdn.piiojs.com/i/piio/https%3A%2F%2Fpiio-web-v2.herokuapp.com%2Fimg%2Fcode-with-piio%402x.png"
-                />
+            <div className="landing-item-right image-box">
+              <img
+                src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2Fillustration-marketing.svg"
+                alt="graphic and person with balloons"
+              />
+            </div>
+          </div>
+          {/* -------------------------- third item -------------------------- */}
+          <div className="landing-parent">
+            <div className="landing-item-left ">
+              <h5 className="blue-subtitle first-blue-subtitle">Lorem-ipsum</h5>
+              <h3 className="landing-info-title">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
+                natus id ab vero, veniam fuga labore.
+              </h3>
+              <p className="landing-ptag">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                incidunt eligendi ea Autem incidunt eligendi.
+              </p>
+              <p className="landing-ptag">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                incidunt eligendi ea Autem incidunt eligendi.
+              </p>
+              <p className="landing-ptag">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
+                incidunt eligendi ea Autem incidunt eligendi.
+              </p>
+              <div className="buttons_container">
+                <a href="#" className="btn_blue">
+                  Learn More
+                </a>
               </div>
+            </div>
+
+            <div className="landing-item-right image-box image-box-third ">
+              <img
+                className="code_piio-image-third"
+                src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2Fillustration-developers.svg"
+                alt="code piio in console"
+              />
+              <img
+                className="code_piio"
+                alt="console code piio"
+                src="https://pcdn.piiojs.com/i/piio/https%3A%2F%2Fpiio-web-v2.herokuapp.com%2Fimg%2Fcode-with-piio%402x.png"
+              />
             </div>
           </div>
         </section>

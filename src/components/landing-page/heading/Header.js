@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { HeroHome } from "./HeaderStyle";
-import { ElasticReverse } from "react-burgers";
-
+import { Emphatic } from "react-burgers";
+import { TwoPersonSvg, BirdSvg } from "./HeaderSvg";
 class Header extends Component {
   state = {
-    active: false
+    isOpen: false
   };
-  toggler = () => {
-    console.log("clicked");
-    this.setState({ active: !this.state.active });
+  toggleDrawer = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
   };
   render() {
     return (
@@ -33,11 +34,12 @@ class Header extends Component {
           <div className="container">
             <nav>
               <a href="/#logoHERE">LOGO</a>
-              <ElasticReverse
+              <Emphatic
                 color="#ffff"
                 lineHeight={2}
                 width={30}
-                acitve={this.toggler}
+                onClick={this.toggleDrawer}
+                active={this.state.isOpen}
               />
             </nav>
 
@@ -51,16 +53,22 @@ class Header extends Component {
                 that presents itself as actually very creepy.
               </h1>
               <div className="button">
-                <a className="btn_scroll btn_blue" href="#">
+                <a className="btn_scroll btn_blue" href="/#" alt="button">
                   Start a Free Trial
                 </a>
-                <a className="btn_scroll btn_blue yellow-btn" href="#">
+                <a
+                  alt="button"
+                  className="btn_scroll btn_blue yellow-btn"
+                  href="/#"
+                >
                   Start a Free Trial
                 </a>
               </div>
             </div>
             <div className="container_illustration">
               {/* <div className="animation" /> */}
+              <BirdSvg style1="piio_float_left" style2="piio_float_right" />
+              <TwoPersonSvg />
             </div>
           </div>
           <span className="border_bottom" />
