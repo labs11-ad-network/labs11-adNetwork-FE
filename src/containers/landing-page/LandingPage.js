@@ -9,10 +9,12 @@ const LandingPageStyle = styled.div`
   /* ------------------------ landing-info section ------------------------ */
   .landing-info {
     background: #fff;
-    width: 100%;
+    border: 1px solid red;
+    max-width: 1200px;
     margin: 0 auto;
     .container {
       padding-bottom: 1000px;
+
       width: 95%;
       margin: 0 auto;
     }
@@ -104,7 +106,7 @@ const LandingPageStyle = styled.div`
     position: relative;
     .code_piio-image-third {
       position: relative;
-      left: -5%;
+      left: 5%;
       max-width: 555px;
       width: 100%;
       height: auto;
