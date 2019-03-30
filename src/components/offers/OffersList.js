@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Switch from "@material-ui/core/Switch";
 import { connect } from "react-redux";
 
+import { OfferButton } from "./offersStyles.js"
 import { getOfferAds } from "../../store/actions/adAction.js";
 import { createAgreement } from "../../store/actions/agreementsAction.js";
 import {
@@ -112,7 +113,7 @@ class OffersList extends React.Component {
         customBodyRender: value => {
           return (
             value.accepted ?
-            <button
+            <OfferButton color="#04CF47"
               onClick={() => {
                 this.setState({
                   tabValue: 1,
@@ -122,12 +123,12 @@ class OffersList extends React.Component {
               }}
             >
               View Ads
-            </button>:
-            <button onClick={() => {
+            </OfferButton>:
+            <OfferButton color="#0A88DC" onClick={() => {
               this.props.createAgreement(value);
             }}>
               Accept Agreement
-            </button>
+            </OfferButton>
           );
         }
       }
@@ -205,7 +206,7 @@ class OffersList extends React.Component {
       options: {
         customBodyRender: value => {
           return (
-            <button
+            <OfferButton color="#0A88DC"
               onClick={() => {
                 this.setState({
                   tabValue: 1
@@ -214,7 +215,7 @@ class OffersList extends React.Component {
               }}
             >
               View Ads
-            </button>
+            </OfferButton>
           );
         }
       }
