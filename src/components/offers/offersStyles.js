@@ -43,3 +43,16 @@ export const Form = styled.form`
         }
     }
 `;
+
+export const OfferButton = styled.button`
+    background-color: ${props => props.color};
+    color: #FFFFFF;
+    border: unset;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: .3s;
+    &:hover{
+        cursor: pointer;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+    }
+`
