@@ -245,6 +245,7 @@ export const MobileNav = styled.div`
     button{
         width: 65px;
         height: 65px;
+        margin-bottom: 15px;
         font-size: 2rem;
         color: #FFFFFF;
         background-color: unset;
@@ -254,6 +255,9 @@ export const MobileNav = styled.div`
             cursor: pointer;
             background-color: #0B6FB2;
         }
+    }
+    .active{
+        background-color: #0B6FB2;
     }
 `;
 
@@ -276,7 +280,7 @@ export const MobileNavButton = styled.div`
             margin-right: 8px;
         }
         &:hover{
-            background-color: #0B67A4;
+            background-color: #0B6FB2;
         }
     }
 `;

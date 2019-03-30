@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import {
   NavContainer,
@@ -29,22 +29,22 @@ class DashboardTop extends React.Component{
             <i className="fas fa-times"/>
           </button>
           <MobileNavButton onClick={() => this.toggleNav()}>
-            <Link to="/dashboard">
+            <NavLink exact to="/dashboard">
               <i className="fas fa-chart-line"/>
               Dashboard
-            </Link>
+            </NavLink>
           </MobileNavButton>
           <MobileNavButton onClick={() => this.toggleNav()}>
-            <Link to="/dashboard/offers">
+            <NavLink to="/dashboard/offers">
               <i className="fas fa-list"/>
               Offers
-            </Link>
+            </NavLink>
           </MobileNavButton>
           <MobileNavButton onClick={() => this.toggleNav()}>
-            <Link to="/dashboard/settings">
+            <NavLink to="/dashboard/settings">
               <i className="fas fa-cog"/>
               Settings
-            </Link>
+            </NavLink>
           </MobileNavButton>
         </MobileNav>
         <LeftSection>
