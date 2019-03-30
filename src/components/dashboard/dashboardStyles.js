@@ -233,5 +233,50 @@ export const MobileCreate = styled.div`
 `;
 
 export const MobileNav = styled.div`
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: #0A88DC;
+    height: 100vh;
+    width: 100%;
+    z-index: 9999;
+    left: ${props => props.status ? "0" : '-100vw'};
+    top: 0;
+    button{
+        width: 65px;
+        height: 65px;
+        font-size: 2rem;
+        color: #FFFFFF;
+        background-color: unset;
+        border: unset;
+        transition: .2s;
+        &:hover{
+            cursor: pointer;
+            background-color: #0B6FB2;
+        }
+    }
+`;
 
+export const MobileNavButton = styled.div`
+    display: flex;
+    width: 100%;
+    margin: 5px 0;
+    text-align: center;
+    a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 70px;
+        color: white;
+        font-size: 1.7rem;
+        text-decoration: none;
+        transition: .2s;
+        i{
+            margin-right: 8px;
+        }
+        &:hover{
+            background-color: #0B67A4;
+        }
+    }
 `;
