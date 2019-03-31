@@ -7,7 +7,12 @@ import checks from "../../assets/checks.svg";
 const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 
-  /* ----------------------- global landing info style ----------------------- */
+  /* --------------- global landing info style --------------- */
+  .container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+  }
   .blue-subtitle {
     font-weight: 500;
     font-style: normal;
@@ -33,16 +38,17 @@ const LandingPageStyle = styled.div`
   }
   .image-box img {
     max-width: 100%;
-    margin-top: 150px;
+    display: block;
+    margin: 50px auto;
   }
   .landing-ptag {
-    padding: 0 0 0 33px;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.56;
     color: #62748a;
     position: relative;
     margin: 25px 0 0 0;
+    padding: 0 0 0 33px;
 
     &:before {
       content: url(${checks});
@@ -104,18 +110,16 @@ const LandingPageStyle = styled.div`
       position: absolute;
       left: 0;
       top: 82px;
-      max-width: 314px;
+      max-width: 100%;
+      width: 190px;
     }
   }
 
-  /* ----------------------- Landing Parent ----------------------- */
+  /* --------------- Landing Parent --------------- */
   .landing-parent {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    max-width: 1200px;
-    width: 90%;
-    margin: 0 auto;
   }
 `;
 class LandingPage extends Component {
@@ -140,14 +144,14 @@ class LandingPage extends Component {
           history={history}
         /> */}
         <Header />
-        <section className="landing-info">
+        <section className="landing-info container">
           {/* -------------------------- first item -------------------------- */}
           <div className="landing-parent">
             <div className="landing-item-left">
               <h5 className="blue-subtitle first-blue-subtitle">Lorem-ipsum</h5>
               <h3 className="landing-info-title">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
-                natus id ab vero, veniam fuga labore.
+                Lorem ipsum dolor <br /> sit amet consectetur adipisicing elit.
+                Amet natus id ab vero, veniam fuga labore.
               </h3>
               <p className="landing-ptag">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
@@ -180,8 +184,8 @@ class LandingPage extends Component {
             <div className="landing-item-left landing-item-second">
               <h5 className="blue-subtitle first-blue-subtitle">Lorem-ipsum</h5>
               <h3 className="landing-info-title">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
-                natus id ab vero, veniam fuga labore.
+                Lorem ipsum dolor <br /> sit amet consectetur adipisicing elit.
+                Amet natus id ab vero, veniam fuga labore.
               </h3>
               <p className="landing-ptag">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
@@ -214,8 +218,8 @@ class LandingPage extends Component {
             <div className="landing-item-left ">
               <h5 className="blue-subtitle first-blue-subtitle">Lorem-ipsum</h5>
               <h3 className="landing-info-title">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet
-                natus id ab vero, veniam fuga labore.
+                Lorem ipsum dolor <br /> sit amet consectetur adipisicing elit.
+                Amet natus id ab vero, veniam fuga labore.
               </h3>
               <p className="landing-ptag">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem

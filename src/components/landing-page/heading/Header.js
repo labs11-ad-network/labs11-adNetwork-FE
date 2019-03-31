@@ -1,11 +1,35 @@
 import React, { Component } from "react";
 import { HeroHome } from "./HeaderStyle";
-import { Emphatic } from "react-burgers";
+import { ElasticReverse } from "react-burgers";
 import { TwoPersonSvg, BirdSvg } from "./HeaderSvg";
+import classnames from "classnames";
+
 class Header extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
+    prevScrollpos: window.pageYOffset,
+    visible: true
   };
+  // Adds an event listener when the component is mount.
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
+  // Remove the event listener when the component is unmount.
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
+
+  handleScroll = () => {
+    const { prevScrollpos } = this.state;
+    const currentScrollPos = window.pageYOffset;
+    const visible = prevScrollpos > currentScrollPos;
+    this.setState({
+      prevScrollpos: currentScrollPos,
+      visible
+    });
+  };
+
   toggleDrawer = () => {
     this.setState({
       isOpen: !this.state.isOpen
@@ -32,12 +56,17 @@ class Header extends Component {
       </nav> */}
 
           <div className="container">
-            <nav>
+            <nav
+              className={classnames("navbar", {
+                "navbar--hidden": !this.state.visible,
+                "nav-styling": this.state.visible
+              })}
+            >
               <a href="/#logoHERE">LOGO</a>
-              <Emphatic
-                color="#ffff"
+              <ElasticReverse
+                color={this.state.visible ? "#fff" : "#203561"}
                 lineHeight={2}
-                width={30}
+                width={28}
                 onClick={this.toggleDrawer}
                 active={this.state.isOpen}
               />
@@ -67,8 +96,10 @@ class Header extends Component {
             </div>
             <div className="container_illustration">
               {/* <div className="animation" /> */}
-              <BirdSvg style1="piio_float_left" style2="piio_float_right" />
-              <TwoPersonSvg />
+              <div className="bird-wrapper">
+                <BirdSvg style1="piio_float_left" style2="piio_float_right" />
+              </div>
+              <TwoPersonSvg className="illustration" />
             </div>
           </div>
           <span className="border_bottom" />

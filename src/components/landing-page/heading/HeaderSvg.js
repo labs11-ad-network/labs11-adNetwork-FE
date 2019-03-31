@@ -1093,10 +1093,10 @@ export const BirdSvg = ({ style1, style2 }) => (
   </>
 );
 
-export const TwoPersonSvg = () => (
+export const TwoPersonSvg = ({ className }) => (
   <>
     <svg
-      className="illustration_1 big_svg"
+      className={className}
       xmlns="http://www.w3.org/2000/svg"
       xmlnsXlink="http:/ /www.w3.org/1999/xlink"
       width={791}

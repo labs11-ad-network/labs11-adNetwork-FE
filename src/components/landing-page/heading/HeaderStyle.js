@@ -3,7 +3,7 @@ import borderBottom from "../../../assets/border_botom.svg";
 import bgStars from "../../../assets/bg_stars.svg";
 
 export const HeroHome = styled.section`
-@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+  @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
   font-family: "Roboto", sans-serif;
   position: relative;
   background-image: url(${bgStars}),
@@ -11,54 +11,31 @@ export const HeroHome = styled.section`
   background-repeat: repeat-x, no-repeat;
   background-position: center 70px, 50%;
   background-size: 1440px auto, 100% auto;
-  padding: 10px 0 380px 0;
-  overflow: hidden;
+  padding: 10px 0 315px 0;
+
+
+
 
   .container {
     max-width: 1200px;
-    width: 95%;
-    border: 1px solid red;
+    width: 90%;
     margin: 0 auto;
   }
-  .container_illustration {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .container_illustration .big_svg {
-    position: absolute;
-    top: 400px;
-    z-index: 1;
-    width: 600px;
-    left: -43px;
-    top: 699px;
-}
-  }
-  .container_illustration .bg_cloud_window {
-    position: absolute;
-    top: 1px;
-  }
 
-  /* --------------- Bird style --------------- */
-  .piio_float_left{
-    margin: 0 15px 0 0;
-  }
   /* --------------- Hero Content --------------- */
-  .hero-content {
-    min-width: 500px;
-  }
   .hero-content h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-weight: 300;
     line-height: 1.33;
     color: #fff;
     text-align: center;
+    margin: 0 auto 30px auto;
+  
     span {
       font-weight: 500;
       font-size: 2.2rem;
     }
   }
-
   .hero-sub-title {
     color: #fdba5f;
     font-size: 1rem;
@@ -66,33 +43,78 @@ export const HeroHome = styled.section`
     text-align: center;
     padding: 50px 0 20px 0;
   }
-
-  /* --------------- nav ----------------- */
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-    
-    a {
-      text-decoration:none;
-      color:#fff;
-      text-transform:uppercase;
-      font-size:16px;
+  /* ---------------  phone & Bird style --------------- */
+  .container_illustration {
+    position: relative;
+    .illustration {
+    position: absolute;
+    left: 50%;
+    top: 179%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    max-width: 100%;
+    width: 627px;
+}
+    }
+    .bird-wrapper {
+     display: flex;
+    justify-content: center;
+    z-index:2;
+      .piio_float_left {
+        margin: 0 35px 0 0;
+      }
     }
   }
+
+  /* --------------- nav ----------------- */
+  .navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: top 0.6s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    box-shadow: 0 0 15px rgba(0,0,0,.05);
+    -moz-box-shadow: 0 0 15px rgba(0,0,0,.05);
+    -webkit-box-shadow: 0 0 15px rgba(0,0,0,.05);
+    color:#fff;
+    border: 1px solid red;
+    background:inherit;
+    padding: 13px 0;
+    a {
+      text-decoration: none;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+  }
+  .nav-styling {
+    background:red ;
+  }
+  .navbar--hidden {
+    top: -100px;
+ }
+
   /* ---------------global button --------------- */
-  .hero-content .button {
-    margin: 40px auto 0;
+  .button{
+    max-width:80%;
+    margin: 0 auto;
   }
   .hero-content .btn_blue {
-    max-width: 279px;
+    max-width:100%;
+    background:red;
     margin: 30px auto;
     display: block;
     color: #fff;
     font-size: 14px;
     text-align: center;
     font-weight: 500;
-    padding: 18px 20.5px;
+    padding: 16px 20.5px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     -webkit-border-radius: 4px;
@@ -109,8 +131,7 @@ export const HeroHome = styled.section`
     line-height: 1rem;
     text-decoration: none;
     transition: 0.3s ease;
-    transition-property: background-color, box-shadow;
-    &:hover {
+    &::hover {
       background: #007bff;
     }
   }
@@ -125,10 +146,11 @@ export const HeroHome = styled.section`
   .border_bottom {
     display: block;
     width: 100%;
-    height: 85px;
+    height: 105px;
     position: absolute;
     bottom: -2px;
     background: url(${borderBottom}) repeat top;
     background-size: 1440px auto;
+    margin-bottom: -20px;
   }
 `;
