@@ -11,7 +11,6 @@ import AdHoc from "../../../components/ad-generator/AdHoc.js";
 
 const AdGeneratorContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
   .ad-form {
     background-color: #ffffff;
@@ -39,65 +38,48 @@ const AdGeneratorContainer = styled.div`
 
 export class AdGenerator extends Component {
   state = {
-    // currentElement: "headline",
-    // productData: {
-    //   offer_id: "",
-    //   headline_text: "",
-    //   tagline_text: "",
-    //   message_text: "",
-    //   button_text: "",
-    //   destination_url: "",
-    //   file: "",
-    //   size: "square_banner",
-    //   headline: {
-    //     size: "",
-    //     color: "",
-    //     bg_color: "",
-    //     align: "left", 
-    //     bold: false,
-    //     italic: false,
-    //   },
-    //   tagline:{
-    //     size: "",
-    //     color: "",
-    //     bg_color: "",
-    //     align: "left", 
-    //     bold: false,
-    //     italic: false,
-    //   },
-    //   message:{
-    //     size: "",
-    //     color: "",
-    //     bg_color: "",
-    //     align: "left", 
-    //     bold: false,
-    //     italic: false,
-    //   },
-    //   button:{
-    //     size: "",
-    //     color: "",
-    //     bg_color: "",
-    //     align: "left", 
-    //     bold: false,
-    //     italic: false,
-    //   }
-    // }
+    currentElement: "headline",
     productData: {
       offer_id: "",
-      headline: "",
-      headline_color: "",
-      tagline: "",
-      tagline_color: "",
-      message: "",
-      message_color: "",
-      cta_button: "",
+      headline_text: "",
+      tagline_text: "",
+      message_text: "",
+      button_text: "",
       destination_url: "",
-      back_img: "",
-      text_color: "",
-      btn_color: "",
-      btn_text_color: "",
+      file: "",
       size: "square_banner",
-      file: ""
+      headline: {
+        size: "",
+        color: "",
+        bg_color: "",
+        align: "left", 
+        bold: false,
+        italic: false,
+      },
+      tagline:{
+        size: "",
+        color: "",
+        bg_color: "",
+        align: "left", 
+        bold: false,
+        italic: false,
+      },
+      message:{
+        size: "",
+        color: "",
+        bg_color: "",
+        align: "left", 
+        bold: false,
+        italic: false,
+      },
+      button:{
+        size: "",
+        color: "",
+        bg_color: "",
+        align: "left", 
+        bold: false,
+        italic: false,
+      }
     }
   };
 
@@ -113,24 +95,51 @@ export class AdGenerator extends Component {
       image
     }, this.props);
 
-    // this.setState({
-    //   productData: {
-    //     offer_id: "",
-    //     headline: "",
-    //     headline_color: "",
-    //     tagline: "",
-    //     tagline_color: "",
-    //     message: "",
-    //     message_color: "",
-    //     cta_button: "",
-    //     destination_url: "",
-    //     back_img: "",
-    //     text_color: "",
-    //     btn_color: "",
-    //     btn_text_color: "",
-    //     size: this.state.productData.size
-    //   }
-    // });
+    this.setState({
+      currentElement: "headline",
+      productData: {
+        offer_id: "",
+        headline_text: "",
+        tagline_text: "",
+        message_text: "",
+        button_text: "",
+        destination_url: "",
+        file: "",
+        size: "square_banner",
+        headline: {
+          size: "",
+          color: "",
+          bg_color: "",
+          align: "left", 
+          bold: false,
+          italic: false,
+        },
+        tagline:{
+          size: "",
+          color: "",
+          bg_color: "",
+          align: "left", 
+          bold: false,
+          italic: false,
+        },
+        message:{
+          size: "",
+          color: "",
+          bg_color: "",
+          align: "left", 
+          bold: false,
+          italic: false,
+        },
+        button:{
+          size: "",
+          color: "",
+          bg_color: "",
+          align: "left", 
+          bold: false,
+          italic: false,
+        }
+      }
+    });
   };
 
   handleChange = e => {
@@ -148,7 +157,21 @@ export class AdGenerator extends Component {
       productData: {
         ...this.state.productData,
         [this.state.currentElement]: {
+          ...this.state.productData[this.state.currentElement],
           [e.target.name]: e.target.value
+        }
+      }
+    })
+  }
+
+  toggleElementStyle = e => {
+    this.setState({
+      ...this.state,
+      productData: {
+        ...this.state.productData,
+        [this.state.currentElement]: {
+          ...this.state.productData[this.state.currentElement],
+          [e.target.name]: !this.state.productData[this.state.currentElement][e.target.name]
         }
       }
     })
@@ -204,6 +227,7 @@ export class AdGenerator extends Component {
           />
           <Controls 
             customizeElement={this.customizeElement}
+            toggleElementStyle={this.toggleElementStyle}
           />
         </div>
         <div className="ad-preview">

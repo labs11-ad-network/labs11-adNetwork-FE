@@ -15,13 +15,9 @@ export const PlainHorizontalBanner = props => {
     <PlainHorizontalContainer
       ad={props.ad}
       image={props.image}
-      href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => {
-        e.preventDefault();
-        props.recordAction();
-      }}
+      onClick={props.recordAction}
     />
   );
 };
@@ -31,13 +27,9 @@ export const PlainSquareBanner = props => {
     <PlainSquareContainer
       ad={props.ad}
       image={props.image}
-      href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => {
-        e.preventDefault();
-        props.recordAction();
-      }}
+      onClick={props.recordAction}
     />
   );
 };
@@ -47,13 +39,9 @@ export const PlainVerticalBanner = props => {
     <PlainVerticalContainer
       ad={props.ad}
       image={props.image}
-      href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => {
-        e.preventDefault();
-        props.recordAction();
-      }}
+      onClick={props.recordAction}
     />
   );
 };
@@ -63,13 +51,9 @@ export const HorizontalBanner = props => {
     <HorizontalBannerContainer
       ad={props.ad}
       image={props.image}
-      href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => {
-        e.preventDefault();
-        props.recordAction();
-      }}
+      onClick={props.recordAction}
     >
       <div>
         <Draggable>
@@ -94,13 +78,9 @@ export const SquareBanner = props => {
     <SquareBannerContainer
       ad={props.ad}
       image={props.image}
-      href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => {
-        e.preventDefault();
-        props.recordAction();
-      }}
+      onClick={props.recordAction}
     >
       <div>
         <Draggable>
@@ -125,13 +105,9 @@ export const VerticalBanner = props => {
     <VerticalBannerContainer
       ad={props.ad}
       image={props.image}
-      href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => {
-        e.preventDefault();
-        props.recordAction();
-      }}
+      onClick={props.recordAction}
     >
       <div>
         <Draggable>

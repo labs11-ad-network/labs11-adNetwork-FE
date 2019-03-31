@@ -20,7 +20,8 @@ class AdServer extends Component {
     });
   }
 
-  recordAction = () => {
+  recordAction = e => {
+    e.preventDefault();
     this.props.addStats({
       action: "click",
       browser: this.parser.getBrowser().name,

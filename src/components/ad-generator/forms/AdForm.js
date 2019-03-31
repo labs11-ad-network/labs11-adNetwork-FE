@@ -85,7 +85,7 @@ const AdForm = props => {
             />
             <button
               name="currentElement"
-              value="headline_test"
+              value="headline"
               onClick={props.handleElementChange}
             >
               Select

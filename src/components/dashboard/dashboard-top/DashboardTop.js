@@ -58,7 +58,7 @@ class DashboardTop extends React.Component{
           {!this.props.location.pathname.includes("dashboard/") &&
           <MobileCreate>
             <Link to="/dashboard/create-ad">
-              <i class="fas fa-pencil-alt"/>
+              <i className="fas fa-pencil-alt"/>
             </Link>
           </MobileCreate>}
         </div>
