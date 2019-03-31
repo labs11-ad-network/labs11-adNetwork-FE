@@ -18,7 +18,7 @@ const Controls = props => {
           <Slider
             customizeElementSize={props.customizeElementSize}
             sizeValue={props.sizeValue}
-            />
+          />
           <SliderLabels>
             <h3>0px</h3>
             <h3 className="text-label">Text Size</h3>

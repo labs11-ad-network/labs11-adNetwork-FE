@@ -6,6 +6,7 @@ import html2canvas from "html2canvas";
 import { createAd } from "../../../store/actions/adAction.js";
 import { getUserOffers } from "../../../store/actions/offersAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
+import TemplateSelectors from '../../../components/ad-generator/form-components/TemplateSelectors.js';
 import Controls from "../../../components/ad-generator/controls/Controls.js";
 import AdHoc from "../../../components/ad-generator/AdHoc.js";
 
@@ -243,6 +244,9 @@ export class AdGenerator extends Component {
           />
         </div>
         <div className="ad-preview">
+          <TemplateSelectors
+            handleChange={this.handleChange}
+          />
           <div id="advertisment">
             <AdHoc ad={this.state.productData}/>
           </div>
