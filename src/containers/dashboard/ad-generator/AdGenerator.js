@@ -154,6 +154,7 @@ export class AdGenerator extends Component {
     });
   };
 
+<<<<<<< HEAD
   customizeElement = e => {
     this.setState({
       ...this.state,
@@ -164,6 +165,13 @@ export class AdGenerator extends Component {
           [e.target.name]: e.target.value
         }
       }
+=======
+  generateSnapshot = id => {
+    const ad = document.getElementById(id);
+
+    html2canvas(ad).then(canvas => {
+      console.log(canvas.toDataURL());
+>>>>>>> Testing
     });
   };
 
@@ -220,16 +228,23 @@ export class AdGenerator extends Component {
             handleFileChange={this.handleFileChange}
             productData={this.state.productData}
             offers={this.props.userOffers}
-            handleSliderChange={this.handleSliderChange}
           />
           <Controls
             customizeElement={this.customizeElement}
             toggleElementStyle={this.toggleElementStyle}
           />
         </div>
+        <button onClick={() => this.generateSnapshot("advertisment")} />
         <div className="ad-preview">
           <div id="advertisment">
+<<<<<<< HEAD
             <AdHoc ad={this.state.productData} />
+=======
+            <AdHoc
+              ad={this.state.productData}
+              generateSnapshot={this.generateSnapshot}
+            />
+>>>>>>> Testing
           </div>
         </div>
       </AdGeneratorContainer>

@@ -20,8 +20,8 @@ class SimpleSlider extends React.Component {
         <Slider
           classes={{ container: classes.slider }}
           value={value}
-          min={-300}
-          max={300}
+          min={-400}
+          max={400}
           aria-labelledby="label"
           name={name}
           onChange={handleSliderChange}

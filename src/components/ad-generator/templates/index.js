@@ -54,21 +54,6 @@ export const HorizontalBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
-<<<<<<< HEAD
-=======
-      headline_color={props.ad.headline_color}
-      tagline_color={props.ad.tagline_color}
-      message_color={props.ad.message_color}
-      headline_margin={props.ad.headline_margin}
-      healine_bottom_margin={props.ad.healine_bottom_margin}
-      tagline_margin={props.ad.tagline_margin}
-      tagline_bottom_margin={props.ad.tagline_bottom_margin}
-      message_margin={props.ad.message_margin}
-      message_bottom_margin={props.ad.message_bottom_margin}
-      cta_margin={props.ad.cta_margin}
-      cta_bottom_margin={props.ad.cta_bottom_margin}
-      file={props.ad.file}
->>>>>>> Dynamic sliders working on ad generator
     >
       <div>
         <Draggable>
@@ -96,21 +81,6 @@ export const SquareBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
-<<<<<<< HEAD
-=======
-      headline_color={props.ad.headline_color}
-      tagline_color={props.ad.tagline_color}
-      message_color={props.ad.message_color}
-      headline_margin={props.ad.headline_margin}
-      healine_bottom_margin={props.ad.healine_bottom_margin}
-      tagline_margin={props.ad.tagline_margin}
-      tagline_bottom_margin={props.ad.tagline_bottom_margin}
-      message_margin={props.ad.message_margin}
-      message_bottom_margin={props.ad.message_bottom_margin}
-      cta_margin={props.ad.cta_margin}
-      cta_bottom_margin={props.ad.cta_bottom_margin}
-      file={props.ad.file}
->>>>>>> Dynamic sliders working on ad generator
     >
       <div>
         <Draggable>
@@ -138,21 +108,6 @@ export const VerticalBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
-<<<<<<< HEAD
-=======
-      headline_color={props.ad.headline_color}
-      tagline_color={props.ad.tagline_color}
-      message_color={props.ad.message_color}
-      headline_margin={props.ad.headline_margin}
-      healine_bottom_margin={props.ad.healine_bottom_margin}
-      tagline_margin={props.ad.tagline_margin}
-      tagline_bottom_margin={props.ad.tagline_bottom_margin}
-      message_margin={props.ad.message_margin}
-      message_bottom_margin={props.ad.message_bottom_margin}
-      cta_margin={props.ad.cta_margin}
-      cta_bottom_margin={props.ad.cta_bottom_margin}
-      file={props.ad.file}
->>>>>>> Dynamic sliders working on ad generator
     >
       <div>
         <Draggable>

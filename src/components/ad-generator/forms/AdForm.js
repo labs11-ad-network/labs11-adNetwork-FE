@@ -1,9 +1,5 @@
 import React from "react";
 import { Form, TemplateSelectors, InputGroup } from "./formStyles.js";
-<<<<<<< HEAD
-=======
-import HorizontalSlider from "../form-components/HorizontalSlider";
->>>>>>> Dynamic sliders working on ad generator
 
 const AdForm = props => {
   return (
@@ -95,24 +91,6 @@ const AdForm = props => {
               Select
             </button>
           </InputGroup>
-<<<<<<< HEAD
-=======
-          <HorizontalSlider
-            name="headline_margin"
-            handleSliderChange={(e, value) =>
-              props.handleSliderChange(e, value, "headline_margin")
-            }
-            value={props.productData.headline_margin}
-          />
-
-          <HorizontalSlider
-            name="healine_bottom_margin"
-            handleSliderChange={(e, value) =>
-              props.handleSliderChange(e, value, "healine_bottom_margin")
-            }
-            value={props.productData.healine_bottom_margin}
-          />
->>>>>>> Dynamic sliders working on ad generator
           <InputGroup>
             <label htmlFor="tagline" />
             <input
@@ -130,24 +108,6 @@ const AdForm = props => {
               Select
             </button>
           </InputGroup>
-<<<<<<< HEAD
-=======
-          <HorizontalSlider
-            name="tagline_margin"
-            handleSliderChange={(e, value) =>
-              props.handleSliderChange(e, value, "tagline_margin")
-            }
-            value={props.productData.tagline_margin}
-          />
-
-          <HorizontalSlider
-            name="tagline_bottom_margin"
-            handleSliderChange={(e, value) =>
-              props.handleSliderChange(e, value, "tagline_bottom_margin")
-            }
-            value={props.productData.tagline_bottom_margin}
-          />
->>>>>>> Dynamic sliders working on ad generator
 
           <InputGroup>
             <label htmlFor="message" />
@@ -166,24 +126,6 @@ const AdForm = props => {
               Select
             </button>
           </InputGroup>
-<<<<<<< HEAD
-=======
-          <HorizontalSlider
-            name="message_margin"
-            handleSliderChange={(e, value) =>
-              props.handleSliderChange(e, value, "message_margin")
-            }
-            value={props.productData.message_margin}
-          />
-
-          <HorizontalSlider
-            name="message_bottom_margin"
-            handleSliderChange={(e, value) =>
-              props.handleSliderChange(e, value, "message_bottom_margin")
-            }
-            value={props.productData.message_bottom_margin}
-          />
->>>>>>> Dynamic sliders working on ad generator
 
           <InputGroup>
             <label htmlFor="cta_button" />
@@ -202,24 +144,6 @@ const AdForm = props => {
               Select
             </button>
           </InputGroup>
-<<<<<<< HEAD
-=======
-          <HorizontalSlider
-            name="cta_margin"
-            handleSliderChange={(e, value) =>
-              props.handleSliderChange(e, value, "cta_margin")
-            }
-            value={props.productData.cta_margin}
-          />
-
-          <HorizontalSlider
-            name="cta_bottom_margin"
-            handleSliderChange={(e, value) =>
-              props.handleSliderChange(e, value, "cta_bottom_margin")
-            }
-            value={props.productData.cta_bottom_margin}
-          />
->>>>>>> Dynamic sliders working on ad generator
           <InputGroup>
             <label htmlFor="destination_url" />
             <input
