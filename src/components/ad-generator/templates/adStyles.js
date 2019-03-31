@@ -173,6 +173,7 @@ export const VerticalBannerContainer = styled.a`
     }
   }
   button {
+    display: inline-block;
     width: 100%;
     border: unset;
     font-size: ${props => `${props.ad.button.size}px` || "1rem"};

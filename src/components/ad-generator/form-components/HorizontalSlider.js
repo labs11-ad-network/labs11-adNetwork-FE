@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/lab/Slider";
 
 const styles = {
@@ -18,11 +17,11 @@ class SimpleSlider extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Typography id="label">Slider label</Typography>
         <Slider
           classes={{ container: classes.slider }}
           value={value}
-          max={200}
+          min={-300}
+          max={300}
           aria-labelledby="label"
           name={name}
           onChange={handleSliderChange}
