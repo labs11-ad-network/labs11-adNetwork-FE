@@ -1,55 +1,34 @@
-import React from 'react'
+import React from "react";
+import Slider from "./Slider";
 
 const Controls = props => {
   return (
     <div>
-      <button
-        name="bold"
-        onClick={props.toggleElementStyle}
-      >
+      <button name="bold" onClick={props.toggleElementStyle}>
         <i className="fas fa-bold" />
       </button>
-      <button
-        name="italic"
-        onClick={props.toggleElementStyle}
-      >
+      <button name="italic" onClick={props.toggleElementStyle}>
         <i className="fas fa-italic" />
       </button>
-      <button
-        name="align"
-        value="left"
-        onClick={props.customizeElement}
-      >
+      <button name="align" value="left" onClick={props.customizeElement}>
         <i className="fas fa-align-left" />
       </button>
-      <button
-        name="align"
-        value="center"
-        onClick={props.customizeElement}
-      >
+      <button name="align" value="center" onClick={props.customizeElement}>
         <i className="fas fa-align-center" />
       </button>
-      <button
-        name="align"
-        value="right"
-        onClick={props.customizeElement}
-      >
+      <button name="align" value="right" onClick={props.customizeElement}>
         <i className="fas fa-align-right" />
       </button>
+      <Slider
+        customizeElementSize={props.customizeElementSize}
+        sizeValue={props.sizeValue}
+      />
       <div>
-        <input
-          type="color"
-          name="color"
-          onChange={props.customizeElement}
-        />
-        <input
-          type="color"
-          name="bg_color"
-          onChange={props.customizeElement}
-        />
+        <input type="color" name="color" onChange={props.customizeElement} />
+        <input type="color" name="bg_color" onChange={props.customizeElement} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Controls;
