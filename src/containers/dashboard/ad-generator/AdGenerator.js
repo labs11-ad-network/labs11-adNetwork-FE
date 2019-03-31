@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import html2canvas from "html2canvas";
 
 import { createAd } from "../../../store/actions/adAction.js";
 import { getUserOffers } from "../../../store/actions/offersAction.js";
@@ -60,10 +61,10 @@ export class AdGenerator extends Component {
     this.props.getUserOffers();
   }
 
-  createAd = e => {
+  createAd = async e => {
     e.preventDefault();
-
-    this.props.createAd(this.state.productData, this.props);
+    await this.generateSnapshot("advertisment");
+    await this.props.createAd(this.state.productData, this.props);
 
     this.setState({
       productData: {
@@ -94,6 +95,14 @@ export class AdGenerator extends Component {
     });
   };
 
+  generateSnapshot = id => {
+    const ad = document.getElementById(id);
+
+    html2canvas(ad).then(canvas => {
+      console.log(canvas.toDataURL());
+    });
+  };
+
   handleFileChange = e => {
     this.setState({
       productData: {
@@ -117,7 +126,9 @@ export class AdGenerator extends Component {
           />
         </div>
         <div className="ad-preview">
-          <AdHoc ad={this.state.productData} />
+          <div id="advertisment">
+            <AdHoc ad={this.state.productData} />
+          </div>
         </div>
       </AdGeneratorContainer>
     ) : (

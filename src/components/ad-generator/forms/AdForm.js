@@ -2,11 +2,9 @@ import React from "react";
 import {
   Form,
   TemplateSelectors,
-  FormContainer,
   InputGroup
 } from "./formStyles.js";
-import HorizontalSlider from "../form-components/HorizontalSlider";
-import VericalSlider from "../form-components/VerticalSlider";
+
 
 const AdForm = props => {
   return (
@@ -101,7 +99,6 @@ const AdForm = props => {
               onChange={props.handleChange}
             />
           </InputGroup>
-          <HorizontalSlider handleChange={props.handleChange} />
 
           <InputGroup>
             <label htmlFor="tagline" />
@@ -121,7 +118,6 @@ const AdForm = props => {
               onChange={props.handleChange}
             />
           </InputGroup>
-          <HorizontalSlider />
 
           <InputGroup>
             <label htmlFor="message" />
@@ -142,7 +138,6 @@ const AdForm = props => {
               onChange={props.handleChange}
             />
           </InputGroup>
-          <HorizontalSlider />
 
           <InputGroup>
             <label htmlFor="cta_button" />
@@ -170,7 +165,6 @@ const AdForm = props => {
               onChange={props.handleChange}
             />
           </InputGroup>
-          <HorizontalSlider />
 
           <InputGroup>
             <label htmlFor="destination_url" />
@@ -182,7 +176,6 @@ const AdForm = props => {
               onChange={props.handleChange}
             />
           </InputGroup>
-          <HorizontalSlider />
           <label htmlFor="back_img" />
           {/* --------------------- image upload --------------------- */}
           <input
