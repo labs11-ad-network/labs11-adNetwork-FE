@@ -81,7 +81,7 @@ const AdForm = props => {
               placeholder="Headline"
               name="headline_text"
               value={props.productData.headline_text}
-              onChange={props.handleTextChange}
+              onChange={props.handleChange}
             />
             <button
               name="currentElement"
@@ -98,7 +98,7 @@ const AdForm = props => {
               placeholder="Tagline"
               name="tagline_text"
               value={props.productData.tagline_text}
-              onChange={props.handleTextChange}
+              onChange={props.handleChange}
             />
             <button
               name="currentElement"
@@ -116,7 +116,7 @@ const AdForm = props => {
               placeholder="Message"
               name="message_text"
               value={props.productData.message_text}
-              onChange={props.handleTextChange}
+              onChange={props.handleChange}
             />
             <button
               name="currentElement"
@@ -134,7 +134,7 @@ const AdForm = props => {
               placeholder="CTA Button"
               name="button_text"
               value={props.productData.button_text}
-              onChange={props.handleTextChange}
+              onChange={props.handleChange}
             />
             <button
               name="currentElement"
@@ -151,7 +151,7 @@ const AdForm = props => {
               placeholder="Destination Url"
               name="destination_url"
               value={props.productData.destination_url}
-              onChange={props.handleTextChange}
+              onChange={props.handleChange}
             />
           </InputGroup>
           <label htmlFor="back_img" />

@@ -67,7 +67,7 @@ export const SquareBannerContainer = styled.a`
   padding: 10px;
   text-decoration: none;
   background-color: #F1F1F1;
-  background-image: url(${props => props.file || props.bg});
+  background-image: url(${props => props.ad.file || props.image});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -127,7 +127,7 @@ export const VerticalBannerContainer = styled.a`
   padding: 10px;
   text-decoration: none;
   background-color: #F1F1F1;
-  background-image: url(${props => props.file || props.bg});
+  background-image: url(${props => props.ad.file || props.image});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -187,7 +187,7 @@ export const PlainHorizontalContainer = styled.a`
   padding: 10px;
   text-decoration: none;
   background-color: #F1F1F1;
-  background-image: url(${props => props.file || props.bg});
+  background-image: url(${props => props.ad.file || props.image});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -202,7 +202,7 @@ export const PlainSquareContainer = styled.a`
   padding: 10px;
   text-decoration: none;
   background-color: #F1F1F1;
-  background-image: url(${props => props.file || props.bg});
+  background-image: url(${props => props.ad.file || props.image});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -219,7 +219,7 @@ export const PlainVerticalContainer = styled.a`
   padding: 10px;
   text-decoration: none;
   background-color: #F1F1F1;
-  background-image: url(${props => props.file || props.bg});
+  background-image: url(${props => props.ad.file || props.image});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;

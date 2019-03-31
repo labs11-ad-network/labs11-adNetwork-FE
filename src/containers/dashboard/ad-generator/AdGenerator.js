@@ -185,19 +185,11 @@ export class AdGenerator extends Component {
     });
   };
 
-  handleTextChange = e => {
-    this.setState({
-      productData: {
-        ...this.state.productData,
-        [e.target.name]: e.target.value
-      }
-    });
-  };
-
   generateSnapshot = id => {
     const ad = document.getElementById(id);
 
     html2canvas(ad).then(canvas => {
+      console.log(canvas.toDataURL())
       return canvas.toDataURL();
     });
   };
@@ -206,7 +198,6 @@ export class AdGenerator extends Component {
     this.setState({
       productData: {
         ...this.state.productData,
-        back_img: e.target.files[0],
         file: URL.createObjectURL(e.target.files[0])
       }
     });
