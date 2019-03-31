@@ -9,7 +9,7 @@ export const HorizontalBannerContainer = styled.a`
   padding: 10px;
   text-decoration: none;
   background-color: black;
-  background-image: url(${props => props.file || props.bg});
+  background-image: url(${props => props.ad.file || props.image});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -18,9 +18,10 @@ export const HorizontalBannerContainer = styled.a`
     flex-direction: column;
     justify-content: space-between;
     h1 {
-      font-size: 2.3rem;
+      font-size: ${props => props.ad.headline.size ? `${props.ad.headline.size}px` : "2.3rem"};
       margin-bottom: 5px;
-      color: ${props => props.headline_color};
+      color: ${props => props.ad.headline.color};
+      background-color: ${props => props.ad.headline.bg_color}
     }
     h3 {
       font-size: 1rem;
@@ -68,7 +69,7 @@ export const SquareBannerContainer = styled.a`
     h1 {
       font-size: 2.3rem;
       margin-bottom: 5px;
-      color: ${props => props.headline_color};
+      color: ${props => props.ad.headline.color};
     }
     h3 {
       font-size: 1rem;

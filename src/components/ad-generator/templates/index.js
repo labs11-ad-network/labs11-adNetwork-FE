@@ -13,12 +13,15 @@ import {
 export const PlainHorizontalBanner = props => {
   return (
     <PlainHorizontalContainer
-      bg={props.ad.back_img}
+      ad={props.ad}
+      image={props.image}
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => e.preventDefault()}
-      file={props.ad.file}
+      onClick={e => {
+        e.preventDefault();
+        props.recordAction();
+      }}
     />
   );
 };
@@ -26,12 +29,15 @@ export const PlainHorizontalBanner = props => {
 export const PlainSquareBanner = props => {
   return (
     <PlainSquareContainer
-      bg={props.ad.back_img}
+      ad={props.ad}
+      image={props.image}
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => e.preventDefault()}
-      file={props.ad.file}
+      onClick={e => {
+        e.preventDefault();
+        props.recordAction();
+      }}
     />
   );
 };
@@ -39,12 +45,15 @@ export const PlainSquareBanner = props => {
 export const PlainVerticalBanner = props => {
   return (
     <PlainVerticalContainer
-      bg={props.ad.back_img}
+      ad={props.ad}
+      image={props.image}
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => e.preventDefault()}
-      file={props.ad.file}
+      onClick={e => {
+        e.preventDefault();
+        props.recordAction();
+      }}
     />
   );
 };
@@ -52,32 +61,29 @@ export const PlainVerticalBanner = props => {
 export const HorizontalBanner = props => {
   return (
     <HorizontalBannerContainer
-      bg={props.ad.back_img}
-      text_color={props.ad.text_color}
-      btn_color={props.ad.btn_color}
-      btn_text_color={props.ad.btn_text_color}
+      ad={props.ad}
+      image={props.image}
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => e.preventDefault()}
-      headline_color={props.ad.headline_color}
-      tagline_color={props.ad.tagline_color}
-      message_color={props.ad.message_color}
-      file={props.ad.file}
+      onClick={e => {
+        e.preventDefault();
+        props.recordAction();
+      }}
     >
       <div>
         <Draggable>
-          <h1>{props.ad.headline}</h1>
+          <h1>{props.ad.headline_text}</h1>
         </Draggable>
         <Draggable>
-          <h3>{props.ad.tagline}</h3>
+          <h3>{props.ad.tagline_text}</h3>
         </Draggable>
         <Draggable>
-          <p>{props.ad.message}</p>
+          <p>{props.ad.message_text}</p>
         </Draggable>
       </div>
       <Draggable>
-        <button>{props.ad.cta_button}</button>
+        <button>{props.ad.button_text}</button>
       </Draggable>
     </HorizontalBannerContainer>
   );
@@ -86,32 +92,29 @@ export const HorizontalBanner = props => {
 export const SquareBanner = props => {
   return (
     <SquareBannerContainer
-      bg={props.ad.back_img}
-      text_color={props.ad.text_color}
-      btn_color={props.ad.btn_color}
-      btn_text_color={props.ad.btn_text_color}
+      ad={props.ad}
+      image={props.image}
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => e.preventDefault()}
-      headline_color={props.ad.headline_color}
-      tagline_color={props.ad.tagline_color}
-      message_color={props.ad.message_color}
-      file={props.ad.file}
+      onClick={e => {
+        e.preventDefault();
+        props.recordAction();
+      }}
     >
       <div>
         <Draggable>
-          <h1>{props.ad.headline}</h1>
+          <h1>{props.ad.headline_text}</h1>
         </Draggable>
         <Draggable>
-          <h3>{props.ad.tagline}</h3>
+          <h3>{props.ad.tagline_text}</h3>
         </Draggable>
         <Draggable>
-          <p>{props.ad.message}</p>
+          <p>{props.ad.message_text}</p>
         </Draggable>
       </div>
       <Draggable>
-        <button>{props.ad.cta_button}</button>
+        <button>{props.ad.button_text}</button>
       </Draggable>
     </SquareBannerContainer>
   );
@@ -120,32 +123,29 @@ export const SquareBanner = props => {
 export const VerticalBanner = props => {
   return (
     <VerticalBannerContainer
-      bg={props.ad.back_img}
-      text_color={props.ad.text_color}
-      btn_color={props.ad.btn_color}
-      btn_text_color={props.ad.btn_text_color}
+      ad={props.ad}
+      image={props.image}
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={e => e.preventDefault()}
-      headline_color={props.ad.headline_color}
-      tagline_color={props.ad.tagline_color}
-      message_color={props.ad.message_color}
-      file={props.ad.file}
+      onClick={e => {
+        e.preventDefault();
+        props.recordAction();
+      }}
     >
       <div>
         <Draggable>
-          <h1>{props.ad.headline}</h1>
+          <h1>{props.ad.headline_text}</h1>
         </Draggable>
         <Draggable>
-          <h3>{props.ad.tagline}</h3>
+          <h3>{props.ad.tagline_text}</h3>
         </Draggable>
         <Draggable>
-          <p>{props.ad.message}</p>
+          <p>{props.ad.message_text}</p>
         </Draggable>
       </div>
       <Draggable>
-        <button>{props.ad.cta_button}</button>
+        <button>{props.ad.button_text}</button>
       </Draggable>
     </VerticalBannerContainer>
   );

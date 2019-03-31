@@ -79,35 +79,34 @@ const AdForm = props => {
             <input
               type="text"
               placeholder="Headline"
-              name="headline"
-              value={props.productData.headline}
-              onChange={props.handleChange}
+              name="headline_text"
+              value={props.productData.headline_text}
+              onChange={props.handleTextChange}
             />
-            <label htmlFor="headline-color" />
-            <input
-              type="color"
-              placeholder="Headline"
-              name="headline_color"
-              onChange={props.handleChange}
-            />
+            <button
+              name="currentElement"
+              value="headline_test"
+              onClick={props.handleElementChange}
+            >
+              Select
+            </button>
           </InputGroup>
           <InputGroup>
             <label htmlFor="tagline" />
             <input
               type="text"
               placeholder="Tagline"
-              name="tagline"
-              value={props.productData.tagline}
-              onChange={props.handleChange}
+              name="tagline_text"
+              value={props.productData.tagline_text}
+              onChange={props.handleTextChange}
             />
-            <label htmlFor="tagline-color" />
-            <input
-              type="color"
-              placeholder="Tagline"
-              name="tagline_color"
-              value={props.productData.tagline}
-              onChange={props.handleChange}
-            />
+            <button
+              name="currentElement"
+              value="tagline"
+              onClick={props.handleElementChange}
+            >
+              Select
+            </button>
           </InputGroup>
 
           <InputGroup>
@@ -115,19 +114,17 @@ const AdForm = props => {
             <input
               type="text"
               placeholder="Message"
-              name="message"
-              value={props.productData.message}
-              onChange={props.handleChange}
+              name="message_text"
+              value={props.productData.message_text}
+              onChange={props.handleTextChange}
             />
-            <label htmlFor="message_color" />
-
-            <input
-              type="color"
-              placeholder="Message Color"
-              name="message_color"
-              value={props.productData.message_color}
-              onChange={props.handleChange}
-            />
+            <button
+              name="currentElement"
+              value="message"
+              onClick={props.handleElementChange}
+            >
+              Select
+            </button>
           </InputGroup>
 
           <InputGroup>
@@ -135,25 +132,17 @@ const AdForm = props => {
             <input
               type="text"
               placeholder="CTA Button"
-              name="cta_button"
-              value={props.productData.cta_button}
-              onChange={props.handleChange}
+              name="button_text"
+              value={props.productData.button_text}
+              onChange={props.handleTextChange}
             />
-            <label htmlFor="btn_color" />
-            <input
-              type="color"
-              placeholder="Button Color"
-              name="btn_color"
-              value={props.productData.btn_color}
-              onChange={props.handleChange}
-            />
-            <input
-              type="color"
-              placeholder="Button Color"
-              name="btn_text_color"
-              value={props.productData.btn_text_color}
-              onChange={props.handleChange}
-            />
+            <button
+              name="currentElement"
+              value="button"
+              onClick={props.handleElementChange}
+            >
+              Select
+            </button>
           </InputGroup>
           <InputGroup>
             <label htmlFor="destination_url" />
@@ -162,7 +151,7 @@ const AdForm = props => {
               placeholder="Destination Url"
               name="destination_url"
               value={props.productData.destination_url}
-              onChange={props.handleChange}
+              onChange={props.handleTextChange}
             />
           </InputGroup>
           <label htmlFor="back_img" />
