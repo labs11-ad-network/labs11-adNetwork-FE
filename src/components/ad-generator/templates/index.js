@@ -1,4 +1,5 @@
 import React from "react";
+import Draggable from "react-draggable";
 
 import {
   HorizontalBannerContainer,
@@ -16,7 +17,8 @@ export const PlainHorizontalBanner = props => {
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={props.recordAction}
+      onClick={e => e.preventDefault()}
+      file={props.ad.file}
     />
   );
 };
@@ -28,7 +30,8 @@ export const PlainSquareBanner = props => {
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={props.recordAction}
+      onClick={e => e.preventDefault()}
+      file={props.ad.file}
     />
   );
 };
@@ -40,7 +43,8 @@ export const PlainVerticalBanner = props => {
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={props.recordAction}
+      onClick={e => e.preventDefault()}
+      file={props.ad.file}
     />
   );
 };
@@ -55,16 +59,26 @@ export const HorizontalBanner = props => {
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={props.recordAction}
+      onClick={e => e.preventDefault()}
+      headline_color={props.ad.headline_color}
+      tagline_color={props.ad.tagline_color}
+      message_color={props.ad.message_color}
+      file={props.ad.file}
     >
       <div>
-        <h1>{props.ad.headline}</h1>
-        <h3>{props.ad.tagline}</h3>
-        <p>{props.ad.message}</p>
+        <Draggable>
+          <h1>{props.ad.headline}</h1>
+        </Draggable>
+        <Draggable>
+          <h3>{props.ad.tagline}</h3>
+        </Draggable>
+        <Draggable>
+          <p>{props.ad.message}</p>
+        </Draggable>
       </div>
-      <button>
-        {props.ad.cta_button}
-      </button>
+      <Draggable>
+        <button>{props.ad.cta_button}</button>
+      </Draggable>
     </HorizontalBannerContainer>
   );
 };
@@ -79,16 +93,26 @@ export const SquareBanner = props => {
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={props.recordAction}
+      onClick={e => e.preventDefault()}
+      headline_color={props.ad.headline_color}
+      tagline_color={props.ad.tagline_color}
+      message_color={props.ad.message_color}
+      file={props.ad.file}
     >
       <div>
-        <h1>{props.ad.headline}</h1>
-        <h3>{props.ad.tagline}</h3>
-        <p>{props.ad.message}</p>
+        <Draggable>
+          <h1>{props.ad.headline}</h1>
+        </Draggable>
+        <Draggable>
+          <h3>{props.ad.tagline}</h3>
+        </Draggable>
+        <Draggable>
+          <p>{props.ad.message}</p>
+        </Draggable>
       </div>
-      <button>
-        {props.ad.cta_button}
-      </button>
+      <Draggable>
+        <button>{props.ad.cta_button}</button>
+      </Draggable>
     </SquareBannerContainer>
   );
 };
@@ -103,16 +127,26 @@ export const VerticalBanner = props => {
       href={props.ad.destination_url}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={props.recordAction}
+      onClick={e => e.preventDefault()}
+      headline_color={props.ad.headline_color}
+      tagline_color={props.ad.tagline_color}
+      message_color={props.ad.message_color}
+      file={props.ad.file}
     >
       <div>
-        <h1>{props.ad.headline}</h1>
-        <h3>{props.ad.tagline}</h3>
-        <p>{props.ad.message}</p>
+        <Draggable>
+          <h1>{props.ad.headline}</h1>
+        </Draggable>
+        <Draggable>
+          <h3>{props.ad.tagline}</h3>
+        </Draggable>
+        <Draggable>
+          <p>{props.ad.message}</p>
+        </Draggable>
       </div>
-      <button>
-        {props.ad.cta_button}
-      </button>
+      <Draggable>
+        <button>{props.ad.cta_button}</button>
+      </Draggable>
     </VerticalBannerContainer>
   );
 };
