@@ -28,7 +28,9 @@ const Controls = props => {
       </TopSection>
       <BottomSection>
         <BottomLeft>
-          left
+          <button>
+            <i className="fas fa-pencil-alt"/>
+          </button>
         </BottomLeft>
         <BottomMiddle>
           <button name="bold" onClick={props.toggleElementStyle}>

@@ -89,5 +89,18 @@ export const BottomRight = styled.div`
 export const BottomLeft = styled.div`
     display: flex;
     width: 25%;
-    margin: 10px;
+    button{
+        width: 90px;
+        height: 100px;
+        border-bottom-left-radius: 15px;
+        font-size: 2rem;
+        background-color: #097AC6;        
+        border: unset;
+        color: #FFFFFF;
+        transition: .2s;
+        &:hover{
+            cursor: pointer;
+            background-color: #086FB3;
+        }
+    }
 `;

@@ -242,10 +242,9 @@ export class AdGenerator extends Component {
             sizeValue={this.state.productData[this.state.currentElement].size}
           />
         </div>
-        <button onClick={() => this.generateSnapshot("advertisment")} />
         <div className="ad-preview">
           <div id="advertisment">
-            <AdHoc ad={this.state.productData} />
+            <AdHoc ad={this.state.productData}/>
           </div>
         </div>
       </AdGeneratorContainer>
