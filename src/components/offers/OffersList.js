@@ -15,7 +15,6 @@ import {
   changeOfferStatus,
   deleteOffer
 } from "../../store/actions/offersAction.js";
-import AdHoc from "../ad-generator/AdHoc.js";
 
 const styles = theme => ({
   root: {
@@ -237,7 +236,7 @@ class OffersList extends React.Component {
     },
     {
       name: "Ad",
-      field: "message",
+      field: "name",
       options: {
         width: 150
       }

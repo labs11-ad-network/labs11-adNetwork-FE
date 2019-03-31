@@ -6,6 +6,7 @@ import html2canvas from "html2canvas";
 import { createAd } from "../../../store/actions/adAction.js";
 import { getUserOffers } from "../../../store/actions/offersAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
+import TemplateSelectors from '../../../components/ad-generator/form-components/TemplateSelectors.js';
 import Controls from "../../../components/ad-generator/controls/Controls.js";
 import AdHoc from "../../../components/ad-generator/AdHoc.js";
 
@@ -13,12 +14,13 @@ const AdGeneratorContainer = styled.div`
   display: flex;
   justify-content: space-between;
   .ad-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #ffffff;
     margin: 15px;
-    padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     border-radius: 15px;
-    padding: 25px;
     width: 50%;
   }
   .ad-preview {
@@ -93,7 +95,10 @@ export class AdGenerator extends Component {
     await this.props.createAd(
       {
         offer_id: this.state.productData.offer_id,
-        image
+        image,
+        name: this.state.productData.headline_text,
+        size: this.state.productData.size,
+        destination_url: this.state.productData.destination_url
       },
       this.props
     );
@@ -238,10 +243,12 @@ export class AdGenerator extends Component {
             sizeValue={this.state.productData[this.state.currentElement].size}
           />
         </div>
-        <button onClick={() => this.generateSnapshot("advertisment")} />
         <div className="ad-preview">
+          <TemplateSelectors
+            handleChange={this.handleChange}
+          />
           <div id="advertisment">
-            <AdHoc ad={this.state.productData} />
+            <AdHoc ad={this.state.productData}/>
           </div>
         </div>
       </AdGeneratorContainer>
