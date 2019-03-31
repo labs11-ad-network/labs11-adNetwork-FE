@@ -93,7 +93,10 @@ export class AdGenerator extends Component {
     await this.props.createAd(
       {
         offer_id: this.state.productData.offer_id,
-        image
+        image,
+        name: this.state.productData.headline_text,
+        size: this.state.productData.size,
+        destination_url: this.state.productData.destination_url
       },
       this.props
     );

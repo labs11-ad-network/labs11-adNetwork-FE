@@ -5,9 +5,8 @@ import UAParser from 'ua-parser-js';
 import { getAd } from "../../store/actions/adAction.js";
 import { addStats } from "../../store/actions/analyticsAction";
 
-import AdHoc from "../../components/ad-generator/AdHoc.js";
-
 class AdServer extends Component {
+  
   componentDidMount() {
     this.parser = new UAParser([navigator.userAgent]);
     this.props.getAd(this.props.match.params.id);
@@ -21,7 +20,6 @@ class AdServer extends Component {
   }
 
   recordAction = e => {
-    e.preventDefault();
     this.props.addStats({
       action: "click",
       browser: this.parser.getBrowser().name,
@@ -33,9 +31,9 @@ class AdServer extends Component {
 
   render() {
     return (
-      <>
-        <AdHoc ad={this.props.ad} recordAction={this.recordAction}/>
-      </>
+      <a href={this.props.ad.destination_url} target="_blank" rel="noopener noreferrer">
+        <img src={this.props.ad.image} onClick={this.recordAction} alt=""/>
+      </a>
     );
   }
 }

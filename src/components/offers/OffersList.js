@@ -237,7 +237,7 @@ class OffersList extends React.Component {
     },
     {
       name: "Ad",
-      field: "message",
+      field: "name",
       options: {
         width: 150
       }
