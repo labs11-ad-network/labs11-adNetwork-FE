@@ -15,7 +15,6 @@ import {
   changeOfferStatus,
   deleteOffer
 } from "../../store/actions/offersAction.js";
-import AdHoc from "../ad-generator/AdHoc.js";
 
 const styles = theme => ({
   root: {

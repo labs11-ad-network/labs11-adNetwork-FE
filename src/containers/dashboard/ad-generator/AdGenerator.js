@@ -13,12 +13,13 @@ const AdGeneratorContainer = styled.div`
   display: flex;
   justify-content: space-between;
   .ad-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: #ffffff;
     margin: 15px;
-    padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     border-radius: 15px;
-    padding: 25px;
     width: 50%;
   }
   .ad-preview {
