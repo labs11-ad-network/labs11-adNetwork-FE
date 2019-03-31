@@ -1,16 +1,9 @@
 import React from "react";
-import {
-  Form,
-  TemplateSelectors,
-  InputGroup
-} from "./formStyles.js";
-
+import { Form, TemplateSelectors, InputGroup } from "./formStyles.js";
 
 const AdForm = props => {
   return (
     <>
-      {/* <HorizontalSlider /> */}
-
       <TemplateSelectors>
         <h2>Create your ad.</h2>
 
@@ -47,7 +40,6 @@ const AdForm = props => {
           >
             Plain Horizontal Banner
           </button>
-
           <button value="plain_square" name="size" onClick={props.handleChange}>
             Plain Square Banner
           </button>
@@ -99,7 +91,6 @@ const AdForm = props => {
               onChange={props.handleChange}
             />
           </InputGroup>
-
           <InputGroup>
             <label htmlFor="tagline" />
             <input
@@ -148,7 +139,6 @@ const AdForm = props => {
               value={props.productData.cta_button}
               onChange={props.handleChange}
             />
-
             <label htmlFor="btn_color" />
             <input
               type="color"
@@ -165,7 +155,6 @@ const AdForm = props => {
               onChange={props.handleChange}
             />
           </InputGroup>
-
           <InputGroup>
             <label htmlFor="destination_url" />
             <input
