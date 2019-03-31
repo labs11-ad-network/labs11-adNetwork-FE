@@ -244,11 +244,11 @@ class OffersList extends React.Component {
     },
     {
       name: "Preview",
-      field: "back_img",
+      field: "image",
       options: {
         width: 170,
         customBodyRender: value => {
-          return <AdHoc ad={value} />;
+          return <img src={value.image} alt="..." />;
         }
       }
     }

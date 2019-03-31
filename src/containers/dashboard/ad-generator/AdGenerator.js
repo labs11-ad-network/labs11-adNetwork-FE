@@ -203,13 +203,10 @@ export class AdGenerator extends Component {
     });
   };
 
-  generateSnapshot = id => {
+  generateSnapshot = async id => {
     const ad = document.getElementById(id);
-
-    html2canvas(ad).then(canvas => {
-      console.log(canvas.toDataURL());
-      return canvas.toDataURL();
-    });
+    const canvas = await html2canvas(ad);
+    return canvas.toDataURL();
   };
 
   handleFileChange = e => {

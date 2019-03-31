@@ -33,7 +33,7 @@ export const CREATE_AD_FAILURE = "CREATE_AD_FAILURE";
 export const createAd = (ad, props) => dispatch => {
   dispatch({ type: CREATE_AD_START });
   axios
-    .post(`${URL}/api/ads`, ad)
+    .post(`${URL}/api/ads`, { offer_id: ad.offer_id, image: ad.image })
     .then(res => {
       dispatch({ type: CREATE_AD_SUCCESS, payload: res.data });
     })
