@@ -1,6 +1,8 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Pusher from "pusher-js";
+import Badge from "@material-ui/core/Badge";
+
 import {
   NavContainer,
   LeftSection,
@@ -14,18 +16,21 @@ import {
 
 class DashboardTop extends React.Component {
   state = {
-    movileNavOpen: false
+    movileNavOpen: false,
+    notificationsList: []
   };
 
   componentDidMount = () => {
-    const pusher = new Pusher("633e24acba0ede9fb4e7", {
+    const pusher = new Pusher("50920b18a9a2ff320874", {
       cluster: "us2",
       encrypted: true
     });
 
-    const channel = pusher.subscribe("offers");
-    channel.bind("disabled-offer", data => {
-      alert("THIS IS WORKING");
+    const channel = pusher.subscribe(`${this.props.currentUser.id}`);
+    channel.bind("disable-offer", data => {
+      this.setState({
+        notificationsList: [...this.state.notificationsList, data]
+      });
     });
   };
 
@@ -140,8 +145,14 @@ class DashboardTop extends React.Component {
         <RightSection>
           {this.props.currentUser && (
             <>
+              <Badge
+                badgeContent={this.state.notificationsList.length}
+                color="primary"
+              >
+                <i className="fas fa-bell" />
+              </Badge>
               <i
-                className="fas fa-bell"
+                className="fas fa-sign-out-alt"
                 onClick={() => {
                   localStorage.clear();
                   this.props.history.push("/");
