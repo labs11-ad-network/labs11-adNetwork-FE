@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
 
+import { CreateAdButton } from '../../../components/ad-generator/forms/formStyles.js';
 import { createAd } from "../../../store/actions/adAction.js";
 import { getUserOffers } from "../../../store/actions/offersAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
@@ -15,19 +16,6 @@ const AdGeneratorContainer = styled.div`
   justify-content: space-between;
   .preview-section {
     width: 50%;
-    .create-ad {
-      color: #ffffff;
-      background-color: #0a88dc;
-      transition: 0.2s;
-      width: 97%;
-      padding: 20px;
-      border-radius: 8px;
-      margin: 0 10px;
-      &:hover {
-        cursor: pointer;
-        background-color: #086fb3;
-      }
-    }
     .template-selector {
       display: flex;
       background-color: #ffffff;
@@ -35,7 +23,6 @@ const AdGeneratorContainer = styled.div`
       padding: 10px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
       border-radius: 15px;
-      padding: 25px;
       justify-content: center;
     }
     .ad-preview {
@@ -259,6 +246,7 @@ export class AdGenerator extends Component {
             handleFileChange={this.handleFileChange}
             productData={this.state.productData}
             offers={this.props.userOffers}
+            selected={this.state.currentElement}
           />
           <Controls
             customizeElement={this.customizeElement}
@@ -276,9 +264,9 @@ export class AdGenerator extends Component {
               <AdHoc ad={this.state.productData} />
             </div>
           </div>
-          <button className="create-ad" onClick={this.createAd}>
+          <CreateAdButton onClick={this.createAd}>
             Create Ad
-          </button>
+          </CreateAdButton>
         </div>
       </AdGeneratorContainer>
     ) : (
