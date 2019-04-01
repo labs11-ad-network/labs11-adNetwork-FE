@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { getPayouts } from "../../../store/actions/stripeAction";
+import { getPayouts, getPayments } from "../../../store/actions/stripeAction";
+
 import { AreaChart, Area, XAxis, YAxis, Tooltip } from "recharts";
 import styled from "styled-components";
 import moment from "moment";
@@ -26,40 +27,13 @@ const GraphContainer = styled.div`
   }
 `;
 
-const data = [
-  {
-    name: "Mon",
-    uv: 4000
-  },
-  {
-    name: "Tue",
-    uv: 3000
-  },
-  {
-    name: "Wed",
-    uv: 2000
-  },
-  {
-    name: "Thur",
-    uv: 2780
-  },
-  {
-    name: "Fri",
-    uv: 1890
-  },
-  {
-    name: "Sat",
-    uv: 2390
-  },
-  {
-    name: "Sun",
-    uv: 3490
-  }
-];
-
 class RevenueChart extends PureComponent {
   componentDidMount = () => {
-    this.props.getPayouts();
+    if (this.props.currentUser.acct_type === "advertiser") {
+      this.props.getPayments();
+    } else {
+      this.props.getPayouts();
+    }
   };
   render() {
     console.log(this.props);
@@ -68,7 +42,11 @@ class RevenueChart extends PureComponent {
         <AreaChart
           width={1300}
           height={300}
-          data={this.props.payouts}
+          data={
+            this.props.currentUser.acct_type === "advertiser"
+              ? this.props.payments
+              : this.props.payouts
+          }
           margin={{
             top: 10,
             right: 30,
@@ -106,12 +84,15 @@ class RevenueChart extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  payouts: state.stripeReducer.payouts
+  payouts: state.stripeReducer.payouts,
+  payments: state.stripeReducer.payments,
+  currentUser: state.authReducer.currentUser
 });
 
 export default connect(
   mapStateToProps,
   {
-    getPayouts
+    getPayouts,
+    getPayments
   }
 )(RevenueChart);
