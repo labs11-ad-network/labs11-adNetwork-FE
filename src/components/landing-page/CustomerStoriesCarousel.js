@@ -45,7 +45,6 @@ const styles = theme => ({
   message: {
     textAlign: 'center',
     fontSize: '2rem',
-    maxWidth: 'calc(100vw - 10rem)',
     lineHeight: 1.25
   },
   customerStoriesContainer: {
@@ -75,7 +74,11 @@ const styles = theme => ({
     borderRadius: '50%',
   },
   infopTag: {
-    fontSize: '1.1rem'
+    fontSize: '1.1rem',
+    maxWidth: '90%',
+    margin: '0 auto',
+    textAlign: 'center',
+    lineHeight: 1.25
   },
   heading4: {
     padding: '10px 0',
@@ -166,12 +169,9 @@ class SwipeableTextMobileStepper extends React.Component {
             className={classes.avatar}
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ" alt="avatar-testing" />
 
-          <h4
-            className={classes.heading4}
-          >Test</h4>
+          <h4 className={classes.heading4}>Test</h4>
           <p
-            className={classes.infopTag}
-          >Managing Director at Herld (Google Partner Agency)</p>
+            className={classes.infopTag} >Managing Director at Herld (Google Partner Agency)</p>
         </div>
 
         <MobileStepper

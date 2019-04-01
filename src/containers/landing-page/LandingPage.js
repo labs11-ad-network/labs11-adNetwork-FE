@@ -129,7 +129,6 @@ const LandingPageStyle = styled.div`
       box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
     }
   }
-
   /* --------------- Landing Parent --------------- */
   .landing-parent {
     display: flex;
@@ -148,12 +147,11 @@ const LandingPageStyle = styled.div`
       max-width: 500px;
     }
   }
-
   .costumer-stories {
-    padding-bottom: 100vh;
+    margin-bottom: 100vh;
   }
   .costumer-subtitle {
-    padding: 20px 0;
+    padding: 20px 0 0 0;
     margin-top:100px;
   }
 `;
