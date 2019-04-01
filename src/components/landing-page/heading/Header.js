@@ -82,14 +82,14 @@ class Header extends Component {
                 </h1>
                 <div className="button">
                   <a className="btn_scroll btn_blue" href="/#" alt="button">
-                    Start a Free Trial
+                    become advertiser
                   </a>
                   <a
                     alt="button"
                     className="btn_scroll btn_blue yellow-btn"
                     href="/#"
                   >
-                    Start a Free Trial
+                    become publisher
                   </a>
                 </div>
               </div>

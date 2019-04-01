@@ -4,6 +4,7 @@ import Navigation from "../../components/landing-page/navigation/Navigation.js";
 import Header from "../../components/landing-page/heading/Header.js";
 import styled from "styled-components";
 import checks from "../../assets/checks.svg";
+import desktopGiff from "../../assets/desktopAds.gif";
 const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 
@@ -57,6 +58,11 @@ const LandingPageStyle = styled.div`
     max-width: 100%;
     display: block;
     margin: 20px auto;
+  }
+  @media (min-width: 940px) {
+    .image-box-third {
+      margin: 50px 0 0 0;
+    }
   }
   .landing-ptag {
     font-size: 1rem;
@@ -123,38 +129,6 @@ const LandingPageStyle = styled.div`
     }
   }
 
-  /* thid image with code  */
-  .image-box {
-    position: relative;
-    .code_piio-image-third {
-      position: relative;
-      left: 5%;
-      max-width: 555px;
-      width: 100%;
-      height: auto;
-      @media (min-width: 481px) {
-        margin: 0 0 40% 0;
-      }
-      @media (min-width: 940px) {
-        top: 20%;
-      }
-    }
-    .code_piio {
-      padding: 0 44px 20px 16px;
-      position: absolute;
-      left: 0;
-      top: 82px;
-      max-width: 100%;
-      width: 190px;
-      @media (min-width: 481px) {
-        width: 390px;
-      }
-      @media (min-width: 940px) {
-        top: 30%;
-      }
-    }
-  }
-
   /* --------------- Landing Parent --------------- */
   .landing-parent {
     display: flex;
@@ -203,22 +177,22 @@ class LandingPage extends Component {
           {/* -------------------------- first item -------------------------- */}
           <div className="landing-parent">
             <div className="landing-item-left">
-              <h5 className="blue-subtitle first-blue-subtitle">Lorem-ipsum</h5>
+              <h5 className="blue-subtitle first-blue-subtitle">
+                Customized and friendly Interstitial Ads
+              </h5>
               <h3 className="landing-info-title">
-                Lorem ipsum dolor <br /> sit amet consectetur adipisicing elit.
-                Amet natus id ab vero, veniam fuga labore.
+                Monetize with Interstitial Ads
               </h3>
               <p className="landing-ptag">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                incidunt eligendi ea Autem incidunt eligendi.
+                Increase your revenue with keywords targeted Interstitial Ads
               </p>
               <p className="landing-ptag">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                incidunt eligendi ea Autem incidunt eligendi.
+                Choose your desired Interstitial Ads size to fit your display
+                style
               </p>
               <p className="landing-ptag">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                incidunt eligendi ea Autem incidunt eligendi.
+                Maximize your revenue potential on high value impressions , and
+                Customize for welcome Ad format or lightbox Interstitial Ads
               </p>
               <div className="buttons_container">
                 <a href="#" className="btn_blue">
@@ -227,7 +201,7 @@ class LandingPage extends Component {
               </div>
             </div>
 
-            <div className="landing-item-right image-box">
+            <div className="landing-item-right image-box ">
               <img
                 src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2FEcommerce_buyer.svg"
                 alt="girl pressing button"
@@ -237,22 +211,22 @@ class LandingPage extends Component {
           {/* -------------------------- second item -------------------------- */}
           <div className="landing-parent">
             <div className="landing-item-left landing-item-second">
-              <h5 className="blue-subtitle first-blue-subtitle">Lorem-ipsum</h5>
+              <h5 className="blue-subtitle first-blue-subtitle">
+                Monetize with unique and attractive Banner Ads
+              </h5>
               <h3 className="landing-info-title">
-                Lorem ipsum dolor <br /> sit amet consectetur adipisicing elit.
-                Amet natus id ab vero, veniam fuga labore.
+                Display Attractive Banner Ads
               </h3>
               <p className="landing-ptag">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                incidunt eligendi ea Autem incidunt eligendi.
+                Access high paying Banner Ads to maximize your revenue
               </p>
               <p className="landing-ptag">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                incidunt eligendi ea Autem incidunt eligendi.
+                Choose the most converting banner Ads for higher eCPM
               </p>
               <p className="landing-ptag">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                incidunt eligendi ea Autem incidunt eligendi.
+                Select your desired banner size to fit your space , and Display
+                based on keywords to target the right people and increase your
+                income
               </p>
               <div className="buttons_container">
                 <a href="#" className="btn_blue">
@@ -271,22 +245,24 @@ class LandingPage extends Component {
           {/* -------------------------- third item -------------------------- */}
           <div className="landing-parent">
             <div className="landing-item-left ">
-              <h5 className="blue-subtitle first-blue-subtitle">Lorem-ipsum</h5>
+              <h5 className="blue-subtitle first-blue-subtitle">
+                Earn even more with mobile and App traffic
+              </h5>
               <h3 className="landing-info-title">
-                Lorem ipsum dolor <br /> sit amet consectetur adipisicing elit.
-                Amet natus id ab vero, veniam fuga labore.
+                Mobile and In App Ads Amet natus id ab vero, veniam fuga labore.
               </h3>
               <p className="landing-ptag">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                incidunt eligendi ea Autem incidunt eligendi.
+                Optimized to reach more audience across all mobile devices and
+                Android Apps
               </p>
               <p className="landing-ptag">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                incidunt eligendi ea Autem incidunt eligendi.
+                Each mobile and in App Ad impression that makes a difference on
+                your income
               </p>
               <p className="landing-ptag">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-                incidunt eligendi ea Autem incidunt eligendi.
+                We support all your desired sizes to maintain your audience
+                engagement, and Reach more mobile users and increase your
+                revenue as a Publisher
               </p>
               <div className="buttons_container">
                 <a href="#" className="btn_blue">
@@ -295,17 +271,8 @@ class LandingPage extends Component {
               </div>
             </div>
 
-            <div className="landing-item-right image-box image-box-third ">
-              <img
-                className="code_piio-image-third"
-                src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2Fillustration-developers.svg"
-                alt="code piio in console"
-              />
-              <img
-                className="code_piio"
-                alt="console code piio"
-                src="https://pcdn.piiojs.com/i/piio/https%3A%2F%2Fpiio-web-v2.herokuapp.com%2Fimg%2Fcode-with-piio%402x.png"
-              />
+            <div className="landing-item-right image-box image-box-third">
+              <img src={desktopGiff} alt="giff desktop" />
             </div>
           </div>
         </section>

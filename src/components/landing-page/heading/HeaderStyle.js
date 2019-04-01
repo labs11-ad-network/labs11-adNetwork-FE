@@ -12,6 +12,7 @@ export const HeroHome = styled.section`
   background-position: center 70px, 50%;
   background-size: 1440px auto, 100% auto;
   padding: 10px 0 174px 0;
+
   @media (min-width: 481px) {
     padding: 10px 0 224px 0;
   }
@@ -96,25 +97,64 @@ export const HeroHome = styled.section`
         width: 795px;
         left: 125px;
         top: 99%;
-       }
       }
     }
   }
+
   .bird-wrapper {
     display: flex;
     justify-content: center;
     z-index: 2;
+
     @media (min-width: 940px) {
       z-index: 2;
       position: relative;
       top: 39%;
       left: -19%;
-
     }
     .piio_float_left {
       margin: 0 35px 31% 0;
+      animation: float 6s ease-in-out infinite;
       @media (min-width: 481px) {
         margin: 10% 35px 22% 0;
+      }
+      svg {
+        width: 100px;
+        @media (min-width: 481px) {
+          width: 151px;
+        }
+      }
+    }
+    @keyframes float {
+      0% {
+        transform: translatey(0);
+      }
+      50% {
+        transform: translate(5px, 5px);
+      }
+      100% {
+        transform: translate(0);
+      }
+    }
+
+    .piio_float_right {
+      animation: float_reverse 5s ease-in-out infinite;
+      svg {
+        width: 120px;
+        @media (min-width: 481px) {
+          width: 188px;
+        }
+      }
+    }
+    @keyframes float_reverse {
+      0% {
+        transform: translatey(0);
+      }
+      50% {
+        transform: translate(8px, 8px);
+      }
+      100% {
+        transform: translate(0);
       }
     }
   }
@@ -128,6 +168,7 @@ export const HeroHome = styled.section`
       right: -140px;
       top: -15%;
       height: 621px;
+      left: -97%;
     }
   }
   /* --------------- nav ----------------- */
@@ -155,6 +196,7 @@ export const HeroHome = styled.section`
       color: #fff;
       text-transform: uppercase;
       font-size: 16px;
+      cursor: pointer;
       @media (min-width: 940px) {
         font-size: 13px;
         margin-right: 25px;
@@ -177,7 +219,6 @@ export const HeroHome = styled.section`
     color: #203561;
     background-color: #fff;
     @media (min-width: 940px) {
-
       padding: 33px 0;
       .desktop-anchor {
         display: block;
@@ -193,6 +234,7 @@ export const HeroHome = styled.section`
       color: #203561;
       text-transform: uppercase;
       font-size: 16px;
+      cursor: pointer;
       @media (min-width: 940px) {
         font-size: 13px;
         margin-right: 25px;
@@ -249,6 +291,7 @@ export const HeroHome = styled.section`
     }
   }
   .hero-content .yellow-btn {
+    cursor: pointer;
     background-color: #fdba5f;
     color: #001759;
     &:hover {
