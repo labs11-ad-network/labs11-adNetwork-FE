@@ -37,6 +37,7 @@ class OffersList extends React.Component {
       filterType: "checkbox",
       onlyOneRowCanBeSelected: true,
       rowCursorHand: true,
+      responsive: "scroll",
       onRowsDelete: value => {
         if (
           window.confirm(
@@ -53,13 +54,15 @@ class OffersList extends React.Component {
       filterType: "checkbox",
       onlyOneRowCanBeSelected: true,
       rowCursorHand: true,
-      showSelectedRowsToolbar: false
+      showSelectedRowsToolbar: false,
+      responsive: "scroll",
     },
     advertiserAdOptions: {
       filterType: "checkbox",
       rowCursorHand: true,
       onlyOneRowCanBeSelected: true,
       showSelectedRowsToolbar: true,
+      responsive: "scroll",
       onRowsDelete: value => {
         if (
           window.confirm(
@@ -74,6 +77,7 @@ class OffersList extends React.Component {
       filterType: "checkbox",
       onlyOneRowCanBeSelected: true,
       showSelectedRowsToolbar: false,
+      responsive: "scroll",
     }
   };
 
@@ -282,11 +286,9 @@ class OffersList extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
+            <Tab label="Offers" className={classes.tab} />
+            <Tab label="Ads" className={classes.tab} disabled />
             <TabButtonContainer>
-              <div>
-                <Tab label="Offers" className={classes.tab} />
-                <Tab label="Ads" className={classes.tab} disabled />
-              </div>
               {this.props.currentUser.acct_type === "advertiser" &&
               <OfferModalButton onClick={() => this.props.toggleModal()}>
                 Create Offer
@@ -348,7 +350,9 @@ class OffersList extends React.Component {
                   ]
                 : this.adColumns
             }
-            options={currentUser.acct_type === "affiliate" ? affiliateAdOptions : advertiserAdOptions}
+            options={currentUser.acct_type === "affiliate" ? 
+            affiliateAdOptions 
+            : advertiserAdOptions}
           />
         )}
       </div>

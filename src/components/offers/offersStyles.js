@@ -103,6 +103,6 @@ export const OfferModalButton = styled.button`
 
 export const TabButtonContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
 `;
