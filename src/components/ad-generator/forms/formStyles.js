@@ -39,8 +39,9 @@ export const Form = styled.form`
   height: 100%;
   margin : 25px auto;
   h2{
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     text-align: center;
+    margin: 10px 0 20px 0;
   }
   .form-container{
     display: flex;

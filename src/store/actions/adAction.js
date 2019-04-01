@@ -41,13 +41,10 @@ export const createAd = (ad, props) => dispatch => {
       props.history.push("/dashboard/offers");
     })
     .catch(err => {
-      dispatch({ type: CREATE_AD_FAILURE, payload: err.response.data });
+      console.log(err)
+      // dispatch({ type: CREATE_AD_FAILURE, payload: err.response.data });
     });
 };
-
-// ------------------------------------ Get User Ads ------------------------------------
-
-// "GET /api/ads/myads" gets personal users ads (provide token)
 
 // ------------------------------------ Get Offer Ads ------------------------------------
 
