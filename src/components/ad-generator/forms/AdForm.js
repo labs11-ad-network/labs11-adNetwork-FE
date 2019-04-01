@@ -117,8 +117,6 @@ const AdForm = props => {
             onChange={props.handleFileChange}
           />
           {/* --------------------- image upload --------------------- */}
-
-          <button type="submit">Create Ad</button>
         </div>
       </Form>
     </>

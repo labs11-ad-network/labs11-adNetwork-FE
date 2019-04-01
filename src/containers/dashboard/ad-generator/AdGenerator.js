@@ -6,13 +6,51 @@ import html2canvas from "html2canvas";
 import { createAd } from "../../../store/actions/adAction.js";
 import { getUserOffers } from "../../../store/actions/offersAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
-import TemplateSelectors from '../../../components/ad-generator/form-components/TemplateSelectors.js';
+import TemplateSelectors from "../../../components/ad-generator/form-components/TemplateSelectors.js";
 import Controls from "../../../components/ad-generator/controls/Controls.js";
 import AdHoc from "../../../components/ad-generator/AdHoc.js";
 
 const AdGeneratorContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  .preview-section {
+    width: 50%;
+    .create-ad {
+      color: #ffffff;
+      background-color: #0a88dc;
+      transition: 0.2s;
+      width: 97%;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 0 10px;
+      &:hover {
+        cursor: pointer;
+        background-color: #086fb3;
+      }
+    }
+    .template-selector {
+      display: flex;
+      background-color: #ffffff;
+      margin: 15px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+      border-radius: 15px;
+      padding: 25px;
+      justify-content: center;
+    }
+    .ad-preview {
+      display: flex;
+      background-color: #ffffff;
+      margin: 15px;
+      min-height: 670px;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+      border-radius: 15px;
+      padding: 25px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
   .ad-form {
     display: flex;
     flex-direction: column;
@@ -22,19 +60,6 @@ const AdGeneratorContainer = styled.div`
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     border-radius: 15px;
     width: 50%;
-  }
-  .ad-preview {
-    display: flex;
-    background-color: #ffffff;
-    margin: 15px;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-    border-radius: 15px;
-    padding: 25px;
-    height: 850px;
-    width: 50%;
-    justify-content: center;
-    align-items: center;
   }
 `;
 
@@ -228,7 +253,6 @@ export class AdGenerator extends Component {
       <AdGeneratorContainer>
         <div className="ad-form">
           <AdForm
-            createAd={this.createAd}
             handleChange={this.handleChange}
             handleElementChange={this.handleElementChange}
             handleTextChange={this.handleTextChange}
@@ -243,13 +267,18 @@ export class AdGenerator extends Component {
             sizeValue={this.state.productData[this.state.currentElement].size}
           />
         </div>
-        <div className="ad-preview">
-          <TemplateSelectors
-            handleChange={this.handleChange}
-          />
-          <div id="advertisment">
-            <AdHoc ad={this.state.productData}/>
+        <div className="preview-section">
+          <div className="template-selector">
+            <TemplateSelectors handleChange={this.handleChange} />
           </div>
+          <div className="ad-preview">
+            <div id="advertisment">
+              <AdHoc ad={this.state.productData} />
+            </div>
+          </div>
+          <button className="create-ad" onClick={this.createAd}>
+            Create Ad
+          </button>
         </div>
       </AdGeneratorContainer>
     ) : (

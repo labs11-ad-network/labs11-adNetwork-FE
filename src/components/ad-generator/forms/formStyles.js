@@ -4,22 +4,21 @@ export const TemplateSelectors = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
   h2 {
     color: #6f6f6f;
     text-align: center;
     font-size: 1.5rem;
     margin: 10px 0;
   }
-  div {
-    button {
-      border-radius: 15px;
-      background: #ffffff;
-      border: 6px solid #f1f1f1;
-      height: 140px;
-      width: 140px;
-      margin: 10px;
-    }
+
+  button {
+    border-radius: 15px;
+    background: #ffffff;
+    border: 6px solid #f1f1f1;
+    height: 90px;
+    width: 90px;
+    margin: 10px;
   }
 `;
 
@@ -29,6 +28,7 @@ export const InputGroup = styled.div`
 
 export const Form = styled.form`
   padding: 15px 35px;
+  height: 772px;
   div {
     margin: 0 auto;
     button {
@@ -39,6 +39,7 @@ export const Form = styled.form`
     select {
       font-size: 1rem;
       font-weight: 100;
+      width: 100%;
       padding: 5px;
       margin-top: 10px;
       border: 1px solid rgba(0, 0, 0, 0.2);
