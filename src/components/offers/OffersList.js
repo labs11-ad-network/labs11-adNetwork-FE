@@ -7,7 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Switch from "@material-ui/core/Switch";
 import { connect } from "react-redux";
 
-import { OfferButton } from "./offersStyles.js"
+import { OfferButton } from "./offersStyles.js";
 import { getOfferAds } from "../../store/actions/adAction.js";
 import { createAgreement } from "../../store/actions/agreementsAction.js";
 import {
@@ -15,7 +15,6 @@ import {
   changeOfferStatus,
   deleteOffer
 } from "../../store/actions/offersAction.js";
-import AdHoc from "../ad-generator/AdHoc.js";
 
 const styles = theme => ({
   root: {
@@ -111,9 +110,9 @@ class OffersList extends React.Component {
       name: "Agreement",
       options: {
         customBodyRender: value => {
-          return (
-            value.accepted ?
-            <OfferButton color="#04CF47"
+          return value.accepted ? (
+            <OfferButton
+              color="#04CF47"
               onClick={() => {
                 this.setState({
                   tabValue: 1,
@@ -123,10 +122,14 @@ class OffersList extends React.Component {
               }}
             >
               View Ads
-            </OfferButton>:
-            <OfferButton color="#0A88DC" onClick={() => {
-              this.props.createAgreement(value);
-            }}>
+            </OfferButton>
+          ) : (
+            <OfferButton
+              color="#0A88DC"
+              onClick={() => {
+                this.props.createAgreement(value);
+              }}
+            >
               Accept Agreement
             </OfferButton>
           );
@@ -206,7 +209,8 @@ class OffersList extends React.Component {
       options: {
         customBodyRender: value => {
           return (
-            <OfferButton color="#0A88DC"
+            <OfferButton
+              color="#0A88DC"
               onClick={() => {
                 this.setState({
                   tabValue: 1
@@ -232,18 +236,18 @@ class OffersList extends React.Component {
     },
     {
       name: "Ad",
-      field: "message",
+      field: "name",
       options: {
         width: 150
       }
     },
     {
       name: "Preview",
-      field: "back_img",
+      field: "image",
       options: {
         width: 170,
         customBodyRender: value => {
-          return <AdHoc ad={value} />;
+          return <img src={value.image} alt="..." />;
         }
       }
     }
@@ -251,7 +255,12 @@ class OffersList extends React.Component {
 
   render() {
     const { classes, offerAds, offers, currentUser } = this.props;
-    const { tabValue, advertiserOfferOptions, affiliateOfferOptions, adOptions } = this.state;
+    const {
+      tabValue,
+      advertiserOfferOptions,
+      affiliateOfferOptions,
+      adOptions
+    } = this.state;
 
     return (
       <div className={classes.root}>
@@ -264,13 +273,21 @@ class OffersList extends React.Component {
         {tabValue === 0 && (
           <MaterialDatatable
             title={"Offers List"}
-            data={currentUser.acct_type === "affiliate" ? offers.filter(offer => offer.status) : offers}
+            data={
+              currentUser.acct_type === "affiliate"
+                ? offers.filter(offer => offer.status)
+                : offers
+            }
             columns={
               currentUser.acct_type === "affiliate"
                 ? this.affiliateOfferColumns
                 : this.advertiserOfferColumns
             }
-            options={currentUser.acct_type === "affiliate" ? affiliateOfferOptions : advertiserOfferOptions}
+            options={
+              currentUser.acct_type === "affiliate"
+                ? affiliateOfferOptions
+                : advertiserOfferOptions
+            }
           />
         )}
 
@@ -286,14 +303,20 @@ class OffersList extends React.Component {
                       name: "Code Snippet",
                       options: {
                         customBodyRender: value => {
-                          return `<iframe src="https://kieranlabs.netlify.com/ad/${value.id}/${this.state.currentAgreement}" 
+                          return `<iframe src="https://kieranlabs.netlify.com/ad/${
+                            value.id
+                          }/${this.state.currentAgreement}" 
                                     frameborder="0" 
                                     scrolling="no" 
-                                    ${value.size.includes('horizontal') ? 'height="100" width="670"' 
-                                    : value.size.includes('vertical') ? 'height="670" width="100"' 
-                                    : value.size.includes('square') && 'height="265" width="265"'}
-                                  ></iframe>`
-                          ;
+                                    ${
+                                      value.size.includes("horizontal")
+                                        ? 'height="100" width="670"'
+                                        : value.size.includes("vertical")
+                                        ? 'height="670" width="100"'
+                                        : value.size.includes("square") &&
+                                          'height="265" width="265"'
+                                    }
+                                  ></iframe>`;
                         }
                       }
                     }

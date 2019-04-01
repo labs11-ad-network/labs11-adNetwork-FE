@@ -1,69 +1,11 @@
 import React from "react";
-import {
-  Form,
-  TemplateSelectors,
-  FormContainer,
-  InputGroup
-} from "./formStyles.js";
-import HorizontalSlider from "../form-components/HorizontalSlider";
-import VericalSlider from "../form-components/VerticalSlider";
+import { Form, InputGroup } from "./formStyles.js";
 
 const AdForm = props => {
   return (
     <>
-      {/* <HorizontalSlider /> */}
-
-      <TemplateSelectors>
-        <h2>Create your ad.</h2>
-
-        <div>
-          <button
-            value="horizontal_banner"
-            name="size"
-            onClick={props.handleChange}
-          >
-            Horizontal banner
-          </button>
-
-          <button
-            value="vertical_banner"
-            name="size"
-            onClick={props.handleChange}
-          >
-            Vertical banner
-          </button>
-
-          <button
-            value="square_banner"
-            name="size"
-            onClick={props.handleChange}
-          >
-            Square banner
-          </button>
-        </div>
-        <div>
-          <button
-            value="plain_horizontal"
-            name="size"
-            onClick={props.handleChange}
-          >
-            Plain Horizontal Banner
-          </button>
-
-          <button value="plain_square" name="size" onClick={props.handleChange}>
-            Plain Square Banner
-          </button>
-
-          <button
-            value="plain_vertical"
-            name="size"
-            onClick={props.handleChange}
-          >
-            Plain Vertical Banner
-          </button>
-        </div>
-      </TemplateSelectors>
       <Form onSubmit={props.createAd}>
+        <h2>Create your ad.</h2>
         <div>
           <label htmlFor="offer_id" />
           <select
@@ -89,89 +31,71 @@ const AdForm = props => {
             <input
               type="text"
               placeholder="Headline"
-              name="headline"
-              value={props.productData.headline}
+              name="headline_text"
+              value={props.productData.headline_text}
               onChange={props.handleChange}
             />
-            <label htmlFor="headline-color" />
-            <input
-              type="color"
-              placeholder="Headline"
-              name="headline_color"
-              onChange={props.handleChange}
-            />
+            <button
+              name="currentElement"
+              value="headline"
+              onClick={props.handleElementChange}
+            >
+              Select
+            </button>
           </InputGroup>
-          <HorizontalSlider handleChange={props.handleChange} />
-
           <InputGroup>
             <label htmlFor="tagline" />
             <input
               type="text"
               placeholder="Tagline"
-              name="tagline"
-              value={props.productData.tagline}
+              name="tagline_text"
+              value={props.productData.tagline_text}
               onChange={props.handleChange}
             />
-            <label htmlFor="tagline-color" />
-            <input
-              type="color"
-              placeholder="Tagline"
-              name="tagline_color"
-              value={props.productData.tagline}
-              onChange={props.handleChange}
-            />
+            <button
+              name="currentElement"
+              value="tagline"
+              onClick={props.handleElementChange}
+            >
+              Select
+            </button>
           </InputGroup>
-          <HorizontalSlider />
 
           <InputGroup>
             <label htmlFor="message" />
             <input
               type="text"
               placeholder="Message"
-              name="message"
-              value={props.productData.message}
+              name="message_text"
+              value={props.productData.message_text}
               onChange={props.handleChange}
             />
-            <label htmlFor="message_color" />
-
-            <input
-              type="color"
-              placeholder="Message Color"
-              name="message_color"
-              value={props.productData.message_color}
-              onChange={props.handleChange}
-            />
+            <button
+              name="currentElement"
+              value="message"
+              onClick={props.handleElementChange}
+            >
+              Select
+            </button>
           </InputGroup>
-          <HorizontalSlider />
 
           <InputGroup>
             <label htmlFor="cta_button" />
             <input
               type="text"
               placeholder="CTA Button"
-              name="cta_button"
-              value={props.productData.cta_button}
+              name="button_text"
+              value={props.productData.button_text}
               onChange={props.handleChange}
             />
-
-            <label htmlFor="btn_color" />
-            <input
-              type="color"
-              placeholder="Button Color"
-              name="btn_color"
-              value={props.productData.btn_color}
-              onChange={props.handleChange}
-            />
-            <input
-              type="color"
-              placeholder="Button Color"
-              name="btn_text_color"
-              value={props.productData.btn_text_color}
-              onChange={props.handleChange}
-            />
+            <button
+              name="currentElement"
+              value="button"
+              onClick={props.handleElementChange}
+            >
+              Select
+            </button>
           </InputGroup>
-          <HorizontalSlider />
-
           <InputGroup>
             <label htmlFor="destination_url" />
             <input
@@ -182,7 +106,6 @@ const AdForm = props => {
               onChange={props.handleChange}
             />
           </InputGroup>
-          <HorizontalSlider />
           <label htmlFor="back_img" />
           {/* --------------------- image upload --------------------- */}
           <input
@@ -194,8 +117,6 @@ const AdForm = props => {
             onChange={props.handleFileChange}
           />
           {/* --------------------- image upload --------------------- */}
-
-          <button type="submit">Create Ad</button>
         </div>
       </Form>
     </>

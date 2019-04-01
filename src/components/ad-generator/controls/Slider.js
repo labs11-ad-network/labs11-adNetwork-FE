@@ -11,20 +11,19 @@ const styles = {
     padding: "22px 0px"
   }
 };
+
 class SimpleSlider extends React.Component {
   render() {
-    const { classes, handleSliderChange, value, name } = this.props;
+    const { classes, customizeElementSize, sizeValue } = this.props;
 
     return (
       <div className={classes.root}>
         <Slider
           classes={{ container: classes.slider }}
-          value={value}
-          min={-400}
-          max={400}
+          value={sizeValue}
+          name="size"
           aria-labelledby="label"
-          name={name}
-          onChange={handleSliderChange}
+          onChange={customizeElementSize}
         />
       </div>
     );
