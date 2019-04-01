@@ -82,6 +82,9 @@ export const BottomRight = styled.div`
             padding: unset;
             border: unset;
             border-radius: 4px;
+            &:hover{
+                cursor: pointer;
+            }
         }
     }
 `;
