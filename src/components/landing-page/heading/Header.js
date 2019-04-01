@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { HeroHome } from "./HeaderStyle";
 import { ElasticReverse } from "react-burgers";
-import { TwoPersonSvg, BirdSvg } from "./HeaderSvg";
+import { TwoPersonSvg, BirdSvg, SkyCloudSvg } from "./HeaderSvg";
 import classnames from "classnames";
 
 class Header extends Component {
@@ -10,12 +10,10 @@ class Header extends Component {
     prevScrollpos: window.pageYOffset,
     visible: true
   };
-  // Adds an event listener when the component is mount.
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
   }
 
-  // Remove the event listener when the component is unmount.
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   }
@@ -74,7 +72,7 @@ class Header extends Component {
             </nav>
             <div className="desktop-hero-container">
               <div className="hero-content">
-                {/* ----------------- Mobile nav  ----------------- */}
+                {/*  Mobile nav   */}
                 <p className="hero-sub-title">
                   #Lad Network #faster websites #improve SEO
                 </p>
@@ -96,7 +94,7 @@ class Header extends Component {
                 </div>
               </div>
               <div className="container_illustration">
-                {/* <div className="animation" /> */}
+                <SkyCloudSvg className="desktop-cloud" />
                 <div className="bird-wrapper">
                   <BirdSvg style1="piio_float_left" style2="piio_float_right" />
                 </div>

@@ -41,9 +41,17 @@ const LandingPageStyle = styled.div`
     @media (min-width: 481px) {
       font-size: 1.8rem;
     }
+    @media (min-width: 940px) {
+      font-size: 2.2rem;
+      text-align: initial;
+    }
   }
   .first-blue-subtitle {
     padding-top: 10%;
+    @media (min-width: 940px) {
+      text-align: initial;
+      padding-top: 15%;
+    }
   }
   .image-box img {
     max-width: 100%;
@@ -60,6 +68,9 @@ const LandingPageStyle = styled.div`
     padding: 0 0 0 33px;
     @media (min-width: 481px) {
       font-size: 1.1rem;
+    }
+    @media (min-width: 940px) {
+      font-size: 1.2rem;
     }
 
     &:before {
@@ -100,6 +111,11 @@ const LandingPageStyle = styled.div`
     background-color: #0e4de3;
     box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.1);
     text-decoration: none;
+    @media (min-width: 940px) {
+      margin: 7% 0;
+      max-width: 150px;
+      padding: 19px 20.5px;
+    }
 
     &:hover {
       background: #007bff;
@@ -119,6 +135,9 @@ const LandingPageStyle = styled.div`
       @media (min-width: 481px) {
         margin: 0 0 40% 0;
       }
+      @media (min-width: 940px) {
+        top: 20%;
+      }
     }
     .code_piio {
       padding: 0 44px 20px 16px;
@@ -130,6 +149,9 @@ const LandingPageStyle = styled.div`
       @media (min-width: 481px) {
         width: 390px;
       }
+      @media (min-width: 940px) {
+        top: 30%;
+      }
     }
   }
 
@@ -138,6 +160,21 @@ const LandingPageStyle = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
+    @media (min-width: 940px) {
+      justify-content: space-between;
+      flex-direction: row;
+    }
+  }
+  @media (min-width: 940px) {
+    .landing-parent:last-child {
+      padding: 0 0 1000px 0;
+    }
+    .landing-parent:nth-child(2) {
+      flex-direction: row-reverse;
+    }
+    .landing-item-left {
+      max-width: 500px;
+    }
   }
 `;
 class LandingPage extends Component {
