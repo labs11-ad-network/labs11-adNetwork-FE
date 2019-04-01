@@ -9,9 +9,15 @@ const LandingPageStyle = styled.div`
 
   /* --------------- global landing info style --------------- */
   .container {
-    max-width: 1200px;
+    max-width: 1100px;
     width: 90%;
     margin: 0 auto;
+    @media (min-width: 481px) {
+      width: 80%;
+    }
+    @media (min-width: 940px) {
+      width: 98%;
+    }
   }
   .blue-subtitle {
     font-weight: 500;
@@ -32,9 +38,12 @@ const LandingPageStyle = styled.div`
     font-size: 1.5rem;
     line-height: 1.33;
     text-align: center;
+    @media (min-width: 481px) {
+      font-size: 1.8rem;
+    }
   }
   .first-blue-subtitle {
-    padding-top: 30px;
+    padding-top: 10%;
   }
   .image-box img {
     max-width: 100%;
@@ -49,6 +58,9 @@ const LandingPageStyle = styled.div`
     position: relative;
     margin: 25px 0 0 0;
     padding: 0 0 0 33px;
+    @media (min-width: 481px) {
+      font-size: 1.1rem;
+    }
 
     &:before {
       content: url(${checks});
@@ -104,6 +116,9 @@ const LandingPageStyle = styled.div`
       max-width: 555px;
       width: 100%;
       height: auto;
+      @media (min-width: 481px) {
+        margin: 0 0 40% 0;
+      }
     }
     .code_piio {
       padding: 0 44px 20px 16px;
@@ -112,6 +127,9 @@ const LandingPageStyle = styled.div`
       top: 82px;
       max-width: 100%;
       width: 190px;
+      @media (min-width: 481px) {
+        width: 390px;
+      }
     }
   }
 

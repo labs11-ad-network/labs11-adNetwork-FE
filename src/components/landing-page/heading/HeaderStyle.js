@@ -13,12 +13,26 @@ export const HeroHome = styled.section`
   background-position: center 70px, 50%;
   background-size: 1440px auto, 100% auto;
   padding: 10px 0 174px 0;
-
+  @media (min-width:481px){
+    padding: 10px 0 224px 0;
+  }
   .container {
-    max-width: 1200px;
+    max-width: 1100px;
     width: 90%;
     margin: 0 auto;
+    @media (min-width: 940px) {
+        border: 1px solid red;
+        max-width: 98%;
+    }
+    
   }
+  /* desktop view text content  */
+  @media (min-width: 940px) {
+      .desktop-hero-container {
+        display: flex;
+      }
+    }
+  
   /* --------------- Hero Content --------------- */
   .hero-content h1 {
     font-size: 1.8rem;
@@ -27,10 +41,24 @@ export const HeroHome = styled.section`
     color: #fff;
     text-align: center;
     margin: 0 auto 30px auto;
-  
+    @media (min-width: 481px){
+     font-size: 2.5rem;
+      width:90%;
+    }
+    @media (min-width: 940px) {
+      font-size: 2.8rem;
+      text-align:inherit;
+      max-width:600px;
+    }
     span {
       font-weight: 500;
       font-size: 2.2rem;
+        @media (min-width: 481px){
+         font-size: 2.7rem;
+      }
+      @media (min-width: 940px) {
+      font-size: 3rem;
+      }
     }
   }
   .hero-sub-title {
@@ -39,6 +67,10 @@ export const HeroHome = styled.section`
     font-weight: 400;
     text-align: center;
     padding: 50px 0 20px 0;
+    @media (min-width: 940px) {
+      text-align: inherit;
+      margin-left:5%;
+    }
   }
   /* ---------------  phone & Bird style --------------- */
   .container_illustration {
@@ -53,7 +85,10 @@ export const HeroHome = styled.section`
     z-index: 1;
     max-width: 100%;
     width: 627px;
-}
+    @media (min-width:481px){
+      top: 120%;
+        }
+      }
     }
     .bird-wrapper {
      display: flex;
@@ -61,21 +96,39 @@ export const HeroHome = styled.section`
     z-index:2;
       .piio_float_left {
         margin: 0 35px 31% 0;
+        @media (min-width:481px){
+          margin: 10% 35px 22% 0;
+        }
       }
     }
   }
   /* --------------- nav ----------------- */
+  .desktop-anchor {
+    display:none;
+  }
   .navBar {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    @media (min-width: 940px) {
+      padding: 20px 0;
+      .desktop-anchor {
+        display:block;
+      }
+      .hamburger{
+      display: none;
+      }
+    }    
     a {
       text-decoration: none;
       color: #fff;
       text-transform: uppercase;
       font-size: 16px;
+      @media (min-width: 940px) {
+        font-size:13px;
+        margin-right: 15px;
+      }
     }
-
   }
   .navWhite {
     z-index: 9999;
@@ -95,6 +148,7 @@ export const HeroHome = styled.section`
 
     a {
       text-decoration: none;
+      margin: 0 2%;
       color: #203561;
       text-transform: uppercase;
       font-size: 16px;
@@ -107,6 +161,10 @@ export const HeroHome = styled.section`
   .button{
     max-width:80%;
     margin: 0 auto;
+    @media (min-width: 481px){
+      display:flex;
+      justify-content:center;
+   }
   }
   .hero-content .btn_blue {
     max-width:100%;
@@ -134,6 +192,9 @@ export const HeroHome = styled.section`
     line-height: 1rem;
     text-decoration: none;
     transition: 0.3s ease;
+    @media (min-width: 481px){
+      margin: 15px 10px;
+   }
     &::hover {
       background: #007bff;
     }
@@ -156,6 +217,4 @@ export const HeroHome = styled.section`
     background-size: 1440px auto;
     margin-bottom: -20px;
   }
-
-
 `;

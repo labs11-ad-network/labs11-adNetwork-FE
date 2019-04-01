@@ -42,22 +42,6 @@ class Header extends Component {
     return (
       <>
         <HeroHome>
-          {/* <nav>
-        <a href="/#">Logo</a>
-
-        <div className="middle-anchors">
-          <a href="/#">Team</a>
-          <a href="/#">Contact</a>
-          <a href="/#">About</a>
-          <a href="/#">Dashboard</a>
-        </div>
-
-        <div>
-          <a href="/#">Login</a>
-          <a href="/#">Signup</a>
-        </div>
-      </nav> */}
-
           <div className="container">
             <nav
               className={classnames(`${colorChange}`, {
@@ -67,6 +51,18 @@ class Header extends Component {
               <a href="/#logoHERE" className="logo">
                 LOGO
               </a>
+              <div className="middle-anchors desktop-anchor">
+                <a href="/#">Team</a>
+                <a href="/#">Contact</a>
+                <a href="/#">About</a>
+                <a href="/#">Dashboard</a>
+              </div>
+
+              <div className="desktop-anchor">
+                <a href="/#">Login</a>
+                <a href="/#">Signup</a>
+              </div>
+
               <ElasticReverse
                 className="hamburger"
                 color={this.state.prevScrollpos > 200 ? "#203561" : "#fff"}
@@ -76,35 +72,36 @@ class Header extends Component {
                 active={this.state.isOpen}
               />
             </nav>
-
-            <div className="hero-content">
-              {/* ----------------- Mobile nav  ----------------- */}
-              <p className="hero-sub-title">
-                #Lad Network #faster websites #improve SEO
-              </p>
-              <h1>
-                <span>Creepy Ads</span> <br /> We are a non creepy ad network
-                that presents itself as actually very creepy.
-              </h1>
-              <div className="button">
-                <a className="btn_scroll btn_blue" href="/#" alt="button">
-                  Start a Free Trial
-                </a>
-                <a
-                  alt="button"
-                  className="btn_scroll btn_blue yellow-btn"
-                  href="/#"
-                >
-                  Start a Free Trial
-                </a>
+            <div className="desktop-hero-container">
+              <div className="hero-content">
+                {/* ----------------- Mobile nav  ----------------- */}
+                <p className="hero-sub-title">
+                  #Lad Network #faster websites #improve SEO
+                </p>
+                <h1>
+                  <span>Creepy Ads</span> <br /> We are a non creepy ad network
+                  that presents itself as actually very creepy.
+                </h1>
+                <div className="button">
+                  <a className="btn_scroll btn_blue" href="/#" alt="button">
+                    Start a Free Trial
+                  </a>
+                  <a
+                    alt="button"
+                    className="btn_scroll btn_blue yellow-btn"
+                    href="/#"
+                  >
+                    Start a Free Trial
+                  </a>
+                </div>
               </div>
-            </div>
-            <div className="container_illustration">
-              {/* <div className="animation" /> */}
-              <div className="bird-wrapper">
-                <BirdSvg style1="piio_float_left" style2="piio_float_right" />
+              <div className="container_illustration">
+                {/* <div className="animation" /> */}
+                <div className="bird-wrapper">
+                  <BirdSvg style1="piio_float_left" style2="piio_float_right" />
+                </div>
+                <TwoPersonSvg className="illustration" />
               </div>
-              <TwoPersonSvg className="illustration" />
             </div>
           </div>
           <span className="border_bottom" />
