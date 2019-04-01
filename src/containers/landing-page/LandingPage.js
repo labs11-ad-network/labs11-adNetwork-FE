@@ -29,20 +29,20 @@ const LandingPageStyle = styled.div`
     font-weight: 300;
     font-style: normal;
     font-stretch: normal;
-    font-size: 33px;
+    font-size: 1.5rem;
     line-height: 1.33;
     text-align: center;
   }
   .first-blue-subtitle {
-    padding-top: 100px;
+    padding-top: 30px;
   }
   .image-box img {
     max-width: 100%;
     display: block;
-    margin: 50px auto;
+    margin: 20px auto;
   }
   .landing-ptag {
-    font-size: 18px;
+    font-size: 1rem;
     font-weight: 400;
     line-height: 1.56;
     color: #62748a;

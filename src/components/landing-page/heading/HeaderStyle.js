@@ -3,6 +3,7 @@ import borderBottom from "../../../assets/border_botom.svg";
 import bgStars from "../../../assets/bg_stars.svg";
 
 export const HeroHome = styled.section`
+
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
   font-family: "Roboto", sans-serif;
   position: relative;
@@ -11,17 +12,13 @@ export const HeroHome = styled.section`
   background-repeat: repeat-x, no-repeat;
   background-position: center 70px, 50%;
   background-size: 1440px auto, 100% auto;
-  padding: 10px 0 315px 0;
-
-
-
+  padding: 10px 0 174px 0;
 
   .container {
     max-width: 1200px;
     width: 90%;
     margin: 0 auto;
   }
-
   /* --------------- Hero Content --------------- */
   .hero-content h1 {
     font-size: 1.8rem;
@@ -49,7 +46,7 @@ export const HeroHome = styled.section`
     .illustration {
     position: absolute;
     left: 50%;
-    top: 179%;
+    top: 133%;
     -webkit-transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
@@ -63,43 +60,49 @@ export const HeroHome = styled.section`
     justify-content: center;
     z-index:2;
       .piio_float_left {
-        margin: 0 35px 0 0;
+        margin: 0 35px 31% 0;
       }
     }
   }
-
   /* --------------- nav ----------------- */
-  .navbar {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transition: top 0.6s;
+  .navBar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    z-index: 9999;
-    box-shadow: 0 0 15px rgba(0,0,0,.05);
-    -moz-box-shadow: 0 0 15px rgba(0,0,0,.05);
-    -webkit-box-shadow: 0 0 15px rgba(0,0,0,.05);
-    color:#fff;
-    border: 1px solid red;
-    background:inherit;
-    padding: 13px 0;
+    align-items: baseline;
     a {
       text-decoration: none;
       color: #fff;
       text-transform: uppercase;
       font-size: 16px;
     }
+
   }
-  .nav-styling {
-    background:red ;
+  .navWhite {
+    z-index: 9999;
+    box-shadow: 0px 4px 7px #777;
+    transition: top 0.6s;
+    position: fixed;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    padding: 13px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    color: #203561;
+    background-color: #fff;
+
+    a {
+      text-decoration: none;
+      color: #203561;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
   }
   .navbar--hidden {
     top: -100px;
  }
-
   /* ---------------global button --------------- */
   .button{
     max-width:80%;
@@ -153,4 +156,6 @@ export const HeroHome = styled.section`
     background-size: 1440px auto;
     margin-bottom: -20px;
   }
+
+
 `;

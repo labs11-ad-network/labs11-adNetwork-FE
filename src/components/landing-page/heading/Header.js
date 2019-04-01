@@ -23,6 +23,8 @@ class Header extends Component {
   handleScroll = () => {
     const { prevScrollpos } = this.state;
     const currentScrollPos = window.pageYOffset;
+    console.log("prevScrollpos", prevScrollpos);
+
     const visible = prevScrollpos > currentScrollPos;
     this.setState({
       prevScrollpos: currentScrollPos,
@@ -36,6 +38,7 @@ class Header extends Component {
     });
   };
   render() {
+    let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
     return (
       <>
         <HeroHome>
@@ -57,14 +60,16 @@ class Header extends Component {
 
           <div className="container">
             <nav
-              className={classnames("navbar", {
-                "navbar--hidden": !this.state.visible,
-                "nav-styling": this.state.visible
+              className={classnames(`${colorChange}`, {
+                "navbar--hidden": !this.state.visible
               })}
             >
-              <a href="/#logoHERE">LOGO</a>
+              <a href="/#logoHERE" className="logo">
+                LOGO
+              </a>
               <ElasticReverse
-                color={this.state.visible ? "#fff" : "#203561"}
+                className="hamburger"
+                color={this.state.prevScrollpos > 200 ? "#203561" : "#fff"}
                 lineHeight={2}
                 width={28}
                 onClick={this.toggleDrawer}
