@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import MobileStepper from "@material-ui/core/MobileStepper";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
@@ -14,36 +12,28 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
-    label: "San Francisco – Oakland Bay Bridge, United States",
-    imgPath:
-      "https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60"
+    label: "San Francisco – Oakland Bay Bridge, United States Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
   },
   {
-    label: "Bird",
-    imgPath:
-      "https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60"
+    label: "Bird Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
   },
   {
-    label: "Bali, Indonesia",
-    imgPath:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250&q=80"
+    label: "Bali, Indonesia Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
   },
   {
-    label: "NeONBRAND Digital Marketing, Las Vegas, United States",
-    imgPath:
-      "https://images.unsplash.com/photo-1518732714860-b62714ce0c59?auto=format&fit=crop&w=400&h=250&q=60"
+    label: "NeONBRAND Digital Marketing, Las Vegas, United States Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
   },
   {
-    label: "Goč, Serbia",
-    imgPath:
-      "https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60"
+    label: "Goč, Serbia Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
   }
 ];
 
 const styles = theme => ({
   root: {
-    maxWidth: 400,
-    flexGrow: 1
+    maxWidth: '100vw',
+    flexGrow: 1,
+    background: '#F7F9FC'
+
   },
   header: {
     display: "flex",
@@ -52,13 +42,45 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 4,
     backgroundColor: theme.palette.background.default
   },
-  img: {
-    height: 255,
-    display: "block",
-    maxWidth: 400,
-    overflow: "hidden",
-    width: "100%"
-  }
+  message: {
+    textAlign: 'center',
+    fontSize: '2rem',
+    maxWidth: 'calc(100vw - 10rem)',
+    lineHeight: 1.25
+  },
+  customerStoriesContainer: {
+    padding: '6% 0',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    background: '#F7F9FC'
+  },
+  mobileStepper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: '#F7F9FC',
+    paddingBottom: '25px'
+  },
+  user: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    margin: '20px 0'
+  },
+  avatar: {
+    width: '60px',
+    height: '60px',
+    borderRadius: '50%',
+  },
+  infopTag: {
+    fontSize: '1.1rem'
+  },
+  heading4: {
+    padding: '10px 0',
+    fontSize: '1.5rem'
+  },
 });
 
 class SwipeableTextMobileStepper extends React.Component {
@@ -89,56 +111,74 @@ class SwipeableTextMobileStepper extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Paper square elevation={0} className={classes.header}>
-          <Typography>{tutorialSteps[activeStep].label}</Typography>
-        </Paper>
-        <AutoPlaySwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-          index={activeStep}
-          onChangeIndex={this.handleStepChange}
-          enableMouseEvents
+        <h5 className="blue-subtitle costumer-subtitle">
+          Customer Stories
+       </h5>
+        <div
+          className={classes.customerStoriesContainer}>
+          <Button
+            size="small"
+            onClick={this.handleBack}
+            disabled={activeStep === 0}
+          >
+
+            {theme.direction === "rtl" ? (
+              <KeyboardArrowRight />
+            ) : (
+                <KeyboardArrowLeft />
+              )}
+          </Button>
+          <AutoPlaySwipeableViews
+            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+            index={activeStep}
+            onChangeIndex={this.handleStepChange}
+            enableMouseEvents
+          >
+            {tutorialSteps.map((step, index) => (
+              <div key={step.label}>
+                {
+                  Math.abs(activeStep - index) <= 2
+                    ? <h2
+                      className={classes.message}
+                    >{step.label}</h2>
+                    : null
+                }
+              </div>
+            ))}
+          </AutoPlaySwipeableViews>
+          <Button
+            size="small"
+            onClick={this.handleNext}
+            disabled={activeStep === maxSteps - 1}
+          >
+            {theme.direction === "rtl" ? (
+              <KeyboardArrowLeft />
+            ) : (
+                <KeyboardArrowRight />
+              )}
+          </Button>
+        </div>
+
+        <div
+          className={classes.user}
         >
-          {tutorialSteps.map((step, index) => (
-            <div key={step.label}>
-              {
-                Math.abs(activeStep - index) <= 2
-                  ? <h2>{step.label}</h2>
-                  : null
-              }
-            </div>
-          ))}
-        </AutoPlaySwipeableViews>
+          <img
+            className={classes.avatar}
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ" alt="avatar-testing" />
+
+          <h4
+            className={classes.heading4}
+          >Test</h4>
+          <p
+            className={classes.infopTag}
+          >Managing Director at Herld (Google Partner Agency)</p>
+        </div>
+
         <MobileStepper
           steps={maxSteps}
           position="static"
           activeStep={activeStep}
           className={classes.mobileStepper}
-          nextButton={
-            <Button
-              size="small"
-              onClick={this.handleNext}
-              disabled={activeStep === maxSteps - 1}
-            >
-              {theme.direction === "rtl" ? (
-                <KeyboardArrowLeft />
-              ) : (
-                  <KeyboardArrowRight />
-                )}
-            </Button>
-          }
-          backButton={
-            <Button
-              size="small"
-              onClick={this.handleBack}
-              disabled={activeStep === 0}
-            >
-              {theme.direction === "rtl" ? (
-                <KeyboardArrowRight />
-              ) : (
-                  <KeyboardArrowLeft />
-                )}
-            </Button>
-          }
         />
       </div>
     );

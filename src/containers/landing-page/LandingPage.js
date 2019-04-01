@@ -152,6 +152,10 @@ const LandingPageStyle = styled.div`
   .costumer-stories {
     padding-bottom: 100vh;
   }
+  .costumer-subtitle {
+    padding: 20px 0;
+    margin-top:100px;
+  }
 `;
 class LandingPage extends Component {
   componentDidMount() {
@@ -280,9 +284,6 @@ class LandingPage extends Component {
         </section>
 
         <section className="costumer-stories">
-          <h5 className="blue-subtitle first-blue-subtitle">
-            Earn even more with mobile and App traffic
-          </h5>
           <CustomerStoriesCarousel />
         </section>
 
