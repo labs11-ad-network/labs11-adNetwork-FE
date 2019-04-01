@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-// import Pusher from "pusher-js";
+import Pusher from "pusher-js";
 import {
   NavContainer,
   LeftSection,
@@ -17,17 +17,17 @@ class DashboardTop extends React.Component {
     movileNavOpen: false
   };
 
-  // componentDidMount = () => {
-  //   const pusher = new Pusher("633e24acba0ede9fb4e7", {
-  //     cluster: "us2",
-  //     encrypted: true
-  //   });
-  //
-  //   const channel = pusher.subscribe("my-channel");
-  //   channel.bind("my-event", data => {
-  //     alert("THIS IS WORKING");
-  //   });
-  // };
+  componentDidMount = () => {
+    const pusher = new Pusher("633e24acba0ede9fb4e7", {
+      cluster: "us2",
+      encrypted: true
+    });
+
+    const channel = pusher.subscribe("offers");
+    channel.bind("disabled-offer", data => {
+      alert("THIS IS WORKING");
+    });
+  };
 
   toggleNav = () => {
     this.setState({ movileNavOpen: !this.state.movileNavOpen });
