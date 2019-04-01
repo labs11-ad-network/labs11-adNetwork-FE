@@ -2,10 +2,6 @@ import axios from "axios";
 
 const URL = "https://lad-network.herokuapp.com";
 
-// ------------------------------------ Get All Ads ------------------------------------
-
-// "GET /api/ads" gets all ads
-
 // ------------------------------------ Get Ad by ID ------------------------------------
 
 export const GET_AD_START = "GET_AD_START";
@@ -63,3 +59,21 @@ export const getOfferAds = offer_id => dispatch => {
       dispatch({ type: GET_OFFER_ADS_FAILURE, payload: err.response.data });
     });
 };
+
+// ------------------------------------ Delete Ads ------------------------------------
+
+export const DELETE_AD_START = "DELETE_AD_START";
+export const DELETE_AD_SUCCESS = "DELETE_AD_SUCCESS";
+export const DELETE_AD_FAILURE = "DELETE_AD_FAILURE";
+
+export const deleteAd = id => dispatch => {
+  dispatch({ type: DELETE_AD_START })
+  axios
+    .delete(`${URL}/api/ads/${id}`)
+    .then(res => {
+      dispatch({ type: DELETE_AD_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_AD_FAILURE, payload: err.response.data })
+    })
+}

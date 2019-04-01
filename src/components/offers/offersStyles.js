@@ -97,7 +97,7 @@ export const OfferModalButton = styled.button`
     transition: .2s;
     &:hover{
         cursor: pointer;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 `;
 

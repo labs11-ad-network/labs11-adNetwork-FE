@@ -8,7 +8,7 @@ import Switch from "@material-ui/core/Switch";
 import { connect } from "react-redux";
 
 import { OfferButton, OfferModalButton, TabButtonContainer } from "./offersStyles.js";
-import { getOfferAds } from "../../store/actions/adAction.js";
+import { getOfferAds, deleteAd } from "../../store/actions/adAction.js";
 import { createAgreement } from "../../store/actions/agreementsAction.js";
 import {
   getUserOffers,
@@ -55,10 +55,25 @@ class OffersList extends React.Component {
       rowCursorHand: true,
       showSelectedRowsToolbar: false
     },
-    adOptions: {
+    advertiserAdOptions: {
+      filterType: "checkbox",
+      rowCursorHand: true,
+      onlyOneRowCanBeSelected: true,
+      showSelectedRowsToolbar: true,
+      onRowsDelete: value => {
+        if (
+          window.confirm(
+            `Are you sure you want to delete selected ad?`
+          )
+        ) {
+          this.props.deleteAd(this.props.offerAds[value.data[0].dataIndex].id);
+        }
+      }
+    },
+    affiliateAdOptions: {
       filterType: "checkbox",
       onlyOneRowCanBeSelected: true,
-      showSelectedRowsToolbar: false
+      showSelectedRowsToolbar: false,
     }
   };
 
@@ -259,7 +274,8 @@ class OffersList extends React.Component {
       tabValue,
       advertiserOfferOptions,
       affiliateOfferOptions,
-      adOptions
+      affiliateAdOptions,
+      advertiserAdOptions
     } = this.state;
 
     return (
@@ -271,9 +287,11 @@ class OffersList extends React.Component {
                 <Tab label="Offers" className={classes.tab} />
                 <Tab label="Ads" className={classes.tab} disabled />
               </div>
+              {this.props.currentUser.acct_type === "advertiser" &&
               <OfferModalButton onClick={() => this.props.toggleModal()}>
                 Create Offer
               </OfferModalButton>
+              }
             </TabButtonContainer>
           </Tabs>
         </AppBar>
@@ -330,7 +348,7 @@ class OffersList extends React.Component {
                   ]
                 : this.adColumns
             }
-            options={adOptions}
+            options={currentUser.acct_type === "affiliate" ? affiliateAdOptions : advertiserAdOptions}
           />
         )}
       </div>
@@ -352,6 +370,7 @@ export default connect(
     getUserOffers,
     changeOfferStatus,
     deleteOffer,
-    createAgreement
+    createAgreement,
+    deleteAd
   }
 )(withStyles(styles)(OffersList));
