@@ -7,7 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Switch from "@material-ui/core/Switch";
 import { connect } from "react-redux";
 
-import { OfferButton } from "./offersStyles.js";
+import { OfferButton, OfferModalButton, TabButtonContainer } from "./offersStyles.js";
 import { getOfferAds } from "../../store/actions/adAction.js";
 import { createAgreement } from "../../store/actions/agreementsAction.js";
 import {
@@ -266,8 +266,15 @@ class OffersList extends React.Component {
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
-            <Tab label="Offers" className={classes.tab} />
-            <Tab label="Ads" className={classes.tab} disabled />
+            <TabButtonContainer>
+              <div>
+                <Tab label="Offers" className={classes.tab} />
+                <Tab label="Ads" className={classes.tab} disabled />
+              </div>
+              <OfferModalButton onClick={() => this.props.toggleModal()}>
+                Create Offer
+              </OfferModalButton>
+            </TabButtonContainer>
           </Tabs>
         </AppBar>
         {tabValue === 0 && (

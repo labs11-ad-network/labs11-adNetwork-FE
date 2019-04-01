@@ -41,6 +41,9 @@ export const Form = styled.form`
                 background-color: #086FB3;
             }
         }
+        @media (max-width: 655px){
+            width: 130%;
+        }
     }
 `;
 
@@ -56,3 +59,50 @@ export const OfferButton = styled.button`
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
     }
 `
+
+export const OfferModalContainer = styled.div`
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 9999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.3);
+`;
+
+export const OfferModalContent = styled.div`
+    position: absolute;
+    z-index: 99999999999;
+    background-color: #FFFFFF;
+    padding: 15px 10px;
+    margin: 15px;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    h1{
+        font-size: 1.6rem;
+        text-align: center;
+        margin: 10px 0;
+    }
+`;
+
+export const OfferModalButton = styled.button`
+    background-color: #086FB3;
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 5px 25px;
+    border: unset;
+    transition: .2s;
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+`;
+
+export const TabButtonContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+`;
