@@ -6,11 +6,11 @@ import {
   createOffer
 } from "../../../store/actions/offersAction.js";
 import OffersList from "../../../components/offers/OffersList.js";
-import OfferForm from "../../../components/offers/OfferForm.js";
+import OfferModal from "../../../components/offers/OfferModal.js";
 
 class Offers extends Component {
   state = {
-    hidden: true,
+    modalIsOpen: false,
     offerData: {
       budget: "",
       price_per_click: "",
@@ -45,7 +45,15 @@ class Offers extends Component {
         status: true
       }
     });
+
+    this.toggleModal();
   };
+
+  toggleModal = () => {
+    this.setState({
+      modalIsOpen: !this.state.modalIsOpen
+    })
+  }
 
   handleChange = e => {
     this.setState({
@@ -62,13 +70,14 @@ class Offers extends Component {
         <OffersList
           offers={this.props.userOffers}
           agreements={this.props.userAgreements}
+          toggleModal={this.toggleModal}
         />
-        {this.props.currentUser.acct_type === "advertiser" && (
-          <OfferForm
-            hidden={this.state.hidden}
+        {(this.props.currentUser.acct_type === "advertiser" && this.state.modalIsOpen) && (
+          <OfferModal
             offerData={this.state.offerData}
             handleChange={this.handleChange}
             createOffer={this.createOffer}
+            toggleModal={this.toggleModal}
           />
         )}
       </div>
