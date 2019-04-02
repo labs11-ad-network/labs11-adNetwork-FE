@@ -1,23 +1,26 @@
 import auth0 from 'auth0-js';
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
 import { AUTH_CONFIG } from './auth0-variables';
 import history from '../history';
-import jwtDecode from 'jwt-decode'
-import axios from 'axios';
 
 export default class Auth {
   accessToken;
-  idToken;
-  expiresAt;
-  userProfile;
-  tokenRenewalTimeout;
 
+  idToken;
+
+  expiresAt;
+
+  userProfile;
+
+  tokenRenewalTimeout;
 
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: 'token id_token',
-    scope: 'openid profile email'
+    scope: 'openid profile email',
   });
 
   constructor() {
@@ -33,7 +36,6 @@ export default class Auth {
     this.scheduleRenewal();
   }
 
-
   login() {
     this.auth0.authorize();
   }
@@ -42,25 +44,23 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-
       } else if (err) {
         history.replace('/');
       }
     });
   }
 
-
-
   getAccessToken() {
     return this.accessToken;
   }
+
   getIdToken() {
     return this.idToken;
   }
-  setSession(authResult) {
 
+  setSession(authResult) {
     // Set the time that the access token will expire at
-    let expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
+    const expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
     this.accessToken = authResult.accessToken;
     this.idToken = authResult.idToken;
     this.expiresAt = expiresAt;
@@ -72,45 +72,49 @@ export default class Auth {
 
     // schedule a token renewal
     this.scheduleRenewal();
-    // const 
-    const decoded = jwtDecode(localStorage.id_token && localStorage.id_token)
+    // const
+    const decoded = jwtDecode(localStorage.id_token && localStorage.id_token);
     const user = {
       name: decoded.name,
       email: decoded.email,
       image_url: decoded.picture,
       nickname: decoded.nickname,
       sub: decoded.sub,
-      acct_type: localStorage.getItem('acct_type') || "advertiser"
-    }
+      acct_type: localStorage.getItem('acct_type') || 'advertiser',
+    };
 
     const config = {
       headers: {
-        Authorization: `Bearer ${localStorage.id_token}`
-      }
-    }
+        Authorization: `Bearer ${localStorage.id_token}`,
+      },
+    };
 
     axios
-      .post(`https://lad-network.herokuapp.com/api/auth/registerV2`, user, config)
+      .post(
+        `https://lad-network.herokuapp.com/api/auth/registerV2`,
+        user,
+        config
+      )
       .then(res => {
         // console.log('--- hit response -- ', res.data)
-      }).catch(err => console.error(err))
+      })
+      .catch(err => console.error(err));
 
     history.replace('/dashboard');
   }
 
   renewSession() {
-    this.auth0.checkSession({},
-      function (err, result) {
-        if (err) {
-          console.error(err);
-        } else {
-          this.localLogin(result);
-        }
+    this.auth0.checkSession({}, function(err, result) {
+      if (err) {
+        // console.error(err);
+        console.warn(err);
+      } else {
+        this.localLogin(result);
       }
-    );
+    });
   }
 
-  localLogin = (authResult) => {
+  localLogin = authResult => {
     // Set isLoggedIn flag in localStorage
     localStorage.setItem('isLoggedIn', 'true');
     // Set the time that the access token will expire at
@@ -120,7 +124,7 @@ export default class Auth {
     this.accessToken = authResult.accessToken;
     this.idToken = authResult.idToken;
     this.scheduleRenewal();
-  }
+  };
 
   getProfile(cb) {
     this.auth0.client.userInfo(this.accessToken, (err, profile) => {
@@ -156,13 +160,13 @@ export default class Auth {
   isAuthenticated() {
     // Check whether the current time is past the
     // access token's expiry time
-    let expiresAt = this.expiresAt;
+
+    const { expiresAt } = this;
     return new Date().getTime() < expiresAt;
   }
 
   scheduleRenewal() {
-
-    let expiresAt = this.expiresAt;
+    const { expiresAt } = this;
     const timeout = expiresAt - Date.now();
     if (timeout > 0) {
       this.tokenRenewalTimeout = setTimeout(() => {
