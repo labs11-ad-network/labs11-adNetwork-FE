@@ -103,6 +103,25 @@ const LandingPageStyle = styled.div`
       top: 1px;
     }
   }
+  /* .buttons_container .btn_blue {
+    display: inline-block;
+    text-decoration:none;
+    background-color: #0084FF;
+    color: #fff;
+    background-color: #0084FF;
+    color: #fff;
+    box-shadow: 0 2px 6px #71b6f7;
+    border: 1px solid #0084FF;
+    margin: 30px 12px 0 0;
+    font-size: 12px;
+    padding: 7px 35px;
+    border-radius: 50px;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    font-weight:500;
+    line-height: 26px;
+  } */
   .buttons_container .btn_blue {
     display: block;
     max-width: 279px;
@@ -133,12 +152,12 @@ const LandingPageStyle = styled.div`
       margin: 7% 0;
       max-width: 150px;
       padding: 19px 20.5px;
+      &:hover {
+        background: #007bff;
+        box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
+      }
     }
 
-    &:hover {
-      background: #007bff;
-      box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
-    }
   }
   .costumer-blue-subtitle {
     text-align:center;
@@ -148,6 +167,7 @@ const LandingPageStyle = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
+
     @media (min-width: 940px) {
       justify-content: space-between;
       flex-direction: row;
@@ -168,6 +188,7 @@ const LandingPageStyle = styled.div`
     padding: 20px 0 0 0;
     margin-top:100px;
   }
+
 `;
 class LandingPage extends Component {
   login = () => { this.props.auth.login(); }
