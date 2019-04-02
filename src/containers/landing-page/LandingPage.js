@@ -167,8 +167,6 @@ class LandingPage extends Component {
   }
 
   render() {
-    const { history } = this.props;
-    console.log("history", history);
 
     return (
       <LandingPageStyle>
@@ -282,7 +280,7 @@ class LandingPage extends Component {
           <CustomerStoriesCarousel />
         </section>
 
-        {/* <button
+        <button
           type="button"
           onClick={() => {
             localStorage.setItem("acct_type", "advertiser");
@@ -297,7 +295,7 @@ class LandingPage extends Component {
           }}
         >
           Affiliate
-        </button> */}
+        </button>
       </LandingPageStyle>
     );
   }

@@ -78,7 +78,6 @@ export const OfferModalContent = styled.div`
     z-index: 99999999999;
     background-color: #FFFFFF;
     padding: 15px 10px;
-    margin: 15px;
     border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     h1{

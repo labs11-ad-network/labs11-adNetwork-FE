@@ -37,8 +37,7 @@ export const createAd = (ad, props) => dispatch => {
       props.history.push("/dashboard/offers");
     })
     .catch(err => {
-      console.log(err)
-      // dispatch({ type: CREATE_AD_FAILURE, payload: err.response.data });
+      dispatch({ type: CREATE_AD_FAILURE, payload: err.response.data });
     });
 };
 
@@ -75,5 +74,26 @@ export const deleteAd = id => dispatch => {
     })
     .catch(err => {
       dispatch({ type: DELETE_AD_FAILURE, payload: err.response.data })
+    })
+}
+
+// ------------------------------------ Change Ad Status ------------------------------------
+
+export const UPDATE_AD_STATUS_START = "UPDATE_AD_START";
+export const UPDATE_AD_STATUS_SUCCESS = "UPDATE_AD_SUCCESS";
+export const UPDATE_AD_STATUS_FAILURE = "UPDATE_AD_FAILURE";
+
+export const changeAdStatus = (ad, offer_id) => dispatch => {
+  dispatch({ type: UPDATE_AD_STATUS_START })
+  axios
+    .put(`${URL}/api/ads/${ad.id}`, {active: !ad.active})
+    .then(res => {
+      dispatch({ type: UPDATE_AD_STATUS_SUCCESS, payload: res.data })
+    })
+    .then(() => {
+      dispatch(getOfferAds(offer_id))
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_AD_STATUS_FAILURE, payload: err.response.data })
     })
 }

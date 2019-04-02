@@ -8,13 +8,9 @@ import Switch from "@material-ui/core/Switch";
 import { connect } from "react-redux";
 
 import { OfferButton, OfferModalButton, TabButtonContainer } from "./offersStyles.js";
-import { getOfferAds, deleteAd } from "../../store/actions/adAction.js";
+import { getOfferAds, deleteAd, changeAdStatus } from "../../store/actions/adAction.js";
 import { createAgreement } from "../../store/actions/agreementsAction.js";
-import {
-  getUserOffers,
-  changeOfferStatus,
-  deleteOffer
-} from "../../store/actions/offersAction.js";
+import { getUserOffers, changeOfferStatus, deleteOffer } from "../../store/actions/offersAction.js";
 
 const styles = theme => ({
   root: {
@@ -37,7 +33,6 @@ class OffersList extends React.Component {
       filterType: "checkbox",
       onlyOneRowCanBeSelected: true,
       rowCursorHand: true,
-      responsive: "scroll",
       onRowsDelete: value => {
         if (
           window.confirm(
@@ -55,14 +50,12 @@ class OffersList extends React.Component {
       onlyOneRowCanBeSelected: true,
       rowCursorHand: true,
       showSelectedRowsToolbar: false,
-      responsive: "scroll",
     },
     advertiserAdOptions: {
       filterType: "checkbox",
       rowCursorHand: true,
       onlyOneRowCanBeSelected: true,
       showSelectedRowsToolbar: true,
-      responsive: "scroll",
       onRowsDelete: value => {
         if (
           window.confirm(
@@ -77,7 +70,6 @@ class OffersList extends React.Component {
       filterType: "checkbox",
       onlyOneRowCanBeSelected: true,
       showSelectedRowsToolbar: false,
-      responsive: "scroll",
     }
   };
 
@@ -245,7 +237,51 @@ class OffersList extends React.Component {
     }
   ];
 
-  adColumns = [
+  advertiserAdColumns = [
+    {
+      name: "Size",
+      field: "size",
+      options: {
+        width: 70
+      }
+    },
+    {
+      name: "Ad",
+      field: "name",
+      options: {
+        width: 150
+      }
+    },
+    {
+      name: "Ad Status",
+      options: {
+        customBodyRender: value => {
+          return (
+            <Switch
+              checked={value.status}
+              onChange={async () => {
+                this.props.changeOfferStatus(value);
+              }}
+              value="checkedB"
+              color="primary"
+            />
+          );
+        }
+      }
+    },
+    {
+      name: "Preview",
+      field: "image",
+      options: {
+        width: 170,
+        customBodyRender: value => {
+          return <img src={value.image} alt="..." />;
+        }
+      }
+    }
+  ];
+
+  affiliateAdColumns = [
     {
       name: "Size",
       field: "size",
@@ -325,7 +361,7 @@ class OffersList extends React.Component {
             columns={
               currentUser.acct_type === "affiliate"
                 ? [
-                    ...this.adColumns,
+                    ...this.affiliateAdColumns,
                     {
                       name: "Code Snippet",
                       options: {
@@ -340,15 +376,15 @@ class OffersList extends React.Component {
                                         ? 'height="100" width="670"'
                                         : value.size.includes("vertical")
                                         ? 'height="670" width="100"'
-                                        : value.size.includes("square") &&
-                                          'height="265" width="265"'
+                                        : value.size.includes("square") 
+                                        && 'height="265" width="265"'
                                     }
                                   ></iframe>`;
                         }
                       }
                     }
                   ]
-                : this.adColumns
+                : this.advertiserAdColumns
             }
             options={currentUser.acct_type === "affiliate" ? 
             affiliateAdOptions 
