@@ -114,7 +114,7 @@ class SwipeableTextMobileStepper extends React.Component {
 
     return (
       <div className={classes.root}>
-        <h5 className="blue-subtitle costumer-subtitle">
+        <h5 className="blue-subtitle costumer-subtitle costumer-blue-subtitle">
           Customer Stories
        </h5>
         <div
