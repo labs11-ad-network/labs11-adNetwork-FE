@@ -1,193 +1,236 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const HorizontalBannerContainer = styled.a`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 650px;
+  height: 80px;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #f1f1f1;
+  background-image: url(${props => props.ad.file || props.image});
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  div {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
     justify-content: space-between;
-    width: 650px;
-    height: 80px;
-    padding: 10px;
+    h1 {
+      font-size: ${props =>
+        props.ad.headline.size ? `${props.ad.headline.size}px` : "2.3rem"};
+      margin-bottom: 5px;
+      color: ${props => props.ad.headline.color};
+      background-color: ${props => props.ad.headline.bg_color};
+      font-weight: ${props => props.ad.headline.bold && "bold"};
+      font-style: ${props => props.ad.headline.italic && "italic"};
+      text-align: ${props => props.ad.headline.align};
+    }
+    h3 {
+      font-size: ${props =>
+        props.ad.tagline.size ? `${props.ad.tagline.size}px` : "1rem"};
+      margin-bottom: 2px;
+      color: ${props => props.ad.tagline.color};
+      background-color: ${props => props.ad.tagline.bg_color};
+      font-weight: ${props => props.ad.tagline.bold && "bold"};
+      font-style: ${props => props.ad.tagline.italic && "italic"};
+      text-align: ${props => props.ad.tagline.align};
+    }
+    p {
+      font-size: ${props =>
+        props.ad.message.size ? `${props.ad.message.size}px` : "0.8rem"};
+      color: ${props => props.ad.message.color};
+      background-color: ${props => props.ad.message.bg_color};
+      font-weight: ${props => props.ad.message.bold && "bold"};
+      font-style: ${props => props.ad.message.italic && "italic"};
+      text-align: ${props => props.ad.message.align};
+    }
+  }
+  button {
+    font-size: ${props => `${props.ad.button.size}px` || "1rem"};
+    border: unset;
+    color: ${props => props.ad.button.color};
     text-decoration: none;
-    color: ${props => props.text_color};
-    background-color: black;
-    background-image: url(${props => props.bg});
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    div{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        h1{
-            font-size: 2.3rem;
-            margin-bottom: 5px;
-        }
-        h3{
-            font-size: 1rem;
-            margin-bottom: 2px;
-        }
-        p{
-            font-size: 0.8rem;
-        }
-    }
-    button{
-        font-size: 1rem;
-        border: unset;
-        color: ${props => props.btn_text_color};
-        text-decoration: none;
-        background-color: ${props => props.btn_color || 'transparent'};
-        padding: 8px 15px;
-        border-radius: 3px;
-        transition: .2s;
-        &:hover{
-            cursor: pointer;
-            opacity: 0.8;
-        }
-    }
+    background-color: ${props => props.ad.button.bg_color || "transparent"};
+    font-weight: ${props => props.ad.button.bold && "bold"};
+    font-style: ${props => props.ad.button.italic && "italic"};
+    text-align: ${props => props.ad.button.align};
+    padding: 8px 15px;
+    border-radius: 3px;
+  }
 `;
 
 export const SquareBannerContainer = styled.a`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 250px;
+  height: 250px;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #f1f1f1;
+  background-image: url(${props => props.ad.file || props.image});
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  div {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
     justify-content: space-between;
-    width: 250px;
-    height: 250px;
-    padding: 10px;
+    h1 {
+      font-size: ${props =>
+        props.ad.headline.size ? `${props.ad.headline.size}px` : "2.3rem"};
+      margin-bottom: 5px;
+      color: ${props => props.ad.headline.color};
+      background-color: ${props => props.ad.headline.bg_color};
+      font-weight: ${props => props.ad.headline.bold && "bold"};
+      font-style: ${props => props.ad.headline.italic && "italic"};
+      text-align: ${props => props.ad.headline.align};
+    }
+    h3 {
+      font-size: ${props =>
+        props.ad.tagline.size ? `${props.ad.tagline.size}px` : "1rem"};
+      margin-bottom: 2px;
+      color: ${props => props.ad.tagline.color};
+      background-color: ${props => props.ad.tagline.bg_color};
+      font-weight: ${props => props.ad.tagline.bold && "bold"};
+      font-style: ${props => props.ad.tagline.italic && "italic"};
+      text-align: ${props => props.ad.tagline.align};
+    }
+    p {
+      font-size: ${props =>
+        props.ad.message.size ? `${props.ad.message.size}px` : "0.8rem"};
+      color: ${props => props.ad.message.color};
+      background-color: ${props => props.ad.message.bg_color};
+      font-weight: ${props => props.ad.message.bold && "bold"};
+      font-style: ${props => props.ad.message.italic && "italic"};
+      text-align: ${props => props.ad.message.align};
+    }
+  }
+  button {
+    font-size: ${props => `${props.ad.button.size}px` || "1rem"};
+    border: unset;
+    color: ${props => props.ad.button.color};
     text-decoration: none;
-    color: ${props => props.text_color};
-    background-color: black;
-    background-image: url(${props => props.bg});
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    div{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        h1{
-            font-size: 2.3rem;
-            margin-bottom: 5px;
-        }
-        h3{
-            font-size: 1rem;
-            margin-bottom: 2px;
-        }
-        p{
-            font-size: 0.8rem;
-        }
-    }
-    button{
-        font-size: 1rem;
-        border: unset;
-        color: ${props => props.btn_text_color};
-        text-decoration: none;
-        background-color: ${props => props.btn_color || 'transparent'};
-        padding: 8px 15px;
-        border-radius: 3px;
-        transition: .2s;
-        &:hover{
-            cursor: pointer;
-            opacity: 0.8;
-        }
-    }
+    background-color: ${props => props.ad.button.bg_color || "transparent"};
+    font-weight: ${props => props.ad.button.bold && "bold"};
+    font-style: ${props => props.ad.button.italic && "italic"};
+    text-align: ${props => props.ad.button.align};
+    padding: 8px 15px;
+    border-radius: 3px;
+  }
 `;
 
 export const VerticalBannerContainer = styled.a`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: 80px;
+  height: 650px;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #f1f1f1;
+  background-image: url(${props => props.ad.file || props.image});
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  div {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
-    text-align: center;
-    width: 80px;
-    height: 650px;
-    padding: 10px;
+    margin-top: 25px;
+    h1 {
+      font-size: ${props =>
+        props.ad.headline.size ? `${props.ad.headline.size}px` : "2.3rem"};
+      margin-bottom: 5px;
+      color: ${props => props.ad.headline.color};
+      background-color: ${props => props.ad.headline.bg_color};
+      font-weight: ${props => props.ad.headline.bold && "bold"};
+      font-style: ${props => props.ad.headline.italic && "italic"};
+      text-align: ${props => props.ad.headline.align};
+    }
+    h3 {
+      font-size: ${props =>
+        props.ad.tagline.size ? `${props.ad.tagline.size}px` : "1rem"};
+      margin-bottom: 2px;
+      color: ${props => props.ad.tagline.color};
+      background-color: ${props => props.ad.tagline.bg_color};
+      font-weight: ${props => props.ad.tagline.bold && "bold"};
+      font-style: ${props => props.ad.tagline.italic && "italic"};
+      text-align: ${props => props.ad.tagline.align};
+    }
+    p {
+      font-size: ${props =>
+        props.ad.message.size ? `${props.ad.message.size}px` : "0.8rem"};
+      color: ${props => props.ad.message.color};
+      background-color: ${props => props.ad.message.bg_color};
+      font-weight: ${props => props.ad.message.bold && "bold"};
+      font-style: ${props => props.ad.message.italic && "italic"};
+      text-align: ${props => props.ad.message.align};
+    }
+  }
+  button {
+    display: inline-block;
+    width: 100%;
+    border: unset;
+    font-size: ${props => `${props.ad.button.size}px` || "1rem"};
+    color: ${props => props.ad.button.color};
     text-decoration: none;
-    color: ${props => props.text_color};
-    background-color: black;
-    background-image: url(${props => props.bg});
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-    div{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-top: 25px;
-        h1{
-            font-size: 2.3rem;
-            margin-bottom: 5px;
-        }
-        h3{
-            font-size: 1rem;
-            margin-bottom: 2px;
-        }
-        p{
-            font-size: 0.8rem;
-        }
-    }
-    button{
-        width: 100%;
-        border: unset;
-        font-size: 1rem;
-        color: ${props => props.btn_text_color};
-        text-decoration: none;
-        background-color: ${props => props.btn_color || 'transparent'};
-        padding: 8px 0;
-        border-radius: 3px;
-        transition: .2s;
-        &:hover{
-            cursor: pointer;
-            opacity: 0.8;
-        }
-    }
+    background-color: ${props => props.ad.button.bg_color || "transparent"};
+    font-weight: ${props => props.ad.button.bold && "bold"};
+    font-style: ${props => props.ad.button.italic && "italic"};
+    text-align: ${props => props.ad.button.align};
+    padding: 8px 0;
+    border-radius: 3px;
+  }
 `;
 
 export const PlainHorizontalContainer = styled.a`
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 650px;
-    height: 80px;
-    padding: 10px;
-    text-decoration: none;
-    color: ${props => props.text_color};
-    background-color: black;
-    background-image: url(${props => props.bg});
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 650px;
+  height: 80px;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #f1f1f1;
+  background-image: url(${props => props.ad.file || props.image});
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
 `;
 
 export const PlainSquareContainer = styled.a`
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    width: 250px;
-    height: 250px;
-    padding: 10px;
-    text-decoration: none;
-    color: ${props => props.text_color};
-    background-color: black;
-    background-image: url(${props => props.bg});
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 250px;
+  height: 250px;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #f1f1f1;
+  background-image: url(${props => props.ad.file || props.image});
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
 `;
 
 export const PlainVerticalContainer = styled.a`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    width: 80px;
-    height: 650px;
-    padding: 10px;
-    text-decoration: none;
-    color: ${props => props.text_color};
-    background-color: black;
-    background-image: url(${props => props.bg});
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  width: 80px;
+  height: 650px;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #f1f1f1;
+  background-image: url(${props => props.ad.file || props.image});
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
 `;

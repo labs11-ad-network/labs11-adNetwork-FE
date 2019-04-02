@@ -78,9 +78,8 @@ const OfferForm = props => {
 
             <label htmlFor="status">Status</label>
             <input 
-                type="radio" 
+                type="checkbox" 
                 placeholder="enabled" 
-                value="true" 
                 name="status"
                 onChange={props.handleChange}
             />

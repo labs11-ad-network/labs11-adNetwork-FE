@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { 
     Nav,
-    HamburgerButton, 
+    HomeButton, 
     ButtonContainer
 } from '../dashboardStyles.js';
 import NavButton from './NavButton.js';
@@ -17,11 +17,11 @@ export class DashboardNav extends Component {
     return (
       <>
         <Nav>
-          <HamburgerButton>
+          <HomeButton>
             <Link to="/">
                 <i className="fas fa-home"/>
             </Link>
-          </HamburgerButton>
+          </HomeButton>
           <ButtonContainer>
               <NavButton 
                   iconClass="fas fa-chart-line" 

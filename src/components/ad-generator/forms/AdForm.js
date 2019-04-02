@@ -1,152 +1,121 @@
 import React from "react";
 
-import { Form } from "./formStyles.js";
+import { Form, InputGroup, ImageUpload } from "./formStyles.js";
 
 const AdForm = props => {
   return (
     <>
-      <button 
-        value="horizontal_banner"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Horizontal banner
-      </button>
-
-      <button 
-        value="vertical_banner"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Vertical banner
-      </button>
-
-      <button 
-        value="square_banner"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Square banner
-      </button>
-
-      <button 
-        value="plain_horizontal"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Plain Horizontal Banner
-      </button>
-
-      <button 
-        value="plain_square"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Plain Square Banner
-      </button>
-
-      <button 
-        value="plain_vertical"
-        name="size"
-        onClick={props.handleChange}
-      >
-      Plain Vertical Banner
-      </button>
       <Form onSubmit={props.createAd}>
-        <div>
-          <h2>Create your ad.</h2>
+        <h2>Create your ad.</h2>
+        <div className="form-container">
+          <InputGroup>
+            <label htmlFor="offer_id" />
+            <select
+              type="text"
+              placeholder="Offer"
+              name="offer_id"
+              value={props.productData.offer_id}
+              onChange={props.handleChange}
+            >
+              <option value="" disabled>
+                Select an offer
+              </option>
+              {props.offers.map(offer => {
+                return (
+                  <option key={offer.id} value={offer.id}>
+                    {offer.name}
+                  </option>
+                );
+              })}
+            </select>
+          </InputGroup>
+          <InputGroup select={props.selected.includes("headline")}>
+            <label htmlFor="headline" />
+            <input
+              type="text"
+              placeholder="Headline"
+              name="headline_text"
+              value={props.productData.headline_text}
+              onChange={props.handleChange}
+            />
+            <div>
+              <h3>editing</h3>
+              <button
+                name="currentElement"
+                value="headline"
+                onClick={props.handleElementChange}
+              />
+            </div>
+          </InputGroup>
+          <InputGroup select={props.selected.includes("tagline")}>
+            <label htmlFor="tagline" />
+            <input
+              type="text"
+              placeholder="Tagline"
+              name="tagline_text"
+              value={props.productData.tagline_text}
+              onChange={props.handleChange}
+            />
+            <div>
+              <h3>editing</h3>
+              <button
+                name="currentElement"
+                value="tagline"
+                onClick={props.handleElementChange}
+              />
+            </div>
+          </InputGroup>
 
-          <label htmlFor="offer_id" />
-          <select
-            type="text"
-            placeholder="Offer"
-            name="offer_id"
-            value={props.productData.offer_id}
-            onChange={props.handleChange}
-          >
-            <option value="" disabled>
-              Select an offer
-            </option>
-            {props.offers.map(offer => {
-              return <option key={offer.id} value={offer.id}>{offer.name}</option>;
-            })}
-          </select>
+          <InputGroup select={props.selected.includes("message")}>
+            <label htmlFor="message" />
+            <input
+              type="text"
+              placeholder="Message"
+              name="message_text"
+              value={props.productData.message_text}
+              onChange={props.handleChange}
+            />
+            <div>
+              <h3>editing</h3>
+              <button
+                name="currentElement"
+                value="message"
+                onClick={props.handleElementChange}
+              />
+            </div>
+          </InputGroup>
 
-          <label htmlFor="headline" />
-          <input
-            type="text"
-            placeholder="Headline"
-            name="headline"
-            value={props.productData.headline}
-            onChange={props.handleChange}
-          />
-
-          <label htmlFor="tagline" />
-          <input
-            type="text"
-            placeholder="Tagline"
-            name="tagline"
-            value={props.productData.tagline}
-            onChange={props.handleChange}
-          />
-
-          <label htmlFor="message" />
-          <input
-            type="text"
-            placeholder="Message"
-            name="message"
-            value={props.productData.message}
-            onChange={props.handleChange}
-          />
-
-          <label htmlFor="text_color" />
-          <input
-            type="text"
-            placeholder="Text Color"
-            name="text_color"
-            value={props.productData.text_color}
-            onChange={props.handleChange}
-          />
-
-          <label htmlFor="cta_button" />
-          <input
-            type="text"
-            placeholder="CTA Button"
-            name="cta_button"
-            value={props.productData.cta_button}
-            onChange={props.handleChange}
-          />
-
-          <label htmlFor="btn_color" />
-          <input
-            type="text"
-            placeholder="Button Color"
-            name="btn_color"
-            value={props.productData.btn_color}
-            onChange={props.handleChange}
-          />
-
-          <label htmlFor="btn_text_color" />
-          <input
-            type="text"
-            placeholder="Button Text Color"
-            name="btn_text_color"
-            value={props.productData.btn_text_color}
-            onChange={props.handleChange}
-          />
-
-          <label htmlFor="destination_url" />
-          <input
-            type="text"
-            placeholder="Destination Url"
-            name="destination_url"
-            value={props.productData.destination_url}
-            onChange={props.handleChange}
-          />
-
-          <label htmlFor="back_img" />
+          <InputGroup select={props.selected.includes("button")}>
+            <label htmlFor="button_text" />
+            <input
+              type="text"
+              placeholder="CTA Button"
+              name="button_text"
+              value={props.productData.button_text}
+              onChange={props.handleChange}
+            />
+            <div>
+              <h3>editing</h3>
+              <button
+                name="currentElement"
+                value="button"
+                onClick={props.handleElementChange}
+              />
+            </div>
+          </InputGroup>
+          <InputGroup>
+            <label htmlFor="destination_url" />
+            <input
+              type="text"
+              placeholder="Destination Url"
+              name="destination_url"
+              value={props.productData.destination_url}
+              onChange={props.handleChange}
+            />
+          </InputGroup>
           {/* --------------------- image upload --------------------- */}
-          <input
+          <label htmlFor="back_img" />
+          <ImageUpload
             accept="image/*"
             type="file"
             placeholder="Background Image"
@@ -155,8 +124,6 @@ const AdForm = props => {
             onChange={props.handleFileChange}
           />
           {/* --------------------- image upload --------------------- */}
-
-          <button type="submit">Create Ad</button>
         </div>
       </Form>
     </>

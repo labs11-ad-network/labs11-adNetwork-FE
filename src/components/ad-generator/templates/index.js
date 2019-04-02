@@ -1,4 +1,5 @@
 import React from "react";
+import Draggable from "react-draggable";
 
 import {
   HorizontalBannerContainer,
@@ -12,8 +13,8 @@ import {
 export const PlainHorizontalBanner = props => {
   return (
     <PlainHorizontalContainer
-      bg={props.ad.back_img}
-      href={props.ad.destination_url}
+      ad={props.ad}
+      image={props.image}
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
@@ -24,8 +25,8 @@ export const PlainHorizontalBanner = props => {
 export const PlainSquareBanner = props => {
   return (
     <PlainSquareContainer
-      bg={props.ad.back_img}
-      href={props.ad.destination_url}
+      ad={props.ad}
+      image={props.image}
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
@@ -36,8 +37,8 @@ export const PlainSquareBanner = props => {
 export const PlainVerticalBanner = props => {
   return (
     <PlainVerticalContainer
-      bg={props.ad.back_img}
-      href={props.ad.destination_url}
+      ad={props.ad}
+      image={props.image}
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
@@ -48,23 +49,26 @@ export const PlainVerticalBanner = props => {
 export const HorizontalBanner = props => {
   return (
     <HorizontalBannerContainer
-      bg={props.ad.back_img}
-      text_color={props.ad.text_color}
-      btn_color={props.ad.btn_color}
-      btn_text_color={props.ad.btn_text_color}
-      href={props.ad.destination_url}
+      ad={props.ad}
+      image={props.image}
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
     >
       <div>
-        <h1>{props.ad.headline}</h1>
-        <h3>{props.ad.tagline}</h3>
-        <p>{props.ad.message}</p>
+        <Draggable>
+          <h1>{props.ad.headline_text}</h1>
+        </Draggable>
+        <Draggable>
+          <h3>{props.ad.tagline_text}</h3>
+        </Draggable>
+        <Draggable>
+          <p>{props.ad.message_text}</p>
+        </Draggable>
       </div>
-      <button>
-        {props.ad.cta_button}
-      </button>
+      <Draggable>
+        <button>{props.ad.button_text}</button>
+      </Draggable>
     </HorizontalBannerContainer>
   );
 };
@@ -72,23 +76,26 @@ export const HorizontalBanner = props => {
 export const SquareBanner = props => {
   return (
     <SquareBannerContainer
-      bg={props.ad.back_img}
-      text_color={props.ad.text_color}
-      btn_color={props.ad.btn_color}
-      btn_text_color={props.ad.btn_text_color}
-      href={props.ad.destination_url}
+      ad={props.ad}
+      image={props.image}
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
     >
       <div>
-        <h1>{props.ad.headline}</h1>
-        <h3>{props.ad.tagline}</h3>
-        <p>{props.ad.message}</p>
+        <Draggable>
+          <h1>{props.ad.headline_text}</h1>
+        </Draggable>
+        <Draggable>
+          <h3>{props.ad.tagline_text}</h3>
+        </Draggable>
+        <Draggable>
+          <p>{props.ad.message_text}</p>
+        </Draggable>
       </div>
-      <button>
-        {props.ad.cta_button}
-      </button>
+      <Draggable>
+        <button>{props.ad.button_text}</button>
+      </Draggable>
     </SquareBannerContainer>
   );
 };
@@ -96,23 +103,26 @@ export const SquareBanner = props => {
 export const VerticalBanner = props => {
   return (
     <VerticalBannerContainer
-      bg={props.ad.back_img}
-      text_color={props.ad.text_color}
-      btn_color={props.ad.btn_color}
-      btn_text_color={props.ad.btn_text_color}
-      href={props.ad.destination_url}
+      ad={props.ad}
+      image={props.image}
       target="_blank"
       rel="noopener noreferrer"
       onClick={props.recordAction}
     >
       <div>
-        <h1>{props.ad.headline}</h1>
-        <h3>{props.ad.tagline}</h3>
-        <p>{props.ad.message}</p>
+        <Draggable>
+          <h1>{props.ad.headline_text}</h1>
+        </Draggable>
+        <Draggable>
+          <h3>{props.ad.tagline_text}</h3>
+        </Draggable>
+        <Draggable>
+          <p>{props.ad.message_text}</p>
+        </Draggable>
       </div>
-      <button>
-        {props.ad.cta_button}
-      </button>
+      <Draggable>
+        <button>{props.ad.button_text}</button>
+      </Draggable>
     </VerticalBannerContainer>
   );
 };

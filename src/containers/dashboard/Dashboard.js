@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
+import Pusher from "pusher-js";
 
 import { getOfferAnalytics } from "../../store/actions/analyticsAction.js";
 import { getUserOffers } from "../../store/actions/offersAction.js";
@@ -31,9 +32,15 @@ const DashboardContainer = styled.div`
   }
 `;
 
+const pusher = new Pusher("50920b18a9a2ff320874", {
+  cluster: "us2",
+  encrypted: true
+});
+
 class Dashboard extends Component {
   state = {
     currentOffer: "",
+    notificationsList: []
   };
 
   componentDidMount() {
@@ -48,11 +55,28 @@ class Dashboard extends Component {
         return null;
       }
     }, 6000);
+
+    this.handlePusher(this.props.currentUser);
   }
 
   componentWillUnmount() {
     clearInterval(this.analyticsInterval);
   }
+
+  handlePusher = currentUser => {
+    if (currentUser) {
+      const channel = pusher.subscribe(currentUser.id.toString());
+      channel.bind("disable-offer", data => {
+        this.setState({
+          notificationsList: [...this.state.notificationsList, data]
+        });
+      });
+    } else {
+      setTimeout(() => {
+        this.handlePusher(this.props.currentUser)
+      }, 3000)
+    }
+  };
 
   handleOfferSelect = e => {
     this.props.getOfferAnalytics(e.target.value);
@@ -70,6 +94,7 @@ class Dashboard extends Component {
             {...this.props}
             handleOfferSelect={this.handleOfferSelect}
             agreements={this.props.agreements}
+            notificationsList={this.state.notificationsList}
           />
           <div className="dashboard-view">
             <Route
