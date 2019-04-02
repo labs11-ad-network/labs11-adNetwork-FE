@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import Pusher from "pusher-js";
 import Badge from "@material-ui/core/Badge";
 
 import {
@@ -17,21 +16,6 @@ import {
 class DashboardTop extends React.Component {
   state = {
     movileNavOpen: false,
-    notificationsList: []
-  };
-
-  componentDidMount = () => {
-    const pusher = new Pusher("50920b18a9a2ff320874", {
-      cluster: "us2",
-      encrypted: true
-    });
-
-    const channel = pusher.subscribe(`${this.props.currentUser.id}`);
-    channel.bind("disable-offer", data => {
-      this.setState({
-        notificationsList: [...this.state.notificationsList, data]
-      });
-    });
   };
 
   toggleNav = () => {
@@ -146,7 +130,7 @@ class DashboardTop extends React.Component {
           {this.props.currentUser && (
             <>
               <Badge
-                badgeContent={this.state.notificationsList.length}
+                badgeContent={this.props.notificationsList.length}
                 color="primary"
               >
                 <i className="fas fa-bell" />
