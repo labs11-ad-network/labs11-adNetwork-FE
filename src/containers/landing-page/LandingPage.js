@@ -182,8 +182,6 @@ class LandingPage extends Component {
   }
 
   render() {
-    const { history } = this.props;
-
 
     return (
       <LandingPageStyle>
@@ -293,16 +291,15 @@ class LandingPage extends Component {
             </div>
           </div>
         </section>
-        
+
         <section className="app-download">
-          <AppDownload /> 
+          <AppDownload />
         </section>
         <section className="costumer-stories">
           <CustomerStoriesCarousel />
         </section>
 
         <footer>
-
           <p className='footer-ptag' >Copyright © 2019 All Rights Reserved.</p>
         </footer>
       </LandingPageStyle>

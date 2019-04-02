@@ -8,13 +8,9 @@ import Switch from "@material-ui/core/Switch";
 import { connect } from "react-redux";
 
 import { OfferButton, OfferModalButton, TabButtonContainer } from "./offersStyles.js";
-import { getOfferAds } from "../../store/actions/adAction.js";
+import { getOfferAds, deleteAd, changeAdStatus } from "../../store/actions/adAction.js";
 import { createAgreement } from "../../store/actions/agreementsAction.js";
-import {
-  getUserOffers,
-  changeOfferStatus,
-  deleteOffer
-} from "../../store/actions/offersAction.js";
+import { getUserOffers, changeOfferStatus, deleteOffer } from "../../store/actions/offersAction.js";
 
 const styles = theme => ({
   root: {
@@ -53,12 +49,27 @@ class OffersList extends React.Component {
       filterType: "checkbox",
       onlyOneRowCanBeSelected: true,
       rowCursorHand: true,
-      showSelectedRowsToolbar: false
+      showSelectedRowsToolbar: false,
     },
-    adOptions: {
+    advertiserAdOptions: {
+      filterType: "checkbox",
+      rowCursorHand: true,
+      onlyOneRowCanBeSelected: true,
+      showSelectedRowsToolbar: true,
+      onRowsDelete: value => {
+        if (
+          window.confirm(
+            `Are you sure you want to delete selected ad?`
+          )
+        ) {
+          this.props.deleteAd(this.props.offerAds[value.data[0].dataIndex].id);
+        }
+      }
+    },
+    affiliateAdOptions: {
       filterType: "checkbox",
       onlyOneRowCanBeSelected: true,
-      showSelectedRowsToolbar: false
+      showSelectedRowsToolbar: false,
     }
   };
 
@@ -213,7 +224,8 @@ class OffersList extends React.Component {
               color="#0A88DC"
               onClick={() => {
                 this.setState({
-                  tabValue: 1
+                  tabValue: 1,
+                  offer_id: value.id
                 });
                 this.props.getOfferAds(value.id);
               }}
@@ -226,7 +238,7 @@ class OffersList extends React.Component {
     }
   ];
 
-  adColumns = [
+  advertiserAdColumns = [
     {
       name: "Size",
       field: "size",
@@ -250,6 +262,71 @@ class OffersList extends React.Component {
           return <img src={value.image} alt="..." />;
         }
       }
+    },
+    {
+      name: "Ad Status",
+      options: {
+        customBodyRender: value => {
+          return (
+            <Switch
+              checked={value.active}
+              onChange={async () => {
+                this.props.changeAdStatus(value, this.state.offer_id);
+              }}
+              value="checkedB"
+              color="primary"
+            />
+          );
+        }
+      }
+    }
+  ];
+
+  affiliateAdColumns = [
+    {
+      name: "Size",
+      field: "size",
+      options: {
+        width: 70
+      }
+    },
+    {
+      name: "Ad",
+      field: "name",
+      options: {
+        width: 150
+      }
+    },
+    {
+      name: "Preview",
+      field: "image",
+      options: {
+        width: 170,
+        customBodyRender: value => {
+          return <img src={value.image} alt="..." />;
+        }
+      }
+    },
+    {
+      name: "Code Snippet",
+      options: {
+        customBodyRender: value => {
+          return `<iframe src="https://kieranlabs.netlify.com/ad/${
+            value.id
+          }/${this.state.currentAgreement}" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    ${
+                      value.size.includes("horizontal")
+                        ? 'height="100" width="670"'
+                        : value.size.includes("vertical")
+                        ? 'height="670" width="100"'
+                        : value.size.includes("square") 
+                        && 'height="265" width="265"'
+                    }
+                  ></iframe>`;
+        }
+      }
     }
   ];
 
@@ -259,21 +336,22 @@ class OffersList extends React.Component {
       tabValue,
       advertiserOfferOptions,
       affiliateOfferOptions,
-      adOptions
+      affiliateAdOptions,
+      advertiserAdOptions
     } = this.state;
 
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
+            <Tab label="Offers" className={classes.tab} />
+            <Tab label="Ads" className={classes.tab} disabled />
             <TabButtonContainer>
-              <div>
-                <Tab label="Offers" className={classes.tab} />
-                <Tab label="Ads" className={classes.tab} disabled />
-              </div>
+              {this.props.currentUser.acct_type === "advertiser" &&
               <OfferModalButton onClick={() => this.props.toggleModal()}>
                 Create Offer
               </OfferModalButton>
+              }
             </TabButtonContainer>
           </Tabs>
         </AppBar>
@@ -304,33 +382,12 @@ class OffersList extends React.Component {
             data={offerAds}
             columns={
               currentUser.acct_type === "affiliate"
-                ? [
-                    ...this.adColumns,
-                    {
-                      name: "Code Snippet",
-                      options: {
-                        customBodyRender: value => {
-                          return `<iframe src="https://kieranlabs.netlify.com/ad/${
-                            value.id
-                          }/${this.state.currentAgreement}" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    ${
-                                      value.size.includes("horizontal")
-                                        ? 'height="100" width="670"'
-                                        : value.size.includes("vertical")
-                                        ? 'height="670" width="100"'
-                                        : value.size.includes("square") &&
-                                          'height="265" width="265"'
-                                    }
-                                  ></iframe>`;
-                        }
-                      }
-                    }
-                  ]
-                : this.adColumns
+                ? this.affiliateAdColumns
+                : this.advertiserAdColumns
             }
-            options={adOptions}
+            options={currentUser.acct_type === "affiliate" 
+            ? affiliateAdOptions 
+            : advertiserAdOptions}
           />
         )}
       </div>
@@ -352,6 +409,8 @@ export default connect(
     getUserOffers,
     changeOfferStatus,
     deleteOffer,
-    createAgreement
+    createAgreement,
+    deleteAd,
+    changeAdStatus
   }
 )(withStyles(styles)(OffersList));

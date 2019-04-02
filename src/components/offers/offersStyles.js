@@ -78,7 +78,6 @@ export const OfferModalContent = styled.div`
     z-index: 99999999999;
     background-color: #FFFFFF;
     padding: 15px 10px;
-    margin: 15px;
     border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     h1{
@@ -97,12 +96,12 @@ export const OfferModalButton = styled.button`
     transition: .2s;
     &:hover{
         cursor: pointer;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.3);
     }
 `;
 
 export const TabButtonContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
 `;

@@ -9,7 +9,13 @@ import{
   CREATE_AD_FAILURE,
   GET_OFFER_ADS_START,
   GET_OFFER_ADS_SUCCESS,
-  GET_OFFER_ADS_FAILURE
+  GET_OFFER_ADS_FAILURE,
+  DELETE_AD_START,
+  DELETE_AD_SUCCESS,
+  DELETE_AD_FAILURE,
+  UPDATE_AD_STATUS_START,
+  UPDATE_AD_STATUS_SUCCESS,
+  UPDATE_AD_STATUS_FAILURE
 } from '../actions/adAction';
 
 const initialState = {
@@ -17,7 +23,9 @@ const initialState = {
     offerAds: [],
     isFetchingAd: false,
     isCreatingAd: false,
-    isGetingOfferAds: false
+    isGetingOfferAds: false,
+    isDeletingAd: false,
+    isUpdatingAdStatus: false,
 }
   
 export default function authReducer(state = initialState, action) {
@@ -80,6 +88,46 @@ export default function authReducer(state = initialState, action) {
         ...state,
         offerAds: [],
         isGetingOfferAds: false
+      }
+
+    case DELETE_AD_START:
+      return{
+        ...state,
+        isDeletingAd: true,
+      }
+
+    case DELETE_AD_SUCCESS:
+      toast.success("Ad was deleted")
+      return{
+        ...state,
+        isDeletingAd: false,
+      }
+
+    case DELETE_AD_FAILURE:
+      toast.error(action.payload.message)
+      return{
+        ...state,
+        isDeletingAd: false,
+      }
+
+    case UPDATE_AD_STATUS_START:
+      return{
+        ...state,
+        isUpdatingAdStatus: true
+      }
+
+    case UPDATE_AD_STATUS_SUCCESS:
+      toast.success(`${action.payload.ad.size} ad was ${action.payload.ad.active ? 'disabled' : 'enabled'}`)
+      return{
+        ...state,
+        isUpdatingAdStatus: false
+      }
+      
+    case UPDATE_AD_STATUS_FAILURE:
+      toast.error(action.payload.message)
+      return{
+        ...state,
+        isUpdatingAdStatus: false
       }
 
     default:
