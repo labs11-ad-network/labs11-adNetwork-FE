@@ -16,7 +16,7 @@ class AdServer extends Component {
     this.getRandomAd()
     this.rotateInterval = setInterval(() => {
       this.getRandomAd()
-    }, 1000)
+    }, 15000)
   }
 
   componentWillUnmount(){
@@ -68,10 +68,11 @@ class AdServer extends Component {
 
   render() {
     return (
-      this.state.randomAd &&
+      this.state.randomAd ?
       <a href={this.state.randomAd.destination_url} target="_blank" rel="noopener noreferrer">
         <img src={this.state.randomAd.image} onClick={this.recordAction} alt=""/>
-      </a>
+      </a> :
+      <h1>loading...</h1>
     );
   }
 }
