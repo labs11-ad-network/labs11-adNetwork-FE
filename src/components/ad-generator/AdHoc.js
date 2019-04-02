@@ -10,7 +10,6 @@ import {
 } from "./templates";
 
 const AdHoc = props => {
-  console.log(props.image);
   return (
     <>
       {props.ad.size &&

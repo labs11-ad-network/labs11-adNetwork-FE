@@ -2,10 +2,6 @@ import axios from "axios";
 
 const URL = "https://lad-network.herokuapp.com";
 
-// ------------------------------------ Get All Ads ------------------------------------
-
-// "GET /api/ads" gets all ads
-
 // ------------------------------------ Get Ad by ID ------------------------------------
 
 export const GET_AD_START = "GET_AD_START";
@@ -41,8 +37,7 @@ export const createAd = (ad, props) => dispatch => {
       props.history.push("/dashboard/offers");
     })
     .catch(err => {
-      console.log(err)
-      // dispatch({ type: CREATE_AD_FAILURE, payload: err.response.data });
+      dispatch({ type: CREATE_AD_FAILURE, payload: err.response.data });
     });
 };
 
@@ -63,3 +58,42 @@ export const getOfferAds = offer_id => dispatch => {
       dispatch({ type: GET_OFFER_ADS_FAILURE, payload: err.response.data });
     });
 };
+
+// ------------------------------------ Delete Ads ------------------------------------
+
+export const DELETE_AD_START = "DELETE_AD_START";
+export const DELETE_AD_SUCCESS = "DELETE_AD_SUCCESS";
+export const DELETE_AD_FAILURE = "DELETE_AD_FAILURE";
+
+export const deleteAd = id => dispatch => {
+  dispatch({ type: DELETE_AD_START })
+  axios
+    .delete(`${URL}/api/ads/${id}`)
+    .then(res => {
+      dispatch({ type: DELETE_AD_SUCCESS, payload: res.data })
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_AD_FAILURE, payload: err.response.data })
+    })
+}
+
+// ------------------------------------ Change Ad Status ------------------------------------
+
+export const UPDATE_AD_STATUS_START = "UPDATE_AD_STATUS_START";
+export const UPDATE_AD_STATUS_SUCCESS = "UPDATE_AD_STATUS_SUCCESS";
+export const UPDATE_AD_STATUS_FAILURE = "UPDATE_AD_STATUS_FAILURE";
+
+export const changeAdStatus = (ad, offer_id) => dispatch => {
+  dispatch({ type: UPDATE_AD_STATUS_START })
+  axios
+    .put(`${URL}/api/ads/${ad.id}`, {active: !ad.active})
+    .then(res => {
+      dispatch({ type: UPDATE_AD_STATUS_SUCCESS, payload: {res: res.data, ad} })
+    })
+    .then(() => {
+      dispatch(getOfferAds(offer_id))
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_AD_STATUS_FAILURE, payload: err.response.data })
+    })
+}
