@@ -4,13 +4,24 @@ import desktopPhone from '../../assets/phone1.png'
 import mobilePhone from '../../assets/phone2.png'
 export const AppDownloadStyle = styled.div`
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+
+
   font-family: "Roboto", sans-serif;
-  
+
+
+  /* global */
+  p {
+    font-size:1.1rem;
+    line-height:1.25;
+    color: #848484;
+  }
 /* app background with big wavy blue background */
   .app-download-flex{
+    max-width:1200px;
+    margin: 0 auto;
     position: relative;
     width: 100%;
-    height: 90vh;
+    height: 73vh;
     display: flex;
     align-items: center;
     z-index: 1;
@@ -47,20 +58,30 @@ export const AppDownloadStyle = styled.div`
       max-width:500px;
     }
     p {
-      font-size:1.1rem;
-      line-height:1.25;
-      color: #848484;
       margin: 20px 0;
       max-width:400px;
     }
   }
+
  /* promo section  three icon column*/
 .promo-section {
-    border: 1px solid red;
-    bottom: 0;
+    padding:80px 0;
   }
+.promo-row {
+  display: flex;
+  text-align:center;
+}
 .promo-col {
-  border: 1px solid red;
+  margin-right:60px;
+  
+  h2 {
+    font-size:1.5rem;
+    margin: 10px 0 0 0;
+  }
+  p {
+      margin: 20px 0;
+      max-width:400px;
+    }
 }
 .promo-icon {
       background-image: linear-gradient(-45deg, #2b18dd 0%, #1151d3 50%, #1151d3 100%);

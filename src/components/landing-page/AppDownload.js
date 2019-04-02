@@ -6,7 +6,7 @@ class AppDownload extends Component {
     return (
       <>
         <AppDownloadStyle>
-          <section className="app-download-flex">
+          <section className="app-download-flex =">
             <div className="container">
               <div className="app-download-item">
                 <p>#Lad Download </p>
@@ -19,28 +19,23 @@ class AppDownload extends Component {
           </section>
 
           <section className="promo-section">
-            <div className="container">
+            <div className="promo-row container">
 
-              <div className="promo-row">
-                <div className="promo-col">
-                  <i class="fas fa-shield-alt promo-icon"></i>
-                  <h2>Highly Secured</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam recusandae perferendis ipsum perspiciatis, rerum quidem quisquam maiores sint asperiores aspernatur. Nostrum, autem!</p>
-                </div>
+
+              <div className="promo-col">
+                <i className="fas fa-shield-alt promo-icon"></i>
+                <h2>Highly Secured</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam recusandae perferendis ipsum perspiciatis.</p>
               </div>
-              <div className="promo-row">
-                <div className="promo-col">
-                  <i class="fas fa-shield-alt promo-icon"></i>
-                  <h2>Highly Secured</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam recusandae perferendis ipsum perspiciatis, rerum quidem quisquam maiores sint asperiores aspernatur. Nostrum, autem!</p>
-                </div>
+
+              <div className="promo-col">
+                <i className="fas fa-layer-group promo-icon"></i> <h2>Highly Secured</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam recusandae perferendis ipsum perspiciatis</p>
               </div>
-              <div className="promo-row">
-                <div className="promo-col">
-                  <i class="fas fa-shield-alt promo-icon"></i>
-                  <h2>Highly Secured</h2>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam recusandae perferendis ipsum perspiciatis, rerum quidem quisquam maiores sint asperiores aspernatur. Nostrum, autem!</p>
-                </div>
+
+              <div className="promo-col">
+                <i className="fas fa-chart-bar promo-icon"></i>   <h2>Highly Secured</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam recusandae perferendis ipsum perspiciatis</p>
               </div>
 
             </div>

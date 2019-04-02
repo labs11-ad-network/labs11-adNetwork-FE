@@ -103,25 +103,6 @@ const LandingPageStyle = styled.div`
       top: 1px;
     }
   }
-  /* .buttons_container .btn_blue {
-    display: inline-block;
-    text-decoration:none;
-    background-color: #0084FF;
-    color: #fff;
-    background-color: #0084FF;
-    color: #fff;
-    box-shadow: 0 2px 6px #71b6f7;
-    border: 1px solid #0084FF;
-    margin: 30px 12px 0 0;
-    font-size: 12px;
-    padding: 7px 35px;
-    border-radius: 50px;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
-    font-weight:500;
-    line-height: 26px;
-  } */
   .buttons_container .btn_blue {
     display: block;
     max-width: 279px;
@@ -312,7 +293,6 @@ class LandingPage extends Component {
             </div>
           </div>
         </section>
-
         <section className="app-download">
           <AppDownload />
         </section>
