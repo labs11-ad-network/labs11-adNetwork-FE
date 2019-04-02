@@ -36,6 +36,7 @@ class Header extends Component {
     });
   };
   render() {
+    const { login, history, logout } = this.props;
     let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
     return (
       <>
@@ -53,11 +54,11 @@ class Header extends Component {
                 <a href="/#">Team</a>
                 <a href="/#">Contact</a>
                 <a href="/#">About</a>
-                <a href="/#">Dashboard</a>
+                <a href="/#" onClick={() => history.push("/dashboard")}>Dashboard</a>
               </div>
 
               <div className="desktop-anchor">
-                <a href="/#">Login</a>
+                <a href="/#" onClick={() => login()}> Login</a>
                 <a href="/#">Signup</a>
               </div>
 

@@ -286,7 +286,7 @@ export const HeroHome = styled.section`
     @media (min-width: 481px) {
       margin: 15px 10px;
     }
-    &::hover {
+    &:hover {
       background: #007bff;
     }
   }

@@ -156,6 +156,8 @@ const LandingPageStyle = styled.div`
   }
 `;
 class LandingPage extends Component {
+  login = () => { this.props.auth.login(); }
+  logout = () => { this.props.auth.logout(); }
   componentDidMount() {
     const {
       auth: { renewSession }
@@ -176,7 +178,9 @@ class LandingPage extends Component {
           logout={() => auth.logout()}
           history={history}
         /> */}
-        <Header />
+        <Header
+          login={this.login} logout={this.logout} history={this.props.history}
+        />
         <section className="landing-info container">
           {/* ------------ first item ------------ */}
           <div className="landing-parent">
@@ -280,7 +284,6 @@ class LandingPage extends Component {
             </div>
           </div>
         </section>
-
         <section className="costumer-stories">
           <CustomerStoriesCarousel />
         </section>
