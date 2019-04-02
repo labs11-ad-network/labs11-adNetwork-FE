@@ -14,7 +14,7 @@ const AppWithRouter = withRouter(App);
 const app = (
   <Provider store={store}>
     <Router history={history}>
-        <AppWithRouter />
+      <AppWithRouter />
     </Router>
     <Toasts />
   </Provider>

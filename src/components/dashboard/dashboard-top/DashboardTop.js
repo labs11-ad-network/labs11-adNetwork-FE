@@ -83,10 +83,10 @@ class DashboardTop extends React.Component {
                 <i className="fas fa-pencil-alt" /> Create Ad
               </>
             ) : (
-              <>
-                <i className="fas fa-chart-line" /> Dashboard
+                    <>
+                      <i className="fas fa-chart-line" /> Dashboard
               </>
-            )}
+                  )}
           </Header>
           {!this.props.location.pathname.includes("dashboard/") && (
             <select
@@ -108,18 +108,18 @@ class DashboardTop extends React.Component {
                     })}
                 </>
               ) : (
-                <>
-                  <option value="">All Agreements</option>
-                  {this.props.agreements.length &&
-                    this.props.agreements.map(a => {
-                      return (
-                        <option key={a.id} value={a.id}>
-                          {a.name}
-                        </option>
-                      );
-                    })}
-                </>
-              )}
+                  <>
+                    <option value="">All Agreements</option>
+                    {this.props.agreements.length &&
+                      this.props.agreements.map(a => {
+                        return (
+                          <option key={a.id} value={a.id}>
+                            {a.name}
+                          </option>
+                        );
+                      })}
+                  </>
+                )}
             </select>
           )}
           {this.props.currentUser.acct_type === "advertiser" && (

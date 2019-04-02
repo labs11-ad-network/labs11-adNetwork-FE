@@ -1,71 +1,113 @@
-import React from 'react'
-import styled from 'styled-components';
-import Graphs from '../../../assets/graphs.png';
-import Curve from '../../../assets/curve.svg'
+import React, { Component } from "react";
+import { HeroHome } from "./HeaderStyle";
+import { ElasticReverse } from "react-burgers";
+import { TwoPersonSvg, BirdSvg, SkyCloudSvg } from "./HeaderSvg";
+import classnames from "classnames";
 
-const HeaderContainer = styled.div`
-    background-color: #0A88DC;
-    .main{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 70%;
-        height: 85vh;
-        margin: 0 auto;
-    }
-`;
+class Header extends Component {
+  state = {
+    isOpen: false,
+    prevScrollpos: window.pageYOffset,
+    visible: true
+  };
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
 
-const CurveComponent = styled.img`
-    width: 100%;
-    height: auto;    
-    margin-top: -1px;
-`;
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.handleScroll);
+  }
 
-const LeftSection = styled.div`
-    color: #FFFFFF;
-    h1{
-        font-size: 5.5rem;
-        font-weight: 800;
-    }
-    p{
-        margin-top: 10px;
-        font-size: 1.6rem;
-        font-weight: 100;
-        line-height: 30px;
-    }
-    div{
-        width: 65%;
-        height: 2px;
-        margin-top: 10px;
-        background-color: #FFFFFF
-    }
-`;
+  handleScroll = () => {
+    const { prevScrollpos } = this.state;
+    const currentScrollPos = window.pageYOffset;
+    console.log("prevScrollpos", prevScrollpos);
 
-const RightSection = styled.div`
-    img{
-        width: 110%;
-        height: auto
-    }
-`;
+    const visible = prevScrollpos > currentScrollPos;
+    this.setState({
+      prevScrollpos: currentScrollPos,
+      visible
+    });
+  };
 
-const Header = () => {
-  return (
-    <>
-        <HeaderContainer>
-            <div className="main">
-                <LeftSection>
-                    <h1>Creepy Ads</h1>
-                    <p>We are a non creepy ad network that presents itself as actually very creepy.</p>
-                    <div/>
-                </LeftSection>
-                <RightSection>
-                    <img src={Graphs} alt="" draggable={false}/>
-                </RightSection>
+  toggleDrawer = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
+  render() {
+    const { login, history } = this.props;
+    let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
+    return (
+      <>
+        <HeroHome>
+          <div className="container">
+            <nav
+              className={classnames(`${colorChange}`, {
+                "navbar--hidden": !this.state.visible
+              })}
+            >
+              <a href="/#logoHERE" className="logo">
+                LOGO
+              </a>
+              <div className="middle-anchors desktop-anchor">
+                <a href="/#">Team</a>
+                <a href="/#">Contact</a>
+                <a href="/#">About</a>
+                <a href="/#" onClick={() => history.push("/dashboard")}>Dashboard</a>
+              </div>
+
+              <div className="desktop-anchor">
+                <a href="/#" onClick={() => login()}> Login</a>
+                <a href="/#">Signup</a>
+              </div>
+
+              <ElasticReverse
+                className="hamburger"
+                color={this.state.prevScrollpos > 200 ? "#203561" : "#fff"}
+                lineHeight={2}
+                width={28}
+                onClick={this.toggleDrawer}
+                active={this.state.isOpen}
+              />
+            </nav>
+            <div className="desktop-hero-container">
+              <div className="hero-content">
+                {/*  Mobile nav   */}
+                <p className="hero-sub-title">
+                  #Lad Network #faster websites #improve SEO
+                </p>
+                <h1>
+                  <span>Creepy Ads</span> <br /> We are a non creepy ad network
+                  that presents itself as actually very creepy.
+                </h1>
+                <div className="button">
+                  <a className="btn_scroll btn_blue" href="/#" alt="button">
+                    become advertiser
+                  </a>
+                  <a
+                    alt="button"
+                    className="btn_scroll btn_blue yellow-btn"
+                    href="/#"
+                  >
+                    become publisher
+                  </a>
+                </div>
+              </div>
+              <div className="container_illustration">
+                <SkyCloudSvg className="desktop-cloud" />
+                <div className="bird-wrapper">
+                  <BirdSvg style1="piio_float_left" style2="piio_float_right" />
+                </div>
+                <TwoPersonSvg className="illustration" />
+              </div>
             </div>
-        </HeaderContainer>
-        <CurveComponent src={Curve} alt="" draggable={false} className="curve"/>
-    </>
-  )
+          </div>
+          <span className="border_bottom" />
+        </HeroHome>
+      </>
+    );
+  }
 }
 
-export default Header
+export default Header;

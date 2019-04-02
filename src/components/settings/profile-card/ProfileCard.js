@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 import {
   ProfileCardContainer,
   ProfileCardTop,
-  ProfileCardBottom
-} from "../settingsStyles.js";
+  ProfileCardBottom,
+} from '../settingsStyles.js';
 
-import Checkout from "../../checkout/Checkout.js";
+import Checkout from '../../checkout/Checkout.js';
 
 const ProfileCard = props => {
   const { currentUser } = props;
@@ -23,9 +23,11 @@ const ProfileCard = props => {
           <h2>{currentUser.acct_type}</h2>
           <h3>{currentUser.email}</h3>
           <Checkout
-            btn_text={currentUser.acct_type === "advertiser" ? 
-            "Change Payment Info" :
-            "Change Payout Method" }
+            btn_text={
+              currentUser.acct_type === 'advertiser'
+                ? 'Change Payment Info'
+                : 'Change Payout Method'
+            }
           />
         </div>
       </ProfileCardTop>
