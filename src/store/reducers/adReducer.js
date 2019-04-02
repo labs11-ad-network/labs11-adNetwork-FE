@@ -15,17 +15,22 @@ import{
   DELETE_AD_FAILURE,
   UPDATE_AD_STATUS_START,
   UPDATE_AD_STATUS_SUCCESS,
-  UPDATE_AD_STATUS_FAILURE
+  UPDATE_AD_STATUS_FAILURE,
+  GET_AFFILIATE_ADS_START,
+  GET_AFFILIATE_ADS_SUCCESS,
+  GET_AFFILIATE_ADS_FAILURE
 } from '../actions/adAction';
 
 const initialState = {
     servedAd: {},
     offerAds: [],
+    affiliateAds: [],
     isFetchingAd: false,
     isCreatingAd: false,
     isGetingOfferAds: false,
     isDeletingAd: false,
     isUpdatingAdStatus: false,
+    isGettingAffiliateAds: false,
 }
   
 export default function authReducer(state = initialState, action) {
@@ -128,6 +133,25 @@ export default function authReducer(state = initialState, action) {
       return{
         ...state,
         isUpdatingAdStatus: false
+      }
+
+    case GET_AFFILIATE_ADS_START:
+      return{
+        ...state,
+        isGettingAffiliateAds: true,
+      }
+
+    case GET_AFFILIATE_ADS_SUCCESS:
+      return{
+        ...state,
+        affiliateAds: action.payload,
+        isGettingAffiliateAds: false
+      }
+
+    case GET_AFFILIATE_ADS_FAILURE:
+      return{
+        ...state,
+        isGettingAffiliateAds: false
       }
 
     default:

@@ -311,9 +311,9 @@ class OffersList extends React.Component {
       name: "Code Snippet",
       options: {
         customBodyRender: value => {
-          return `<iframe src="https://kieranlabs.netlify.com/ad/${
-            value.id
-          }/${this.state.currentAgreement}" 
+          return `<iframe src="https://ladnetwork.netlify.com/ad/${
+            this.props.currentUser.id
+          }/${value.size}" 
                     frameborder="0" 
                     scrolling="no" 
                     ${

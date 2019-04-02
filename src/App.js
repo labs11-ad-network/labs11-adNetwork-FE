@@ -52,7 +52,7 @@ class App extends Component {
             }}
           />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/ad/:id/:agreement_id" component={AdServer} />
+          <Route path="/ad/:affiliateId/:size" component={AdServer} />
         </div>
       </MuiThemeProvider>
     );

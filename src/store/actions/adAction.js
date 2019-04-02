@@ -97,3 +97,21 @@ export const changeAdStatus = (ad, offer_id) => dispatch => {
       dispatch({ type: UPDATE_AD_STATUS_FAILURE, payload: err.response.data })
     })
 }
+
+// ------------------------------------ Get Affiliate accepted ads ------------------------------------
+
+export const GET_AFFILIATE_ADS_START = "GET_AFFILIATE_ADS_START";
+export const GET_AFFILIATE_ADS_SUCCESS = "GET_AFFILIATE_ADS_SUCCESS";
+export const GET_AFFILIATE_ADS_FAILURE = "GET_AFFILIATE_ADS_FAILURE";
+
+export const getAffiliateAds = affiliateId => dispatch => {
+  dispatch({ type: GET_AFFILIATE_ADS_START });
+  axios
+    .get(`${URL}/api/ads/allads/${affiliateId}`)
+    .then(res => {
+      dispatch({ type: GET_AFFILIATE_ADS_SUCCESS, payload: res.data})
+    })
+    .catch(err => {
+      dispatch({ type: GET_AFFILIATE_ADS_FAILURE, payload: err.response.data })
+    })
+}
