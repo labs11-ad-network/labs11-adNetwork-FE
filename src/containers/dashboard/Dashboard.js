@@ -19,6 +19,7 @@ import Settings from "./settings/Settings.js";
 
 const DashboardContainer = styled.div`
   display: flex;
+  background-color: #F1F1F1;
   .main-content {
     display: flex;
     flex-direction: column;
