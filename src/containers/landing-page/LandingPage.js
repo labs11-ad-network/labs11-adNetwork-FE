@@ -5,6 +5,7 @@ import styled from "styled-components";
 import checks from "../../assets/checks.svg";
 import desktopGiff from "../../assets/desktopAds.gif";
 import CustomerStoriesCarousel from "../../components/landing-page/CustomerStoriesCarousel.js";
+import AppDownload from "../../components/landing-page/AppDownload.js";
 const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 
@@ -291,6 +292,10 @@ class LandingPage extends Component {
               <img src={desktopGiff} alt="giff desktop" />
             </div>
           </div>
+        </section>
+        
+        <section className="app-download">
+          <AppDownload /> 
         </section>
         <section className="costumer-stories">
           <CustomerStoriesCarousel />
