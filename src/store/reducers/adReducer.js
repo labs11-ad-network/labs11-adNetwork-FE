@@ -117,7 +117,7 @@ export default function authReducer(state = initialState, action) {
       }
 
     case UPDATE_AD_STATUS_SUCCESS:
-      toast.success(`${action.payload.ad.size} ad was ${!action.payload.ad.active ? 'disabled' : 'enabled'}`)
+      toast.success(`${action.payload.ad.size} ad was ${action.payload.ad.active ? 'disabled' : 'enabled'}`)
       return{
         ...state,
         isUpdatingAdStatus: false

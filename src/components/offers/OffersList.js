@@ -269,7 +269,7 @@ class OffersList extends React.Component {
         customBodyRender: value => {
           return (
             <Switch
-              checked={value.status}
+              checked={value.active}
               onChange={async () => {
                 this.props.changeAdStatus(value, this.state.offer_id);
               }}
