@@ -36,7 +36,7 @@ class Header extends Component {
     });
   };
   render() {
-    const { login, history, logout } = this.props;
+    const { login, history } = this.props;
     let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
     return (
       <>

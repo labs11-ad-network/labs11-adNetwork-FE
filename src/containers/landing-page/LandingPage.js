@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Navigation from "../../components/landing-page/navigation/Navigation.js";
 import Header from "../../components/landing-page/heading/Header.js";
 import styled from "styled-components";
 import checks from "../../assets/checks.svg";
@@ -168,16 +167,11 @@ class LandingPage extends Component {
   }
 
   render() {
-    const { history, auth } = this.props;
+    const { history } = this.props;
     console.log("history", history);
 
     return (
       <LandingPageStyle>
-        {/* <Navigation
-          login={() => auth.login()}
-          logout={() => auth.logout()}
-          history={history}
-        /> */}
         <Header
           login={this.login} logout={this.logout} history={this.props.history}
         />
@@ -203,7 +197,7 @@ class LandingPage extends Component {
                 Customize for welcome Ad format or lightbox Interstitial Ads
               </p>
               <div className="buttons_container">
-                <a href="#" className="btn_blue">
+                <a href="/#" className="btn_blue">
                   Learn More
                 </a>
               </div>
@@ -237,7 +231,7 @@ class LandingPage extends Component {
                 income
               </p>
               <div className="buttons_container">
-                <a href="#" className="btn_blue">
+                <a href="/#" className="btn_blue">
                   Learn More
                 </a>
               </div>
@@ -273,7 +267,7 @@ class LandingPage extends Component {
                 revenue as a Publisher
               </p>
               <div className="buttons_container">
-                <a href="#" className="btn_blue">
+                <a href="/#" className="btn_blue">
                   Learn More
                 </a>
               </div>
