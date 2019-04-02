@@ -16,7 +16,7 @@ class AdServer extends Component {
     this.getRandomAd()
     this.rotateInterval = setInterval(() => {
       this.getRandomAd()
-    }, 15000)
+    }, 1000)
   }
 
   componentWillUnmount(){

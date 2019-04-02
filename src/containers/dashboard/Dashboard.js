@@ -55,7 +55,7 @@ class Dashboard extends Component {
       } else {
         return null;
       }
-    }, 6000);
+    }, 15000);
 
     this.handlePusher(this.props.currentUser);
   }
