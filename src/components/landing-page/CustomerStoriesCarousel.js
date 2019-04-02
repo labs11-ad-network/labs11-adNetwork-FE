@@ -113,73 +113,75 @@ class SwipeableTextMobileStepper extends React.Component {
     const maxSteps = tutorialSteps.length;
 
     return (
-      <div className={classes.root}>
-        <h5 className="blue-subtitle costumer-subtitle">
-          Customer Stories
-       </h5>
-        <div
-          className={classes.customerStoriesContainer}>
-          <Button
-            size="small"
-            onClick={this.handleBack}
-            disabled={activeStep === 0}
-          >
+      <div className={classes.root} >
+        <div className="container">
+          <h5 className="blue-subtitle costumer-subtitle costumer-blue-subtitle">
+            Customer Stories
+          </h5>
+          <div
+            className={classes.customerStoriesContainer}>
+            <Button
+              size="small"
+              onClick={this.handleBack}
+              disabled={activeStep === 0}
+            >
 
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowRight />
-            ) : (
-                <KeyboardArrowLeft />
-              )}
-          </Button>
-          <AutoPlaySwipeableViews
-            axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-            index={activeStep}
-            onChangeIndex={this.handleStepChange}
-            enableMouseEvents
-          >
-            {tutorialSteps.map((step, index) => (
-              <div key={step.label}>
-                {
-                  Math.abs(activeStep - index) <= 2
-                    ? <h2
-                      className={classes.message}
-                    >{step.label}</h2>
-                    : null
-                }
-              </div>
-            ))}
-          </AutoPlaySwipeableViews>
-          <Button
-            size="small"
-            onClick={this.handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-            {theme.direction === "rtl" ? (
-              <KeyboardArrowLeft />
-            ) : (
+              {theme.direction === "rtl" ? (
                 <KeyboardArrowRight />
-              )}
-          </Button>
+              ) : (
+                  <KeyboardArrowLeft />
+                )}
+            </Button>
+            <AutoPlaySwipeableViews
+              axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+              index={activeStep}
+              onChangeIndex={this.handleStepChange}
+              enableMouseEvents
+            >
+              {tutorialSteps.map((step, index) => (
+                <div key={step.label}>
+                  {
+                    Math.abs(activeStep - index) <= 2
+                      ? <h2
+                        className={classes.message}
+                      >{step.label}</h2>
+                      : null
+                  }
+                </div>
+              ))}
+            </AutoPlaySwipeableViews>
+            <Button
+              size="small"
+              onClick={this.handleNext}
+              disabled={activeStep === maxSteps - 1}
+            >
+              {theme.direction === "rtl" ? (
+                <KeyboardArrowLeft />
+              ) : (
+                  <KeyboardArrowRight />
+                )}
+            </Button>
+          </div>
+
+          <div
+            className={classes.user}
+          >
+            <img
+              className={classes.avatar}
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ" alt="avatar-testing" />
+
+            <h4 className={classes.heading4}>Test</h4>
+            <p
+              className={classes.infopTag} >Managing Director at Herld (Google Partner Agency)</p>
+          </div>
+
+          <MobileStepper
+            steps={maxSteps}
+            position="static"
+            activeStep={activeStep}
+            className={classes.mobileStepper}
+          />
         </div>
-
-        <div
-          className={classes.user}
-        >
-          <img
-            className={classes.avatar}
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ" alt="avatar-testing" />
-
-          <h4 className={classes.heading4}>Test</h4>
-          <p
-            className={classes.infopTag} >Managing Director at Herld (Google Partner Agency)</p>
-        </div>
-
-        <MobileStepper
-          steps={maxSteps}
-          position="static"
-          activeStep={activeStep}
-          className={classes.mobileStepper}
-        />
       </div>
     );
   }

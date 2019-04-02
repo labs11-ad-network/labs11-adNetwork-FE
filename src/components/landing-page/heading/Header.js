@@ -21,8 +21,6 @@ class Header extends Component {
   handleScroll = () => {
     const { prevScrollpos } = this.state;
     const currentScrollPos = window.pageYOffset;
-    console.log("prevScrollpos", prevScrollpos);
-
     const visible = prevScrollpos > currentScrollPos;
     this.setState({
       prevScrollpos: currentScrollPos,
@@ -81,17 +79,26 @@ class Header extends Component {
                   <span>Creepy Ads</span> <br /> We are a non creepy ad network
                   that presents itself as actually very creepy.
                 </h1>
+
                 <div className="button">
-                  <a className="btn_scroll btn_blue" href="/#" alt="button">
-                    become advertiser
-                  </a>
-                  <a
-                    alt="button"
-                    className="btn_scroll btn_blue yellow-btn"
-                    href="/#"
+                  <button
+                    className="btn_scroll btn_blue"
+                    onClick={() => {
+                      localStorage.setItem("acct_type", "advertiser");
+                    }}
                   >
-                    become publisher
-                  </a>
+                    become advertiser
+                  </button>
+
+                  <button
+                    className="btn_scroll btn_blue yellow-btn"
+                    onClick={() => {
+                      localStorage.setItem("acct_type", "affiliate");
+                    }}
+                  >
+                    become affiliate
+                  </button>
+
                 </div>
               </div>
               <div className="container_illustration">

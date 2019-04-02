@@ -9,7 +9,6 @@
     "auth0-js": "^9.10.1",
     "axios": "^0.18.0",
     "html2canvas": "^1.0.0-alpha.12",
-    "install": "^0.12.2",
     "jwt-decode": "^2.2.0",
     "material-datatable": "^0.3.8",
     "moment": "^2.24.0",
