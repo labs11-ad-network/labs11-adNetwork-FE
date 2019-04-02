@@ -224,7 +224,8 @@ class OffersList extends React.Component {
               color="#0A88DC"
               onClick={() => {
                 this.setState({
-                  tabValue: 1
+                  tabValue: 1,
+                  offer_id: value.id
                 });
                 this.props.getOfferAds(value.id);
               }}
@@ -253,6 +254,16 @@ class OffersList extends React.Component {
       }
     },
     {
+      name: "Preview",
+      field: "image",
+      options: {
+        width: 170,
+        customBodyRender: value => {
+          return <img src={value.image} alt="..." />;
+        }
+      }
+    },
+    {
       name: "Ad Status",
       options: {
         customBodyRender: value => {
@@ -260,22 +271,12 @@ class OffersList extends React.Component {
             <Switch
               checked={value.status}
               onChange={async () => {
-                this.props.changeOfferStatus(value);
+                this.props.changeAdStatus(value, this.state.offer_id);
               }}
               value="checkedB"
               color="primary"
             />
           );
-        }
-      }
-    },
-    {
-      name: "Preview",
-      field: "image",
-      options: {
-        width: 170,
-        customBodyRender: value => {
-          return <img src={value.image} alt="..." />;
         }
       }
     }
@@ -303,6 +304,27 @@ class OffersList extends React.Component {
         width: 170,
         customBodyRender: value => {
           return <img src={value.image} alt="..." />;
+        }
+      }
+    },
+    {
+      name: "Code Snippet",
+      options: {
+        customBodyRender: value => {
+          return `<iframe src="https://kieranlabs.netlify.com/ad/${
+            value.id
+          }/${this.state.currentAgreement}" 
+                    frameborder="0" 
+                    scrolling="no" 
+                    ${
+                      value.size.includes("horizontal")
+                        ? 'height="100" width="670"'
+                        : value.size.includes("vertical")
+                        ? 'height="670" width="100"'
+                        : value.size.includes("square") 
+                        && 'height="265" width="265"'
+                    }
+                  ></iframe>`;
         }
       }
     }
@@ -360,34 +382,11 @@ class OffersList extends React.Component {
             data={offerAds}
             columns={
               currentUser.acct_type === "affiliate"
-                ? [
-                    ...this.affiliateAdColumns,
-                    {
-                      name: "Code Snippet",
-                      options: {
-                        customBodyRender: value => {
-                          return `<iframe src="https://kieranlabs.netlify.com/ad/${
-                            value.id
-                          }/${this.state.currentAgreement}" 
-                                    frameborder="0" 
-                                    scrolling="no" 
-                                    ${
-                                      value.size.includes("horizontal")
-                                        ? 'height="100" width="670"'
-                                        : value.size.includes("vertical")
-                                        ? 'height="670" width="100"'
-                                        : value.size.includes("square") 
-                                        && 'height="265" width="265"'
-                                    }
-                                  ></iframe>`;
-                        }
-                      }
-                    }
-                  ]
+                ? this.affiliateAdColumns
                 : this.advertiserAdColumns
             }
-            options={currentUser.acct_type === "affiliate" ? 
-            affiliateAdOptions 
+            options={currentUser.acct_type === "affiliate" 
+            ? affiliateAdOptions 
             : advertiserAdOptions}
           />
         )}
@@ -411,6 +410,7 @@ export default connect(
     changeOfferStatus,
     deleteOffer,
     createAgreement,
-    deleteAd
+    deleteAd,
+    changeAdStatus
   }
 )(withStyles(styles)(OffersList));

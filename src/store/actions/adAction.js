@@ -79,16 +79,16 @@ export const deleteAd = id => dispatch => {
 
 // ------------------------------------ Change Ad Status ------------------------------------
 
-export const UPDATE_AD_STATUS_START = "UPDATE_AD_START";
-export const UPDATE_AD_STATUS_SUCCESS = "UPDATE_AD_SUCCESS";
-export const UPDATE_AD_STATUS_FAILURE = "UPDATE_AD_FAILURE";
+export const UPDATE_AD_STATUS_START = "UPDATE_AD_STATUS_START";
+export const UPDATE_AD_STATUS_SUCCESS = "UPDATE_AD_STATUS_SUCCESS";
+export const UPDATE_AD_STATUS_FAILURE = "UPDATE_AD_STATUS_FAILURE";
 
 export const changeAdStatus = (ad, offer_id) => dispatch => {
   dispatch({ type: UPDATE_AD_STATUS_START })
   axios
     .put(`${URL}/api/ads/${ad.id}`, {active: !ad.active})
     .then(res => {
-      dispatch({ type: UPDATE_AD_STATUS_SUCCESS, payload: res.data })
+      dispatch({ type: UPDATE_AD_STATUS_SUCCESS, payload: {res: res.data, ad} })
     })
     .then(() => {
       dispatch(getOfferAds(offer_id))

@@ -36,7 +36,6 @@ class RevenueChart extends PureComponent {
     }
   };
   render() {
-    console.log(this.props);
     return (
       <GraphContainer>
         <AreaChart
