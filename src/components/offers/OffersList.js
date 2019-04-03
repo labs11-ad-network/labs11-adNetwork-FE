@@ -334,20 +334,9 @@ class OffersList extends React.Component {
   ];
 
   render() {
-    const {
-      classes,
-      offerAds,
-      offers,
-      currentUser,
-      isFetchingOffers
-    } = this.props;
-    const {
-      tabValue,
-      advertiserOfferOptions,
-      affiliateOfferOptions,
-      affiliateAdOptions,
-      advertiserAdOptions
-    } = this.state;
+    const { classes, offerAds, offers, currentUser } = this.props;
+    
+    const { tabValue, advertiserOfferOptions, affiliateOfferOptions, affiliateAdOptions, advertiserAdOptions } = this.state;
 
     return (
       <div className={classes.root}>

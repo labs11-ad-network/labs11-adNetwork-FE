@@ -19,9 +19,9 @@ export const GraphHeader = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 10px 15px 10px;
-    margin: 0 10px 5px 10px;
-    /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+    padding: 0 10px 10px 10px;
+    margin: 0 10px 10px 10px;
+    border-bottom: ${props => props.bottomBorder && `1px solid rgba(0, 0, 0, 0.15)`};
     h2{
         font-size: 1.2rem;
         margin-bottom: 5px;
