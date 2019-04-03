@@ -12,7 +12,7 @@ export const AppDownloadStyle = styled.div`
   /* global */
   p {
     font-size:1.1rem;
-    line-height:1.25;
+    line-height:1.35;
     color: #848484;
   }
 /* app background with big wavy blue background */
