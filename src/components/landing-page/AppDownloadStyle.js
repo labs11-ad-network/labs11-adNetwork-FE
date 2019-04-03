@@ -240,5 +240,78 @@ export const AppDownloadStyle = styled.div`
     }
 }
 
+
+/* Screenshot section */
+.swiper-container {
+  padding: 3.58rem 0 7rem 0;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    /* overflow: hidden; */
+    z-index: 1;
+}
+.mobile-mock {
+  background: #fff;
+    border: 1px solid #edf4f8;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    max-width: 240px;
+    left: 0;
+    right: 0;
+    width: 240px;
+    border-radius: 36px;
+    padding: 55px 0;
+    -webkit-box-shadow: inset 0 4px 10px 1px #fff, inset 0 0 6px 0 rgba(66, 77, 86, .5), 0 2px 0 #aeb5bb, 0 20px 50px -25px rgba(0, 0, 0, .5);
+    box-shadow: inset 0 4px 10px 1px #fff, inset 0 0 6px 0 rgba(66, 77, 86, .5), 0 2px 0 #aeb5bb, 0 20px 50px -25px rgba(0, 0, 0, .5);
+
+  &:before {
+    width: 45px;
+    height: 4px;
+    background: #e3e8eb;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    border-radius: 30px;
+    left: 0;
+    right: 0;
+    margin: -25px auto 0;
+  }
+  &:after {
+    top: 30px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -45px;
+    background: #e3e8eb;
+    -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, .03);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .03);
+    display: block;
+    border-radius: 50%;
+  }
+  .screen {
+    width: 90%;
+    margin: 0 auto;
+    height: 376px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .03);
+  }
+  .circle {
+    position: absolute;
+    left: 50%;
+    -webkit-box-shadow: 0 0 1px 2px #e3e8eb inset;
+    box-shadow: 0 0 1px 2px #e3e8eb inset;
+    border: 1px solid #edf4f8;
+    border-radius: 50%;
+    bottom: 1.75%;
+    height: 0;
+    margin-left: -18px;
+    padding-top: 36px;
+    width: 36px;
+  }
+}
+
 `
+
+
 
