@@ -241,16 +241,19 @@ export const AppDownloadStyle = styled.div`
 }
 
 
-/* Screenshot section */
+/* Screenshot section & white phone */
 .swiper-container {
   padding: 3.58rem 0 7rem 0;
     display: flex;
+    flex-direction:column;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    /* overflow: hidden; */
+    overflow: hidden;
     z-index: 1;
+    border: 1px solid red;
+    min-height:50vh;
 }
 .mobile-mock {
   background: #fff;
