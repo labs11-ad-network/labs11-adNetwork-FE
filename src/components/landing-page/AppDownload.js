@@ -12,12 +12,6 @@ import AppScreenshotCarousel from './AppScreenshotCarousel';
 
 class AppDownload extends Component {
   render() {
-    const options = {
-      items: 1,
-      nav: true,
-      rewind: true,
-      autoplay: true
-    };
     return (
       <>
         <AppDownloadStyle>
