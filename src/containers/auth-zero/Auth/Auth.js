@@ -74,6 +74,7 @@ export default class Auth {
     this.scheduleRenewal();
     // const
     const decoded = jwtDecode(localStorage.id_token && localStorage.id_token);
+    console.log(decoded)
     const user = {
       name: decoded.name,
       email: decoded.email,
@@ -104,7 +105,7 @@ export default class Auth {
   }
 
   renewSession() {
-    this.auth0.checkSession({}, function(err, result) {
+    this.auth0.checkSession({}, function (err, result) {
       if (err) {
         // console.error(err);
         console.warn(err);

@@ -5,6 +5,7 @@ import styled from "styled-components";
 import checks from "../../assets/checks.svg";
 import desktopGiff from "../../assets/desktopAds.gif";
 import CustomerStoriesCarousel from "../../components/landing-page/CustomerStoriesCarousel.js";
+import AppDownload from "../../components/landing-page/AppDownload.js";
 const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 
@@ -25,10 +26,17 @@ const LandingPageStyle = styled.div`
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
-    font-size: 18px;
     letter-spacing: normal;
     color: #0e4de3;
     text-align: center;
+    font-size: 13px;
+    @media (min-width:481px){
+      font-size: 14px;
+      text-align:left;
+    }
+    @media (min-width:940px){
+      font-size: 18px;
+    }
   }
   .landing-info-title {
     margin-top: 24px;
@@ -41,6 +49,8 @@ const LandingPageStyle = styled.div`
     text-align: center;
     @media (min-width: 481px) {
       font-size: 1.8rem;
+      text-align: initial;
+
     }
     @media (min-width: 940px) {
       font-size: 2.2rem;
@@ -62,6 +72,8 @@ const LandingPageStyle = styled.div`
   @media (min-width: 940px) {
     .image-box-third {
       margin: 50px 0 0 0;
+      width: 550px;
+
     }
   }
   .landing-ptag {
@@ -127,6 +139,9 @@ const LandingPageStyle = styled.div`
       background: #007bff;
       box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
     }
+  }
+  .costumer-blue-subtitle {
+    text-align:center;
   }
   /* --------------- Landing Parent --------------- */
   .landing-parent {
@@ -276,26 +291,17 @@ class LandingPage extends Component {
             </div>
           </div>
         </section>
+
+        <section className="app-download">
+          <AppDownload />
+        </section>
         <section className="costumer-stories">
           <CustomerStoriesCarousel />
         </section>
 
-        <button
-          type="button"
-          onClick={() => {
-            localStorage.setItem("acct_type", "advertiser");
-          }}
-        >
-          Advertiser
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            localStorage.setItem("acct_type", "affiliate");
-          }}
-        >
-          Affiliate
-        </button>
+        <footer>
+          <p className='footer-ptag' >Copyright © 2019 All Rights Reserved.</p>
+        </footer>
       </LandingPageStyle>
     );
   }

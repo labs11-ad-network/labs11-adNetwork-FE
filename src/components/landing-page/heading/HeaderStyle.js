@@ -6,6 +6,9 @@ export const HeroHome = styled.section`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
   font-family: "Roboto", sans-serif;
   position: relative;
+  /* background-image: url(${bgStars}),
+    linear-gradient(181deg, #0A88DC, #0A88DC 59%, #0A88DC); */
+
   background-image: url(${bgStars}),
     linear-gradient(181deg, #001a57, #001b59 59%, #00267f);
   background-repeat: repeat-x, no-repeat;
@@ -198,7 +201,7 @@ export const HeroHome = styled.section`
       font-size: 16px;
       cursor: pointer;
       @media (min-width: 940px) {
-        font-size: 13px;
+        font-size:14px;
         margin-right: 25px;
       }
     }
@@ -216,7 +219,6 @@ export const HeroHome = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    color: #203561;
     background-color: #fff;
     @media (min-width: 940px) {
       padding: 33px 0;
@@ -231,12 +233,13 @@ export const HeroHome = styled.section`
     a {
       text-decoration: none;
       margin: 0 2%;
-      color: #203561;
+      color: black;
       text-transform: uppercase;
-      font-size: 16px;
+      font-size: 14px;
       cursor: pointer;
       @media (min-width: 940px) {
-        font-size: 13px;
+        font-size:14px;
+        font-weight:500;
         margin-right: 25px;
       }
     }
@@ -289,11 +292,15 @@ export const HeroHome = styled.section`
     &:hover {
       background: #007bff;
     }
+    @media (min-width: 940px) {
+      margin-left: 0;
+      margin-right: 15px;
+    }
   }
   .hero-content .yellow-btn {
-    cursor: pointer;
     background-color: #fdba5f;
     color: #001759;
+    z-index:12;
     &:hover {
       background-color: #ffc107;
     }
