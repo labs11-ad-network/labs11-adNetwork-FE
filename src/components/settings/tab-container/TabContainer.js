@@ -16,10 +16,8 @@ class TabContainer extends React.Component {
   };
 
   render() {
-
     const { tabValue } = this.state;
     const { currentUser, payments, payouts } = this.props;
-
     return (
       <MainTabContainer>
         <Tabs
@@ -29,7 +27,11 @@ class TabContainer extends React.Component {
           onChange={this.handleChange}
         >
           <Tab label="User Settings" />
-          <Tab label={currentUser.acct_type === "advertiser" ? "Payments" : "Payouts"} />
+          <Tab
+            label={
+              currentUser.acct_type === "advertiser" ? "Payments" : "Payouts"
+            }
+          />
         </Tabs>
 
         {tabValue === 0 && (
@@ -40,7 +42,7 @@ class TabContainer extends React.Component {
 
         {tabValue === 1 && (
           <div>
-            <Timeline 
+            <Timeline
               payouts={payouts}
               payments={payments}
               currentUser={currentUser}

@@ -1,8 +1,8 @@
-import auth0 from 'auth0-js';
-import jwtDecode from 'jwt-decode';
-import axios from 'axios';
-import { AUTH_CONFIG } from './auth0-variables';
-import history from '../history';
+import auth0 from "auth0-js";
+import jwtDecode from "jwt-decode";
+import axios from "axios";
+import { AUTH_CONFIG } from "./auth0-variables";
+import history from "../history";
 
 export default class Auth {
   accessToken;
@@ -19,8 +19,8 @@ export default class Auth {
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
-    responseType: 'token id_token',
-    scope: 'openid profile email',
+    responseType: "token id_token",
+    scope: "openid profile email"
   });
 
   constructor() {
@@ -45,7 +45,7 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        history.replace('/');
+        history.replace("/");
       }
     });
   }
@@ -65,10 +65,10 @@ export default class Auth {
     this.idToken = authResult.idToken;
     this.expiresAt = expiresAt;
     // Set isLoggedIn flag in localStorage
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('access_token', authResult.accessToken);
-    localStorage.setItem('id_token', authResult.idToken);
-    localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("access_token", authResult.accessToken);
+    localStorage.setItem("id_token", authResult.idToken);
+    localStorage.setItem("expires_at", expiresAt);
 
     // schedule a token renewal
     this.scheduleRenewal();
@@ -80,18 +80,13 @@ export default class Auth {
       image_url: decoded.picture,
       nickname: decoded.nickname,
       sub: decoded.sub,
-<<<<<<< HEAD:src/containers/auth-zero/Auth/Auth.js
-      acct_type: localStorage.getItem('acct_type') || 'advertiser',
+      acct_type: localStorage.getItem("acct_type") || "advertiser"
     };
 
-=======
-      acct_type: "advertiser"
-    }
->>>>>>> commented out console.error in Auth.js:src/containers/Auth-Zero/Auth/Auth.js
     const config = {
       headers: {
-        Authorization: `Bearer ${localStorage.id_token}`,
-      },
+        Authorization: `Bearer ${localStorage.id_token}`
+      }
     };
 
     axios
@@ -105,33 +100,23 @@ export default class Auth {
       })
       .catch(err => console.error(err));
 
-    history.replace('/dashboard');
+    history.replace("/dashboard");
   }
 
   renewSession() {
-<<<<<<< HEAD:src/containers/auth-zero/Auth/Auth.js
     this.auth0.checkSession({}, function(err, result) {
       if (err) {
         // console.error(err);
         console.warn(err);
       } else {
         this.localLogin(result);
-=======
-    this.auth0.checkSession({},
-      function (err, result) {
-        if (err) {
-          // console.error(err);
-        } else {
-          this.localLogin(result);
-        }
->>>>>>> commented out console.error in Auth.js:src/containers/Auth-Zero/Auth/Auth.js
       }
     });
   }
 
   localLogin = authResult => {
     // Set isLoggedIn flag in localStorage
-    localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem("isLoggedIn", "true");
     // Set the time that the access token will expire at
     this.expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
@@ -163,13 +148,13 @@ export default class Auth {
     clearTimeout(this.tokenRenewalTimeout);
 
     // Remove isLoggedIn flag from localStorage
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("expires_at");
 
     // navigate to the home route
-    history.replace('/');
+    history.replace("/");
   }
 
   isAuthenticated() {
