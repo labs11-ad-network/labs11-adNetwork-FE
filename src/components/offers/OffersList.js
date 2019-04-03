@@ -7,23 +7,10 @@ import Tab from "@material-ui/core/Tab";
 import Switch from "@material-ui/core/Switch";
 import { connect } from "react-redux";
 
-import {
-  OfferButton,
-  OfferModalButton,
-  TabButtonContainer
-} from "./offersStyles.js";
-import {
-  getOfferAds,
-  deleteAd,
-  changeAdStatus
-} from "../../store/actions/adAction.js";
-import { createAgreement } from "../../store/actions/agreementsAction.js";
-import {
-  getUserOffers,
-  changeOfferStatus,
-  deleteOffer
-} from "../../store/actions/offersAction.js";
-import CircularLoader from "../loader/CircularLoader";
+import { OfferButton, OfferModalButton, TabButtonContainer } from "./offersStyles.js";
+import { getOfferAds, deleteAd, changeAdStatus } from "../../store/actions/adAction.js";
+import { createAgreement, deleteAgreement } from "../../store/actions/agreementsAction.js";
+import { getUserOffers, changeOfferStatus, deleteOffer } from "../../store/actions/offersAction.js";
 
 const styles = theme => ({
   root: {
@@ -127,18 +114,29 @@ class OffersList extends React.Component {
       options: {
         customBodyRender: value => {
           return value.accepted ? (
-            <OfferButton
-              color="#04CF47"
-              onClick={() => {
-                this.setState({
-                  tabValue: 1,
-                  currentAgreement: value.agreement_id
-                });
-                this.props.getOfferAds(value.id);
-              }}
-            >
-              View Ads
-            </OfferButton>
+            <>
+              <OfferButton
+                color="#04CF47"
+                accepted={true}
+                onClick={() => {
+                  this.setState({
+                    tabValue: 1,
+                    currentAgreement: value.agreement_id
+                  });
+                  this.props.getOfferAds(value.id);
+                }}
+              >
+                View Ads
+              </OfferButton>
+              <OfferButton
+                color="#0A88DC"
+                onClick={() => {
+                  this.props.deleteAgreement(value.agreement_id);
+                }}
+              >
+                Remove Agreement
+              </OfferButton>
+            </>
           ) : (
             <OfferButton
               color="#0A88DC"
@@ -336,27 +334,18 @@ class OffersList extends React.Component {
   ];
 
   render() {
-    const {
-      classes,
-      offerAds,
-      offers,
-      currentUser,
-      isFetchingOffers
-    } = this.props;
-    const {
-      tabValue,
-      advertiserOfferOptions,
-      affiliateOfferOptions,
-      affiliateAdOptions,
-      advertiserAdOptions
-    } = this.state;
+    const { classes, offerAds, offers, currentUser } = this.props;
+    
+    const { tabValue, advertiserOfferOptions, affiliateOfferOptions, affiliateAdOptions, advertiserAdOptions } = this.state;
 
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
             <Tab label="Offers" className={classes.tab} />
-            <Tab label="Ads" className={classes.tab} disabled />
+            {tabValue === 1 &&
+            <Tab label="Ads" className={classes.tab} />
+            }
             <TabButtonContainer>
               {this.props.currentUser.acct_type === "advertiser" && (
                 <OfferModalButton onClick={() => this.props.toggleModal()}>
@@ -423,6 +412,7 @@ export default connect(
     changeOfferStatus,
     deleteOffer,
     createAgreement,
+    deleteAgreement,
     deleteAd,
     changeAdStatus
   }

@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { getUserOffers } from "./offersAction.js"
 
 const URL = "https://lad-network.herokuapp.com";
@@ -66,12 +67,15 @@ export const DELETE_AGREEMENT_START = "DELETE_AGREEMENT_START";
 export const DELETE_AGREEMENT_SUCCESS = "DELETE_AGREEMENT_SUCCESS";
 export const DELETE_AGREEMENT_FAILURE = "DELETE_AGREEMENT_FAILURE";
 
-export const deleteAgreement = agreement => dispatch => {
+export const deleteAgreement = id => dispatch => {
   dispatch({ type: DELETE_AGREEMENT_START })
   axios
-    .delete(`${URL}/api/agreement/${agreement.id}`)
+    .delete(`${URL}/api/agreements/${id}`)
     .then(res => {
-      dispatch({ type: DELETE_AGREEMENT_SUCCESS, payload: {res: res.data, agreement} })
+      dispatch({ type: DELETE_AGREEMENT_SUCCESS, payload: res.data })
+    })
+    .then(() => {
+      dispatch(getUserOffers());
     })
     .catch(err => {
       dispatch({ type: DELETE_AGREEMENT_SUCCESS, payload: err.response.data })

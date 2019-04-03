@@ -13,6 +13,9 @@ const PageContainer = styled.div`
       justify-content: space-between;
     }
   }
+  .row-container{
+    display: flex;
+  }
 `;
 
 class Analytics extends Component {
@@ -63,7 +66,10 @@ class Analytics extends Component {
               />
             </div>
             <Graphs data={offerAnalytics.browserCount} />
-            <Table offerAnalytics={offerAnalytics} />
+            <div className="row-container">
+              <Table data={offerAnalytics.impressions} dataType="Impressions"/>
+              <Table data={offerAnalytics.clicks} dataType="Clicks"/>
+            </div>
           </>
         )}
       </PageContainer>

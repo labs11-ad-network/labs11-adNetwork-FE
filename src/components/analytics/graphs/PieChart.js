@@ -2,18 +2,9 @@ import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 import styled from "styled-components";
 
-const GraphContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  width: 350px;
-  height: auto;
-  border-radius: 8px;
-  margin: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-  .labels {
+import { GraphContainer, GraphHeader } from './GraphStyles.js';
+
+const PieLabels = styled.div`
     display: flex;
     margin: 10px;
     .label {
@@ -45,7 +36,6 @@ const GraphContainer = styled.div`
         font-size: 0.7rem;
       }
     }
-  }
 `;
 
 export const BrowserInfo = props => {
@@ -89,14 +79,23 @@ export const BrowserInfo = props => {
 
   return (
     <GraphContainer>
-      <PieChart width={200} height={200}>
+      <GraphHeader>
+        <div>
+          <h2>Browsers</h2>
+          <h3>based on clicks and impressions</h3>
+        </div>
+        <div>
+          <h2 className="percentage">+23%<i className="fas fa-arrow-circle-up"/></h2>
+        </div>
+      </GraphHeader>
+      <PieChart width={225} height={225}>
         <Pie
           data={data}
           cx={100}
           cy={100}
           labelLine={false}
           label={renderCustomizedLabel}
-          outerRadius={80}
+          outerRadius={100}
           fill="#8884d8"
           dataKey="value"
         >
@@ -105,7 +104,7 @@ export const BrowserInfo = props => {
           ))}
         </Pie>
       </PieChart>
-      <div className="labels">
+      <PieLabels>
         <div className="label">
           <div className="circle chrome" />
           <p>Chrome</p>
@@ -126,7 +125,7 @@ export const BrowserInfo = props => {
           <div className="circle other" />
           <p>Other</p>
         </div>
-      </div>
+      </PieLabels>
     </GraphContainer>
   );
 };
