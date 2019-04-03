@@ -12,12 +12,18 @@ class Header extends Component {
     clickedAff: false,
     clickedAdver: false,
   };
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-    if (localStorage.acct_type === 'affiliate' || localStorage.acct_type === 'advertiser' && this.state.clicked) {
+  // componentDidMount() {
+  //   window.addEventListener("scroll", this.handleScroll);
+  //   if (localStorage.acct_type && this.state.clicked) {
+  //     this.props.login();
+  //   }
+  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.clickedAdver !== this.state.clickedAdver || prevState.clickedAff !== this.state.clickedAff) {
       this.props.login();
     }
   }
+
 
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -37,7 +43,7 @@ class Header extends Component {
     console.log('state', state);
     console.log('type', type);
 
-    localStorage.setItem(type);
+    localStorage.setItem('acct_type', type);
     this.setState(prevState => ({
       [state]: !prevState[state],
     }));
@@ -49,7 +55,8 @@ class Header extends Component {
     });
   };
   render() {
-    const { login, history } = this.props;
+    const { login, history, clickedAff, clickedAdver } = this.props;
+    console.log({ clickedAff, clickedAdver })
     let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
     return (
       <>
