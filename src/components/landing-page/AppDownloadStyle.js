@@ -328,8 +328,7 @@ export const AppDownloadStyle = styled.div`
 
 
 
-
-
+/* swiper inifinite carousel  */
 
 `
 

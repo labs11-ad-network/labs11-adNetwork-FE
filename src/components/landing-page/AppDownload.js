@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppDownloadStyle } from './AppDownloadStyle'
 
-import Slider from "react-slick";
+import ReactSwipe from 'react-swipe';
 
 
 import appStore from '../../assets/appstore.png'
@@ -14,23 +14,6 @@ import screenshot3 from '../../assets/screenshot3.jpg'
 
 
 
-function NextArrow(props) {
-  const { style, onClick } = props;
-  return (
-    <div style={{ ...style }} className="slick-arrow right" onClick={onClick}>
-      <i className="fas fa-chevron-right" />
-    </div>
-  );
-}
-
-function PrevArrow(props) {
-  const { style, onClick } = props;
-  return (
-    <div style={{ ...style }} className="slick-arrow left" onClick={onClick}>
-      <i className="fas fa-chevron-left" />
-    </div>
-  );
-}
 const images = [
   {
     img: screenshot1
@@ -44,40 +27,8 @@ const images = [
 ]
 class AppDownload extends Component {
   render() {
-    const settings = {
-      className: "center",
-      centerMode: true,
-      infinite: true,
-      centerPadding: "60px",
-      slidesToShow: 6,
-      speed: 400,
-      lazyLoad: true,
-      nextArrow: <NextArrow />,
-      prevArrow: <PrevArrow />,
-      initialSlide: 0,
-      responsive: [
-        {
-          breakpoint: 1000,
-          settings: {
-            slidesToShow: 5,
-            infinite: true,
-            dots: true
-          }
-        },
-        {
-          breakpoint: 700,
-          settings: {
-            slidesToShow: 4
-          }
-        },
-        {
-          breakpoint: 500,
-          settings: {
-            slidesToShow: 1
-          }
-        }
-      ]
-    }
+    let reactSwipeEl;
+
     return (
       <>
         <AppDownloadStyle>
@@ -224,40 +175,22 @@ class AppDownload extends Component {
 
               <div className="swiper-wrapper-flex">
 
-                {/* <Slider {...settings}>
 
-                  <div className="swiper-wrapper">
-                    <div className="swiper-slide">
-                      <img src={screenshot1} alt="screenshot" />
-                    </div>
+                <div className="swiper-wrapper">
+                  <div className="swiper-slide">
+                    <img src={screenshot1} alt="screenshot" />
                   </div>
-                  <div className="swiper-wrapper">
-                    <div className="swiper-slide">
-                      <img src={screenshot2} alt="screenshot" />
-                    </div>
+                </div>
+                <div className="swiper-wrapper">
+                  <div className="swiper-slide">
+                    <img src={screenshot2} alt="screenshot" />
                   </div>
-                  <div className="swiper-wrapper">
-                    <div className="swiper-slide">
-                      <img src={screenshot3} alt="screenshot" />
-                    </div>
+                </div>
+                <div className="swiper-wrapper">
+                  <div className="swiper-slide">
+                    <img src={screenshot3} alt="screenshot" />
                   </div>
-                  </Slider> */}
-
-
-                <Slider {...settings}>
-                  {images.map((item, index) => {
-                    return (
-                      <div className="swiper-wrapper" key={index}>
-                        <div className="swiper-slide">
-                          <img src={item.img} alt="screenshot" />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </Slider>
-
-
-
+                </div>
 
 
 
@@ -266,9 +199,21 @@ class AppDownload extends Component {
             </div>
           </section>
 
+          <div>
+            <ReactSwipe
+              className="carousel"
+              swipeOptions={{ continuous: false }}
+              ref={el => (reactSwipeEl = el)}
+            >
+              <div>PANE 1</div>
+              <div>PANE 2</div>
+              <div>PANE 3</div>
+            </ReactSwipe>
+            <button onClick={() => reactSwipeEl.next()}>Next</button>
+            <button onClick={() => reactSwipeEl.prev()}>Previous</button>
+          </div>
 
         </AppDownloadStyle>
-
       </>
     );
   }
