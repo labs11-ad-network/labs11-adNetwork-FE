@@ -53,8 +53,11 @@ class DashboardTop extends React.Component {
           <div>
             <MobileHamburger>
               <a
-                onClick={() =>
+                href="hamburger"
+                onClick={(e) => {
+                  e.preventDefault();
                   this.setState({ movileNavOpen: !this.state.movileNavOpen })
+                }
                 }
               >
                 <i className="fas fa-bars" />
