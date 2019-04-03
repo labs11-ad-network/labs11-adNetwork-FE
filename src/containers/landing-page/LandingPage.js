@@ -133,12 +133,12 @@ const LandingPageStyle = styled.div`
       margin: 7% 0;
       max-width: 150px;
       padding: 19px 20.5px;
+      &:hover {
+        background: #007bff;
+        box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
+      }
     }
 
-    &:hover {
-      background: #007bff;
-      box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
-    }
   }
   .costumer-blue-subtitle {
     text-align:center;
@@ -148,6 +148,7 @@ const LandingPageStyle = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
+
     @media (min-width: 940px) {
       justify-content: space-between;
       flex-direction: row;
@@ -168,6 +169,7 @@ const LandingPageStyle = styled.div`
     padding: 20px 0 0 0;
     margin-top:100px;
   }
+
 `;
 class LandingPage extends Component {
   login = () => { this.props.auth.login(); }
@@ -291,7 +293,6 @@ class LandingPage extends Component {
             </div>
           </div>
         </section>
-
         <section className="app-download">
           <AppDownload />
         </section>

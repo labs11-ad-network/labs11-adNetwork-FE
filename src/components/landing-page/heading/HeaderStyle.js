@@ -208,7 +208,7 @@ export const HeroHome = styled.section`
   }
   .navWhite {
     z-index: 9999;
-    box-shadow: 0px 4px 7px #777;
+    box-shadow: 0px 4px 7px #00166736;
     transition: top 0.6s;
     position: fixed;
     top: 3%;

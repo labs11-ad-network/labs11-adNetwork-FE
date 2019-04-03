@@ -51,6 +51,7 @@ class App extends Component {
               return <Callback {...props} />;
             }}
           />
+
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/ad/:affiliateId/:size" component={AdServer} />
         </div>

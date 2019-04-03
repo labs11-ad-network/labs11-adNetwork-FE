@@ -1,6 +1,6 @@
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
-import{
+import {
   GET_AGREEMENTS_START,
   GET_AGREEMENTS_SUCCESS,
   GET_AGREEMENTS_FAILURE,
@@ -13,99 +13,95 @@ import{
   DELETE_AGREEMENT_START,
   DELETE_AGREEMENT_SUCCESS,
   DELETE_AGREEMENT_FAILURE
-} from '../actions/agreementsAction';
+} from "../actions/agreementsAction";
 
 const initialState = {
-  agreements: [],
-  isFetchingAgreements: false,
-  isCreatingAgreement: false,
-  isUpdatingAgreement: false,
-  isDeletingAgreement: false
-}
+  isLoading: false,
+  agreements: []
+};
 
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
-
     case GET_AGREEMENTS_START:
-      return{
+      return {
         ...state,
-        isFetchingAgreements: true
-      }
+        isLoading: true
+      };
 
     case GET_AGREEMENTS_SUCCESS:
-      return{
+      return {
         ...state,
         agreements: action.payload,
-        isFetchingAgreements: false,
-      }
+        isLoading: false
+      };
 
     case GET_AGREEMENTS_FAILURE:
-      return{
+      return {
         ...state,
-        isFetchingAgreements: false,
-      }
+        isLoading: false
+      };
 
     case CREATE_AGREEMENT_START:
-    return{
-      ...state,
-      isCreatingAgreement: true,
-    }
+      return {
+        ...state,
+        isLoading: true
+      };
 
     case CREATE_AGREEMENT_SUCCESS:
-      toast.success('Agreement was created successfully');
-      return{
+      toast.success("Agreement was created successfully");
+      return {
         ...state,
-        isCreatingAgreement: false
-      }
+        isLoading: false
+      };
 
     case CREATE_AGREEMENT_FAILURE:
       toast.error(action.payload.message);
-      return{
+      return {
         ...state,
-        isCreatingAgreement: false
-      }
+        isLoading: false
+      };
 
     case CHANGE_AGREEMENT_START:
-    return{
-      ...state,
-      isUpdatingAgreement: true
-    }
+      return {
+        ...state,
+        isLoading: true
+      };
 
     case CHANGE_AGREEMENT_SUCCESS:
-    toast.success(`${action.payload.agreement.name} was updated`)
-      return{
+      toast.success(`${action.payload.agreement.name} was updated`);
+      return {
         ...state,
-        isUpdatingAgreement: false
-      }
+        isLoading: false
+      };
 
     case CHANGE_AGREEMENT_FAILURE:
-      toast.error(action.payload.message)
-      return{
+      toast.error(action.payload.message);
+      return {
         ...state,
-        isUpdatingAgreement: false,
-      }
+        isLoading: false
+      };
 
     case DELETE_AGREEMENT_START:
-      return{
+      return {
         ...state,
-        isDeletingAgreement: true
-      }
+        isLoading: true
+      };
 
     case DELETE_AGREEMENT_SUCCESS:
-      toast.success(`Agreement was deleted`)
-      return{
+      toast.success(`Agreement was deleted`);
+      return {
         ...state,
-        isDeletingAgreement: false
-      }
+        isLoading: false
+      };
 
     case DELETE_AGREEMENT_FAILURE:
-      toast.error(action.payload.message)
-      return{
+      toast.error(action.payload.message);
+      return {
         ...state,
-        isDeletingAgreement: false
-      }
+        isLoading: false
+      };
 
     default:
-      return state  
+      return state;
   }
 }

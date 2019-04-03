@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Graphs from "../../../components/analytics/graphs";
 import Card from "../../../components/analytics/cards/Card.js";
+import Table from "../../../components/analytics/tables/Table.js";
 
 const PageContainer = styled.div`
   .card-container {
@@ -62,6 +63,7 @@ class Analytics extends Component {
               />
             </div>
             <Graphs data={offerAnalytics.browserCount} />
+            <Table offerAnalytics={offerAnalytics} />
           </>
         )}
       </PageContainer>

@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
+import { withStyles } from "@material-ui/core/styles";
+
+import LinearLoader from "../../loader/LinearLoader";
 
 import {
   NavContainer,
@@ -13,9 +16,18 @@ import {
   MobileNavButton
 } from "../dashboardStyles.js";
 
+const styles = theme => ({
+  root: {
+    display: "flex"
+  },
+  paper: {
+    marginRight: theme.spacing.unit * 2
+  }
+});
+
 class DashboardTop extends React.Component {
   state = {
-    movileNavOpen: false,
+    movileNavOpen: false
   };
 
   toggleNav = () => {
@@ -23,94 +35,96 @@ class DashboardTop extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
+
     return (
-      <NavContainer>
-        <MobileNav status={this.state.movileNavOpen}>
-          <button onClick={() => this.toggleNav()}>
-            <i className="fas fa-times" />
-          </button>
-          <MobileNavButton onClick={() => this.toggleNav()}>
-            <NavLink exact to="/dashboard">
-              <i className="fas fa-chart-line" />
-              Dashboard
-            </NavLink>
-          </MobileNavButton>
-          <MobileNavButton onClick={() => this.toggleNav()}>
-            <NavLink to="/dashboard/offers">
-              <i className="fas fa-list" />
-              Offers
-            </NavLink>
-          </MobileNavButton>
-          <MobileNavButton onClick={() => this.toggleNav()}>
-            <NavLink to="/dashboard/settings">
-              <i className="fas fa-cog" />
-              Settings
-            </NavLink>
-          </MobileNavButton>
-        </MobileNav>
-        <LeftSection>
-          {/* --------------------- Mobile navigation ------------------ */}
-          <div>
-            <MobileHamburger>
-              <a
-                href="hamburger"
-                onClick={(e) => {
-                  e.preventDefault();
-                  this.setState({ movileNavOpen: !this.state.movileNavOpen })
-                }
-                }
-              >
-                <i className="fas fa-bars" />
-              </a>
-            </MobileHamburger>
-            {!this.props.location.pathname.includes("dashboard/") && (
-              <MobileCreate>
-                <Link to="/dashboard/create-ad">
-                  <i className="fas fa-pencil-alt" />
-                </Link>
-              </MobileCreate>
-            )}
-          </div>
-          {/* ---------------------------------------------------------- */}
-          <Header>
-            {this.props.location.pathname.includes("offers") ? (
-              <>
-                <i className="fas fa-list" /> Offers
-              </>
-            ) : this.props.location.pathname.includes("settings") ? (
-              <>
-                <i className="fas fa-cog" /> Settings
-              </>
-            ) : this.props.location.pathname.includes("create") ? (
-              <>
-                <i className="fas fa-pencil-alt" /> Create Ad
-              </>
-            ) : (
-                    <>
-                      <i className="fas fa-chart-line" /> Dashboard
-              </>
-                  )}
-          </Header>
-          {!this.props.location.pathname.includes("dashboard/") && (
-            <select
-              name="selected_offer"
-              value={this.props.currentOffer}
-              onChange={this.props.handleOfferSelect}
-              required
-            >
-              {this.props.currentUser.acct_type === "advertiser" ? (
+      <>
+        <NavContainer>
+          <MobileNav status={this.state.movileNavOpen}>
+            <button onClick={() => this.toggleNav()}>
+              <i className="fas fa-times" />
+            </button>
+            <MobileNavButton onClick={() => this.toggleNav()}>
+              <NavLink exact to="/dashboard">
+                <i className="fas fa-chart-line" />
+                Dashboard
+              </NavLink>
+            </MobileNavButton>
+            <MobileNavButton onClick={() => this.toggleNav()}>
+              <NavLink to="/dashboard/offers">
+                <i className="fas fa-list" />
+                Offers
+              </NavLink>
+            </MobileNavButton>
+            <MobileNavButton onClick={() => this.toggleNav()}>
+              <NavLink to="/dashboard/settings">
+                <i className="fas fa-cog" />
+                Settings
+              </NavLink>
+            </MobileNavButton>
+          </MobileNav>
+          <LeftSection>
+            {/* --------------------- Mobile navigation ------------------ */}
+            <div>
+              <MobileHamburger>
+                <a
+                  href="hamburger"
+                  onClick={e => {
+                    e.preventDefault();
+                    this.setState({ movileNavOpen: !this.state.movileNavOpen });
+                  }}
+                >
+                  <i className="fas fa-bars" />
+                </a>
+              </MobileHamburger>
+              {!this.props.location.pathname.includes("dashboard/") && (
+                <MobileCreate>
+                  <Link to="/dashboard/create-ad">
+                    <i className="fas fa-pencil-alt" />
+                  </Link>
+                </MobileCreate>
+              )}
+            </div>
+            {/* ---------------------------------------------------------- */}
+            <Header>
+              {this.props.location.pathname.includes("offers") ? (
                 <>
-                  <option value="">All Offers</option>
-                  {this.props.userOffers.length &&
-                    this.props.userOffers.map(offer => {
-                      return (
-                        <option key={offer.id} value={offer.id}>
-                          {offer.name}
-                        </option>
-                      );
-                    })}
+                  <i className="fas fa-list" /> Offers
+                </>
+              ) : this.props.location.pathname.includes("settings") ? (
+                <>
+                  <i className="fas fa-cog" /> Settings
+                </>
+              ) : this.props.location.pathname.includes("create") ? (
+                <>
+                  <i className="fas fa-pencil-alt" /> Create Ad
                 </>
               ) : (
+                <>
+                  <i className="fas fa-chart-line" /> Dashboard
+                </>
+              )}
+            </Header>
+            {!this.props.location.pathname.includes("dashboard/") && (
+              <select
+                name="selected_offer"
+                value={this.props.currentOffer}
+                onChange={this.props.handleOfferSelect}
+                required
+              >
+                {this.props.currentUser.acct_type === "advertiser" ? (
+                  <>
+                    <option value="">All Offers</option>
+                    {this.props.userOffers.length &&
+                      this.props.userOffers.map(offer => {
+                        return (
+                          <option key={offer.id} value={offer.id}>
+                            {offer.name}
+                          </option>
+                        );
+                      })}
+                  </>
+                ) : (
                   <>
                     <option value="">All Agreements</option>
                     {this.props.agreements.length &&
@@ -123,38 +137,48 @@ class DashboardTop extends React.Component {
                       })}
                   </>
                 )}
-            </select>
-          )}
-          {this.props.currentUser.acct_type === "advertiser" && (
-            <Link to="/dashboard/create-ad">Create Advertisement</Link>
-          )}
-        </LeftSection>
-        <RightSection>
-          {this.props.currentUser && (
-            <>
-              <Badge
-                badgeContent={this.props.notificationsList.length}
-                color="primary"
-              >
-                <i className="fas fa-bell" />
-              </Badge>
-              <i
-                className="fas fa-sign-out-alt"
-                onClick={() => {
-                  localStorage.clear();
-                  this.props.history.push("/");
-                }}
-              />
-              <div>
-                <img src={this.props.currentUser.image_url} alt="" />
-                <h2>{this.props.currentUser.name}</h2>
-              </div>
-            </>
-          )}
-        </RightSection>
-      </NavContainer>
+              </select>
+            )}
+            {this.props.currentUser.acct_type === "advertiser" && (
+              <Link to="/dashboard/create-ad">Create Advertisement</Link>
+            )}
+          </LeftSection>
+          <RightSection>
+            {this.props.currentUser && (
+              <>
+                <Badge
+                  badgeContent={this.props.notificationsList.length}
+                  color="primary"
+                >
+                  <i className="fas fa-bell" />
+                </Badge>
+
+                <i
+                  className="fas fa-sign-out-alt"
+                  onClick={() => {
+                    localStorage.clear();
+                    this.props.history.push("/");
+                  }}
+                />
+                <div>
+                  <img src={this.props.currentUser.image_url} alt="" />
+                  <h2>{this.props.currentUser.name}</h2>
+                </div>
+              </>
+            )}
+          </RightSection>
+        </NavContainer>
+        {this.props.isLoadingAds ||
+        this.props.isLoadingAgreements ||
+        this.props.isLoadingOffers ||
+        this.props.isLoadingStripe ||
+        this.props.isLoadingAnalytics ? (
+          <LinearLoader />
+        ) : null}
+      </>
     );
   }
 }
 
-export default DashboardTop;
+export default withStyles(styles)(DashboardTop);
+// <CircularLoader />

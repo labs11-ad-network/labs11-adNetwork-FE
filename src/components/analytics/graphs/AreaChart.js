@@ -23,7 +23,7 @@ class RevenueChart extends PureComponent {
             <h3>growth over time</h3>
           </div>
           <div>
-            <h2 className="percentage">23%<i className="fas fa-arrow-circle-up"/></h2>
+            <h2 className="percentage">+50%<i className="fas fa-arrow-circle-up"/></h2>
           </div>
         </GraphHeader>
         <AreaChart

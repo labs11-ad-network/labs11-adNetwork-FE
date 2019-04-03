@@ -47,25 +47,21 @@ class OffersList extends React.Component {
     },
     affiliateOfferOptions: {
       filterType: "checkbox",
-      selectableRows: false,
+      selectableRows: false
     },
     advertiserAdOptions: {
       filterType: "checkbox",
       showSelectedRowsToolbar: true,
       rowCursorHand: true,
       onRowsDelete: value => {
-        if (
-          window.confirm(
-            `Are you sure you want to delete selected ad?`
-          )
-        ) {
+        if (window.confirm(`Are you sure you want to delete selected ad?`)) {
           this.props.deleteAd(this.props.offerAds[value.data[0].dataIndex].id);
         }
       }
     },
     affiliateAdOptions: {
       filterType: "checkbox",
-      selectableRows: false,
+      selectableRows: false
     }
   };
 
@@ -320,16 +316,16 @@ class OffersList extends React.Component {
         customBodyRender: value => {
           return `<iframe src="https://ladnetwork.netlify.com/ad/${
             this.props.currentUser.id
-          }/${value.size}" 
-                    frameborder="0" 
-                    scrolling="no" 
+          }/${value.size}"
+                    frameborder="0"
+                    scrolling="no"
                     ${
                       value.size.includes("horizontal")
                         ? 'height="100" width="670"'
                         : value.size.includes("vertical")
                         ? 'height="670" width="100"'
-                        : value.size.includes("square") 
-                        && 'height="265" width="265"'
+                        : value.size.includes("square") &&
+                          'height="265" width="265"'
                     }
                   ></iframe>`;
         }
@@ -338,7 +334,13 @@ class OffersList extends React.Component {
   ];
 
   render() {
-    const { classes, offerAds, offers, currentUser } = this.props;
+    const {
+      classes,
+      offerAds,
+      offers,
+      currentUser,
+      isFetchingOffers
+    } = this.props;
     const {
       tabValue,
       advertiserOfferOptions,
@@ -356,11 +358,11 @@ class OffersList extends React.Component {
             <Tab label="Ads" className={classes.tab} />
             }
             <TabButtonContainer>
-              {this.props.currentUser.acct_type === "advertiser" &&
-              <OfferModalButton onClick={() => this.props.toggleModal()}>
-                Create Offer
-              </OfferModalButton>
-              }
+              {this.props.currentUser.acct_type === "advertiser" && (
+                <OfferModalButton onClick={() => this.props.toggleModal()}>
+                  Create Offer
+                </OfferModalButton>
+              )}
             </TabButtonContainer>
           </Tabs>
         </AppBar>
@@ -384,7 +386,6 @@ class OffersList extends React.Component {
             }
           />
         )}
-
         {tabValue === 1 && (
           <MaterialDatatable
             title={"Ads List"}
@@ -394,9 +395,11 @@ class OffersList extends React.Component {
                 ? this.affiliateAdColumns
                 : this.advertiserAdColumns
             }
-            options={currentUser.acct_type === "affiliate" 
-            ? affiliateAdOptions 
-            : advertiserAdOptions}
+            options={
+              currentUser.acct_type === "affiliate"
+                ? affiliateAdOptions
+                : advertiserAdOptions
+            }
           />
         )}
       </div>
@@ -407,7 +410,8 @@ class OffersList extends React.Component {
 const mapStateToProps = state => {
   return {
     offerAds: state.adReducer.offerAds,
-    currentUser: state.authReducer.currentUser
+    currentUser: state.authReducer.currentUser,
+    isFetchingOffers: state.offersReducer.isFetchingOffers
   };
 };
 

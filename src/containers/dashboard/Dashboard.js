@@ -19,7 +19,7 @@ import Settings from "./settings/Settings.js";
 
 const DashboardContainer = styled.div`
   display: flex;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   .main-content {
     display: flex;
     flex-direction: column;
@@ -74,8 +74,8 @@ class Dashboard extends Component {
       });
     } else {
       setTimeout(() => {
-        this.handlePusher(this.props.currentUser)
-      }, 3000)
+        this.handlePusher(this.props.currentUser);
+      }, 3000);
     }
   };
 
@@ -96,6 +96,11 @@ class Dashboard extends Component {
             handleOfferSelect={this.handleOfferSelect}
             agreements={this.props.agreements}
             notificationsList={this.state.notificationsList}
+            isLoadingAnalytics={this.props.isLoading_analytics}
+            isLoadingAds={this.props.isLoading_ads}
+            isLoadingAgreements={this.props.isLoading_agreements}
+            isLoadingOffers={this.props.isLoading_offers}
+            isLoadingStripe={this.props.isLoading_stripe}
           />
           <div className="dashboard-view">
             <Route
@@ -134,7 +139,12 @@ const mapStateToProps = state => {
     userOffers: state.offersReducer.userOffers,
     currentUser: state.authReducer.currentUser,
     offerAnalytics: state.analyticsReducer.offerAnalytics,
-    agreements: state.agreementsReducer.agreements
+    agreements: state.agreementsReducer.agreements,
+    isLoading_analytics: state.analyticsReducer.isLoading,
+    isLoading_ads: state.adReducer.isLoading,
+    isLoading_agreements: state.agreementsReducer.isLoading,
+    isLoading_offers: state.offersReducer.isLoading,
+    isLoading_stripe: state.stripeReducer.isLoading
   };
 };
 
