@@ -1,10 +1,15 @@
 import styled from 'styled-components';
+
+
 import heroWave from '../../assets/hero-wave.png'
 import desktopPhone from '../../assets/phone1.png'
 import mobilePhone from '../../assets/phone2.png'
+import phoneTesting from '../../assets/phone-img.png'
+
+
+
 export const AppDownloadStyle = styled.div`
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
-
 
   font-family: "Roboto", sans-serif;
 
@@ -69,9 +74,11 @@ export const AppDownloadStyle = styled.div`
     top: 0;
     z-index: -1;
     }
+
   }
   .hero-moc {
-    background: url(${desktopPhone});
+    /* background: url(${desktopPhone}); */
+    /* background: url(${phoneTesting}); */
     background-position: bottom right;
     background-repeat: no-repeat;
     content: "";
@@ -85,6 +92,11 @@ export const AppDownloadStyle = styled.div`
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    .lad-phone-image {
+      width: 368px;
+      max-width: 100%;
+      display: block;
+    }
   }
   @keyframes animationimg {
     0% {

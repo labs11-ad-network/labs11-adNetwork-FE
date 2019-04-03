@@ -8,10 +8,15 @@ class Header extends Component {
   state = {
     isOpen: false,
     prevScrollpos: window.pageYOffset,
-    visible: true
+    visible: true,
+    clickedAff: false,
+    clickedAdver: false,
   };
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+    if (localStorage.acct_type === 'affiliate' || localStorage.acct_type === 'advertiser' && this.state.clicked) {
+      this.props.login();
+    }
   }
 
   componentWillUnmount() {
@@ -27,6 +32,16 @@ class Header extends Component {
       visible
     });
   };
+
+  setAccType = (state, type) => () => {
+    console.log('state', state);
+    console.log('type', type);
+
+    localStorage.setItem(type);
+    this.setState(prevState => ({
+      [state]: !prevState[state],
+    }));
+  }
 
   toggleDrawer = () => {
     this.setState({
@@ -83,18 +98,21 @@ class Header extends Component {
                 <div className="button">
                   <button
                     className="btn_scroll btn_blue"
-                    onClick={() => {
-                      localStorage.setItem("acct_type", "advertiser");
-                    }}
+                    // onClick={() => {
+                    //   localStorage.setItem("acct_type", "advertiser");
+
+                    // }}
+                    onClick={this.setAccType('clickedAdver', 'advertiser')}
                   >
                     become advertiser
                   </button>
 
                   <button
                     className="btn_scroll btn_blue yellow-btn"
-                    onClick={() => {
-                      localStorage.setItem("acct_type", "affiliate");
-                    }}
+                    // onClick={{
+                    //   localStorage.setItem("acct_type", "affiliate");
+                    // }}
+                    onClick={this.setAccType('clickedAff', 'affiliate')}
                   >
                     become affiliate
                   </button>

@@ -104,7 +104,6 @@ export default class Auth {
     history.replace('/dashboard');
   }
 
-
   renewSession() {
     this.auth0.checkSession({}, function (err, result) {
       if (err) {

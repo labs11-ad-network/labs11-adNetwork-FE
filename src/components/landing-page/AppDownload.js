@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { AppDownloadStyle } from './AppDownloadStyle'
+
+
 import appStore from '../../assets/appstore.png'
 import googlePlay from '../../assets/playstore.png'
+import phoneTesting from '../../assets/phone-img.png'
 
 class AppDownload extends Component {
   render() {
@@ -18,7 +21,9 @@ class AppDownload extends Component {
                 <img src={googlePlay} alt="google play" className="app-store-img" />
               </div>
 
-              <div className="hero-moc"></div>
+              <div className="hero-moc">
+                <img className="lad-phone-image" src={phoneTesting} alt="test" />
+              </div>
             </div>
           </section>
           <section className="promo-section">
@@ -50,8 +55,10 @@ class AppDownload extends Component {
 
                 <div className="work-content-col work-content-col-first_child">
                   <div className="content-mockups">
-                    <div className="mockup-back"></div>
-                    <div className="mockup-front"></div>
+                    <div className="mockup-back">
+                    </div>
+                    <div className="mockup-front">
+                    </div>
                   </div>
                 </div>
 
