@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Graphs from "../../../components/analytics/graphs";
 import Card from "../../../components/analytics/cards/Card.js";
+import Table from "../../../components/analytics/tables/Table.js";
 
 const PageContainer = styled.div`
   .card-container {
@@ -11,6 +12,9 @@ const PageContainer = styled.div`
       flex-wrap: wrap;
       justify-content: space-between;
     }
+  }
+  .row-container{
+    display: flex;
   }
 `;
 
@@ -62,6 +66,10 @@ class Analytics extends Component {
               />
             </div>
             <Graphs data={offerAnalytics.browserCount} />
+            <div className="row-container">
+              <Table data={offerAnalytics.impressions} dataType="Impressions"/>
+              <Table data={offerAnalytics.clicks} dataType="Clicks"/>
+            </div>
           </>
         )}
       </PageContainer>

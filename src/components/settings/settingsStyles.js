@@ -90,6 +90,7 @@ export const MainTabContainer = styled.div`
 
 export const Form = styled.form`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 15px 35px;
@@ -108,7 +109,7 @@ export const Form = styled.form`
             font-size: 1.3rem;
             font-weight: 100;
             padding: 15px;
-            margin-top: 10px;
+            margin-top: 8px;
             border: 1px solid rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
@@ -118,6 +119,7 @@ export const Form = styled.form`
         }
         label{
             font-size: 1.2rem;
+            margin-top: 18px;
         }
         button{
             color: #FFFFFF;
