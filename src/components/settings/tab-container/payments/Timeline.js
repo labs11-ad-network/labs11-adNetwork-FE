@@ -17,6 +17,7 @@ const TimelineContainer = props => {
             style={{
               fontSize: "1rem"
             }}
+            key={p.id}
             bubbleStyle={{
               border: "2px solid #0A88DC",
               fontSize: "1.2rem",
@@ -40,9 +41,10 @@ const TimelineContainer = props => {
               fontSize: "1rem",
               color: !p.paid && "red"
             }}
+            key={p.id}
             bubbleStyle={{
               border: "2px solid #0A88DC",
-              fontSize: "1.2rem",
+              fontSize: "1.4rem",
               color: "#0A88DC",
               padding: "5px",
               marginLeft: "-5px"

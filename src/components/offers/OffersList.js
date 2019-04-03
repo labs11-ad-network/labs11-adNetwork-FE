@@ -52,6 +52,7 @@ class OffersList extends React.Component {
     advertiserAdOptions: {
       filterType: "checkbox",
       showSelectedRowsToolbar: true,
+      rowCursorHand: true,
       onRowsDelete: value => {
         if (
           window.confirm(
