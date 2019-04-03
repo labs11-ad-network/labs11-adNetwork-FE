@@ -47,14 +47,10 @@ class OffersList extends React.Component {
     },
     affiliateOfferOptions: {
       filterType: "checkbox",
-      onlyOneRowCanBeSelected: true,
-      rowCursorHand: true,
-      showSelectedRowsToolbar: false,
+      selectableRows: false,
     },
     advertiserAdOptions: {
       filterType: "checkbox",
-      rowCursorHand: true,
-      onlyOneRowCanBeSelected: true,
       showSelectedRowsToolbar: true,
       onRowsDelete: value => {
         if (
@@ -68,8 +64,7 @@ class OffersList extends React.Component {
     },
     affiliateAdOptions: {
       filterType: "checkbox",
-      onlyOneRowCanBeSelected: true,
-      showSelectedRowsToolbar: false,
+      selectableRows: false,
     }
   };
 
