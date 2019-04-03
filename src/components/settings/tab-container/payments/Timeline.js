@@ -6,7 +6,7 @@ const TimelineContainer = props => {
   const { currentUser, payouts, payments } = props
   return (
     <Timeline>
-      {(currentUser.acct_type === "affiliate" && typeof payouts === "object") ?
+      {(currentUser.acct_type === "affiliate" && payouts.length) ?
       <>
         {payouts.map(p => {
           return <TimelineEvent
@@ -29,7 +29,7 @@ const TimelineContainer = props => {
             {`You recieved a payment for the amount of $${p.amount / 100} ${moment.unix(p.arrival_date).fromNow()}`}
           </TimelineEvent>
         })} 
-      </>: (currentUser.acct_type === "advertiser" && typeof payments === "object") ?
+      </>: (currentUser.acct_type === "advertiser" && payments.length) ?
       <>
         {payments.map(p => {
           return <TimelineEvent
