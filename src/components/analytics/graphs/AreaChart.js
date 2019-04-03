@@ -1,31 +1,10 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { getPayouts, getPayments } from "../../../store/actions/stripeAction";
-
 import { AreaChart, Area, XAxis, YAxis, Tooltip } from "recharts";
-import styled from "styled-components";
 import moment from "moment";
 
-const GraphContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  height: auto;
-  border-radius: 8px;
-  margin: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-  .labels {
-    display: flex;
-    margin: 10px;
-    .label {
-      display: flex;
-      align-items: center;
-      margin-right: 10px;
-    }
-  }
-`;
+import { GraphContainer, GraphHeader } from './GraphStyles.js';
+import { getPayouts, getPayments } from "../../../store/actions/stripeAction";
 
 class RevenueChart extends PureComponent {
   componentDidMount = () => {
@@ -38,8 +17,17 @@ class RevenueChart extends PureComponent {
   render() {
     return (
       <GraphContainer>
+        <GraphHeader>
+          <div>
+            <h2>Revenue</h2>
+            <h3>growth over time</h3>
+          </div>
+          <div>
+            <h2 className="percentage">+50%<i className="fas fa-arrow-circle-up"/></h2>
+          </div>
+        </GraphHeader>
         <AreaChart
-          width={1300}
+          width={1250}
           height={300}
           data={
             this.props.currentUser.acct_type === "advertiser"
