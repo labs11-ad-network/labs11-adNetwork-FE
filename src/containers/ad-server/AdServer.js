@@ -2,20 +2,57 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import UAParser from 'ua-parser-js';
 
-import { getAd } from "../../store/actions/adAction.js";
+import { getAffiliateAds } from "../../store/actions/adAction.js";
 import { addStats } from "../../store/actions/analyticsAction";
 
 class AdServer extends Component {
-  
+  state = {
+    randomAd: "",
+  }
+
   componentDidMount() {
+    this.props.getAffiliateAds(this.props.match.params.affiliateId);
     this.parser = new UAParser([navigator.userAgent]);
-    this.props.getAd(this.props.match.params.id);
+    this.getRandomAd()
+    this.rotateInterval = setInterval(() => {
+      this.getRandomAd()
+    }, 15000)
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.rotateInterval);
+  }
+
+  getRandomAd = () => {
+    if(this.props.ads.length){
+      
+      const filteredAds = this.props.ads.filter(ad => {
+        return ad.size.includes(this.props.match.params.size);
+      }).filter(ad => {
+        return ad.active;
+      });
+      
+      const randomAd = filteredAds[Math.floor(Math.random() * filteredAds.length)];
+      
+      this.setState({
+        randomAd
+      });
+
+      this.recordImpression(randomAd.agreement_id)
+    }else{
+      setTimeout(() => {
+        this.getRandomAd()
+      }, 1000);
+    }
+  }
+
+  recordImpression = id => {
     this.props.addStats({
       action: "impression",
       browser: this.parser.getBrowser().name,
       ip: window.location.hostname,
       referrer: document.referrer,
-      agreement_id: this.props.match.params.agreement_id
+      agreement_id: id
     });
   }
 
@@ -25,29 +62,31 @@ class AdServer extends Component {
       browser: this.parser.getBrowser().name,
       ip: window.location.hostname,
       referrer: document.referrer,
-      agreement_id: this.props.match.params.agreement_id
+      agreement_id: this.state.randomAd.agreement_id
     });
   };
 
   render() {
     return (
-      <a href={this.props.ad.destination_url} target="_blank" rel="noopener noreferrer">
-        <img src={this.props.ad.image} onClick={this.recordAction} alt=""/>
-      </a>
+      this.state.randomAd ?
+      <a href={this.state.randomAd.destination_url} target="_blank" rel="noopener noreferrer">
+        <img src={this.state.randomAd.image} onClick={this.recordAction} alt=""/>
+      </a> :
+      <h1>loading...</h1>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    ad: state.adReducer.servedAd
+    ads: state.adReducer.affiliateAds
   };
 };
 
 export default connect(
   mapStateToProps,
   {
-    getAd,
+    getAffiliateAds,
     addStats
   }
 )(AdServer);
