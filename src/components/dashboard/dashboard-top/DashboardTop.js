@@ -8,7 +8,7 @@ import Badge from "@material-ui/core/Badge";
 // import Popper from "@material-ui/core/Popper";
 // import MenuItem from "@material-ui/core/MenuItem";
 // import MenuList from "@material-ui/core/MenuList";
-// import { withStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 import LinearLoader from "../../loader/LinearLoader";
 import CircularLoader from "../../loader/CircularLoader";
