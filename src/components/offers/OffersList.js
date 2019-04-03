@@ -353,7 +353,7 @@ class OffersList extends React.Component {
           <Tabs value={tabValue} onChange={this.handleTabChange}>
             <Tab label="Offers" className={classes.tab} />
             {tabValue === 1 &&
-            <Tab label="Ads" className={classes.tab} disabled />
+            <Tab label="Ads" className={classes.tab} />
             }
             <TabButtonContainer>
               {this.props.currentUser.acct_type === "advertiser" &&
