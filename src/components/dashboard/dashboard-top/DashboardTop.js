@@ -1,6 +1,14 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
+import Button from "@material-ui/core/Button";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
+import Grow from "@material-ui/core/Grow";
+import Paper from "@material-ui/core/Paper";
+import Popper from "@material-ui/core/Popper";
+import MenuItem from "@material-ui/core/MenuItem";
+import MenuList from "@material-ui/core/MenuList";
+import { withStyles } from "@material-ui/core/styles";
 
 import LinearLoader from "../../loader/LinearLoader";
 import CircularLoader from "../../loader/CircularLoader";
@@ -16,9 +24,31 @@ import {
   MobileNavButton
 } from "../dashboardStyles.js";
 
+const styles = theme => ({
+  root: {
+    display: "flex"
+  },
+  paper: {
+    marginRight: theme.spacing.unit * 2
+  }
+});
+
 class DashboardTop extends React.Component {
   state = {
-    movileNavOpen: false
+    movileNavOpen: false,
+    open: false
+  };
+
+  handleToggle = () => {
+    this.setState(state => ({ open: !state.open }));
+  };
+
+  handleClose = event => {
+    if (this.anchorEl.contains(event.target)) {
+      return;
+    }
+
+    this.setState({ open: false });
   };
 
   toggleNav = () => {
@@ -26,6 +56,9 @@ class DashboardTop extends React.Component {
   };
 
   render() {
+    const { classes } = this.props;
+    const { open } = this.state;
+
     return (
       <>
         <NavContainer>
@@ -138,9 +171,16 @@ class DashboardTop extends React.Component {
                 <Badge
                   badgeContent={this.props.notificationsList.length}
                   color="primary"
+                  buttonRef={node => {
+                    this.anchorEl = node;
+                  }}
+                  aria-owns={open ? "menu-list-grow" : undefined}
+                  aria-haspopup="true"
+                  onClick={this.handleToggle}
                 >
                   <i className="fas fa-bell" />
                 </Badge>
+
                 <i
                   className="fas fa-sign-out-alt"
                   onClick={() => {
@@ -163,4 +203,4 @@ class DashboardTop extends React.Component {
   }
 }
 
-export default DashboardTop;
+export default withStyles(styles)(DashboardTop);
