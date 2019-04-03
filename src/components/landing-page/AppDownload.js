@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
 import { AppDownloadStyle } from './AppDownloadStyle'
 
-
 import appStore from '../../assets/appstore.png'
 import googlePlay from '../../assets/playstore.png'
 import phoneTesting from '../../assets/phone-img.png'
-import screenshot1 from '../../assets/screenshot1.jpg'
-import screenshot2 from '../../assets/screenshot2.jpg'
-import screenshot3 from '../../assets/screenshot3.jpg'
+import AppScreenshotCarousel from './AppScreenshotCarousel';
+
+
 
 
 
 class AppDownload extends Component {
   render() {
+    const options = {
+      items: 1,
+      nav: true,
+      rewind: true,
+      autoplay: true
+    };
     return (
       <>
         <AppDownloadStyle>
@@ -158,7 +163,7 @@ class AppDownload extends Component {
               </div>
 
               <div className="swiper-wrapper-flex">
-
+                <AppScreenshotCarousel />
                 {/* <div className="swiper-wrapper">
                   <div className="swiper-slide">
                     <img src={screenshot1} alt="screenshot" />
@@ -174,6 +179,7 @@ class AppDownload extends Component {
                     <img src={screenshot3} alt="screenshot" />
                   </div>
                 </div> */}
+
 
               </div>
 

@@ -1,31 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import { autoPlay } from "react-swipeable-views-utils";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Button from "@material-ui/core/Button";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
-import { autoPlay } from "react-swipeable-views-utils";
+
+
+import screentshot1 from '../../assets/screenshot1.jpg'
+import screentshot2 from '../../assets/screenshot2.jpg'
+import screentshot3 from '../../assets/screenshot3.jpg'
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
-    label: "San Francisco – Oakland Bay Bridge, United States Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
+    img: screentshot1
   },
   {
-    label: "Bird Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
+    img: screentshot2
   },
   {
-    label: "Bali, Indonesia Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
+    img: screentshot3
   },
-  {
-    label: "NeONBRAND Digital Marketing, Las Vegas, United States Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
-  },
-  {
-    label: "Goč, Serbia Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
-  }
 ];
 
 const styles = theme => ({
@@ -41,11 +40,6 @@ const styles = theme => ({
     height: 50,
     paddingLeft: theme.spacing.unit * 4,
     backgroundColor: theme.palette.background.default
-  },
-  message: {
-    textAlign: 'center',
-    fontSize: '2rem',
-    lineHeight: 1.25
   },
   customerStoriesContainer: {
     padding: '6% 0',
@@ -99,6 +93,7 @@ class AppScreenshotCarousel extends React.Component {
                   <KeyboardArrowLeft />
                 )}
             </Button>
+
             <AutoPlaySwipeableViews
               axis={theme.direction === "rtl" ? "x-reverse" : "x"}
               index={activeStep}
