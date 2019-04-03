@@ -1,17 +1,83 @@
 import React, { Component } from 'react';
 import { AppDownloadStyle } from './AppDownloadStyle'
 
+import Slider from "react-slick";
+
+
 import appStore from '../../assets/appstore.png'
 import googlePlay from '../../assets/playstore.png'
 import phoneTesting from '../../assets/phone-img.png'
-import AppScreenshotCarousel from './AppScreenshotCarousel';
+import screenshot1 from '../../assets/screenshot1.jpg'
+import screenshot2 from '../../assets/screenshot2.jpg'
+import screenshot3 from '../../assets/screenshot3.jpg'
 
 
 
 
+function NextArrow(props) {
+  const { style, onClick } = props;
+  return (
+    <div style={{ ...style }} className="slick-arrow right" onClick={onClick}>
+      <i className="fas fa-chevron-right" />
+    </div>
+  );
+}
 
+function PrevArrow(props) {
+  const { style, onClick } = props;
+  return (
+    <div style={{ ...style }} className="slick-arrow left" onClick={onClick}>
+      <i className="fas fa-chevron-left" />
+    </div>
+  );
+}
+const images = [
+  {
+    img: screenshot1
+  },
+  {
+    img: screenshot2
+  },
+  {
+    img: screenshot3
+  },
+]
 class AppDownload extends Component {
   render() {
+    const settings = {
+      className: "center",
+      centerMode: true,
+      infinite: true,
+      centerPadding: "60px",
+      slidesToShow: 6,
+      speed: 400,
+      lazyLoad: true,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1000,
+          settings: {
+            slidesToShow: 5,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 700,
+          settings: {
+            slidesToShow: 4
+          }
+        },
+        {
+          breakpoint: 500,
+          settings: {
+            slidesToShow: 1
+          }
+        }
+      ]
+    }
     return (
       <>
         <AppDownloadStyle>
@@ -157,22 +223,42 @@ class AppDownload extends Component {
               </div>
 
               <div className="swiper-wrapper-flex">
-                <AppScreenshotCarousel />
-                {/* <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <img src={screenshot1} alt="screenshot" />
+
+                {/* <Slider {...settings}>
+
+                  <div className="swiper-wrapper">
+                    <div className="swiper-slide">
+                      <img src={screenshot1} alt="screenshot" />
+                    </div>
                   </div>
-                </div>
-                <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <img src={screenshot2} alt="screenshot" />
+                  <div className="swiper-wrapper">
+                    <div className="swiper-slide">
+                      <img src={screenshot2} alt="screenshot" />
+                    </div>
                   </div>
-                </div>
-                <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <img src={screenshot3} alt="screenshot" />
+                  <div className="swiper-wrapper">
+                    <div className="swiper-slide">
+                      <img src={screenshot3} alt="screenshot" />
+                    </div>
                   </div>
-                </div> */}
+                  </Slider> */}
+
+
+                <Slider {...settings}>
+                  {images.map((item, index) => {
+                    return (
+                      <div className="swiper-wrapper" key={index}>
+                        <div className="swiper-slide">
+                          <img src={item.img} alt="screenshot" />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </Slider>
+
+
+
+
 
 
               </div>
