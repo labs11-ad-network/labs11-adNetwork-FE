@@ -70,7 +70,7 @@ class Header extends Component {
 
               <div className="desktop-anchor">
                 <a href="/#" onClick={() => login()}> Login</a>
-                <a href="/#" onClick={() => login()} > Signup</a>
+                <a href="/#" onClick={() => login()} >Signup</a>
               </div>
 
               <ElasticReverse

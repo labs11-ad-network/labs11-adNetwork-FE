@@ -326,6 +326,35 @@ export const AppDownloadStyle = styled.div`
   }
 }
 
+/* Swiper Wrapper  */
+.swiper-wrapper-flex {
+  display: flex;
+}
+.swiper-wrapper {
+  width: 229px;
+    border: 1px solid red;
+    margin-right: 51px;
+}
+
+}
+.swiper-slide {
+     /* width: 296.667px;
+    margin-right: 20px;
+    transform: scale(.65);
+    opacity: 0.2;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    height: 100%;
+    position: relative;
+    img {
+      max-width: 100%;
+      border: 1px solid red;
+      width: 100% !important;
+      transition: all 0.5s;
+      border: none;
+      outline: none;
+    } */
+}
 `
 
 

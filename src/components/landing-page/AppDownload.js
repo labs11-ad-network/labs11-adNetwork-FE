@@ -5,6 +5,11 @@ import { AppDownloadStyle } from './AppDownloadStyle'
 import appStore from '../../assets/appstore.png'
 import googlePlay from '../../assets/playstore.png'
 import phoneTesting from '../../assets/phone-img.png'
+import screenshot1 from '../../assets/screenshot1.jpg'
+import screenshot2 from '../../assets/screenshot2.jpg'
+import screenshot3 from '../../assets/screenshot3.jpg'
+
+
 
 class AppDownload extends Component {
   render() {
@@ -97,7 +102,7 @@ class AppDownload extends Component {
                 </div>
               </div>
             </div>
-          </section>
+          </section>1
 
           <section className="feature-section">
             <div className="container">
@@ -151,6 +156,27 @@ class AppDownload extends Component {
                 <div className="screen"></div>
                 <div className="circle"></div>
               </div>
+
+              <div className="swiper-wrapper-flex">
+
+                {/* <div className="swiper-wrapper">
+                  <div className="swiper-slide">
+                    <img src={screenshot1} alt="screenshot" />
+                  </div>
+                </div>
+                <div className="swiper-wrapper">
+                  <div className="swiper-slide">
+                    <img src={screenshot2} alt="screenshot" />
+                  </div>
+                </div>
+                <div className="swiper-wrapper">
+                  <div className="swiper-slide">
+                    <img src={screenshot3} alt="screenshot" />
+                  </div>
+                </div> */}
+
+              </div>
+
             </div>
           </section>
 
