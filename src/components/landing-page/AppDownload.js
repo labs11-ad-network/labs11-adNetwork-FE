@@ -21,7 +21,6 @@ class AppDownload extends Component {
               <div className="hero-moc"></div>
             </div>
           </section>
-
           <section className="promo-section">
             <div className="promo-row container">
 
@@ -44,7 +43,6 @@ class AppDownload extends Component {
 
             </div>
           </section>
-
           <section className="work-content-section padding bg-gray">
             <div className="container">
 
@@ -90,10 +88,14 @@ class AppDownload extends Component {
                   </div>
 
                 </div>
-
               </div>
             </div>
           </section>
+
+          <div className="feature-section">
+            <h2>Advanced Features</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, reprehenderit?</p>
+          </div>
         </AppDownloadStyle>
 
       </>

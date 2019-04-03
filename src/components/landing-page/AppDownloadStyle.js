@@ -13,7 +13,7 @@ export const AppDownloadStyle = styled.div`
   p {
     font-size:1.1rem;
     line-height:1.35;
-    color: #848484;
+    color: #5f5d6c;
   }
   .bg-gray {
     background-color:#eff4ff;
@@ -105,7 +105,6 @@ export const AppDownloadStyle = styled.div`
 
 /* work content section  */
 .work-content-section {
-  border: 1px solid red;
   padding: 100px 0;
 
 }
@@ -163,10 +162,11 @@ h2 {
  }
 }
 
-.work-content-lists  .work-list-item {
+.work-content-lists {
+
+  .work-list-item {
   display: flex;
   align-items: center;
-  margin-bottom:50px;
 
   i {
     background-image: linear-gradient(-45deg, #2b18dd 0%, #1151d3 50%, #1151d3 100%);
@@ -174,20 +174,21 @@ h2 {
     -webkit-text-fill-color: transparent;
     font-weight: 700;
     font-size: 40px;
+    margin-right:30px;
     }
     p {
-      margin-bottom:0
+      margin-bottom:35px
     }
     h3 {
       font-size:22px;
       margin-bottom: 0;
-      margin: 0 0 10px;
       font-weight: 400;
       line-height: 1.7;
       color: #333;
       letter-spacing: -0.01em;
     }
   }
+}
 
 
 `
