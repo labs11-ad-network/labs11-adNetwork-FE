@@ -19,13 +19,9 @@ import {
 } from "../actions/stripeAction.js";
 
 const initialState = {
+  isLoading: false,
   payouts: [],
-  payments: [],
-  isCreatingCustomer: false,
-  isChargingCustomer: false,
-  isPayingCustomer: false,
-  isGettingPayouts: false,
-  isGettingPayments: false
+  payments: []
 };
 
 const stripeReducer = (state = initialState, action) => {
@@ -33,99 +29,99 @@ const stripeReducer = (state = initialState, action) => {
     case CREATE_CUSTOMER_START:
       return {
         ...state,
-        isCreatingCustomer: true
+        isLoading: true
       };
 
     case CREATE_CUSTOMER_SUCCESS:
       toast.success(action.payload.status);
       return {
         ...state,
-        isCreatingCustomer: false
+        isLoading: false
       };
 
     case CREATE_CUSTOMER_FAILURE:
       toast.error(action.payload.message);
       return {
         ...state,
-        isCreatingCustomer: false
+        isLoading: false
       };
 
     case CHARGE_CUSTOMER_START:
       return {
         ...state,
-        isChargingCustomer: true
+        isLoading: true
       };
 
     case CHARGE_CUSTOMER_SUCCESS:
       toast.success(action.payload.status);
       return {
         ...state,
-        isChargingCustomer: false
+        isLoading: false
       };
 
     case CHARGE_CUSTOMER_FAILURE:
       toast.error(action.payload.message);
       return {
         ...state,
-        isChargingCustomer: false
+        isLoading: false
       };
 
     case PAYOUT_CUSTOMER_START:
       return {
         ...state,
-        isPayingCustomer: true
+        isLoading: true
       };
 
     case PAYOUT_CUSTOMER_SUCCESS:
       toast.warn(action.payload.status);
       return {
         ...state,
-        isPayingCustomer: false
+        isLoading: false
       };
 
     case PAYOUT_CUSTOMER_FAILURE:
       toast.error(action.payload.message.message);
       return {
         ...state,
-        isPayingCustomer: false
+        isLoading: false
       };
 
     case GET_PAYOUT_START:
       return {
         ...state,
-        isGettingPayouts: true
+        isLoading: true
       };
 
     case GET_PAYOUT_SUCCESS:
       return {
         ...state,
         payouts: action.payload,
-        isGettingPayouts: false
+        isLoading: false
       };
 
     case GET_PAYOUT_FAILURE:
       return {
         ...state,
-        isGettingPayouts: false
+        isLoading: false
       };
 
     case GET_PAYMENTS_START:
       return {
         ...state,
-        isGettingPayments: true
+        isLoading: true
       };
 
     case GET_PAYMENTS_SUCCESS:
       return {
         ...state,
         payments: action.payload,
-        isGettingPayments: false
+        isLoading: false
       };
 
     case GET_PAYMENTS_FAILURE:
       return {
         ...state,
-        isGettingPayments: false
+        isLoading: false
       };
 
     default:

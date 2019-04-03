@@ -1,6 +1,6 @@
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
-import{
+import {
   GET_AD_START,
   GET_AD_SUCCESS,
   GET_AD_FAILURE,
@@ -19,142 +19,140 @@ import{
   GET_AFFILIATE_ADS_START,
   GET_AFFILIATE_ADS_SUCCESS,
   GET_AFFILIATE_ADS_FAILURE
-} from '../actions/adAction';
+} from "../actions/adAction";
 
 const initialState = {
-    servedAd: {},
-    offerAds: [],
-    affiliateAds: [],
-    isFetchingAd: false,
-    isCreatingAd: false,
-    isGetingOfferAds: false,
-    isDeletingAd: false,
-    isUpdatingAdStatus: false,
-    isGettingAffiliateAds: false,
-}
-  
+  isLoading: false,
+  servedAd: {},
+  offerAds: [],
+  affiliateAds: []
+};
+
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
-
     case GET_AD_START:
-      return{
+      return {
         ...state,
-        isFetchingAd: true
-      }
+        isLoading: true
+      };
 
     case GET_AD_SUCCESS:
-      return{
+      return {
         ...state,
         servedAd: action.payload,
-        isFetchingAd: false
-      }
+        isLoading: false
+      };
 
     case GET_AD_FAILURE:
-      return{
+      return {
         ...state,
-        isFetchingAd: false
-      }
+        isLoading: false
+      };
 
     case CREATE_AD_START:
-      return{
+      return {
         ...state,
-        isCreatingAd: true,
-      }
+        isLoading: true
+      };
 
     case CREATE_AD_SUCCESS:
-      toast.success('Ad was created')
-      return{
+      toast.success("Ad was created");
+      return {
         ...state,
-        isCreatingAd: false
-      }
+        isLoading: false
+      };
 
     case CREATE_AD_FAILURE:
-      toast.error(action.payload.message)
-      return{
+      toast.error(action.payload.message);
+      return {
         ...state,
-        isCreatingAd: false
-      }
+        isLoading: false
+      };
 
     case GET_OFFER_ADS_START:
-      return{
+      return {
         ...state,
-        isGetingOfferAds: true
-      }
-    
+        isLoading: true
+      };
+
     case GET_OFFER_ADS_SUCCESS:
-      return{
+      return {
         ...state,
         offerAds: action.payload,
-        isGetingOfferAds: false
-      }
+        isLoading: false
+      };
 
     case GET_OFFER_ADS_FAILURE:
-      return{
+      return {
         ...state,
         offerAds: [],
-        isGetingOfferAds: false
-      }
+        isLoading: false
+      };
 
     case DELETE_AD_START:
-      return{
+      return {
         ...state,
-        isDeletingAd: true,
-      }
+        isDeletingAd: true
+      };
 
     case DELETE_AD_SUCCESS:
-      toast.success("Ad was deleted")
-      return{
+      toast.success("Ad was deleted");
+      return {
         ...state,
-        isDeletingAd: false,
-      }
+        isLoading: false
+      };
 
     case DELETE_AD_FAILURE:
-      toast.error(action.payload.message)
-      return{
+      toast.error(action.payload.message);
+      return {
         ...state,
-        isDeletingAd: false,
-      }
+        isLoading: false
+      };
 
     case UPDATE_AD_STATUS_START:
-      return{
+      return {
         ...state,
-        isUpdatingAdStatus: true
-      }
+        isLoading: true
+      };
 
     case UPDATE_AD_STATUS_SUCCESS:
-      toast.success(`${action.payload.ad.size} ad was ${action.payload.ad.active ? 'disabled' : 'enabled'}`)
-      return{
+      toast.success(
+        `${action.payload.ad.size} ad was ${
+          action.payload.ad.active ? "disabled" : "enabled"
+        }`
+      );
+      return {
         ...state,
-        isUpdatingAdStatus: false
-      }
-      
+        isLoading: false
+      };
+
     case UPDATE_AD_STATUS_FAILURE:
-      toast.error(action.payload.message)
-      return{
+      toast.error(action.payload.message);
+      return {
         ...state,
-        isUpdatingAdStatus: false
-      }
+        isLoading: false
+      };
 
     case GET_AFFILIATE_ADS_START:
-      return{
+      return {
         ...state,
-        isGettingAffiliateAds: true,
-      }
+        isLoading: true
+      };
 
     case GET_AFFILIATE_ADS_SUCCESS:
-      return{
+      return {
         ...state,
         affiliateAds: action.payload,
-        isGettingAffiliateAds: false
-      }
+        isLoading: false
+      };
 
     case GET_AFFILIATE_ADS_FAILURE:
-      return{
+      return {
         ...state,
-        isGettingAffiliateAds: false
-      }
+        isLoading: false
+      };
 
     default:
-      return state
+      return state;
   }
 }
