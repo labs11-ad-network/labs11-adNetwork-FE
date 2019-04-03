@@ -12,18 +12,13 @@ class Header extends Component {
     clickedAff: false,
     clickedAdver: false,
   };
-  // componentDidMount() {
-  //   window.addEventListener("scroll", this.handleScroll);
-  //   if (localStorage.acct_type && this.state.clicked) {
-  //     this.props.login();
-  //   }
-  // }
+
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.clickedAdver !== this.state.clickedAdver || prevState.clickedAff !== this.state.clickedAff) {
       this.props.login();
     }
   }
-
 
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -40,9 +35,6 @@ class Header extends Component {
   };
 
   setAccType = (state, type) => () => {
-    console.log('state', state);
-    console.log('type', type);
-
     localStorage.setItem('acct_type', type);
     this.setState(prevState => ({
       [state]: !prevState[state],
@@ -55,8 +47,7 @@ class Header extends Component {
     });
   };
   render() {
-    const { login, history, clickedAff, clickedAdver } = this.props;
-    console.log({ clickedAff, clickedAdver })
+    const { login, history } = this.props;
     let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
     return (
       <>
@@ -79,7 +70,7 @@ class Header extends Component {
 
               <div className="desktop-anchor">
                 <a href="/#" onClick={() => login()}> Login</a>
-                <a href="/#">Signup</a>
+                <a href="/#" onClick={() => login()} > Signup</a>
               </div>
 
               <ElasticReverse
