@@ -100,7 +100,7 @@ const stripeReducer = (state = initialState, action) => {
         case GET_PAYOUT_SUCCESS:
             return{
                 ...state,
-                payouts: action.payload.payouts.data,
+                payouts: action.payload.data,
                 isGettingPayouts: false
             }
 

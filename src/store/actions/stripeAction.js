@@ -13,7 +13,7 @@ export const getPayouts = () => dispatch => {
     dispatch({ type: GET_PAYOUT_START })
     axios.get(`${URL}/api/checkout/payout`)
         .then(res => {
-            dispatch({ type: GET_PAYOUT_SUCCESS, payload: res.data })
+            dispatch({ type: GET_PAYOUT_SUCCESS, payload: res.data.payouts })
         })
         .catch(err => {
             dispatch({ type: GET_PAYOUT_FAILURE, payload: err.response.data })
@@ -30,7 +30,7 @@ export const getPayments = () => dispatch => {
     dispatch({ type: GET_PAYMENTS_START })
     axios.get(`${URL}/api/checkout/payments`)
         .then(res => {
-            dispatch({ type: GET_PAYMENTS_SUCCESS, payload: res.data })
+            dispatch({ type: GET_PAYMENTS_SUCCESS, payload: res.data.payments })
         })
         .catch(err => {
             dispatch({ type: GET_PAYMENTS_FAILURE, payload: err.response.data })
