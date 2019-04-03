@@ -6,6 +6,7 @@ import { getUserData } from '../../../store/actions/authAction.js';
 import { getPayouts, getPayments } from '../../../store/actions/stripeAction.js';
 import ProfileCard from '../../../components/settings/profile-card/ProfileCard.js';
 import BillingCard from '../../../components/settings/billing-card/BillingCard.js';
+import SnippetCard from '../../../components/settings/snippet-card/SnippetCard.js';
 import TabContainer from '../../../components/settings/tab-container/TabContainer.js';
 
 const PageContainer = styled.div`
@@ -26,6 +27,9 @@ class Settings extends Component {
         <div>
           <ProfileCard currentUser={this.props.currentUser}/>
           <BillingCard currentUser={this.props.currentUser}/>
+          {(this.props.currentUser.acct_type === "affiliate" && typeof this.props.currentUser === "object") &&
+            <SnippetCard currentUser={this.props.currentUser}/>
+          }
         </div>
         <TabContainer 
           payouts={this.props.payouts} 

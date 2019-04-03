@@ -56,7 +56,6 @@ class RevenueChart extends PureComponent {
           <XAxis
             dataKey={"created"}
             tickFormatter={date => {
-              console.log(date);
               return moment.unix(date).format("MM/DD/YYYY");
             }}
           />
