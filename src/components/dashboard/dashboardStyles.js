@@ -136,6 +136,9 @@ export const RightSection = styled.div`
     margin: 0 20px;
     background: none;
     border: none;
+    &:hover {
+      cursor: pointer;
+    }
     img {
       background-color: #7a7a7a;
       height: 40px;
