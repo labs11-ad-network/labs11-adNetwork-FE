@@ -10,29 +10,16 @@ export const GET_PAYOUT_SUCCESS = "GET_PAYOUT_SUCCESS";
 export const GET_PAYOUT_FAILURE = "GET_PAYOUT_FAILURE";
 
 export const getPayouts = () => dispatch => {
-<<<<<<< HEAD
-    dispatch({ type: GET_PAYOUT_START })
-    axios.get(`${URL}/api/checkout/payout`)
-        .then(res => {
-            dispatch({ type: GET_PAYOUT_SUCCESS, payload: res.data.payouts })
-        })
-        .catch(err => {
-            dispatch({ type: GET_PAYOUT_FAILURE, payload: err.response.data })
-        })
-}
-=======
   dispatch({ type: GET_PAYOUT_START });
   axios
     .get(`${URL}/api/checkout/payout`)
     .then(res => {
-      console.log(res.data);
-      dispatch({ type: GET_PAYOUT_SUCCESS, payload: res.data });
+      dispatch({ type: GET_PAYOUT_SUCCESS, payload: res.data.payouts });
     })
     .catch(err => {
       dispatch({ type: GET_PAYOUT_FAILURE, payload: err.response.data });
     });
 };
->>>>>>> Testing
 
 // ------------------------------ Get Payments ------------------------------
 
@@ -41,28 +28,16 @@ export const GET_PAYMENTS_SUCCESS = "GET_PAYMENTS_SUCCESS";
 export const GET_PAYMENTS_FAILURE = "GET_PAYMENTS_FAILURE";
 
 export const getPayments = () => dispatch => {
-<<<<<<< HEAD
-    dispatch({ type: GET_PAYMENTS_START })
-    axios.get(`${URL}/api/checkout/payments`)
-        .then(res => {
-            dispatch({ type: GET_PAYMENTS_SUCCESS, payload: res.data.payments })
-        })
-        .catch(err => {
-            dispatch({ type: GET_PAYMENTS_FAILURE, payload: err.response.data })
-        })
-}
-=======
   dispatch({ type: GET_PAYMENTS_START });
   axios
     .get(`${URL}/api/checkout/payments`)
     .then(res => {
-      dispatch({ type: GET_PAYMENTS_SUCCESS, payload: res.data });
+      dispatch({ type: GET_PAYMENTS_SUCCESS, payload: res.data.payments });
     })
     .catch(err => {
       dispatch({ type: GET_PAYMENTS_FAILURE, payload: err.response.data });
     });
 };
->>>>>>> Testing
 
 // ------------------------------ Create Stripe Customer ------------------------------
 
