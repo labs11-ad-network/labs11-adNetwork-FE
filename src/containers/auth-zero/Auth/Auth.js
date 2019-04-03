@@ -74,7 +74,6 @@ export default class Auth {
     this.scheduleRenewal();
     // const
     const decoded = jwtDecode(localStorage.id_token && localStorage.id_token);
-    console.log(decoded)
     const user = {
       name: decoded.name,
       email: decoded.email,
