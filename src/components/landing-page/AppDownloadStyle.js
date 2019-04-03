@@ -63,6 +63,10 @@ export const AppDownloadStyle = styled.div`
     }
   }
 
+  .app-store-img:first-of-type {
+    display:inline-block;
+    margin-right:20px;
+  }
  /* promo section  three icon column*/
 .promo-section {
     padding:80px 0;

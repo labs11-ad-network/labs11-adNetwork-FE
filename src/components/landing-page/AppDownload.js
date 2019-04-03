@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { AppDownloadStyle } from './AppDownloadStyle'
+import appStore from '../../assets/appstore.png'
+import googlePlay from '../../assets/playstore.png'
 
 class AppDownload extends Component {
   render() {
@@ -12,6 +14,8 @@ class AppDownload extends Component {
                 <p>#Lad Download </p>
                 <h3>The Best Lad Network</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                <img src={appStore} alt="app store" className="app-store-img" />
+                <img src={googlePlay} alt="google play" className="app-store-img" />
               </div>
 
               <div className="hero-moc"></div>
