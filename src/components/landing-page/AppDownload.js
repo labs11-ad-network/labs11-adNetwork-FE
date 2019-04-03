@@ -57,30 +57,30 @@ class AppDownload extends Component {
 
 
                 <div className="work-content-col work-content-second_child">
-                  <h2>How does this App Work?</h2>
+                  <h2 className="main-title">How does this App Work?</h2>
                   <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
                     Porro, fugit?</p>
 
                   <div className="work-content-lists">
 
                     <div className="work-list-item">
-                      <i>O</i>
+                      <i className='main-icon-style'>O</i>
                       <div className="work-list-content">
-                        <h3>Lorem Ipsum Dolor</h3>
+                        <h3 className="main-heading-three">Lorem Ipsum Dolor</h3>
                         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br /> Voluptates, rerum ipsum!     </p>
                       </div>
                     </div>
                     <div className="work-list-item">
-                      <i>O</i>
+                      <i className='main-icon-style'>O</i>
                       <div className="work-list-content">
-                        <h3>Lorem Ipsum Dolor</h3>
+                        <h3 className="main-heading-three">Lorem Ipsum Dolor</h3>
                         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br /> Voluptates, rerum ipsum!     </p>
                       </div>
                     </div>
                     <div className="work-list-item">
-                      <i>O</i>
+                      <i className='main-icon-style'>O</i>
                       <div className="work-list-content">
-                        <h3>Lorem Ipsum Dolor</h3>
+                        <h3 className="main-heading-three">Lorem Ipsum Dolor</h3>
                         <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br /> Voluptates, rerum ipsum!     </p>
                       </div>
                     </div>
@@ -93,8 +93,45 @@ class AppDownload extends Component {
           </section>
 
           <div className="feature-section">
-            <h2>Advanced Features</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, reprehenderit?</p>
+            <div className="container">
+              <h2 className="main-title">Advanced Features</h2>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing  elit. <br /> Dicta, reprehenderit?</p>
+              <div className="feature-row">
+
+                <div className="feature-col">
+                  <i className='main-icon-style feature-icon '>O</i>
+                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                </div>
+                <div className="feature-col">
+                  <i className='main-icon-style feature-icon '>O</i>
+                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                </div>
+                <div className="feature-col">
+                  <i className='main-icon-style feature-icon '>O</i>
+                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                </div>
+                <div className="feature-col">
+                  <i className='main-icon-style feature-icon '>O</i>
+                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                </div>
+                <div className="feature-col">
+                  <i className='main-icon-style feature-icon '>O</i>
+                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                </div>
+                <div className="feature-col">
+                  <i className='main-icon-style feature-icon '>O</i>
+                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                </div>
+
+              </div>
+            </div>
+
           </div>
         </AppDownloadStyle>
 

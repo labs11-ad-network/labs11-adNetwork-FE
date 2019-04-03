@@ -11,7 +11,7 @@ export const AppDownloadStyle = styled.div`
 
   /* global */
   p {
-    font-size:1.1rem;
+    font-size:15px;
     line-height:1.35;
     color: #5f5d6c;
   }
@@ -21,6 +21,32 @@ export const AppDownloadStyle = styled.div`
   .padding {
     padding: 100px 0;
   }
+  
+  .main-icon-style {
+    background-image: linear-gradient(-45deg, #2b18dd 0%, #1151d3 50%, #1151d3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 40px;
+    margin-right:30px;
+    }
+
+.main-heading-three {
+      font-size:22px;
+      margin-bottom: 0;
+      font-weight: 400;
+      line-height: 1.7;
+      color: #333;
+      letter-spacing: -0.01em;
+}
+.main-title {
+  font-size: 36px;
+    color: #333;
+    margin: 0 0 10px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+}
 /* app background with big wavy blue background */
   .app-download-flex{
     max-width:1200px;
@@ -148,14 +174,6 @@ export const AppDownloadStyle = styled.div`
   margin-bottom: 40px;
   flex: 0 0 50%;
   max-width: 50%;
-h2 {
-  font-size: 36px;
-    color: #333;
-    margin: 0 0 10px;
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.04em;
- }
  p {
   font-size: 15px;
     margin-bottom: 15px;
@@ -167,29 +185,46 @@ h2 {
   .work-list-item {
   display: flex;
   align-items: center;
-
-  i {
-    background-image: linear-gradient(-45deg, #2b18dd 0%, #1151d3 50%, #1151d3 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    font-size: 40px;
-    margin-right:30px;
-    }
     p {
       margin-bottom:35px
-    }
-    h3 {
-      font-size:22px;
-      margin-bottom: 0;
-      font-weight: 400;
-      line-height: 1.7;
-      color: #333;
-      letter-spacing: -0.01em;
     }
   }
 }
 
+
+
+/* feature section  */
+.feature-section {
+  margin:100px 0;
+  h2 {
+    text-align:center;
+  }
+  p {text-align:center}
+}
+.feature-row {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin: 30px 0;
+}
+.feature-col { 
+    flex: 0 0 24.333333%;
+    max-width: 33.333333%;
+    margin: 10px;
+    background-color: #eff4ff;
+    padding: 55px 30px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    &:hover {
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
+     transition: all 0.3s ease-in-out;
+    }
+    .feature-icon {
+      margin: 16px auto;
+     display: inline-block;
+    }
+}
 
 `
 
