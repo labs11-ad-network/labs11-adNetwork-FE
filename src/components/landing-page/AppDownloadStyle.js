@@ -15,6 +15,12 @@ export const AppDownloadStyle = styled.div`
     line-height:1.35;
     color: #848484;
   }
+  .bg-gray {
+    background-color:#eff4ff;
+  }
+  .padding {
+    padding: 100px 0;
+  }
 /* app background with big wavy blue background */
   .app-download-flex{
     max-width:1200px;
@@ -95,5 +101,94 @@ export const AppDownloadStyle = styled.div`
       margin-bottom: 10px;
       font-size: 50px;
     }
+
+
+/* work content section  */
+.work-content-section {
+  border: 1px solid red;
+  padding: 100px 0;
+
+}
+.work-content-row { 
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.content-mockups {
+  position:relative;
+  .mockup-back {
+    background-image: url(${mobilePhone});
+    background-repeat: no-repeat;
+    background-position: center center;
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 80px;
+    top: 0;
+  }
+  .mockup-front {
+    background-image: url(${desktopPhone});
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    content: "";
+    position: absolute;
+    width: 450px;
+    height: 600px;
+    left: 0;
+    top: -100px;
+  }
+}
+.work-content-col-first_child{
+  max-width: 50%;
+  flex: 0 0 50%;
+}
+
+.work-content-second_child {
+  margin-bottom: 40px;
+  flex: 0 0 50%;
+  max-width: 50%;
+h2 {
+  font-size: 36px;
+    color: #333;
+    margin: 0 0 10px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+ }
+ p {
+  font-size: 15px;
+    margin-bottom: 15px;
+ }
+}
+
+.work-content-lists  .work-list-item {
+  display: flex;
+  align-items: center;
+  margin-bottom:50px;
+
+  i {
+    background-image: linear-gradient(-45deg, #2b18dd 0%, #1151d3 50%, #1151d3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 40px;
+    }
+    p {
+      margin-bottom:0
+    }
+    h3 {
+      font-size:22px;
+      margin-bottom: 0;
+      margin: 0 0 10px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: #333;
+      letter-spacing: -0.01em;
+    }
+  }
+
+
 `
 

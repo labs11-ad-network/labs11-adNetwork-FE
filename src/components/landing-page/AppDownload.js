@@ -44,6 +44,56 @@ class AppDownload extends Component {
 
             </div>
           </section>
+
+          <section className="work-content-section padding bg-gray">
+            <div className="container">
+
+              <div className="work-content-row">
+
+                <div className="work-content-col work-content-col-first_child">
+                  <div className="content-mockups">
+                    <div className="mockup-back"></div>
+                    <div className="mockup-front"></div>
+                  </div>
+                </div>
+
+
+                <div className="work-content-col work-content-second_child">
+                  <h2>How does this App Work?</h2>
+                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
+                    Porro, fugit?</p>
+
+                  <div className="work-content-lists">
+
+                    <div className="work-list-item">
+                      <i>O</i>
+                      <div className="work-list-content">
+                        <h3>Lorem Ipsum Dolor</h3>
+                        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br /> Voluptates, rerum ipsum!     </p>
+                      </div>
+                    </div>
+                    <div className="work-list-item">
+                      <i>O</i>
+                      <div className="work-list-content">
+                        <h3>Lorem Ipsum Dolor</h3>
+                        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br /> Voluptates, rerum ipsum!     </p>
+                      </div>
+                    </div>
+                    <div className="work-list-item">
+                      <i>O</i>
+                      <div className="work-list-content">
+                        <h3>Lorem Ipsum Dolor</h3>
+                        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br /> Voluptates, rerum ipsum!     </p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </section>
         </AppDownloadStyle>
 
       </>
