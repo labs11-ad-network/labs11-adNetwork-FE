@@ -92,7 +92,7 @@ export default class Auth {
 
     axios
       .post(
-        `https://lad-network.herokuapp.com/api/auth/registerV2`,
+        `https://lad-network.herokuapp.com/api/auth/register`,
         user,
         config
       )

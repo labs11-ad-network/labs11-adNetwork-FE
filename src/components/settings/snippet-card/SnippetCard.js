@@ -33,7 +33,7 @@ class SnippetCard extends React.Component{
                     onClick={() => this.copyToclipboard("verticalArea")}
                     spellcheck="false"
                 >
-                    {`<iframe src="https://ladnetwork.netlify.com/ad/${this.props.currentUser.id}/vertical" frameborder="0" scrolling="no" height="100" width="670"></iframe>`}
+                    {`<iframe src="https://ladnetwork.netlify.com/ad/${this.props.currentUser.id}/vertical" frameborder="0" scrolling="no" height="670" width="100"></iframe>`}
                 </textarea>
             </Snippet>
             <Snippet>
@@ -43,7 +43,7 @@ class SnippetCard extends React.Component{
                     onClick={() => this.copyToclipboard("squareArea")}
                     spellcheck="false"
                 >
-                    {`<iframe src="https://ladnetwork.netlify.com/ad/${this.props.currentUser.id}/square" frameborder="0" scrolling="no" height="100" width="670"></iframe>`}
+                    {`<iframe src="https://ladnetwork.netlify.com/ad/${this.props.currentUser.id}/square" frameborder="0" scrolling="no" height="255" width="255"></iframe>`}
                 </textarea> 
             </Snippet>
         </SnippetCardContainer>
