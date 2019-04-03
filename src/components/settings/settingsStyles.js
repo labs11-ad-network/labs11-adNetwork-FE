@@ -167,3 +167,35 @@ export const BillingCardContainer = styled.div`
         }
     }   
 `;
+
+export const SnippetCardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 420px;
+    padding: 15px;
+    margin: 15px;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35); 
+`;
+
+export const Snippet = styled.div`
+    margin: 5px 0;
+    h1{
+        font-size: 0.9rem;
+        font-weight: 100;
+    }
+    textarea{
+        display: flex;
+        resize: none;
+        width: 390px;
+        height: 49px;
+        margin: 7px auto;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        font-size: 0.9rem;
+        background-color: #f1f1f1;
+    }
+`;
