@@ -81,7 +81,21 @@ export const AppDownloadStyle = styled.div`
     vertical-align: middle;
     bottom: 0;
     right: 50px;
-
+    animation-name: animationimg;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+  @keyframes animationimg {
+    0% {
+      transform: translateY(-35px);
+    }
+    50% {
+      transform: translateY(-25px);
+    }
+    100% {
+      transform: translateY(-35px);
+    }
   }
   .app-download-item {
     h3 {
