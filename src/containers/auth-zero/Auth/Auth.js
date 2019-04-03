@@ -59,6 +59,7 @@ export default class Auth {
   }
 
   setSession(authResult) {
+
     // Set the time that the access token will expire at
     const expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
     this.accessToken = authResult.accessToken;
@@ -74,7 +75,6 @@ export default class Auth {
     this.scheduleRenewal();
     // const
     const decoded = jwtDecode(localStorage.id_token && localStorage.id_token);
-    console.log(decoded)
     const user = {
       name: decoded.name,
       email: decoded.email,
@@ -92,7 +92,7 @@ export default class Auth {
 
     axios
       .post(
-        `https://lad-network.herokuapp.com/api/auth/registerV2`,
+        `https://lad-network.herokuapp.com/api/auth/register`,
         user,
         config
       )
@@ -103,6 +103,7 @@ export default class Auth {
 
     history.replace("/dashboard");
   }
+
 
   renewSession() {
     this.auth0.checkSession({}, function (err, result) {

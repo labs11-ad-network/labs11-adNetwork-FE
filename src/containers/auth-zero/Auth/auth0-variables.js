@@ -4,4 +4,3 @@ export const AUTH_CONFIG = {
   callbackUrl: "http://localhost:3000/callback"
   //callbackUrl: "https://ladnetwork.netlify.com/callback"
 };
-//callbackUrl: "http://localhost:3000/callback"
