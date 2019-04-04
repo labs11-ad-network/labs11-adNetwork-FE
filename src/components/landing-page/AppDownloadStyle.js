@@ -16,9 +16,9 @@ export const AppDownloadStyle = styled.div`
 
 /* app background with big wavy blue background Desktop First */
 
-.app-download-flex{
+.app-download-flex {
+  max-width:1200px;
    margin: 100px 0;
-    max-width:1200px;
     margin: 0 auto;
     position: relative;
     width: 100%;
@@ -48,6 +48,7 @@ export const AppDownloadStyle = styled.div`
 
   .hero-moc {
     display: none;
+
     @media (min-width:940px){
     display: block;
     background-position: bottom right;
@@ -70,6 +71,7 @@ export const AppDownloadStyle = styled.div`
      }
     }
   }
+
   @keyframes animationimg {
     0% {
       transform: translateY(-35px);
@@ -82,6 +84,7 @@ export const AppDownloadStyle = styled.div`
     }
   
   }
+
 .app-download-item {
   h3 {
       font-size: 2rem;
@@ -113,9 +116,9 @@ export const AppDownloadStyle = styled.div`
    @media (min-width:940px){
     height: 52px;
     margin: 9px 15px 0 0;
-    }
+     }
    }
- } 
+ 
 
  
  
@@ -270,7 +273,7 @@ export const AppDownloadStyle = styled.div`
   p {
     line-height:1.35;
     color: #62748a;
-    font-size:0.7rem !important;
+    font-size:0.8rem !important;
     @media (min-width: 491px){
       font-size:1.1rem !important;
     }

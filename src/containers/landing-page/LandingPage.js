@@ -82,7 +82,7 @@ const LandingPageStyle = styled.div`
     }
   }
   .landing-ptag {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.56;
     color: #62748a;
@@ -301,9 +301,9 @@ class LandingPage extends Component {
         <section className="app-download">
           <AppDownload />
         </section>
-        <section className="costumer-stories">
+        {/* <section className="costumer-stories">
           <CustomerStoriesCarousel />
-        </section>
+        </section> */}
 
         <footer>
           <p className='footer-ptag' >Copyright © 2019 All Rights Reserved.</p>
