@@ -53,24 +53,6 @@ class ExpertTeam extends Component {
           <div className="item">
             <h4>12</h4>
           </div>
-
-          <div className="owl-nav disabled">
-            <button role="presentation" className="owl-prev">
-              <span aria-label="prev">‹</span>
-            </button>
-            <button role="presentation" className="owl-next">
-              <span aria-label="next">›</span>
-            </button>
-          </div>
-
-          <div className="owl-dots">
-            <button className="owl-dot active">
-              <span />
-            </button>
-            <button className="owl-dot">
-              <span />
-            </button>
-          </div>
         </OwlCarousel>
       </ExpertTeamStyle>
     );
