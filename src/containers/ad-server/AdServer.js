@@ -50,7 +50,6 @@ class AdServer extends Component {
     this.props.addStats({
       action: "impression",
       browser: this.parser.getBrowser().name,
-      ip: window.location.hostname,
       referrer: document.referrer,
       agreement_id: id
     });
@@ -60,7 +59,6 @@ class AdServer extends Component {
     this.props.addStats({
       action: "click",
       browser: this.parser.getBrowser().name,
-      ip: window.location.hostname,
       referrer: document.referrer,
       agreement_id: this.state.randomAd.agreement_id
     });

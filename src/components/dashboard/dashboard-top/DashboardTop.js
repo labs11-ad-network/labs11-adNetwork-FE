@@ -2,7 +2,6 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";

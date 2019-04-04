@@ -1,41 +1,39 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { CardContainer, Top, Bottom } from './cardStyles.js';
+import React from "react";
+import PropTypes from "prop-types";
+import moment from "moment";
 
-export const Card = ({
-  firstColor,
-  secondColor,
-  icon,
-  dataType,
-  ctr,
-  data,
-}) => (
-  <CardContainer>
-    <div>
-      <Top firstColor={firstColor} secondColor={secondColor}>
-        <div className="left-section">
-          <i className={icon} />
-        </div>
-        <div className="right-section">
-          <h2>{dataType}</h2>
-          <h1>{ctr ? `${ctr}%` : data || 0}</h1>
-        </div>
-      </Top>
-      <Bottom>
-        <h1>
-          <i className="far fa-clock" />
-          {/* {props.data ?
-              `Last ${props.data.pop().action} ${moment(
-                props.data.pop().created_at,
-                "YYYY-MM-DO, hh:mm:ss Z"
-              ).fromNow()}`:
-                'No data yet :('
-              } */}
-        </h1>
-      </Bottom>
-    </div>
-  </CardContainer>
-);
+import { CardContainer, Top, Bottom } from "./cardStyles.js";
+
+export const Card = props => {
+  const { firstColor, secondColor, icon, dataType, ctr , data, actions} = props
+  return(
+    <CardContainer>
+      <div>
+        <Top firstColor={firstColor} secondColor={secondColor}>
+          <div className="left-section">
+            <i className={icon} />
+          </div>
+          <div className="right-section">
+            <h2>{dataType}</h2>
+            <h1>{ctr ? `${ctr}%` : data || 0}</h1>
+          </div>
+        </Top>
+        <Bottom>
+          <h1>
+            <i className="far fa-clock" />
+            {actions.length ?
+                `Last ${actions[data - 1].action} ${moment(
+                  actions[data - 1].created_at,
+                  "YYYY-MM-DO, hh:mm:ss Z"
+                ).fromNow()}`:
+                  'No data yet :('
+                }
+          </h1>
+        </Bottom>
+      </div>
+    </CardContainer>
+  )
+};
 
 Card.propTypes = {
   firstColor: PropTypes.string,
