@@ -10,12 +10,18 @@ class Header extends Component {
     prevScrollpos: window.pageYOffset,
     visible: true,
     clickedAff: false,
-    clickedAdver: false,
+    clickedAdver: false
   };
 
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.clickedAdver !== this.state.clickedAdver || prevState.clickedAff !== this.state.clickedAff) {
+    if (
+      prevState.clickedAdver !== this.state.clickedAdver ||
+      prevState.clickedAff !== this.state.clickedAff
+    ) {
       this.props.login();
     }
   }
@@ -35,11 +41,11 @@ class Header extends Component {
   };
 
   setAccType = (state, type) => () => {
-    localStorage.setItem('acct_type', type);
+    localStorage.setItem("acct_type", type);
     this.setState(prevState => ({
-      [state]: !prevState[state],
+      [state]: !prevState[state]
     }));
-  }
+  };
 
   toggleDrawer = () => {
     this.setState({
@@ -65,12 +71,19 @@ class Header extends Component {
                 <a href="/#">Team</a>
                 <a href="/#">Contact</a>
                 <a href="/#">About</a>
-                <a href="/#" onClick={() => history.push("/dashboard")}>Dashboard</a>
+                <a href="/#" onClick={() => history.push("/dashboard")}>
+                  Dashboard
+                </a>
               </div>
 
               <div className="desktop-anchor">
-                <a href="/#" onClick={() => login()}> Login</a>
-                <a href="/#" onClick={() => login()} >Signup</a>
+                <a href="/#" onClick={() => login()}>
+                  {" "}
+                  Login
+                </a>
+                <a href="/#" onClick={() => login()}>
+                  Signup
+                </a>
               </div>
 
               <ElasticReverse
@@ -100,7 +113,7 @@ class Header extends Component {
                     //   localStorage.setItem("acct_type", "advertiser");
 
                     // }}
-                    onClick={this.setAccType('clickedAdver', 'advertiser')}
+                    onClick={this.setAccType("clickedAdver", "advertiser")}
                   >
                     become advertiser
                   </button>
@@ -110,11 +123,10 @@ class Header extends Component {
                     // onClick={{
                     //   localStorage.setItem("acct_type", "affiliate");
                     // }}
-                    onClick={this.setAccType('clickedAff', 'affiliate')}
+                    onClick={this.setAccType("clickedAff", "affiliate")}
                   >
                     become affiliate
                   </button>
-
                 </div>
               </div>
               <div className="container_illustration">
