@@ -174,7 +174,9 @@ const LandingPageStyle = styled.div`
     padding: 20px 0 0 0;
     margin-top:100px;
   }
-
+footer {
+  margin: 40vh 0 ;
+}
 `;
 class LandingPage extends Component {
   login = () => { this.props.auth.login(); }
@@ -201,25 +203,25 @@ class LandingPage extends Component {
             <div className="landing-item-left">
               <h5 className="blue-subtitle first-blue-subtitle">
                 Customized and friendly Interstitial Ads
-              </h5>
+                        </h5>
               <h3 className="landing-info-title">
                 Monetize with Interstitial Ads
-              </h3>
+                        </h3>
               <p className="landing-ptag">
                 Increase your revenue with keywords targeted Interstitial Ads
-              </p>
+                        </p>
               <p className="landing-ptag">
                 Choose your desired Interstitial Ads size to fit your display
                 style
-              </p>
+                        </p>
               <p className="landing-ptag">
                 Maximize your revenue potential on high value impressions , and
                 Customize for welcome Ad format or lightbox Interstitial Ads
-              </p>
+                        </p>
               <div className="buttons_container">
                 <a href="/#" className="btn_blue">
                   Learn More
-                </a>
+                          </a>
               </div>
             </div>
 
@@ -235,25 +237,25 @@ class LandingPage extends Component {
             <div className="landing-item-left landing-item-second">
               <h5 className="blue-subtitle first-blue-subtitle">
                 Monetize with unique and attractive Banner Ads
-              </h5>
+                        </h5>
               <h3 className="landing-info-title">
                 Display Attractive Banner Ads
-              </h3>
+                        </h3>
               <p className="landing-ptag">
                 Access high paying Banner Ads to maximize your revenue
-              </p>
+                        </p>
               <p className="landing-ptag">
                 Choose the most converting banner Ads for higher eCPM
-              </p>
+                        </p>
               <p className="landing-ptag">
                 Select your desired banner size to fit your space , and Display
                 based on keywords to target the right people and increase your
                 income
-              </p>
+                        </p>
               <div className="buttons_container">
                 <a href="/#" className="btn_blue">
                   Learn More
-                </a>
+                          </a>
               </div>
             </div>
 
@@ -269,27 +271,27 @@ class LandingPage extends Component {
             <div className="landing-item-left ">
               <h5 className="blue-subtitle first-blue-subtitle">
                 Earn even more with mobile and App traffic
-              </h5>
+                        </h5>
               <h3 className="landing-info-title">
                 Mobile and In App Ads Amet natus id ab vero, veniam fuga labore.
-              </h3>
+                        </h3>
               <p className="landing-ptag">
                 Optimized to reach more audience across all mobile devices and
                 Android Apps
-              </p>
+                        </p>
               <p className="landing-ptag">
                 Each mobile and in App Ad impression that makes a difference on
                 your income
-              </p>
+                        </p>
               <p className="landing-ptag">
                 We support all your desired sizes to maintain your audience
                 engagement, and Reach more mobile users and increase your
                 revenue as a Publisher
-              </p>
+                        </p>
               <div className="buttons_container">
                 <a href="/#" className="btn_blue">
                   Learn More
-                </a>
+                          </a>
               </div>
             </div>
 
