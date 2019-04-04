@@ -73,106 +73,142 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
-          {/* 
           <section className="work-content-section padding bg-gray">
             <div className="container">
-
               <div className="work-content-row">
-
                 <div className="work-content-col work-content-col-first_child">
                   <div className="content-mockups">
-                    <div className="mockup-back">
-                    </div>
-                    <div className="mockup-front">
-                    </div>
+                    <div className="mockup-back" />
+                    <div className="mockup-front" />
                   </div>
                 </div>
-
 
                 <div className="work-content-col work-content-second_child">
                   <h2 className="main-title">How does this App Work?</h2>
-                  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br />
-                    Porro, fugit?</p>
+                  <p>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.{" "}
+                    <br />
+                    Porro, fugit?
+                  </p>
 
                   <div className="work-content-lists">
-
                     <div className="work-list-item">
-                      <i className='main-icon-style'>O</i>
+                      <i className="main-icon-style">O</i>
                       <div className="work-list-content">
-                        <h3 className="main-heading-three">Lorem Ipsum Dolor</h3>
-                        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br /> Voluptates, rerum ipsum!     </p>
+                        <h3 className="main-heading-three">
+                          Lorem Ipsum Dolor
+                        </h3>
+                        <p>
+                          {" "}
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. <br /> Voluptates, rerum ipsum!{" "}
+                        </p>
                       </div>
                     </div>
                     <div className="work-list-item">
-                      <i className='main-icon-style'>O</i>
+                      <i className="main-icon-style">O</i>
                       <div className="work-list-content">
-                        <h3 className="main-heading-three">Lorem Ipsum Dolor</h3>
-                        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br /> Voluptates, rerum ipsum!     </p>
+                        <h3 className="main-heading-three">
+                          Lorem Ipsum Dolor
+                        </h3>
+                        <p>
+                          {" "}
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. <br /> Voluptates, rerum ipsum!{" "}
+                        </p>
                       </div>
                     </div>
                     <div className="work-list-item">
-                      <i className='main-icon-style'>O</i>
+                      <i className="main-icon-style">O</i>
                       <div className="work-list-content">
-                        <h3 className="main-heading-three">Lorem Ipsum Dolor</h3>
-                        <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. <br /> Voluptates, rerum ipsum!     </p>
+                        <h3 className="main-heading-three">
+                          Lorem Ipsum Dolor
+                        </h3>
+                        <p>
+                          {" "}
+                          Lorem ipsum dolor sit amet consectetur, adipisicing
+                          elit. <br /> Voluptates, rerum ipsum!{" "}
+                        </p>
                       </div>
                     </div>
-
                   </div>
-
                 </div>
               </div>
             </div>
-          </section>1
+          </section>
+
           <section className="feature-section">
             <div className="container">
               <h2 className="main-title">Advanced Features</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing  elit. <br /> Dicta, reprehenderit?</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />{" "}
+                Dicta, reprehenderit?
+              </p>
               <div className="feature-row">
-
                 <div className="feature-col">
-                  <i className='main-icon-style feature-icon '>O</i>
+                  <i className="main-icon-style feature-icon ">O</i>
                   <h3 className="main-heading-three">Powerfull System</h3>
-                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                  <p>
+                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
+                    more eiusmod tempor incididunt.
+                  </p>
                 </div>
                 <div className="feature-col">
-                  <i className='main-icon-style feature-icon '>O</i>
+                  <i className="main-icon-style feature-icon ">O</i>
                   <h3 className="main-heading-three">Powerfull System</h3>
-                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                  <p>
+                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
+                    more eiusmod tempor incididunt.
+                  </p>
                 </div>
                 <div className="feature-col">
-                  <i className='main-icon-style feature-icon '>O</i>
+                  <i className="main-icon-style feature-icon ">O</i>
                   <h3 className="main-heading-three">Powerfull System</h3>
-                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                  <p>
+                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
+                    more eiusmod tempor incididunt.
+                  </p>
                 </div>
                 <div className="feature-col">
-                  <i className='main-icon-style feature-icon '>O</i>
+                  <i className="main-icon-style feature-icon ">O</i>
                   <h3 className="main-heading-three">Powerfull System</h3>
-                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                  <p>
+                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
+                    more eiusmod tempor incididunt.
+                  </p>
                 </div>
                 <div className="feature-col">
-                  <i className='main-icon-style feature-icon '>O</i>
+                  <i className="main-icon-style feature-icon ">O</i>
                   <h3 className="main-heading-three">Powerfull System</h3>
-                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                  <p>
+                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
+                    more eiusmod tempor incididunt.
+                  </p>
                 </div>
                 <div className="feature-col">
-                  <i className='main-icon-style feature-icon '>O</i>
+                  <i className="main-icon-style feature-icon ">O</i>
                   <h3 className="main-heading-three">Powerfull System</h3>
-                  <p>Lorem ipsum dolor sit amet adipisicing of more of sedis do more eiusmod tempor incididunt.</p>
+                  <p>
+                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
+                    more eiusmod tempor incididunt.
+                  </p>
                 </div>
-
               </div>
             </div>
-
           </section>
-     */}
-          {/* <section className="screenshot-section padding bg-gray">
+
+          <section className="screenshot-section padding bg-gray">
             <div className="swiper-container swiper-container-horizontal container">
               <h2 className="main-title">Advanced Features</h2>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing  elit. <br /> Dicta, reprehenderit?</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />{" "}
+                Dicta, reprehenderit?
+              </p>
               <img
                 className="placeholder-white-iphone"
-                src={placeholder1} alt="phone placeholder" />
+                src={placeholder1}
+                alt="phone placeholder"
+              />
 
               <div className="swiper-wrapper-flex">
                 <StyleRoot>
@@ -184,27 +220,26 @@ class AppDownload extends Component {
                     enableScroll={false}
                     currentFigureScale={0.85}
                     media={{
-                      '@media (min-width: 940px)': {
-                        width: '100vw',
-                        maxWidth: '1200px',
-                        height: '600px',
-                        backgroundColor: 'inherit',
+                      "@media (min-width: 940px)": {
+                        width: "100vw",
+                        maxWidth: "1200px",
+                        height: "600px",
+                        backgroundColor: "inherit",
                         zIndex: 2
                       }
                     }}
                   >
-                    <img src={screenshot1} alt='screenshot appq`' />
-                    <img src={screenshot2} alt='screenshot appq`' />
-                    <img src={screenshot3} alt='screenshot appq`' />
-                    <img src={screenshot1} alt='screenshot appq`' />
-                    <img src={screenshot2} alt='screenshot appq`' />
-                    <img src={screenshot3} alt='screenshot appq`' />
+                    <img src={screenshot1} alt="screenshot appq`" />
+                    <img src={screenshot2} alt="screenshot appq`" />
+                    <img src={screenshot3} alt="screenshot appq`" />
+                    <img src={screenshot1} alt="screenshot appq`" />
+                    <img src={screenshot2} alt="screenshot appq`" />
+                    <img src={screenshot3} alt="screenshot appq`" />
                   </Coverflow>
                 </StyleRoot>
               </div>
-
             </div>
-          </section> */}
+          </section>
         </AppDownloadStyle>
       </>
     );

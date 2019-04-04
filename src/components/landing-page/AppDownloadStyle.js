@@ -132,7 +132,11 @@ export const AppDownloadStyle = styled.div`
 
   /* promo section  three icon column*/
   .promo-section {
+    @media (min-width: 481px) {
+      margin: -70px 0 57px 0;
+    }
     @media (min-width: 940px) {
+      margin: 0;
       padding: 80px 0;
     }
   }
@@ -141,7 +145,7 @@ export const AppDownloadStyle = styled.div`
     display: flex;
     text-align: center;
     flex-direction: column;
-    @media (min-width: 491px) {
+    @media (min-width: 481px) {
       flex-direction: row;
     }
   }
@@ -156,7 +160,7 @@ export const AppDownloadStyle = styled.div`
       max-width: 300px;
       margin: 10px auto 25px auto;
     }
-    @media (min-width: 491px) {
+    @media (min-width: 481px) {
       h2 {
         font-size: 1.3rem;
         margin: 8px 0 0 0;
@@ -193,59 +197,98 @@ export const AppDownloadStyle = styled.div`
     font-size: 50px;
   }
 
-  /* work content section  */
+  /* work content
+   section  */
   .work-content-section {
-    padding: 100px 0;
+    margin: 70px 0;
+
+    @media (min-width: 481px) {
+      padding: 50px 0;
+      margin: 0;
+    }
+
+    @media (min-width: 940px) {
+      padding: 100px 0;
+      margin: 0;
+    }
   }
 
   .work-content-row {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: -15px;
+    flex-direction: column;
+    @media (min-width: 481px) {
+      flex-direction: row;
+      margin-right: -15px;
+      margin-left: -15px;
+    }
   }
 
   .content-mockups {
-    position: relative;
+    display: none;
 
-    .mockup-back {
-      background-image: url(${mobilePhone});
-      background-repeat: no-repeat;
-      background-position: center center;
-      content: "";
-      position: absolute;
-      width: 500px;
-      height: 500px;
-      left: 80px;
-      top: 0;
+    @media (min-width: 481px) {
+      display: block;
+      position: relative;
+      .mockup-back {
+        display: none;
+      }
+      .mockup-front {
+        background-image: url(${mobilePhone});
+        background-repeat: no-repeat;
+        background-position: center center;
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 400px;
+        left: 11px;
+        top: 109px;
+      }
     }
+    @media (min-width: 940px) {
+      position: relative;
+      .mockup-back {
+        display: block;
+        background-image: url(${mobilePhone});
+        background-repeat: no-repeat;
+        background-position: center center;
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        left: 80px;
+        top: 0;
+      }
 
-    .mockup-front {
-      background-image: url(${desktopPhone});
-      background-position: bottom right;
-      background-repeat: no-repeat;
-      content: "";
-      position: absolute;
-      width: 450px;
-      height: 600px;
-      left: 0;
-      top: -100px;
+      .mockup-front {
+        background-image: url(${desktopPhone});
+        background-position: bottom right;
+        background-repeat: no-repeat;
+        content: "";
+        position: absolute;
+        width: 450px;
+        height: 600px;
+        left: 0;
+        top: -100px;
+      }
     }
   }
 
   .work-content-col-first_child {
-    max-width: 50%;
-    flex: 0 0 50%;
+    @media (min-width: 481px) {
+      max-width: 50%;
+      flex: 0 0 50%;
+    }
   }
 
   .work-content-second_child {
-    margin-bottom: 40px;
-    flex: 0 0 50%;
-    max-width: 50%;
-
     p {
-      font-size: 15px;
       margin-bottom: 15px;
+    }
+    @media (min-width: 481px) {
+      margin-bottom: 40px;
+      flex: 0 0 50%;
+      max-width: 50%;
     }
   }
 
@@ -253,7 +296,6 @@ export const AppDownloadStyle = styled.div`
     .work-list-item {
       display: flex;
       align-items: center;
-
       p {
         margin-bottom: 35px;
       }
@@ -263,13 +305,26 @@ export const AppDownloadStyle = styled.div`
   /* feature section  */
   .feature-section {
     margin: 100px 0;
-
     h2 {
       text-align: center;
+      margin-bottom: 10px;
     }
 
     p {
       text-align: center;
+      line-height: 1.45;
+      max-width: 250px;
+      margin: 0 auto;
+    }
+    @media (min-width: 481px) {
+      h2 {
+        text-align: center;
+      }
+
+      p {
+        text-align: center;
+        max-width: 100%;
+      }
     }
   }
 
@@ -281,11 +336,11 @@ export const AppDownloadStyle = styled.div`
   }
 
   .feature-col {
-    flex: 0 0 24.333333%;
-    max-width: 33.333333%;
+    flex: 100%;
+    max-width: 100%;
     margin: 10px;
     background-color: #eff4ff;
-    padding: 55px 30px;
+    padding: 15px 0 50px 0;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     text-align: center;
@@ -294,7 +349,16 @@ export const AppDownloadStyle = styled.div`
       box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease-in-out;
     }
-
+    @media (min-width: 481px) {
+      flex: 0 0 50.333333%;
+      padding: 55px 30px;
+      max-width: 33.333333%;
+    }
+    @media (min-width: 940px) {
+      flex: 0 0 24.333333%;
+      padding: 55px 30px;
+      max-width: 33.333333%;
+    }
     .feature-icon {
       margin: 16px auto;
       display: inline-block;
@@ -329,7 +393,7 @@ export const AppDownloadStyle = styled.div`
     color: #62748a;
     font-size: 0.8rem !important;
 
-    @media (min-width: 491px) {
+    @media (min-width: 481px) {
       font-size: 1.1rem !important;
     }
 
@@ -361,20 +425,33 @@ export const AppDownloadStyle = styled.div`
   }
 
   .main-heading-three {
-    font-size: 22px;
+    font-size: 17px;
     margin-bottom: 0;
     font-weight: 400;
     line-height: 1.7;
     color: #333;
     letter-spacing: -0.01em;
+    @media (min-width: 481px) {
+      font-size: 20px;
+    }
+
+    @media (min-width: 940px) {
+      font-size: 22px;
+    }
   }
 
   .main-title {
-    font-size: 36px;
+    font-size: 20px;
     color: #333;
-    margin: 0 0 10px;
     font-weight: 400;
     line-height: 1.2;
     letter-spacing: -0.04em;
+    @media (min-width: 481px) {
+      font-size: 30px;
+    }
+
+    @media (min-width: 940px) {
+      font-size: 36px;
+    }
   }
 `;
