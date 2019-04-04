@@ -410,17 +410,15 @@ export const AppDownloadStyle = styled.div`
   .placeholder-white-iphone {
     display: none;
     @media (min-width: 940px) {
-      display: block;
+      width: 202px;
       position: absolute;
-      width: 224px;
-      top: 269px;
-      height: 403px;
+      top: 299px;
+      height: 343px;
       max-width: 100%;
       z-index: 22;
-     }
+      display: block !important;
     }
   }
-  
 
   /* swiper inifinite carousel  */
   /* -------------- global ------------------*/
