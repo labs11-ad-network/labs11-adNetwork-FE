@@ -9,7 +9,6 @@ import phoneTesting from "../../assets/phone-img.png";
 import screenshot1 from "../../assets/screenshot1.jpg";
 import screenshot2 from "../../assets/screenshot2.jpg";
 import screenshot3 from "../../assets/screenshot3.jpg";
-import placeholder1 from "../../assets/placeholder1.png";
 import placeholder3 from "../../assets/placeholder3.png";
 import tool1 from "../../assets/tool1.png";
 import tool2 from "../../assets/tool2.png";
@@ -51,7 +50,6 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
-
           <section className="promo-section">
             <div className="promo-row container">
               <div className="promo-col">
@@ -142,7 +140,6 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
-
           <section className="feature-section">
             <div className="container">
               <h2 className="main-title">Advanced Features</h2>
@@ -202,7 +199,6 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
-
           <section className="screenshot-section padding bg-gray">
             <div className="swiper-container swiper-container-horizontal container">
               <h2 className="main-title">Screenshots</h2>
@@ -224,7 +220,8 @@ class AppDownload extends Component {
                     infiniteScroll={true}
                     enableHeading={false}
                     enableScroll={false}
-                    currentFigureScale={0.85}
+                    currentFigureScale={0.9}
+                    otherFigureScale={0.71}
                     media={{
                       "@media (max-width: 479px)": {
                         width: "100vw",

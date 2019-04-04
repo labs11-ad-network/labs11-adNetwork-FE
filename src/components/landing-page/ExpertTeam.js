@@ -16,10 +16,11 @@ class ExpertTeam extends Component {
           </p>
         </div>
 
-        <OwlCarousel className="owl-theme" loop margin={10} nav>
+        <OwlCarousel className="owl-theme" autoplay={true} loop margin={10} nav>
           <div className="item">
             <h4>1</h4>
           </div>
+
           <div className="item">
             <h4>2</h4>
           </div>
