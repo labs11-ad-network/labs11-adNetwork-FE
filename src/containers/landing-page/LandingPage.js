@@ -15,6 +15,7 @@ const LandingPageStyle = styled.div`
 
   /* --------------- global landing info style --------------- */
   .container {
+    border: 1px solid red;
     max-width: 1100px;
     width: 90%;
     margin: 0 auto;

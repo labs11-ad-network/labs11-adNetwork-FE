@@ -17,7 +17,7 @@ export const AppDownloadStyle = styled.div`
 /* app background with big wavy blue background Desktop First */
 
 .app-download-flex{
-  margin: 100px 0;
+   margin: 100px 0;
     max-width:1200px;
     margin: 0 auto;
     position: relative;
@@ -108,11 +108,9 @@ export const AppDownloadStyle = styled.div`
 }
 
  .app-store-img {
-  width: 113px;
     height: 37px;
     margin: 9px 15px 0 0;
    @media (min-width:940px){
-    width: 155px;
     height: 52px;
     margin: 9px 15px 0 0;
     }
