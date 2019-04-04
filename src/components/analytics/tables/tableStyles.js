@@ -17,7 +17,7 @@ export const TableContainer = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
-    max-height: 470px;
+    max-height: 530px;
     overflow-y: hidden;
     h1{
       margin: 15px;

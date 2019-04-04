@@ -306,28 +306,7 @@ class OffersList extends React.Component {
       options: {
         width: 170,
         customBodyRender: value => {
-          return <img src={value.image} alt="..." />;
-        }
-      }
-    },
-    {
-      name: "Code Snippet",
-      options: {
-        customBodyRender: value => {
-          return `<iframe src="https://ladnetwork.netlify.com/ad/${
-            this.props.currentUser.id
-          }/${value.size}"
-                    frameborder="0"
-                    scrolling="no"
-                    ${
-                      value.size.includes("horizontal")
-                        ? 'height="100" width="670"'
-                        : value.size.includes("vertical")
-                        ? 'height="670" width="100"'
-                        : value.size.includes("square") &&
-                          'height="265" width="265"'
-                    }
-                  ></iframe>`;
+          return <img src={value.image} alt="..."/>;
         }
       }
     }

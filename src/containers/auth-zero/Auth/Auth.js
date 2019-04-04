@@ -89,7 +89,7 @@ export default class Auth {
     }
 
     axios
-      .post(`https://lad-network.herokuapp.com/api/auth/registerV2`, user, config)
+      .post(`https://lad-network.herokuapp.com/api/auth/register`, user, config)
       .then(res => {
         // console.log('--- hit response -- ', res.data)
       }).catch(err => console.error(err))

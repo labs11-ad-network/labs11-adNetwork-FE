@@ -1,10 +1,15 @@
 import styled from 'styled-components';
+
+
 import heroWave from '../../assets/hero-wave.png'
 import desktopPhone from '../../assets/phone1.png'
 import mobilePhone from '../../assets/phone2.png'
+import phoneTesting from '../../assets/phone-img.png'
+
+
+
 export const AppDownloadStyle = styled.div`
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
-
 
   font-family: "Roboto", sans-serif;
 
@@ -69,9 +74,11 @@ export const AppDownloadStyle = styled.div`
     top: 0;
     z-index: -1;
     }
+
   }
   .hero-moc {
-    background: url(${desktopPhone});
+    /* background: url(${desktopPhone}); */
+    /* background: url(${phoneTesting}); */
     background-position: bottom right;
     background-repeat: no-repeat;
     content: "";
@@ -85,6 +92,11 @@ export const AppDownloadStyle = styled.div`
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    .lad-phone-image {
+      width: 368px;
+      max-width: 100%;
+      display: block;
+    }
   }
   @keyframes animationimg {
     0% {
@@ -314,6 +326,35 @@ export const AppDownloadStyle = styled.div`
   }
 }
 
+/* Swiper Wrapper  */
+.swiper-wrapper-flex {
+  display: flex;
+}
+.swiper-wrapper {
+  width: 229px;
+    border: 1px solid red;
+    margin-right: 51px;
+}
+
+}
+.swiper-slide {
+     /* width: 296.667px;
+    margin-right: 20px;
+    transform: scale(.65);
+    opacity: 0.2;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    height: 100%;
+    position: relative;
+    img {
+      max-width: 100%;
+      border: 1px solid red;
+      width: 100% !important;
+      transition: all 0.5s;
+      border: none;
+      outline: none;
+    } */
+}
 `
 
 

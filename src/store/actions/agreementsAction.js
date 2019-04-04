@@ -78,6 +78,6 @@ export const deleteAgreement = id => dispatch => {
       dispatch(getUserOffers());
     })
     .catch(err => {
-      dispatch({ type: DELETE_AGREEMENT_SUCCESS, payload: err.response.data })
+      dispatch({ type: DELETE_AGREEMENT_FAILURE, payload: err.response.data })
     })
 }

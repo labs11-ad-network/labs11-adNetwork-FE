@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Graphs from "../../../components/analytics/graphs";
 import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";
+import MapChart from "../../../components/analytics/map/MapChart.js";
 
 const PageContainer = styled.div`
   .card-container {
@@ -39,6 +40,7 @@ class Analytics extends Component {
                 icon="fas fa-eye"
                 dataType="Impressions"
                 data={offerAnalytics.actionCount.impressions}
+                actions={offerAnalytics.impressions}
                 firstColor="#ffa726"
                 secondColor="#fb8c00"
               />
@@ -46,14 +48,16 @@ class Analytics extends Component {
                 icon="fas fa-mouse-pointer"
                 dataType="Clicks"
                 data={offerAnalytics.actionCount.clicks}
+                actions={offerAnalytics.clicks}
                 firstColor="#66bb6a"
                 secondColor="#43a047"
               />
               <Card
                 icon="fas fa-percentage"
                 dataType="Click Through Rate"
-                data={offerAnalytics}
+                data={[...offerAnalytics.clicks, ...offerAnalytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at)).length}
                 ctr={this.getCTR()}
+                actions={[...offerAnalytics.clicks, ...offerAnalytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at))}
                 firstColor="#ef5350"
                 secondColor="#e53935"
               />
@@ -61,6 +65,7 @@ class Analytics extends Component {
                 icon="fas fa-exchange-alt"
                 dataType="Conversions"
                 data={offerAnalytics.actionCount.conversions}
+                actions={offerAnalytics.conversions}
                 firstColor="#26c6da"
                 secondColor="#00acc1"
               />
@@ -69,6 +74,10 @@ class Analytics extends Component {
             <div className="row-container">
               <Table data={offerAnalytics.impressions} dataType="Impressions"/>
               <Table data={offerAnalytics.clicks} dataType="Clicks"/>
+              <MapChart 
+                data={offerAnalytics.cities} 
+                range={offerAnalytics.actionCount.clicks + offerAnalytics.actionCount.impressions}
+              />
             </div>
           </>
         )}
