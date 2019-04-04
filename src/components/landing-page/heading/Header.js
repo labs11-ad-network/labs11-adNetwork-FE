@@ -53,8 +53,6 @@ class Header extends Component {
     });
   };
   render() {
-    console.log("prevScrollpos", this.state.prevScrollpos);
-
     const { login, history } = this.props;
     let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
     return (

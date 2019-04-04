@@ -23,6 +23,7 @@
     "react-event-timeline": "^1.6.3",
     "react-images-upload": "^1.2.6",
     "react-livechat": "^1.1.1",
+    "react-owl-carousel": "^2.3.1",
     "react-pusher": "^0.2.0",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
@@ -51,5 +52,8 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "expose-loader": "^0.7.5"
+  }
 }

@@ -10,6 +10,7 @@ import screenshot1 from "../../assets/screenshot1.jpg";
 import screenshot2 from "../../assets/screenshot2.jpg";
 import screenshot3 from "../../assets/screenshot3.jpg";
 import placeholder1 from "../../assets/placeholder1.png";
+import placeholder3 from "../../assets/placeholder3.png";
 import tool1 from "../../assets/tool1.png";
 import tool2 from "../../assets/tool2.png";
 import tool3 from "../../assets/tool3.png";
@@ -211,7 +212,7 @@ class AppDownload extends Component {
               </p>
               <img
                 className="placeholder-white-iphone"
-                src={placeholder1}
+                src={placeholder3}
                 alt="phone placeholder"
               />
 
