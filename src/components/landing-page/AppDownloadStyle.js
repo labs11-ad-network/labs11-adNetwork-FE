@@ -366,8 +366,11 @@ export const AppDownloadStyle = styled.div`
   }
 
   /* Screenshot section & white phone */
+
+  .swiper-wrapper-flex {
+    /* width: 100vw; */
+  }
   .swiper-container {
-    padding: 3.58rem 0 7rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -376,13 +379,37 @@ export const AppDownloadStyle = styled.div`
     position: relative;
     overflow: hidden;
     z-index: 1;
-    min-height: 50vh;
+    p {
+      text-align: center;
+      margin: 10px;
+      margin-bottom: -52px;
+
+      @media (min-width: 481px) {
+        margin-bottom: 0;
+      }
+    }
+    @media (min-width: 481px) {
+      min-height: 10vh;
+      padding: 0;
+    }
+    @media (min-width: 940px) {
+      padding: 3.58rem 0 7rem 0;
+      min-height: 50vh;
+      p {
+        text-align: center;
+        margin: 10px;
+      }
+    }
   }
 
   .placeholder-white-iphone {
-    position: absolute;
-    width: 550px;
-    top: 180px;
+    display: none;
+    @media (min-width: 940px) {
+      display: block;
+      position: absolute;
+      width: 550px;
+      top: 180px;
+    }
   }
 
   /* swiper inifinite carousel  */
@@ -394,7 +421,7 @@ export const AppDownloadStyle = styled.div`
     font-size: 0.8rem !important;
 
     @media (min-width: 481px) {
-      font-size: 1.1rem !important;
+      font-size: 1rem !important;
     }
 
     @media (min-width: 940px) {
