@@ -7,40 +7,12 @@ import {
   Markers,
   Marker,
 } from "react-simple-maps"
-import { scaleLinear } from "d3-scale"
 
 import { MapContainer, MapHeader } from './mapStyles.js';
 import map from "./map.json";
 
 
 class MapChart extends Component {
-  state = {
-    cities: [],
-    cityScale: {}
-  }
-  
-  componentDidMount(){
-    this.getCityData();
-  }
-
-  getCityData = () => {
-    if(this.props.data.length){
-      this.setState({
-        cities: this.props.data.map(city => {
-          return {
-            name: city.city,
-            coordinates: [Number(city.longitude), Number(city.latitude)],
-            population: city.num 
-          }
-        }),
-        cityScale: scaleLinear()
-            .domain([0,this.props.range])
-            .range([1,25])
-      })
-    }else{
-      setTimeout(() => this.getCityData(), 1000)
-    }
-  }
 
   render() {
     return (
@@ -85,11 +57,12 @@ class MapChart extends Component {
                           stroke: "#0B6FB2",
                           strokeWidth: 1.55,
                           outline: "none",
+                          cursor: "pointer"
                         },
                         pressed: {
                           fill: "#097AC6",
                           stroke: "#0A88DC",
-                          strokeWidth: 0.75,
+                          strokeWidth: 1.55,
                           outline: "none",
                         }
                       }}
@@ -98,12 +71,12 @@ class MapChart extends Component {
             </Geographies>
             <Markers>
               {
-                this.state.cities.map((city, i) => (
+                this.props.data.cities.map((city, i) => (
                   <Marker key={i} marker={city}>
                     <circle
                       cx={0}
                       cy={0}
-                      r={this.state.cityScale(city.population)}
+                      r={this.props.data.cityScale(city.population)}
                       fill="rgba(255,87,34,0.8)"
                       stroke="#607D8B"
                       strokeWidth="2"

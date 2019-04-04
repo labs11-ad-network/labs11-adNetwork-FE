@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { scaleLinear } from "d3-scale"
 
 import Graphs from "../../../components/analytics/graphs";
 import Card from "../../../components/analytics/cards/Card.js";
@@ -28,6 +29,29 @@ class Analytics extends Component {
 
     return ctr || "0";
   };
+
+  getCityData = () => {
+    if(this.props.offerAnalytics.cities.length){
+      const range = this.props.offerAnalytics.actionCount.clicks + this.props.offerAnalytics.actionCount.impressions;
+      return{
+        cities: this.props.offerAnalytics.cities.map(city => {
+          return {
+            name: city.city,
+            coordinates: [Number(city.longitude), Number(city.latitude)],
+            population: city.num 
+          }
+        }),
+        cityScale: scaleLinear()
+            .domain([0,range])
+            .range([1,25])
+      }
+    }else{
+      return{
+        cities: [],
+        cityScale: {}
+      }
+    }
+  }
 
   render() {
     const { offerAnalytics } = this.props;
@@ -75,8 +99,7 @@ class Analytics extends Component {
               <Table data={offerAnalytics.impressions} dataType="Impressions"/>
               <Table data={offerAnalytics.clicks} dataType="Clicks"/>
               <MapChart 
-                data={offerAnalytics.cities} 
-                range={offerAnalytics.actionCount.clicks + offerAnalytics.actionCount.impressions}
+                data={this.getCityData()} 
               />
             </div>
           </>
