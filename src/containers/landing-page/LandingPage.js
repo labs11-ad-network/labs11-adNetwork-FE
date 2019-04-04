@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Header from "../../components/landing-page/heading/Header.js";
 import styled from "styled-components";
+
 import checks from "../../assets/checks.svg";
 import desktopGiff from "../../assets/desktopAds.gif";
+
+import Header from "../../components/landing-page/heading/Header.js";
 import CustomerStoriesCarousel from "../../components/landing-page/CustomerStoriesCarousel.js";
 import AppDownload from "../../components/landing-page/AppDownload.js";
+
+
 const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 

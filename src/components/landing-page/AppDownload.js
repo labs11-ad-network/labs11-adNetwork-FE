@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { AppDownloadStyle } from './AppDownloadStyle'
+import Coverflow from 'react-coverflow';
+import { StyleRoot } from 'radium';
 
-import ReactSwipe from 'react-swipe';
 
 
 import appStore from '../../assets/appstore.png'
@@ -10,25 +11,11 @@ import phoneTesting from '../../assets/phone-img.png'
 import screenshot1 from '../../assets/screenshot1.jpg'
 import screenshot2 from '../../assets/screenshot2.jpg'
 import screenshot3 from '../../assets/screenshot3.jpg'
+import placeholder1 from '../../assets/placeholder1.png'
 
-
-
-
-const images = [
-  {
-    img: screenshot1
-  },
-  {
-    img: screenshot2
-  },
-  {
-    img: screenshot3
-  },
-]
 class AppDownload extends Component {
-  render() {
-    let reactSwipeEl;
 
+  render() {
     return (
       <>
         <AppDownloadStyle>
@@ -47,7 +34,9 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
-          <section className="promo-section">
+
+
+          {/* <section className="promo-section">
             <div className="promo-row container">
 
 
@@ -119,7 +108,6 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>1
-
           <section className="feature-section">
             <div className="container">
               <h2 className="main-title">Advanced Features</h2>
@@ -161,58 +149,46 @@ class AppDownload extends Component {
             </div>
 
           </section>
-
-          <section className="screenshot-section padding bg-gray">
+     */}
+          {/* <section className="screenshot-section padding bg-gray">
             <div className="swiper-container swiper-container-horizontal container">
               <h2 className="main-title">Advanced Features</h2>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing  elit. <br /> Dicta, reprehenderit?</p>
-
-
-              <div className="mobile-mock">
-                <div className="screen"></div>
-                <div className="circle"></div>
-              </div>
+              <img
+                className="placeholder-white-iphone"
+                src={placeholder1} alt="phone placeholder" />
 
               <div className="swiper-wrapper-flex">
-
-
-                <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <img src={screenshot1} alt="screenshot" />
-                  </div>
-                </div>
-                <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <img src={screenshot2} alt="screenshot" />
-                  </div>
-                </div>
-                <div className="swiper-wrapper">
-                  <div className="swiper-slide">
-                    <img src={screenshot3} alt="screenshot" />
-                  </div>
-                </div>
-
-
-
+                <StyleRoot>
+                  <Coverflow
+                    displayQuantityOfSide={2}
+                    navigation
+                    infiniteScroll={true}
+                    enableHeading={false}
+                    enableScroll={false}
+                    currentFigureScale={0.85}
+                    media={{
+                      '@media (min-width: 940px)': {
+                        width: '100vw',
+                        maxWidth: '1200px',
+                        height: '600px',
+                        backgroundColor: 'inherit',
+                        zIndex: 2
+                      }
+                    }}
+                  >
+                    <img src={screenshot1} alt='screenshot appq`' />
+                    <img src={screenshot2} alt='screenshot appq`' />
+                    <img src={screenshot3} alt='screenshot appq`' />
+                    <img src={screenshot1} alt='screenshot appq`' />
+                    <img src={screenshot2} alt='screenshot appq`' />
+                    <img src={screenshot3} alt='screenshot appq`' />
+                  </Coverflow>
+                </StyleRoot>
               </div>
 
             </div>
-          </section>
-
-          <div>
-            <ReactSwipe
-              className="carousel"
-              swipeOptions={{ continuous: false }}
-              ref={el => (reactSwipeEl = el)}
-            >
-              <div>PANE 1</div>
-              <div>PANE 2</div>
-              <div>PANE 3</div>
-            </ReactSwipe>
-            <button onClick={() => reactSwipeEl.next()}>Next</button>
-            <button onClick={() => reactSwipeEl.prev()}>Previous</button>
-          </div>
-
+          </section> */}
         </AppDownloadStyle>
       </>
     );

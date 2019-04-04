@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import heroWave from '../../assets/hero-wave.png'
 import desktopPhone from '../../assets/phone1.png'
 import mobilePhone from '../../assets/phone2.png'
-import phoneTesting from '../../assets/phone-img.png'
 
 
 
@@ -14,46 +13,11 @@ export const AppDownloadStyle = styled.div`
   font-family: "Roboto", sans-serif;
 
 
-  /* global */
-  p {
-    font-size:15px;
-    line-height:1.35;
-    color: #5f5d6c;
-  }
-  .bg-gray {
-    background-color:#eff4ff;
-  }
-  .padding {
-    padding: 100px 0;
-  }
-  
-  .main-icon-style {
-    background-image: linear-gradient(-45deg, #2b18dd 0%, #1151d3 50%, #1151d3 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-    font-size: 40px;
-    margin-right:30px;
-    }
 
-.main-heading-three {
-      font-size:22px;
-      margin-bottom: 0;
-      font-weight: 400;
-      line-height: 1.7;
-      color: #333;
-      letter-spacing: -0.01em;
-}
-.main-title {
-  font-size: 36px;
-    color: #333;
-    margin: 0 0 10px;
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.04em;
-}
-/* app background with big wavy blue background */
-  .app-download-flex{
+/* app background with big wavy blue background Desktop First */
+
+.app-download-flex{
+  margin: 100px 0;
     max-width:1200px;
     margin: 0 auto;
     position: relative;
@@ -65,20 +29,27 @@ export const AppDownloadStyle = styled.div`
     &:before {
     background: url(${heroWave});
     background-repeat: no-repeat;
-    background-position: right center;
-    content: "";
+    background-position: center;
+    content: "" ;
     position: absolute;
     width: 100%;
     height: 100%;
     left: 0;
     top: 0;
     z-index: -1;
+   }
+   @media (min-width:940px){
+    &:before {
+    background-position: right center;
     }
-
   }
+}
+  
+
   .hero-moc {
-    /* background: url(${desktopPhone}); */
-    /* background: url(${phoneTesting}); */
+    display: none;
+    @media (min-width:940px){
+    display: block;
     background-position: bottom right;
     background-repeat: no-repeat;
     content: "";
@@ -96,6 +67,7 @@ export const AppDownloadStyle = styled.div`
       width: 368px;
       max-width: 100%;
       display: block;
+     }
     }
   }
   @keyframes animationimg {
@@ -108,11 +80,24 @@ export const AppDownloadStyle = styled.div`
     100% {
       transform: translateY(-35px);
     }
+  
   }
-  .app-download-item {
+.app-download-item {
+  h3 {
+      font-size: 2rem;
+      font-weight:500;
+      max-width:200px;
+
+    }
+    p {
+      margin: 10px 0;
+      max-width:300px;
+
+    }
+
+  @media (min-width:940px){
     h3 {
       font-size: 4rem;
-      font-weight:500;
       max-width:500px;
     }
     p {
@@ -120,11 +105,23 @@ export const AppDownloadStyle = styled.div`
       max-width:400px;
     }
   }
+}
 
-  .app-store-img:first-of-type {
-    display:inline-block;
-    margin-right:20px;
-  }
+ .app-store-img {
+  width: 113px;
+    height: 37px;
+    margin: 9px 15px 0 0;
+   @media (min-width:940px){
+    width: 155px;
+    height: 52px;
+    margin: 9px 15px 0 0;
+    }
+   }
+ } 
+
+ 
+ 
+ 
  /* promo section  three icon column*/
 .promo-section {
     padding:80px 0;
@@ -195,7 +192,6 @@ export const AppDownloadStyle = styled.div`
   max-width: 50%;
   flex: 0 0 50%;
 }
-
 .work-content-second_child {
   margin-bottom: 40px;
   flex: 0 0 50%;
@@ -205,7 +201,6 @@ export const AppDownloadStyle = styled.div`
     margin-bottom: 15px;
  }
 }
-
 .work-content-lists {
 
   .work-list-item {
@@ -216,7 +211,6 @@ export const AppDownloadStyle = styled.div`
     }
   }
 }
-
 
 
 /* feature section  */
@@ -252,7 +246,6 @@ export const AppDownloadStyle = styled.div`
     }
 }
 
-
 /* Screenshot section & white phone */
 .swiper-container {
   padding: 3.58rem 0 7rem 0;
@@ -264,73 +257,63 @@ export const AppDownloadStyle = styled.div`
     position: relative;
     overflow: hidden;
     z-index: 1;
-    border: 1px solid red;
     min-height:50vh;
 }
-.mobile-mock {
-  background: #fff;
-    border: 1px solid #edf4f8;
-    margin: 0 auto;
-    position: absolute;
-    top: 0;
-    max-width: 240px;
-    left: 0;
-    right: 0;
-    width: 240px;
-    border-radius: 36px;
-    padding: 55px 0;
-    -webkit-box-shadow: inset 0 4px 10px 1px #fff, inset 0 0 6px 0 rgba(66, 77, 86, .5), 0 2px 0 #aeb5bb, 0 20px 50px -25px rgba(0, 0, 0, .5);
-    box-shadow: inset 0 4px 10px 1px #fff, inset 0 0 6px 0 rgba(66, 77, 86, .5), 0 2px 0 #aeb5bb, 0 20px 50px -25px rgba(0, 0, 0, .5);
 
-  &:before {
-    width: 45px;
-    height: 4px;
-    background: #e3e8eb;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
-    border-radius: 30px;
-    left: 0;
-    right: 0;
-    margin: -25px auto 0;
-  }
-  &:after {
-    top: 30px;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    margin-left: -45px;
-    background: #e3e8eb;
-    -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, .03);
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, .03);
-    display: block;
-    border-radius: 50%;
-  }
-  .screen {
-    width: 90%;
-    margin: 0 auto;
-    height: 376px;
-    box-shadow: 0 0 1px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .03);
-  }
-  .circle {
-    position: absolute;
-    left: 50%;
-    -webkit-box-shadow: 0 0 1px 2px #e3e8eb inset;
-    box-shadow: 0 0 1px 2px #e3e8eb inset;
-    border: 1px solid #edf4f8;
-    border-radius: 50%;
-    bottom: 1.75%;
-    height: 0;
-    margin-left: -18px;
-    padding-top: 36px;
-    width: 36px;
-  }
+.placeholder-white-iphone {
+  position: absolute;
+    width: 550px;
+    top: 180px;
 }
-
-
 
 /* swiper inifinite carousel  */
 
-`
+  /* -------------- global ------------------*/
+  p {
+    line-height:1.35;
+    color: #62748a;
+    font-size:0.7rem !important;
+    @media (min-width: 491px){
+      font-size:1.1rem !important;
+    }
+    @media (min-width: 940px){
+      font-size:1.2rem !important;
+    }
+  }
+  
+  .bg-gray {
+    background-color:#eff4ff;
+  }
+  .padding {
+    padding: 100px 0;
+  }
+  
+  .main-icon-style {
+    background-image: linear-gradient(-45deg, #2b18dd 0%, #1151d3 50%, #1151d3 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 40px;
+    margin-right:30px;
+    }
+
+  .main-heading-three {
+        font-size:22px;
+        margin-bottom: 0;
+        font-weight: 400;
+        line-height: 1.7;
+        color: #333;
+        letter-spacing: -0.01em;
+  }
+  .main-title {
+    font-size: 36px;
+      color: #333;
+      margin: 0 0 10px;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+  }
+  `
 
 
 
