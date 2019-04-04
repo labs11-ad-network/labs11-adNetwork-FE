@@ -190,9 +190,10 @@ export const Snippet = styled.div`
     }
     textarea{
         display: flex;
+        overflow-y: hidden;
         resize: none;
         width: 390px;
-        height: 49px;
+        height: 50px;
         margin: 7px auto;
         padding: 10px;
         border-radius: 4px;
