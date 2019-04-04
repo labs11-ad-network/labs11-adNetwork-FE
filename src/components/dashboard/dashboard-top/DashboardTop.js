@@ -26,6 +26,10 @@ const styles = theme => ({
   root: {
     display: "flex"
   },
+  menu: {
+    width: 200
+  },
+
   paper: {
     marginRight: theme.spacing.unit * 2
   }
@@ -188,6 +192,7 @@ class DashboardTop extends React.Component {
                       anchorEl={this.anchorEl}
                       transition
                       disablePortal
+                      className={classes.menu}
                     >
                       {({ TransitionProps, placement }) => (
                         <Grow
