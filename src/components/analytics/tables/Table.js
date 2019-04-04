@@ -25,7 +25,7 @@ const Table = props => {
               <h4>{data.browser}</h4>
               <p>{moment(data.created_at, "YYYY-MM-DO, hh:mm:ss Z").fromNow()}</p>
             </td>
-            <td>Mobile</td>
+            <td>{data.ip}</td>
           </TableRow>
         )):
         <h1>No clicks yet...</h1>

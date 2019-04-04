@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Graphs from "../../../components/analytics/graphs";
 import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";
+import MapChart from "../../../components/analytics/map/MapChart.js";
 
 const PageContainer = styled.div`
   .card-container {
@@ -73,6 +74,10 @@ class Analytics extends Component {
             <div className="row-container">
               <Table data={offerAnalytics.impressions} dataType="Impressions"/>
               <Table data={offerAnalytics.clicks} dataType="Clicks"/>
+              <MapChart 
+                data={offerAnalytics.cities} 
+                range={offerAnalytics.actionCount.clicks + offerAnalytics.actionCount.impressions}
+              />
             </div>
           </>
         )}
