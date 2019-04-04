@@ -166,5 +166,3 @@ export default class Auth {
     return JSON.stringify(new Date(this.expiresAt));
   }
 }
-
-//auth0-variables
