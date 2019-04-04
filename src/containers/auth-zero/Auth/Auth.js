@@ -88,7 +88,6 @@ export default class Auth {
         // console.log('--- hit response -- ', res.data)
       })
       .catch(err => console.error(err));
-
     history.replace("/dashboard");
   }
 
