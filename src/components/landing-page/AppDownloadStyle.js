@@ -300,6 +300,11 @@ export const AppDownloadStyle = styled.div`
         margin-bottom: 35px;
       }
     }
+    img {
+      display: inline-block;
+      max-width: 100%;
+      margin: 10px;
+    }
   }
 
   /* feature section  */

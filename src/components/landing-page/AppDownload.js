@@ -10,6 +10,14 @@ import screenshot1 from "../../assets/screenshot1.jpg";
 import screenshot2 from "../../assets/screenshot2.jpg";
 import screenshot3 from "../../assets/screenshot3.jpg";
 import placeholder1 from "../../assets/placeholder1.png";
+import tool1 from "../../assets/tool1.png";
+import tool2 from "../../assets/tool2.png";
+import tool3 from "../../assets/tool3.png";
+import tool4 from "../../assets/tool4.png";
+import tool5 from "../../assets/tool5.png";
+import tool6 from "../../assets/tool6.png";
+import tool7 from "../../assets/tool7.png";
+import tool8 from "../../assets/tool8.png";
 
 class AppDownload extends Component {
   render() {
@@ -86,48 +94,45 @@ class AppDownload extends Component {
                 <div className="work-content-col work-content-second_child">
                   <h2 className="main-title">How does this App Work?</h2>
                   <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.{" "}
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     <br />
                     Porro, fugit?
                   </p>
 
                   <div className="work-content-lists">
                     <div className="work-list-item">
-                      <i className="main-icon-style">O</i>
+                      <img src={tool1} alt="icon" />
                       <div className="work-list-content">
                         <h3 className="main-heading-three">
                           Lorem Ipsum Dolor
                         </h3>
                         <p>
-                          {" "}
                           Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit. <br /> Voluptates, rerum ipsum!{" "}
+                          elit. <br /> Voluptates, rerum ipsum!
                         </p>
                       </div>
                     </div>
                     <div className="work-list-item">
-                      <i className="main-icon-style">O</i>
+                      <img src={tool2} alt="icon" />
                       <div className="work-list-content">
                         <h3 className="main-heading-three">
                           Lorem Ipsum Dolor
                         </h3>
                         <p>
-                          {" "}
                           Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit. <br /> Voluptates, rerum ipsum!{" "}
+                          elit. <br /> Voluptates, rerum ipsum!
                         </p>
                       </div>
                     </div>
                     <div className="work-list-item">
-                      <i className="main-icon-style">O</i>
+                      <img src={tool5} alt="icon" />
                       <div className="work-list-content">
                         <h3 className="main-heading-three">
                           Lorem Ipsum Dolor
                         </h3>
                         <p>
-                          {" "}
                           Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit. <br /> Voluptates, rerum ipsum!{" "}
+                          elit. <br /> Voluptates, rerum ipsum!
                         </p>
                       </div>
                     </div>
@@ -141,12 +146,12 @@ class AppDownload extends Component {
             <div className="container">
               <h2 className="main-title">Advanced Features</h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />{" "}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
                 Dicta, reprehenderit?
               </p>
               <div className="feature-row">
                 <div className="feature-col">
-                  <i className="main-icon-style feature-icon ">O</i>
+                  <img src={tool3} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
                     Lorem ipsum dolor sit amet adipisicing of more of sedis do
@@ -154,7 +159,7 @@ class AppDownload extends Component {
                   </p>
                 </div>
                 <div className="feature-col">
-                  <i className="main-icon-style feature-icon ">O</i>
+                  <img src={tool4} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
                     Lorem ipsum dolor sit amet adipisicing of more of sedis do
@@ -162,7 +167,7 @@ class AppDownload extends Component {
                   </p>
                 </div>
                 <div className="feature-col">
-                  <i className="main-icon-style feature-icon ">O</i>
+                  <img src={tool5} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
                     Lorem ipsum dolor sit amet adipisicing of more of sedis do
@@ -170,7 +175,7 @@ class AppDownload extends Component {
                   </p>
                 </div>
                 <div className="feature-col">
-                  <i className="main-icon-style feature-icon ">O</i>
+                  <img src={tool6} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
                     Lorem ipsum dolor sit amet adipisicing of more of sedis do
@@ -178,7 +183,7 @@ class AppDownload extends Component {
                   </p>
                 </div>
                 <div className="feature-col">
-                  <i className="main-icon-style feature-icon ">O</i>
+                  <img src={tool7} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
                     Lorem ipsum dolor sit amet adipisicing of more of sedis do
@@ -186,7 +191,7 @@ class AppDownload extends Component {
                   </p>
                 </div>
                 <div className="feature-col">
-                  <i className="main-icon-style feature-icon ">O</i>
+                  <img src={tool8} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
                     Lorem ipsum dolor sit amet adipisicing of more of sedis do
@@ -225,21 +230,24 @@ class AppDownload extends Component {
                         maxWidth: "1200px",
                         height: "300px",
                         backgroundColor: "inherit",
-                        zIndex: 2
+                        zIndex: 2,
+                        outline: 0
                       },
                       "@media (min-width: 481px)": {
                         width: "100vw",
                         maxWidth: "1200px",
                         height: "400px",
                         backgroundColor: "inherit",
-                        zIndex: 2
+                        zIndex: 2,
+                        outline: 0
                       },
                       "@media (min-width: 940px)": {
                         width: "100vw",
                         maxWidth: "1200px",
                         height: "600px",
                         backgroundColor: "inherit",
-                        zIndex: 2
+                        zIndex: 2,
+                        outline: 0
                       }
                     }}
                   >
