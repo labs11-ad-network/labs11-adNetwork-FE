@@ -160,12 +160,7 @@ const LandingPageStyle = styled.div`
       max-width: 500px;
     }
   }
-  .costumer-stories {
-    margin: 50px 0;
-  }
-  .costumer-subtitle {
-    padding: 20px 0 0 0;
-  }
+
   footer {
     margin: 40vh 0;
   }

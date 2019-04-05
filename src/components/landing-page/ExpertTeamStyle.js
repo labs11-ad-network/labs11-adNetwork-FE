@@ -100,7 +100,6 @@ export const ExpertTeamStyle = styled.div`
     height: 420px;
     justify-content: space-evenly;
     flex-direction: column;
-    border: 1px solid red;
     @media (min-width: 481px) {
       flex-direction: row-reverse;
     }
@@ -125,7 +124,10 @@ export const ExpertTeamStyle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 45px 0px;
+
     @media (min-width: 481px) {
+      padding: initial;
       width: 50%;
     }
 
