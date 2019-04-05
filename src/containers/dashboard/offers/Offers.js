@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 
 import {
   getUserOffers,
-  createOffer
+  createOffer,
+  updateOffer
 } from "../../../store/actions/offersAction.js";
 import OffersList from "../../../components/offers/OffersList.js";
 import OfferModal from "../../../components/offers/OfferModal.js";
@@ -33,7 +34,7 @@ class Offers extends Component {
     this.props.createOffer(this.state.offerData);
 
     this.setState({
-      hidden: true,
+      modalIsOpen: false,
       offerData: {
         budget: "",
         price_per_click: "",
@@ -45,13 +46,35 @@ class Offers extends Component {
         status: true
       }
     });
-
-    this.toggleModal();
   };
+
+  updateOffer = async e => {
+    e.preventDefault();
+
+    this.props.updateOffer(this.state.offerData);
+
+    this.setState({
+      modalIsOpen: false,
+      offerData: {
+        budget: "",
+        price_per_click: "",
+        price_per_impression: "",
+        name: "",
+        description: "",
+        category: "",
+        currency: "",
+        status: true
+      }
+    });
+  }
 
   toggleModal = () => {
     this.setState({
       modalIsOpen: !this.state.modalIsOpen
+    })
+
+    this.props.isUpdatingOffer && this.setState({
+      offerData: this.props.updatingOffer
     })
   }
 
@@ -77,7 +100,9 @@ class Offers extends Component {
             offerData={this.state.offerData}
             handleChange={this.handleChange}
             createOffer={this.createOffer}
+            updateOffer={this.updateOffer}
             toggleModal={this.toggleModal}
+            isUpdatingOffer={this.props.isUpdatingOffer}
           />
         )}
       </div>
@@ -88,6 +113,8 @@ class Offers extends Component {
 const mapStateToProps = state => {
   return {
     userOffers: state.offersReducer.userOffers,
+    isUpdatingOffer: state.offersReducer.isUpdatingOffer,
+    updatingOffer: state.offersReducer.updatingOffer
   };
 };
 
@@ -95,6 +122,7 @@ export default connect(
   mapStateToProps,
   {
     getUserOffers,
-    createOffer
+    createOffer,
+    updateOffer
   }
 )(Offers);

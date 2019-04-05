@@ -42,7 +42,7 @@ class Analytics extends Component {
           }
         }),
         cityScale: scaleLinear()
-            .domain([0,range])
+            .domain([0,range / 2.5])
             .range([1,25])
       }
     }else{
