@@ -16,13 +16,11 @@ const LandingPageStyle = styled.div`
   /* --------------- global landing info style --------------- */
   .container {
     max-width: 1100px;
-    width: 90%;
+    border: 1px solid red;
+    width: calc(100vw - 10vw);
     margin: 0 auto;
-    @media (min-width: 481px) {
-      width: 80%;
-    }
     @media (min-width: 940px) {
-      width: 98%;
+      width: calc(100vw - 5vw);
     }
   }
   .blue-subtitle {

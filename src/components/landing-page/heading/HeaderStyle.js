@@ -19,14 +19,6 @@ export const HeroHome = styled.section`
   @media (min-width: 481px) {
     padding: 10px 0 224px 0;
   }
-  .container {
-    max-width: 1100px;
-    width: 90%;
-    margin: 0 auto;
-    @media (min-width: 940px) {
-      max-width: 98%;
-    }
-  }
   /* desktop view text content  */
   @media (min-width: 940px) {
     .desktop-hero-container {

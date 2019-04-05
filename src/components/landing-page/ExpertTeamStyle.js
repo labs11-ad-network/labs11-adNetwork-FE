@@ -85,7 +85,7 @@ export const ExpertTeamStyle = styled.div`
 
   /* GLOBAL */
   .border {
-    border: 1px solid #f6f6f6;
+    border: 1px solid #cadce2;
     border-top: none;
     border-radius: 0 0 8px 8px;
     text-align: center;
