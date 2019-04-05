@@ -47,7 +47,7 @@ export const changeUserData = user => dispatch => {
     .catch(err => {
       dispatch({
         type: CHANGE_USER_FAILURE,
-        payload: err.response.message
+        payload: err.response.data.message
       });
     });
 };
