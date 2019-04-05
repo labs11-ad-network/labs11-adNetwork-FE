@@ -10,12 +10,13 @@ const OfferModal = props => {
             <OfferModalContent onClick={e => {
                 e.stopPropagation();
             }}>
-                <h1>Create an offer</h1>
+                <h1>{props.isUpdatingOffer ? "Update your offer" : "Create an offer"}</h1>
                 <OfferForm
                     offerData={props.offerData}
                     handleChange={props.handleChange}
-                    createOffer={props.createOffer}
-                    />
+                    handleSubmit={props.isUpdatingOffer ? props.updateOffer : props.createOffer}
+                    isUpdatingOffer={props.isUpdatingOffer}
+                />
             </OfferModalContent>
         </OfferModalContainer>
     </>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://lad-network.herokuapp.com";
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 // ------------------------------------ Get All User Notifications ------------------------------------
 
@@ -16,7 +16,10 @@ export const getUserNotifications = () => dispatch => {
       dispatch({ type: GET_USER_NOTIFICATIONS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_USER_NOTIFICATIONS_FAILURE, payload: err.response.data });
+      dispatch({
+        type: GET_USER_NOTIFICATIONS_FAILURE,
+        payload: err.response.data
+      });
     });
 };
 
