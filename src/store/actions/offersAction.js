@@ -54,10 +54,40 @@ export const changeOfferStatus = offer => dispatch => {
     .then(res => {
       dispatch({ type: CHANGE_OFFER_STATUS_SUCCESS, payload: {res: res.data, offer} });
     })
+    .then(() => {
+      dispatch(getUserOffers())
+    })
     .catch(err => {
       dispatch({ type: CHANGE_OFFER_STATUS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
     });
 };
+
+// ------------------------------------ Update Offer ------------------------------------
+
+export const UPDATE_OFFER_START = "UPDATE_OFFER_START";
+export const UPDATE_OFFER_SUCCESS = "UPDATE_OFFER_SUCCESS";
+export const UPDATE_OFFER_FAILURE = "UPDATE_OFFER_FAILURE";
+
+export const startUpdatingOffer = offer => {
+  return {
+    type: UPDATE_OFFER_START,
+    payload: offer
+  }
+}
+
+export const updateOffer = offer => dispatch => {
+  axios
+    .put(`${URL}/api/offers/${offer.id}`, offer)
+    .then(res => {
+      dispatch({ type:UPDATE_OFFER_SUCCESS, payload: res.data })
+    })
+    .then(() => {
+      dispatch(getUserOffers())
+    })
+    .catch(err => {
+      dispatch({ type:UPDATE_OFFER_SUCCESS, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
+    })
+}
 
 // ------------------------------------ Delete Offer ------------------------------------
 
@@ -71,6 +101,9 @@ export const deleteOffer = offer => dispatch => {
     .delete(`${URL}/api/offers/${offer.id}`)
     .then(res => {
       dispatch({ type: DELETE_OFFER_SUCCESS, payload: {res: res.data, offer} })
+    })
+    .then(() => {
+      dispatch(getUserOffers())
     })
     .catch(err => {
       dispatch({ type: DELETE_OFFER_SUCCESS, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
