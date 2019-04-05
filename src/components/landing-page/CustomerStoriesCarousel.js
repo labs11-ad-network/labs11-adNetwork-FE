@@ -1,92 +1,92 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
+import { autoPlay } from "react-swipeable-views-utils";
 import MobileStepper from "@material-ui/core/MobileStepper";
 import Button from "@material-ui/core/Button";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import SwipeableViews from "react-swipeable-views";
-import { autoPlay } from "react-swipeable-views-utils";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const tutorialSteps = [
   {
-    label: "San Francisco – Oakland Bay Bridge, United States Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
+    label:
+      "San Francisco – Oakland Bay Bridge, United States Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. "
   },
   {
-    label: "Bird Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
+    label:
+      "Bird Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. "
   },
   {
-    label: "Bali, Indonesia Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
+    label:
+      "Bali, Indonesia Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. "
   },
   {
-    label: "NeONBRAND Digital Marketing, Las Vegas, United States Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
+    label:
+      "NeONBRAND Digital Marketing, Las Vegas, United States Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. "
   },
   {
-    label: "Goč, Serbia Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. ",
+    label:
+      "Goč, Serbia Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quibusdam optio. "
   }
 ];
 
 const styles = theme => ({
   root: {
-    maxWidth: '100vw',
+    maxWidth: "100vw",
     flexGrow: 1,
-    background: '#F7F9FC'
-
-  },
-  header: {
-    display: "flex",
-    alignItems: "center",
-    height: 50,
-    paddingLeft: theme.spacing.unit * 4,
-    backgroundColor: theme.palette.background.default
+    background: "#F7F9FC"
   },
   message: {
-    textAlign: 'center',
-    fontSize: '2rem',
-    lineHeight: 1.25
+    textAlign: "center",
+    fontSize: "1.2rem",
+    lineHeight: 1.35,
+    maxHeight: 400,
+    maxWidth: 500,
+    margin: "0 auto"
   },
   customerStoriesContainer: {
-    padding: '6% 0',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    background: '#F7F9FC'
+    padding: "10px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    background: "#F7F9FC"
   },
   mobileStepper: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    background: '#F7F9FC',
-    paddingBottom: '25px'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "#F7F9FC",
+    paddingBottom: "25px"
   },
   user: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'column',
-    margin: '20px 0'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    margin: "20px 0"
   },
   avatar: {
-    width: '60px',
-    height: '60px',
-    borderRadius: '50%',
+    width: "60px",
+    height: "60px",
+    borderRadius: "50%"
   },
   infopTag: {
-    fontSize: '1.1rem',
-    maxWidth: '90%',
-    margin: '0 auto',
-    textAlign: 'center',
+    fontSize: "1rem",
+    maxWidth: "90%",
+    margin: "0 auto",
+    textAlign: "center",
     lineHeight: 1.25
   },
   heading4: {
-    padding: '10px 0',
-    fontSize: '1.5rem'
-  },
+    padding: "10px 0",
+    fontSize: "1.5rem"
+  }
 });
 
-class SwipeableTextMobileStepper extends React.Component {
+class CustomerStoriesCarousel extends React.Component {
   state = {
     activeStep: 0
   };
@@ -113,24 +113,22 @@ class SwipeableTextMobileStepper extends React.Component {
     const maxSteps = tutorialSteps.length;
 
     return (
-      <div className={classes.root} >
+      <div className={classes.root}>
         <div className="container">
           <h5 className="blue-subtitle costumer-subtitle costumer-blue-subtitle">
             Customer Stories
           </h5>
-          <div
-            className={classes.customerStoriesContainer}>
+          <div className={classes.customerStoriesContainer}>
             <Button
               size="small"
               onClick={this.handleBack}
               disabled={activeStep === 0}
             >
-
               {theme.direction === "rtl" ? (
                 <KeyboardArrowRight />
               ) : (
-                  <KeyboardArrowLeft />
-                )}
+                <KeyboardArrowLeft />
+              )}
             </Button>
             <AutoPlaySwipeableViews
               axis={theme.direction === "rtl" ? "x-reverse" : "x"}
@@ -140,13 +138,9 @@ class SwipeableTextMobileStepper extends React.Component {
             >
               {tutorialSteps.map((step, index) => (
                 <div key={step.label}>
-                  {
-                    Math.abs(activeStep - index) <= 2
-                      ? <h2
-                        className={classes.message}
-                      >{step.label}</h2>
-                      : null
-                  }
+                  {Math.abs(activeStep - index) <= 2 ? (
+                    <h2 className={classes.message}>{step.label}</h2>
+                  ) : null}
                 </div>
               ))}
             </AutoPlaySwipeableViews>
@@ -158,21 +152,22 @@ class SwipeableTextMobileStepper extends React.Component {
               {theme.direction === "rtl" ? (
                 <KeyboardArrowLeft />
               ) : (
-                  <KeyboardArrowRight />
-                )}
+                <KeyboardArrowRight />
+              )}
             </Button>
           </div>
 
-          <div
-            className={classes.user}
-          >
+          <div className={classes.user}>
             <img
               className={classes.avatar}
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ" alt="avatar-testing" />
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+              alt="avatar-testing"
+            />
 
             <h4 className={classes.heading4}>Test</h4>
-            <p
-              className={classes.infopTag} >Managing Director at Herld (Google Partner Agency)</p>
+            <p className={classes.infopTag}>
+              Managing Director at Herld (Google Partner Agency)
+            </p>
           </div>
 
           <MobileStepper
@@ -187,11 +182,9 @@ class SwipeableTextMobileStepper extends React.Component {
   }
 }
 
-SwipeableTextMobileStepper.propTypes = {
+CustomerStoriesCarousel.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired
 };
 
-export default withStyles(styles, { withTheme: true })(
-  SwipeableTextMobileStepper
-);
+export default withStyles(styles, { withTheme: true })(CustomerStoriesCarousel);

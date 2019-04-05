@@ -2,7 +2,6 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
@@ -39,7 +38,8 @@ const styles = theme => ({
 class DashboardTop extends React.Component {
   state = {
     movileNavOpen: false,
-    open: false
+    userMenuOpen: false,
+    notificationsMenuOpen: false
   };
 
   toggleNav = () => {
@@ -47,18 +47,30 @@ class DashboardTop extends React.Component {
   };
 
   handleToggle = () => {
-    this.setState(state => ({ open: !state.open }));
+    this.setState(state => ({ userMenuOpen: !state.userMenuOpen }));
+  };
+
+  handleNotificationsToggle = () => {
+    this.setState(state => ({
+      notificationsMenuOpen: !state.notificationsMenuOpen
+    }));
   };
 
   handleClose = e => {
     e.stopPropagation();
 
-    this.setState({ open: false });
+    this.setState({ userMenuOpen: false });
+  };
+
+  handleNotificationsClose = e => {
+    e.stopPropagation();
+
+    this.setState({ notificationsMenuOpen: false });
   };
 
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
+    const { userMenuOpen, notificationsMenuOpen } = this.state;
     return (
       <>
         <NavContainer>
@@ -168,20 +180,67 @@ class DashboardTop extends React.Component {
           <RightSection>
             {this.props.currentUser && (
               <>
-                <Badge
-                  badgeContent={this.props.notificationsList.length}
-                  color="primary"
-                >
-                  <i className="fas fa-bell" />
-                </Badge>
-
                 <div className={classes.root}>
                   <div>
                     <button
                       buttonRef={node => {
                         this.anchorEl = node;
                       }}
-                      aria-owns={open ? "menu-list-grow" : undefined}
+                      aria-owns={
+                        notificationsMenuOpen ? "menu-list-grow" : undefined
+                      }
+                      aria-haspopup="true"
+                      onClick={this.handleNotificationsToggle}
+                    >
+                      <Badge
+                        badgeContent={this.props.userNotifications.length}
+                        color="primary"
+                      >
+                        <i className="fas fa-bell" />
+                      </Badge>
+                    </button>
+                    <Popper
+                      open={notificationsMenuOpen}
+                      anchorEl={this.anchorEl}
+                      transition
+                      disablePortal
+                      className={classes.menu}
+                    >
+                      {({ TransitionProps, placement }) => (
+                        <Grow
+                          {...TransitionProps}
+                          id="menu-list-grow"
+                          style={{
+                            transformOrigin:
+                              placement === "bottom"
+                                ? "center top"
+                                : "center bottom"
+                          }}
+                        >
+                          <Paper>
+                            <ClickAwayListener
+                              onClickAway={this.handleNotificationsClose}
+                            >
+                              <MenuList>
+                                {this.props.userNotifications &&
+                                  this.props.userNotifications.map(n => (
+                                    <MenuItem>{n.msg_body}</MenuItem>
+                                  ))}
+                              </MenuList>
+                            </ClickAwayListener>
+                          </Paper>
+                        </Grow>
+                      )}
+                    </Popper>
+                  </div>
+                </div>
+                <div className={classes.root}>
+                  <div>
+                    <button
+                      buttonRef={node => {
+                        this.anchorEl = node;
+                      }}
+                      aria-owns={userMenuOpen ? "menu-list-grow" : undefined}
                       aria-haspopup="true"
                       onClick={this.handleToggle}
                     >
@@ -189,7 +248,7 @@ class DashboardTop extends React.Component {
                       <h2>{this.props.currentUser.name}</h2>
                     </button>
                     <Popper
-                      open={open}
+                      open={userMenuOpen}
                       anchorEl={this.anchorEl}
                       transition
                       disablePortal

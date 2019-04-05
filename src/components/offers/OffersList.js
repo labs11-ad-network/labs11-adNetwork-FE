@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 
 import { OfferButton, OfferModalButton, TabButtonContainer } from "./offersStyles.js";
 import { getOfferAds, deleteAd, changeAdStatus } from "../../store/actions/adAction.js";
-import { createAgreement, deleteAgreement } from "../../store/actions/agreementsAction.js";
+import { createAgreement, deleteAgreement, updateAgreement } from "../../store/actions/agreementsAction.js";
 import { getUserOffers, changeOfferStatus, deleteOffer } from "../../store/actions/offersAction.js";
 
 const styles = theme => ({
@@ -128,14 +128,6 @@ class OffersList extends React.Component {
               >
                 View Ads
               </OfferButton>
-              <OfferButton
-                color="#0A88DC"
-                onClick={() => {
-                  this.props.deleteAgreement(value.agreement_id);
-                }}
-              >
-                Remove Agreement
-              </OfferButton>
             </>
           ) : (
             <OfferButton
@@ -147,6 +139,25 @@ class OffersList extends React.Component {
               Accept Agreement
             </OfferButton>
           );
+        }
+      }
+    },
+    {
+      name: "Status",
+      options: {
+        customBodyRender: value => {
+          return value.accepted ? (
+            <>
+              <Switch
+                checked={value.active}
+                onChange={async () => {
+                  this.props.updateAgreement(value.agreement_id, {active: !value.active});
+                }}
+                value="checkedB"
+                color="primary"
+              />
+            </>
+          ) : <p>Not Accepted</p>
         }
       }
     }
@@ -306,28 +317,7 @@ class OffersList extends React.Component {
       options: {
         width: 170,
         customBodyRender: value => {
-          return <img src={value.image} alt="..." />;
-        }
-      }
-    },
-    {
-      name: "Code Snippet",
-      options: {
-        customBodyRender: value => {
-          return `<iframe src="https://ladnetwork.netlify.com/ad/${
-            this.props.currentUser.id
-          }/${value.size}"
-                    frameborder="0"
-                    scrolling="no"
-                    ${
-                      value.size.includes("horizontal")
-                        ? 'height="100" width="670"'
-                        : value.size.includes("vertical")
-                        ? 'height="670" width="100"'
-                        : value.size.includes("square") &&
-                          'height="265" width="265"'
-                    }
-                  ></iframe>`;
+          return <img src={value.image} alt="..."/>;
         }
       }
     }
@@ -413,7 +403,8 @@ export default connect(
     deleteOffer,
     createAgreement,
     deleteAgreement,
+    updateAgreement,
     deleteAd,
-    changeAdStatus
+    changeAdStatus,
   }
 )(withStyles(styles)(OffersList));
