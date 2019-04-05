@@ -68,7 +68,7 @@ export default function authReducer(state = initialState, action) {
       };
 
     case CHANGE_AGREEMENT_SUCCESS:
-      toast.success(`${action.payload.agreement.name} was updated`);
+      toast.success(`Agreement was updated`);
       return {
         ...state,
         isLoading: false
