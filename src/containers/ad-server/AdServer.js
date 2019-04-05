@@ -47,7 +47,7 @@ class AdServer extends Component {
   recordImpression = id => {
     this.props.addStats({
       action: "impression",
-      userAgent: navigator.userAgent,
+      userAgent: navigator.userAgent.toString(),
       referrer: document.referrer,
       agreement_id: id
     });
@@ -56,7 +56,7 @@ class AdServer extends Component {
   recordAction = e => {
     this.props.addStats({
       action: "click",
-      userAgent: navigator.userAgent,
+      userAgent: navigator.userAgent.toString(),
       referrer: document.referrer,
       agreement_id: this.state.randomAd.agreement_id
     });
