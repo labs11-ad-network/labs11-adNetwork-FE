@@ -10,6 +10,7 @@ import teambg1 from "../../assets/teambg1.jpg";
 import teambg2 from "../../assets/teambg2.jpg";
 import teambg3 from "../../assets/teambg3.jpg";
 import video2 from "../../assets/video2.png";
+import CustomerStoriesCarousel from "./CustomerStoriesCarousel";
 let responsive = {
   0: {
     items: 1
@@ -82,6 +83,11 @@ class ExpertTeam extends Component {
                 </p>
               </div>
             </div>
+          </section>
+
+          {/* Added This Cosutmer Testimonial for cascading styles from Expert Team */}
+          <section className="costumer-stories">
+            <CustomerStoriesCarousel />
           </section>
         </div>
       </ExpertTeamStyle>

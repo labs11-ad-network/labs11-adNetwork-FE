@@ -6,7 +6,6 @@ import checks from "../../assets/checks.svg";
 import desktopGiff from "../../assets/desktopAds.gif";
 
 import Header from "../../components/landing-page/heading/Header.js";
-import CustomerStoriesCarousel from "../../components/landing-page/CustomerStoriesCarousel.js";
 import AppDownload from "../../components/landing-page/AppDownload.js";
 import ExpertTeam from "../../components/landing-page/ExpertTeam";
 
@@ -298,10 +297,6 @@ class LandingPage extends Component {
 
         <section className="expert-team">
           <ExpertTeam />
-        </section>
-
-        <section className="costumer-stories">
-          <CustomerStoriesCarousel />
         </section>
 
         <footer>

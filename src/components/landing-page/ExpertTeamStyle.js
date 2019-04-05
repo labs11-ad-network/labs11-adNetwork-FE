@@ -48,6 +48,10 @@ export const ExpertTeamStyle = styled.div`
     text-align: center;
     p {
       margin: 5px auto 25px auto;
+      @media (min-width: 940px) {
+        margin: 5px auto 55px auto;
+        max-width: 550px;
+      }
     }
   }
 
