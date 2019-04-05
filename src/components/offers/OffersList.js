@@ -9,8 +9,8 @@ import { connect } from "react-redux";
 
 import { OfferButton, OfferModalButton, TabButtonContainer } from "./offersStyles.js";
 import { getOfferAds, deleteAd, changeAdStatus } from "../../store/actions/adAction.js";
-import { createAgreement, deleteAgreement } from "../../store/actions/agreementsAction.js";
-import { getUserOffers, changeOfferStatus, deleteOffer } from "../../store/actions/offersAction.js";
+import { createAgreement, deleteAgreement, updateAgreement } from "../../store/actions/agreementsAction.js";
+import { getUserOffers, changeOfferStatus, deleteOffer, startUpdatingOffer } from "../../store/actions/offersAction.js";
 
 const styles = theme => ({
   root: {
@@ -128,14 +128,6 @@ class OffersList extends React.Component {
               >
                 View Ads
               </OfferButton>
-              <OfferButton
-                color="#0A88DC"
-                onClick={() => {
-                  this.props.deleteAgreement(value.agreement_id);
-                }}
-              >
-                Remove Agreement
-              </OfferButton>
             </>
           ) : (
             <OfferButton
@@ -147,6 +139,25 @@ class OffersList extends React.Component {
               Accept Agreement
             </OfferButton>
           );
+        }
+      }
+    },
+    {
+      name: "Status",
+      options: {
+        customBodyRender: value => {
+          return value.accepted ? (
+            <>
+              <Switch
+                checked={value.active}
+                onChange={async () => {
+                  this.props.updateAgreement(value.agreement_id, {active: !value.active});
+                }}
+                value="checkedB"
+                color="primary"
+              />
+            </>
+          ) : <p>Not Accepted</p>
         }
       }
     }
@@ -219,22 +230,34 @@ class OffersList extends React.Component {
       }
     },
     {
-      name: "View Ads",
+      name: "Offer Options",
       options: {
         customBodyRender: value => {
           return (
-            <OfferButton
-              color="#0A88DC"
-              onClick={() => {
-                this.setState({
-                  tabValue: 1,
-                  offer_id: value.id
-                });
-                this.props.getOfferAds(value.id);
-              }}
-            >
-              View Ads
-            </OfferButton>
+            <>
+              <OfferButton
+                first
+                color="#0A88DC"
+                onClick={() => {
+                  this.setState({
+                    tabValue: 1,
+                    offer_id: value.id
+                  });
+                  this.props.getOfferAds(value.id);
+                }}
+              >
+                View Ads
+              </OfferButton>
+              <OfferButton
+                color="#0A88DC"
+                onClick={async () => {
+                  await this.props.startUpdatingOffer(value);
+                  this.props.toggleModal();
+                }}
+              >
+                Edit Offer
+              </OfferButton>
+            </>
           );
         }
       }
@@ -386,13 +409,15 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    getOfferAds,
     getUserOffers,
     changeOfferStatus,
+    startUpdatingOffer,
     deleteOffer,
     createAgreement,
     deleteAgreement,
+    updateAgreement,
+    getOfferAds,
     deleteAd,
-    changeAdStatus
+    changeAdStatus,
   }
 )(withStyles(styles)(OffersList));

@@ -4,7 +4,7 @@ import { Form } from './offersStyles.js';
 
 const OfferForm = props => {
   return (
-    <Form onSubmit={e => props.createOffer(e)}>
+    <Form onSubmit={e => props.handleSubmit(e)}>
         <div>
             <label htmlFor="budget"/>
             <input 
@@ -83,7 +83,7 @@ const OfferForm = props => {
                 name="status"
                 onChange={props.handleChange}
             />
-            <button type="submit">Create Offer</button>
+            <button type="submit">{props.isUpdatingOffer ? "Update Offer" : "Create Offer"}</button>
         </div>
     </Form>
   )

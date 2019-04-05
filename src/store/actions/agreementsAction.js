@@ -21,7 +21,7 @@ export const createAgreement = offer => dispatch => {
       dispatch(getUserOffers())
     })
     .catch(err => {
-      dispatch({ type: CREATE_AGREEMENT_FAILURE, payload: err.response.data });
+      dispatch({ type: CREATE_AGREEMENT_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
     });
 };
 
@@ -39,7 +39,7 @@ export const getAgreements = () => dispatch => {
       dispatch({ type: GET_AGREEMENTS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_AGREEMENTS_FAILURE, payload: err.response.data });
+      dispatch({ type: GET_AGREEMENTS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
     });
 };
 
@@ -49,16 +49,19 @@ export const CHANGE_AGREEMENT_START = "CHANGE_AGREEMENT_START";
 export const CHANGE_AGREEMENT_SUCCESS = "CHANGE_AGREEMENT_SUCCESS";
 export const CHANGE_AGREEMENT_FAILURE = "CHANGE_AGREEMENT_FAILURE";
 
-export const updateAgreement = agreement => dispatch => {
+export const updateAgreement = (id, agreement) => dispatch => {
   dispatch({ type: CHANGE_AGREEMENT_START });
   axios
-  .get(`${URL}/api/agreements/${agreement.id}`, agreement)
-  .then(res => {
-    dispatch({ type: CHANGE_AGREEMENT_SUCCESS, payload: {res: res.data, agreement} });
-  })
-  .catch(err => {
-    dispatch({ type: CHANGE_AGREEMENT_FAILURE, payload: err.response.data });
-  });
+    .put(`${URL}/api/agreements/${id}`, agreement)
+    .then(res => {
+      dispatch({ type: CHANGE_AGREEMENT_SUCCESS, payload: res.data });
+    })
+    .then(() => {
+      dispatch(getUserOffers());
+    })
+    .catch(err => {
+      dispatch({ type: CHANGE_AGREEMENT_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+    });
 }
 
 // ------------------------------------ Delete Agreement ------------------------------------
@@ -78,6 +81,6 @@ export const deleteAgreement = id => dispatch => {
       dispatch(getUserOffers());
     })
     .catch(err => {
-      dispatch({ type: DELETE_AGREEMENT_FAILURE, payload: err.response.data })
+      dispatch({ type: DELETE_AGREEMENT_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
     })
 }
