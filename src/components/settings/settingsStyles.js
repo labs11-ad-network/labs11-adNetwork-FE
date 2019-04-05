@@ -202,3 +202,51 @@ export const Snippet = styled.div`
         background-color: #f1f1f1;
     }
 `;
+
+export const TimelineItem = styled.div`
+  padding: 0 0 20px 20px;  
+  margin: 0 0 -5px 95px;
+  font-family: 'Roboto', sans-serif;
+  border-left: 4px solid #0A88DC;
+  div{
+    display: flex;
+    align-items: center;
+    margin-left: -119px;
+    h2{ //time stamp
+      color: #FFFFFF;
+      background-color: #0A88DC;
+      text-align: center;
+      width: 55px;
+      padding: 5px 10px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 100;
+    }
+    h1{
+      display: flex;
+      font-size: 1.3rem;
+      font-weight: 300;
+      div{
+        width: 25px;
+        height: 25px;
+        margin: 0 10px;
+        border-radius: 50px;
+        background-color: #0A88DC;
+        color: #FFFFFF;
+      }
+    }
+  }
+  h3{
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: unset;
+  }
+  p{
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+`
+
+export const TimelineContainerComponent = styled.div`
+    margin: 10px;
+`;

@@ -67,6 +67,7 @@ class Analytics extends Component {
                 actions={offerAnalytics.impressions}
                 firstColor="#ffa726"
                 secondColor="#fb8c00"
+                growth={offerAnalytics.growth.impressions || 0}
               />
               <Card
                 icon="fas fa-mouse-pointer"
@@ -75,6 +76,7 @@ class Analytics extends Component {
                 actions={offerAnalytics.clicks}
                 firstColor="#66bb6a"
                 secondColor="#43a047"
+                growth={offerAnalytics.growth.clicks || 0}
               />
               <Card
                 icon="fas fa-percentage"
@@ -92,12 +94,21 @@ class Analytics extends Component {
                 actions={offerAnalytics.conversions}
                 firstColor="#26c6da"
                 secondColor="#00acc1"
+                growth={offerAnalytics.growth.conversions || 0}
               />
             </div>
             <Graphs data={offerAnalytics.browserCount} />
             <div className="row-container">
-              <Table data={offerAnalytics.impressions} dataType="Impressions"/>
-              <Table data={offerAnalytics.clicks} dataType="Clicks"/>
+              <Table 
+                data={offerAnalytics.impressions}
+                dataType="Impressions"
+                growth={offerAnalytics.growth.impressions || 0}
+              />
+              <Table 
+                data={offerAnalytics.clicks} 
+                dataType="Clicks"
+                growth={offerAnalytics.growth.clicks || 0}
+              />
               <MapChart 
                 data={this.getCityData()} 
               />

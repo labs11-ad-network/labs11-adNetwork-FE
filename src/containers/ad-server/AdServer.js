@@ -49,7 +49,7 @@ class AdServer extends Component {
   recordImpression = id => {
     this.props.addStats({
       action: "impression",
-      browser: this.parser.getBrowser().name,
+      userAgent: [navigator.userAgent],
       referrer: document.referrer,
       agreement_id: id
     });
@@ -58,7 +58,7 @@ class AdServer extends Component {
   recordAction = e => {
     this.props.addStats({
       action: "click",
-      browser: this.parser.getBrowser().name,
+      userAgent: [navigator.userAgent],
       referrer: document.referrer,
       agreement_id: this.state.randomAd.agreement_id
     });
@@ -67,7 +67,7 @@ class AdServer extends Component {
   render() {
     return (
       this.state.randomAd ?
-      <a href={this.state.randomAd.destination_url} target="_blank" rel="noopener noreferrer">
+      <a href={`${this.state.randomAd.destination_url}/affiliate=${this.props.match.params.affiliateId}&agreement=${this.state.randomAd.agreement_id || 0}`} target="_blank" rel="noopener noreferrer">
         <img src={this.state.randomAd.image} onClick={this.recordAction} alt=""/>
       </a> :
       <h1>loading...</h1>
