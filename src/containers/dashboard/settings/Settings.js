@@ -27,9 +27,7 @@ class Settings extends Component {
         <div>
           <ProfileCard currentUser={this.props.currentUser}/>
           <BillingCard currentUser={this.props.currentUser}/>
-          {(this.props.currentUser.acct_type === "affiliate" && typeof this.props.currentUser === "object") &&
-            <SnippetCard currentUser={this.props.currentUser}/>
-          }
+          <SnippetCard currentUser={this.props.currentUser}/>
         </div>
         <TabContainer 
           payouts={this.props.payouts} 

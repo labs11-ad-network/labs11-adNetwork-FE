@@ -13,7 +13,7 @@ const Table = props => {
           <h3>most recent</h3>
         </div>
         <div>
-          <h2 className="percentage">+23%<i className="fas fa-arrow-circle-up"/></h2>
+          <h2 className="percentage">{`+${props.growth}%`}<i className="fas fa-arrow-circle-up"/></h2>
         </div>
       </TableHeader>
       <table>
@@ -22,10 +22,10 @@ const Table = props => {
         }).map(data => (
           <TableRow>
             <td>
-              <h4>{data.browser}</h4>
+              <h4>{data.browser} </h4>
               <p>{moment(data.created_at, "YYYY-MM-DO, hh:mm:ss Z").fromNow()}</p>
             </td>
-            <td>{data.ip}</td>
+            <td>{`${data.region || "Unknown"}, ${data.country || "Unknown"}`}</td>
           </TableRow>
         )):
         <h1>No clicks yet...</h1>
