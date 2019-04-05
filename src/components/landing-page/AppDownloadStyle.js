@@ -412,13 +412,17 @@ export const AppDownloadStyle = styled.div`
     @media (min-width: 940px) {
       display: block;
       position: absolute;
-      width: 550px;
-      top: 180px;
+      width: 224px;
+      top: 269px;
+      height: 403px;
+      max-width: 100%;
+      z-index: 22;
+     }
     }
   }
+  
 
   /* swiper inifinite carousel  */
-
   /* -------------- global ------------------*/
   p {
     line-height: 1.35;

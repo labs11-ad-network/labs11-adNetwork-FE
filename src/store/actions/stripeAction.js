@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getUserData } from "./authAction.js";
 
-const URL = "https://lad-network.herokuapp.com";
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 // ------------------------------ Get Payouts ------------------------------
 

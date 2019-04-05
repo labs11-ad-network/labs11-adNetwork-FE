@@ -2,21 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
 
-import {
-  createCustomer
-} from '../../store/actions/stripeAction.js';
+import { createCustomer } from "../../store/actions/stripeAction.js";
 
 class Checkout extends React.Component {
   onToken = token => {
-    this.props.createCustomer()
+    this.props.createCustomer();
   };
 
   render() {
-    const { amount, btn_text } = this.props
+    const { amount, btn_text } = this.props;
     return (
       <StripeCheckout
         token={this.onToken}
-        stripeKey="pk_test_OV7uPmi32yS44HY3dGXsTozz"
+        stripeKey={process.env.REACT_APP_STRIPE_CLIENT}
         amount={amount}
       >
         <button>{btn_text}</button>
@@ -30,4 +28,4 @@ export default connect(
   {
     createCustomer
   }
-)(Checkout)
+)(Checkout);
