@@ -16,7 +16,7 @@ export const getUserOffers = () => dispatch => {
       dispatch({ type: GET_USER_OFFERS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_USER_OFFERS_FAILURE, payload: err.response.data });
+      dispatch({ type: GET_USER_OFFERS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
     });
 };
 
@@ -37,7 +37,7 @@ export const createOffer = offer => dispatch => {
       dispatch(getUserOffers())
     })
     .catch(err => {
-      dispatch({ type: CREATE_OFFER_FAILURE, payload: err.response.data });
+      dispatch({ type: CREATE_OFFER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
     });
 };
 
@@ -55,7 +55,7 @@ export const changeOfferStatus = offer => dispatch => {
       dispatch({ type: CHANGE_OFFER_STATUS_SUCCESS, payload: {res: res.data, offer} });
     })
     .catch(err => {
-      dispatch({ type: CHANGE_OFFER_STATUS_FAILURE, payload: err.response.data });
+      dispatch({ type: CHANGE_OFFER_STATUS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
     });
 };
 
@@ -73,6 +73,6 @@ export const deleteOffer = offer => dispatch => {
       dispatch({ type: DELETE_OFFER_SUCCESS, payload: {res: res.data, offer} })
     })
     .catch(err => {
-      dispatch({ type: DELETE_OFFER_SUCCESS, payload: err.response.data })
+      dispatch({ type: DELETE_OFFER_SUCCESS, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
     })
 }
