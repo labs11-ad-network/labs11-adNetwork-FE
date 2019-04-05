@@ -193,7 +193,7 @@ export const Snippet = styled.div`
         overflow-y: hidden;
         resize: none;
         width: 390px;
-        height: 50px;
+        height: ${props => props.height || '50px'};
         margin: 7px auto;
         padding: 10px;
         border-radius: 4px;

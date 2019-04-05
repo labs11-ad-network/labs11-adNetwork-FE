@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import UAParser from 'ua-parser-js';
 
 import { getAffiliateAds } from "../../store/actions/adAction.js";
 import { addStats } from "../../store/actions/analyticsAction";
@@ -12,7 +11,6 @@ class AdServer extends Component {
 
   componentDidMount() {
     this.props.getAffiliateAds(this.props.match.params.affiliateId);
-    this.parser = new UAParser([navigator.userAgent]);
     this.getRandomAd()
     this.rotateInterval = setInterval(() => {
       this.getRandomAd()
@@ -49,7 +47,7 @@ class AdServer extends Component {
   recordImpression = id => {
     this.props.addStats({
       action: "impression",
-      userAgent: [navigator.userAgent],
+      userAgent: navigator.userAgent,
       referrer: document.referrer,
       agreement_id: id
     });
@@ -58,7 +56,7 @@ class AdServer extends Component {
   recordAction = e => {
     this.props.addStats({
       action: "click",
-      userAgent: [navigator.userAgent],
+      userAgent: navigator.userAgent,
       referrer: document.referrer,
       agreement_id: this.state.randomAd.agreement_id
     });
