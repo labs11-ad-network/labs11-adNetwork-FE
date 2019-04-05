@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import video1 from "../../assets/video1.jpg";
 
 export const ExpertTeamStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
@@ -62,14 +63,14 @@ export const ExpertTeamStyle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0;
+    padding: 25px 0;
     .social-item {
       margin: 0 5px;
       text-align: center;
       font-size: 14px;
-      color: #c3c3c3;
+      color: #cadce2;
       width: 30px;
-      line-height: 28px;
+      line-height: 30px;
       border: 1px solid #f6f6f6;
       border-radius: 2px;
       -webkit-transition: all 0.3s ease-in-out;
@@ -80,6 +81,135 @@ export const ExpertTeamStyle = styled.div`
         color: #005bea;
         border-color: #005bea;
       }
+    }
+  }
+
+  /* App intro Video */
+  .app-intro-video {
+    margin: 136px 0 20px 0;
+    height: 100%;
+    margin: 10vh calc(-50vw + 50%);
+    margin-top: 150px;
+    @media (min-width: 481px) {
+      margin-top: 130px;
+    }
+  }
+  .video-flex {
+    display: flex;
+    width: 100%;
+    height: 420px;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border: 1px solid red;
+    @media (min-width: 481px) {
+      flex-direction: row-reverse;
+    }
+    @media (min-width: 940px) {
+      flex-direction: row;
+    }
+  }
+  .wavy-blue {
+    display: none;
+    @media (min-width: 940px) {
+      display: block;
+      margin-left: -81px;
+    }
+  }
+
+  .video-play {
+    background: url(${video1}) no-repeat left center;
+    height: auto;
+    background-size: cover;
+    object-fit: cover;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (min-width: 481px) {
+      width: 50%;
+    }
+
+    @keyframes youtubeBTN {
+      0% {
+        transform: rotate(0);
+        opacity: 0.5;
+      }
+      50% {
+        transform: rotate(0) scale(1.7);
+        opacity: 1;
+      }
+      70% {
+        transform: rotate(0) scale(1.5);
+        opacity: 0;
+      }
+    }
+    a {
+      position: relative;
+      &:after {
+        content: "";
+        background: #ffffff36;
+        position: absolute;
+        width: 97px;
+        height: 90px;
+        top: 6%;
+        left: 7%;
+        border-radius: 50%;
+        -webkit-animation: youtubeBTN 1.5s infinite 0s
+          cubic-bezier(0.26, 0.24, 0.62, 0.71);
+        animation: youtubeBTN 1.5s infinite 0s
+          cubic-bezier(0.26, 0.24, 0.62, 0.71);
+      }
+    }
+
+    .fa {
+      background: #fff;
+      line-height: 76px;
+      border: 12px solid #dde5f1;
+      border-radius: 50%;
+      width: 86px;
+      text-align: center;
+      font-size: 24px;
+      color: #005bea;
+      position: relative;
+      z-index: 6;
+      -webkit-transition: all 0.3s ease-in-out;
+      -ms-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      &:hover {
+        background: #005bea;
+        color: #fff;
+      }
+    }
+  }
+
+  .video-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #005bea;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    margin: 0 auto;
+    @media (min-width: 481px) {
+      width: 50%;
+    }
+
+    h2 {
+      color: #fff;
+      font-weight: 500;
+      width: 100%;
+    }
+    p {
+      color: #fff;
+      text-align: left;
     }
   }
 
@@ -118,6 +248,7 @@ export const ExpertTeamStyle = styled.div`
     text-align: center;
     @media (min-width: 481px) {
       font-size: 1rem !important;
+      max-width: 400px;
     }
 
     @media (min-width: 940px) {
@@ -132,16 +263,28 @@ export const ExpertTeamStyle = styled.div`
     color: #333;
     letter-spacing: -0.01em;
     @media (min-width: 481px) {
-      font-size: 20px;
+      font-size: 2rem;
     }
 
     @media (min-width: 940px) {
-      font-size: 22px;
+      font-size: 2.3rem;
     }
   }
   h3 {
     text-align: center;
     margin: -15px 0 15px 0;
     font-size: 1.5rem;
+  }
+
+  .team-card {
+    animation-delay: 1s;
+    animation-name: fadeInUp;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    will-change: transform;
+    transform: perspective(300px) rotateX(0deg) rotateY(0deg);
+  }
+  .center-me {
+    max-width: 341px;
   }
 `;

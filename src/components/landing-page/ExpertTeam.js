@@ -9,7 +9,7 @@ import ExpertTeamCard from "./ExpertTeamCard";
 import teambg1 from "../../assets/teambg1.jpg";
 import teambg2 from "../../assets/teambg2.jpg";
 import teambg3 from "../../assets/teambg3.jpg";
-
+import video2 from "../../assets/video2.png";
 let responsive = {
   0: {
     items: 1
@@ -40,7 +40,6 @@ class ExpertTeam extends Component {
             autoplay={true}
             loop
             margin={30}
-            // items={1}
             responsive={responsive}
             nav
           >
@@ -64,6 +63,26 @@ class ExpertTeam extends Component {
               <ExpertTeamCard teamBg={teambg3} />
             </div>
           </OwlCarousel>
+
+          <section className="app-intro-video">
+            <div className="video-flex">
+              <div className="video-play">
+                <a href="/" alt="youtube-button">
+                  <i className="fa fa-play" />
+                </a>
+              </div>
+
+              <img src={video2} alt="video" className="wavy-blue" />
+
+              <div className="video-content">
+                <h2 className="center-me">Watch This App Intro</h2>
+                <p className="center-me">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
+                  officia deserunt! Placeat quos nihil dolores.
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
       </ExpertTeamStyle>
     );
