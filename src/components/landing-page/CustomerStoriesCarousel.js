@@ -44,7 +44,18 @@ class CustomerStoriesCarousel extends Component {
 
               <div className="item">
                 <div className="testimonial-card">
-                  <p>testing</p>
+                  <div className="testimonial-item-flex">
+                    {/* <img
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+                      alt="profile pic"
+                      className="testimonial-profile_picture"
+                    /> */}
+                  </div>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Voluptates dignissimos impedit laborum ab? Reprehenderit,
+                    perferendis?
+                  </p>
                 </div>
               </div>
               <div className="item">
