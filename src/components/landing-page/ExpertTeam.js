@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { ExpertTeamStyle } from "./ExpertTeamStyle";
+
 import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
@@ -8,6 +9,18 @@ import ExpertTeamCard from "./ExpertTeamCard";
 import teambg1 from "../../assets/teambg1.jpg";
 import teambg2 from "../../assets/teambg2.jpg";
 import teambg3 from "../../assets/teambg3.jpg";
+
+let responsive = {
+  0: {
+    items: 1
+  },
+  481: {
+    items: 2
+  },
+  939: {
+    items: 3
+  }
+};
 
 class ExpertTeam extends Component {
   render() {
@@ -28,6 +41,7 @@ class ExpertTeam extends Component {
             loop
             margin={30}
             // items={1}
+            responsive={responsive}
             nav
           >
             <div className="item">
