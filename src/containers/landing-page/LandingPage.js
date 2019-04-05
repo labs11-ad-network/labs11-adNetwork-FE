@@ -6,7 +6,6 @@ import checks from "../../assets/checks.svg";
 import desktopGiff from "../../assets/desktopAds.gif";
 
 import Header from "../../components/landing-page/heading/Header.js";
-import CustomerStoriesCarousel from "../../components/landing-page/CustomerStoriesCarousel.js";
 import AppDownload from "../../components/landing-page/AppDownload.js";
 import ExpertTeam from "../../components/landing-page/ExpertTeam";
 
@@ -16,13 +15,10 @@ const LandingPageStyle = styled.div`
   /* --------------- global landing info style --------------- */
   .container {
     max-width: 1100px;
-    width: 90%;
+    width: calc(100vw - 10vw);
     margin: 0 auto;
-    @media (min-width: 481px) {
-      width: 80%;
-    }
     @media (min-width: 940px) {
-      width: 98%;
+      width: calc(100vw - 5vw);
     }
   }
   .blue-subtitle {
@@ -163,12 +159,7 @@ const LandingPageStyle = styled.div`
       max-width: 500px;
     }
   }
-  .costumer-stories {
-    margin: 50px 0;
-  }
-  .costumer-subtitle {
-    padding: 20px 0 0 0;
-  }
+
   footer {
     margin: 40vh 0;
   }
@@ -306,10 +297,6 @@ class LandingPage extends Component {
 
         <section className="expert-team">
           <ExpertTeam />
-        </section>
-
-        <section className="costumer-stories">
-          <CustomerStoriesCarousel />
         </section>
 
         <footer>
