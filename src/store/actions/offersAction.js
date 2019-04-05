@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://lad-network.herokuapp.com";
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 // ------------------------------------ Get All User Offers ------------------------------------
 
@@ -34,7 +34,7 @@ export const createOffer = offer => dispatch => {
       dispatch({ type: CREATE_OFFER_SUCCESS, payload: res.data });
     })
     .then(() => {
-      dispatch(getUserOffers())
+      dispatch(getUserOffers());
     })
     .catch(err => {
       dispatch({ type: CREATE_OFFER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
@@ -50,15 +50,19 @@ export const CHANGE_OFFER_STATUS_FAILURE = "UPDATE_OFFER_STATUS_FAILURE";
 export const changeOfferStatus = offer => dispatch => {
   dispatch({ type: CHANGE_OFFER_STATUS_START });
   axios
-    .put(`${URL}/api/offers/${offer.id}`, {status: !offer.status})
+    .put(`${URL}/api/offers/${offer.id}`, { status: !offer.status })
     .then(res => {
-      dispatch({ type: CHANGE_OFFER_STATUS_SUCCESS, payload: {res: res.data, offer} });
+      dispatch({
+        type: CHANGE_OFFER_STATUS_SUCCESS,
+        payload: { res: res.data, offer }
+      });
     })
     .then(() => {
       dispatch(getUserOffers())
     })
     .catch(err => {
       dispatch({ type: CHANGE_OFFER_STATUS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+
     });
 };
 
@@ -91,16 +95,19 @@ export const updateOffer = offer => dispatch => {
 
 // ------------------------------------ Delete Offer ------------------------------------
 
-export const DELETE_OFFER_START = "DELETE_OFFER_START"
-export const DELETE_OFFER_SUCCESS = "DELETE_OFFER_SUCCESS"
-export const DELETE_OFFER_FAILURE = "DELETE_OFFER_FAILURE"
+export const DELETE_OFFER_START = "DELETE_OFFER_START";
+export const DELETE_OFFER_SUCCESS = "DELETE_OFFER_SUCCESS";
+export const DELETE_OFFER_FAILURE = "DELETE_OFFER_FAILURE";
 
 export const deleteOffer = offer => dispatch => {
-  dispatch({ type: DELETE_OFFER_START })
+  dispatch({ type: DELETE_OFFER_START });
   axios
     .delete(`${URL}/api/offers/${offer.id}`)
     .then(res => {
-      dispatch({ type: DELETE_OFFER_SUCCESS, payload: {res: res.data, offer} })
+      dispatch({
+        type: DELETE_OFFER_SUCCESS,
+        payload: { res: res.data, offer }
+      });
     })
     .then(() => {
       dispatch(getUserOffers())
@@ -109,3 +116,4 @@ export const deleteOffer = offer => dispatch => {
       dispatch({ type: DELETE_OFFER_SUCCESS, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
     })
 }
+

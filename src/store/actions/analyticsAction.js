@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://lad-network.herokuapp.com";
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 export const AD_ACTION_START = "AD_ACTION_START";
 export const AD_ACTION_SUCCESS = "AD_ACTION_SUCCESS";

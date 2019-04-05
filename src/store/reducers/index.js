@@ -5,6 +5,7 @@ import offersReducer from "./offersReducer.js";
 import analyticsReducer from "./analyticsReducer.js";
 import agreementsReducer from "./agreementsReducer.js";
 import stripeReducer from "./stripeReducer.js";
+import notificationsReducer from "./notificationsReducer.js";
 
 export default combineReducers({
   authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   offersReducer,
   analyticsReducer,
   agreementsReducer,
-  stripeReducer
+  stripeReducer,
+  notificationsReducer
 });

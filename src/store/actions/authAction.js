@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "https://lad-network.herokuapp.com";
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 // ------------------------------------ Get user data ------------------------------------
 
@@ -46,5 +46,6 @@ export const changeUserData = user => dispatch => {
     })
     .catch(err => {
       dispatch({ type: CHANGE_USER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+
     });
 };
