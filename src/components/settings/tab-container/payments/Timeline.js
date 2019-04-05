@@ -14,7 +14,7 @@ const TimelineContainer = props => {
             return(
               <TimelineItem>
                 <div>
-                  <h2>7:00pm</h2>{/* time */}
+                  <h2>{moment.unix(p.arrival_date).format('h:mma')}</h2>{/* time */}
                   <h1><div/>Recieved</h1>{/* type */}
                 </div>
                 <h3>{`Amount: ${p.amount / 100}`}</h3>{/* subtitle */}
@@ -26,10 +26,11 @@ const TimelineContainer = props => {
       ): currentUser.acct_type === "advertiser" && payments.length ? (
         <>
           {payments.map(p => {
+            console.log(p)
             return (
               <TimelineItem key={p.id}>
                 <div>
-                  <h2>7:00pm</h2>
+                  <h2>{moment.unix(p.created).format('h:mma')}</h2>
                   <h1><div/>Paid</h1>
                 </div>
                 <h3>{`Amount: ${p.amount / 100} Last 4 Digits: ${p.payment_method_details.card.brand} ${p.payment_method_details.card.last4}`}</h3>
