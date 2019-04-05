@@ -9,8 +9,8 @@ import { connect } from "react-redux";
 
 import { OfferButton, OfferModalButton, TabButtonContainer } from "./offersStyles.js";
 import { getOfferAds, deleteAd, changeAdStatus } from "../../store/actions/adAction.js";
-import { createAgreement } from "../../store/actions/agreementsAction.js";
-import { getUserOffers, changeOfferStatus, deleteOffer } from "../../store/actions/offersAction.js";
+import { createAgreement, deleteAgreement, updateAgreement } from "../../store/actions/agreementsAction.js";
+import { getUserOffers, changeOfferStatus, deleteOffer, startUpdatingOffer } from "../../store/actions/offersAction.js";
 
 const styles = theme => ({
   root: {
@@ -47,25 +47,21 @@ class OffersList extends React.Component {
     },
     affiliateOfferOptions: {
       filterType: "checkbox",
-      selectableRows: false,
+      selectableRows: false
     },
     advertiserAdOptions: {
       filterType: "checkbox",
       showSelectedRowsToolbar: true,
       rowCursorHand: true,
       onRowsDelete: value => {
-        if (
-          window.confirm(
-            `Are you sure you want to delete selected ad?`
-          )
-        ) {
+        if (window.confirm(`Are you sure you want to delete selected ad?`)) {
           this.props.deleteAd(this.props.offerAds[value.data[0].dataIndex].id);
         }
       }
     },
     affiliateAdOptions: {
       filterType: "checkbox",
-      selectableRows: false,
+      selectableRows: false
     }
   };
 
@@ -118,18 +114,21 @@ class OffersList extends React.Component {
       options: {
         customBodyRender: value => {
           return value.accepted ? (
-            <OfferButton
-              color="#04CF47"
-              onClick={() => {
-                this.setState({
-                  tabValue: 1,
-                  currentAgreement: value.agreement_id
-                });
-                this.props.getOfferAds(value.id);
-              }}
-            >
-              View Ads
-            </OfferButton>
+            <>
+              <OfferButton
+                color="#04CF47"
+                accepted={true}
+                onClick={() => {
+                  this.setState({
+                    tabValue: 1,
+                    currentAgreement: value.agreement_id
+                  });
+                  this.props.getOfferAds(value.id);
+                }}
+              >
+                View Ads
+              </OfferButton>
+            </>
           ) : (
             <OfferButton
               color="#0A88DC"
@@ -140,6 +139,25 @@ class OffersList extends React.Component {
               Accept Agreement
             </OfferButton>
           );
+        }
+      }
+    },
+    {
+      name: "Status",
+      options: {
+        customBodyRender: value => {
+          return value.accepted ? (
+            <>
+              <Switch
+                checked={value.active}
+                onChange={async () => {
+                  this.props.updateAgreement(value.agreement_id, {active: !value.active});
+                }}
+                value="checkedB"
+                color="primary"
+              />
+            </>
+          ) : <p>Not Accepted</p>
         }
       }
     }
@@ -212,22 +230,34 @@ class OffersList extends React.Component {
       }
     },
     {
-      name: "View Ads",
+      name: "Offer Options",
       options: {
         customBodyRender: value => {
           return (
-            <OfferButton
-              color="#0A88DC"
-              onClick={() => {
-                this.setState({
-                  tabValue: 1,
-                  offer_id: value.id
-                });
-                this.props.getOfferAds(value.id);
-              }}
-            >
-              View Ads
-            </OfferButton>
+            <>
+              <OfferButton
+                first
+                color="#0A88DC"
+                onClick={() => {
+                  this.setState({
+                    tabValue: 1,
+                    offer_id: value.id
+                  });
+                  this.props.getOfferAds(value.id);
+                }}
+              >
+                View Ads
+              </OfferButton>
+              <OfferButton
+                color="#0A88DC"
+                onClick={async () => {
+                  await this.props.startUpdatingOffer(value);
+                  this.props.toggleModal();
+                }}
+              >
+                Edit Offer
+              </OfferButton>
+            </>
           );
         }
       }
@@ -299,28 +329,7 @@ class OffersList extends React.Component {
       options: {
         width: 170,
         customBodyRender: value => {
-          return <img src={value.image} alt="..." />;
-        }
-      }
-    },
-    {
-      name: "Code Snippet",
-      options: {
-        customBodyRender: value => {
-          return `<iframe src="https://ladnetwork.netlify.com/ad/${
-            this.props.currentUser.id
-          }/${value.size}" 
-                    frameborder="0" 
-                    scrolling="no" 
-                    ${
-                      value.size.includes("horizontal")
-                        ? 'height="100" width="670"'
-                        : value.size.includes("vertical")
-                        ? 'height="670" width="100"'
-                        : value.size.includes("square") 
-                        && 'height="265" width="265"'
-                    }
-                  ></iframe>`;
+          return <img src={value.image} alt="..."/>;
         }
       }
     }
@@ -328,26 +337,23 @@ class OffersList extends React.Component {
 
   render() {
     const { classes, offerAds, offers, currentUser } = this.props;
-    const {
-      tabValue,
-      advertiserOfferOptions,
-      affiliateOfferOptions,
-      affiliateAdOptions,
-      advertiserAdOptions
-    } = this.state;
+    
+    const { tabValue, advertiserOfferOptions, affiliateOfferOptions, affiliateAdOptions, advertiserAdOptions } = this.state;
 
     return (
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
             <Tab label="Offers" className={classes.tab} />
-            <Tab label="Ads" className={classes.tab} disabled />
+            {tabValue === 1 &&
+            <Tab label="Ads" className={classes.tab} />
+            }
             <TabButtonContainer>
-              {this.props.currentUser.acct_type === "advertiser" &&
-              <OfferModalButton onClick={() => this.props.toggleModal()}>
-                Create Offer
-              </OfferModalButton>
-              }
+              {this.props.currentUser.acct_type === "advertiser" && (
+                <OfferModalButton onClick={() => this.props.toggleModal()}>
+                  Create Offer
+                </OfferModalButton>
+              )}
             </TabButtonContainer>
           </Tabs>
         </AppBar>
@@ -371,7 +377,6 @@ class OffersList extends React.Component {
             }
           />
         )}
-
         {tabValue === 1 && (
           <MaterialDatatable
             title={"Ads List"}
@@ -381,9 +386,11 @@ class OffersList extends React.Component {
                 ? this.affiliateAdColumns
                 : this.advertiserAdColumns
             }
-            options={currentUser.acct_type === "affiliate" 
-            ? affiliateAdOptions 
-            : advertiserAdOptions}
+            options={
+              currentUser.acct_type === "affiliate"
+                ? affiliateAdOptions
+                : advertiserAdOptions
+            }
           />
         )}
       </div>
@@ -394,19 +401,23 @@ class OffersList extends React.Component {
 const mapStateToProps = state => {
   return {
     offerAds: state.adReducer.offerAds,
-    currentUser: state.authReducer.currentUser
+    currentUser: state.authReducer.currentUser,
+    isFetchingOffers: state.offersReducer.isFetchingOffers
   };
 };
 
 export default connect(
   mapStateToProps,
   {
-    getOfferAds,
     getUserOffers,
     changeOfferStatus,
+    startUpdatingOffer,
     deleteOffer,
     createAgreement,
+    deleteAgreement,
+    updateAgreement,
+    getOfferAds,
     deleteAd,
-    changeAdStatus
+    changeAdStatus,
   }
 )(withStyles(styles)(OffersList));

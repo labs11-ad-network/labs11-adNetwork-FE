@@ -90,6 +90,7 @@ export const MainTabContainer = styled.div`
 
 export const Form = styled.form`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 15px 35px;
@@ -108,7 +109,7 @@ export const Form = styled.form`
             font-size: 1.3rem;
             font-weight: 100;
             padding: 15px;
-            margin-top: 10px;
+            margin-top: 8px;
             border: 1px solid rgba(0, 0, 0, 0.2);
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
@@ -118,6 +119,7 @@ export const Form = styled.form`
         }
         label{
             font-size: 1.2rem;
+            margin-top: 18px;
         }
         button{
             color: #FFFFFF;
@@ -188,9 +190,10 @@ export const Snippet = styled.div`
     }
     textarea{
         display: flex;
+        overflow-y: hidden;
         resize: none;
         width: 390px;
-        height: 49px;
+        height: ${props => props.height || '50px'};
         margin: 7px auto;
         padding: 10px;
         border-radius: 4px;
@@ -198,4 +201,52 @@ export const Snippet = styled.div`
         font-size: 0.9rem;
         background-color: #f1f1f1;
     }
+`;
+
+export const TimelineItem = styled.div`
+  padding: 0 0 20px 20px;  
+  margin: 0 0 -5px 95px;
+  font-family: 'Roboto', sans-serif;
+  border-left: 4px solid #0A88DC;
+  div{
+    display: flex;
+    align-items: center;
+    margin-left: -119px;
+    h2{ //time stamp
+      color: #FFFFFF;
+      background-color: #0A88DC;
+      text-align: center;
+      width: 55px;
+      padding: 5px 10px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 100;
+    }
+    h1{
+      display: flex;
+      font-size: 1.3rem;
+      font-weight: 300;
+      div{
+        width: 25px;
+        height: 25px;
+        margin: 0 10px;
+        border-radius: 50px;
+        background-color: #0A88DC;
+        color: #FFFFFF;
+      }
+    }
+  }
+  h3{
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: unset;
+  }
+  p{
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+`
+
+export const TimelineContainerComponent = styled.div`
+    margin: 10px;
 `;

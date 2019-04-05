@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
-import Pusher from "pusher-js";
 
 import { getOfferAnalytics } from "../../store/actions/analyticsAction.js";
 import { getUserOffers } from "../../store/actions/offersAction.js";
 import { getUserData } from "../../store/actions/authAction.js";
 import { getAgreements } from "../../store/actions/agreementsAction.js";
+import { getUserNotifications } from "../../store/actions/notificationsAction.js";
 import privateRoute from "../auth-HOC";
 import DashboardLeft from "../../components/dashboard/dashboard-left/DashboardLeft.js";
 import TopNav from "../../components/dashboard/dashboard-top/DashboardTop.js";
@@ -19,7 +19,7 @@ import Settings from "./settings/Settings.js";
 
 const DashboardContainer = styled.div`
   display: flex;
-  background-color: #F1F1F1;
+  background-color: #f1f1f1;
   .main-content {
     display: flex;
     flex-direction: column;
@@ -33,15 +33,9 @@ const DashboardContainer = styled.div`
   }
 `;
 
-const pusher = new Pusher("50920b18a9a2ff320874", {
-  cluster: "us2",
-  encrypted: true
-});
-
 class Dashboard extends Component {
   state = {
-    currentOffer: "",
-    notificationsList: []
+    currentOffer: ""
   };
 
   componentDidMount() {
@@ -57,27 +51,16 @@ class Dashboard extends Component {
       }
     }, 15000);
 
-    this.handlePusher(this.props.currentUser);
+    this.props.getUserNotifications();
+    this.notificationsInterval = setInterval(() => {
+      this.props.getUserNotifications();
+    }, 15000);
   }
 
   componentWillUnmount() {
     clearInterval(this.analyticsInterval);
+    clearInterval(this.notificationsInterval);
   }
-
-  handlePusher = currentUser => {
-    if (currentUser) {
-      const channel = pusher.subscribe(currentUser.id.toString());
-      channel.bind("disable-offer", data => {
-        this.setState({
-          notificationsList: [...this.state.notificationsList, data]
-        });
-      });
-    } else {
-      setTimeout(() => {
-        this.handlePusher(this.props.currentUser)
-      }, 3000)
-    }
-  };
 
   handleOfferSelect = e => {
     this.props.getOfferAnalytics(e.target.value);
@@ -95,7 +78,12 @@ class Dashboard extends Component {
             {...this.props}
             handleOfferSelect={this.handleOfferSelect}
             agreements={this.props.agreements}
-            notificationsList={this.state.notificationsList}
+            userNotifications={this.props.userNotifications}
+            isLoadingAnalytics={this.props.isLoading_analytics}
+            isLoadingAds={this.props.isLoading_ads}
+            isLoadingAgreements={this.props.isLoading_agreements}
+            isLoadingOffers={this.props.isLoading_offers}
+            isLoadingStripe={this.props.isLoading_stripe}
           />
           <div className="dashboard-view">
             <Route
@@ -132,9 +120,15 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
   return {
     userOffers: state.offersReducer.userOffers,
+    userNotifications: state.notificationsReducer.userNotifications,
     currentUser: state.authReducer.currentUser,
     offerAnalytics: state.analyticsReducer.offerAnalytics,
-    agreements: state.agreementsReducer.agreements
+    agreements: state.agreementsReducer.agreements,
+    isLoading_analytics: state.analyticsReducer.isLoading,
+    isLoading_ads: state.adReducer.isLoading,
+    isLoading_agreements: state.agreementsReducer.isLoading,
+    isLoading_offers: state.offersReducer.isLoading,
+    isLoading_stripe: state.stripeReducer.isLoading
   };
 };
 
@@ -144,6 +138,7 @@ export default connect(
     getOfferAnalytics,
     getUserOffers,
     getUserData,
-    getAgreements
+    getAgreements,
+    getUserNotifications
   }
 )(privateRoute(Dashboard));

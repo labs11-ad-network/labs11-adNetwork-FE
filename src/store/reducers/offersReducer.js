@@ -1,6 +1,6 @@
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
-import{
+import {
   GET_USER_OFFERS_START,
   GET_USER_OFFERS_SUCCESS,
   GET_USER_OFFERS_FAILURE,
@@ -12,101 +12,129 @@ import{
   CHANGE_OFFER_STATUS_FAILURE,
   DELETE_OFFER_START,
   DELETE_OFFER_SUCCESS,
-  DELETE_OFFER_FAILURE
-} from '../actions/offersAction';
+  DELETE_OFFER_FAILURE,
+  UPDATE_OFFER_START,
+  UPDATE_OFFER_SUCCESS,
+  UPDATE_OFFER_FAILURE
+} from "../actions/offersAction";
 
 const initialState = {
+  isLoading: false,
   userOffers: [],
-  isFetchingOffers: false,
-  isCreatingOffer: false,
-  isUpdatingOfferStatus: false,
-  isDeletingOffer: false,
-}
+  updatingOffer: {},
+  isUpdatingOffer: false,
+};
 
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
-
     case GET_USER_OFFERS_START:
-      return{
+      return {
         ...state,
-        isFetchingOffers: true
-      }
+        isLoading: true
+      };
 
     case GET_USER_OFFERS_SUCCESS:
-      return{
+      return {
         ...state,
         userOffers: action.payload,
-        isFetchingOffers: false,
-      }
-      
+        isLoading: false
+      };
+
     case GET_USER_OFFERS_FAILURE:
-      return{
+      return {
         ...state,
-        isFetchingOffers: false,
-      }
+        isLoading: false
+      };
 
     case CREATE_OFFER_START:
-      return{
+      return {
         ...state,
-        isCreatingOffer: true,
-      }
+        isLoading: true
+      };
 
     case CREATE_OFFER_SUCCESS:
-      toast.success('Offer was created successfully');
-      return{
+      toast.success("Offer was created successfully");
+      return {
         ...state,
-        isCreatingOffer: false
-      }
+        isLoading: false
+      };
 
     case CREATE_OFFER_FAILURE:
       toast.error(action.payload.message);
-      return{
+      return {
         ...state,
-        isCreatingOffer: false
-      }
+        isLoading: false
+      };
 
     case CHANGE_OFFER_STATUS_START:
-      return{
+      return {
         ...state,
-        isUpdatingOfferStatus: true
-      }
+        isLoading: true
+      };
 
     case CHANGE_OFFER_STATUS_SUCCESS:
-      toast.success(`${action.payload.offer.name} was ${action.payload.offer.status ? 'disabled' : 'enabled'}`)
-      return{
+      toast.success(
+        `${action.payload.offer.name} was ${
+          action.payload.offer.status ? "disabled" : "enabled"
+        }`
+      );
+      return {
         ...state,
         userOffers: action.payload.res,
-        isUpdatingOfferStatus: false
-      }
+        isLoading: false
+      };
 
     case CHANGE_OFFER_STATUS_FAILURE:
-      toast.error(action.payload.message)
+      toast.error(action.payload.message);
+      return {
+        ...state,
+        isLoading: false
+      };
+
+    case UPDATE_OFFER_START:
       return{
         ...state,
-        isUpdatingOfferStatus: false,
+        updatingOffer: action.payload,
+        isUpdatingOffer: true,
+      }
+
+    case UPDATE_OFFER_SUCCESS:
+      toast.success("Offer was successfully updated");
+      return{
+        ...state,
+        updatingOffer: {},
+        isUpdatingOffer: false
+      }
+
+    case UPDATE_OFFER_FAILURE:
+      toast.error(action.payload.message);
+      return{
+        ...state,
+        updatingOffer: {},
+        isUpdatingOffer: false
       }
 
     case DELETE_OFFER_START:
-      return{
+      return {
         ...state,
-        isDeletingOffer: true
-      }
+        isLoading: true
+      };
 
     case DELETE_OFFER_SUCCESS:
-      toast.success(`Offer was deleted`)
-      return{
+      toast.success(`Offer was deleted`);
+      return {
         ...state,
-        isDeletingOffer: false
-      }
+        isLoading: false
+      };
 
     case DELETE_OFFER_FAILURE:
-      toast.error(action.payload.message)
-      return{
+      toast.error(action.payload.message);
+      return {
         ...state,
-        isDeletingOffer: false
-      }
+        isLoading: false
+      };
 
     default:
-      return state  
+      return state;
   }
 }

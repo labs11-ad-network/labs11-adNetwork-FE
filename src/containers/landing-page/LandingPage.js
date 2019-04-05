@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Header from "../../components/landing-page/heading/Header.js";
 import styled from "styled-components";
+
 import checks from "../../assets/checks.svg";
 import desktopGiff from "../../assets/desktopAds.gif";
+
+import Header from "../../components/landing-page/heading/Header.js";
 import CustomerStoriesCarousel from "../../components/landing-page/CustomerStoriesCarousel.js";
+import AppDownload from "../../components/landing-page/AppDownload.js";
+import ExpertTeam from "../../components/landing-page/ExpertTeam";
+
 const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
 
@@ -25,10 +30,17 @@ const LandingPageStyle = styled.div`
     font-style: normal;
     font-stretch: normal;
     line-height: normal;
-    font-size: 18px;
     letter-spacing: normal;
     color: #0e4de3;
     text-align: center;
+    font-size: 13px;
+    @media (min-width: 481px) {
+      font-size: 14px;
+      text-align: left;
+    }
+    @media (min-width: 940px) {
+      font-size: 18px;
+    }
   }
   .landing-info-title {
     margin-top: 24px;
@@ -41,6 +53,7 @@ const LandingPageStyle = styled.div`
     text-align: center;
     @media (min-width: 481px) {
       font-size: 1.8rem;
+      text-align: initial;
     }
     @media (min-width: 940px) {
       font-size: 2.2rem;
@@ -62,10 +75,11 @@ const LandingPageStyle = styled.div`
   @media (min-width: 940px) {
     .image-box-third {
       margin: 50px 0 0 0;
+      width: 550px;
     }
   }
   .landing-ptag {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 400;
     line-height: 1.56;
     color: #62748a;
@@ -121,18 +135,21 @@ const LandingPageStyle = styled.div`
       margin: 7% 0;
       max-width: 150px;
       padding: 19px 20.5px;
+      &:hover {
+        background: #007bff;
+        box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
+      }
     }
-
-    &:hover {
-      background: #007bff;
-      box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
-    }
+  }
+  .costumer-blue-subtitle {
+    text-align: center;
   }
   /* --------------- Landing Parent --------------- */
   .landing-parent {
     display: flex;
     justify-content: center;
     flex-direction: column;
+
     @media (min-width: 940px) {
       justify-content: space-between;
       flex-direction: row;
@@ -147,16 +164,22 @@ const LandingPageStyle = styled.div`
     }
   }
   .costumer-stories {
-    margin-bottom: 100vh;
+    margin: 50px 0;
   }
   .costumer-subtitle {
     padding: 20px 0 0 0;
-    margin-top:100px;
+  }
+  footer {
+    margin: 40vh 0;
   }
 `;
 class LandingPage extends Component {
-  login = () => { this.props.auth.login(); }
-  logout = () => { this.props.auth.logout(); }
+  login = () => {
+    this.props.auth.login();
+  };
+  logout = () => {
+    this.props.auth.logout();
+  };
   componentDidMount() {
     const {
       auth: { renewSession }
@@ -167,11 +190,12 @@ class LandingPage extends Component {
   }
 
   render() {
-
     return (
       <LandingPageStyle>
         <Header
-          login={this.login} logout={this.logout} history={this.props.history}
+          login={this.login}
+          logout={this.logout}
+          history={this.props.history}
         />
         <section className="landing-info container">
           {/* ------------ first item ------------ */}
@@ -276,26 +300,21 @@ class LandingPage extends Component {
             </div>
           </div>
         </section>
+        <section className="app-download">
+          <AppDownload />
+        </section>
+
+        <section className="expert-team">
+          <ExpertTeam />
+        </section>
+
         <section className="costumer-stories">
           <CustomerStoriesCarousel />
         </section>
 
-        <button
-          type="button"
-          onClick={() => {
-            localStorage.setItem("acct_type", "advertiser");
-          }}
-        >
-          Advertiser
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            localStorage.setItem("acct_type", "affiliate");
-          }}
-        >
-          Affiliate
-        </button>
+        <footer>
+          <p className="footer-ptag">Copyright © 2019 All Rights Reserved.</p>
+        </footer>
       </LandingPageStyle>
     );
   }

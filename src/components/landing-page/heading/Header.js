@@ -8,10 +8,22 @@ class Header extends Component {
   state = {
     isOpen: false,
     prevScrollpos: window.pageYOffset,
-    visible: true
+    visible: true,
+    clickedAff: false,
+    clickedAdver: false
   };
+
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevState.clickedAdver !== this.state.clickedAdver ||
+      prevState.clickedAff !== this.state.clickedAff
+    ) {
+      this.props.login();
+    }
   }
 
   componentWillUnmount() {
@@ -21,13 +33,18 @@ class Header extends Component {
   handleScroll = () => {
     const { prevScrollpos } = this.state;
     const currentScrollPos = window.pageYOffset;
-    console.log("prevScrollpos", prevScrollpos);
-
     const visible = prevScrollpos > currentScrollPos;
     this.setState({
       prevScrollpos: currentScrollPos,
       visible
     });
+  };
+
+  setAccType = (state, type) => () => {
+    localStorage.setItem("acct_type", type);
+    this.setState(prevState => ({
+      [state]: !prevState[state]
+    }));
   };
 
   toggleDrawer = () => {
@@ -54,12 +71,19 @@ class Header extends Component {
                 <a href="/#">Team</a>
                 <a href="/#">Contact</a>
                 <a href="/#">About</a>
-                <a href="/#" onClick={() => history.push("/dashboard")}>Dashboard</a>
+                <a href="/#" onClick={() => history.push("/dashboard")}>
+                  Dashboard
+                </a>
               </div>
 
               <div className="desktop-anchor">
-                <a href="/#" onClick={() => login()}> Login</a>
-                <a href="/#">Signup</a>
+                <a href="/#" onClick={() => login()}>
+                  {" "}
+                  Login
+                </a>
+                <a href="/#" onClick={() => login()}>
+                  Signup
+                </a>
               </div>
 
               <ElasticReverse
@@ -81,17 +105,28 @@ class Header extends Component {
                   <span>Creepy Ads</span> <br /> We are a non creepy ad network
                   that presents itself as actually very creepy.
                 </h1>
+
                 <div className="button">
-                  <a className="btn_scroll btn_blue" href="/#" alt="button">
-                    become advertiser
-                  </a>
-                  <a
-                    alt="button"
-                    className="btn_scroll btn_blue yellow-btn"
-                    href="/#"
+                  <button
+                    className="btn_scroll btn_blue"
+                    // onClick={() => {
+                    //   localStorage.setItem("acct_type", "advertiser");
+
+                    // }}
+                    onClick={this.setAccType("clickedAdver", "advertiser")}
                   >
-                    become publisher
-                  </a>
+                    become advertiser
+                  </button>
+
+                  <button
+                    className="btn_scroll btn_blue yellow-btn"
+                    // onClick={{
+                    //   localStorage.setItem("acct_type", "affiliate");
+                    // }}
+                    onClick={this.setAccType("clickedAff", "affiliate")}
+                  >
+                    become affiliate
+                  </button>
                 </div>
               </div>
               <div className="container_illustration">

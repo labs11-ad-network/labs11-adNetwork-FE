@@ -54,7 +54,7 @@ class UserSettingsForm extends Component {
     return (
       <Form onSubmit={this.changeUserData}>
         <div>
-          <label htmlFor="name" />
+          <label htmlFor="name">Full Name</label>
           <input
             type="text"
             placeholder="Name"
@@ -62,7 +62,7 @@ class UserSettingsForm extends Component {
             value={name}
             onChange={this.handleChange}
           />
-          <label htmlFor="nickname" />
+          <label htmlFor="nickname">Username</label>
           <input
             type="text"
             placeholder="Nickname"
@@ -70,7 +70,7 @@ class UserSettingsForm extends Component {
             value={nickname}
             onChange={this.handleChange}
           />
-          <label htmlFor="phone" />
+          <label htmlFor="phone">Phone Number</label>
           <input
             type="number"
             placeholder="Phone"
@@ -79,6 +79,7 @@ class UserSettingsForm extends Component {
             onChange={this.handleChange}
           />
           {/* --------------------- image upload --------------------- */}
+          <label htmlFor="user_img">Profile Picture</label>          
           <input
             accept="image/*"
             type="file"

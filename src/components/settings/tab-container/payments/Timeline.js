@@ -1,77 +1,58 @@
 import React from "react";
 import moment from "moment";
-import { Timeline, TimelineEvent } from "react-event-timeline";
+
+import { TimelineItem, TimelineContainerComponent } from '../../settingsStyles.js';
 
 const TimelineContainer = props => {
-  const { currentUser, payouts, payments } = props
+  const { currentUser, payouts, payments } = props;
+  
   return (
-    <Timeline>
-      {(currentUser.acct_type === "affiliate" && typeof payouts === "object") ?
-      <>
-        {payouts.map(p => {
-          return <TimelineEvent
-            title={`Paid`}
-            createdAt={Date(p.arrival_date)}
-            subtitle={`Amount: ${p.amount / 100}`}
-            icon={<i className="fas fa-money-bill-wave"/>}
-            style={{
-              fontSize: "1rem"
-            }}
-            key={p.id}
-            bubbleStyle={{
-              border: "2px solid #0A88DC",
-              fontSize: "1.2rem",
-              color: "#0A88DC",
-              padding: "5px",
-              marginLeft: "-5px"
-            }}
-          >
-            {`You recieved a payment for the amount of $${p.amount / 100} ${moment.unix(p.arrival_date).fromNow()}`}
-          </TimelineEvent>
-        })} 
-      </>: (currentUser.acct_type === "advertiser" && typeof payments === "object") ?
-      <>
-        {payments.map(p => {
-          return <TimelineEvent
-            title={`Paid`}
-            createdAt={Date(p.created)}
-            subtitle={`Amount: ${p.amount / 100} Last 4 Digits: ${p.payment_method_details.card.brand} ${p.payment_method_details.card.last4}`}
-            icon={<i className="fas fa-receipt"/>}
-            style={{
-              fontSize: "1rem",
-              color: !p.paid && "red"
-            }}
-            key={p.id}
-            bubbleStyle={{
-              border: "2px solid #0A88DC",
-              fontSize: "1.4rem",
-              color: "#0A88DC",
-              padding: "5px",
-              marginLeft: "-5px"
-            }}
-          >
-            {`${p.description} of $${p.amount / 100} ${moment.unix(p.created).fromNow()}. You can find a copy `}
-            <a href={p.receipt_url} target="_blank" rel="noopener noreferrer">here</a>
-          </TimelineEvent>
-        })}
-      </>: <TimelineEvent 
-          title="No Payment Data" 
-          icon={<i className="fas fa-times-circle"/>}
-          style={{
-            fontSize: "1rem",
-          }}
-          bubbleStyle={{
-            border: "2px solid #0A88DC",
-            fontSize: "1.2rem",
-            color: "#0A88DC",
-            padding: "5px",
-            marginLeft: "-5px"
-          }}
-        >
-          Make a payment to recieve an informational timeline for your account.
-        </TimelineEvent>
-    }
-    </Timeline>
+    <TimelineContainerComponent>
+      {currentUser.acct_type === "affiliate" && payouts.length ? (
+        <>
+          {payouts.map(p => {
+            return(
+              <TimelineItem>
+                <div>
+                  <h2>7:00pm</h2>{/* time */}
+                  <h1><div/>Recieved</h1>{/* type */}
+                </div>
+                <h3>{`Amount: ${p.amount / 100}`}</h3>{/* subtitle */}
+                <p>{`You recieved a payment for the amount of $${p.amount / 100} ${moment.unix(p.arrival_date).fromNow()}`}</p>{/* title */}
+              </TimelineItem>
+            )
+          })}
+        </>
+      ): currentUser.acct_type === "advertiser" && payments.length ? (
+        <>
+          {payments.map(p => {
+            return (
+              <TimelineItem key={p.id}>
+                <div>
+                  <h2>7:00pm</h2>
+                  <h1><div/>Paid</h1>
+                </div>
+                <h3>{`Amount: ${p.amount / 100} Last 4 Digits: ${p.payment_method_details.card.brand} ${p.payment_method_details.card.last4}`}</h3>
+                <p>
+                  {`${p.description} of $${p.amount / 100} ${moment.unix(p.created).fromNow()}. You can find a copy `}
+                  <a href={p.receipt_url} target="_blank" rel="noopener noreferrer" >
+                    here
+                  </a>
+                </p>
+              </TimelineItem>
+            );
+          })}
+        </>
+      ):(
+        <TimelineItem>
+          <div>
+            <h2>7:00pm</h2>
+            <h1><div/>No payment data</h1>
+          </div>
+          <p>Make a payment to recieve an informational timeline for your account.</p>
+        </TimelineItem>
+      )}
+    </TimelineContainerComponent>
   );
 };
 
