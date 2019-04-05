@@ -27,7 +27,7 @@ class ExpertTeam extends Component {
             autoplay={true}
             loop
             margin={30}
-            items={1}
+            // items={1}
             nav
           >
             <div className="item">
