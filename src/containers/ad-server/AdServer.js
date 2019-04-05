@@ -63,9 +63,10 @@ class AdServer extends Component {
   };
 
   render() {
+    console.log([navigator.userAgent])
     return (
       this.state.randomAd ?
-      <a href={`${this.state.randomAd.destination_url}/affiliate=${this.props.match.params.affiliateId}&agreement=${this.state.randomAd.agreement_id || 0}`} target="_blank" rel="noopener noreferrer">
+      <a href={`${this.state.randomAd.destination_url}/?affiliate=${this.props.match.params.affiliateId}&agreement=${this.state.randomAd.agreement_id || 0}`} target="_blank" rel="noopener noreferrer">
         <img src={this.state.randomAd.image} onClick={this.recordAction} alt=""/>
       </a> :
       <h1>loading...</h1>

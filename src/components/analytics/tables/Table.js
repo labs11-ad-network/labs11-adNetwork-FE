@@ -22,10 +22,10 @@ const Table = props => {
         }).map(data => (
           <TableRow>
             <td>
-              <h4>{data.browser}</h4>
+              <h4>{data.browser || "Unknown"} </h4>
               <p>{moment(data.created_at, "YYYY-MM-DO, hh:mm:ss Z").fromNow()}</p>
             </td>
-            <td>{`${data.region}, ${data.country}`}</td>
+            <td>{`${data.region || "Unknown"}, ${data.country || "Unknown"}`}</td>
           </TableRow>
         )):
         <h1>No clicks yet...</h1>
