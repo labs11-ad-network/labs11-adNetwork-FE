@@ -66,21 +66,23 @@ class ExpertTeam extends Component {
           </OwlCarousel>
 
           <section className="app-intro-video">
-            <div className="video-flex">
-              <div className="video-play">
-                <a href="/" alt="youtube-button">
-                  <i className="fa fa-play" />
-                </a>
-              </div>
+            <div className="container">
+              <div className="video-flex">
+                <div className="video-play">
+                  <a href="/" alt="youtube-button">
+                    <i className="fa fa-play" />
+                  </a>
+                </div>
 
-              <img src={video2} alt="video" className="wavy-blue" />
+                <img src={video2} alt="video" className="wavy-blue" />
 
-              <div className="video-content">
-                <h2 className="center-me">Watch This App Intro</h2>
-                <p className="center-me">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-                  officia deserunt! Placeat quos nihil dolores.
-                </p>
+                <div className="video-content">
+                  <h2 className="center-me">Watch This App Intro</h2>
+                  <p className="center-me">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Vel, officia deserunt! Placeat quos nihil dolores.
+                  </p>
+                </div>
               </div>
             </div>
           </section>

@@ -90,9 +90,9 @@ export const ExpertTeamStyle = styled.div`
 
   /* App intro Video */
   .app-intro-video {
-    margin: 136px 0 20px 0;
+    margin: 136px auto 20px auto;
     height: 100%;
-    margin: 10vh calc(-50vw + 50%);
+    margin: 10vh calc(-50vw + 51%);
     margin-top: 150px;
     @media (min-width: 481px) {
       margin-top: 130px;

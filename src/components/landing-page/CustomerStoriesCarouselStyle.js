@@ -2,8 +2,17 @@ import styled from "styled-components";
 
 export const CustomerStoriesCarouselStyle = styled.div`
   background: #eff4ff;
-  margin: -10vh calc(-50vh + 50%);
+  /* margin: -10vh calc(-50vh + 50%); */
   padding: 150px 0 200px 0;
+
+  .container {
+    max-width: 1100px;
+    width: calc(100vw - 10vw);
+    margin: 0 auto;
+    @media (min-width: 940px) {
+      width: calc(100vw - 5vw);
+    }
+  }
 
   /* Testimonial Heading */
   .testimonial-heading {
