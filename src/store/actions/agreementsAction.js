@@ -1,8 +1,8 @@
 import axios from "axios";
 
-import { getUserOffers } from "./offersAction.js"
+import { getUserOffers } from "./offersAction.js";
 
-const URL = "https://lad-network.herokuapp.com";
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 // ------------------------------------ Create Agreement ------------------------------------
 
@@ -13,12 +13,12 @@ export const CREATE_AGREEMENT_FAILURE = "CREATE_AGREEMENT_FAILURE";
 export const createAgreement = offer => dispatch => {
   dispatch({ type: CREATE_AGREEMENT_START });
   axios
-    .post(`${URL}/api/agreements`, {offer_id: offer.id})
+    .post(`${URL}/api/agreements`, { offer_id: offer.id })
     .then(res => {
       dispatch({ type: CREATE_AGREEMENT_SUCCESS, payload: res.data });
     })
     .then(() => {
-      dispatch(getUserOffers())
+      dispatch(getUserOffers());
     })
     .catch(err => {
       dispatch({ type: CREATE_AGREEMENT_FAILURE, payload: err.response.data });
@@ -62,7 +62,7 @@ export const updateAgreement = (id, agreement) => dispatch => {
     .catch(err => {
       dispatch({ type: CHANGE_AGREEMENT_FAILURE, payload: err.response.data });
     });
-}
+};
 
 // ------------------------------------ Delete Agreement ------------------------------------
 
@@ -71,16 +71,16 @@ export const DELETE_AGREEMENT_SUCCESS = "DELETE_AGREEMENT_SUCCESS";
 export const DELETE_AGREEMENT_FAILURE = "DELETE_AGREEMENT_FAILURE";
 
 export const deleteAgreement = id => dispatch => {
-  dispatch({ type: DELETE_AGREEMENT_START })
+  dispatch({ type: DELETE_AGREEMENT_START });
   axios
     .delete(`${URL}/api/agreements/${id}`)
     .then(res => {
-      dispatch({ type: DELETE_AGREEMENT_SUCCESS, payload: res.data })
+      dispatch({ type: DELETE_AGREEMENT_SUCCESS, payload: res.data });
     })
     .then(() => {
       dispatch(getUserOffers());
     })
     .catch(err => {
-      dispatch({ type: DELETE_AGREEMENT_FAILURE, payload: err.response.data })
-    })
-}
+      dispatch({ type: DELETE_AGREEMENT_FAILURE, payload: err.response.data });
+    });
+};

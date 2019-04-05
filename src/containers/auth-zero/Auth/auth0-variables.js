@@ -1,6 +1,5 @@
 export const AUTH_CONFIG = {
-  domain: "ladnetwork.auth0.com",
-  clientId: "XQh6ZLLicvNOdZUMBrCvmL2zyrgmE1fB",
-  callbackUrl: "https://ladnetwork.netlify.com/callback"
-  // callbackUrl: "http://localhost:3000/callback"
+  domain: process.env.REACT_APP_AUTH0_DOMAIN,
+  clientId: process.env.REACT_APP_AUTH0_CLIENT_ID,
+  callbackUrl: process.env.REACT_APP_AUTH0_CALLBACK_URL
 };
