@@ -27,7 +27,8 @@ const styles = theme => ({
     display: "flex"
   },
   menu: {
-    width: 200
+    width: 200,
+    zIndex: 999999999999999999
   },
 
   paper: {

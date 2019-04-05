@@ -234,14 +234,14 @@ class AppDownload extends Component {
                       "@media (min-width: 481px)": {
                         width: "100vw",
                         maxWidth: "1200px",
-                        height: "400px",
+                        height: "450px",
                         backgroundColor: "inherit",
                         zIndex: 2,
                         outline: 0
                       },
                       "@media (min-width: 940px)": {
                         width: "100vw",
-                        maxWidth: "1200px",
+                        maxWidth: "1000px",
                         height: "600px",
                         backgroundColor: "inherit",
                         zIndex: 2,
