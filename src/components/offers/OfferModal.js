@@ -14,7 +14,7 @@ const OfferModal = props => {
                 <OfferForm
                     offerData={props.offerData}
                     handleChange={props.handleChange}
-                    handleSubmit={props.createOffer}
+                    handleSubmit={props.isUpdatingOffer ? props.updateOffer : props.createOffer}
                     isUpdatingOffer={props.isUpdatingOffer}
                 />
             </OfferModalContent>
