@@ -4,13 +4,9 @@ import bgStars from "../../../assets/bg_stars.svg";
 
 export const HeroHome = styled.section`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
-  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500');
 
   font-family: "Roboto", sans-serif;
   position: relative;
-  /* background-image: url(${bgStars}),
-    linear-gradient(181deg, #0A88DC, #0A88DC 59%, #0A88DC); */
-
   background-image: url(${bgStars}),
     linear-gradient(181deg, #001a57, #001b59 59%, #00267f);
   background-repeat: repeat-x, no-repeat;
@@ -196,10 +192,10 @@ export const HeroHome = styled.section`
       cursor: pointer;
       &:hover {
         color: white;
-        font-weight:bold;
+        font-weight: bold;
       }
       @media (min-width: 940px) {
-        font-size:14px;
+        font-size: 14px;
         margin-right: 25px;
       }
     }
@@ -209,13 +205,13 @@ export const HeroHome = styled.section`
       text-transform: uppercase;
       font-size: 16px;
       cursor: pointer;
-      border:none;
-      background:none;
+      border: none;
+      background: none;
       &:hover {
         color: white;
       }
       @media (min-width: 940px) {
-        font-size:14px;
+        font-size: 14px;
         margin-right: 25px;
       }
     }
@@ -245,7 +241,6 @@ export const HeroHome = styled.section`
     }
 
     a {
-      font-family: 'Poppins', sans-serif;
       color: #212529;
       text-decoration: none;
       margin: 0 2%;
@@ -254,15 +249,14 @@ export const HeroHome = styled.section`
       cursor: pointer;
       &:hover {
         color: #005bea;
-        font-weight:bold;
       }
       @media (min-width: 940px) {
-        font-size:14px;
+        font-size: 14px;
         margin-right: 25px;
       }
     }
     .nav-button {
-      display:flex;
+      display: flex;
     }
     .nav-button button {
       text-decoration: none;
@@ -271,14 +265,14 @@ export const HeroHome = styled.section`
       text-transform: uppercase;
       font-size: 14px;
       cursor: pointer;
-      background:none;
+      background: none;
       border: none;
       &:hover {
         color: #005bea;
-        font-weight:bold;
+        font-weight: bold;
       }
       @media (min-width: 940px) {
-        font-size:14px;
+        font-size: 14px;
         margin-right: 25px;
       }
     }
@@ -339,7 +333,7 @@ export const HeroHome = styled.section`
   .hero-content .yellow-btn {
     background-color: #fdba5f;
     color: #001759;
-    z-index:12;
+    z-index: 12;
     &:hover {
       background-color: #ffc107;
     }

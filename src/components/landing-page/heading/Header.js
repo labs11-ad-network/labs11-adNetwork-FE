@@ -33,7 +33,7 @@ class Header extends Component {
   handleScroll = () => {
     const { prevScrollpos } = this.state;
     const currentScrollPos = window.pageYOffset;
-    const visible = prevScrollpos > currentScrollPos;
+    const visible = prevScrollpos < currentScrollPos;
     this.setState({
       prevScrollpos: currentScrollPos,
       visible
@@ -61,7 +61,7 @@ class Header extends Component {
           <div className="container">
             <nav
               className={classnames(`${colorChange}`, {
-                "navbar--hidden": !this.state.visible
+                "navbar--hidden": this.state.visible
               })}
             >
               <a href="/#logoHERE" className="logo">
