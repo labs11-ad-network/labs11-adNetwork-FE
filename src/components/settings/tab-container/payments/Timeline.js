@@ -47,7 +47,7 @@ const TimelineContainer = props => {
       ):(
         <TimelineItem>
           <div>
-            <h2>7:00pm</h2>
+            <h2>{moment().format('h:mma')}</h2>
             <h1><div/>No payment data</h1>
           </div>
           <p>Make a payment to recieve an informational timeline for your account.</p>
