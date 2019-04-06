@@ -137,13 +137,13 @@ export const Form = styled.form`
 export const BillingCardContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 45%;
+    width: 41.5%;
     background-color: #FFFFFF;
     padding: 15px;
-    margin: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35); 
     div{
+        width: 100%;
         h1{
             font-size: 0.9rem;
             font-weight: 100;

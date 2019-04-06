@@ -15,6 +15,7 @@ const PageContainer = styled.div`
   .billing-container{
     display: flex;
     justify-content: space-between
+    margin: 15px;
   }
 `
 
