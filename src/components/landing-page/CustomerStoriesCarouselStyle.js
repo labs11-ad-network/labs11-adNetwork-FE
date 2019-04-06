@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const CustomerStoriesCarouselStyle = styled.div`
   background: #eff4ff !important;
   padding: 150px 0 200px 0;
-  border: 2px solid red;
 
   .container {
     max-width: 1100px;

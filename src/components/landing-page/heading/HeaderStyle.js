@@ -69,7 +69,6 @@ export const HeroHome = styled.section`
     @media (min-width: 940px) {
       .illustration-container {
         overflow: hidden;
-        border: 1px solid red;
       }
     }
     .illustration {
@@ -269,9 +268,10 @@ export const HeroHome = styled.section`
       border: none;
       &:hover {
         color: #005bea;
-        font-weight: bold;
       }
+      display: none;
       @media (min-width: 940px) {
+        display: block;
         font-size: 14px;
         margin-right: 25px;
       }

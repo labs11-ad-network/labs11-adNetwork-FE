@@ -31,7 +31,6 @@ class Contact extends Component {
                     required
                     data-error="Please enter your first name"
                   />
-                  <div className="help-block with-errors" />
                 </div>
                 <div className="form-group">
                   <input
@@ -51,7 +50,6 @@ class Contact extends Component {
                   name="email"
                   type="email"
                   required
-                  data-error="Please enter your valid email address"
                 />
               </div>
               <div className="form-group">
@@ -66,7 +64,7 @@ class Contact extends Component {
               </div>
               <div className="buttons_container contact-btn">
                 <a href="/#" className="btn_blue">
-                  Learn More
+                  Send Message
                 </a>
               </div>
             </form>
