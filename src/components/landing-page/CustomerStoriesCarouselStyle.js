@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const CustomerStoriesCarouselStyle = styled.div`
-  background: #eff4ff;
-  /* margin: -10vh calc(-50vh + 50%); */
+  background: #eff4ff !important;
   padding: 150px 0 200px 0;
+  border: 2px solid red;
 
   .container {
     max-width: 1100px;
@@ -58,6 +58,7 @@ export const CustomerStoriesCarouselStyle = styled.div`
     p {
       padding: 0;
       margin: 2px 0;
+      font-size: 17px !important;
     }
   }
   .testimonial-card p {

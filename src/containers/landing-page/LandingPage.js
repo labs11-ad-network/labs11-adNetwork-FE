@@ -8,6 +8,7 @@ import desktopGiff from "../../assets/desktopAds.gif";
 import Header from "../../components/landing-page/heading/Header.js";
 import AppDownload from "../../components/landing-page/AppDownload.js";
 import ExpertTeam from "../../components/landing-page/ExpertTeam";
+import Contact from "../../components/landing-page/Contact";
 
 const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
@@ -298,6 +299,10 @@ class LandingPage extends Component {
 
         <section className="expert-team">
           <ExpertTeam />
+        </section>
+
+        <section className="contact">
+          <Contact />
         </section>
 
         <footer>
