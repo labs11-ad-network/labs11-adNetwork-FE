@@ -17,19 +17,21 @@ const Table = props => {
         </div>
       </TableHeader>
       <table>
-        {data.length ? data.sort((first, second) => {
-          return Date.parse(second.created_at) - Date.parse(first.created_at)
-        }).map(data => (
-          <TableRow>
-            <td>
-              <h4>{data.browser} </h4>
-              <p>{moment(data.created_at, "YYYY-MM-DO, hh:mm:ss Z").fromNow()}</p>
-            </td>
-            <td>{`${data.region || "Unknown"}, ${data.country || "Unknown"}`}</td>
-          </TableRow>
-        )):
-        <h1>No clicks yet...</h1>
-      }
+        <tbody>
+          {data.length ? data.sort((first, second) => {
+            return Date.parse(second.created_at) - Date.parse(first.created_at)
+          }).map((data, i) => (
+            <TableRow key={i}>
+              <td>
+                <h4>{data.browser} </h4>
+                <p>{moment(data.created_at, "YYYY-MM-DO, hh:mm:ss Z").fromNow()}</p>
+              </td>
+              <td>{`${data.region || "Unknown"}, ${data.country || "Unknown"}`}</td>
+            </TableRow>
+          )):
+            <h1>No clicks yet...</h1>
+          }
+        </tbody>
       </table>
     </TableContainer>
   );

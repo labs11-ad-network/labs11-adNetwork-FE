@@ -20,16 +20,16 @@ const ExpertTeamCard = ({ teamBg }) => {
 
         <div className="team-socials">
           <span className="social-item">
-            <i class="fab fa-github" />
+            <i className="fab fa-github" />
           </span>
           <span className="social-item">
-            <i class="fab fa-linkedin-in" />
+            <i className="fab fa-linkedin-in" />
           </span>
           <span className="social-item">
-            <i class="fab fa-github" />
+            <i className="fab fa-github" />
           </span>
           <span className="social-item">
-            <i class="fab fa-linkedin-in" />
+            <i className="fab fa-linkedin-in" />
           </span>
         </div>
       </div>
