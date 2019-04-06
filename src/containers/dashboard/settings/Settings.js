@@ -12,6 +12,10 @@ import TabContainer from '../../../components/settings/tab-container/TabContaine
 const PageContainer = styled.div`
   display: flex;
   margin: 10px;
+  .billing-container{
+    display: flex;
+    justify-content: space-between
+  }
 `
 
 class Settings extends Component {
@@ -26,7 +30,10 @@ class Settings extends Component {
       <PageContainer>
         <div>
           <ProfileCard currentUser={this.props.currentUser}/>
-          <BillingCard currentUser={this.props.currentUser}/>
+          <div className="billing-container">
+            <BillingCard currentUser={this.props.currentUser}/>
+            <BillingCard currentUser={this.props.currentUser}/>
+          </div>
           <SnippetCard currentUser={this.props.currentUser}/>
         </div>
         <TabContainer 
