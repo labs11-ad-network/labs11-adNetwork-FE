@@ -27,17 +27,8 @@ export const ContactStyle = styled.div`
     display: block;
     width: 100%;
   }
-  .form-control #email {
-    flex: 1;
-  }
-  .contact-btn {
-    display: block;
-  }
   textarea.form-control {
     height: auto;
-  }
-  .form-group {
-    flex: auto;
   }
   textarea {
     overflow: auto;
@@ -54,5 +45,8 @@ export const ContactStyle = styled.div`
     text-shadow: none;
     letter-spacing: normal;
     text-rendering: auto;
+  }
+  .contact-btn {
+    display: block;
   }
 `;

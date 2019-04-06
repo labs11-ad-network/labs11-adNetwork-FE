@@ -75,15 +75,9 @@ class Header extends Component {
                   Dashboard
                 </a>
               </div>
-
-              <div className="desktop-anchor">
-                <a href="/#" onClick={() => login()}>
-                  {" "}
-                  Login
-                </a>
-                <a href="/#" onClick={() => login()}>
-                  Signup
-                </a>
+              <div className="desktop-anchor nav-button">
+                <button onClick={() => login()}>Login</button>
+                <button onClick={() => login()}>Signup</button>
               </div>
 
               <ElasticReverse
@@ -109,10 +103,6 @@ class Header extends Component {
                 <div className="button">
                   <button
                     className="btn_scroll btn_blue"
-                    // onClick={() => {
-                    //   localStorage.setItem("acct_type", "advertiser");
-
-                    // }}
                     onClick={this.setAccType("clickedAdver", "advertiser")}
                   >
                     become advertiser
@@ -120,9 +110,6 @@ class Header extends Component {
 
                   <button
                     className="btn_scroll btn_blue yellow-btn"
-                    // onClick={{
-                    //   localStorage.setItem("acct_type", "affiliate");
-                    // }}
                     onClick={this.setAccType("clickedAff", "affiliate")}
                   >
                     become affiliate

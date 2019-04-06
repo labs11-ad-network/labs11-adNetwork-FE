@@ -4,6 +4,8 @@ import bgStars from "../../../assets/bg_stars.svg";
 
 export const HeroHome = styled.section`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+  @import url('https://fonts.googleapis.com/css?family=Poppins:400,500');
+
   font-family: "Roboto", sans-serif;
   position: relative;
   /* background-image: url(${bgStars}),
@@ -192,6 +194,26 @@ export const HeroHome = styled.section`
       text-transform: uppercase;
       font-size: 16px;
       cursor: pointer;
+      &:hover {
+        color: white;
+        font-weight:bold;
+      }
+      @media (min-width: 940px) {
+        font-size:14px;
+        margin-right: 25px;
+      }
+    }
+    .nav-button button {
+      text-decoration: none;
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 16px;
+      cursor: pointer;
+      border:none;
+      background:none;
+      &:hover {
+        color: white;
+      }
       @media (min-width: 940px) {
         font-size:14px;
         margin-right: 25px;
@@ -211,7 +233,7 @@ export const HeroHome = styled.section`
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    background-color: #fff;
+    background: white;
     @media (min-width: 940px) {
       padding: 33px 0;
       .desktop-anchor {
@@ -223,15 +245,40 @@ export const HeroHome = styled.section`
     }
 
     a {
+      font-family: 'Poppins', sans-serif;
+      color: #212529;
+      text-decoration: none;
+      margin: 0 2%;
+      text-transform: uppercase;
+      font-size: 14px;
+      cursor: pointer;
+      &:hover {
+        color: #005bea;
+        font-weight:bold;
+      }
+      @media (min-width: 940px) {
+        font-size:14px;
+        margin-right: 25px;
+      }
+    }
+    .nav-button {
+      display:flex;
+    }
+    .nav-button button {
       text-decoration: none;
       margin: 0 2%;
       color: black;
       text-transform: uppercase;
       font-size: 14px;
       cursor: pointer;
+      background:none;
+      border: none;
+      &:hover {
+        color: #005bea;
+        font-weight:bold;
+      }
       @media (min-width: 940px) {
         font-size:14px;
-        font-weight:500;
         margin-right: 25px;
       }
     }
