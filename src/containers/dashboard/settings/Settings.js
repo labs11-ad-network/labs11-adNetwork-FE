@@ -33,7 +33,7 @@ class Settings extends Component {
           <ProfileCard currentUser={this.props.currentUser}/>
           <div className="billing-container">
             <BillingCard currentUser={this.props.currentUser}/>
-            <BillingCard currentUser={this.props.currentUser}/>
+            <BillingCard currentUser={this.props.currentUser} title="Total Made"/>
           </div>
           <SnippetCard currentUser={this.props.currentUser}/>
         </div>
