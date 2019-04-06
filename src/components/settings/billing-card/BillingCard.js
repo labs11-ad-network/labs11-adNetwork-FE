@@ -6,10 +6,19 @@ import { chargeCustomer, payoutCustomer } from '../../../store/actions/stripeAct
 import { BillingCardContainer } from "../settingsStyles.js";
 
 const BillingCard = props => {
-  const { amount, acct_type, stripe_cust_id } = props.currentUser
+  const { amount, acct_type, stripe_cust_id } = props.currentUser;
+  const { title ,currentUser } = props;
   return (
     <BillingCardContainer>
-      {acct_type === "affiliate" ?
+      {currentUser && title ? 
+      <div>
+        <h1>{title}</h1>
+        <h2>{`$ ${"0" /* Change this value to total amount made */} USD`}</h2>
+        <button onClick={() => {
+          console.log('this button should send you to the stripe page or payments page')
+        }}>View Payments</button>
+      </div> :
+      acct_type === "affiliate" ?
       <div>
         <h1>Current Balance</h1>
         <h2>{`$ ${amount} USD`}</h2>

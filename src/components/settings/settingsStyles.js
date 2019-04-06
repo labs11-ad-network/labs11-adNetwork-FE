@@ -137,12 +137,13 @@ export const Form = styled.form`
 export const BillingCardContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    width: 41.5%;
     background-color: #FFFFFF;
     padding: 15px;
-    margin: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35); 
     div{
+        width: 100%;
         h1{
             font-size: 0.9rem;
             font-weight: 100;
@@ -204,7 +205,7 @@ export const Snippet = styled.div`
 `;
 
 export const TimelineItem = styled.div`
-  padding: 0 0 20px 20px;  
+  padding: 0 0 25px 20px;  
   margin: 0 0 -5px 95px;
   font-family: 'Roboto', sans-serif;
   border-left: 4px solid #0A88DC;
@@ -212,7 +213,7 @@ export const TimelineItem = styled.div`
     display: flex;
     align-items: center;
     margin-left: -119px;
-    h2{ //time stamp
+    h2{
       color: #FFFFFF;
       background-color: #0A88DC;
       text-align: center;
@@ -226,6 +227,7 @@ export const TimelineItem = styled.div`
       display: flex;
       font-size: 1.3rem;
       font-weight: 300;
+      margin-bottom: 5px;
       div{
         width: 25px;
         height: 25px;
@@ -239,7 +241,7 @@ export const TimelineItem = styled.div`
   h3{
     font-size: 0.9rem;
     font-weight: 500;
-    margin: unset;
+    margin-bottom: 10px;
   }
   p{
     font-size: 1rem;
