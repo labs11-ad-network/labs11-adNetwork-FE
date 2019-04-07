@@ -64,9 +64,15 @@ class DashboardTop extends React.Component {
   };
 
   handleNotificationsClose = e => {
+    const { userNotifications, updateUserNotification } = this.props;
     e.stopPropagation();
 
     this.setState({ notificationsMenuOpen: false });
+
+    userNotifications &&
+      userNotifications.map(n =>
+        updateUserNotification({ ...n, unread: false })
+      );
   };
 
   render() {
@@ -225,7 +231,7 @@ class DashboardTop extends React.Component {
                               <MenuList>
                                 {this.props.userNotifications &&
                                   this.props.userNotifications.map(n => (
-                                    <MenuItem>{n.msg_body}</MenuItem>
+                                    <MenuItem key={n.id}>{n.msg_body}</MenuItem>
                                   ))}
                               </MenuList>
                             </ClickAwayListener>

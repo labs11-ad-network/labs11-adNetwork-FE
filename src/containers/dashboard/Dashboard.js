@@ -7,7 +7,7 @@ import { getOfferAnalytics } from "../../store/actions/analyticsAction.js";
 import { getUserOffers } from "../../store/actions/offersAction.js";
 import { getUserData } from "../../store/actions/authAction.js";
 import { getAgreements } from "../../store/actions/agreementsAction.js";
-import { getUserNotifications } from "../../store/actions/notificationsAction.js";
+import { getUserNotifications, updateUserNotification } from "../../store/actions/notificationsAction.js";
 import privateRoute from "../auth-HOC";
 import DashboardLeft from "../../components/dashboard/dashboard-left/DashboardLeft.js";
 import TopNav from "../../components/dashboard/dashboard-top/DashboardTop.js";
@@ -79,6 +79,7 @@ class Dashboard extends Component {
             handleOfferSelect={this.handleOfferSelect}
             agreements={this.props.agreements}
             userNotifications={this.props.userNotifications}
+            updateUserNotification={this.props.updateUserNotification}
             isLoadingAnalytics={this.props.isLoading_analytics}
             isLoadingAds={this.props.isLoading_ads}
             isLoadingAgreements={this.props.isLoading_agreements}
@@ -139,6 +140,7 @@ export default connect(
     getUserOffers,
     getUserData,
     getAgreements,
-    getUserNotifications
+    getUserNotifications,
+    updateUserNotification
   }
 )(privateRoute(Dashboard));

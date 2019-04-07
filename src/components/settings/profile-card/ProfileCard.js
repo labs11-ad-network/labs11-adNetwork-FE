@@ -12,7 +12,7 @@ const ProfileCard = props => {
   const { currentUser } = props;
   const { offers, ads, agreements } = props.currentUser;
   if (!currentUser) {
-    return <h1>No User Found</h1>;
+    return <></>;
   }
   return (
     <ProfileCardContainer>
