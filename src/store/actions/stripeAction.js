@@ -114,20 +114,26 @@ export const CONNECT_CUSTOMER_FAILURE = "CONNECT_CUSTOMER_FAILURE";
 export const connectCustomer = (code, history) => dispatch => {
   dispatch({ type: CONNECT_CUSTOMER_START });
 
-  const body = new FormData();
+  let body = {
+    client_secret: process.env.REACT_APP_STRIPE_SECRET,
+    code,
+    grant_type: "authorization_code"
+  }
 
-  body.append('client_secret', process.env.REACT_APP_STRIPE_SECRET);
-  body.append('code', code);
-  body.append('grant_type', "authorization_code")
+  body = Object.keys(body).map(function(key) {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(body[key])
+  }).join('&')
 
-  console.log(body)
-
-  axios
-    .post("https://connect.stripe.com/oauth/token", `client_secret=sk_test_NPSbgtTaYenHZNGj02N7YCeM&code=${code}&grant_type=authorization_code`, {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        crossdomain: true,
-        withCredentials: true
+  axios({
+      method: 'post',
+      url: 'https://connect.stripe.com/oauth/token',
+      withCredentials: true,
+      crossdomain: true,
+      data: body,    
+      headers: { 
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Cache-Control": "no-cache",
+        "Postman-Token": "42e6c291-9a09-c29f-f28f-11872e2490a5"
       }
     })
     .then(res => {
