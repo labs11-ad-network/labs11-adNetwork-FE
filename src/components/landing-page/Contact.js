@@ -8,7 +8,7 @@ class Contact extends Component {
     return (
       <ContactStyle>
         <div className="container">
-          <div className="contact-title">
+          <div className="contact-title" id="contact">
             <h2>Don’t Hasitate to Contact Us</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque

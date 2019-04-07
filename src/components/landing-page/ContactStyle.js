@@ -64,7 +64,7 @@ export const ContactStyle = styled.div`
       }
       @media (min-width: 940px) {
         width: 392px;
-        height: 401px;
+        height: 329px;
         margin-right: 132px;
       }
     }

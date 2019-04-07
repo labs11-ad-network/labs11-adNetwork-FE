@@ -349,4 +349,30 @@ export const HeroHome = styled.section`
     background-size: 1440px auto;
     margin-bottom: -20px;
   }
+
+  /* <----------- Scroll to top Btn ---------------> */
+
+  #scroll-to-top {
+    background: #0d4de2;
+    background-image: linear-gradient(-180deg, #1e9df7 0%, #1392ed 100%);
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 50%;
+    line-height: 45px;
+    color: #fff;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 999;
+    cursor: pointer;
+    &:hover {
+      opacity: 0.8;
+      color: #fff;
+    }
+  }
+  .scroll-to-top-hidden {
+    display: none;
+  }
 `;

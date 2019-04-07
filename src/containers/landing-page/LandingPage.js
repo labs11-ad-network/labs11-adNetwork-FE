@@ -172,6 +172,7 @@ class LandingPage extends Component {
   logout = () => {
     this.props.auth.logout();
   };
+
   componentDidMount() {
     const {
       auth: { renewSession }

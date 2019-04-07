@@ -201,7 +201,9 @@ class AppDownload extends Component {
           </section>
           <section className="screenshot-section padding bg-gray">
             <div className="swiper-container swiper-container-horizontal container">
-              <h2 className="main-title">Screenshots</h2>
+              <h2 className="main-title" id="screenshots">
+                Screenshots
+              </h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />{" "}
                 Dicta, reprehenderit?

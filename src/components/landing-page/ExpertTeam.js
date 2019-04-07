@@ -28,7 +28,7 @@ class ExpertTeam extends Component {
     return (
       <ExpertTeamStyle>
         <div className="container">
-          <div className="team-content">
+          <div className="team-content" id="team">
             <h2>Expert Member</h2>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi

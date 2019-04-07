@@ -22,7 +22,9 @@ class CustomerStoriesCarousel extends Component {
     return (
       <CustomerStoriesCarouselStyle>
         <div className="container">
-          <h2 className="testimonial-heading">Costumer Stories</h2>
+          <h2 className="testimonial-heading" id="reviews">
+            Costumer Stories
+          </h2>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam
             quae autem beatae delectus, tempore voluptatum?
