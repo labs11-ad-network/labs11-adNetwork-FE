@@ -115,11 +115,11 @@ export const connectCustomer = (code, history) => dispatch => {
   dispatch({ type: CONNECT_CUSTOMER_START });
   axios
     .post("https://connect.stripe.com/oauth/token", 
-      {
+      JSON.stringify({
         client_secret: process.env.REACT_APP_STRIPE_SECRET,
         code,
         grant_type: "authorization_code"
-      },
+      }),
       {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
