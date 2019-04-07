@@ -120,8 +120,15 @@ export const connectCustomer = (code, history) => dispatch => {
   body.append('code', code);
   body.append('grant_type', "authorization_code")
 
+  console.log(body)
+
   axios
-    .post("https://connect.stripe.com/oauth/token", body )
+    .post("https://connect.stripe.com/oauth/token", `client_secret=sk_test_NPSbgtTaYenHZNGj02N7YCeM&code=${code}&grant_type=authorization_code`, {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        withCredentials: true
+      }
+    })
     .then(res => {
       changeUserData({ stripe_payout_id: res.data.stripe_user_id })
       dispatch({ type: CONNECT_CUSTOMER_SUCCESS })
