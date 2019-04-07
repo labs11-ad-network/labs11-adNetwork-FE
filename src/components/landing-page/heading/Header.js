@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { HeroHome } from "./HeaderStyle";
 import { ElasticReverse } from "react-burgers";
 import { TwoPersonSvg, BirdSvg, SkyCloudSvg } from "./HeaderSvg";
+
 import classnames from "classnames";
 
 import NavList from "../NavList";
@@ -122,9 +123,10 @@ class Header extends Component {
                 <p className="hero-sub-title">
                   #Lad Network #faster websites #improve SEO
                 </p>
-                <h1>
-                  <span>Creepy Ads</span> <br /> We are a non creepy ad network
-                  that presents itself as actually very creepy.
+                <h1 className="wow bounceInLeft" data-wow-delay=".2s">
+                  <span>Creepy Ads</span>
+                  <br /> We are a non creepy ad network that presents itself as
+                  actually very creepy.
                 </h1>
 
                 <div className="button">

@@ -200,7 +200,10 @@ class LandingPage extends Component {
               <h5 className="blue-subtitle first-blue-subtitle">
                 Customized and friendly Interstitial Ads
               </h5>
-              <h3 className="landing-info-title">
+              <h3
+                className="landing-info-title wow lightSpeedIn"
+                data-wow-delay=".2s"
+              >
                 Monetize with Interstitial Ads
               </h3>
               <p className="landing-ptag">
@@ -222,8 +225,8 @@ class LandingPage extends Component {
             </div>
 
             <div
-              className="landing-item-right image-box  wow slideInLeft"
-              data-wow-delay=".8s"
+              className="landing-item-right image-box  wow slideInRight"
+              data-wow-delay=".3s"
             >
               <img
                 src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2FEcommerce_buyer.svg"
@@ -237,7 +240,10 @@ class LandingPage extends Component {
               <h5 className="blue-subtitle first-blue-subtitle">
                 Monetize with unique and attractive Banner Ads
               </h5>
-              <h3 className="landing-info-title">
+              <h3
+                className="landing-info-title wow lightSpeedIn"
+                data-wow-delay=".2s"
+              >
                 Display Attractive Banner Ads
               </h3>
               <p className="landing-ptag">
@@ -258,7 +264,10 @@ class LandingPage extends Component {
               </div>
             </div>
 
-            <div className="landing-item-right image-box">
+            <div
+              className="landing-item-right image-box wow slideInLeft"
+              data-wow-delay=".4s"
+            >
               <img
                 src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2Fillustration-marketing.svg"
                 alt="graphic and person with balloons"
@@ -271,7 +280,10 @@ class LandingPage extends Component {
               <h5 className="blue-subtitle first-blue-subtitle">
                 Earn even more with mobile and App traffic
               </h5>
-              <h3 className="landing-info-title">
+              <h3
+                className="landing-info-title wow lightSpeedIn"
+                data-wow-delay=".2s"
+              >
                 Mobile and In App Ads Amet natus id ab vero, veniam fuga labore.
               </h3>
               <p className="landing-ptag">
@@ -294,7 +306,10 @@ class LandingPage extends Component {
               </div>
             </div>
 
-            <div className="landing-item-right image-box image-box-third">
+            <div
+              className="landing-item-right image-box image-box-third wow slideInRight"
+              data-wow-delay=".5s"
+            >
               <img src={desktopGiff} alt="giff desktop" />
             </div>
           </div>
