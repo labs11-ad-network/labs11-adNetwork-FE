@@ -126,6 +126,7 @@ export const connectCustomer = (code, history) => dispatch => {
     .post("https://connect.stripe.com/oauth/token", `client_secret=sk_test_NPSbgtTaYenHZNGj02N7YCeM&code=${code}&grant_type=authorization_code`, {
       headers: {
         'Access-Control-Allow-Origin': '*',
+        crossdomain: true,
         withCredentials: true
       }
     })
