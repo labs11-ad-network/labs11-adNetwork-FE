@@ -1,8 +1,6 @@
 import React from "react";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import Button from "@material-ui/core/Button";
 
-import NavList from "./NavList";
 import styled from "styled-components";
 
 const MobileNav = styled.nav`

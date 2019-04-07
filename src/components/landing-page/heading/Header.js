@@ -79,7 +79,6 @@ class Header extends Component {
 
   render() {
     const { left, visible } = this.state;
-
     const { login, history } = this.props;
     let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
     let goUpBtn =
@@ -127,9 +126,8 @@ class Header extends Component {
                   #Lad Network #faster websites #improve SEO
                 </p>
                 <h1>
-                  <span className="wow fadeIn">Creepy Ads</span> <br /> We are a
-                  non creepy ad network that presents itself as actually very
-                  creepy.
+                  <span>Creepy Ads</span> <br /> We are a non creepy ad network
+                  that presents itself as actually very creepy.
                 </h1>
 
                 <div className="button">
