@@ -111,19 +111,19 @@ export const CONNECT_CUSTOMER_START = "CONNECT_CUSTOMER_START";
 export const CONNECT_CUSTOMER_SUCCESS = "CONNECT_CUSTOMER_SUCCESS";
 export const CONNECT_CUSTOMER_FAILURE = "CONNECT_CUSTOMER_FAILURE";
 
-export const connectCustomer = code => dispatch => {
+export const connectCustomer = (code, history) => dispatch => {
   dispatch({ type: CONNECT_CUSTOMER_START });
   axios
     .post("https://connect.stripe.com/oauth/token", 
       {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-      },
-      {
         client_secret: process.env.REACT_APP_STRIPE_SECRET,
         code,
         grant_type: "authorization_code"
+      },
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
       }
     )
     .then(res => {

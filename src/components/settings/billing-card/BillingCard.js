@@ -29,7 +29,7 @@ const BillingCard = props => {
           Withdraw
         </button> :
         <a 
-          href={`https://connect.stripe.com/express/oauth/authorize?redirect_uri=https://kieranlabs.netlify.com/stripe-callback&client_id=ca_Eq3JPTMy0ZrHBcEaY2cQLuaIeCGQNUR9&stripe_user[email]=${email}`}
+          href={`https://connect.stripe.com/express/oauth/authorize?client_id=ca_Eq3JPTMy0ZrHBcEaY2cQLuaIeCGQNUR9&stripe_user[email]=${email}`}
           target="_blank"
           rel="noopener noreferrer"
         >
