@@ -113,19 +113,15 @@ export const CONNECT_CUSTOMER_FAILURE = "CONNECT_CUSTOMER_FAILURE";
 
 export const connectCustomer = (code, history) => dispatch => {
   dispatch({ type: CONNECT_CUSTOMER_START });
+
+  const body = new FormData();
+
+  body.append('client_secret', process.env.REACT_APP_STRIPE_SECRET);
+  body.append('code', code);
+  body.append('grant_type', "authorization_code")
+
   axios
-    .post("https://connect.stripe.com/oauth/token", 
-      JSON.stringify({
-        client_secret: process.env.REACT_APP_STRIPE_SECRET,
-        code,
-        grant_type: "authorization_code"
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-      }
-    )
+    .post("https://connect.stripe.com/oauth/token", body )
     .then(res => {
       changeUserData({ stripe_payout_id: res.data.stripe_user_id })
       dispatch({ type: CONNECT_CUSTOMER_SUCCESS })
