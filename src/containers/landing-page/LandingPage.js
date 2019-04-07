@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import WOW from "wowjs";
 
 import checks from "../../assets/checks.svg";
 import desktopGiff from "../../assets/desktopAds.gif";
@@ -9,7 +10,6 @@ import Header from "../../components/landing-page/heading/Header.js";
 import AppDownload from "../../components/landing-page/AppDownload.js";
 import ExpertTeam from "../../components/landing-page/ExpertTeam";
 import Contact from "../../components/landing-page/Contact";
-import WOW from "wowjs";
 
 const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
@@ -175,8 +175,8 @@ class LandingPage extends Component {
   };
 
   componentDidMount() {
-    const wow = new WOW.WOW();
-    wow.init();
+    new WOW.WOW().init();
+
     const {
       auth: { renewSession }
     } = this.props;
@@ -221,12 +221,13 @@ class LandingPage extends Component {
               </div>
             </div>
 
-            <div className="landing-item-right image-box ">
+            <div
+              className="landing-item-right image-box  wow slideInLeft"
+              data-wow-delay=".8s"
+            >
               <img
                 src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2FEcommerce_buyer.svg"
                 alt="girl pressing button"
-                className="wow slideInLeft"
-                data-wow-delay=".8s"
               />
             </div>
           </div>
@@ -261,8 +262,6 @@ class LandingPage extends Component {
               <img
                 src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2Fillustration-marketing.svg"
                 alt="graphic and person with balloons"
-                className="wow slideInLeft"
-                data-wow-delay=".8s"
               />
             </div>
           </div>

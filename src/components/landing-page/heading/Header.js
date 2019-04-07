@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { HeroHome } from "./HeaderStyle";
 import { ElasticReverse } from "react-burgers";
 import { TwoPersonSvg, BirdSvg, SkyCloudSvg } from "./HeaderSvg";
-import WOW from "wowjs";
 import classnames from "classnames";
 
 import NavList from "../NavList";
@@ -23,8 +22,6 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    const wow = new WOW.WOW();
-    wow.init();
     window.addEventListener("scroll", this.handleScroll);
     this.setState({ visible: false });
   }
