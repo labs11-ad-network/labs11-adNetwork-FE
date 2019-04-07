@@ -15,7 +15,10 @@ import {
   GET_PAYOUT_FAILURE,
   GET_PAYMENTS_START,
   GET_PAYMENTS_SUCCESS,
-  GET_PAYMENTS_FAILURE
+  GET_PAYMENTS_FAILURE,
+  CONNECT_CUSTOMER_START,
+  CONNECT_CUSTOMER_SUCCESS,
+  CONNECT_CUSTOMER_FAILURE
 } from "../actions/stripeAction.js";
 
 const initialState = {
@@ -123,6 +126,25 @@ const stripeReducer = (state = initialState, action) => {
         ...state,
         isLoading: false
       };
+
+    case CONNECT_CUSTOMER_START:
+      return{
+        ...state,
+        isLoading: true
+      }
+
+    case CONNECT_CUSTOMER_SUCCESS:
+      return{
+        ...state,
+        isLoading: false
+      }
+
+    case CONNECT_CUSTOMER_FAILURE:
+      toast.error(action.payload)
+      return{
+        ...state, 
+        isLoading: false,
+      }
 
     default:
       return state;

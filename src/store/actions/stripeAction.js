@@ -1,5 +1,6 @@
 import axios from "axios";
-import { getUserData } from "./authAction.js";
+
+import { getUserData, changeUserData } from "./authAction.js";
 
 const URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -103,3 +104,33 @@ export const payoutCustomer = () => dispatch => {
       dispatch({ type: PAYOUT_CUSTOMER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
     });
 };
+
+// ------------------------------ Connect Stripe Customer ------------------------------
+
+export const CONNECT_CUSTOMER_START = "CONNECT_CUSTOMER_START";
+export const CONNECT_CUSTOMER_SUCCESS = "CONNECT_CUSTOMER_SUCCESS";
+export const CONNECT_CUSTOMER_FAILURE = "CONNECT_CUSTOMER_FAILURE";
+
+export const connectCustomer = code => dispatch => {
+  dispatch({ type: CONNECT_CUSTOMER_START });
+  axios
+    .post("https://connect.stripe.com/oauth/token", 
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+      },
+      {
+        client_secret: process.env.REACT_APP_STRIPE_SECRET,
+        code,
+        grant_type: "authorization_code"
+      }
+    )
+    .then(res => {
+      changeUserData({ stripe_payout_id: res.data.stripe_user_id })
+      dispatch({ type: CONNECT_CUSTOMER_SUCCESS })
+    })
+    .catch(err => {
+      dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: err })
+    })
+}
