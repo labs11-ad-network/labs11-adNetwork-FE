@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import LinearLoader from "../../loader/LinearLoader";
 import MobileMenu from "./mobile-navigation/MobileMenu.js";
@@ -61,7 +62,12 @@ class DashboardTop extends React.Component {
       handleOfferSelect, 
       currentOffer, 
       userOffers,
-      agreements
+      agreements,
+      isLoadingAds,
+      isLoadingAgreements,
+      isLoadingOffers,
+      isLoadingStripe,
+      isLoadingAnalytics
     } = this.props;
 
     const { userMenuOpen, notificationsMenuOpen, movileNavOpen } = this.state;
@@ -139,11 +145,11 @@ class DashboardTop extends React.Component {
         </NavContainer>
         {
           (
-          this.props.isLoadingAds ||
-          this.props.isLoadingAgreements ||
-          this.props.isLoadingOffers ||
-          this.props.isLoadingStripe ||
-          this.props.isLoadingAnalytics
+          isLoadingAds ||
+          isLoadingAgreements ||
+          isLoadingOffers ||
+          isLoadingStripe ||
+          isLoadingAnalytics
           ) && (
             <LinearLoader />
           )
@@ -153,4 +159,15 @@ class DashboardTop extends React.Component {
   }
 }
 
-export default DashboardTop;
+const mapStateToProps = state => ({
+  isLoading_analytics: state.analyticsReducer.isLoading,
+  isLoading_ads: state.adReducer.isLoading,
+  isLoading_agreements: state.agreementsReducer.isLoading,
+  isLoading_offers: state.offersReducer.isLoading,
+  isLoading_stripe: state.stripeReducer.isLoading
+})
+
+export default connect(
+  mapStateToProps,
+  null
+)(DashboardTop);

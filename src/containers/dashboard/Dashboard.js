@@ -118,20 +118,13 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    userOffers: state.offersReducer.userOffers,
-    userNotifications: state.notificationsReducer.userNotifications,
-    currentUser: state.authReducer.currentUser,
-    offerAnalytics: state.analyticsReducer.offerAnalytics,
-    agreements: state.agreementsReducer.agreements,
-    isLoading_analytics: state.analyticsReducer.isLoading,
-    isLoading_ads: state.adReducer.isLoading,
-    isLoading_agreements: state.agreementsReducer.isLoading,
-    isLoading_offers: state.offersReducer.isLoading,
-    isLoading_stripe: state.stripeReducer.isLoading
-  };
-};
+const mapStateToProps = state => ({
+  userOffers: state.offersReducer.userOffers,
+  userNotifications: state.notificationsReducer.userNotifications,
+  currentUser: state.authReducer.currentUser,
+  offerAnalytics: state.analyticsReducer.offerAnalytics,
+  agreements: state.agreementsReducer.agreements,
+});
 
 export default connect(
   mapStateToProps,
