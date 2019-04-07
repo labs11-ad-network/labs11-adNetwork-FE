@@ -13,6 +13,9 @@ export const CustomerStoriesCarouselStyle = styled.div`
     }
   }
 
+.costumer-stories {
+  margin-top: 150px;
+}
   /* Testimonial Heading */
   .testimonial-heading {
     text-align: center;
@@ -63,4 +66,5 @@ export const CustomerStoriesCarouselStyle = styled.div`
   .testimonial-card p {
     text-align: left;
   }
+  
 `;
