@@ -9,15 +9,31 @@ class Contact extends Component {
       <ContactStyle>
         <div className="container">
           <div className="contact-title" id="contact">
-            <h2>Don’t Hasitate to Contact Us</h2>
-            <p>
+            <h2
+              className="wow fadeIn"
+              data-wow-delay=".2s"
+              data-wow-duration="2s"
+            >
+              Don’t Hasitate to Contact Us
+            </h2>
+            <p
+              className="wow fadeInRightBig"
+              data-wow-delay=".3s"
+              data-wow-duration="2s"
+            >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
               sollicitudin lobortis turpis, sit amet aliquet metus.
             </p>
           </div>
 
           <div className="form-flex">
-            <img src={contact1} alt="contact image  " />
+            <img
+              src={contact1}
+              alt="contact"
+              className="wow wobble"
+              data-wow-delay=".4s"
+              data-wow-duration="2s"
+            />
 
             <form className="contact-form">
               <div className="row">

@@ -24,9 +24,13 @@ class AppDownload extends Component {
     return (
       <>
         <AppDownloadStyle>
-          <section className="app-download-flex =">
+          <section className="app-download-flex">
             <div className="container">
-              <div className="app-download-item">
+              <div
+                className="app-download-item wow fadeInLeft"
+                data-wow-delay=".2s"
+                data-wow-duration="2s"
+              >
                 <p>#Lad Download </p>
                 <h3>The Best Lad Network</h3>
                 <p>
@@ -37,13 +41,17 @@ class AppDownload extends Component {
                 <img
                   src={googlePlay}
                   alt="google play"
-                  className="app-store-img"
+                  className="app-store-img wow flipOutY"
+                  data-wow-delay=".3s"
+                  data-wow-duration="2s"
                 />
               </div>
 
               <div className="hero-moc">
                 <img
-                  className="lad-phone-image"
+                  className="lad-phone-image wow jackInTheBox"
+                  data-wow-delay=".4s"
+                  data-wow-duration="2s"
                   src={phoneTesting}
                   alt="test"
                 />
@@ -52,7 +60,11 @@ class AppDownload extends Component {
           </section>
           <section className="promo-section">
             <div className="promo-row container">
-              <div className="promo-col">
+              <div
+                className="promo-col wow fadeInLeft"
+                data-wow-delay=".5s"
+                data-wow-duration="2s"
+              >
                 <i className="fas fa-shield-alt promo-icon" />
                 <h2>Highly Secured</h2>
                 <p>
@@ -61,7 +73,11 @@ class AppDownload extends Component {
                 </p>
               </div>
 
-              <div className="promo-col">
+              <div
+                className="promo-col wow wobble"
+                data-wow-delay=".6s"
+                data-wow-duration="2s"
+              >
                 <i className="fas fa-layer-group promo-icon" />{" "}
                 <h2>Highly Secured</h2>
                 <p>
@@ -70,7 +86,11 @@ class AppDownload extends Component {
                 </p>
               </div>
 
-              <div className="promo-col">
+              <div
+                className="promo-col wow fadeInRight"
+                data-wow-delay=".7s"
+                data-wow-duration="2s"
+              >
                 <i className="fas fa-chart-bar promo-icon" />{" "}
                 <h2>Highly Secured</h2>
                 <p>
@@ -80,18 +100,29 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
+
           <section className="work-content-section padding bg-gray">
             <div className="container">
               <div className="work-content-row">
                 <div className="work-content-col work-content-col-first_child">
-                  <div className="content-mockups">
+                  <div
+                    className="content-mockups wow jello"
+                    data-wow-delay=".2s"
+                    data-wow-duration="2s"
+                  >
                     <div className="mockup-back" />
                     <div className="mockup-front" />
                   </div>
                 </div>
 
                 <div className="work-content-col work-content-second_child">
-                  <h2 className="main-title">How does this App Work?</h2>
+                  <h2
+                    className="main-title wow zoomInRight"
+                    data-wow-delay=".3s"
+                    data-wow-duration="2s"
+                  >
+                    How does this App Work?
+                  </h2>
                   <p>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                     <br />
@@ -111,6 +142,7 @@ class AppDownload extends Component {
                         </p>
                       </div>
                     </div>
+
                     <div className="work-list-item">
                       <img src={tool2} alt="icon" />
                       <div className="work-list-content">
@@ -123,6 +155,7 @@ class AppDownload extends Component {
                         </p>
                       </div>
                     </div>
+
                     <div className="work-list-item">
                       <img src={tool5} alt="icon" />
                       <div className="work-list-content">
@@ -140,15 +173,27 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
+
           <section className="feature-section">
             <div className="container">
-              <h2 className="main-title">Advanced Features</h2>
+              <h2
+                className="main-title wow bounceInRight"
+                data-wow-delay=".2s"
+                data-wow-duration="2s"
+              >
+                Advanced Features
+              </h2>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
                 Dicta, reprehenderit?
               </p>
+
               <div className="feature-row">
-                <div className="feature-col">
+                <div
+                  className="feature-col wow bounceInRight"
+                  data-wow-delay=".3s"
+                  data-wow-duration="2s"
+                >
                   <img src={tool3} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
@@ -156,7 +201,12 @@ class AppDownload extends Component {
                     more eiusmod tempor incididunt.
                   </p>
                 </div>
-                <div className="feature-col">
+
+                <div
+                  className="feature-col wow bounceInRight"
+                  data-wow-delay=".4s"
+                  data-wow-duration="2s"
+                >
                   <img src={tool4} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
@@ -164,7 +214,12 @@ class AppDownload extends Component {
                     more eiusmod tempor incididunt.
                   </p>
                 </div>
-                <div className="feature-col">
+
+                <div
+                  className="feature-col wow bounceInLeft"
+                  data-wow-delay=".5s"
+                  data-wow-duration="2s"
+                >
                   <img src={tool5} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
@@ -172,7 +227,12 @@ class AppDownload extends Component {
                     more eiusmod tempor incididunt.
                   </p>
                 </div>
-                <div className="feature-col">
+
+                <div
+                  className="feature-col wow bounceInLeft"
+                  data-wow-delay=".6s"
+                  data-wow-duration="2s"
+                >
                   <img src={tool6} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
@@ -180,7 +240,12 @@ class AppDownload extends Component {
                     more eiusmod tempor incididunt.
                   </p>
                 </div>
-                <div className="feature-col">
+
+                <div
+                  className="feature-col wow bounceInLeft"
+                  data-wow-delay=".7s"
+                  data-wow-duration="2s"
+                >
                   <img src={tool7} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
@@ -188,7 +253,12 @@ class AppDownload extends Component {
                     more eiusmod tempor incididunt.
                   </p>
                 </div>
-                <div className="feature-col">
+
+                <div
+                  className="feature-col wow bounceInLeft"
+                  data-wow-delay=".8s"
+                  data-wow-duration="2s"
+                >
                   <img src={tool8} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>

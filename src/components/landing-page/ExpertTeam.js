@@ -29,8 +29,18 @@ class ExpertTeam extends Component {
       <ExpertTeamStyle>
         <div className="container">
           <div className="team-content" id="team">
-            <h2>Expert Member</h2>
-            <p>
+            <h2
+              className="wow fadeInDownBig"
+              data-wow-delay=".2s"
+              data-wow-duration="2s"
+            >
+              Expert Member
+            </h2>
+            <p
+              className="wow fadeOut"
+              data-wow-delay=".3s"
+              data-wow-duration="2s"
+            >
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi
               mollitia similique nostrum!
             </p>

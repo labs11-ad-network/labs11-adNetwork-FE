@@ -22,10 +22,19 @@ class CustomerStoriesCarousel extends Component {
     return (
       <CustomerStoriesCarouselStyle>
         <div className="container">
-          <h2 className="testimonial-heading" id="reviews">
+          <h2
+            className="testimonial-heading wow fadeIn"
+            id="reviews"
+            data-wow-delay=".2s"
+            data-wow-duration="2s"
+          >
             Costumer Stories
           </h2>
-          <p>
+          <p
+            className="wow fadeInRightBig"
+            data-wow-delay=".3s"
+            data-wow-duration="2s"
+          >
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam
             quae autem beatae delectus, tempore voluptatum?
           </p>

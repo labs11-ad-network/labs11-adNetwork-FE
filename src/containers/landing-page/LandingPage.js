@@ -203,6 +203,7 @@ class LandingPage extends Component {
               <h3
                 className="landing-info-title wow lightSpeedIn"
                 data-wow-delay=".2s"
+                data-wow-duration="2s"
               >
                 Monetize with Interstitial Ads
               </h3>
@@ -227,6 +228,7 @@ class LandingPage extends Component {
             <div
               className="landing-item-right image-box  wow slideInRight"
               data-wow-delay=".3s"
+              data-wow-duration="2s"
             >
               <img
                 src="https://pcdn.piiojs.com/i/piio/v,alpha-1.0.7,/https%3A%2F%2Fpiio.co%2Fimg%2FEcommerce_buyer.svg"
@@ -283,6 +285,7 @@ class LandingPage extends Component {
               <h3
                 className="landing-info-title wow lightSpeedIn"
                 data-wow-delay=".2s"
+                data-wow-duration="2s"
               >
                 Mobile and In App Ads Amet natus id ab vero, veniam fuga labore.
               </h3>
@@ -309,6 +312,7 @@ class LandingPage extends Component {
             <div
               className="landing-item-right image-box image-box-third wow slideInRight"
               data-wow-delay=".5s"
+              data-wow-duration="2s"
             >
               <img src={desktopGiff} alt="giff desktop" />
             </div>
