@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
 
-import { getOfferAnalytics } from "../../store/actions/analyticsAction.js";
-import { getUserOffers } from "../../store/actions/offersAction.js";
+import { getAnalytics } from "../../store/actions/analyticsAction.js";
+import { getOffers } from "../../store/actions/offersAction.js";
 import { getUserData } from "../../store/actions/authAction.js";
 import { getAgreements } from "../../store/actions/agreementsAction.js";
 import { getUserNotifications, updateUserNotification } from "../../store/actions/notificationsAction.js";
 import privateRoute from "../auth-HOC";
 import DashboardLeft from "../../components/dashboard/dashboard-left/DashboardLeft.js";
-import TopNav from "../../components/dashboard/dashboard-top/DashboardTop.js";
+import DashboardTop from "../../components/dashboard/dashboard-top/DashboardTop.js";
 import ChatWidget from "../../components/chat-widget/ChatWidget.js";
 import Analytics from "./analytics/Analytics.js";
 import AdGenerator from "./ad-generator/AdGenerator.js";
@@ -35,56 +35,56 @@ const DashboardContainer = styled.div`
 
 class Dashboard extends Component {
   state = {
-    currentOffer: ""
+    currentAnalyticId: ""
   };
 
   componentDidMount() {
     this.props.getUserData();
-    this.props.getUserOffers();
+    this.props.getOffers();
     this.props.getAgreements();
-    this.props.getOfferAnalytics(this.state.currentOffer);
-    this.analyticsInterval = setInterval(() => {
-      if (this.state.currentOffer) {
-        this.props.getOfferAnalytics(this.state.currentOffer);
-      } else {
-        return null;
-      }
-    }, 15000);
-
     this.props.getUserNotifications();
+    this.startGettingNotifications();
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.notificationsInterval);
+  }
+
+  startGettingNotifications = () => {
     this.notificationsInterval = setInterval(() => {
       this.props.getUserNotifications();
     }, 15000);
   }
 
-  componentWillUnmount() {
-    clearInterval(this.analyticsInterval);
-    clearInterval(this.notificationsInterval);
-  }
-
   handleOfferSelect = e => {
-    this.props.getOfferAnalytics(e.target.value);
+    this.props.getAnalytics(e.target.value);
     this.setState({
-      currentOffer: e.target.value
+      currentAnalyticId: e.target.value
     });
   };
 
   render() {
+
+    const { currentAnalyticId } = this.state;
+    const {
+      currentUser,
+      agreements,
+      userNotifications,
+      updateUserNotification,
+      analytics,
+      getAnalytics
+    } = this.props;
+
     return (
       <DashboardContainer>
         <DashboardLeft />
         <div className="main-content">
-          <TopNav
+          <DashboardTop
             {...this.props}
             handleOfferSelect={this.handleOfferSelect}
-            agreements={this.props.agreements}
-            userNotifications={this.props.userNotifications}
-            updateUserNotification={this.props.updateUserNotification}
-            isLoadingAnalytics={this.props.isLoading_analytics}
-            isLoadingAds={this.props.isLoading_ads}
-            isLoadingAgreements={this.props.isLoading_agreements}
-            isLoadingOffers={this.props.isLoading_offers}
-            isLoadingStripe={this.props.isLoading_stripe}
+            agreements={agreements}
+            userNotifications={userNotifications}
+            updateUserNotification={updateUserNotification}
           />
           <div className="dashboard-view">
             <Route
@@ -93,20 +93,22 @@ class Dashboard extends Component {
               render={props => (
                 <Analytics
                   {...props}
-                  offerAnalytics={this.props.offerAnalytics}
+                  getAnalytics={getAnalytics}
+                  analytics={analytics}
+                  currentAnalyticId={currentAnalyticId}
                 />
               )}
             />
             <Route
               path="/dashboard/offers"
               render={props => (
-                <Offers {...props} currentUser={this.props.currentUser} />
+                <Offers {...props} currentUser={currentUser} />
               )}
             />
             <Route
               path="/dashboard/settings"
               render={props => (
-                <Settings {...props} currentUser={this.props.currentUser} />
+                <Settings {...props} currentUser={currentUser} />
               )}
             />
             <Route path="/dashboard/create-ad" component={AdGenerator} />
@@ -119,18 +121,18 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  userOffers: state.offersReducer.userOffers,
   userNotifications: state.notificationsReducer.userNotifications,
   currentUser: state.authReducer.currentUser,
-  offerAnalytics: state.analyticsReducer.offerAnalytics,
+  analytics: state.analyticsReducer.analytics,
+  offers: state.offersReducer.offers,
   agreements: state.agreementsReducer.agreements,
 });
 
 export default connect(
   mapStateToProps,
   {
-    getOfferAnalytics,
-    getUserOffers,
+    getAnalytics,
+    getOffers,
     getUserData,
     getAgreements,
     getUserNotifications,

@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import { OfferButton, OfferModalButton, TabButtonContainer } from "./offersStyles.js";
 import { getOfferAds, deleteAd, changeAdStatus } from "../../store/actions/adAction.js";
 import { createAgreement, deleteAgreement, updateAgreement } from "../../store/actions/agreementsAction.js";
-import { getUserOffers, changeOfferStatus, deleteOffer, startUpdatingOffer } from "../../store/actions/offersAction.js";
+import { changeOfferStatus, deleteOffer, startUpdatingOffer } from "../../store/actions/offersAction.js";
 
 const styles = theme => ({
   root: {
@@ -401,15 +401,13 @@ class OffersList extends React.Component {
 const mapStateToProps = state => {
   return {
     offerAds: state.adReducer.offerAds,
-    currentUser: state.authReducer.currentUser,
-    isFetchingOffers: state.offersReducer.isFetchingOffers
+    currentUser: state.authReducer.currentUser
   };
 };
 
 export default connect(
   mapStateToProps,
   {
-    getUserOffers,
     changeOfferStatus,
     startUpdatingOffer,
     deleteOffer,

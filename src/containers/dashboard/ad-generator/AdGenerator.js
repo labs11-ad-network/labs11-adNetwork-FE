@@ -5,7 +5,7 @@ import html2canvas from "html2canvas";
 
 import { CreateAdButton } from '../../../components/ad-generator/forms/formStyles.js';
 import { createAd } from "../../../store/actions/adAction.js";
-import { getUserOffers } from "../../../store/actions/offersAction.js";
+import { getOffers } from "../../../store/actions/offersAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
 import TemplateSelectors from "../../../components/ad-generator/form-components/TemplateSelectors.js";
 import Controls from "../../../components/ad-generator/controls/Controls.js";
@@ -245,7 +245,7 @@ export class AdGenerator extends Component {
             handleTextChange={this.handleTextChange}
             handleFileChange={this.handleFileChange}
             productData={this.state.productData}
-            offers={this.props.userOffers}
+            offers={this.props.offers}
             selected={this.state.currentElement}
           />
           <Controls
@@ -277,7 +277,7 @@ export class AdGenerator extends Component {
 
 const mapStateToProps = state => {
   return {
-    userOffers: state.offersReducer.userOffers
+    offers: state.offersReducer.offers
   };
 };
 
@@ -285,6 +285,6 @@ export default connect(
   mapStateToProps,
   {
     createAd,
-    getUserOffers
+    getOffers
   }
 )(AdGenerator);
