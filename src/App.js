@@ -1,13 +1,16 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import { Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-import LandingPage from "./containers/landing-page/LandingPage.js";
 import Dashboard from "./containers/dashboard/Dashboard.js";
 import AdServer from "./containers/ad-server/AdServer.js";
 
 import Callback from "./containers/auth-zero/Callback/Callback.js";
 import Auth from "./containers/auth-zero/Auth/Auth.js";
+
+const LazyLandingPage = React.lazy(() =>
+  import("./containers/landing-page/LandingPage.js")
+);
 
 const theme = createMuiTheme({
   palette: {
@@ -36,7 +39,11 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={props => <LandingPage auth={auth} {...props} />}
+            render={props => (
+              <Suspense fallback={<Callback />}>
+                <LazyLandingPage auth={auth} {...props} />
+              </Suspense>
+            )}
           />
 
           <Route
