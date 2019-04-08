@@ -131,9 +131,10 @@ export const connectCustomer = (code, history) => dispatch => {
       crossdomain: true,
       data: body,    
       headers: { 
+        "content-type:": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
         "Content-Type": "application/x-www-form-urlencoded",
         "Cache-Control": "no-cache",
-        "Postman-Token": "42e6c291-9a09-c29f-f28f-11872e2490a5"
+        "Postman-Token": "10c57ede-97ca-0665-d46d-6a0402e7182a"
       }
     })
     .then(res => {
