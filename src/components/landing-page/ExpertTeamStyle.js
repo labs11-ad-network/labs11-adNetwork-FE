@@ -39,6 +39,9 @@ export const ExpertTeamStyle = styled.div`
       display: inline-block;
       margin: 0 6px;
     }
+    @media (min-width: 940px) {
+      margin-bottom: 75px;
+    }
   }
 
   /* team content title and subtitle */
@@ -61,7 +64,8 @@ export const ExpertTeamStyle = styled.div`
     margin: 0 auto;
   }
   .team-sub_title {
-    margin: -15px auto 20px auto;
+    margin: -14px auto 20px auto;
+    font-size: 17px !important;
   }
   .team-socials {
     display: flex;
@@ -90,12 +94,17 @@ export const ExpertTeamStyle = styled.div`
 
   /* App intro Video */
   .app-intro-video {
-    margin: 136px 0 20px 0;
     height: 100%;
-    margin: 10vh calc(-50vw + 50%);
+    margin: 10vh calc(-50vw + 51%);
     margin-top: 150px;
+    display: none;
     @media (min-width: 481px) {
+      display: block;
       margin-top: 130px;
+      margin: 10vh calc(-50vw + 50%);
+    }
+    @media (min-width: 940px) {
+      margin: 10vh calc(-50vw + 51%);
     }
   }
   .video-flex {
@@ -253,7 +262,7 @@ export const ExpertTeamStyle = styled.div`
     font-size: 0.9rem !important;
     text-align: center;
     @media (min-width: 481px) {
-      font-size: 1rem !important;
+      font-size: 1rem;
       max-width: 400px;
     }
 
@@ -268,6 +277,7 @@ export const ExpertTeamStyle = styled.div`
     line-height: 1.7;
     color: #333;
     letter-spacing: -0.01em;
+
     @media (min-width: 481px) {
       font-size: 2rem;
     }

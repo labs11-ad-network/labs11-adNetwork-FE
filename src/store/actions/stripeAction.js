@@ -18,7 +18,13 @@ export const getPayouts = () => dispatch => {
       dispatch({ type: GET_PAYOUT_SUCCESS, payload: res.data.payouts });
     })
     .catch(err => {
-      dispatch({ type: GET_PAYOUT_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({
+        type: GET_PAYOUT_FAILURE,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
+      });
     });
 };
 
@@ -36,7 +42,13 @@ export const getPayments = () => dispatch => {
       dispatch({ type: GET_PAYMENTS_SUCCESS, payload: res.data.payments });
     })
     .catch(err => {
-      dispatch({ type: GET_PAYMENTS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({
+        type: GET_PAYMENTS_FAILURE,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
+      });
     });
 };
 
@@ -57,7 +69,13 @@ export const createCustomer = () => dispatch => {
       dispatch(getUserData());
     })
     .catch(err => {
-      dispatch({ type: CREATE_CUSTOMER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({
+        type: CREATE_CUSTOMER_FAILURE,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
+      });
     });
 };
 
@@ -79,7 +97,13 @@ export const chargeCustomer = () => dispatch => {
       dispatch(getPayments());
     })
     .catch(err => {
-      dispatch({ type: CHARGE_CUSTOMER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({
+        type: CHARGE_CUSTOMER_FAILURE,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
+      });
     });
 };
 
@@ -101,7 +125,13 @@ export const payoutCustomer = () => dispatch => {
       dispatch(getPayouts());
     })
     .catch(err => {
-      dispatch({ type: PAYOUT_CUSTOMER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({
+        type: PAYOUT_CUSTOMER_FAILURE,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
+      });
     });
 };
 
@@ -111,15 +141,16 @@ export const CONNECT_CUSTOMER_START = "CONNECT_CUSTOMER_START";
 export const CONNECT_CUSTOMER_SUCCESS = "CONNECT_CUSTOMER_SUCCESS";
 export const CONNECT_CUSTOMER_FAILURE = "CONNECT_CUSTOMER_FAILURE";
 
-export const connectCustomer = (code) => dispatch => {
+export const connectCustomer = (code, history) => dispatch => {
   dispatch({ type: CONNECT_CUSTOMER_START });
-
   axios
-    .post(`${URL}/api/checkout/connect_customer`, {code})
+    .post(`${URL}/api/checkout/connect_customer`, { code })
     .then(res => {
-      dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: res.data })
+      history.push("/dashboard/settings");
+      dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: err })
-    })
-}
+      history.push("/dashboard/settings");
+      dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: err });
+    });
+};

@@ -7,7 +7,7 @@ import { connectCustomer } from '../../store/actions/stripeAction.js';
 export class StripeCallback extends Component {
   componentDidMount(){
     const urlParams = new URLSearchParams(window.location.search);
-    this.props.connectCustomer(urlParams.get("code"))
+    this.props.connectCustomer(urlParams.get("code"), this.props.history)
   }
 
   render() {
