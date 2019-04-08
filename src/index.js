@@ -1,23 +1,29 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import { Router, withRouter } from "react-router-dom";
+import { BrowserInfo } from "./PieChart";
+import RevenueChart from "./AreaChart";
+import styled from "styled-components";
+import ImpressionGraph from "./RadarChart";
+import AdvertisementChart from './ScatterChart';
 
-import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import store from "./store/store";
-import Toasts from "./components/toasts/Toasts.js";
-import history from "./containers/auth-zero/history";
 
-const AppWithRouter = withRouter(App);
-const app = (
-  <Provider store={store}>
-    <Router history={history}>
-      <AppWithRouter />
-    </Router>
-    <Toasts />
-  </Provider>
-);
-ReactDOM.render(app, document.getElementById("root"));
-serviceWorker.unregister();
+const RowContainer = styled.div`
+  display: flex;
+`;
+
+const Graphs = props => {
+  return (
+    <>
+    <RowContainer>
+      <RevenueChart />
+      <BrowserInfo data={props.data} />
+    </RowContainer>
+   
+    <RowContainer>
+      <ImpressionGraph data={props.ctr} />
+      <AdvertisementChart />
+    </RowContainer>
+    </>
+  );
+};
+
+export default Graphs;
