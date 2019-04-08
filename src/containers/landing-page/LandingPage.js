@@ -1,17 +1,13 @@
-import React, { PureComponent, Suspense } from "react";
+import React, { PureComponent } from "react";
 import { LandingPageStyle } from "../../components/landing-page/LandingPageStyle";
 import PropTypes from "prop-types";
 import WOW from "wowjs";
 
 import Header from "../../components/landing-page/heading/Header.js";
-import AppDownload from "../../components/landing-page/AppDownload.js";
 import ExpertTeam from "../../components/landing-page/ExpertTeam";
 import Contact from "../../components/landing-page/Contact";
-import Callback from "../auth-zero/Callback/Callback";
 import LandingContentSection from "../../components/landing-page/LandingContentSection";
-
-//  <-----------------Lazy loaded Components -------------->
-// const LandingContentSection = React.lazy(() => import)
+import AppDownload from "../../components/landing-page/AppDownload";
 
 class LandingPage extends PureComponent {
   login = () => {
@@ -33,11 +29,7 @@ class LandingPage extends PureComponent {
           logout={this.logout}
           history={this.props.history}
         />
-
         <LandingContentSection />
-        {/* <Suspense fallback={<Callback />}>
-        </Suspense> */}
-
         <section className="app-download">
           <AppDownload />
         </section>

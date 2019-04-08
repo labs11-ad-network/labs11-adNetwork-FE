@@ -32,7 +32,7 @@ class AppDownload extends Component {
                 data-wow-duration="2s"
               >
                 <p>#Lad Download </p>
-                <h3>The Best Lad Network</h3>
+                <h3 id="lad">The Best Lad Network</h3>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
                   do eiusmod tempor incididunt.

@@ -31,7 +31,7 @@ const LandingContentSection = () => {
             Customize for welcome Ad format or lightbox Interstitial Ads
           </p>
           <div className="buttons_container">
-            <a href="/#" className="btn_blue">
+            <a href="#lad" className="btn_blue">
               Learn More
             </a>
           </div>
@@ -69,7 +69,7 @@ const LandingContentSection = () => {
             income
           </p>
           <div className="buttons_container">
-            <a href="/#" className="btn_blue">
+            <a href="#lad" className="btn_blue">
               Learn More
             </a>
           </div>
@@ -109,7 +109,7 @@ const LandingContentSection = () => {
             a Publisher
           </p>
           <div className="buttons_container">
-            <a href="/#" className="btn_blue">
+            <a href="#lad" className="btn_blue">
               Learn More
             </a>
           </div>

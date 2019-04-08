@@ -385,6 +385,6 @@ export const HeroHome = styled.section`
     }
   }
   .scroll-to-top-hidden {
-    display: none;
+    display: block;
   }
 `;
