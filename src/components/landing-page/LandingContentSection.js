@@ -14,7 +14,7 @@ const LandingContentSection = () => {
             Customized and friendly Interstitial Ads
           </h5>
           <h3
-            className="landing-info-title wow lightSpeedIn"
+            className="landing-info-title wow fadeInUp"
             data-wow-delay=".2s"
             data-wow-duration="2s"
           >
@@ -38,7 +38,7 @@ const LandingContentSection = () => {
         </div>
 
         <div
-          className="landing-item-right image-box  wow slideInRight"
+          className="landing-item-right image-box  wow fadeInUp"
           data-wow-delay=".3s"
           data-wow-duration="2s"
         >
@@ -51,10 +51,7 @@ const LandingContentSection = () => {
           <h5 className="blue-subtitle first-blue-subtitle">
             Monetize with unique and attractive Banner Ads
           </h5>
-          <h3
-            className="landing-info-title wow lightSpeedIn"
-            data-wow-delay=".2s"
-          >
+          <h3 className="landing-info-title wow fadeInUp" data-wow-delay=".2s">
             Display Attractive Banner Ads
           </h3>
           <p className="landing-ptag">
@@ -76,8 +73,8 @@ const LandingContentSection = () => {
         </div>
 
         <div
-          className="landing-item-right image-box wow slideInLeft"
-          data-wow-delay=".4s"
+          className="landing-item-right image-box wow fadeInUp"
+          data-wow-delay=".3s"
         >
           <img src={desktopGiff3} alt="graphic and person with balloons" />
         </div>
@@ -89,7 +86,7 @@ const LandingContentSection = () => {
             Earn even more with mobile and App traffic
           </h5>
           <h3
-            className="landing-info-title wow lightSpeedIn"
+            className="landing-info-title wow fadeInUp"
             data-wow-delay=".2s"
             data-wow-duration="2s"
           >
@@ -116,8 +113,8 @@ const LandingContentSection = () => {
         </div>
 
         <div
-          className="landing-item-right image-box image-box-third wow slideInRight"
-          data-wow-delay=".5s"
+          className="landing-item-right image-box image-box-third wow fadeInUp"
+          data-wow-delay=".3s"
           data-wow-duration="2s"
         >
           <img src={desktopGiff} alt="giff desktop" />

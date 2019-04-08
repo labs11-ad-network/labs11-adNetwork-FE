@@ -159,6 +159,7 @@ class Header extends Component {
 
           <div
             className="container"
+            hidden={window.pageYOffset > 1000 ? false : true}
             onClick={() => {
               this.scrollToMyRef(this.myRef);
             }}
