@@ -58,16 +58,16 @@ class LandingPage extends PureComponent {
 
             <div className="footer-socials footer-flex">
               <a>
-                <i class="fab fa-facebook-f" />
+                <i className="fab fa-facebook-f" />
               </a>
               <a>
-                <i class="fab fa-twitter" />
+                <i className="fab fa-twitter" />
               </a>
               <a>
-                <i class="fab fa-youtube" />
+                <i className="fab fa-youtube" />
               </a>
               <a>
-                <i class="fab fa-google-plus-g" />
+                <i className="fab fa-google-plus-g" />
               </a>
             </div>
           </div>
