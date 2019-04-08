@@ -2,15 +2,15 @@ import {
   AD_ACTION_SUCCESS,
   AD_ACTION_FAILED,
   AD_ACTION_START,
-  OFFER_ANALYTICS_START,
-  OFFER_ANALYTICS_SUCCESS,
-  OFFER_ANALYTICS_FAILURE
+  GET_ANALYTICS_START,
+  GET_ANALYTICS_SUCCESS,
+  GET_ANALYTICS_FAILURE
 } from "../actions/analyticsAction";
 
 const initialState = {
   isLoading: false,
   error: {},
-  offerAnalytics: [],
+  analytics: [],
   stats: {
     action: "",
     ip: "",
@@ -44,20 +44,20 @@ const analyticsReducer = (state = initialState, action) => {
         error: action.payload
       };
 
-    case OFFER_ANALYTICS_START:
+    case GET_ANALYTICS_START:
       return{
         ...state,
         isLoading: true,
       }
 
-    case OFFER_ANALYTICS_SUCCESS:
+    case GET_ANALYTICS_SUCCESS:
       return{
         ...state,
         isLoading: false,
-        offerAnalytics: action.payload
+        analytics: action.payload
       }
 
-    case OFFER_ANALYTICS_FAILURE:
+    case GET_ANALYTICS_FAILURE:
       return{
         ...state,
         isLoading: false,

@@ -1,9 +1,9 @@
 import { toast } from "react-toastify";
 
 import {
-  GET_USER_OFFERS_START,
-  GET_USER_OFFERS_SUCCESS,
-  GET_USER_OFFERS_FAILURE,
+  GET_OFFERS_START,
+  GET_OFFERS_SUCCESS,
+  GET_OFFERS_FAILURE,
   CREATE_OFFER_START,
   CREATE_OFFER_SUCCESS,
   CREATE_OFFER_FAILURE,
@@ -20,27 +20,27 @@ import {
 
 const initialState = {
   isLoading: false,
-  userOffers: [],
+  offers: [],
   updatingOffer: {},
   isUpdatingOffer: false,
 };
 
 export default function authReducer(state = initialState, action) {
   switch (action.type) {
-    case GET_USER_OFFERS_START:
+    case GET_OFFERS_START:
       return {
         ...state,
         isLoading: true
       };
 
-    case GET_USER_OFFERS_SUCCESS:
+    case GET_OFFERS_SUCCESS:
       return {
         ...state,
-        userOffers: action.payload,
+        offers: action.payload,
         isLoading: false
       };
 
-    case GET_USER_OFFERS_FAILURE:
+    case GET_OFFERS_FAILURE:
       return {
         ...state,
         isLoading: false

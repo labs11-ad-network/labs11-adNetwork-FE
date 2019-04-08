@@ -5,6 +5,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import LandingPage from "./containers/landing-page/LandingPage.js";
 import Dashboard from "./containers/dashboard/Dashboard.js";
 import AdServer from "./containers/ad-server/AdServer.js";
+import StripeCallback from "./containers/stripe-callback/StripeCallback.js";
 
 import MainApp from "./containers/auth-zero/MainApp.js";
 import Callback from "./containers/auth-zero/Callback/Callback.js";
@@ -54,6 +55,7 @@ class App extends Component {
 
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/ad/:affiliateId/:size" component={AdServer} />
+          <Route path="/stripe-callback" component={StripeCallback} />
         </div>
       </MuiThemeProvider>
     );

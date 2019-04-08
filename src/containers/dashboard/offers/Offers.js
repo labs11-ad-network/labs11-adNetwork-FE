@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import {
-  getUserOffers,
+  getOffers,
   createOffer,
   updateOffer
 } from "../../../store/actions/offersAction.js";
@@ -25,7 +25,7 @@ class Offers extends Component {
   };
 
   componentDidMount() {
-    this.props.getUserOffers();
+    this.props.getOffers();
   }
 
   createOffer = async e => {
@@ -91,7 +91,7 @@ class Offers extends Component {
     return (
       <div>
         <OffersList
-          offers={this.props.userOffers}
+          offers={this.props.offers}
           agreements={this.props.userAgreements}
           toggleModal={this.toggleModal}
         />
@@ -112,7 +112,7 @@ class Offers extends Component {
 
 const mapStateToProps = state => {
   return {
-    userOffers: state.offersReducer.userOffers,
+    offers: state.offersReducer.offers,
     isUpdatingOffer: state.offersReducer.isUpdatingOffer,
     updatingOffer: state.offersReducer.updatingOffer
   };
@@ -121,7 +121,7 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   {
-    getUserOffers,
+    getOffers,
     createOffer,
     updateOffer
   }
