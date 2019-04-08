@@ -6,7 +6,6 @@ import LandingPage from "./containers/landing-page/LandingPage.js";
 import Dashboard from "./containers/dashboard/Dashboard.js";
 import AdServer from "./containers/ad-server/AdServer.js";
 
-import MainApp from "./containers/auth-zero/MainApp.js";
 import Callback from "./containers/auth-zero/Callback/Callback.js";
 import Auth from "./containers/auth-zero/Auth/Auth.js";
 
@@ -39,11 +38,7 @@ class App extends Component {
             path="/"
             render={props => <LandingPage auth={auth} {...props} />}
           />
-          <Route
-            exact
-            path="/"
-            render={props => <MainApp auth={auth} {...props} />}
-          />
+
           <Route
             path="/callback"
             render={props => {

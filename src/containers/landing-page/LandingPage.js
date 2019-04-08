@@ -176,13 +176,6 @@ class LandingPage extends Component {
 
   componentDidMount() {
     new WOW.WOW().init();
-
-    const {
-      auth: { renewSession }
-    } = this.props;
-    if (localStorage.getItem("isLoggedIn") === "true") {
-      renewSession();
-    }
   }
 
   render() {
