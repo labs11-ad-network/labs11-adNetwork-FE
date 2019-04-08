@@ -2,19 +2,29 @@ import React, { Component } from "react";
 import { HeroHome } from "./HeaderStyle";
 import { ElasticReverse } from "react-burgers";
 import { TwoPersonSvg, BirdSvg, SkyCloudSvg } from "./HeaderSvg";
+
 import classnames from "classnames";
 
+import NavList from "../NavList";
+import NavDrawer from "../NavDrawer";
+
 class Header extends Component {
-  state = {
-    isOpen: false,
-    prevScrollpos: window.pageYOffset,
-    visible: true,
-    clickedAff: false,
-    clickedAdver: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+      prevScrollpos: window.pageYOffset,
+      visible: true,
+      clickedAff: false,
+      clickedAdver: false,
+      left: false
+    };
+    this.myRef = React.createRef();
+  }
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+    this.setState({ visible: false });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -33,7 +43,7 @@ class Header extends Component {
   handleScroll = () => {
     const { prevScrollpos } = this.state;
     const currentScrollPos = window.pageYOffset;
-    const visible = prevScrollpos > currentScrollPos;
+    const visible = prevScrollpos < currentScrollPos;
     this.setState({
       prevScrollpos: currentScrollPos,
       visible
@@ -47,43 +57,56 @@ class Header extends Component {
     }));
   };
 
-  toggleDrawer = () => {
+  state = {
+    top: false
+  };
+
+  toggleNavDrawer = (side, open) => () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      [side]: open
     });
   };
+
+  toggleDrawer = () => {
+    this.setState({
+      isOpen: !this.state.isOpen,
+      left: !this.state.left
+    });
+  };
+  scrollToMyRef = () => window.scrollTo(0, this.myRef.current.offsetTop);
+
   render() {
+    const { left, visible } = this.state;
     const { login, history } = this.props;
     let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
+    let goUpBtn =
+      window.pageYOffset > 1000 && !visible
+        ? "scroll-to-top"
+        : "scroll-to-top-hidden";
     return (
       <>
         <HeroHome>
           <div className="container">
             <nav
               className={classnames(`${colorChange}`, {
-                "navbar--hidden": !this.state.visible
+                "navbar--hidden": this.state.visible
               })}
+              ref={this.myRef}
             >
-              <a href="/#logoHERE" className="logo">
+              <a name="header" href="/" className="logo">
                 LOGO
               </a>
-              <div className="middle-anchors desktop-anchor">
-                <a href="/#">Team</a>
-                <a href="/#">Contact</a>
-                <a href="/#">About</a>
-                <a href="/#" onClick={() => history.push("/dashboard")}>
-                  Dashboard
-                </a>
-              </div>
 
-              <div className="desktop-anchor">
-                <a href="/#" onClick={() => login()}>
-                  {" "}
-                  Login
-                </a>
-                <a href="/#" onClick={() => login()}>
-                  Signup
-                </a>
+              <NavList history={history} />
+              <NavDrawer
+                hidden
+                history={history}
+                left={left}
+                toggleDrawer={this.toggleDrawer}
+                visible={visible}
+              />
+              <div className="desktop-anchor nav-button">
+                <button onClick={() => login()}>Login</button>
               </div>
 
               <ElasticReverse
@@ -101,18 +124,15 @@ class Header extends Component {
                 <p className="hero-sub-title">
                   #Lad Network #faster websites #improve SEO
                 </p>
-                <h1>
-                  <span>Creepy Ads</span> <br /> We are a non creepy ad network
-                  that presents itself as actually very creepy.
+                <h1 className="wow fadeInUp" data-wow-delay=".2s">
+                  <span>Creepy Ads</span>
+                  <br /> We are a non creepy ad network that presents itself as
+                  actually very creepy.
                 </h1>
 
                 <div className="button">
                   <button
                     className="btn_scroll btn_blue"
-                    // onClick={() => {
-                    //   localStorage.setItem("acct_type", "advertiser");
-
-                    // }}
                     onClick={this.setAccType("clickedAdver", "advertiser")}
                   >
                     become advertiser
@@ -120,9 +140,6 @@ class Header extends Component {
 
                   <button
                     className="btn_scroll btn_blue yellow-btn"
-                    // onClick={{
-                    //   localStorage.setItem("acct_type", "affiliate");
-                    // }}
                     onClick={this.setAccType("clickedAff", "affiliate")}
                   >
                     become affiliate
@@ -139,6 +156,16 @@ class Header extends Component {
             </div>
           </div>
           <span className="border_bottom" />
+
+          <div
+            className="container"
+            onClick={() => {
+              this.scrollToMyRef(this.myRef);
+            }}
+            id={goUpBtn}
+          >
+            <i className="fas fa-chevron-up" />
+          </div>
         </HeroHome>
       </>
     );

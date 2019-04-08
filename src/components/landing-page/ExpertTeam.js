@@ -28,9 +28,19 @@ class ExpertTeam extends Component {
     return (
       <ExpertTeamStyle>
         <div className="container">
-          <div className="team-content">
-            <h2>Expert Member</h2>
-            <p>
+          <div className="team-content" id="team">
+            <h2
+              className="wow fadeInUp"
+              data-wow-delay=".2s"
+              data-wow-duration="2s"
+            >
+              Expert Member
+            </h2>
+            <p
+              className="wow fadeOut"
+              data-wow-delay=".3s"
+              data-wow-duration="2s"
+            >
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi
               mollitia similique nostrum!
             </p>
@@ -64,32 +74,32 @@ class ExpertTeam extends Component {
               <ExpertTeamCard teamBg={teambg3} />
             </div>
           </OwlCarousel>
-
-          <section className="app-intro-video">
-            <div className="video-flex">
-              <div className="video-play">
-                <a href="/" alt="youtube-button">
-                  <i className="fa fa-play" />
-                </a>
-              </div>
-
-              <img src={video2} alt="video" className="wavy-blue" />
-
-              <div className="video-content">
-                <h2 className="center-me">Watch This App Intro</h2>
-                <p className="center-me">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-                  officia deserunt! Placeat quos nihil dolores.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Added This Cosutmer Testimonial for cascading styles from Expert Team */}
-          <section className="costumer-stories">
-            <CustomerStoriesCarousel />
-          </section>
         </div>
+        {/* Added This Cosutmer Testimonial for cascading styles from Expert Team */}
+
+        <section className="app-intro-video">
+          <div className="video-flex">
+            <div className="video-play">
+              <a href="/" alt="youtube-button">
+                <i className="fa fa-play" />
+              </a>
+            </div>
+
+            <img src={video2} alt="video" className="wavy-blue" />
+
+            <div className="video-content">
+              <h2 className="center-me">Watch This App Intro</h2>
+              <p className="center-me">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
+                officia deserunt! Placeat quos nihil dolores.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="costumer-stories">
+          <CustomerStoriesCarousel />
+        </section>
       </ExpertTeamStyle>
     );
   }

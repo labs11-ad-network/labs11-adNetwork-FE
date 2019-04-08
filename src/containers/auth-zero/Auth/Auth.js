@@ -11,48 +11,45 @@ export default class Auth {
   userProfile;
   tokenRenewalTimeout;
 
+  // Auth Config
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: "token id_token",
-    scope: "openid profile email"
+    scope: "openid profile email offline_access",
+    sso: false
   });
 
-  constructor() {
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
-    this.handleAuthentication = this.handleAuthentication.bind(this);
-    this.isAuthenticated = this.isAuthenticated.bind(this);
-    this.getAccessToken = this.getAccessToken.bind(this);
-    this.getIdToken = this.getIdToken.bind(this);
-    this.renewSession = this.renewSession.bind(this);
-    this.getProfile = this.getProfile.bind(this);
-    this.getExpiryDate = this.getExpiryDate.bind(this);
-    this.scheduleRenewal();
-  }
-
-  login() {
+  // handle login built in function from Auth0
+  login = () => {
     this.auth0.authorize();
-  }
+  };
 
-  handleAuthentication() {
+  //once user is authenticated with login we will invoke setSession
+  handleAuthentication = () => {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
+        console.log(err);
         history.replace("/");
       }
     });
-  }
+  };
 
-  getAccessToken() {
+  //gett access token
+  getAccessToken = () => {
     return this.accessToken;
-  }
-  getIdToken() {
+  };
+
+  // get user token
+  getIdToken = () => {
     return this.idToken;
-  }
-  setSession(authResult) {
+  };
+
+  // once user is authenticated we will make a request to lad backend and create this user to our backend if it does not exists
+  setSession = authResult => {
     // Set the time that the access token will expire at
     let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
     this.accessToken = authResult.accessToken;
@@ -65,8 +62,6 @@ export default class Auth {
     localStorage.setItem("expires_at", expiresAt);
 
     // schedule a token renewal
-    this.scheduleRenewal();
-    // const
     const decoded = jwtDecode(localStorage.id_token && localStorage.id_token);
     const user = {
       name: decoded.name,
@@ -87,42 +82,16 @@ export default class Auth {
       .then(res => {
         // console.log('--- hit response -- ', res.data)
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        // if there's error with registering user with our backend clear localstorage and redirect to landing page
+        window.localStorage.clear();
+        history.replace("/");
+      });
     history.replace("/dashboard");
-  }
-
-  renewSession() {
-    this.auth0.checkSession({}, function(err, result) {
-      if (err) {
-        // console.error(err);
-      } else {
-        this.localLogin(result);
-      }
-    });
-  }
-
-  localLogin = authResult => {
-    // Set isLoggedIn flag in localStorage
-    localStorage.setItem("isLoggedIn", "true");
-    // Set the time that the access token will expire at
-    this.expiresAt = JSON.stringify(
-      authResult.expiresIn * 1000 + new Date().getTime()
-    );
-    this.accessToken = authResult.accessToken;
-    this.idToken = authResult.idToken;
-    this.scheduleRenewal();
   };
 
-  getProfile(cb) {
-    this.auth0.client.userInfo(this.accessToken, (err, profile) => {
-      if (profile) {
-        this.userProfile = profile;
-      }
-      cb(err, profile);
-    });
-  }
-
-  logout() {
+  // logout user
+  logout = () => {
     // Remove tokens and expiry time
     this.accessToken = null;
     this.idToken = null;
@@ -142,26 +111,5 @@ export default class Auth {
 
     // navigate to the home route
     history.replace("/");
-  }
-
-  isAuthenticated() {
-    // Check whether the current time is past the
-    // access token's expiry time
-    let expiresAt = this.expiresAt;
-    return new Date().getTime() < expiresAt;
-  }
-
-  scheduleRenewal() {
-    let expiresAt = this.expiresAt;
-    const timeout = expiresAt - Date.now();
-    if (timeout > 0) {
-      this.tokenRenewalTimeout = setTimeout(() => {
-        this.renewSession();
-      }, timeout);
-    }
-  }
-
-  getExpiryDate() {
-    return JSON.stringify(new Date(this.expiresAt));
-  }
+  };
 }
