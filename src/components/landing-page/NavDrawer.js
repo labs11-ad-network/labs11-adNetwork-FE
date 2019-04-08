@@ -10,9 +10,17 @@ const MobileNav = styled.nav`
   align-items: center;
   margin-top: 100px;
   a {
+    font-weight: 500;
+    letter-spacing: 2px;
     text-decoration: none;
-    font-size: 15px;
-    margin-bottom: 25px;
+    font-size: 18px;
+    line-height: 60px;
+    color: #000000;
+    cursor: pointer;
+    &:hover {
+      color: #011a57;
+      border-bottom: 1px solid #011a57;
+    }
   }
 `;
 

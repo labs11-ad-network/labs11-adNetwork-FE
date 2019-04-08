@@ -105,7 +105,6 @@ class Header extends Component {
               />
               <div className="desktop-anchor nav-button">
                 <button onClick={() => login()}>Login</button>
-                <button onClick={() => login()}>Signup</button>
               </div>
 
               <ElasticReverse

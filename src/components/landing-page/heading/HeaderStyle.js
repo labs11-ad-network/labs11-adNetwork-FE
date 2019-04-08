@@ -188,6 +188,8 @@ export const HeroHome = styled.section`
       color: #fff;
       text-transform: uppercase;
       font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 2px;
       cursor: pointer;
       &:hover {
         color: white;
@@ -206,6 +208,8 @@ export const HeroHome = styled.section`
       cursor: pointer;
       border: none;
       background: none;
+      font-weight: 500;
+      letter-spacing: 2px;
       &:hover {
         color: white;
       }
@@ -246,6 +250,8 @@ export const HeroHome = styled.section`
       text-transform: uppercase;
       font-size: 14px;
       cursor: pointer;
+      font-weight: 500;
+      letter-spacing: 2px;
       &:hover {
         color: #005bea;
       }
@@ -266,6 +272,8 @@ export const HeroHome = styled.section`
       cursor: pointer;
       background: none;
       border: none;
+      font-weight: 500;
+      letter-spacing: 2px;
       &:hover {
         color: #005bea;
       }
@@ -364,9 +372,13 @@ export const HeroHome = styled.section`
     color: #fff;
     position: fixed;
     bottom: 50px;
-    right: 50px;
+    right: 10px;
     z-index: 999;
     cursor: pointer;
+    @media (min-width: 940px) {
+      bottom: 50px;
+      right: 50px;
+    }
     &:hover {
       opacity: 0.8;
       color: #fff;
