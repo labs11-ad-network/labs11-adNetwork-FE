@@ -39,6 +39,9 @@ export const ExpertTeamStyle = styled.div`
       display: inline-block;
       margin: 0 6px;
     }
+    @media (min-width: 940px) {
+      margin-bottom: 75px;
+    }
   }
 
   /* team content title and subtitle */

@@ -153,9 +153,62 @@ export const LandingPageStyle = styled.div`
     }
   }
 
+  /* <------------- Footer -------------> */
   footer {
-    padding: 100px 0;
-    margin-top: 100px;
-    border: 1px solid red;
+    margin-top: 200px;
+    border-top: 1px solid #e7eaee;
+    height: 100%;
+    p {
+      color: #5b5d61;
+      font-size: 13px;
+      @media (min-width: 481px) {
+        font-size: 15px;
+      }
+      @media (min-width: 940px) {
+        font-size: 17px;
+      }
+    }
+
+    .footer-wrapper {
+      display: flex;
+      justify-content: space-between;
+      padding: 80px 0;
+      align-items: center;
+    }
+    .footer-flex {
+      display: flex;
+      a,
+      p {
+        margin-right: 25px;
+        color: #5b5d61;
+      }
+    }
+
+    .status-privacy_contact {
+      a {
+        &:hover {
+          color: #2f5bea;
+        }
+      }
+    }
+
+    .footer-socials a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 35px;
+      width: 35px;
+      border-radius: 100px;
+      background: #545f75;
+      color: #fff;
+      text-align: center;
+      -webkit-transition: 0.3s;
+      -o-transition: 0.3s;
+      transition: 0.3s;
+      font-size: 17px;
+      &:hover {
+        background: #2f5bea;
+      }
+    }
   }
 `;

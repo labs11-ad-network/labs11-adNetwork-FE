@@ -80,7 +80,9 @@ class Header extends Component {
     const { login, history } = this.props;
     let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
     let goUpBtn =
-      window.pageYOffset > 1000 ? "scroll-to-top" : "scroll-to-top-hidden";
+      window.pageYOffset > 1000 && !visible
+        ? "scroll-to-top"
+        : "scroll-to-top-hidden";
     return (
       <>
         <HeroHome>
