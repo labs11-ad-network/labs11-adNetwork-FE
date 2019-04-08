@@ -21,34 +21,40 @@ export default class Auth {
   });
 
   constructor() {
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
-    this.handleAuthentication = this.handleAuthentication.bind(this);
-    this.getAccessToken = this.getAccessToken.bind(this);
-    this.getIdToken = this.getIdToken.bind(this);
+    // this.login = this.login.bind(this);
+    // this.logout = this.logout.bind(this);
+    // this.handleAuthentication = this.handleAuthentication.bind(this);
+    // this.getAccessToken = this.getAccessToken.bind(this);
+    // this.getIdToken = this.getIdToken.bind(this);
+    this.state = {
+      token: ""
+    };
   }
-  login() {
-    this.auth0.authorize();
-  }
-  handleAuthentication() {
+  login = async () => {
+    await this.auth0.authorize();
+    localStorage.setItem("access_token", this.state.token);
+  };
+  handleAuthentication = () => {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         console.log(authResult.idToken);
-        localStorage.setItem("access_token", authResult.accessToken);
-        localStorage.setItem("id_token", authResult.idToken);
+        this.setState({ token: authResult.idToken });
+        // localStorage.setItem("access_token", authResult.accessToken);
+        // localStorage.setItem("id_token", authResult.idToken);
         this.setSession(authResult);
       } else if (err) {
         history.replace("/");
       }
     });
-  }
-  getAccessToken() {
+  };
+  getAccessToken = () => {
     return this.accessToken;
-  }
-  getIdToken() {
+  };
+  getIdToken = () => {
     return this.idToken;
-  }
-  setSession(authResult) {
+  };
+
+  setSession = authResult => {
     // Set the time that the access token will expire at
     let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
     this.accessToken = authResult.accessToken;
@@ -83,8 +89,8 @@ export default class Auth {
       })
       .catch(err => console.error(err));
     history.replace("/dashboard");
-  }
-  logout() {
+  };
+  logout = () => {
     // Remove tokens and expiry time
     this.accessToken = null;
     this.idToken = null;
@@ -104,5 +110,5 @@ export default class Auth {
 
     // navigate to the home route
     history.replace("/");
-  }
+  };
 }
