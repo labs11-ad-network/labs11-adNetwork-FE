@@ -11,14 +11,14 @@ class Contact extends Component {
           <div className="contact-title" id="contact">
             <h2
               className="wow fadeInUp"
-              data-wow-delay=".2s"
+              data-wow-delay=".1s"
               data-wow-duration="2s"
             >
               Don’t Hasitate to Contact Us
             </h2>
             <p
-              className="wow fadeInRightBig"
-              data-wow-delay=".3s"
+              className="wow fadeInUp"
+              data-wow-delay=".2s"
               data-wow-duration="2s"
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
@@ -30,8 +30,8 @@ class Contact extends Component {
             <img
               src={contact1}
               alt="contact"
-              className="wow wobble"
-              data-wow-delay=".4s"
+              className="wow fadeInUp"
+              data-wow-delay=".3s"
               data-wow-duration="2s"
             />
 
