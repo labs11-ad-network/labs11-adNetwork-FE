@@ -16,33 +16,24 @@ export default class Auth {
     clientID: AUTH_CONFIG.clientId,
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: "token id_token",
-    scope: "openid profile email",
+    scope: "openid profile email offline_access",
     sso: false
   });
 
-  constructor() {
-    // this.login = this.login.bind(this);
-    // this.logout = this.logout.bind(this);
-    // this.handleAuthentication = this.handleAuthentication.bind(this);
-    // this.getAccessToken = this.getAccessToken.bind(this);
-    // this.getIdToken = this.getIdToken.bind(this);
-    this.state = {
-      token: ""
-    };
-  }
-  login = async () => {
-    await this.auth0.authorize();
-    localStorage.setItem("access_token", this.state.token);
+  login = () => {
+    this.auth0.authorize();
   };
   handleAuthentication = () => {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
-        console.log(authResult.idToken);
-        this.setState({ token: authResult.idToken });
-        // localStorage.setItem("access_token", authResult.accessToken);
-        // localStorage.setItem("id_token", authResult.idToken);
+        console.log({
+          authResult
+        });
+        localStorage.setItem("access_token", authResult.accessToken);
+        localStorage.setItem("access_token", authResult.accessToken);
         this.setSession(authResult);
       } else if (err) {
+        console.log(err);
         history.replace("/");
       }
     });
@@ -87,7 +78,7 @@ export default class Auth {
       .then(res => {
         // console.log('--- hit response -- ', res.data)
       })
-      .catch(err => console.error(err));
+      .catch(err => history.replace("/"));
     history.replace("/dashboard");
   };
   logout = () => {
