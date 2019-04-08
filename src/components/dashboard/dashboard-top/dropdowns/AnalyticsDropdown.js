@@ -6,7 +6,7 @@ const AnalyticsDropdown = props => {
         handleOfferSelect,
         location,
         currentOffer,
-        userOffers,
+        offers,
         agreements
     } = props;
 
@@ -21,8 +21,8 @@ const AnalyticsDropdown = props => {
               {currentUser.acct_type === "advertiser" ? (
                 <>
                   <option value="">All Offers</option>
-                  {userOffers.length &&
-                    userOffers.map(offer => {
+                  {offers.length &&
+                    offers.map(offer => {
                       return (
                         <option key={offer.id} value={offer.id}>
                           {offer.name}

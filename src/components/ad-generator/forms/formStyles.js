@@ -102,24 +102,3 @@ export const ImageUpload = styled.input`
     cursor: pointer;
   }
 `;
-
-
-export const CreateAdButton = styled.button`
-  display: flex;
-  justify-content: center;
-  width: 96.5%;
-  margin:  0 15px 15px 15px;
-  padding: 20px 0;
-  border-radius: 8px;
-  border: unset;
-  font-size: 1.2rem;
-  font-weight: 100;
-  color: #ffffff;
-  background-color: #0a88dc;
-  transition: 0.2s;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-  &:hover {
-    cursor: pointer;
-    background-color: #086fb3;
-  }
-`;

@@ -61,7 +61,7 @@ class DashboardTop extends React.Component {
       userNotifications, 
       handleOfferSelect, 
       currentOffer, 
-      userOffers,
+      offers,
       agreements,
       isLoadingAds,
       isLoadingAgreements,
@@ -114,7 +114,7 @@ class DashboardTop extends React.Component {
               handleOfferSelect={handleOfferSelect}
               location={this.props.location}
               currentOffer={currentOffer}
-              userOffers={userOffers}
+              offers={offers}
               agreements={agreements}
             />
             {/* --------------------- Create Advertisement Button ------------------ */}            

@@ -1,54 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
 import html2canvas from "html2canvas";
 
-import { CreateAdButton } from '../../../components/ad-generator/forms/formStyles.js';
+import { AdGeneratorContainer, LeftSection, RightSection, CreateAdButton } from "./containerStyles.js";
 import { createAd } from "../../../store/actions/adAction.js";
 import { getOffers } from "../../../store/actions/offersAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
 import TemplateSelectors from "../../../components/ad-generator/form-components/TemplateSelectors.js";
 import Controls from "../../../components/ad-generator/controls/Controls.js";
 import AdHoc from "../../../components/ad-generator/AdHoc.js";
-
-const AdGeneratorContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  .preview-section {
-    width: 50%;
-    .template-selector {
-      display: flex;
-      background-color: #ffffff;
-      margin: 15px;
-      padding: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-      border-radius: 15px;
-      justify-content: center;
-    }
-    .ad-preview {
-      display: flex;
-      background-color: #ffffff;
-      margin: 15px;
-      min-height: 670px;
-      padding: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-      border-radius: 15px;
-      padding: 25px;
-      justify-content: center;
-      align-items: center;
-    }
-  }
-  .ad-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #ffffff;
-    margin: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-    border-radius: 15px;
-    width: 50%;
-  }
-`;
 
 export class AdGenerator extends Component {
   state = {
@@ -98,7 +58,7 @@ export class AdGenerator extends Component {
   };
 
   componentDidMount() {
-    this.props.getUserOffers();
+    this.props.getOffers();
   }
 
   createAd = async e => {
@@ -236,38 +196,42 @@ export class AdGenerator extends Component {
   };
 
   render() {
-    return this.props.userOffers.length ? (
+
+    const { offers } = this.props;
+    const { productData, currentElement } = this.state; 
+
+    return this.props.offers.length ? (
       <AdGeneratorContainer>
-        <div className="ad-form">
+        <LeftSection>
           <AdForm
             handleChange={this.handleChange}
             handleElementChange={this.handleElementChange}
             handleTextChange={this.handleTextChange}
             handleFileChange={this.handleFileChange}
-            productData={this.state.productData}
-            offers={this.props.offers}
-            selected={this.state.currentElement}
+            productData={productData}
+            offers={offers}
+            selected={currentElement}
           />
           <Controls
             customizeElement={this.customizeElement}
             toggleElementStyle={this.toggleElementStyle}
             customizeElementSize={this.customizeElementSize}
-            sizeValue={this.state.productData[this.state.currentElement].size}
+            sizeValue={productData[currentElement].size}
           />
-        </div>
-        <div className="preview-section">
+        </LeftSection>
+        <RightSection>
           <div className="template-selector">
             <TemplateSelectors handleChange={this.handleChange} />
           </div>
           <div className="ad-preview">
             <div id="advertisment">
-              <AdHoc ad={this.state.productData} />
+              <AdHoc ad={productData} />
             </div>
           </div>
           <CreateAdButton onClick={this.createAd}>
             Create Ad
           </CreateAdButton>
-        </div>
+        </RightSection>
       </AdGeneratorContainer>
     ) : (
       <h1>Create an offer before you create an ad.</h1>
