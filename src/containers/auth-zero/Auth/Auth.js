@@ -11,6 +11,7 @@ export default class Auth {
   userProfile;
   tokenRenewalTimeout;
 
+  // Auth Config
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
@@ -20,17 +21,18 @@ export default class Auth {
     sso: false
   });
 
+  // handle login built in function from Auth0
   login = () => {
     this.auth0.authorize();
   };
+
+  //once user is authenticated with login we will invoke setSession
   handleAuthentication = () => {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         console.log({
           authResult
         });
-        localStorage.setItem("access_token", authResult.accessToken);
-        localStorage.setItem("access_token", authResult.accessToken);
         this.setSession(authResult);
       } else if (err) {
         console.log(err);
@@ -38,13 +40,18 @@ export default class Auth {
       }
     });
   };
+
+  //gett access token
   getAccessToken = () => {
     return this.accessToken;
   };
+
+  // get user token
   getIdToken = () => {
     return this.idToken;
   };
 
+  // once user is authenticated we will make a request to lad backend and create this user to our backend if it does not exists
   setSession = authResult => {
     // Set the time that the access token will expire at
     let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
@@ -78,9 +85,15 @@ export default class Auth {
       .then(res => {
         // console.log('--- hit response -- ', res.data)
       })
-      .catch(err => history.replace("/"));
+      .catch(err => {
+        // if there's error with registering user with our backend clear localstorage and redirect to landing page
+        window.localStorage.clear();
+        history.replace("/");
+      });
     history.replace("/dashboard");
   };
+
+  // logout user
   logout = () => {
     // Remove tokens and expiry time
     this.accessToken = null;
