@@ -158,12 +158,16 @@ export const LandingPageStyle = styled.div`
     margin-top: 50px;
     border-top: 1px solid #e7eaee;
     height: 100%;
+      .footer-ptag {
+        text-align:center;
+      }
     p {
       color: #5b5d61;
       font-size: 13px;
+      text-align:center;
       @media (min-width: 481px) {
         font-size: 15px;
-        margin-top: 200px;
+       
       }
       @media (min-width: 940px) {
         font-size: 17px;
@@ -172,14 +176,20 @@ export const LandingPageStyle = styled.div`
 
     .footer-wrapper {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       padding: 80px 0;
       align-items: center;
+      flex-direction: column;
       @media (min-width: 481px) {
+      flex-direction: column;
+      justify-content: space-between;
+      }
+      @media (min-width: 940px) {
         flex-direction: row;
       }
     }
+  }
+
 
     .footer-flex {
       display: flex;
@@ -192,8 +202,9 @@ export const LandingPageStyle = styled.div`
 
     .status-privacy_contact {
       margin: 25px auto;
+      justify-content: center;
       @media (min-width: 481px) {
-        margin: auto;
+        margin: 40px auto;
       }
       a {
         &:hover {
@@ -216,6 +227,7 @@ export const LandingPageStyle = styled.div`
       -o-transition: 0.3s;
       transition: 0.3s;
       font-size: 14px;
+      text-decoration: none;
       &:hover {
         background: #2f5bea;
       }
