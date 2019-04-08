@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { getUserOffers } from "./offersAction.js";
+import { getOffers } from "./offersAction.js";
 
 const URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -18,7 +18,7 @@ export const createAgreement = offer => dispatch => {
       dispatch({ type: CREATE_AGREEMENT_SUCCESS, payload: res.data });
     })
     .then(() => {
-      dispatch(getUserOffers());
+      dispatch(getOffers());
     })
     .catch(err => {
       dispatch({ type: CREATE_AGREEMENT_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
@@ -57,7 +57,7 @@ export const updateAgreement = (id, agreement) => dispatch => {
       dispatch({ type: CHANGE_AGREEMENT_SUCCESS, payload: res.data });
     })
     .then(() => {
-      dispatch(getUserOffers());
+      dispatch(getOffers());
     })
     .catch(err => {
       dispatch({ type: CHANGE_AGREEMENT_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
@@ -78,7 +78,7 @@ export const deleteAgreement = id => dispatch => {
       dispatch({ type: DELETE_AGREEMENT_SUCCESS, payload: res.data });
     })
     .then(() => {
-      dispatch(getUserOffers());
+      dispatch(getOffers());
     })
     .catch(err => {
       dispatch({ type: DELETE_AGREEMENT_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })

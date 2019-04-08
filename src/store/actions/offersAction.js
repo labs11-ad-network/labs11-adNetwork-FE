@@ -4,19 +4,19 @@ const URL = process.env.REACT_APP_BACKEND_URL;
 
 // ------------------------------------ Get All User Offers ------------------------------------
 
-export const GET_USER_OFFERS_START = "GET_USER_OFFERS_START";
-export const GET_USER_OFFERS_SUCCESS = "GET_USER_OFFERS_SUCCESS";
-export const GET_USER_OFFERS_FAILURE = "GET_USER_OFFERS_FAILURE";
+export const GET_OFFERS_START = "GET_OFFERS_START";
+export const GET_OFFERS_SUCCESS = "GET_OFFERS_SUCCESS";
+export const GET_OFFERS_FAILURE = "GET_OFFERS_FAILURE";
 
-export const getUserOffers = () => dispatch => {
-  dispatch({ type: GET_USER_OFFERS_START });
+export const getOffers = () => dispatch => {
+  dispatch({ type: GET_OFFERS_START });
   axios
     .get(`${URL}/api/offers`)
     .then(res => {
-      dispatch({ type: GET_USER_OFFERS_SUCCESS, payload: res.data });
+      dispatch({ type: GET_OFFERS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_USER_OFFERS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({ type: GET_OFFERS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
     });
 };
 
@@ -34,7 +34,7 @@ export const createOffer = offer => dispatch => {
       dispatch({ type: CREATE_OFFER_SUCCESS, payload: res.data });
     })
     .then(() => {
-      dispatch(getUserOffers());
+      dispatch(getOffers());
     })
     .catch(err => {
       dispatch({ type: CREATE_OFFER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
@@ -58,7 +58,7 @@ export const changeOfferStatus = offer => dispatch => {
       });
     })
     .then(() => {
-      dispatch(getUserOffers())
+      dispatch(getOffers())
     })
     .catch(err => {
       dispatch({ type: CHANGE_OFFER_STATUS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
@@ -86,7 +86,7 @@ export const updateOffer = offer => dispatch => {
       dispatch({ type:UPDATE_OFFER_SUCCESS, payload: res.data })
     })
     .then(() => {
-      dispatch(getUserOffers())
+      dispatch(getOffers())
     })
     .catch(err => {
       dispatch({ type:UPDATE_OFFER_SUCCESS, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
@@ -110,7 +110,7 @@ export const deleteOffer = offer => dispatch => {
       });
     })
     .then(() => {
-      dispatch(getUserOffers())
+      dispatch(getOffers())
     })
     .catch(err => {
       dispatch({ type: DELETE_OFFER_SUCCESS, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })

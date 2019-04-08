@@ -21,9 +21,20 @@ const PageContainer = styled.div`
 `;
 
 class Analytics extends Component {
+  componentDidMount(){
+    this.props.getAnalytics(this.props.currentAnalyticId);
+    this.analyticsInterval = setInterval(() => {
+      this.props.getAnalytics(this.props.currentAnalyticId);
+    }, 15000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.analyticsInterval);
+  }
+
   getCTR = () => {
-    const clicks = this.props.offerAnalytics.actionCount.clicks;
-    const impressions = this.props.offerAnalytics.actionCount.impressions;
+    const clicks = this.props.analytics.actionCount.clicks;
+    const impressions = this.props.analytics.actionCount.impressions;
 
     const ctr = Math.round((clicks / impressions) * 100 * 100) / 100;
 
@@ -31,10 +42,10 @@ class Analytics extends Component {
   };
 
   getCityData = () => {
-    if(this.props.offerAnalytics.cities.length){
-      const range = this.props.offerAnalytics.actionCount.clicks + this.props.offerAnalytics.actionCount.impressions;
+    if(this.props.analytics.cities.length){
+      const range = this.props.analytics.actionCount.clicks + this.props.analytics.actionCount.impressions;
       return{
-        cities: this.props.offerAnalytics.cities.map(city => {
+        cities: this.props.analytics.cities.map(city => {
           return {
             name: city.city,
             coordinates: [Number(city.longitude), Number(city.latitude)],
@@ -54,60 +65,60 @@ class Analytics extends Component {
   }
 
   render() {
-    const { offerAnalytics } = this.props;
+    const { analytics } = this.props;
     return (
       <PageContainer>
-        {offerAnalytics.length !== 0 && (
+        {analytics.length !== 0 && (
           <>
             <div className="card-container">
               <Card
                 icon="fas fa-eye"
                 dataType="Impressions"
-                data={offerAnalytics.actionCount.impressions}
-                actions={offerAnalytics.impressions}
+                data={analytics.actionCount.impressions}
+                actions={analytics.impressions}
                 firstColor="#ffa726"
                 secondColor="#fb8c00"
-                growth={offerAnalytics.growth.impressions || 0}
+                growth={analytics.growth.impressions || 0}
               />
               <Card
                 icon="fas fa-mouse-pointer"
                 dataType="Clicks"
-                data={offerAnalytics.actionCount.clicks}
-                actions={offerAnalytics.clicks}
+                data={analytics.actionCount.clicks}
+                actions={analytics.clicks}
                 firstColor="#66bb6a"
                 secondColor="#43a047"
-                growth={offerAnalytics.growth.clicks || 0}
+                growth={analytics.growth.clicks || 0}
               />
               <Card
                 icon="fas fa-percentage"
                 dataType="Click Through Rate"
-                data={[...offerAnalytics.clicks, ...offerAnalytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at)).length}
+                data={[...analytics.clicks, ...analytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at)).length}
                 ctr={this.getCTR()}
-                actions={[...offerAnalytics.clicks, ...offerAnalytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at))}
+                actions={[...analytics.clicks, ...analytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at))}
                 firstColor="#ef5350"
                 secondColor="#e53935"
               />
               <Card
                 icon="fas fa-exchange-alt"
                 dataType="Conversions"
-                data={offerAnalytics.actionCount.conversions}
-                actions={offerAnalytics.conversions}
+                data={analytics.actionCount.conversions}
+                actions={analytics.conversions}
                 firstColor="#26c6da"
                 secondColor="#00acc1"
-                growth={offerAnalytics.growth.conversions || 0}
+                growth={analytics.growth.conversions || 0}
               />
             </div>
-            <Graphs data={offerAnalytics.browserCount} />
+            <Graphs data={analytics.browserCount} />
             <div className="row-container">
               <Table 
-                data={offerAnalytics.impressions}
+                data={analytics.impressions}
                 dataType="Impressions"
-                growth={offerAnalytics.growth.impressions || 0}
+                growth={analytics.growth.impressions || 0}
               />
               <Table 
-                data={offerAnalytics.clicks} 
+                data={analytics.clicks} 
                 dataType="Clicks"
-                growth={offerAnalytics.growth.clicks || 0}
+                growth={analytics.growth.clicks || 0}
               />
               <MapChart 
                 data={this.getCityData()} 
