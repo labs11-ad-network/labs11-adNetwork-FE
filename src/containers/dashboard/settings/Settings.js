@@ -14,8 +14,18 @@ const PageContainer = styled.div`
   margin: 10px;
   .billing-container{
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
     margin: 15px;
+  }
+  @media (max-width: 1170px){
+    flex-direction: column;
+    margin: unset;
+    width: 95%;
+    margin: 0 auto;
+    .billing-container{
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 `
 
