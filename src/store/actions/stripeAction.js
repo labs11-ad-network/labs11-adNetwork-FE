@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { getUserData, changeUserData } from "./authAction.js";
+import { getUserData } from "./authAction.js";
 
 const URL = process.env.REACT_APP_BACKEND_URL;
 
@@ -111,35 +111,13 @@ export const CONNECT_CUSTOMER_START = "CONNECT_CUSTOMER_START";
 export const CONNECT_CUSTOMER_SUCCESS = "CONNECT_CUSTOMER_SUCCESS";
 export const CONNECT_CUSTOMER_FAILURE = "CONNECT_CUSTOMER_FAILURE";
 
-export const connectCustomer = (code, history) => dispatch => {
+export const connectCustomer = (code) => dispatch => {
   dispatch({ type: CONNECT_CUSTOMER_START });
 
-  let body = {
-    client_secret: process.env.REACT_APP_STRIPE_SECRET,
-    code,
-    grant_type: "authorization_code"
-  }
-
-  body = Object.keys(body).map(function(key) {
-      return encodeURIComponent(key) + '=' + encodeURIComponent(body[key])
-  }).join('&')
-
-  axios({
-      method: 'post',
-      url: 'https://connect.stripe.com/oauth/token',
-      withCredentials: true,
-      crossdomain: true,
-      data: body,    
-      headers: { 
-        "content-type:": "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW",
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Cache-Control": "no-cache",
-        "Postman-Token": "10c57ede-97ca-0665-d46d-6a0402e7182a"
-      }
-    })
+  axios
+    .post(`${URL}/api/checkout/connect_customer`, {code})
     .then(res => {
-      changeUserData({ stripe_payout_id: res.data.stripe_user_id })
-      dispatch({ type: CONNECT_CUSTOMER_SUCCESS })
+      dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: res.data })
     })
     .catch(err => {
       dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: err })
