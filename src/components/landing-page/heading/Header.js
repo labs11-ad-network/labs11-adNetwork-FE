@@ -122,7 +122,7 @@ class Header extends Component {
                 <p className="hero-sub-title">
                   #Lad Network #faster websites #improve SEO
                 </p>
-                <h1 className="wow bounceInLeft" data-wow-delay=".2s">
+                <h1 className="wow fadeInUp" data-wow-delay=".2s">
                   <span>Creepy Ads</span>
                   <br /> We are a non creepy ad network that presents itself as
                   actually very creepy.

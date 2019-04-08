@@ -154,6 +154,8 @@ export const LandingPageStyle = styled.div`
   }
 
   footer {
-    margin: 40vh 0;
+    padding: 100px 0;
+    margin-top: 100px;
+    border: 1px solid red;
   }
 `;

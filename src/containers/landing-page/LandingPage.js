@@ -43,7 +43,22 @@ class LandingPage extends PureComponent {
         </section>
 
         <footer>
-          <p className="footer-ptag">Copyright © 2019 All Rights Reserved.</p>
+          <p className="footer-ptag">
+            © Lad Network, 2019 All rights reserved.
+          </p>
+
+          <div className="status-privacy_conatc">
+            <p>Status</p>
+            <p>Privacy & Terms</p>
+            <p>Contact Us</p>
+          </div>
+
+          <div className="footer-socials">
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+          </div>
         </footer>
       </LandingPageStyle>
     );
