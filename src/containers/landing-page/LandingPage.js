@@ -10,6 +10,7 @@ import ExpertTeam from "../../components/landing-page/ExpertTeam";
 import Contact from "../../components/landing-page/Contact";
 
 class LandingPage extends PureComponent {
+  i;
   login = () => {
     this.props.auth.login();
   };
