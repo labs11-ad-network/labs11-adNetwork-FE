@@ -18,7 +18,9 @@ export default class Auth {
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: "token id_token",
     scope: "openid profile email offline_access",
-    sso: false
+    sso: false,
+    rememberLastLogin: false,
+    params: { prompt: "select_account" }
   });
 
   // handle login built in function from Auth0
@@ -32,7 +34,6 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        console.log(err);
         history.replace("/");
       }
     });
@@ -97,12 +98,6 @@ export default class Auth {
     this.idToken = null;
     localStorage.clear();
     sessionStorage.clear();
-    // navigate to the home route
-    auth0.logout({
-      returnTo: "http://ladnetwork.auth0.com/v2/logout",
-      client_id: "XQh6ZLLicvNOdZUMBrCvmL2zyrgmE1fB"
-    });
-
     history.replace("/");
   };
 }
