@@ -62,7 +62,7 @@ class AppDownload extends Component {
             <div className="promo-row container">
               <div
                 className="promo-col wow fadeInLeft"
-                data-wow-delay=".5s"
+                data-wow-delay=".2s"
                 data-wow-duration="2s"
               >
                 <i className="fas fa-shield-alt promo-icon" />
@@ -75,7 +75,7 @@ class AppDownload extends Component {
 
               <div
                 className="promo-col wow wobble"
-                data-wow-delay=".6s"
+                data-wow-delay=".3s"
                 data-wow-duration="2s"
               >
                 <i className="fas fa-layer-group promo-icon" />{" "}
@@ -88,7 +88,7 @@ class AppDownload extends Component {
 
               <div
                 className="promo-col wow fadeInRight"
-                data-wow-delay=".7s"
+                data-wow-delay=".4s"
                 data-wow-duration="2s"
               >
                 <i className="fas fa-chart-bar promo-icon" />{" "}
@@ -177,7 +177,7 @@ class AppDownload extends Component {
           <section className="feature-section">
             <div className="container">
               <h2
-                className="main-title wow bounceInRight"
+                className="main-title wow fadeInUp"
                 data-wow-delay=".2s"
                 data-wow-duration="2s"
               >
@@ -271,7 +271,11 @@ class AppDownload extends Component {
           </section>
           <section className="screenshot-section padding bg-gray">
             <div className="swiper-container swiper-container-horizontal container">
-              <h2 className="main-title" id="screenshots">
+              <h2
+                className="main-title wow fadeInUp"
+                id="screenshots"
+                data-wow-delay=".2s"
+              >
                 Screenshots
               </h2>
               <p>

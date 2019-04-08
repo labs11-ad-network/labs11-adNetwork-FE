@@ -10,7 +10,7 @@ class Contact extends Component {
         <div className="container">
           <div className="contact-title" id="contact">
             <h2
-              className="wow fadeIn"
+              className="wow fadeInUp"
               data-wow-delay=".2s"
               data-wow-duration="2s"
             >

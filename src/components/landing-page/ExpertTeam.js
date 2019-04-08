@@ -30,7 +30,7 @@ class ExpertTeam extends Component {
         <div className="container">
           <div className="team-content" id="team">
             <h2
-              className="wow fadeInDownBig"
+              className="wow fadeInUp"
               data-wow-delay=".2s"
               data-wow-duration="2s"
             >
