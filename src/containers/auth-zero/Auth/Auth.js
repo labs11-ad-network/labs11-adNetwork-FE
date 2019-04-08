@@ -95,21 +95,14 @@ export default class Auth {
     // Remove tokens and expiry time
     this.accessToken = null;
     this.idToken = null;
-    this.expiresAt = 0;
-
-    // Remove user profile
-    this.userProfile = null;
-
-    // Clear token renewal
-    clearTimeout(this.tokenRenewalTimeout);
-
-    // Remove isLoggedIn flag from localStorage
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("expires_at");
-
+    localStorage.clear();
+    sessionStorage.clear();
     // navigate to the home route
+    auth0.logout({
+      returnTo: "http://ladnetwork.auth0.com/v2/logout",
+      client_id: "XQh6ZLLicvNOdZUMBrCvmL2zyrgmE1fB"
+    });
+
     history.replace("/");
   };
 }

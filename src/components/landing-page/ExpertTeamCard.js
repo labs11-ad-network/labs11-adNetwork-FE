@@ -1,17 +1,17 @@
 import React from "react";
 
-const ExpertTeamCard = ({ teamBg }) => {
+const ExpertTeamCard = ({ teamBg, profilePic, name }) => {
   return (
     <div className="team-card">
       <img src={teamBg} alt="team background" />
 
       <div className="border">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+          src={profilePic}
           alt="profile pic"
           className="team-profile_picture"
         />
-        <h3>Name Here</h3>
+        <h3>{name}</h3>
         <p className="team-sub_title">Web Developer</p>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate

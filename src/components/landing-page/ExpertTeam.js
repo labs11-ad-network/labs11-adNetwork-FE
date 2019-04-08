@@ -9,6 +9,7 @@ import ExpertTeamCard from "./ExpertTeamCard";
 import teambg1 from "../../assets/teambg1.jpg";
 import teambg2 from "../../assets/teambg2.jpg";
 import teambg3 from "../../assets/teambg3.jpg";
+import jbmiranda from "../../assets/jbmiranda.jpg";
 import video2 from "../../assets/video2.png";
 import CustomerStoriesCarousel from "./CustomerStoriesCarousel";
 let responsive = {
@@ -55,23 +56,47 @@ class ExpertTeam extends Component {
             nav
           >
             <div className="item">
-              <ExpertTeamCard teamBg={teambg1} />
+              <ExpertTeamCard
+                name="Name Here"
+                teamBg={teambg1}
+                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+              />
             </div>
 
             <div className="item">
-              <ExpertTeamCard teamBg={teambg2} />
+              <ExpertTeamCard
+                name="Name Here"
+                teamBg={teambg2}
+                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+              />
             </div>
             <div className="item">
-              <ExpertTeamCard teamBg={teambg3} />
+              <ExpertTeamCard
+                name="Name Here"
+                teamBg={teambg3}
+                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+              />
             </div>
             <div className="item">
-              <ExpertTeamCard teamBg={teambg1} />
+              <ExpertTeamCard
+                teamBg={teambg1}
+                profilePic={jbmiranda}
+                name="John Benedict Miranda"
+              />
             </div>
             <div className="item">
-              <ExpertTeamCard teamBg={teambg2} />
+              <ExpertTeamCard
+                name="Name Here"
+                teamBg={teambg2}
+                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+              />
             </div>
             <div className="item">
-              <ExpertTeamCard teamBg={teambg3} />
+              <ExpertTeamCard
+                name="Name Here"
+                teamBg={teambg3}
+                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+              />
             </div>
           </OwlCarousel>
         </div>

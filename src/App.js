@@ -55,7 +55,10 @@ class App extends Component {
             }}
           />
 
-          <Route path="/dashboard" component={Dashboard} />
+          <Route
+            path="/dashboard"
+            render={props => <Dashboard {...props} auth={auth} />}
+          />
           <Route path="/ad/:affiliateId/:size" component={AdServer} />
           <Route path="/stripe-callback" component={StripeCallback} />
         </div>
