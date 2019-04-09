@@ -18,9 +18,7 @@ export default class Auth {
     redirectUri: AUTH_CONFIG.callbackUrl,
     responseType: "token id_token",
     scope: "openid profile email offline_access",
-    sso: false,
-    rememberLastLogin: false,
-    params: { prompt: "select_account" }
+    sso: false
   });
 
   // handle login built in function from Auth0
@@ -92,12 +90,15 @@ export default class Auth {
   };
 
   // logout user
-  logout = () => {
+  logout = async () => {
     // Remove tokens and expiry time
     this.accessToken = null;
     this.idToken = null;
     localStorage.clear();
     sessionStorage.clear();
+    await this.auth0.logout({
+      redirecTo: "http://localhost:3000/" || process.env.REACT_APP_BACKEND_URL
+    });
     history.replace("/");
   };
 }

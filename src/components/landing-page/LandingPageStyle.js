@@ -158,6 +158,10 @@ export const LandingPageStyle = styled.div`
     margin-top: 50px;
     border-top: 1px solid #e7eaee;
     height: 100%;
+    @media (min-width: 940px) {
+      margin-top: 150px;
+
+    }
       .footer-ptag {
         text-align:center;
       }
