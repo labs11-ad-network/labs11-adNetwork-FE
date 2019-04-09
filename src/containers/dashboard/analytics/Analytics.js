@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { scaleLinear } from "d3-scale";
 import { connect } from "react-redux";
+import moment from "moment";
 
 import { getPayouts, getPayments } from "../../../store/actions/stripeAction.js";
 import { getAnalytics } from "../../../store/actions/analyticsAction.js";
@@ -45,7 +46,11 @@ class Analytics extends Component {
     this.props.getPayments();
     this.props.getAnalytics(this.props.currentAnalyticId);
     this.analyticsInterval = setInterval(() => {
-      this.props.getAnalytics(this.props.currentAnalyticId);
+      this.props.getAnalytics(
+        this.props.currentAnalyticId,
+        `${moment(this.props.startedAt).format("YYYY-MM-DD")}T00:00:00Z`,
+        `${moment(this.props.endedAt).format("YYYY-MM-DD")}T23:59:00Z`
+      );
     }, 15000);
   }
 
@@ -63,27 +68,29 @@ class Analytics extends Component {
   };
 
   getCityData = () => {
-    if(this.props.analytics.cities.length){
-      const range = this.props.analytics.actionCount.clicks + this.props.analytics.actionCount.impressions;
-      return{
+    if (this.props.analytics.cities.length) {
+      const range =
+        this.props.analytics.actionCount.clicks +
+        this.props.analytics.actionCount.impressions;
+      return {
         cities: this.props.analytics.cities.map(city => {
           return {
             name: city.city,
             coordinates: [Number(city.longitude), Number(city.latitude)],
-            population: city.num 
-          }
+            population: city.num
+          };
         }),
         cityScale: scaleLinear()
-            .domain([0,range])
-            .range([1,25])
-      }
-    }else{
-      return{
+          .domain([0, range])
+          .range([1, 25])
+      };
+    } else {
+      return {
         cities: [],
         cityScale: {}
-      }
+      };
     }
-  }
+  };
 
   render() {
     const { 
@@ -118,9 +125,18 @@ class Analytics extends Component {
               <Card
                 icon="fas fa-percentage"
                 dataType="Click Through Rate"
-                data={[...analytics.clicks, ...analytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at)).length}
+                data={
+                  [...analytics.clicks, ...analytics.impressions].sort(
+                    (first, second) =>
+                      Date.parse(second.created_at) -
+                      Date.parse(first.created_at)
+                  ).length
+                }
                 ctr={this.getCTR()}
-                actions={[...analytics.clicks, ...analytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at))}
+                actions={[...analytics.clicks, ...analytics.impressions].sort(
+                  (first, second) =>
+                    Date.parse(second.created_at) - Date.parse(first.created_at)
+                )}
                 firstColor="#ef5350"
                 secondColor="#e53935"
               />
