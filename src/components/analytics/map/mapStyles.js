@@ -6,12 +6,16 @@ export const MapContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  width: 60%;
+  width: 100%;
   height: auto;
   padding: 25px;
   margin: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+  @media(max-width: 1745px){
+    box-sizing: border-box;
+    flex-direction: column;
+  }   
 `;
 
 export const MapHeader = styled.div`

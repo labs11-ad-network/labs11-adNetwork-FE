@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
 
-import { getAnalytics } from "../../store/actions/analyticsAction.js";
 import { getOffers } from "../../store/actions/offersAction.js";
 import { getUserData } from "../../store/actions/authAction.js";
 import { getAgreements } from "../../store/actions/agreementsAction.js";
@@ -72,9 +71,6 @@ class Dashboard extends Component {
       currentUser,
       agreements,
       userNotifications,
-      updateUserNotification,
-      analytics,
-      getAnalytics,
       auth
     } = this.props;
 
@@ -97,8 +93,6 @@ class Dashboard extends Component {
               render={props => (
                 <Analytics
                   {...props}
-                  getAnalytics={getAnalytics}
-                  analytics={analytics}
                   currentAnalyticId={currentAnalyticId}
                 />
               )}
@@ -133,7 +127,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    getAnalytics,
     getOffers,
     getUserData,
     getAgreements,
