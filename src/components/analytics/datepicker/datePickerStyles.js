@@ -17,16 +17,17 @@ export const DatePickerInput = styled.div`
         font-size: 0.7rem;
         font-weight: 500;
         margin-bottom: 2px;
+        color: rgba(103,103,103,0.8);
         &:hover{
             cursor: pointer
         }
     }
     input{
         min-height: 26px;
-        padding: 1px 10px;
-        max-width: 150px;
-        border: 1px solid rgba(103,103,103,0.5);
-        border-radius: 4px;
+        padding: 1px 5px;
+        max-width: 130px;
+        border: 1px solid rgba(103,103,103,0.2);
+        border-radius: 4px;        
         transition: 0.2s;
         &:hover{
             cursor: pointer
