@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { scaleLinear } from "d3-scale"
+import { scaleLinear } from "d3-scale";
+import moment from "moment";
 
 import Graphs from "../../../components/analytics/graphs";
 import Card from "../../../components/analytics/cards/Card.js";
@@ -15,16 +16,20 @@ const PageContainer = styled.div`
       justify-content: space-between;
     }
   }
-  .row-container{
+  .row-container {
     display: flex;
   }
 `;
 
 class Analytics extends Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.getAnalytics(this.props.currentAnalyticId);
     this.analyticsInterval = setInterval(() => {
-      this.props.getAnalytics(this.props.currentAnalyticId);
+      this.props.getAnalytics(
+        this.props.currentAnalyticId,
+        `${moment(this.props.startedAt).format("YYYY-MM-DD")}T00:00:00Z`,
+        `${moment(this.props.endedAt).format("YYYY-MM-DD")}T23:59:00Z`
+      );
     }, 15000);
   }
 
@@ -42,27 +47,29 @@ class Analytics extends Component {
   };
 
   getCityData = () => {
-    if(this.props.analytics.cities.length){
-      const range = this.props.analytics.actionCount.clicks + this.props.analytics.actionCount.impressions;
-      return{
+    if (this.props.analytics.cities.length) {
+      const range =
+        this.props.analytics.actionCount.clicks +
+        this.props.analytics.actionCount.impressions;
+      return {
         cities: this.props.analytics.cities.map(city => {
           return {
             name: city.city,
             coordinates: [Number(city.longitude), Number(city.latitude)],
-            population: city.num 
-          }
+            population: city.num
+          };
         }),
         cityScale: scaleLinear()
-            .domain([0,range])
-            .range([1,25])
-      }
-    }else{
-      return{
+          .domain([0, range])
+          .range([1, 25])
+      };
+    } else {
+      return {
         cities: [],
         cityScale: {}
-      }
+      };
     }
-  }
+  };
 
   render() {
     const { analytics } = this.props;
@@ -92,9 +99,18 @@ class Analytics extends Component {
               <Card
                 icon="fas fa-percentage"
                 dataType="Click Through Rate"
-                data={[...analytics.clicks, ...analytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at)).length}
+                data={
+                  [...analytics.clicks, ...analytics.impressions].sort(
+                    (first, second) =>
+                      Date.parse(second.created_at) -
+                      Date.parse(first.created_at)
+                  ).length
+                }
                 ctr={this.getCTR()}
-                actions={[...analytics.clicks, ...analytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at))}
+                actions={[...analytics.clicks, ...analytics.impressions].sort(
+                  (first, second) =>
+                    Date.parse(second.created_at) - Date.parse(first.created_at)
+                )}
                 firstColor="#ef5350"
                 secondColor="#e53935"
               />
@@ -110,19 +126,17 @@ class Analytics extends Component {
             </div>
             <Graphs data={analytics.browserCount} />
             <div className="row-container">
-              <Table 
+              <Table
                 data={analytics.impressions}
                 dataType="Impressions"
                 growth={analytics.growth.impressions || 0}
               />
-              <Table 
-                data={analytics.clicks} 
+              <Table
+                data={analytics.clicks}
                 dataType="Clicks"
                 growth={analytics.growth.clicks || 0}
               />
-              <MapChart 
-                data={this.getCityData()} 
-              />
+              <MapChart data={this.getCityData()} />
             </div>
           </>
         )}
