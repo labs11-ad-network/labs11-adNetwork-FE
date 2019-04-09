@@ -303,4 +303,7 @@ export const ExpertTeamStyle = styled.div`
   .center-me {
     max-width: 341px;
   }
+  .item img {
+    object-fit: cover;
+  }
 `;

@@ -27,8 +27,8 @@ class AppDownload extends Component {
           <section className="app-download-flex">
             <div className="container">
               <div
-                className="app-download-item wow fadeInLeft"
-                data-wow-delay=".2s"
+                className="app-download-item wow fadeInUp"
+                data-wow-delay=".1s"
                 data-wow-duration="2s"
               >
                 <p>#Lad Download </p>
@@ -41,16 +41,14 @@ class AppDownload extends Component {
                 <img
                   src={googlePlay}
                   alt="google play"
-                  className="app-store-img wow flipOutY"
-                  data-wow-delay=".3s"
-                  data-wow-duration="2s"
+                  className="app-store-img"
                 />
               </div>
 
               <div className="hero-moc">
                 <img
-                  className="lad-phone-image wow jackInTheBox"
-                  data-wow-delay=".4s"
+                  className="lad-phone-image wow fadeInUp"
+                  data-wow-delay=".3s"
                   data-wow-duration="2s"
                   src={phoneTesting}
                   alt="test"
@@ -61,8 +59,8 @@ class AppDownload extends Component {
           <section className="promo-section">
             <div className="promo-row container">
               <div
-                className="promo-col wow fadeInLeft"
-                data-wow-delay=".2s"
+                className="promo-col wow fadeIn"
+                data-wow-delay=".1s"
                 data-wow-duration="2s"
               >
                 <i className="fas fa-shield-alt promo-icon" />
@@ -74,8 +72,8 @@ class AppDownload extends Component {
               </div>
 
               <div
-                className="promo-col wow wobble"
-                data-wow-delay=".3s"
+                className="promo-col wow fadeIn"
+                data-wow-delay=".2s"
                 data-wow-duration="2s"
               >
                 <i className="fas fa-layer-group promo-icon" />{" "}
@@ -87,8 +85,8 @@ class AppDownload extends Component {
               </div>
 
               <div
-                className="promo-col wow fadeInRight"
-                data-wow-delay=".4s"
+                className="promo-col wow fadeIn"
+                data-wow-delay=".3s"
                 data-wow-duration="2s"
               >
                 <i className="fas fa-chart-bar promo-icon" />{" "}
@@ -106,8 +104,8 @@ class AppDownload extends Component {
               <div className="work-content-row">
                 <div className="work-content-col work-content-col-first_child">
                   <div
-                    className="content-mockups wow jello"
-                    data-wow-delay=".2s"
+                    className="content-mockups wow fadeInUp"
+                    data-wow-delay=".1s"
                     data-wow-duration="2s"
                   >
                     <div className="mockup-back" />
@@ -117,8 +115,8 @@ class AppDownload extends Component {
 
                 <div className="work-content-col work-content-second_child">
                   <h2
-                    className="main-title wow zoomInRight"
-                    data-wow-delay=".3s"
+                    className="main-title wow fadeInUp"
+                    data-wow-delay=".2s"
                     data-wow-duration="2s"
                   >
                     How does this App Work?
@@ -190,8 +188,8 @@ class AppDownload extends Component {
 
               <div className="feature-row">
                 <div
-                  className="feature-col wow bounceInRight"
-                  data-wow-delay=".3s"
+                  className="feature-col wow fadeInUp"
+                  data-wow-delay=".1s"
                   data-wow-duration="2s"
                 >
                   <img src={tool3} alt="icon" />
@@ -203,8 +201,8 @@ class AppDownload extends Component {
                 </div>
 
                 <div
-                  className="feature-col wow bounceInRight"
-                  data-wow-delay=".4s"
+                  className="feature-col wow fadeInUp"
+                  data-wow-delay=".1s"
                   data-wow-duration="2s"
                 >
                   <img src={tool4} alt="icon" />
@@ -216,8 +214,8 @@ class AppDownload extends Component {
                 </div>
 
                 <div
-                  className="feature-col wow bounceInLeft"
-                  data-wow-delay=".5s"
+                  className="feature-col wow fadeInUp"
+                  data-wow-delay=".1s"
                   data-wow-duration="2s"
                 >
                   <img src={tool5} alt="icon" />
@@ -229,8 +227,8 @@ class AppDownload extends Component {
                 </div>
 
                 <div
-                  className="feature-col wow bounceInLeft"
-                  data-wow-delay=".6s"
+                  className="feature-col wow fadeInUp"
+                  data-wow-delay=".1s"
                   data-wow-duration="2s"
                 >
                   <img src={tool6} alt="icon" />
@@ -242,8 +240,8 @@ class AppDownload extends Component {
                 </div>
 
                 <div
-                  className="feature-col wow bounceInLeft"
-                  data-wow-delay=".7s"
+                  className="feature-col wow fadeInUp"
+                  data-wow-delay=".1s"
                   data-wow-duration="2s"
                 >
                   <img src={tool7} alt="icon" />
@@ -255,8 +253,8 @@ class AppDownload extends Component {
                 </div>
 
                 <div
-                  className="feature-col wow bounceInLeft"
-                  data-wow-delay=".8s"
+                  className="feature-col wow fadeInUp"
+                  data-wow-delay=".1s"
                   data-wow-duration="2s"
                 >
                   <img src={tool8} alt="icon" />
@@ -274,7 +272,8 @@ class AppDownload extends Component {
               <h2
                 className="main-title wow fadeInUp"
                 id="screenshots"
-                data-wow-delay=".2s"
+                data-wow-delay=".1s"
+                data-wow-duration="2s"
               >
                 Screenshots
               </h2>

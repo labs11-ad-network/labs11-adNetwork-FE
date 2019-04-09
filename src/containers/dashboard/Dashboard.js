@@ -6,7 +6,10 @@ import { Route } from "react-router-dom";
 import { getOffers } from "../../store/actions/offersAction.js";
 import { getUserData } from "../../store/actions/authAction.js";
 import { getAgreements } from "../../store/actions/agreementsAction.js";
-import { getUserNotifications, updateUserNotification } from "../../store/actions/notificationsAction.js";
+import {
+  getUserNotifications,
+  updateUserNotification
+} from "../../store/actions/notificationsAction.js";
 import privateRoute from "../auth-HOC";
 import DashboardLeft from "../../components/dashboard/dashboard-left/DashboardLeft.js";
 import DashboardTop from "../../components/dashboard/dashboard-top/DashboardTop.js";
@@ -44,7 +47,7 @@ class Dashboard extends Component {
     this.props.getUserNotifications();
     this.startGettingNotifications();
   }
-  
+
   componentWillUnmount() {
     clearInterval(this.notificationsInterval);
   }
@@ -53,7 +56,7 @@ class Dashboard extends Component {
     this.notificationsInterval = setInterval(() => {
       this.props.getUserNotifications();
     }, 15000);
-  }
+  };
 
   handleOfferSelect = e => {
     this.props.getAnalytics(e.target.value);
@@ -63,13 +66,12 @@ class Dashboard extends Component {
   };
 
   render() {
-
     const { currentAnalyticId } = this.state;
     const {
       currentUser,
       agreements,
       userNotifications,
-      updateUserNotification
+      auth
     } = this.props;
 
     return (
@@ -78,6 +80,7 @@ class Dashboard extends Component {
         <div className="main-content">
           <DashboardTop
             {...this.props}
+            auth={auth}
             handleOfferSelect={this.handleOfferSelect}
             agreements={agreements}
             userNotifications={userNotifications}
@@ -96,9 +99,7 @@ class Dashboard extends Component {
             />
             <Route
               path="/dashboard/offers"
-              render={props => (
-                <Offers {...props} currentUser={currentUser} />
-              )}
+              render={props => <Offers {...props} currentUser={currentUser} />}
             />
             <Route
               path="/dashboard/settings"
@@ -120,7 +121,7 @@ const mapStateToProps = state => ({
   currentUser: state.authReducer.currentUser,
   analytics: state.analyticsReducer.analytics,
   offers: state.offersReducer.offers,
-  agreements: state.agreementsReducer.agreements,
+  agreements: state.agreementsReducer.agreements
 });
 
 export default connect(

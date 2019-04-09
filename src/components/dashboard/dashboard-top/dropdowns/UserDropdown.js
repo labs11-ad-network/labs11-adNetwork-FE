@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 import { withStyles } from "@material-ui/core/styles";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
@@ -10,93 +10,91 @@ import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 
 const styles = theme => ({
-    root: {
-      display: "flex"
-    },
-    menu: {
-      width: 200,
-      zIndex: 999999999999999999
-    },
-    paper: {
-      marginRight: theme.spacing.unit * 2
-    }
+  root: {
+    display: "flex"
+  },
+  menu: {
+    width: 200,
+    zIndex: 999999999999999999
+  },
+  paper: {
+    marginRight: theme.spacing.unit * 2
+  }
 });
 
-class UserDropdown extends React.Component{
+class UserDropdown extends React.Component {
+  render() {
+    const {
+      classes,
+      userMenuOpen,
+      currentUser,
+      handleToggle,
+      handleClose,
+      auth
+    } = this.props;
 
-    render(){
-        const { 
-            classes, 
-            userMenuOpen,
-            currentUser,
-            handleToggle,
-            handleClose,
-        } = this.props;
-        
-        return(
-            <div className={classes.root}>
-            <div>
-              <button
-                buttonRef={node => {
-                  this.anchorEl = node;
+    return (
+      <div className={classes.root}>
+        <div>
+          <button
+            buttonRef={node => {
+              this.anchorEl = node;
+            }}
+            aria-owns={userMenuOpen ? "menu-list-grow" : undefined}
+            aria-haspopup="true"
+            onClick={handleToggle}
+          >
+            <img src={currentUser.image_url} alt="" />
+            <h2>{currentUser.name}</h2>
+          </button>
+          <Popper
+            open={userMenuOpen}
+            anchorEl={this.anchorEl}
+            transition
+            disablePortal
+            className={classes.menu}
+          >
+            {({ TransitionProps, placement }) => (
+              <Grow
+                {...TransitionProps}
+                id="menu-list-grow"
+                style={{
+                  transformOrigin:
+                    placement === "bottom" ? "center top" : "center bottom"
                 }}
-                aria-owns={userMenuOpen ? "menu-list-grow" : undefined}
-                aria-haspopup="true"
-                onClick={handleToggle}
               >
-                <img src={currentUser.image_url} alt="" />
-                <h2>{currentUser.name}</h2>
-              </button>
-              <Popper
-                open={userMenuOpen}
-                anchorEl={this.anchorEl}
-                transition
-                disablePortal
-                className={classes.menu}
-              >
-                {({ TransitionProps, placement }) => (
-                  <Grow
-                    {...TransitionProps}
-                    id="menu-list-grow"
-                    style={{
-                      transformOrigin:
-                        placement === "bottom"
-                          ? "center top"
-                          : "center bottom"
-                    }}
-                  >
-                    <Paper>
-                      <ClickAwayListener onClickAway={this.handleClose}>
-                        <MenuList>
-                          <MenuItem
-                            onClick={e => {
-                              handleClose(e);
-                            }}
-                            component={Link}
-                            to="/dashboard/settings"
-                          >
-                            Profile
-                          </MenuItem>
-                          <MenuItem
-                            onClick={e => {
-                              handleClose(e);
-                              localStorage.clear();
-                            }}
-                            component={Link}
-                            to="/"
-                          >
-                            Logout
-                          </MenuItem>
-                        </MenuList>
-                      </ClickAwayListener>
-                    </Paper>
-                  </Grow>
-                )}
-              </Popper>
-            </div>
-          </div>
-        )
-    }
+                <Paper>
+                  <ClickAwayListener onClickAway={this.handleClose}>
+                    <MenuList>
+                      <MenuItem
+                        onClick={e => {
+                          handleClose(e);
+                        }}
+                        component={Link}
+                        to="/dashboard/settings"
+                      >
+                        Profile
+                      </MenuItem>
+                      <MenuItem
+                        onClick={e => {
+                          handleClose(e);
+                          auth.logout();
+                        }}
+                        component={Link}
+                        to="/"
+                      >
+                        Logout
+                      </MenuItem>
+                    </MenuList>
+                  </ClickAwayListener>
+                </Paper>
+              </Grow>
+            )}
+          </Popper>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default withStyles(styles)(UserDropdown);

@@ -18,7 +18,13 @@ export const getStats = (action, started_at, ended_at) => dispatch => {
       dispatch({ type: AD_ACTION_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: AD_ACTION_FAILED, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({
+        type: AD_ACTION_FAILED,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
+      });
     });
 };
 
@@ -33,7 +39,13 @@ export const addStats = stats => dispatch => {
       dispatch({ type: AD_ACTION_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: AD_ACTION_FAILED, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({
+        type: AD_ACTION_FAILED,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
+      });
     });
 };
 
@@ -51,6 +63,12 @@ export const getAnalytics = id => dispatch => {
       dispatch({ type: GET_ANALYTICS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_ANALYTICS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({
+        type: GET_ANALYTICS_FAILURE,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
+      });
     });
 };

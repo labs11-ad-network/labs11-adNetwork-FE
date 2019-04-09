@@ -32,7 +32,6 @@ export default class Auth {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
       } else if (err) {
-        console.log(err);
         history.replace("/");
       }
     });
@@ -91,25 +90,15 @@ export default class Auth {
   };
 
   // logout user
-  logout = () => {
+  logout = async () => {
     // Remove tokens and expiry time
     this.accessToken = null;
     this.idToken = null;
-    this.expiresAt = 0;
-
-    // Remove user profile
-    this.userProfile = null;
-
-    // Clear token renewal
-    clearTimeout(this.tokenRenewalTimeout);
-
-    // Remove isLoggedIn flag from localStorage
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("access_token");
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("expires_at");
-
-    // navigate to the home route
+    localStorage.clear();
+    sessionStorage.clear();
+    await this.auth0.logout({
+      redirecTo: "http://localhost:3000/" || process.env.REACT_APP_BACKEND_URL
+    });
     history.replace("/");
   };
 }

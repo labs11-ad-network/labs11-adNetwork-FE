@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import LinearLoader from "../../loader/LinearLoader";
 import MobileMenu from "./mobile-navigation/MobileMenu.js";
-import MobileMenuButtons from "./mobile-navigation/MobileMenuButtons.js"; 
+import MobileMenuButtons from "./mobile-navigation/MobileMenuButtons.js";
 import AnalyticsDropdown from "./dropdowns/AnalyticsDropdown.js";
 import NotificationDropdown from "./dropdowns/NotificationDropdown.js";
 import UserDropdown from "./dropdowns/UserDropdown.js";
@@ -56,18 +56,19 @@ class DashboardTop extends React.Component {
   };
 
   render() {
-    const { 
-      currentUser, 
-      userNotifications, 
-      handleOfferSelect, 
-      currentOffer, 
+    const {
+      currentUser,
+      userNotifications,
+      handleOfferSelect,
+      currentOffer,
       offers,
       agreements,
       isLoadingAds,
       isLoadingAgreements,
       isLoadingOffers,
       isLoadingStripe,
-      isLoadingAnalytics
+      isLoadingAnalytics,
+      auth
     } = this.props;
 
     const { userMenuOpen, notificationsMenuOpen, movileNavOpen } = this.state;
@@ -76,14 +77,14 @@ class DashboardTop extends React.Component {
       <>
         <NavContainer>
           {/* --------------------- Mobile Hamburger Menu ------------------ */}
-          <MobileMenu 
-            movileNavOpen={movileNavOpen} 
+          <MobileMenu
+            movileNavOpen={movileNavOpen}
             toggleNav={this.toggleNav}
           />
           <LeftSection>
             {/* --------------------- Mobile Hamburger and Create Ad buttons ------------------ */}
-            <MobileMenuButtons 
-              movileNavOpen={movileNavOpen} 
+            <MobileMenuButtons
+              movileNavOpen={movileNavOpen}
               location={this.props.location}
               toggleNav={this.toggleNav}
               currentUser={currentUser}
@@ -117,7 +118,7 @@ class DashboardTop extends React.Component {
               offers={offers}
               agreements={agreements}
             />
-            {/* --------------------- Create Advertisement Button ------------------ */}            
+            {/* --------------------- Create Advertisement Button ------------------ */}
             {currentUser.acct_type === "advertiser" && (
               <Link to="/dashboard/create-ad">Create Advertisement</Link>
             )}
@@ -125,15 +126,16 @@ class DashboardTop extends React.Component {
           <RightSection>
             {currentUser && (
               <>
-                {/* --------------------- Notifications Menu ------------------ */}            
+                {/* --------------------- Notifications Menu ------------------ */}
                 <NotificationDropdown
                   notificationsMenuOpen={notificationsMenuOpen}
                   userNotifications={userNotifications}
                   handleToggle={this.handleNotificationsToggle}
                   handleClose={this.handleNotificationsClose}
                 />
-                {/* --------------------- User menu ------------------ */}            
+                {/* --------------------- User menu ------------------ */}
                 <UserDropdown
+                  auth={auth}
                   userMenuOpen={userMenuOpen}
                   currentUser={currentUser}
                   handleToggle={this.handleUserMenuToggle}
@@ -143,17 +145,11 @@ class DashboardTop extends React.Component {
             )}
           </RightSection>
         </NavContainer>
-        {
-          (
-          isLoadingAds ||
+        {(isLoadingAds ||
           isLoadingAgreements ||
           isLoadingOffers ||
           isLoadingStripe ||
-          isLoadingAnalytics
-          ) && (
-            <LinearLoader />
-          )
-        }
+          isLoadingAnalytics) && <LinearLoader />}
       </>
     );
   }
@@ -165,7 +161,7 @@ const mapStateToProps = state => ({
   isLoading_agreements: state.agreementsReducer.isLoading,
   isLoading_offers: state.offersReducer.isLoading,
   isLoading_stripe: state.stripeReducer.isLoading
-})
+});
 
 export default connect(
   mapStateToProps,

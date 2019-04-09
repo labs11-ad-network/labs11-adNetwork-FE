@@ -25,14 +25,14 @@ class CustomerStoriesCarousel extends Component {
           <h2
             className="testimonial-heading wow fadeInUp"
             id="reviews"
-            data-wow-delay=".2s"
+            data-wow-delay=".1s"
             data-wow-duration="2s"
           >
             Costumer Stories
           </h2>
           <p
-            className="wow fadeInRightBig"
-            data-wow-delay=".3s"
+            className="wow fadeInUp"
+            data-wow-delay=".2s"
             data-wow-duration="2s"
           >
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam
