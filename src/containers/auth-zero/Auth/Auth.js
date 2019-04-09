@@ -82,7 +82,7 @@ export default class Auth {
         // console.log('--- hit response -- ', res.data)
       })
       .catch(err => {
-        // if there's error with registering user with our backend clear localstorage and redirect to landing page
+        // if there's error with registering user with our backend do nothing
       });
     history.replace("/dashboard");
   };

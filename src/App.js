@@ -2,17 +2,13 @@ import React, { Component, Suspense } from "react";
 import { Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-// import Dashboard from "./containers/dashboard/Dashboard.js";
 import AdServer from "./containers/ad-server/AdServer.js";
 import StripeCallback from "./containers/stripe-callback/StripeCallback.js";
-
 import Callback from "./containers/auth-zero/Callback/Callback.js";
 import Auth from "./containers/auth-zero/Auth/Auth.js";
-
 const LazyLandingPage = React.lazy(() =>
   import("./containers/landing-page/LandingPage.js")
 );
-
 const Dashboard = React.lazy(() =>
   import("./containers/dashboard/Dashboard.js")
 );
