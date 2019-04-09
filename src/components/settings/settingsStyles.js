@@ -10,6 +10,11 @@ export const ProfileCardContainer = styled.div`
     margin: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);    
+    @media (max-width: 1170px){
+        box-sizing: border-box;
+        width: 100%;
+        margin: 20px auto;
+    }
 `;
 
 export const ProfileCardTop = styled.div`
@@ -85,7 +90,10 @@ export const MainTabContainer = styled.div`
     margin: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);    
-    
+    @media (max-width: 1170px){
+        width: 100%;
+        margin: 20px auto;
+    }
 `;
 
 export const Form = styled.form`
@@ -131,6 +139,9 @@ export const Form = styled.form`
                 background-color: #086FB3;
             }
         }
+        @media (max-width: 665px){
+            width: 100%;
+        }
     }
 `;
 
@@ -169,6 +180,15 @@ export const BillingCardContainer = styled.div`
             }
         }
     }   
+    @media (max-width: 1170px){
+        width: 45%;
+    }
+    @media (max-width: 750px){
+        width: 42%;
+    }
+    @media (max-width: 470px){
+        width: 40%;
+    }
 `;
 
 export const SnippetCardContainer = styled.div`
@@ -181,6 +201,11 @@ export const SnippetCardContainer = styled.div`
     border-radius: 8px;
     background-color: #FFFFFF;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35); 
+    @media (max-width: 1170px){
+        box-sizing: border-box;
+        width: 100%;
+        margin: 20px auto;
+    }
 `;
 
 export const Snippet = styled.div`
@@ -201,6 +226,12 @@ export const Snippet = styled.div`
         border: 1px solid rgba(0, 0, 0, 0.15);
         font-size: 0.9rem;
         background-color: #f1f1f1;
+    }
+    @media (max-width: 1170px){
+        textarea{
+            width: 92%;
+            margin: 15px auto;
+        }
     }
 `;
 
