@@ -143,14 +143,14 @@ export const CONNECT_CUSTOMER_FAILURE = "CONNECT_CUSTOMER_FAILURE";
 
 export const connectCustomer = (code, history) => dispatch => {
   dispatch({ type: CONNECT_CUSTOMER_START });
-
   axios
     .post(`${URL}/api/checkout/connect_customer`, { code })
     .then(res => {
       history.push("/dashboard/settings");
-      dispatch({ type: CONNECT_CUSTOMER_SUCCESS });
+      dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: res.data });
     })
     .catch(err => {
+      history.push("/dashboard/settings");
       dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: err });
     });
 };

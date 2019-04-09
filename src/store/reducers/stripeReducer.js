@@ -134,6 +134,7 @@ const stripeReducer = (state = initialState, action) => {
       }
 
     case CONNECT_CUSTOMER_SUCCESS:
+    toast.success("You have successfully linked your account to stripe")
       return{
         ...state,
         isLoading: false
