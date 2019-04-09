@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
-import moment from "moment";
 
-import { getAnalytics } from "../../store/actions/analyticsAction.js";
 import { getOffers } from "../../store/actions/offersAction.js";
 import { getUserData } from "../../store/actions/authAction.js";
 import { getAgreements } from "../../store/actions/agreementsAction.js";
+import { getAnalytics } from "../../store/actions/analyticsAction.js";
 import {
   getUserNotifications,
   updateUserNotification
@@ -40,8 +39,6 @@ const DashboardContainer = styled.div`
 class Dashboard extends Component {
   state = {
     currentAnalyticId: "",
-    started_at: `${moment().format("YYYY-MM-DD")}`,
-    ended_at: `${moment().format("YYYY-MM-DD")}`
   };
 
   componentDidMount() {
@@ -55,24 +52,6 @@ class Dashboard extends Component {
   componentWillUnmount() {
     clearInterval(this.notificationsInterval);
   }
-
-  getAnalytics = () => {
-    this.props.getAnalytics(
-      this.state.currentAnalyticId,
-      `${moment(this.state.started_at).format("YYYY-MM-DD")}T00:00:00Z`,
-      `${moment(this.state.ended_at).format("YYYY-MM-DD")}T23:59:00Z`
-    );
-  };
-
-  handleStartedDateChange = date => {
-    this.setState({ started_at: date });
-  };
-
-  handleEndedDateChange = date => {
-    this.setState({
-      ended_at: date
-    });
-  };
 
   startGettingNotifications = () => {
     this.notificationsInterval = setInterval(() => {
@@ -93,9 +72,6 @@ class Dashboard extends Component {
       currentUser,
       agreements,
       userNotifications,
-      updateUserNotification,
-      analytics,
-      getAnalytics,
       auth
     } = this.props;
 
@@ -110,26 +86,12 @@ class Dashboard extends Component {
             agreements={agreements}
             userNotifications={userNotifications}
             updateUserNotification={updateUserNotification}
-            getAnalytics={this.getAnalytics}
-            handleStartedDateChange={this.handleStartedDateChange}
-            handleEndedDateChange={this.handleEndedDateChange}
-            startedAt={this.state.started_at}
-            endedAt={this.state.ended_at}
           />
           <div className="dashboard-view">
             <Route
               exact
               path="/dashboard"
-              render={props => (
-                <Analytics
-                  {...props}
-                  getAnalytics={getAnalytics}
-                  analytics={analytics}
-                  currentAnalyticId={currentAnalyticId}
-                  startedAt={this.state.started_at}
-                  endedAt={this.state.ended_at}
-                />
-              )}
+              render={props => <Analytics {...props} currentAnalyticId={currentAnalyticId}/>}
             />
             <Route
               path="/dashboard/offers"
@@ -166,6 +128,6 @@ export default connect(
     getUserData,
     getAgreements,
     getUserNotifications,
-    updateUserNotification
+    updateUserNotification,
   }
 )(privateRoute(Dashboard));

@@ -8,7 +8,6 @@ import MobileMenuButtons from "./mobile-navigation/MobileMenuButtons.js";
 import AnalyticsDropdown from "./dropdowns/AnalyticsDropdown.js";
 import NotificationDropdown from "./dropdowns/NotificationDropdown.js";
 import UserDropdown from "./dropdowns/UserDropdown.js";
-import DatePicker from "./datepicker/DatePicker.js";
 
 import {
   NavContainer,
@@ -69,11 +68,6 @@ class DashboardTop extends React.Component {
       isLoadingOffers,
       isLoadingStripe,
       isLoadingAnalytics,
-      startedAt,
-      endedAt,
-      getAnalytics,
-      handleStartedDateChange,
-      handleEndedDateChange,
       auth
     } = this.props;
 
@@ -123,14 +117,6 @@ class DashboardTop extends React.Component {
               currentOffer={currentOffer}
               offers={offers}
               agreements={agreements}
-            />
-            {/* --------------------- Analytics Date pickers ------------------ */}
-            <DatePicker
-              startedAt={startedAt}
-              endedAt={endedAt}
-              getAnalytics={getAnalytics}
-              handleEndedDateChange={handleEndedDateChange}
-              handleStartedDateChange={handleStartedDateChange}
             />
             {/* --------------------- Create Advertisement Button ------------------ */}
             {currentUser.acct_type === "advertiser" && (
