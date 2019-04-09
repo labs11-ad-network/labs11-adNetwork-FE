@@ -21,6 +21,23 @@ const CardContainer = styled.div`
 
 const RowContainer = styled.div`
   display: flex;
+  .revenue-chart{
+    width: 60%;
+  }
+  .main-tables-conainer{
+    width: 100%;
+    display: flex;
+    @media(max-width: 1745px){
+      flex-direction: column;
+    }
+  }
+  .tables-container{
+    display: flex;
+    @media(max-width: 780px){
+      width: 100%;
+      flex-direction: column;
+    }
+  }
 `;
 
 class Analytics extends Component {
@@ -118,28 +135,32 @@ class Analytics extends Component {
               />
             </CardContainer>
             <RowContainer>
-              <div>
-              <RevenueChart 
-                payments={payments}
-                payouts={payouts}
-              />
+              <div className="revenue-chart">
+                <RevenueChart 
+                  payments={payments}
+                  payouts={payouts}
+                />
               </div>
               <BrowserInfo data={analytics.browserCount}/>
             </RowContainer>
             <RowContainer>
-              <Table 
-                data={analytics.impressions}
-                dataType="Impressions"
-                growth={analytics.growth.impressions || 0}
-              />
-              <Table 
-                data={analytics.clicks} 
-                dataType="Clicks"
-                growth={analytics.growth.clicks || 0}
-              />
-              <MapChart 
-                data={this.getCityData()} 
-              />
+              <div className="main-tables-conainer">
+                <div className="tables-container">
+                  <Table 
+                    data={analytics.impressions}
+                    dataType="Impressions"
+                    growth={analytics.growth.impressions || 0}
+                  />
+                  <Table 
+                    data={analytics.clicks} 
+                    dataType="Clicks"
+                    growth={analytics.growth.clicks || 0}
+                  />
+                </div>
+                <MapChart 
+                  data={this.getCityData()} 
+                />
+              </div>
             </RowContainer>
           </>
         )}

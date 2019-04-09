@@ -25,6 +25,10 @@ export const TableContainer = styled.div`
       text-align: center;
     }
   }
+  @media(max-width: 1745px){
+    box-sizing: border-box;
+    width: 100%;
+  }
 `;
 
 export const TableHeader = styled.div`
