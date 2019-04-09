@@ -22,7 +22,7 @@ const CardContainer = styled.div`
 const RowContainer = styled.div`
   display: flex;
   .revenue-chart{
-    width: 60%;
+    min-width: 70%;
   }
   .main-tables-conainer{
     width: 100%;
@@ -39,7 +39,6 @@ const RowContainer = styled.div`
     }
   }
 `;
-
 class Analytics extends Component {
   componentDidMount(){
     this.props.getPayouts();
@@ -92,6 +91,7 @@ class Analytics extends Component {
       payouts, 
       payments 
     } = this.props;
+    
     return (
       <>
         {analytics.length !== 0 && (
@@ -135,12 +135,10 @@ class Analytics extends Component {
               />
             </CardContainer>
             <RowContainer>
-              <div className="revenue-chart">
-                <RevenueChart 
-                  payments={payments}
-                  payouts={payouts}
-                />
-              </div>
+              <RevenueChart 
+                payments={payments}
+                payouts={payouts}
+              />
               <BrowserInfo data={analytics.browserCount}/>
             </RowContainer>
             <RowContainer>
