@@ -73,7 +73,8 @@ class DashboardTop extends React.Component {
       endedAt,
       getAnalytics,
       handleStartedDateChange,
-      handleEndedDateChange
+      handleEndedDateChange,
+      auth
     } = this.props;
 
     const { userMenuOpen, notificationsMenuOpen, movileNavOpen } = this.state;
@@ -123,7 +124,6 @@ class DashboardTop extends React.Component {
               offers={offers}
               agreements={agreements}
             />
-
             {/* --------------------- Analytics Date pickers ------------------ */}
             <DatePicker
               startedAt={startedAt}
@@ -149,6 +149,7 @@ class DashboardTop extends React.Component {
                 />
                 {/* --------------------- User menu ------------------ */}
                 <UserDropdown
+                  auth={auth}
                   userMenuOpen={userMenuOpen}
                   currentUser={currentUser}
                   handleToggle={this.handleUserMenuToggle}

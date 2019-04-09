@@ -88,4 +88,5 @@ export const getAnalytics = (id, started_at, ended_at) => dispatch => {
         });
       });
   }
+
 };

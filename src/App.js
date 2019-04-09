@@ -2,7 +2,7 @@ import React, { Component, Suspense } from "react";
 import { Route } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
-import Dashboard from "./containers/dashboard/Dashboard.js";
+// import Dashboard from "./containers/dashboard/Dashboard.js";
 import AdServer from "./containers/ad-server/AdServer.js";
 import StripeCallback from "./containers/stripe-callback/StripeCallback.js";
 
@@ -11,6 +11,10 @@ import Auth from "./containers/auth-zero/Auth/Auth.js";
 
 const LazyLandingPage = React.lazy(() =>
   import("./containers/landing-page/LandingPage.js")
+);
+
+const Dashboard = React.lazy(() =>
+  import("./containers/dashboard/Dashboard.js")
 );
 
 const theme = createMuiTheme({
@@ -55,7 +59,14 @@ class App extends Component {
             }}
           />
 
-          <Route path="/dashboard" component={Dashboard} />
+          <Route
+            path="/dashboard"
+            render={props => (
+              <Suspense fallback={<Callback />}>
+                <Dashboard {...props} auth={auth} />
+              </Suspense>
+            )}
+          />
           <Route path="/ad/:affiliateId/:size" component={AdServer} />
           <Route path="/stripe-callback" component={StripeCallback} />
         </div>

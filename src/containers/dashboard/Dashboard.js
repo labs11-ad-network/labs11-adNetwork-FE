@@ -95,7 +95,8 @@ class Dashboard extends Component {
       userNotifications,
       updateUserNotification,
       analytics,
-      getAnalytics
+      getAnalytics,
+      auth
     } = this.props;
 
     return (
@@ -104,6 +105,7 @@ class Dashboard extends Component {
         <div className="main-content">
           <DashboardTop
             {...this.props}
+            auth={auth}
             handleOfferSelect={this.handleOfferSelect}
             agreements={agreements}
             userNotifications={userNotifications}
