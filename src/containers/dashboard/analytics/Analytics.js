@@ -1,27 +1,32 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { scaleLinear } from "d3-scale"
+import { scaleLinear } from "d3-scale";
+import { connect } from "react-redux";
 
-import Graphs from "../../../components/analytics/graphs";
+import { getPayouts, getPayments } from "../../../store/actions/stripeAction.js";
+import { getAnalytics } from "../../../store/actions/analyticsAction.js";
+import { BrowserInfo } from "../../../components/analytics/graphs/PieChart";
+import RevenueChart from "../../../components/analytics/graphs/AreaChart";
 import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";
 import MapChart from "../../../components/analytics/map/MapChart.js";
 
-const PageContainer = styled.div`
-  .card-container {
-    display: flex;
-    @media (max-width: 1370px) {
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
+const CardContainer = styled.div`
+  display: flex;
+  @media (max-width: 1170px){
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-  .row-container{
-    display: flex;
-  }
+`;
+
+const RowContainer = styled.div`
+  display: flex;
 `;
 
 class Analytics extends Component {
   componentDidMount(){
+    this.props.getPayouts();
+    this.props.getPayments();
     this.props.getAnalytics(this.props.currentAnalyticId);
     this.analyticsInterval = setInterval(() => {
       this.props.getAnalytics(this.props.currentAnalyticId);
@@ -65,12 +70,16 @@ class Analytics extends Component {
   }
 
   render() {
-    const { analytics } = this.props;
+    const { 
+      analytics, 
+      payouts, 
+      payments 
+    } = this.props;
     return (
-      <PageContainer>
+      <>
         {analytics.length !== 0 && (
           <>
-            <div className="card-container">
+            <CardContainer>
               <Card
                 icon="fas fa-eye"
                 dataType="Impressions"
@@ -107,9 +116,17 @@ class Analytics extends Component {
                 secondColor="#00acc1"
                 growth={analytics.growth.conversions || 0}
               />
-            </div>
-            <Graphs data={analytics.browserCount} />
-            <div className="row-container">
+            </CardContainer>
+            <RowContainer>
+              <div>
+              <RevenueChart 
+                payments={payments}
+                payouts={payouts}
+              />
+              </div>
+              <BrowserInfo data={analytics.browserCount}/>
+            </RowContainer>
+            <RowContainer>
               <Table 
                 data={analytics.impressions}
                 dataType="Impressions"
@@ -123,12 +140,25 @@ class Analytics extends Component {
               <MapChart 
                 data={this.getCityData()} 
               />
-            </div>
+            </RowContainer>
           </>
         )}
-      </PageContainer>
+      </>
     );
   }
 }
 
-export default Analytics;
+const mapStateToProps = state => ({
+  analytics: state.analyticsReducer.analytics,
+  payments: state.stripeReducer.payments,
+  payouts: state.stripeReducer.payouts,
+})
+
+export default connect(
+  mapStateToProps,
+  {
+    getPayouts,
+    getPayments,
+    getAnalytics
+  }
+)(Analytics);
