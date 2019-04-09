@@ -10,23 +10,23 @@ import {
   DatePicker
 } from "material-ui-pickers";
 
+import { DatePickerContainer, DatePickerInput, DateFilterButton } from "./datePickerStyles.js";
+
 const styles = {
   grid: {
-    width: "60%"
+    width: "100%"
   },
 };
 
 const CustomInput = props => {
   return(
-    <>
+    <DatePickerInput onClick={props.datePicker.onClick}>
       <label htmlFor={props.name}> {props.datePicker.label} </label>
       <input
-        onChange={props.datePicker.onChange}
-        onClick={props.datePicker.onClick}
         name={props.name}
         value={props.datePicker.value}
       />
-    </>
+    </DatePickerInput>
   )
 }
 
@@ -43,6 +43,7 @@ class MaterialUIPickers extends React.Component {
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid container className={classes.grid}>
+        <DatePickerContainer>
           <DatePicker
             className={classes.datepicker}
             margin="normal"
@@ -58,7 +59,8 @@ class MaterialUIPickers extends React.Component {
             onChange={date => handleDateChange(date, "ended_at")}
             TextFieldComponent={datePicker => <CustomInput datePicker={datePicker}/>}
           />
-          <button onClick={getFilteredAnalytics}>CLICK</button>
+          <DateFilterButton onClick={getFilteredAnalytics}>Filter</DateFilterButton>
+          </DatePickerContainer>
         </Grid>
       </MuiPickersUtilsProvider>
     );

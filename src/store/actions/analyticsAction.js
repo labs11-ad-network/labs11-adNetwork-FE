@@ -1,5 +1,4 @@
 import axios from "axios";
-import moment from "moment";
 
 const URL = process.env.REACT_APP_BACKEND_URL;
 
