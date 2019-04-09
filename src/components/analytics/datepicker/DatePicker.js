@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import { withStyles } from "@material-ui/core/styles";
 import DateFnsUtils from "@date-io/date-fns";
-
+import moment from 'moment';
 import {
   MuiPickersUtilsProvider,
   DatePicker
@@ -14,11 +14,21 @@ const styles = {
   grid: {
     width: "60%"
   },
-  datepicker: {
-    width: "100%",
-    marginLeft: 100
-  }
 };
+
+const CustomInput = props => {
+  return(
+    <>
+      <label htmlFor={props.name}> {props.datePicker.label} </label>
+      <input
+        onChange={props.datePicker.onChange}
+        onClick={props.datePicker.onClick}
+        name={props.name}
+        value={props.datePicker.value}
+      />
+    </>
+  )
+}
 
 class MaterialUIPickers extends React.Component {
   render() {
@@ -26,31 +36,30 @@ class MaterialUIPickers extends React.Component {
       classes,
       startedAt,
       endedAt,
-      handleStartedDateChange,
-      handleEndedDateChange,
-      getAnalytics
+      handleDateChange,
+      getFilteredAnalytics
     } = this.props;
 
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid container className={classes.grid} justify="space-around">
+        <Grid container className={classes.grid}>
           <DatePicker
             className={classes.datepicker}
             margin="normal"
             label="Start Date"
-            value={startedAt}
-            onChange={handleStartedDateChange}
+            value={startedAt || moment().format("YYYY-MM-DD")}
+            onChange={date => handleDateChange(date, "started_at")}
+            TextFieldComponent={datePicker => <CustomInput datePicker={datePicker}/>}
           />
-        </Grid>
-        <Grid container className={classes.grid} justify="space-around">
           <DatePicker
             margin="normal"
             label="End Date"
-            value={endedAt}
-            onChange={handleEndedDateChange}
+            value={endedAt || moment().format("YYYY-MM-DD")}
+            onChange={date => handleDateChange(date, "ended_at")}
+            TextFieldComponent={datePicker => <CustomInput datePicker={datePicker}/>}
           />
+          <button onClick={getFilteredAnalytics}>CLICK</button>
         </Grid>
-        <button onClick={getAnalytics}>CLICK</button>
       </MuiPickersUtilsProvider>
     );
   }

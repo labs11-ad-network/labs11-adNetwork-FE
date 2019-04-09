@@ -6,6 +6,7 @@ import moment from "moment";
 
 import { getPayouts, getPayments } from "../../../store/actions/stripeAction.js";
 import { getAnalytics } from "../../../store/actions/analyticsAction.js";
+import DatePicker from "../../../components/analytics/datepicker/DatePicker.js";
 import { BrowserInfo } from "../../../components/analytics/graphs/PieChart";
 import RevenueChart from "../../../components/analytics/graphs/AreaChart";
 import Card from "../../../components/analytics/cards/Card.js";
@@ -22,9 +23,6 @@ const CardContainer = styled.div`
 
 const RowContainer = styled.div`
   display: flex;
-  .revenue-chart{
-    min-width: 70%;
-  }
   .main-tables-conainer{
     width: 100%;
     display: flex;
@@ -40,7 +38,13 @@ const RowContainer = styled.div`
     }
   }
 `;
+
 class Analytics extends Component {
+  state = {
+    started_at: "",
+    ended_at: ""
+  }
+
   componentDidMount(){
     this.props.getPayouts();
     this.props.getPayments();
@@ -48,8 +52,7 @@ class Analytics extends Component {
     this.analyticsInterval = setInterval(() => {
       this.props.getAnalytics(
         this.props.currentAnalyticId,
-        `${moment(this.props.startedAt).format("YYYY-MM-DD")}T00:00:00Z`,
-        `${moment(this.props.endedAt).format("YYYY-MM-DD")}T23:59:00Z`
+        this.getQueryString()
       );
     }, 15000);
   }
@@ -57,6 +60,27 @@ class Analytics extends Component {
   componentWillUnmount() {
     clearInterval(this.analyticsInterval);
   }
+  
+  getFilteredAnalytics = () => {
+    this.props.getAnalytics(
+      this.props.currentAnalyticId,
+      this.getQueryString()
+      );
+    };
+    
+  getQueryString = () => {
+    if(this.state.started_at && this.state.ended_at){
+      const started = `${moment(this.state.started_at).format("YYYY-MM-DD")}T00:00:00Z`;
+      const ended = `${moment(this.state.ended_at).format("YYYY-MM-DD")}T23:59:00Z`;
+      return `?started_at=${started}&ended_at=${ended}`
+    }else{
+      return ""
+    }
+  }
+
+  handleDateChange = (date, name) => {
+    this.setState({ [name]: date });
+  };
 
   getCTR = () => {
     const clicks = this.props.analytics.actionCount.clicks;
@@ -96,13 +120,26 @@ class Analytics extends Component {
     const { 
       analytics, 
       payouts, 
-      payments 
+      payments,
     } = this.props;
+
+    const {
+      started_at,
+      ended_at
+    } = this.state;
     
     return (
       <>
         {analytics.length !== 0 && (
           <>
+            <div>
+              <DatePicker
+                startedAt={started_at}
+                endedAt={ended_at}
+                getFilteredAnalytics={this.getFilteredAnalytics}
+                handleDateChange={this.handleDateChange}
+              />
+            </div>
             <CardContainer>
               <Card
                 icon="fas fa-eye"
