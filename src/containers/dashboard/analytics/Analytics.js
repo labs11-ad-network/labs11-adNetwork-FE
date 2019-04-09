@@ -22,10 +22,10 @@ const CardContainer = styled.div`
 const RowContainer = styled.div`
   display: flex;
   .revenue-chart{
-    width: 60%;
+    min-width: 70%;
   }
   .main-tables-conainer{
-    width: 100%;
+    width:100%;
     display: flex;
     @media(max-width: 1745px){
       flex-direction: column;
@@ -41,7 +41,7 @@ const RowContainer = styled.div`
 `;
 
 class Analytics extends Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.getPayouts();
     this.props.getPayments();
     this.props.getAnalytics(this.props.currentAnalyticId);
@@ -64,22 +64,22 @@ class Analytics extends Component {
   };
 
   getCityData = () => {
-    if(this.props.analytics.cities.length){
+    if (this.props.analytics.cities.length) {
       const range = this.props.analytics.actionCount.clicks + this.props.analytics.actionCount.impressions;
-      return{
+      return {
         cities: this.props.analytics.cities.map(city => {
           return {
             name: city.city,
             coordinates: [Number(city.longitude), Number(city.latitude)],
-            population: city.num 
+            population: city.num
           }
         }),
         cityScale: scaleLinear()
-            .domain([0,range])
-            .range([1,25])
+          .domain([0, range])
+          .range([1, 25])
       }
-    }else{
-      return{
+    } else {
+      return {
         cities: [],
         cityScale: {}
       }
@@ -87,10 +87,10 @@ class Analytics extends Component {
   }
 
   render() {
-    const { 
-      analytics, 
-      payouts, 
-      payments 
+    const {
+      analytics,
+      payouts,
+      payments
     } = this.props;
     return (
       <>
@@ -136,29 +136,29 @@ class Analytics extends Component {
             </CardContainer>
             <RowContainer>
               <div className="revenue-chart">
-                <RevenueChart 
+                <RevenueChart
                   payments={payments}
                   payouts={payouts}
                 />
               </div>
-              <BrowserInfo data={analytics.browserCount}/>
+              <BrowserInfo data={analytics.browserCount} />
             </RowContainer>
             <RowContainer>
               <div className="main-tables-conainer">
                 <div className="tables-container">
-                  <Table 
+                  <Table
                     data={analytics.impressions}
                     dataType="Impressions"
                     growth={analytics.growth.impressions || 0}
                   />
-                  <Table 
-                    data={analytics.clicks} 
+                  <Table
+                    data={analytics.clicks}
                     dataType="Clicks"
                     growth={analytics.growth.clicks || 0}
                   />
                 </div>
-                <MapChart 
-                  data={this.getCityData()} 
+                <MapChart
+                  data={this.getCityData()}
                 />
               </div>
             </RowContainer>
