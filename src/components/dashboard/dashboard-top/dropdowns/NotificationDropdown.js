@@ -37,7 +37,7 @@ class NotificationDropdown extends React.Component{
                 <div>
                 <button
                     buttonRef={node => {
-                    this.anchorEl = node;
+                        this.anchorEl = node;
                     }}
                     aria-owns={
                         notificationsMenuOpen ? "menu-list-grow" : undefined

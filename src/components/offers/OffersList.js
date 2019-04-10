@@ -21,6 +21,10 @@ const styles = theme => ({
     width: "100%",
     fontSize: "0.9rem",
     fontWeight: "500"
+  },
+  table: {
+    padding: "25px",
+    backgroundColor: "#F1F1F1"
   }
 });
 
@@ -357,8 +361,10 @@ class OffersList extends React.Component {
             </TabButtonContainer>
           </Tabs>
         </AppBar>
+        <div className={classes.table}>
         {tabValue === 0 && (
           <MaterialDatatable
+            className={classes.table}
             title={"Offers List"}
             data={
               currentUser.acct_type === "affiliate"
@@ -377,6 +383,7 @@ class OffersList extends React.Component {
             }
           />
         )}
+        
         {tabValue === 1 && (
           <MaterialDatatable
             title={"Ads List"}
@@ -393,6 +400,7 @@ class OffersList extends React.Component {
             }
           />
         )}
+        </div>
       </div>
     );
   }

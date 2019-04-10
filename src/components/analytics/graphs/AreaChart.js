@@ -26,7 +26,7 @@ class RevenueChart extends React.Component {
           <Chart>
             <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
-                  data={this.props.payments || this.props.payouts}
+                  data={this.props.data}
                   margin={{
                     top: 10,
                     right: 30,
