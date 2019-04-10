@@ -50,9 +50,9 @@ class DashboardTop extends React.Component {
     this.setState({ notificationsMenuOpen: false });
 
     userNotifications &&
-      userNotifications.map(n =>
-        updateUserNotification({ ...n, unread: false })
-      );
+      userNotifications
+        .filter(n => n.unread !== false)
+        .map(n => updateUserNotification({ ...n, unread: false }));
   };
 
   render() {
