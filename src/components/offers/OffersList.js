@@ -35,6 +35,7 @@ class OffersList extends React.Component {
     offer_id: "",
     advertiserOfferOptions: {
       filterType: "checkbox",
+      responsive: 'scroll',
       onlyOneRowCanBeSelected: true,
       rowCursorHand: true,
       onRowsDelete: value => {
@@ -51,10 +52,12 @@ class OffersList extends React.Component {
     },
     affiliateOfferOptions: {
       filterType: "checkbox",
+      responsive: 'scroll',
       selectableRows: false
     },
     advertiserAdOptions: {
       filterType: "checkbox",
+      responsive: 'scroll',
       showSelectedRowsToolbar: true,
       rowCursorHand: true,
       onRowsDelete: value => {
@@ -65,6 +68,7 @@ class OffersList extends React.Component {
     },
     affiliateAdOptions: {
       filterType: "checkbox",
+      responsive: 'scroll',
       selectableRows: false
     }
   };
