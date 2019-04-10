@@ -7,24 +7,23 @@ import { MainTabContainer } from "../settingsStyles.js";
 import Timeline from "./payments/Timeline.js";
 
 class TabContainer extends React.Component {
-  state = {
-    tabValue: 0
-  };
-
-  handleChange = (event, tabValue) => {
-    this.setState({ tabValue });
-  };
-
   render() {
-    const { tabValue } = this.state;
-    const { currentUser, payments, payouts } = this.props;
+    
+    const { 
+      currentUser, 
+      payments,
+      payouts, 
+      handleTabChange,
+      tabValue
+    } = this.props;
+
     return (
       <MainTabContainer>
         <Tabs
           value={tabValue}
           indicatorColor="primary"
           textColor="primary"
-          onChange={this.handleChange}
+          onChange={handleTabChange}
         >
           <Tab label="User Settings" />
           <Tab

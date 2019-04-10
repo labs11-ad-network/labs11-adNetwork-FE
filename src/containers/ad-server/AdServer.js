@@ -36,7 +36,7 @@ class AdServer extends Component {
         randomAd
       });
 
-      this.recordImpression(randomAd.agreement_id)
+      this.recordImpression(randomAd && randomAd.agreement_id)
     }else{
       setTimeout(() => {
         this.getRandomAd()
