@@ -15,27 +15,50 @@ import MapChart from "../../../components/analytics/map/MapChart.js";
 
 const CardContainer = styled.div`
   display: flex;
-  @media (max-width: 1170px){
+  @media (max-width: 1350px){
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+  @media (max-width: 1200px){
+    width: 95%;
+    margin: 0 auto;
   }
 `;
 
 const RowContainer = styled.div`
   display: flex;
-  .main-tables-conainer{
+  width: 100%;
+  .main-tables-container{
     width: 100%;
     display: flex;
-    @media(max-width: 1745px){
+    @media(max-width: 1200px){
+      width: 100%;
+      box-sizing: border-box;
       flex-direction: column;
     }
   }
   .tables-container{
     display: flex;
-    @media(max-width: 780px){
-      width: 100%;
+    width: 100%;
+    @media(max-width: 1200px){
+      box-sizing: border-box;
       flex-direction: column;
     }
+  }
+  .revenue-browser-row{
+    display: flex;
+    width: 100%;
+    @media (max-width: 1200px){
+      width: 100%;
+      box-sizing: border-box;
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 1200px){
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
   }
 `;
 
@@ -171,9 +194,11 @@ class Analytics extends Component {
                 }
                 ctr={this.getCTR()}
                 actions={[...analytics.clicks, ...analytics.impressions].sort(
-                  (first, second) =>
-                    Date.parse(second.created_at) - Date.parse(first.created_at)
-                )}
+                    (first, second) =>
+                      Date.parse(second.created_at) - 
+                      Date.parse(first.created_at)
+                    )
+                }
                 firstColor="#ef5350"
                 secondColor="#e53935"
               />
@@ -188,13 +213,15 @@ class Analytics extends Component {
               />
             </CardContainer>
             <RowContainer>
-              <RevenueChart 
-                data={payments.length ? payments : payouts.length ? payouts : []}
-              />
-              <BrowserInfo data={analytics.browserCount}/>
+              <div className="revenue-browser-row">
+                <RevenueChart 
+                  data={payments.length ? payments : payouts.length ? payouts : []}
+                />
+                <BrowserInfo data={analytics.browserCount}/>
+              </div>
             </RowContainer>
             <RowContainer>
-              <div className="main-tables-conainer">
+              <div className="main-tables-container">
                 <div className="tables-container">
                   <Table 
                     data={analytics.impressions}
