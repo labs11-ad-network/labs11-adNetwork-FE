@@ -26,8 +26,10 @@ export const getUserNotifications = () => dispatch => {
 // ------------------------------------ Update User Notification ------------------------------------
 
 export const UPDATE_USER_NOTIFICATION_START = "UPDATE_USER_NOTIFICATION_START";
-export const UPDATE_USER_NOTIFICATION_SUCCESS = "UPDATE_USER_NOTIFICATION_SUCCESS";
-export const UPDATE_USER_NOTIFICATION_FAILURE = "UPDATE_USER_NOTIFICATION_FAILURE";
+export const UPDATE_USER_NOTIFICATION_SUCCESS =
+  "UPDATE_USER_NOTIFICATION_SUCCESS";
+export const UPDATE_USER_NOTIFICATION_FAILURE =
+  "UPDATE_USER_NOTIFICATION_FAILURE";
 
 export const updateUserNotification = notification => dispatch => {
   dispatch({ type: UPDATE_USER_NOTIFICATION_START });
@@ -37,6 +39,9 @@ export const updateUserNotification = notification => dispatch => {
       dispatch({ type: UPDATE_USER_NOTIFICATION_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: UPDATE_USER_NOTIFICATION_FAILURE, payload: err.response.data });
+      dispatch({
+        type: UPDATE_USER_NOTIFICATION_FAILURE,
+        payload: err.response.data
+      });
     });
 };
