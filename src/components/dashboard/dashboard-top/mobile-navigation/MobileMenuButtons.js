@@ -20,7 +20,7 @@ const MobileMenuButtons = props => {
                     <i className="fas fa-bars" />
                 </a>
             </MobileHamburger>
-            {!props.location.pathname.includes("dashboard/") && (
+            {(!props.location.pathname.includes("dashboard/") && props.currentUser.acct_type === "advertiser") && (
             <MobileCreate>
                 <Link to="/dashboard/create-ad">
                     <i className="fas fa-pencil-alt" />
