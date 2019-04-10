@@ -30,27 +30,46 @@ const PageContainer = styled.div`
 `
 
 class Settings extends Component {
+  state = {
+    tabValue: 0
+  };
+  
   componentDidMount(){
     this.props.getUserData();
     this.props.getPayouts();
     this.props.getPayments();
   }
+  
+  handleTabChange = (e, tabValue) => {
+    this.setState({ tabValue });
+  };
 
   render() {
+    const { tabValue } = this.state
+    const { currentUser, payouts, payments } = this.props
+
     return (
       <PageContainer>
         <div>
-          <ProfileCard currentUser={this.props.currentUser}/>
+          <ProfileCard currentUser={currentUser}/>
           <div className="billing-container">
-            <BillingCard currentUser={this.props.currentUser}/>
-            <BillingCard currentUser={this.props.currentUser} title="Total Made"/>
+            <BillingCard currentUser={currentUser}/>
+            <BillingCard 
+              currentUser={currentUser} 
+              title={currentUser.acct_type === "advertiser" ? "Total Spent" : "Total Made"}
+              balance={currentUser.stripe_balance}
+              button={currentUser.acct_type === "advertiser" ? "View Payments" : "View Payouts"}
+              clicked={e => this.handleTabChange(e, 1)}
+            />
           </div>
-          <SnippetCard currentUser={this.props.currentUser}/>
+          <SnippetCard currentUser={currentUser}/>
         </div>
         <TabContainer 
-          payouts={this.props.payouts} 
-          payments={this.props.payments}
-          currentUser={this.props.currentUser}
+          payouts={payouts} 
+          payments={payments}
+          currentUser={currentUser}
+          handleTabChange={this.handleTabChange}
+          tabValue={tabValue}
         />
       </PageContainer>
     )

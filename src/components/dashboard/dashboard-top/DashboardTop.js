@@ -109,7 +109,7 @@ class DashboardTop extends React.Component {
                 </>
               )}
             </Header>
-            {/* --------------------- Analyticis selector ------------------ */}
+            {/* --------------------- Analytics selector ------------------ */}
             <AnalyticsDropdown
               currentUser={currentUser}
               handleOfferSelect={handleOfferSelect}
@@ -156,11 +156,11 @@ class DashboardTop extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  isLoading_analytics: state.analyticsReducer.isLoading,
-  isLoading_ads: state.adReducer.isLoading,
-  isLoading_agreements: state.agreementsReducer.isLoading,
-  isLoading_offers: state.offersReducer.isLoading,
-  isLoading_stripe: state.stripeReducer.isLoading
+  isLoadingAnalytics: state.analyticsReducer.isLoading,
+  isLoadingAds: state.adReducer.isLoading,
+  isLoadingAgreements: state.agreementsReducer.isLoading,
+  isLoadingOffers: state.offersReducer.isLoading,
+  isLoadingStripe: state.stripeReducer.isLoading
 });
 
 export default connect(

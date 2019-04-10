@@ -16,27 +16,25 @@ const BillingCard = props => {
     stripe_payout_id,
     email
   } = props.currentUser;
-  const { title, currentUser } = props;
+  const { title, currentUser, balance, button, clicked } = props;
   return (
     <BillingCardContainer>
       {currentUser && title ? (
         <div>
           <h1>{title}</h1>
-          <h2>{`$ ${"0" /* Change this value to total amount made */} USD`}</h2>
+          <h2>{`$ ${balance}`}</h2>
           <button
             onClick={() => {
-              console.log(
-                "this button should send you to the stripe page or payments page"
-              );
+              clicked()
             }}
           >
-            View Payments
+            {button}
           </button>
         </div>
       ) : acct_type === "affiliate" ? (
         <div>
           <h1>Current Balance</h1>
-          <h2>{`$ ${amount} USD`}</h2>
+          <h2>{`$ ${amount}`}</h2>
           {stripe_payout_id ? (
             <button
               onClick={() => {
@@ -59,7 +57,7 @@ const BillingCard = props => {
         acct_type === "advertiser" && (
           <div>
             <h1>Amount Due</h1>
-            <h2>{`$ ${amount} USD`}</h2>
+            <h2>{`$ ${amount}`}</h2>
             {stripe_cust_id ? (
               <button
                 onClick={() => {

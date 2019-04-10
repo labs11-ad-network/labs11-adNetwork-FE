@@ -22,8 +22,8 @@ export const Card = props => {
           <h1>
             <i className="far fa-clock" />
             {actions.length ?
-                `Last ${actions[data - 1].action} ${moment(
-                  actions[data - 1].created_at,
+                `Last ${actions[0].action} ${moment(
+                  actions[0].created_at,
                   "YYYY-MM-DO, hh:mm:ss Z"
                 ).fromNow()}`:
                   'No data yet :('

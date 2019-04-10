@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import loading from '../../assets/loading.svg';
 
+import loading from '../../assets/loading.svg';
+import authHOC from '../auth-HOC';
 import { connectCustomer } from '../../store/actions/stripeAction.js';
 
 export class StripeCallback extends Component {
   componentDidMount(){
     const urlParams = new URLSearchParams(window.location.search);
-    this.props.connectCustomer(urlParams.get("code"), this.props.history)
+    this.props.connectCustomer(urlParams.get("code"), this.props.history);
   }
 
   render() {
@@ -32,9 +33,9 @@ export class StripeCallback extends Component {
   }
 }
 
-export default connect(
+export default authHOC(connect(
     null,
     {
         connectCustomer
     }
-)(StripeCallback);
+)(StripeCallback));

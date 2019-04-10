@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { Route } from "react-router-dom";
 
-import { getAnalytics } from "../../store/actions/analyticsAction.js";
 import { getOffers } from "../../store/actions/offersAction.js";
 import { getUserData } from "../../store/actions/authAction.js";
 import { getAgreements } from "../../store/actions/agreementsAction.js";
+import { getAnalytics } from "../../store/actions/analyticsAction.js";
 import {
   getUserNotifications,
   updateUserNotification
@@ -38,7 +38,7 @@ const DashboardContainer = styled.div`
 
 class Dashboard extends Component {
   state = {
-    currentAnalyticId: ""
+    currentAnalyticId: "",
   };
 
   componentDidMount() {
@@ -72,9 +72,6 @@ class Dashboard extends Component {
       currentUser,
       agreements,
       userNotifications,
-      updateUserNotification,
-      analytics,
-      getAnalytics,
       auth
     } = this.props;
 
@@ -94,14 +91,7 @@ class Dashboard extends Component {
             <Route
               exact
               path="/dashboard"
-              render={props => (
-                <Analytics
-                  {...props}
-                  getAnalytics={getAnalytics}
-                  analytics={analytics}
-                  currentAnalyticId={currentAnalyticId}
-                />
-              )}
+              render={props => <Analytics {...props} currentAnalyticId={currentAnalyticId}/>}
             />
             <Route
               path="/dashboard/offers"
@@ -138,6 +128,6 @@ export default connect(
     getUserData,
     getAgreements,
     getUserNotifications,
-    updateUserNotification
+    updateUserNotification,
   }
 )(privateRoute(Dashboard));
