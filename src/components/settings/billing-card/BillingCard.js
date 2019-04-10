@@ -16,18 +16,16 @@ const BillingCard = props => {
     stripe_payout_id,
     email
   } = props.currentUser;
-  const { title, currentUser } = props;
+  const { title, currentUser, balance, clicked } = props;
   return (
     <BillingCardContainer>
       {currentUser && title ? (
         <div>
           <h1>{title}</h1>
-          <h2>{`$ ${"0" /* Change this value to total amount made */} USD`}</h2>
+          <h2>{`$ ${balance} USD`}</h2>
           <button
             onClick={() => {
-              console.log(
-                "this button should send you to the stripe page or payments page"
-              );
+              clicked()
             }}
           >
             View Payments

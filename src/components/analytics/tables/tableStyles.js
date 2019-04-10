@@ -19,6 +19,11 @@ export const TableContainer = styled.div`
     height: 100%;
     max-height: 530px;
     overflow-y: hidden;
+    .no-data{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
     h1{
       margin: 15px;
       font-size: 1rem;

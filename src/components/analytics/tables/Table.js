@@ -29,7 +29,11 @@ const Table = props => {
               <td>{`${data.region || "Unknown"}, ${data.country || "Unknown"}`}</td>
             </TableRow>
           )):
-            <h1>No clicks yet...</h1>
+            <tr className="no-data">
+              <td>
+                <h1>No clicks yet...</h1>
+              </td>
+            </tr>
           }
         </tbody>
       </table>
