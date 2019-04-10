@@ -16,7 +16,7 @@ const BillingCard = props => {
     stripe_payout_id,
     email
   } = props.currentUser;
-  const { title, currentUser, balance, clicked } = props;
+  const { title, currentUser, balance, button, clicked } = props;
   return (
     <BillingCardContainer>
       {currentUser && title ? (
@@ -28,7 +28,7 @@ const BillingCard = props => {
               clicked()
             }}
           >
-            View Payments
+            {button}
           </button>
         </div>
       ) : acct_type === "affiliate" ? (

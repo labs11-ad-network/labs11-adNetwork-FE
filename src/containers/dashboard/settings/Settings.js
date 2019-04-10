@@ -56,8 +56,9 @@ class Settings extends Component {
             <BillingCard currentUser={currentUser}/>
             <BillingCard 
               currentUser={currentUser} 
-              title="Total Made"
+              title={currentUser.acct_type === "advertiser" ? "Total Spent" : "Total Made"}
               balance={currentUser.stripe_balance}
+              button={currentUser.acct_type === "advertiser" ? "View Payments" : "View Payouts"}
               clicked={e => this.handleTabChange(e, 1)}
             />
           </div>
