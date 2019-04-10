@@ -72,7 +72,8 @@ class Dashboard extends Component {
       currentUser,
       agreements,
       userNotifications,
-      auth
+      auth,
+      updateUserNotification
     } = this.props;
 
     return (
