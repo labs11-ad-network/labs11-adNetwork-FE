@@ -14,11 +14,11 @@ const TimelineContainer = props => {
             return(
               <TimelineItem>
                 <div>
-                  <h2>{moment.unix(p.arrival_date).format('h:mma')}</h2>
+                  <h2>{moment.unix(p.created).format('h:mma')}</h2>
                   <h1><div/>Recieved</h1>
                 </div>
                 <h3>{`Amount: ${p.amount / 100}`}</h3>
-                <p>{`You recieved a payment for the amount of $${p.amount / 100} ${moment.unix(p.arrival_date).fromNow()}`}</p>{/* title */}
+                <p>{`You recieved a payment for the amount of $${p.amount / 100} ${moment.unix(p.created).fromNow()}`}</p>{/* title */}
               </TimelineItem>
             )
           })}

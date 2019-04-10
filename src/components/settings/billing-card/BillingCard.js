@@ -22,7 +22,7 @@ const BillingCard = props => {
       {currentUser && title ? (
         <div>
           <h1>{title}</h1>
-          <h2>{`$ ${balance} USD`}</h2>
+          <h2>{`$ ${balance}`}</h2>
           <button
             onClick={() => {
               clicked()
@@ -34,7 +34,7 @@ const BillingCard = props => {
       ) : acct_type === "affiliate" ? (
         <div>
           <h1>Current Balance</h1>
-          <h2>{`$ ${amount} USD`}</h2>
+          <h2>{`$ ${amount}`}</h2>
           {stripe_payout_id ? (
             <button
               onClick={() => {
@@ -57,7 +57,7 @@ const BillingCard = props => {
         acct_type === "advertiser" && (
           <div>
             <h1>Amount Due</h1>
-            <h2>{`$ ${amount} USD`}</h2>
+            <h2>{`$ ${amount}`}</h2>
             {stripe_cust_id ? (
               <button
                 onClick={() => {
