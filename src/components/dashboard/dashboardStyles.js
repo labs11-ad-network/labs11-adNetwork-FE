@@ -160,7 +160,7 @@ export const RightSection = styled.div`
       }
     }
     @media (max-width: 900px) {
-      margin: 0 0 0 10px;
+      margin: 0 5px 0 10px;
     }
   }
 `;
