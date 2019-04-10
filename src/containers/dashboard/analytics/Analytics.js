@@ -65,8 +65,8 @@ class Analytics extends Component {
     this.props.getAnalytics(
       this.props.currentAnalyticId,
       this.getQueryString()
-      );
-    };
+    );
+  };
     
   getQueryString = () => {
     if(this.state.started_at && this.state.ended_at){
