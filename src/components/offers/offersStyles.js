@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 15px 35px;
     div{
         display: flex;
         flex-direction: column;
-        width: 500px;
+        width: 350px;
         margin: 0 auto;
         h2{
             color: #6F6F6F;
@@ -16,30 +17,20 @@ export const Form = styled.form`
             font-size: 1.5rem;
             margin: 10px 0;
         }
-        input, button, select{
-            font-size: 1.3rem;
+        input, select{
+            font-size: 1.1rem;
             font-weight: 100;
-            padding: 15px;
-            margin-top: 10px;
+            padding: 8px;
             border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
+            border-radius: 4px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
             &::placeholder{
                 color: #999999;
             }
         }
         label{
-            font-size: 1.2rem;
-        }
-        button{
-            color: #FFFFFF;
-            background-color: #0A88DC;
-            margin-top: 15px;
-            transition: .2s;
-            &:hover{
-                cursor: pointer;
-                background-color: #086FB3;
-            }
+            font-size: 0.9rem;
+            margin: 10px 8px 4px 0px;
         }
         @media (max-width: 655px){
             width: 130%;
@@ -71,20 +62,39 @@ export const OfferModalContainer = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.5);
 `;
 
 export const OfferModalContent = styled.div`
     position: absolute;
     z-index: 99999999999;
     background-color: #FFFFFF;
-    padding: 15px 10px;
-    border-radius: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    margin: unset;
+    border-radius: 4px;
+    box-shadow: 0 2px 50px rgba(0, 0, 0, 0.35);
     h1{
-        font-size: 1.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        font-size: 2.125rem;
+        font-weight: 400;
+        margin: unset;
+        height: 110px;
+        color: #FFFFFF;
+        background-color: #0A88DC;
         text-align: center;
-        margin: 10px 0;
+    }
+`;
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 15px 30px 10px 0;
+    button{
+        margin-right: 10px;
     }
 `;
 

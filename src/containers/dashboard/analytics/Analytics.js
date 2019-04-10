@@ -189,8 +189,7 @@ class Analytics extends Component {
             </CardContainer>
             <RowContainer>
               <RevenueChart 
-                payments={payments}
-                payouts={payouts}
+                data={payments.length ? payments : payouts.length ? payouts : []}
               />
               <BrowserInfo data={analytics.browserCount}/>
             </RowContainer>
