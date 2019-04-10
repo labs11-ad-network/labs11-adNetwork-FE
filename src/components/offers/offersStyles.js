@@ -33,7 +33,7 @@ export const Form = styled.form`
             margin: 10px 8px 4px 0px;
         }
         @media (max-width: 655px){
-            width: 130%;
+            width: 100%;
         }
     }
 `;

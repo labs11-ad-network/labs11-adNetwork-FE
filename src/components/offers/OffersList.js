@@ -23,7 +23,8 @@ const styles = theme => ({
     fontWeight: "500"
   },
   table: {
-    margin: "15px"
+    padding: "25px",
+    backgroundColor: "#F1F1F1"
   }
 });
 
