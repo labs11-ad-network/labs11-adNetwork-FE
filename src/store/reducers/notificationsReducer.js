@@ -44,7 +44,7 @@ export default function notificationsReducer(state = initialState, action) {
     case UPDATE_USER_NOTIFICATION_SUCCESS:
       return {
         ...state,
-        userNotifications: "",
+        userNotifications: action.payload,
         isLoading: false
       };
 
