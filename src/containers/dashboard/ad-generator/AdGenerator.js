@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import html2canvas from "html2canvas";
 
-import { AdGeneratorContainer, LeftSection, RightSection, CreateAdButton } from "./containerStyles.js";
+import { AdGeneratorContainer, LeftSection, RightSection, CreateAdButton, NoOffersContent } from "./containerStyles.js";
 import { createAd } from "../../../store/actions/adAction.js";
 import { getOffers } from "../../../store/actions/offersAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
@@ -234,7 +235,10 @@ export class AdGenerator extends Component {
         </RightSection>
       </AdGeneratorContainer>
     ) : (
-      <h1>Create an offer before you create an ad.</h1>
+      <NoOffersContent>
+        <h1>You don't have any offers to attach the advertisement to.</h1>
+        <Link to="/dashboard/offers">Create an Offer</Link>
+      </NoOffersContent>
     );
   }
 }

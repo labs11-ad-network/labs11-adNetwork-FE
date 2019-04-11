@@ -31,6 +31,9 @@ export const Form = styled.form`
         label{
             font-size: 0.9rem;
             margin: 10px 8px 4px 0px;
+            span{
+                font-size: 0.6rem;
+            }
         }
         @media (max-width: 655px){
             width: 100%;

@@ -46,7 +46,7 @@ class NotificationDropdown extends React.Component {
 
     return (
       <div className={classes.root}>
-        <div>
+        <div data-btn="notifications_menu-button">
           <button
             buttonRef={node => {
               this.anchorEl = node;

@@ -125,7 +125,7 @@ export const RightSection = styled.div`
   i {
     color: #6f6f6f;
     font-size: 1.4rem;
-    margin-left: 15px;
+    padding: unset;
     &:hover {
       cursor: pointer;
     }
@@ -133,7 +133,7 @@ export const RightSection = styled.div`
   button {
     display: flex;
     align-items: center;
-    margin: 0 20px;
+    margin: 10px;
     background: none;
     border: none;
     &:hover {
@@ -160,7 +160,7 @@ export const RightSection = styled.div`
       }
     }
     @media (max-width: 900px) {
-      margin: 0 5px 0 10px;
+      margin: 0 0 0 5px;
     }
   }
 `;

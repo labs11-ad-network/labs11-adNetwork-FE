@@ -17,7 +17,7 @@ const OfferForm = props => {
                     step="0.01"
                 />
 
-                <label htmlFor="price_per_click">Price Per Click</label>
+                <label htmlFor="price_per_click">Price Per Click <span>(paid when someone clicks the ad)</span></label>
                 <input 
                     type="number"
                     name="price_per_click"
@@ -26,7 +26,7 @@ const OfferForm = props => {
                     step="0.001"
                 />
 
-                <label htmlFor="price_per_impression">Price Per Impression</label>
+                <label htmlFor="price_per_impression">Price Per Impression <span>(paid when someone views the ad)</span></label>
                 <input 
                     type="number"
                     name="price_per_impression"
@@ -60,6 +60,15 @@ const OfferForm = props => {
                 >
                     <option value="" disabled>Select a Category</option>
                     <option value="Health + Wellness">Health + Wellness</option>
+                    <option value="Beauty">Beauty</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="Crypto">Crypto</option>
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="Skin Care">Skin Care</option>
+                    <option value="Food and Drink">Food and Drink</option>
+                    <option value="Supplements">Supplements</option>
+
                 </select>
 
                 <label htmlFor="currency">Currency</label>

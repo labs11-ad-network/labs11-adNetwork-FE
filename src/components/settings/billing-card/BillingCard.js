@@ -25,7 +25,7 @@ const BillingCard = props => {
           <h2>{`$ ${balance}`}</h2>
           <button
             onClick={() => {
-              clicked()
+              clicked();
             }}
           >
             {button}
@@ -55,7 +55,7 @@ const BillingCard = props => {
         </div>
       ) : (
         acct_type === "advertiser" && (
-          <div>
+          <div data-btn="amount_due-card">
             <h1>Amount Due</h1>
             <h2>{`$ ${amount}`}</h2>
             {stripe_cust_id ? (
