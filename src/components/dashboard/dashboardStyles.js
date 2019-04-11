@@ -74,6 +74,7 @@ export const NavContainer = styled.nav`
   min-height: 65px;
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+  z-index: 999999;
 `;
 
 export const LeftSection = styled.div`
@@ -194,6 +195,9 @@ export const MobileHamburger = styled.div`
     cursor: pointer;
     background-color: #0b67a4;
   }
+
+
+  /* <---- classNames for ElasticReverse in MobileMenuButton -----> */
 .Burger {
    z-index: 99999999;
    width:100%;
