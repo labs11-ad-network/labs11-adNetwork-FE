@@ -238,7 +238,7 @@ class Analytics extends Component {
                 <MapChart data={this.getCityData()} />
               </div>
             </RowContainer>
-            {currentUser.acct_type && (
+            {currentUser.acct_type === "affiliate" && (
               <RowContainer>
                 <TopTenOffers data={analytics.offersRanking} />
               </RowContainer>
