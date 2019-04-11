@@ -78,7 +78,6 @@ class Dashboard extends Component {
       auth,
       updateUserNotification
     } = this.props;
-    console.log(this.props.location);
     return (
       <DashboardContainer>
         <DashboardLeft />
