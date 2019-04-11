@@ -22,7 +22,6 @@ class Contact extends Component {
 
   onSubmitHandler = e => {
     e.preventDefault();
-    console.log(this.state);
     const message = {
       firstName: this.state.firstName,
       lastName: this.state.lastName,

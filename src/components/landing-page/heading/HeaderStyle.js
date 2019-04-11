@@ -374,7 +374,7 @@ export const HeroHome = styled.section`
     position: fixed;
     bottom: 50px;
     right: 10px;
-    z-index: 999;
+    z-index: 99999999999999999999;
     cursor: pointer;
     @media (min-width: 940px) {
       bottom: 50px;
