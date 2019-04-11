@@ -37,6 +37,7 @@ const Table = props => {
           }
         </tbody>
       </table>
+    
     </TableContainer>
   );
 };
