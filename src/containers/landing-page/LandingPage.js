@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { LandingPageStyle } from "../../components/landing-page/LandingPageStyle";
+import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import WOW from "wowjs";
 
@@ -15,11 +16,11 @@ class LandingPage extends PureComponent {
   };
   logout = () => {
     this.props.auth.logout();
+    toast.success(`You sucessfully logout`);
   };
   componentDidMount() {
     new WOW.WOW().init();
   }
-
   render() {
     return (
       <LandingPageStyle>
