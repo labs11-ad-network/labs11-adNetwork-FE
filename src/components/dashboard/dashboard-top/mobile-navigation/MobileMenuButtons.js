@@ -9,7 +9,6 @@ import {
 } from "../../dashboardStyles.js";
 
 const MobileMenuButtons = props => {
-<<<<<<< HEAD
   return (
     <div>
       <MobileHamburger>
@@ -38,30 +37,6 @@ const MobileMenuButtons = props => {
       )}
     </div>
   )
-=======
-    return(
-        <div>
-            <MobileHamburger>
-                <a
-                    href="hamburger"
-                    onClick={e => {
-                        e.preventDefault();
-                        props.toggleNav();
-                    }}
-                >
-                    <i className="fas fa-bars" />
-                </a>
-            </MobileHamburger>
-            {(!props.location.pathname.includes("dashboard/") && props.currentUser.acct_type === "advertiser") && (
-            <MobileCreate>
-                <Link to="/dashboard/create-ad">
-                    <i className="fas fa-pencil-alt" />
-                </Link>
-            </MobileCreate>
-            )}
-        </div>
-    )
->>>>>>> master
 }
 
 export default MobileMenuButtons

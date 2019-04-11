@@ -27,17 +27,9 @@ const CardContainer = styled.div`
 
 const RowContainer = styled.div`
   display: flex;
-<<<<<<< HEAD
-  .revenue-chart{
-    min-width: 70%;
-  }
-  .main-tables-conainer{
-    width:100%;
-=======
   width: 100%;
   .main-tables-container{
     width: 100%;
->>>>>>> master
     display: flex;
     @media(max-width: 1200px){
       width: 100%;
@@ -71,16 +63,12 @@ const RowContainer = styled.div`
 `;
 
 class Analytics extends Component {
-<<<<<<< HEAD
-  componentDidMount() {
-=======
   state = {
     started_at: "",
     ended_at: ""
   }
 
   componentDidMount(){
->>>>>>> master
     this.props.getPayouts();
     this.props.getPayments();
     this.props.getAnalytics(this.props.currentAnalyticId);
@@ -128,33 +116,21 @@ class Analytics extends Component {
 
   getCityData = () => {
     if (this.props.analytics.cities.length) {
-<<<<<<< HEAD
-      const range = this.props.analytics.actionCount.clicks + this.props.analytics.actionCount.impressions;
-=======
       const range =
         this.props.analytics.actionCount.clicks +
         this.props.analytics.actionCount.impressions;
->>>>>>> master
       return {
         cities: this.props.analytics.cities.map(city => {
           return {
             name: city.city,
             coordinates: [Number(city.longitude), Number(city.latitude)],
             population: city.num
-<<<<<<< HEAD
-          }
-=======
           };
->>>>>>> master
         }),
         cityScale: scaleLinear()
           .domain([0, range])
           .range([1, 25])
-<<<<<<< HEAD
-      }
-=======
       };
->>>>>>> master
     } else {
       return {
         cities: [],
@@ -164,17 +140,10 @@ class Analytics extends Component {
   };
 
   render() {
-<<<<<<< HEAD
-    const {
-      analytics,
-      payouts,
-      payments
-=======
     const { 
       analytics, 
       payouts, 
       payments,
->>>>>>> master
     } = this.props;
 
     const {
@@ -244,23 +213,12 @@ class Analytics extends Component {
               />
             </CardContainer>
             <RowContainer>
-<<<<<<< HEAD
-              <div className="revenue-chart">
-                <RevenueChart
-                  payments={payments}
-                  payouts={payouts}
-=======
               <div className="revenue-browser-row">
                 <RevenueChart 
                   data={payments.length ? payments : payouts.length ? payouts : []}
->>>>>>> master
                 />
                 <BrowserInfo data={analytics.browserCount}/>
               </div>
-<<<<<<< HEAD
-              <BrowserInfo data={analytics.browserCount} />
-=======
->>>>>>> master
             </RowContainer>
             <RowContainer>
               <div className="main-tables-container">
