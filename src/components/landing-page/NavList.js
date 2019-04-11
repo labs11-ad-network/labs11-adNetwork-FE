@@ -7,7 +7,11 @@ const NavList = ({ history }) => {
       <a href="#contact">Contact</a>
       <a href="#screenshots">Screenshots</a>
       <a href="#reviews">Reviews</a>
-      <a href="/dashboard" onClick={() => history.push("/dashboard")}>
+      <a
+        href="/dashboard"
+        onClick={() => history.push("/dashboard")}
+        hidden={!localStorage.id_token}
+      >
         Dashboard
       </a>
     </div>

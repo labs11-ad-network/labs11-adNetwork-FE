@@ -79,26 +79,25 @@ class NotificationDropdown extends React.Component {
                   <ClickAwayListener onClickAway={handleClose}>
                     <MenuList>
                       {userNotifications &&
-                        userNotifications
-                          .map(n => (
-                            <MenuItem
-                              style={
-                                n.unread
-                                  ? notificationStyles.unread
-                                  : notificationStyles.read
-                              }
-                              key={n.id}
-                            >
-                              <p>
-                                {userNotifications
-                                  ? `${n.msg_body} ...${moment(
-                                      n.created_at,
-                                      "YYYY-MM-DO, hh:mm:ss Z"
-                                    ).fromNow()}`
-                                  : "No notifications yet :("}
-                              </p>
-                            </MenuItem>
-                          ))}
+                        userNotifications.map(n => (
+                          <MenuItem
+                            style={
+                              n.unread
+                                ? notificationStyles.unread
+                                : notificationStyles.read
+                            }
+                            key={n.id}
+                          >
+                            <p>
+                              {userNotifications
+                                ? `${n.msg_body} ...${moment(
+                                    n.created_at,
+                                    "YYYY-MM-DO, hh:mm:ss Z"
+                                  ).fromNow()}`
+                                : "No notifications yet :("}
+                            </p>
+                          </MenuItem>
+                        ))}
                     </MenuList>
                   </ClickAwayListener>
                 </Paper>

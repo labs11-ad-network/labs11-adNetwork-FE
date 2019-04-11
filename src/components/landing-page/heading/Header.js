@@ -76,7 +76,7 @@ class Header extends Component {
 
   render() {
     const { left, visible } = this.state;
-    const { login, history } = this.props;
+    const { login, logout, history } = this.props;
     let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
     let goUpBtn =
       window.pageYOffset > 1000 && !visible
@@ -98,6 +98,8 @@ class Header extends Component {
 
               <NavList history={history} />
               <NavDrawer
+                logout={logout}
+                login={login}
                 hidden
                 history={history}
                 left={left}
@@ -105,7 +107,11 @@ class Header extends Component {
                 visible={visible}
               />
               <div className="desktop-anchor nav-button">
-                <button onClick={() => login()}>Login</button>
+                {!localStorage.id_token ? (
+                  <button onClick={() => login()}>Login</button>
+                ) : (
+                  <button onClick={() => logout()}>Logout</button>
+                )}
               </div>
               {/* <---------- Tablet Hamburger ---------> */}
               <ElasticReverse

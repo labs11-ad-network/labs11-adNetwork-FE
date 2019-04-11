@@ -74,7 +74,6 @@ export const NavContainer = styled.nav`
   min-height: 65px;
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-  z-index: 999999;
 `;
 
 export const LeftSection = styled.div`
@@ -188,25 +187,24 @@ export const MobileHamburger = styled.div`
   transition: 0.2s;
   margin-right: 15px;
   background-color: #0b6fb2;
-    background-color: #0b6fb2;
-    color: white;
-    font-size: 1.7rem;
+  background-color: #0b6fb2;
+  color: white;
+  font-size: 1.7rem;
   &:hover {
     cursor: pointer;
     background-color: #0b67a4;
   }
 
-
   /* <---- classNames for ElasticReverse in MobileMenuButton -----> */
-.Burger {
-   z-index: 99999999;
-   width:100%;
-   &:hover {
-    cursor: pointer;
-    background-color: #0b67a4;
+  .Burger {
+    z-index: 99999999;
+    width: 100%;
+    &:hover {
+      cursor: pointer;
+      background-color: #0b67a4;
+    }
   }
-}
-.BurgerBox {
+  .BurgerBox {
     top: -17px;
     width: 25px;
     height: 5px;
@@ -215,7 +213,7 @@ export const MobileHamburger = styled.div`
     z-index: 100;
     margin: 0 auto;
     left: 0px;
-}
+  }
   @media (max-width: 900px) {
     display: flex;
   }
@@ -254,7 +252,6 @@ export const MobileCreate = styled.div`
   }
 `;
 
-
 export const MobileNav = styled.div`
   position: absolute;
   display: flex;
@@ -265,7 +262,7 @@ export const MobileNav = styled.div`
   z-index: 9999;
   left: ${props => (props.status ? "0" : "-100vw")};
   top: 0;
-  transition:0.3s all;
+  transition: 0.3s all;
 
   button {
     width: 65px;
