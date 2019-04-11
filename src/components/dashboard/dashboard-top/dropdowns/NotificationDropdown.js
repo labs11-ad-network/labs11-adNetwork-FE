@@ -20,7 +20,6 @@ const styles = theme => ({
     display: "flex"
   },
   menu: {
-    width: 350,
     zIndex: 999999999999999999
   },
   paper: {
@@ -101,10 +100,13 @@ class NotificationDropdown extends React.Component {
                                 {`${n.msg_body} 
                                 `}
                               </span>
-                              <span className="notif-time">{`...${moment(
-                                n.created_at,
-                                "YYYY-MM-DO, hh:mm:ss Z"
-                              ).fromNow()}`}</span>
+                              <span className="notif-time">
+                                <i className="far fa-clock" />
+                                {`${moment(
+                                  n.created_at,
+                                  "YYYY-MM-DO, hh:mm:ss Z"
+                                ).fromNow()}`}
+                              </span>
                             </MenuItem>
                           ))
                         ) : (
