@@ -9,9 +9,6 @@ import {
 const MobileMenu = props => {
   return (
     <MobileNav status={props.movileNavOpen}>
-      {/* <button onClick={() => props.toggleNav()}>
-          <i className="fas fa-times" />
-        </button> */}
       <MobileNavButton onClick={() => props.toggleNav()}>
         <NavLink className="dashboard" exact to="/dashboard">
           <i className="fas fa-chart-line" />

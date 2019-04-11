@@ -212,24 +212,6 @@ export const MobileHamburger = styled.div`
     margin: 0 auto;
     left: 0px;
 }
-  /* a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #0b6fb2;
-    width: 65px;
-    height: 65px;
-    margin: unset;
-    padding: unset;
-    border-radius: unset;
-    text-decoration: none;
-    color: white;
-    font-size: 1.7rem;
-  }
-  &:hover {
-    cursor: pointer;
-    background-color: #0b67a4;
-  } */
   @media (max-width: 900px) {
     display: flex;
   }
