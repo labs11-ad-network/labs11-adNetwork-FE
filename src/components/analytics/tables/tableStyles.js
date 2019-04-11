@@ -6,7 +6,7 @@ export const TableContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  width: 400px;
+  width: 100%;
   height: auto;
   padding: 25px;
   margin: 15px;
@@ -17,8 +17,13 @@ export const TableContainer = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
-    max-height: 530px;
+    max-height: 700px;
     overflow-y: hidden;
+    .no-data{
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
     h1{
       margin: 15px;
       font-size: 1rem;
@@ -29,6 +34,11 @@ export const TableContainer = styled.div`
     box-sizing: border-box;
     width: 100%;
   }
+  @media(max-width: 1200px){
+    box-sizing: border-box;
+    padding: 15px;
+    margin: 15px 0;
+  }   
 `;
 
 export const TableHeader = styled.div`

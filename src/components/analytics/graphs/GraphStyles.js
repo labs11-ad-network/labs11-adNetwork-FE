@@ -12,6 +12,11 @@ export const GraphContainer = styled.div`
   margin: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+  @media(max-width: 1200px){
+    box-sizing: border-box;
+    padding: 15px;
+    margin: 15px 0;
+  }   
 `;
 
 export const GraphHeader = styled.div`

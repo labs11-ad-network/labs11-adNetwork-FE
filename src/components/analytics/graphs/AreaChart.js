@@ -8,6 +8,9 @@ import { GraphContainer, GraphHeader } from './GraphStyles.js';
 const Chart = styled.div`
   height: 300px;
   width: 100%;
+  @media(max-width: 780px){
+    height: 200px;
+  }
 `;
 
 class RevenueChart extends React.Component {
@@ -26,7 +29,7 @@ class RevenueChart extends React.Component {
           <Chart>
             <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
-                  data={this.props.payments || this.props.payouts}
+                  data={this.props.data}
                   margin={{
                     top: 10,
                     right: 30,

@@ -6,6 +6,7 @@ import { Route } from "react-router-dom";
 import { getOffers } from "../../store/actions/offersAction.js";
 import { getUserData } from "../../store/actions/authAction.js";
 import { getAgreements } from "../../store/actions/agreementsAction.js";
+import { getAnalytics } from "../../store/actions/analyticsAction.js";
 import {
   getUserNotifications,
   updateUserNotification
@@ -37,7 +38,7 @@ const DashboardContainer = styled.div`
 
 class Dashboard extends Component {
   state = {
-    currentAnalyticId: ""
+    currentAnalyticId: "",
   };
 
   componentDidMount() {
@@ -71,7 +72,8 @@ class Dashboard extends Component {
       currentUser,
       agreements,
       userNotifications,
-      auth
+      auth,
+      updateUserNotification
     } = this.props;
 
     return (
@@ -90,12 +92,7 @@ class Dashboard extends Component {
             <Route
               exact
               path="/dashboard"
-              render={props => (
-                <Analytics
-                  {...props}
-                  currentAnalyticId={currentAnalyticId}
-                />
-              )}
+              render={props => <Analytics {...props} currentAnalyticId={currentAnalyticId}/>}
             />
             <Route
               path="/dashboard/offers"
@@ -127,10 +124,11 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
+    getAnalytics,
     getOffers,
     getUserData,
     getAgreements,
     getUserNotifications,
-    updateUserNotification
+    updateUserNotification,
   }
 )(privateRoute(Dashboard));

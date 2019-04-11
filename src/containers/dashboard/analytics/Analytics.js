@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { scaleLinear } from "d3-scale";
 import { connect } from "react-redux";
+import moment from "moment";
 
 import { getPayouts, getPayments } from "../../../store/actions/stripeAction.js";
 import { getAnalytics } from "../../../store/actions/analyticsAction.js";
+import DatePicker from "../../../components/analytics/datepicker/DatePicker.js";
 import { BrowserInfo } from "../../../components/analytics/graphs/PieChart";
 import RevenueChart from "../../../components/analytics/graphs/AreaChart";
 import Card from "../../../components/analytics/cards/Card.js";
@@ -13,46 +15,107 @@ import MapChart from "../../../components/analytics/map/MapChart.js";
 
 const CardContainer = styled.div`
   display: flex;
-  @media (max-width: 1170px){
+  @media (max-width: 1350px){
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+  @media (max-width: 1200px){
+    width: 95%;
+    margin: 0 auto;
   }
 `;
 
 const RowContainer = styled.div`
   display: flex;
+<<<<<<< HEAD
   .revenue-chart{
     min-width: 70%;
   }
   .main-tables-conainer{
     width:100%;
+=======
+  width: 100%;
+  .main-tables-container{
+    width: 100%;
+>>>>>>> master
     display: flex;
-    @media(max-width: 1745px){
+    @media(max-width: 1200px){
+      width: 100%;
+      box-sizing: border-box;
       flex-direction: column;
     }
   }
   .tables-container{
     display: flex;
-    @media(max-width: 780px){
-      width: 100%;
+    width: 100%;
+    @media(max-width: 1200px){
+      box-sizing: border-box;
       flex-direction: column;
     }
+  }
+  .revenue-browser-row{
+    display: flex;
+    width: 100%;
+    @media (max-width: 1200px){
+      width: 100%;
+      box-sizing: border-box;
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 1200px){
+    box-sizing: border-box;
+    flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
   }
 `;
 
 class Analytics extends Component {
+<<<<<<< HEAD
   componentDidMount() {
+=======
+  state = {
+    started_at: "",
+    ended_at: ""
+  }
+
+  componentDidMount(){
+>>>>>>> master
     this.props.getPayouts();
     this.props.getPayments();
     this.props.getAnalytics(this.props.currentAnalyticId);
     this.analyticsInterval = setInterval(() => {
-      this.props.getAnalytics(this.props.currentAnalyticId);
+      this.props.getAnalytics(
+        this.props.currentAnalyticId,
+        this.getQueryString()
+      );
     }, 15000);
   }
 
   componentWillUnmount() {
     clearInterval(this.analyticsInterval);
   }
+  
+  getFilteredAnalytics = () => {
+    this.props.getAnalytics(
+      this.props.currentAnalyticId,
+      this.getQueryString()
+    );
+  };
+    
+  getQueryString = () => {
+    if(this.state.started_at && this.state.ended_at){
+      const started = `${moment(this.state.started_at).format("YYYY-MM-DD")}T00:00:00Z`;
+      const ended = `${moment(this.state.ended_at).format("YYYY-MM-DD")}T23:59:00Z`;
+      return `?started_at=${started}&ended_at=${ended}`
+    }else{
+      return ""
+    }
+  }
+
+  handleDateChange = (date, name) => {
+    this.setState({ [name]: date });
+  };
 
   getCTR = () => {
     const clicks = this.props.analytics.actionCount.clicks;
@@ -65,37 +128,72 @@ class Analytics extends Component {
 
   getCityData = () => {
     if (this.props.analytics.cities.length) {
+<<<<<<< HEAD
       const range = this.props.analytics.actionCount.clicks + this.props.analytics.actionCount.impressions;
+=======
+      const range =
+        this.props.analytics.actionCount.clicks +
+        this.props.analytics.actionCount.impressions;
+>>>>>>> master
       return {
         cities: this.props.analytics.cities.map(city => {
           return {
             name: city.city,
             coordinates: [Number(city.longitude), Number(city.latitude)],
             population: city.num
+<<<<<<< HEAD
           }
+=======
+          };
+>>>>>>> master
         }),
         cityScale: scaleLinear()
           .domain([0, range])
           .range([1, 25])
+<<<<<<< HEAD
       }
+=======
+      };
+>>>>>>> master
     } else {
       return {
         cities: [],
         cityScale: {}
-      }
+      };
     }
-  }
+  };
 
   render() {
+<<<<<<< HEAD
     const {
       analytics,
       payouts,
       payments
+=======
+    const { 
+      analytics, 
+      payouts, 
+      payments,
+>>>>>>> master
     } = this.props;
+
+    const {
+      started_at,
+      ended_at
+    } = this.state;
+    
     return (
       <>
         {analytics.length !== 0 && (
           <>
+            <div>
+              <DatePicker
+                startedAt={started_at}
+                endedAt={ended_at}
+                getFilteredAnalytics={this.getFilteredAnalytics}
+                handleDateChange={this.handleDateChange}
+              />
+            </div>
             <CardContainer>
               <Card
                 icon="fas fa-eye"
@@ -118,9 +216,20 @@ class Analytics extends Component {
               <Card
                 icon="fas fa-percentage"
                 dataType="Click Through Rate"
-                data={[...analytics.clicks, ...analytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at)).length}
+                data={
+                  [...analytics.clicks, ...analytics.impressions].sort(
+                    (first, second) =>
+                      Date.parse(second.created_at) -
+                      Date.parse(first.created_at)
+                  ).length
+                }
                 ctr={this.getCTR()}
-                actions={[...analytics.clicks, ...analytics.impressions].sort((first, second) => Date.parse(second.created_at) - Date.parse(first.created_at))}
+                actions={[...analytics.clicks, ...analytics.impressions].sort(
+                    (first, second) =>
+                      Date.parse(second.created_at) - 
+                      Date.parse(first.created_at)
+                    )
+                }
                 firstColor="#ef5350"
                 secondColor="#e53935"
               />
@@ -135,16 +244,26 @@ class Analytics extends Component {
               />
             </CardContainer>
             <RowContainer>
+<<<<<<< HEAD
               <div className="revenue-chart">
                 <RevenueChart
                   payments={payments}
                   payouts={payouts}
+=======
+              <div className="revenue-browser-row">
+                <RevenueChart 
+                  data={payments.length ? payments : payouts.length ? payouts : []}
+>>>>>>> master
                 />
+                <BrowserInfo data={analytics.browserCount}/>
               </div>
+<<<<<<< HEAD
               <BrowserInfo data={analytics.browserCount} />
+=======
+>>>>>>> master
             </RowContainer>
             <RowContainer>
-              <div className="main-tables-conainer">
+              <div className="main-tables-container">
                 <div className="tables-container">
                   <Table
                     data={analytics.impressions}

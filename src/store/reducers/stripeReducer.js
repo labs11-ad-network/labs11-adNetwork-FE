@@ -23,8 +23,8 @@ import {
 
 const initialState = {
   isLoading: false,
-  payouts: [],
-  payments: []
+  payouts: "",
+  payments: ""
 };
 
 const stripeReducer = (state = initialState, action) => {

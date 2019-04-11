@@ -146,6 +146,9 @@ export const RightSection = styled.div`
       margin-right: 8px;
       border: 1px solid rgba(103, 103, 103, 0.25);
       border-radius: 25px;
+      @media (max-width: 900px) {
+        margin: unset;
+      }
     }
     h2 {
       color: #6f6f6f;
@@ -157,7 +160,7 @@ export const RightSection = styled.div`
       }
     }
     @media (max-width: 900px) {
-      margin: 0 0 0 10px;
+      margin: 0 5px 0 10px;
     }
   }
 `;

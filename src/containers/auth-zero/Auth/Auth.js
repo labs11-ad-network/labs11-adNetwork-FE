@@ -94,9 +94,6 @@ export default class Auth {
     this.idToken = null;
     localStorage.clear();
     sessionStorage.clear();
-    // await this.auth0.logout({
-    //   redirecTo: "http://localhost:3000/" || process.env.REACT_APP_BACKEND_URL
-    // });
     history.replace("/");
   };
 }
