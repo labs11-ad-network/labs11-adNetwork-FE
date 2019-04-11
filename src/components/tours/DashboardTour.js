@@ -42,26 +42,35 @@ class DashboardTour extends React.Component {
         style: {
           fontSize: 15,
           lineHeight: 1.5
-        }
+        },
+        stepInteraction: false,
       },
       {
         selector: "[data-btn='offers-button']",
         content:
-          "This is the Offers page where you can create offers and activate/deactivate old ones.",
+          `${this.props.currentUser.acct_type === "affiliate" ? 
+          "This is the Offers List page where you can view offers created by advertisers and decide whether you want to accept them and display the ads on your website." : 
+          "This is the Offers page where you can create offers and activate/deactivate old ones."
+          }`,
 
         style: {
           fontSize: 15,
           lineHeight: 1.5
-        }
+        },
+        stepInteraction: false,
       },
       {
         selector: "[data-btn='settings-button']",
         content:
-          "This is the settings page. You can edit your profile, pay and change payment method, as well as get your tracking code snippet.",
+          `${this.props.currentUser.acct_type === "affiliate" ? 
+          "This is the settings page. You can edit your profile, pay and change payment method, as well as get your code snippet to display ads on your website" :
+          "This is the settings page. You can edit your profile, pay and change payment method, as well as get your tracking code snippet."
+          }`,
         style: {
           fontSize: 15,
           lineHeight: 1.5
-        }
+        },
+        stepInteraction: false,
       },
       {
         selector: "[data-btn='user_menu-button']",
@@ -75,7 +84,7 @@ class DashboardTour extends React.Component {
       {
         selector: "[data-btn='notifications_menu-button']",
         content:
-          "This is the notifications menu. you can see a list of updates and messages",
+          "This is the notifications menu where you can see a list of updates and messages",
         style: {
           fontSize: 15,
           lineHeight: 1.5
@@ -84,7 +93,10 @@ class DashboardTour extends React.Component {
       {
         selector: "[data-btn='offers_dropdown-button']",
         content:
-          "This is the offers dropdown menu. you can see a list of offers and filter all of your dashboard by an offer",
+          `${this.props.currentUser.acct_type === "affiliate" ? 
+          "This is the agreements dropdown menu where you can see a list of agreements and filter your analytics report by an agreement" :
+          "This is the offers dropdown menu where you can see a list of offers and filter your analytics report by an offer"
+          }`,
         style: {
           fontSize: 15,
           lineHeight: 1.5
@@ -97,12 +109,35 @@ class DashboardTour extends React.Component {
         style: {
           fontSize: 15,
           lineHeight: 1.5
-        }
+        },
+        stepInteraction: false,
       },
       {
         selector: "[data-btn='report_filter-button']",
         content:
           "You can get a detailed report of your analytics by date, simply pick the start and end date and click filter",
+        style: {
+          fontSize: 15,
+          lineHeight: 1.5
+        },
+        stepInteraction: false,
+      },
+      {
+        content: () => {
+          return (
+            <>
+              <h2> Now lets go learn about the Offers page</h2>
+              <Button
+                color="primary"
+                onClick={() => {
+                  this.props.history.push('/dashboard/offers')
+                }}
+              >
+                Lets Go
+              </Button>
+            </>
+          );
+        },
         style: {
           fontSize: 15,
           lineHeight: 1.5
@@ -119,10 +154,16 @@ class DashboardTour extends React.Component {
     return (
       <>
         <Tour
-          steps={this.state.dashboardSteps}
+          steps={
+            this.props.currentUser.acct_type === "affiliate" ? 
+            this.state.dashboardSteps.filter(step => {
+              return step.selector !== "[data-btn='create_ad-button']"
+            }) : 
+            this.state.dashboardSteps
+          }
           isOpen={this.state.isDashboardOpen}
           onRequestClose={this.closeDashboardTour}
-          rounded={5}
+          rounded={4}
           maskClassName="mask"
           className="helper"
         />
