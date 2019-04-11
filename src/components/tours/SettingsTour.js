@@ -1,6 +1,5 @@
 import React from "react";
 import Tour from "reactour";
-import Button from "@material-ui/core/Button";
 
 class SettingTour extends React.Component {
   state = {
