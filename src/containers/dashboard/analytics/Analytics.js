@@ -4,13 +4,15 @@ import { scaleLinear } from "d3-scale";
 import { connect } from "react-redux";
 import moment from "moment";
 
+import { getAnalytics } from "../../../store/actions/analyticsAction.js";
+import { BrowserInfo } from "../../../components/analytics/graphs/PieChart";
+
 import {
   getPayouts,
   getPayments
 } from "../../../store/actions/stripeAction.js";
-import { getAnalytics } from "../../../store/actions/analyticsAction.js";
+
 import DatePicker from "../../../components/analytics/datepicker/DatePicker.js";
-import { BrowserInfo } from "../../../components/analytics/graphs/PieChart";
 import RevenueChart from "../../../components/analytics/graphs/AreaChart";
 import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";
@@ -234,13 +236,7 @@ class Analytics extends Component {
                     growth={analytics.growth.clicks || 0}
                   />
                 </div>
-<<<<<<< HEAD
-                <MapChart
-                  data={this.getCityData()}
-                />
-=======
                 <MapChart data={this.getCityData()} />
->>>>>>> master
               </div>
             </RowContainer>
           </>

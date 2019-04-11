@@ -105,7 +105,6 @@ class DashboardTour extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <>
         <Tour
