@@ -372,7 +372,7 @@ export const HeroHome = styled.section`
     line-height: 45px;
     color: #fff;
     position: fixed;
-    bottom: 50px;
+    bottom: 79px;
     right: 10px;
     z-index: 99999999999999999999;
     cursor: pointer;

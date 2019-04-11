@@ -1,14 +1,16 @@
 import React from "react";
 import moment from "moment";
 
-import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
+
+import Badge from "@material-ui/core/Badge";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
 import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
+import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   root: {
@@ -47,7 +49,7 @@ class NotificationDropdown extends React.Component {
     return (
       <div className={classes.root}>
         <div data-btn="notifications_menu-button">
-          <button
+          <Button
             buttonRef={node => {
               this.anchorEl = node;
             }}
@@ -58,7 +60,7 @@ class NotificationDropdown extends React.Component {
             <Badge badgeContent={unreadBadgeCount} color="primary">
               <i className="fas fa-bell" />
             </Badge>
-          </button>
+          </Button>
           <Popper
             open={notificationsMenuOpen}
             anchorEl={this.anchorEl}
