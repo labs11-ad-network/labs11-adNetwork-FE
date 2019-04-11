@@ -50,33 +50,33 @@ class UserDropdown extends React.Component {
             </Button>
             <Popper id={1} open={userMenuOpen} anchorEl={this.anchorEl} transition position="left">
               {({ TransitionProps }) => (
-                <Fade {...TransitionProps} timeout={350}>
-                  <Paper>
-                    <ClickAwayListener onClickAway={this.handleClose}>
-                      <MenuList>
-                        <MenuItem
-                          onClick={e => {
-                            handleClose(e);
-                          }}
-                          component={Link}
-                          to="/dashboard/settings"
-                        >
-                          Profile
-                        </MenuItem>
-                        <MenuItem
-                          onClick={e => {
-                            handleClose(e);
-                            auth.logout();
-                          }}
-                          component={Link}
-                          to="/"
-                        >
-                          Logout
-                        </MenuItem>
-                      </MenuList>
-                    </ClickAwayListener>
-                  </Paper>
-                </Fade>
+                <ClickAwayListener onClickAway={e => handleClose(e)}>
+                  <Fade {...TransitionProps} timeout={350}>
+                    <Paper>
+                        <MenuList>
+                          <MenuItem
+                            onClick={e => {
+                              handleClose(e);
+                            }}
+                            component={Link}
+                            to="/dashboard/settings"
+                          >
+                            Profile
+                          </MenuItem>
+                          <MenuItem
+                            onClick={e => {
+                              handleClose(e);
+                              auth.logout();
+                            }}
+                            component={Link}
+                            to="/"
+                          >
+                            Logout
+                          </MenuItem>
+                        </MenuList>
+                    </Paper>
+                  </Fade>
+                </ClickAwayListener>
               )}
             </Popper>
         </div>
