@@ -148,7 +148,7 @@ class Analytics extends Component {
   };
 
   render() {
-    const { analytics, payouts, payments } = this.props;
+    const { analytics, payouts, payments, currentUser } = this.props;
 
     const { started_at, ended_at } = this.state;
 
@@ -238,9 +238,11 @@ class Analytics extends Component {
                 <MapChart data={this.getCityData()} />
               </div>
             </RowContainer>
-            <RowContainer>
-              <TopTenOffers data={analytics.offersRanking} />
-            </RowContainer>
+            {currentUser.acct_type && (
+              <RowContainer>
+                <TopTenOffers data={analytics.offersRanking} />
+              </RowContainer>
+            )}
           </>
         )}
       </>
@@ -251,7 +253,8 @@ class Analytics extends Component {
 const mapStateToProps = state => ({
   analytics: state.analyticsReducer.analytics,
   payments: state.stripeReducer.payments,
-  payouts: state.stripeReducer.payouts
+  payouts: state.stripeReducer.payouts,
+  currentUser: state.authReducer.currentUser
 });
 
 export default connect(
