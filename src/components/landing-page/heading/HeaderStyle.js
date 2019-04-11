@@ -85,10 +85,10 @@ export const HeroHome = styled.section`
         top: 120%;
       }
       @media (min-width: 940px) {
-        max-width: 800px;
-        width: 175%;
-        left: 43px;
-        top: 105%;
+        max-width: 795px;
+        width: 795px;
+        left: 125px;
+        top: 99%;
       }
     }
   }
@@ -161,7 +161,6 @@ export const HeroHome = styled.section`
       top: -15%;
       height: 621px;
       left: -97%;
-      width: 193%;
     }
   }
   /* --------------- nav ----------------- */
@@ -372,9 +371,9 @@ export const HeroHome = styled.section`
     line-height: 45px;
     color: #fff;
     position: fixed;
-    bottom: 79px;
+    bottom: 50px;
     right: 10px;
-    z-index: 99999999999999999999;
+    z-index: 999;
     cursor: pointer;
     @media (min-width: 940px) {
       bottom: 50px;
