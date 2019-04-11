@@ -36,3 +36,5 @@ class SettingTour extends React.Component {
 }
 
 export default SettingTour;
+
+ // when advertiser create ads for offer check user see if they have stripe id and

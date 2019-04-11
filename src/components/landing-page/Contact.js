@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
 
-import contact1 from "../../assets/contact1.png";
+import contact1 from "../../assets/contact1.svg";
 
 class Contact extends Component {
   state = {

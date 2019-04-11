@@ -1,6 +1,6 @@
 import React from "react";
 
-import desktopGiff from "../../assets/desktopAds.gif";
+import desktopGiff from "../../assets/desktopAds.svg";
 import desktopGiff2 from "../../assets/desktopAds2.svg";
 import desktopGiff3 from "../../assets/desktopAds3.svg";
 
