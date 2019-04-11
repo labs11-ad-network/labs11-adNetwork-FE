@@ -2,10 +2,10 @@ import React from "react";
 import Tour from "reactour";
 import Button from "@material-ui/core/Button";
 
-class TourContainer extends React.Component {
+class DashboardTour extends React.Component {
   state = {
-    isTourOpen: true,
-    steps: [
+    isDashboardOpen: true,
+    dashboardSteps: [
       {
         selector: ".first-step",
         content: () => {
@@ -99,21 +99,26 @@ class TourContainer extends React.Component {
       // ...
     ]
   };
-  closeTour = () => {
-    this.setState({ isTourOpen: false });
+
+  closeDashboardTour = () => {
+    this.setState({ isDashboardOpen: false });
   };
+
   render() {
+    console.log(this.props);
     return (
-      <Tour
-        steps={this.state.steps}
-        isOpen={this.state.isTourOpen}
-        onRequestClose={this.closeTour}
-        rounded={5}
-        maskClassName="mask"
-        className="helper"
-      />
+      <>
+        <Tour
+          steps={this.state.dashboardSteps}
+          isOpen={this.state.isDashboardOpen}
+          onRequestClose={this.closeDashboardTour}
+          rounded={5}
+          maskClassName="mask"
+          className="helper"
+        />
+      </>
     );
   }
 }
 
-export default TourContainer;
+export default DashboardTour;
