@@ -155,7 +155,7 @@ class Analytics extends Component {
       <>
         {analytics.length !== 0 && (
           <>
-            <div data-btn="report_filter-button">
+            <div>
               <DatePicker
                 startedAt={started_at}
                 endedAt={ended_at}

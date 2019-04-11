@@ -19,7 +19,9 @@ import Analytics from "./analytics/Analytics.js";
 import AdGenerator from "./ad-generator/AdGenerator.js";
 import Offers from "./offers/Offers.js";
 import Settings from "./settings/Settings.js";
-import TourContainer from "../../components/tour/Tour.js";
+import DashboardTour from "../../components/tours/DashboardTour.js";
+import SettingsTour from "../../components/tours/SettingsTour.js";
+import OfferTour from "../../components/tours/OfferTour.js";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -76,7 +78,7 @@ class Dashboard extends Component {
       auth,
       updateUserNotification
     } = this.props;
-
+    console.log(this.props.location);
     return (
       <DashboardContainer>
         <DashboardLeft />
@@ -109,7 +111,13 @@ class Dashboard extends Component {
             />
             <Route path="/dashboard/create-ad" component={AdGenerator} />
             <ChatWidget />
-            <TourContainer history={this.props.history} />
+            {this.props.location.pathname === "/dashboard" && <DashboardTour />}
+            {this.props.location.pathname === "/dashboard/offers" && (
+              <OfferTour />
+            )}
+            {this.props.location.pathname === "/dashboard/settings" && (
+              <SettingsTour />
+            )}
           </div>
         </div>
       </DashboardContainer>

@@ -79,7 +79,7 @@ class UserSettingsForm extends Component {
             onChange={this.handleChange}
           />
           {/* --------------------- image upload --------------------- */}
-          <label htmlFor="user_img">Profile Picture</label>          
+          <label htmlFor="user_img">Profile Picture</label>
           <input
             accept="image/*"
             type="file"
@@ -102,7 +102,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { 
-    changeUserData,
+  {
+    changeUserData
   }
 )(UserSettingsForm);

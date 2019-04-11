@@ -41,7 +41,7 @@ class MaterialUIPickers extends React.Component {
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid container className={classes.grid}>
-          <DatePickerContainer>
+          <DatePickerContainer data-btn="report_filter-button">
             <DatePicker
               className={classes.datepicker}
               margin="normal"
