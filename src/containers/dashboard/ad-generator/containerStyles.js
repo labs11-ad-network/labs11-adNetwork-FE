@@ -60,3 +60,35 @@ export const CreateAdButton = styled.button`
     background-color: #086fb3;
   }
 `;
+
+export const NoOffersContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  font-size: 2.2rem;
+  font-weight: 100;
+  line-height: 2.8rem;
+  a{
+    margin: 15px;
+    padding: 5px 25px;
+    border: unset;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 100;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); 
+    color: #FFFFFF;
+    background-color: #0A88DC; 
+    transition: .2s;
+    &:hover{
+      cursor: pointer;
+      background-color: #0B6FB1;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); 
+    }
+  }
+`;
