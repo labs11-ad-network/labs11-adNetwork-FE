@@ -190,12 +190,18 @@ export const MobileHamburger = styled.div`
     background-color: #0b6fb2;
     color: white;
     font-size: 1.7rem;
-  
   &:hover {
     cursor: pointer;
     background-color: #0b67a4;
   }
-.Burger { z-index: 99999999;}
+.Burger {
+   z-index: 99999999;
+   width:100%;
+   &:hover {
+    cursor: pointer;
+    background-color: #0b67a4;
+  }
+}
 .BurgerBox {
     top: -17px;
     width: 25px;
@@ -204,7 +210,7 @@ export const MobileHamburger = styled.div`
     position: relative;
     z-index: 100;
     margin: 0 auto;
-    left: 4px;
+    left: 0px;
 }
   /* a {
     display: flex;
