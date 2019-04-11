@@ -262,6 +262,7 @@ export const MobileCreate = styled.div`
   }
 `;
 
+
 export const MobileNav = styled.div`
   position: absolute;
   display: flex;
@@ -272,6 +273,8 @@ export const MobileNav = styled.div`
   z-index: 9999;
   left: ${props => (props.status ? "0" : "-100vw")};
   top: 0;
+  transition:0.3s all;
+
   button {
     width: 65px;
     height: 65px;

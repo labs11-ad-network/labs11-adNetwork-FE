@@ -17,14 +17,12 @@ const MobileMenuButtons = props => {
           color="#fff"
           lineHeight={4}
           width={28}
-            onClick={e => {
+          onClick={e => {
             e.preventDefault();
             props.toggleNav();
           }}
           active={props.movileNavOpen}
         />
-        {/* <i className="fas fa-bars" /> */}
-
       </MobileHamburger>
 
 
