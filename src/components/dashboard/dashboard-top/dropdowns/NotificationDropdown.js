@@ -20,7 +20,7 @@ const styles = theme => ({
     display: "flex"
   },
   menu: {
-    width: 340,
+    width: 350,
     zIndex: 999999999999999999
   },
   paper: {
@@ -95,14 +95,16 @@ class NotificationDropdown extends React.Component {
                                   : notificationStyles.read
                               }
                               key={n.id}
+                              className="notif-list-item"
                             >
-                              <p>
-                                {`${n.msg_body} ...${moment(
-                                  n.created_at,
-                                  "YYYY-MM-DO, hh:mm:ss Z"
-                                ).fromNow()}
+                              <span>
+                                {`${n.msg_body} 
                                 `}
-                              </p>
+                              </span>
+                              <span className="notif-time">{`...${moment(
+                                n.created_at,
+                                "YYYY-MM-DO, hh:mm:ss Z"
+                              ).fromNow()}`}</span>
                             </MenuItem>
                           ))
                         ) : (
@@ -110,15 +112,13 @@ class NotificationDropdown extends React.Component {
                         )}
                         {!location.pathname.includes("dashboard/settings") &&
                           userNotifications.length !== 0 && (
-                            <MenuItem>
-                              <Link
-                                className="see-more-link"
-                                to="/dashboard/settings"
-                                onClick={handleClose}
-                              >
-                                See all activity...
-                              </Link>
-                            </MenuItem>
+                            <Link
+                              className="see-more-link"
+                              to="/dashboard/settings"
+                              onClick={handleClose}
+                            >
+                              <MenuItem>See all activity...</MenuItem>
+                            </Link>
                           )}
                       </MenuList>
                     </ClickAwayListener>

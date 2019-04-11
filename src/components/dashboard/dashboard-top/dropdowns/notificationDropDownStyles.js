@@ -10,8 +10,20 @@ export const Container = styled.div`
 
   .button-margin-fix {
     margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+    min-width: 44px;
   }
 
+  .notif-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .notif-time {
+    /* font-size: 0.7rem; */
+  }
   @media (max-width: 560px) {
     /* width: 200px; */
   }
