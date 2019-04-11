@@ -18,50 +18,27 @@ import MapChart from "../../../components/analytics/map/MapChart.js";
 
 const CardContainer = styled.div`
   display: flex;
-  @media (max-width: 1350px) {
+  @media (max-width: 1170px) {
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-  @media (max-width: 1200px) {
-    width: 95%;
-    margin: 0 auto;
   }
 `;
 
 const RowContainer = styled.div`
   display: flex;
-  width: 100%;
-  .main-tables-container {
+  .main-tables-conainer {
     width: 100%;
     display: flex;
-    @media (max-width: 1200px) {
-      width: 100%;
-      box-sizing: border-box;
+    @media (max-width: 1745px) {
       flex-direction: column;
     }
   }
   .tables-container {
     display: flex;
-    width: 100%;
-    @media (max-width: 1200px) {
-      box-sizing: border-box;
-      flex-direction: column;
-    }
-  }
-  .revenue-browser-row {
-    display: flex;
-    width: 100%;
-    @media (max-width: 1200px) {
+    @media (max-width: 780px) {
       width: 100%;
-      box-sizing: border-box;
       flex-direction: column;
     }
-  }
-  @media (max-width: 1200px) {
-    box-sizing: border-box;
-    flex-direction: column;
-    width: 95%;
-    margin: 0 auto;
   }
 `;
 
@@ -211,17 +188,15 @@ class Analytics extends Component {
               />
             </CardContainer>
             <RowContainer>
-              <div className="revenue-browser-row">
-                <RevenueChart
-                  data={
-                    payments.length ? payments : payouts.length ? payouts : []
-                  }
-                />
-                <BrowserInfo data={analytics.browserCount} />
-              </div>
+              <RevenueChart
+                data={
+                  payments.length ? payments : payouts.length ? payouts : []
+                }
+              />
+              <BrowserInfo data={analytics.browserCount} />
             </RowContainer>
             <RowContainer>
-              <div className="main-tables-container">
+              <div className="main-tables-conainer">
                 <div className="tables-container">
                   <Table
                     data={analytics.impressions}

@@ -8,9 +8,6 @@ import { GraphContainer, GraphHeader } from './GraphStyles.js';
 const Chart = styled.div`
   height: 300px;
   width: 100%;
-  @media(max-width: 780px){
-    height: 200px;
-  }
 `;
 
 class RevenueChart extends React.Component {

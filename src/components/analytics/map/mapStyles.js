@@ -12,11 +12,10 @@ export const MapContainer = styled.div`
   margin: 15px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-  @media(max-width: 1200px){
+  @media(max-width: 1745px){
     box-sizing: border-box;
-    padding: 15px;
-    margin: 15px 0;
-  }  
+    flex-direction: column;
+  }   
 `;
 
 export const MapHeader = styled.div`
