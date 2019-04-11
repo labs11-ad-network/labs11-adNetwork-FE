@@ -4,15 +4,13 @@ import { scaleLinear } from "d3-scale";
 import { connect } from "react-redux";
 import moment from "moment";
 
-import { getAnalytics } from "../../../store/actions/analyticsAction.js";
-import { BrowserInfo } from "../../../components/analytics/graphs/PieChart";
-
 import {
   getPayouts,
   getPayments
 } from "../../../store/actions/stripeAction.js";
-
+import { getAnalytics } from "../../../store/actions/analyticsAction.js";
 import DatePicker from "../../../components/analytics/datepicker/DatePicker.js";
+import { BrowserInfo } from "../../../components/analytics/graphs/PieChart";
 import RevenueChart from "../../../components/analytics/graphs/AreaChart";
 import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";

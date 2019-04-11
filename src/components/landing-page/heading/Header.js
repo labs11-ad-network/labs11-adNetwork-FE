@@ -17,18 +17,16 @@ class Header extends Component {
       visible: true,
       clickedAff: false,
       clickedAdver: false,
-      left: false,
-      top: false
+      left: false
     };
     this.myRef = React.createRef();
   }
 
   componentDidMount() {
-    // <---------- scroll event for navbar --------->
     window.addEventListener("scroll", this.handleScroll);
     this.setState({ visible: false });
   }
-  // <---------------  if clickedAdff and clickedAdver changed to true invoke login   --------------->
+
   componentDidUpdate(prevProps, prevState) {
     if (
       prevState.clickedAdver !== this.state.clickedAdver ||
@@ -37,10 +35,11 @@ class Header extends Component {
       this.props.login();
     }
   }
-  // <---------- remove eventlistener --------->
+
   componentWillUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   }
+
   handleScroll = () => {
     const { prevScrollpos } = this.state;
     const currentScrollPos = window.pageYOffset;
@@ -51,14 +50,17 @@ class Header extends Component {
     });
   };
 
-  // <---------- two buttons on header set to localStorage onClick either affiliate or advertiser --------->
   setAccType = (state, type) => () => {
     localStorage.setItem("acct_type", type);
     this.setState(prevState => ({
       [state]: !prevState[state]
     }));
   };
-  // <---------- toggle mobile nav --------->
+
+  state = {
+    top: false
+  };
+
   toggleNavDrawer = (side, open) => () => {
     this.setState({
       [side]: open
@@ -71,12 +73,11 @@ class Header extends Component {
       left: !this.state.left
     });
   };
-  // <---------- scroll to top --------->
   scrollToMyRef = () => window.scrollTo(0, this.myRef.current.offsetTop);
 
   render() {
     const { left, visible } = this.state;
-    const { login, logout, history } = this.props;
+    const { login, history } = this.props;
     let colorChange = this.state.prevScrollpos > 200 ? "navWhite" : "navBar";
     let goUpBtn =
       window.pageYOffset > 1000 && !visible
@@ -98,8 +99,6 @@ class Header extends Component {
 
               <NavList history={history} />
               <NavDrawer
-                logout={logout}
-                login={login}
                 hidden
                 history={history}
                 left={left}
@@ -107,13 +106,9 @@ class Header extends Component {
                 visible={visible}
               />
               <div className="desktop-anchor nav-button">
-                {!localStorage.id_token ? (
-                  <button onClick={() => login()}>Login</button>
-                ) : (
-                  <button onClick={() => logout()}>Logout</button>
-                )}
+                <button onClick={() => login()}>Login</button>
               </div>
-              {/* <---------- Tablet Hamburger ---------> */}
+
               <ElasticReverse
                 className="hamburger"
                 color={this.state.prevScrollpos > 200 ? "#203561" : "#fff"}
@@ -124,8 +119,6 @@ class Header extends Component {
               />
             </nav>
             <div className="desktop-hero-container">
-              {/* <---------- Header Content ---------> */}
-
               <div className="hero-content">
                 {/*  Mobile nav   */}
                 <p className="hero-sub-title">
@@ -136,7 +129,7 @@ class Header extends Component {
                   <br /> We are a non creepy ad network that presents itself as
                   actually very creepy.
                 </h1>
-                {/* <---------- Two buttons on header  Advertiser and Affiliate ---------> */}
+
                 <div className="button">
                   <button
                     className="btn_scroll btn_blue"
@@ -153,8 +146,6 @@ class Header extends Component {
                   </button>
                 </div>
               </div>
-              {/* <---------- SVG ---------> */}
-
               <div className="container_illustration">
                 <SkyCloudSvg className="desktop-cloud" />
                 <div className="bird-wrapper">
@@ -165,7 +156,7 @@ class Header extends Component {
             </div>
           </div>
           <span className="border_bottom" />
-          {/* <---------- Scroll To Top Button ---------> */}
+
           <div
             className="container"
             hidden={window.pageYOffset > 1000 ? false : true}
