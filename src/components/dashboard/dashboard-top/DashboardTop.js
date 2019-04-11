@@ -68,6 +68,7 @@ class DashboardTop extends React.Component {
       isLoadingOffers,
       isLoadingStripe,
       isLoadingAnalytics,
+      isLoadingNotifications,
       auth
     } = this.props;
 
@@ -148,7 +149,7 @@ class DashboardTop extends React.Component {
             )}
           </RightSection>
         </NavContainer>
-        {(isLoadingAds ||
+        {!isLoadingNotifications && (isLoadingAds ||
           isLoadingAgreements ||
           isLoadingOffers ||
           isLoadingStripe ||
@@ -163,7 +164,8 @@ const mapStateToProps = state => ({
   isLoadingAds: state.adReducer.isLoading,
   isLoadingAgreements: state.agreementsReducer.isLoading,
   isLoadingOffers: state.offersReducer.isLoading,
-  isLoadingStripe: state.stripeReducer.isLoading
+  isLoadingStripe: state.stripeReducer.isLoading,
+  isLoadingNotifications: state.notificationsReducer.isLoading,
 });
 
 export default connect(
