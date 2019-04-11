@@ -8,8 +8,9 @@ import { changeUserData } from "../../store/actions/authAction.js";
 class DashboardTour extends React.Component {
   state = {
     isDashboardOpen: true,
-    dashboardSteps: [
+    steps: [
       {
+        userType: "both",
         selector: ".first-step",
         content: () => {
           return (
@@ -36,6 +37,7 @@ class DashboardTour extends React.Component {
         }
       },
       {
+        userType: "both",
         selector: "[data-btn='dashboard-button']",
         content:
           "This is the dashboard where you can find and filter all of your analytics.",
@@ -46,6 +48,7 @@ class DashboardTour extends React.Component {
         stepInteraction: false,
       },
       {
+        userType: "both",
         selector: "[data-btn='offers-button']",
         content:
           `${this.props.currentUser.acct_type === "affiliate" ? 
@@ -60,6 +63,7 @@ class DashboardTour extends React.Component {
         stepInteraction: false,
       },
       {
+        userType: "both",
         selector: "[data-btn='settings-button']",
         content:
           `${this.props.currentUser.acct_type === "affiliate" ? 
@@ -73,6 +77,7 @@ class DashboardTour extends React.Component {
         stepInteraction: false,
       },
       {
+        userType: "both",
         selector: "[data-btn='user_menu-button']",
         content:
           "This is the user menu. you can logout or navigate to your profile",
@@ -82,6 +87,7 @@ class DashboardTour extends React.Component {
         }
       },
       {
+        userType: "both",
         selector: "[data-btn='notifications_menu-button']",
         content:
           "This is the notifications menu where you can see a list of updates and messages",
@@ -91,6 +97,7 @@ class DashboardTour extends React.Component {
         }
       },
       {
+        userType: "both",
         selector: "[data-btn='offers_dropdown-button']",
         content:
           `${this.props.currentUser.acct_type === "affiliate" ? 
@@ -103,6 +110,7 @@ class DashboardTour extends React.Component {
         }
       },
       {
+        userType: "advertiser",
         selector: "[data-btn='create_ad-button']",
         content:
           "When you have an offer created, you can easily go to your ad generator here to create and customize your ad",
@@ -113,6 +121,7 @@ class DashboardTour extends React.Component {
         stepInteraction: false,
       },
       {
+        userType: "both",
         selector: "[data-btn='report_filter-button']",
         content:
           "You can get a detailed report of your analytics by date, simply pick the start and end date and click filter",
@@ -123,6 +132,7 @@ class DashboardTour extends React.Component {
         stepInteraction: false,
       },
       {
+        userType: "both",
         content: () => {
           return (
             <>
@@ -155,11 +165,9 @@ class DashboardTour extends React.Component {
       <>
         <Tour
           steps={
-            this.props.currentUser.acct_type === "affiliate" ? 
-            this.state.dashboardSteps.filter(step => {
-              return step.selector !== "[data-btn='create_ad-button']"
-            }) : 
-            this.state.dashboardSteps
+            this.state.steps.filter(step => {
+              return ((step.userType.includes("both")) || (step.userType.includes(this.props.currentUser.acct_type)));
+            })
           }
           isOpen={this.state.isDashboardOpen}
           onRequestClose={this.closeDashboardTour}
