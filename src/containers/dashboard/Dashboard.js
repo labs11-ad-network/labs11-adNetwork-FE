@@ -19,6 +19,9 @@ import Analytics from "./analytics/Analytics.js";
 import AdGenerator from "./ad-generator/AdGenerator.js";
 import Offers from "./offers/Offers.js";
 import Settings from "./settings/Settings.js";
+import DashboardTour from "../../components/tours/DashboardTour.js";
+import SettingsTour from "../../components/tours/SettingsTour.js";
+import OfferTour from "../../components/tours/OfferTour.js";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -38,7 +41,7 @@ const DashboardContainer = styled.div`
 
 class Dashboard extends Component {
   state = {
-    currentAnalyticId: "",
+    currentAnalyticId: ""
   };
 
   componentDidMount() {
@@ -75,7 +78,6 @@ class Dashboard extends Component {
       auth,
       updateUserNotification
     } = this.props;
-
     return (
       <DashboardContainer>
         <DashboardLeft />
@@ -92,7 +94,9 @@ class Dashboard extends Component {
             <Route
               exact
               path="/dashboard"
-              render={props => <Analytics {...props} currentAnalyticId={currentAnalyticId}/>}
+              render={props => (
+                <Analytics {...props} currentAnalyticId={currentAnalyticId} />
+              )}
             />
             <Route
               path="/dashboard/offers"
@@ -106,6 +110,14 @@ class Dashboard extends Component {
             />
             <Route path="/dashboard/create-ad" component={AdGenerator} />
             <ChatWidget />
+            {currentUser.show_tour &&
+              (this.props.location.pathname === "/dashboard" ? (
+                <DashboardTour />
+              ) : this.props.location.pathname === "/dashboard/offers" ? (
+                <OfferTour />
+              ) : this.props.location.pathname === "/dashboard/settings" ? (
+                <SettingsTour />
+              ) : null)}
           </div>
         </div>
       </DashboardContainer>
@@ -129,6 +141,6 @@ export default connect(
     getUserData,
     getAgreements,
     getUserNotifications,
-    updateUserNotification,
+    updateUserNotification
   }
 )(privateRoute(Dashboard));

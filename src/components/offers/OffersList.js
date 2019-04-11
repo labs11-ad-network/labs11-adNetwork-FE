@@ -7,10 +7,26 @@ import Tab from "@material-ui/core/Tab";
 import Switch from "@material-ui/core/Switch";
 import { connect } from "react-redux";
 
-import { OfferButton, OfferModalButton, TabButtonContainer } from "./offersStyles.js";
-import { getOfferAds, deleteAd, changeAdStatus } from "../../store/actions/adAction.js";
-import { createAgreement, deleteAgreement, updateAgreement } from "../../store/actions/agreementsAction.js";
-import { changeOfferStatus, deleteOffer, startUpdatingOffer } from "../../store/actions/offersAction.js";
+import {
+  OfferButton,
+  OfferModalButton,
+  TabButtonContainer
+} from "./offersStyles.js";
+import {
+  getOfferAds,
+  deleteAd,
+  changeAdStatus
+} from "../../store/actions/adAction.js";
+import {
+  createAgreement,
+  deleteAgreement,
+  updateAgreement
+} from "../../store/actions/agreementsAction.js";
+import {
+  changeOfferStatus,
+  deleteOffer,
+  startUpdatingOffer
+} from "../../store/actions/offersAction.js";
 
 const styles = theme => ({
   root: {
@@ -35,7 +51,7 @@ class OffersList extends React.Component {
     offer_id: "",
     advertiserOfferOptions: {
       filterType: "checkbox",
-      responsive: 'scroll',
+      responsive: "scroll",
       onlyOneRowCanBeSelected: true,
       rowCursorHand: true,
       onRowsDelete: value => {
@@ -52,12 +68,12 @@ class OffersList extends React.Component {
     },
     affiliateOfferOptions: {
       filterType: "checkbox",
-      responsive: 'scroll',
+      responsive: "scroll",
       selectableRows: false
     },
     advertiserAdOptions: {
       filterType: "checkbox",
-      responsive: 'scroll',
+      responsive: "scroll",
       showSelectedRowsToolbar: true,
       rowCursorHand: true,
       onRowsDelete: value => {
@@ -68,7 +84,7 @@ class OffersList extends React.Component {
     },
     affiliateAdOptions: {
       filterType: "checkbox",
-      responsive: 'scroll',
+      responsive: "scroll",
       selectableRows: false
     }
   };
@@ -159,13 +175,17 @@ class OffersList extends React.Component {
               <Switch
                 checked={value.active}
                 onChange={async () => {
-                  this.props.updateAgreement(value.agreement_id, {active: !value.active});
+                  this.props.updateAgreement(value.agreement_id, {
+                    active: !value.active
+                  });
                 }}
                 value="checkedB"
                 color="primary"
               />
             </>
-          ) : <p>Not Accepted</p>
+          ) : (
+            <p>Not Accepted</p>
+          );
         }
       }
     }
@@ -337,7 +357,7 @@ class OffersList extends React.Component {
       options: {
         width: 170,
         customBodyRender: value => {
-          return <img src={value.image} alt="..."/>;
+          return <img src={value.image} alt="..." />;
         }
       }
     }
@@ -345,17 +365,21 @@ class OffersList extends React.Component {
 
   render() {
     const { classes, offerAds, offers, currentUser } = this.props;
-    
-    const { tabValue, advertiserOfferOptions, affiliateOfferOptions, affiliateAdOptions, advertiserAdOptions } = this.state;
+
+    const {
+      tabValue,
+      advertiserOfferOptions,
+      affiliateOfferOptions,
+      affiliateAdOptions,
+      advertiserAdOptions
+    } = this.state;
 
     return (
-      <div className={classes.root}>
+      <div className={classes.root} data-btn="create_offer-button">
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
             <Tab label="Offers" className={classes.tab} />
-            {tabValue === 1 &&
-            <Tab label="Ads" className={classes.tab} />
-            }
+            {tabValue === 1 && <Tab label="Ads" className={classes.tab} />}
             <TabButtonContainer>
               {this.props.currentUser.acct_type === "advertiser" && (
                 <OfferModalButton onClick={() => this.props.toggleModal()}>
@@ -366,44 +390,44 @@ class OffersList extends React.Component {
           </Tabs>
         </AppBar>
         <div className={classes.table}>
-        {tabValue === 0 && (
-          <MaterialDatatable
-            className={classes.table}
-            title={"Offers List"}
-            data={
-              currentUser.acct_type === "affiliate"
-                ? offers.filter(offer => offer.status)
-                : offers
-            }
-            columns={
-              currentUser.acct_type === "affiliate"
-                ? this.affiliateOfferColumns
-                : this.advertiserOfferColumns
-            }
-            options={
-              currentUser.acct_type === "affiliate"
-                ? affiliateOfferOptions
-                : advertiserOfferOptions
-            }
-          />
-        )}
-        
-        {tabValue === 1 && (
-          <MaterialDatatable
-            title={"Ads List"}
-            data={offerAds}
-            columns={
-              currentUser.acct_type === "affiliate"
-                ? this.affiliateAdColumns
-                : this.advertiserAdColumns
-            }
-            options={
-              currentUser.acct_type === "affiliate"
-                ? affiliateAdOptions
-                : advertiserAdOptions
-            }
-          />
-        )}
+          {tabValue === 0 && (
+            <MaterialDatatable
+              className={classes.table}
+              title={"Offers List"}
+              data={
+                currentUser.acct_type === "affiliate"
+                  ? offers.filter(offer => offer.status)
+                  : offers
+              }
+              columns={
+                currentUser.acct_type === "affiliate"
+                  ? this.affiliateOfferColumns
+                  : this.advertiserOfferColumns
+              }
+              options={
+                currentUser.acct_type === "affiliate"
+                  ? affiliateOfferOptions
+                  : advertiserOfferOptions
+              }
+            />
+          )}
+
+          {tabValue === 1 && (
+            <MaterialDatatable
+              title={"Ads List"}
+              data={offerAds}
+              columns={
+                currentUser.acct_type === "affiliate"
+                  ? this.affiliateAdColumns
+                  : this.advertiserAdColumns
+              }
+              options={
+                currentUser.acct_type === "affiliate"
+                  ? affiliateAdOptions
+                  : advertiserAdOptions
+              }
+            />
+          )}
         </div>
       </div>
     );
@@ -428,6 +452,6 @@ export default connect(
     updateAgreement,
     getOfferAds,
     deleteAd,
-    changeAdStatus,
+    changeAdStatus
   }
 )(withStyles(styles)(OffersList));

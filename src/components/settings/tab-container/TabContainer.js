@@ -8,11 +8,10 @@ import Timeline from "./payments/Timeline.js";
 
 class TabContainer extends React.Component {
   render() {
-    
-    const { 
-      currentUser, 
+    const {
+      currentUser,
       payments,
-      payouts, 
+      payouts,
       handleTabChange,
       tabValue
     } = this.props;

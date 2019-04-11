@@ -16,7 +16,13 @@ export const getUserData = () => dispatch => {
       dispatch({ type: GET_USER_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_USER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({
+        type: GET_USER_FAILURE,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
+      });
     });
 };
 
@@ -35,7 +41,8 @@ export const changeUserData = user => dispatch => {
   }
   newUser.append("nickname", user.nickname);
   newUser.append("phone", user.phone);
-  newUser.append("stripe_payout_id", user.stripe_payout_id)
+  newUser.append("stripe_payout_id", user.stripe_payout_id);
+  newUser.append("show_tour", user.show_tour);
 
   axios
     .put(`${URL}/api/users`, newUser)
@@ -46,6 +53,12 @@ export const changeUserData = user => dispatch => {
       dispatch(getUserData());
     })
     .catch(err => {
-      dispatch({ type: CHANGE_USER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({
+        type: CHANGE_USER_FAILURE,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
+      });
     });
 };

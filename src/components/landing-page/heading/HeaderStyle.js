@@ -4,7 +4,6 @@ import bgStars from "../../../assets/bg_stars.svg";
 
 export const HeroHome = styled.section`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
-
   font-family: "Roboto", sans-serif;
   position: relative;
   background-image: url(${bgStars}),
@@ -13,7 +12,6 @@ export const HeroHome = styled.section`
   background-position: center 70px, 50%;
   background-size: 1440px auto, 100% auto;
   padding: 10px 0 174px 0;
-
   @media (min-width: 481px) {
     padding: 10px 0 224px 0;
   }
@@ -23,7 +21,6 @@ export const HeroHome = styled.section`
       display: flex;
     }
   }
-
   /* --------------- Hero Content --------------- */
   .hero-content h1 {
     font-size: 1.8rem;
@@ -85,19 +82,17 @@ export const HeroHome = styled.section`
         top: 120%;
       }
       @media (min-width: 940px) {
-        max-width: 795px;
-        width: 795px;
-        left: 125px;
-        top: 99%;
+        max-width: 800px;
+        width: 175%;
+        left: 43px;
+        top: 105%;
       }
     }
   }
-
   .bird-wrapper {
     display: flex;
     justify-content: center;
     z-index: 2;
-
     @media (min-width: 940px) {
       z-index: 2;
       position: relative;
@@ -128,7 +123,6 @@ export const HeroHome = styled.section`
         transform: translate(0);
       }
     }
-
     .piio_float_right {
       animation: float_reverse 5s ease-in-out infinite;
       svg {
@@ -161,6 +155,7 @@ export const HeroHome = styled.section`
       top: -15%;
       height: 621px;
       left: -97%;
+      width: 193%;
     }
   }
   /* --------------- nav ----------------- */
@@ -242,7 +237,6 @@ export const HeroHome = styled.section`
         display: none;
       }
     }
-
     a {
       color: #212529;
       text-decoration: none;
@@ -357,9 +351,7 @@ export const HeroHome = styled.section`
     background-size: 1440px auto;
     margin-bottom: -20px;
   }
-
   /* <----------- Scroll to top Btn ---------------> */
-
   #scroll-to-top {
     background: #0d4de2;
     background-image: linear-gradient(-180deg, #1e9df7 0%, #1392ed 100%);
@@ -376,8 +368,8 @@ export const HeroHome = styled.section`
     z-index: 999;
     cursor: pointer;
     @media (min-width: 940px) {
-      bottom: 50px;
-      right: 50px;
+      bottom: 88px;
+      right: 14px;
     }
     &:hover {
       opacity: 0.8;
