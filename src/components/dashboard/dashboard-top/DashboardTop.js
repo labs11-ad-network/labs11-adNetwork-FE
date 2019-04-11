@@ -120,7 +120,9 @@ class DashboardTop extends React.Component {
             />
             {/* --------------------- Create Advertisement Button ------------------ */}
             {currentUser.acct_type === "advertiser" && (
-              <Link to="/dashboard/create-ad">Create Advertisement</Link>
+              <Link data-btn="create_ad-button" to="/dashboard/create-ad">
+                Create Advertisement
+              </Link>
             )}
           </LeftSection>
           <RightSection>

@@ -19,6 +19,7 @@ import Analytics from "./analytics/Analytics.js";
 import AdGenerator from "./ad-generator/AdGenerator.js";
 import Offers from "./offers/Offers.js";
 import Settings from "./settings/Settings.js";
+import TourContainer from "../../components/tour/Tour.js";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -38,7 +39,7 @@ const DashboardContainer = styled.div`
 
 class Dashboard extends Component {
   state = {
-    currentAnalyticId: "",
+    currentAnalyticId: ""
   };
 
   componentDidMount() {
@@ -72,7 +73,8 @@ class Dashboard extends Component {
       currentUser,
       agreements,
       userNotifications,
-      auth
+      auth,
+      updateUserNotification
     } = this.props;
 
     return (
@@ -91,7 +93,9 @@ class Dashboard extends Component {
             <Route
               exact
               path="/dashboard"
-              render={props => <Analytics {...props} currentAnalyticId={currentAnalyticId}/>}
+              render={props => (
+                <Analytics {...props} currentAnalyticId={currentAnalyticId} />
+              )}
             />
             <Route
               path="/dashboard/offers"
@@ -105,6 +109,7 @@ class Dashboard extends Component {
             />
             <Route path="/dashboard/create-ad" component={AdGenerator} />
             <ChatWidget />
+            <TourContainer history={this.props.history} />
           </div>
         </div>
       </DashboardContainer>
@@ -128,6 +133,6 @@ export default connect(
     getUserData,
     getAgreements,
     getUserNotifications,
-    updateUserNotification,
+    updateUserNotification
   }
 )(privateRoute(Dashboard));
