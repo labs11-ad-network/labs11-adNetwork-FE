@@ -15,6 +15,7 @@ import RevenueChart from "../../../components/analytics/graphs/AreaChart";
 import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";
 import MapChart from "../../../components/analytics/map/MapChart.js";
+import TopTenOffers from "../../../components/analytics/graphs/TopTenOffers.js";
 
 const CardContainer = styled.div`
   display: flex;
@@ -147,7 +148,7 @@ class Analytics extends Component {
   };
 
   render() {
-    const { analytics, payouts, payments } = this.props;
+    const { analytics, payouts, payments, currentUser } = this.props;
 
     const { started_at, ended_at } = this.state;
 
@@ -237,6 +238,11 @@ class Analytics extends Component {
                 <MapChart data={this.getCityData()} />
               </div>
             </RowContainer>
+            {currentUser.acct_type && (
+              <RowContainer>
+                <TopTenOffers data={analytics.offersRanking} />
+              </RowContainer>
+            )}
           </>
         )}
       </>
@@ -247,7 +253,8 @@ class Analytics extends Component {
 const mapStateToProps = state => ({
   analytics: state.analyticsReducer.analytics,
   payments: state.stripeReducer.payments,
-  payouts: state.stripeReducer.payouts
+  payouts: state.stripeReducer.payouts,
+  currentUser: state.authReducer.currentUser
 });
 
 export default connect(

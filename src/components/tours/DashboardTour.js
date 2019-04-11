@@ -119,7 +119,13 @@ class DashboardTour extends React.Component {
     return (
       <>
         <Tour
-          steps={this.state.dashboardSteps}
+          steps={
+            this.props.currentUser.acct_type === "affiliate"
+              ? this.state.dashboardSteps.filter(
+                  step => step.selector !== "[data-btn='create_ad-button']"
+                )
+              : this.state.dashboardSteps
+          }
           isOpen={this.state.isDashboardOpen}
           onRequestClose={this.closeDashboardTour}
           rounded={5}
