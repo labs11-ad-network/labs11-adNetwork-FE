@@ -25,7 +25,7 @@ class SettingTour extends React.Component {
         }
       },
       {
-        selector: "[data-btn='edit_profile-tab]",
+        selector: "[data-btn='edit_profile-tab']",
         content: "You can edit your profile here",
         style: {
           fontSize: 15,

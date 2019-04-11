@@ -1,6 +1,9 @@
 import React from "react";
 import Tour from "reactour";
 import Button from "@material-ui/core/Button";
+import { connect } from "react-redux";
+
+import { changeUserData } from "../../store/actions/authAction.js";
 
 class DashboardTour extends React.Component {
   state = {
@@ -13,8 +16,17 @@ class DashboardTour extends React.Component {
             <>
               <h1>Welcome to the LAD Network</h1>
               <h2>Would you like a tour of the app?</h2>
-              <Button color="primary">Yes</Button>
-              <Button color="primary">No</Button>
+              <Button
+                color="primary"
+                onClick={() => {
+                  this.props.changeUserData({
+                    ...this.props.currentUser,
+                    show_tour: false
+                  });
+                }}
+              >
+                Never see this again
+              </Button>
             </>
           );
         },
@@ -96,7 +108,6 @@ class DashboardTour extends React.Component {
           lineHeight: 1.5
         }
       }
-      // ...
     ]
   };
 
@@ -105,7 +116,6 @@ class DashboardTour extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <>
         <Tour
@@ -121,4 +131,13 @@ class DashboardTour extends React.Component {
   }
 }
 
-export default DashboardTour;
+const mapStateToProps = state => ({
+  currentUser: state.authReducer.currentUser
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    changeUserData
+  }
+)(DashboardTour);
