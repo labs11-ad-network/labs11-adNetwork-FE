@@ -222,8 +222,8 @@ export const MobileHamburger = styled.div`
 export const MobileCreate = styled.div`
   display: none;
   position: absolute;
-  z-index: 999999999999;
-  bottom: 5px;
+  z-index: 999;
+  bottom: 93px;
   right: 6px;
   width: 60px;
   height: 60px;
