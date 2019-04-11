@@ -134,6 +134,7 @@ class DashboardTop extends React.Component {
                   userNotifications={userNotifications}
                   handleToggle={this.handleNotificationsToggle}
                   handleClose={this.handleNotificationsClose}
+                  location={this.props.location}
                 />
                 {/* --------------------- User menu ------------------ */}
                 <UserDropdown

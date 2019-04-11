@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -12,12 +13,14 @@ import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
 
+import { Container } from "./notificationDropDownStyles";
+
 const styles = theme => ({
   root: {
     display: "flex"
   },
   menu: {
-    // width: 200,
+    width: 340,
     zIndex: 999999999999999999
   },
   paper: {
@@ -39,7 +42,8 @@ class NotificationDropdown extends React.Component {
       notificationsMenuOpen,
       handleToggle,
       handleClose,
-      userNotifications
+      userNotifications,
+      location
     } = this.props;
 
     const unreadBadgeCount =
@@ -47,70 +51,84 @@ class NotificationDropdown extends React.Component {
       userNotifications.filter(n => n.unread === true).length;
 
     return (
-      <div className={classes.root}>
-        <div data-btn="notifications_menu-button">
-          <Button
-            buttonRef={node => {
-              this.anchorEl = node;
-            }}
-            aria-owns={notificationsMenuOpen ? "menu-list-grow" : undefined}
-            aria-haspopup="true"
-            onClick={handleToggle}
-          >
-            <Badge badgeContent={unreadBadgeCount} color="primary">
-              <i className="fas fa-bell" />
-            </Badge>
-          </Button>
-          <Popper
-            open={notificationsMenuOpen}
-            anchorEl={this.anchorEl}
-            transition
-            disablePortal
-            className={classes.menu}
-          >
-            {({ TransitionProps, placement }) => (
-              <Grow
-                {...TransitionProps}
-                id="menu-list-grow"
-                style={{
-                  transformOrigin:
-                    placement === "bottom" ? "center top" : "center bottom"
-                }}
-              >
-                <Paper>
-                  <ClickAwayListener onClickAway={handleClose}>
-                    <MenuList>
-                      {userNotifications &&
-                        userNotifications.map(n => (
-                          <MenuItem
-                            style={
-                              n.unread
-                                ? notificationStyles.unread
-                                : notificationStyles.read
-                            }
-                            key={n.id}
-                          >
-                            <p>
-                              {userNotifications
-                                ? `${n.msg_body} ...${moment(
-                                    n.created_at,
-                                    "YYYY-MM-DO, hh:mm:ss Z"
-                                  ).fromNow()}`
-                                : "No notifications yet :("}
-                            </p>
-                          </MenuItem>
-                        ))}
-                      <MenuItem>
-                        <p>See more...</p>
-                      </MenuItem>
-                    </MenuList>
-                  </ClickAwayListener>
-                </Paper>
-              </Grow>
-            )}
-          </Popper>
+      <Container>
+        <div className={classes.root}>
+          <div data-btn="notifications_menu-button">
+            <Button
+              buttonRef={node => {
+                this.anchorEl = node;
+              }}
+              aria-owns={notificationsMenuOpen ? "menu-list-grow" : undefined}
+              aria-haspopup="true"
+              onClick={handleToggle}
+              className="button-margin-fix"
+            >
+              <Badge badgeContent={unreadBadgeCount} color="primary">
+                <i className="fas fa-bell" />
+              </Badge>
+            </Button>
+            <Popper
+              open={notificationsMenuOpen}
+              anchorEl={this.anchorEl}
+              transition
+              disablePortal
+              className={classes.menu}
+            >
+              {({ TransitionProps, placement }) => (
+                <Grow
+                  {...TransitionProps}
+                  id="menu-list-grow"
+                  style={{
+                    transformOrigin:
+                      placement === "bottom" ? "center top" : "center bottom"
+                  }}
+                >
+                  <Paper>
+                    <ClickAwayListener onClickAway={handleClose}>
+                      <MenuList>
+                        {userNotifications.length !== 0 ? (
+                          userNotifications.map(n => (
+                            <MenuItem
+                              style={
+                                n.unread
+                                  ? notificationStyles.unread
+                                  : notificationStyles.read
+                              }
+                              key={n.id}
+                            >
+                              <p>
+                                {`${n.msg_body} ...${moment(
+                                  n.created_at,
+                                  "YYYY-MM-DO, hh:mm:ss Z"
+                                ).fromNow()}
+                                `}
+                              </p>
+                            </MenuItem>
+                          ))
+                        ) : (
+                          <MenuItem>No notifications yet :(</MenuItem>
+                        )}
+                        {!location.pathname.includes("dashboard/settings") &&
+                          userNotifications.length !== 0 && (
+                            <MenuItem>
+                              <Link
+                                className="see-more-link"
+                                to="/dashboard/settings"
+                                onClick={handleClose}
+                              >
+                                See all activity...
+                              </Link>
+                            </MenuItem>
+                          )}
+                      </MenuList>
+                    </ClickAwayListener>
+                  </Paper>
+                </Grow>
+              )}
+            </Popper>
+          </div>
         </div>
-      </div>
+      </Container>
     );
   }
 }
