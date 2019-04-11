@@ -183,7 +183,27 @@ export const MobileHamburger = styled.div`
   height: 65px;
   transition: 0.2s;
   margin-right: 15px;
-  a {
+  background-color: #0b6fb2;
+    background-color: #0b6fb2;
+    color: white;
+    font-size: 1.7rem;
+  
+  &:hover {
+    cursor: pointer;
+    background-color: #0b67a4;
+  }
+.Burger { z-index: 99999999;}
+.BurgerBox {
+    top: -17px;
+    width: 25px;
+    height: 5px;
+    display: inline-block;
+    position: relative;
+    z-index: 100;
+    margin: 0 auto;
+    left: 4px;
+}
+  /* a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -200,7 +220,7 @@ export const MobileHamburger = styled.div`
   &:hover {
     cursor: pointer;
     background-color: #0b67a4;
-  }
+  } */
   @media (max-width: 900px) {
     display: flex;
   }
@@ -211,9 +231,10 @@ export const MobileCreate = styled.div`
   position: absolute;
   z-index: 999999999999;
   bottom: 5px;
-  left: 5px;
+  right: 6px;
   width: 60px;
   height: 60px;
+
   a {
     display: flex;
     justify-content: center;
@@ -264,6 +285,9 @@ export const MobileNav = styled.div`
   }
   .active {
     background-color: #0b6fb2;
+  }
+  .dashboard {
+    margin-top: 80px;
   }
 `;
 

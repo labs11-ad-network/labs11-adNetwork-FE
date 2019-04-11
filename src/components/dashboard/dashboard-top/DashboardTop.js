@@ -104,10 +104,10 @@ class DashboardTop extends React.Component {
                   <i className="fas fa-pencil-alt" /> Create Ad
                 </>
               ) : (
-                <>
-                  <i className="fas fa-chart-line" /> Dashboard
+                      <>
+                        <i className="fas fa-chart-line" /> Dashboard
                 </>
-              )}
+                    )}
             </Header>
             {/* --------------------- Analyticis selector ------------------ */}
             <AnalyticsDropdown
