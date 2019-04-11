@@ -24,7 +24,7 @@ const MobileNav = styled.nav`
   }
 `;
 
-const NavDrawer = ({ history, toggleDrawer, left, login, logout }) => {
+const NavDrawer = ({ history, toggleDrawer, left, visible }) => {
   return (
     <SwipeableDrawer open={left} onClose={toggleDrawer} onOpen={toggleDrawer}>
       <div
@@ -39,23 +39,9 @@ const NavDrawer = ({ history, toggleDrawer, left, login, logout }) => {
           <a href="#contact">Contact</a>
           <a href="#screenshots">Screenshots</a>
           <a href="#reviews">Reviews</a>
-          <a
-            href="/dashboard"
-            hidden={!localStorage.id_token}
-            onClick={() => history.push("/dashboard")}
-          >
+          <a href="/dashboard" onClick={() => history.push("/dashboard")}>
             Dashboard
           </a>
-
-          {!localStorage.id_token ? (
-            <a href="#login" onClick={() => login()}>
-              Login
-            </a>
-          ) : (
-            <a href="#logout" onClick={() => logout()}>
-              logout
-            </a>
-          )}
         </MobileNav>
       </div>
     </SwipeableDrawer>

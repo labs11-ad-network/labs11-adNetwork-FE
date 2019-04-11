@@ -1,5 +1,6 @@
 import React from "react";
 import Tour from "reactour";
+import Button from "@material-ui/core/Button";
 
 class SettingTour extends React.Component {
   state = {
@@ -24,7 +25,7 @@ class SettingTour extends React.Component {
         }
       },
       {
-        selector: "[data-btn='edit_profile-tab]",
+        selector: "[data-btn='edit_profile-tab']",
         content: "You can edit your profile here",
         style: {
           fontSize: 15,

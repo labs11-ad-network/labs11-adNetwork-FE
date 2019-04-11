@@ -18,33 +18,31 @@ class LandingPage extends PureComponent {
     this.props.auth.logout();
     toast.success(`You sucessfully logout`);
   };
+
   componentDidMount() {
     new WOW.WOW().init();
   }
   render() {
     return (
       <LandingPageStyle>
-        {/* <-------- Header Component styles ---------------> */}
         <Header
           login={this.login}
           logout={this.logout}
           history={this.props.history}
         />
-        {/* <-------- LandingContentSection section ---------------> */}
         <LandingContentSection />
-        {/* <-------- app-download section ---------------> */}
         <section className="app-download">
           <AppDownload />
         </section>
-        {/* <-------- expert-team section ---------------> */}
+
         <section className="expert-team">
           <ExpertTeam />
         </section>
-        {/* <-------- Contact section ---------------> */}
+
         <section className="contact">
           <Contact />
         </section>
-        {/* <-------- footer section ---------------> */}
+
         <footer>
           <div className="container footer-wrapper">
             <div className="footer-lad">

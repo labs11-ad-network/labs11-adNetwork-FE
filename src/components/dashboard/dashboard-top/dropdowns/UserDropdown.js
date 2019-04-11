@@ -58,7 +58,7 @@ class UserDropdown extends React.Component {
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={350}>
                 <Paper>
-                  <ClickAwayListener onClickAway={handleClose}>
+                  <ClickAwayListener onClickAway={this.handleClose}>
                     <MenuList>
                       <MenuItem
                         onClick={e => {

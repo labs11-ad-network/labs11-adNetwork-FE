@@ -6,7 +6,7 @@ export const MapContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  max-width: 100%;
+  width: 100%;
   height: auto;
   padding: 25px;
   margin: 15px;

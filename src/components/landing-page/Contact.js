@@ -1,73 +1,14 @@
 import React, { Component } from "react";
 import { ContactStyle } from "./ContactStyle";
-import { toast } from "react-toastify";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import axios from "axios";
 
 import contact1 from "../../assets/contact1.png";
 
 class Contact extends Component {
-  state = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    comments: "",
-    loading: false
-  };
-  onChangeHandler = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  };
-
-  onSubmitHandler = e => {
-    e.preventDefault();
-    const message = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      comments: this.state.comments
-    };
-    //https://lad-network.herokuapp.com
-    this.setState({ loading: true }, () =>
-      axios
-        .post("https://lad-network.herokuapp.com/api/contactform", message)
-        .then(res => this.setState({ loading: true }))
-        .then(() => toast.success(`Your message was sucessfully sent`))
-        .catch(err => {
-          this.setState({ loading: false });
-          const {
-            email,
-            firstName,
-            lastName,
-            comments,
-            message
-          } = err.response.data;
-          toast.error(
-            (err.response.data && email) ||
-              firstName ||
-              lastName ||
-              comments ||
-              message
-          );
-        })
-    );
-
-    this.setState({
-      firstName: "",
-      lastName: "",
-      email: "",
-      comments: ""
-    });
-  };
-
   render() {
-    const { firstName, lastName, email, comments, loading } = this.state;
     return (
       <ContactStyle>
         <div className="container">
           <div className="contact-title" id="contact">
-            {loading && <CircularProgress disableShrink />}
             <h2
               className="wow fadeInUp"
               data-wow-delay=".1s"
@@ -93,54 +34,54 @@ class Contact extends Component {
               data-wow-delay=".3s"
               data-wow-duration="2s"
             />
-            <form className="contact-form" onSubmit={this.onSubmitHandler}>
+
+            <form className="contact-form">
               <div className="row">
                 <div className="form-group">
                   <input
-                    className="form-control"
-                    type="text"
                     placeholder="First Name"
-                    name="firstName"
-                    onChange={this.onChangeHandler}
-                    value={firstName}
+                    id="fname"
+                    className="form-control"
+                    name="fname"
+                    type="text"
+                    required
+                    data-error="Please enter your first name"
                   />
                 </div>
                 <div className="form-group">
                   <input
-                    className="form-control"
-                    type="text"
                     placeholder="Last Name"
-                    name="lastName"
-                    value={lastName}
-                    onChange={this.onChangeHandler}
+                    id="lname"
+                    className="form-control"
+                    name="lname"
+                    type="text"
                   />
                 </div>
               </div>
               <div className="form-group">
                 <input
                   placeholder="Email Address"
+                  id="email"
                   className="form-control"
                   name="email"
                   type="email"
-                  value={email}
-                  onChange={this.onChangeHandler}
+                  required
                 />
               </div>
               <div className="form-group">
                 <textarea
                   placeholder="Your Comments"
+                  id="message"
                   cols={20}
                   rows={5}
                   className="form-control"
-                  onChange={this.onChangeHandler}
-                  name="comments"
-                  value={comments}
+                  required
                 />
               </div>
               <div className="buttons_container contact-btn">
-                <button type="submit" className="btn_blue">
+                <a href="/#" className="btn_blue">
                   Send Message
-                </button>
+                </a>
               </div>
             </form>
           </div>

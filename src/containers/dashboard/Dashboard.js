@@ -78,7 +78,7 @@ class Dashboard extends Component {
       auth,
       updateUserNotification
     } = this.props;
-
+    console.log(this.props.location);
     return (
       <DashboardContainer>
         <DashboardLeft />
@@ -111,13 +111,14 @@ class Dashboard extends Component {
             />
             <Route path="/dashboard/create-ad" component={AdGenerator} />
             <ChatWidget />
-            {this.props.location.pathname === "/dashboard" && <DashboardTour />}
-            {this.props.location.pathname === "/dashboard/offers" && (
-              <OfferTour />
-            )}
-            {this.props.location.pathname === "/dashboard/settings" && (
-              <SettingsTour />
-            )}
+            {currentUser.show_tour &&
+              (this.props.location.pathname === "/dashboard" ? (
+                <DashboardTour />
+              ) : this.props.location.pathname === "/dashboard/offers" ? (
+                <OfferTour />
+              ) : this.props.location.pathname === "/dashboard/settings" ? (
+                <SettingsTour />
+              ) : null)}
           </div>
         </div>
       </DashboardContainer>
