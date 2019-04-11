@@ -85,10 +85,10 @@ export const HeroHome = styled.section`
         top: 120%;
       }
       @media (min-width: 940px) {
-        max-width: 795px;
-        width: 795px;
-        left: 125px;
-        top: 99%;
+        max-width: 800px;
+        width: 175%;
+        left: 43px;
+        top: 105%;
       }
     }
   }
@@ -161,6 +161,7 @@ export const HeroHome = styled.section`
       top: -15%;
       height: 621px;
       left: -97%;
+      width: 193%;
     }
   }
   /* --------------- nav ----------------- */
