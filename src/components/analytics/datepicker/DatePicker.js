@@ -41,29 +41,31 @@ class MaterialUIPickers extends React.Component {
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid container className={classes.grid}>
-          <DatePickerContainer data-btn="report_filter-button">
-            <DatePicker
-              className={classes.datepicker}
-              margin="normal"
-              label="Start Date"
-              value={startedAt || moment().format("YYYY-MM-DD")}
-              onChange={date => handleDateChange(date, "started_at")}
-              TextFieldComponent={datePicker => (
-                <CustomInput datePicker={datePicker} />
-              )}
-            />
-            <DatePicker
-              margin="normal"
-              label="End Date"
-              value={endedAt || moment().format("YYYY-MM-DD")}
-              onChange={date => handleDateChange(date, "ended_at")}
-              TextFieldComponent={datePicker => (
-                <CustomInput datePicker={datePicker} />
-              )}
-            />
-            <DateFilterButton onClick={getFilteredAnalytics}>
-              Filter
-            </DateFilterButton>
+          <DatePickerContainer>
+            <div data-btn="report_filter-button">
+              <DatePicker
+                className={classes.datepicker}
+                margin="normal"
+                label="Start Date"
+                value={startedAt || moment().format("YYYY-MM-DD")}
+                onChange={date => handleDateChange(date, "started_at")}
+                TextFieldComponent={datePicker => (
+                  <CustomInput datePicker={datePicker} />
+                )}
+              />
+              <DatePicker
+                margin="normal"
+                label="End Date"
+                value={endedAt || moment().format("YYYY-MM-DD")}
+                onChange={date => handleDateChange(date, "ended_at")}
+                TextFieldComponent={datePicker => (
+                  <CustomInput datePicker={datePicker} />
+                )}
+              />
+              <DateFilterButton onClick={getFilteredAnalytics}>
+                Filter
+              </DateFilterButton>
+            </div>
           </DatePickerContainer>
         </Grid>
       </MuiPickersUtilsProvider>

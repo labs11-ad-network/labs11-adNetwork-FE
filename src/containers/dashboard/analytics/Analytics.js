@@ -59,6 +59,17 @@ const RowContainer = styled.div`
       flex-direction: column;
     }
   }
+  .top-offers-row{
+    display: flex;
+    width: 100%;
+    height: 500px;
+    max-height: 500px;
+    @media (max-width: 1200px) {
+      width: 100%;
+      box-sizing: border-box;
+      flex-direction: column;
+    }
+  }
   @media (max-width: 1200px) {
     box-sizing: border-box;
     flex-direction: column;
@@ -157,14 +168,12 @@ class Analytics extends Component {
       <>
         {analytics.length !== 0 && (
           <>
-            <div>
-              <DatePicker
-                startedAt={started_at}
-                endedAt={ended_at}
-                getFilteredAnalytics={this.getFilteredAnalytics}
-                handleDateChange={this.handleDateChange}
-              />
-            </div>
+            <DatePicker
+              startedAt={started_at}
+              endedAt={ended_at}
+              getFilteredAnalytics={this.getFilteredAnalytics}
+              handleDateChange={this.handleDateChange}
+            />
             <CardContainer>
               <Card
                 icon="fas fa-eye"
@@ -241,8 +250,10 @@ class Analytics extends Component {
             </RowContainer>
 
             <RowContainer>
-              <TopTenOffers data={analytics.offersRanking} />
-              <RadarChart data={analytics.devices} />
+              <div className="top-offers-row">
+                <TopTenOffers data={analytics.offersRanking} />
+                <RadarChart data={analytics.devices} />
+              </div>
             </RowContainer>
           </>
         )}
