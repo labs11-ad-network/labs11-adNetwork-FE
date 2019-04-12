@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { PieChart, Pie, Sector } from "recharts";
+import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
 import { GraphContainer, GraphHeader } from "./GraphStyles.js";
 
 const renderActiveShape = props => {
@@ -61,7 +61,7 @@ const renderActiveShape = props => {
         y={ey}
         textAnchor={textAnchor}
         fill="#333"
-      >{`Actions ${value}`}</text>
+      >{`${value} Actions`}</text>
       <text
         x={ex + (cos >= 0 ? 1 : -1) * 12}
         y={ey}
@@ -92,7 +92,7 @@ export default class Example extends PureComponent {
     });
     return (
       <GraphContainer>
-        <GraphHeader>
+        <GraphHeader bottomBorder>
           <div>
             <h2>Devices</h2>
             <h3>based on all actions</h3>
@@ -104,20 +104,20 @@ export default class Example extends PureComponent {
             </h2>
           </div>
         </GraphHeader>
-        <PieChart width={400} height={400}>
-          <Pie
-            activeIndex={this.state.activeIndex}
-            activeShape={renderActiveShape}
-            data={data}
-            cx={200}
-            cy={200}
-            innerRadius={60}
-            outerRadius={80}
-            fill="#0A88DC"
-            dataKey="value"
-            onMouseEnter={this.onPieEnter}
-          />
-        </PieChart>
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              activeIndex={this.state.activeIndex}
+              activeShape={renderActiveShape}
+              data={data}
+              innerRadius={90}
+              outerRadius={130}
+              fill="#0A88DC"
+              dataKey="value"
+              onMouseEnter={this.onPieEnter}
+            />
+          </PieChart>
+        </ResponsiveContainer>
       </GraphContainer>
     );
   }
