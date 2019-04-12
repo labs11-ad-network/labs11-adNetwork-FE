@@ -112,11 +112,11 @@ class Dashboard extends Component {
             <ChatWidget />
             {currentUser.show_tour &&
               (this.props.location.pathname === "/dashboard" ? (
-                <DashboardTour history={this.props.history}/>
+                <DashboardTour history={this.props.history} />
               ) : this.props.location.pathname === "/dashboard/offers" ? (
-                <OfferTour history={this.props.history}/>
+                <OfferTour history={this.props.history} />
               ) : this.props.location.pathname === "/dashboard/settings" ? (
-                <SettingsTour history={this.props.history}/>
+                <SettingsTour history={this.props.history} />
               ) : null)}
           </div>
         </div>

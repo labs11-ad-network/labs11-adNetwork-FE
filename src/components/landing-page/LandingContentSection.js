@@ -1,6 +1,6 @@
 import React from "react";
 
-import desktopGiff from "../../assets/desktopAds.gif";
+import desktopGiff from "../../assets/desktopAds.svg";
 import desktopGiff2 from "../../assets/desktopAds2.svg";
 import desktopGiff3 from "../../assets/desktopAds3.svg";
 
@@ -23,9 +23,7 @@ const LandingContentSection = () => {
           <p className="landing-ptag">
             Increase your revenue with keywords targeted Interstitial Ads
           </p>
-          <p className="landing-ptag">
-            Choose your desired Interstitial Ads size to fit your display style
-          </p>
+
           <p className="landing-ptag">
             Maximize your revenue potential on high value impressions , and
             Customize for welcome Ad format or lightbox Interstitial Ads
@@ -54,9 +52,7 @@ const LandingContentSection = () => {
           <h3 className="landing-info-title wow fadeInUp" data-wow-delay=".2s">
             Display Attractive Banner Ads
           </h3>
-          <p className="landing-ptag">
-            Access high paying Banner Ads to maximize your revenue
-          </p>
+
           <p className="landing-ptag">
             Choose the most converting banner Ads for higher eCPM
           </p>
@@ -96,10 +92,7 @@ const LandingContentSection = () => {
             Optimized to reach more audience across all mobile devices and
             Android Apps
           </p>
-          <p className="landing-ptag">
-            Each mobile and in App Ad impression that makes a difference on your
-            income
-          </p>
+
           <p className="landing-ptag">
             We support all your desired sizes to maintain your audience
             engagement, and Reach more mobile users and increase your revenue as

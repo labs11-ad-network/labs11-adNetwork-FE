@@ -150,13 +150,12 @@ class DashboardTop extends React.Component {
           </RightSection>
         </NavContainer>
         {!isLoadingNotifications &&
+          !isLoadingAnalytics &&
           (isLoadingAds ||
             isLoadingAgreements ||
             isLoadingOffers ||
             isLoadingStripe ||
-            isLoadingAnalytics) && (
-            <LinearLoader />
-          )}
+            isLoadingAnalytics) && <LinearLoader />}
       </>
     );
   }

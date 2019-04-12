@@ -20,7 +20,8 @@ export const LandingPageStyle = styled.div`
     font-stretch: normal;
     line-height: normal;
     letter-spacing: normal;
-    color: #0e4de3;
+    /* color: #0e4de3; */
+    color: #0A88DC;
     text-align: center;
     font-size: 13px;
     @media (min-width: 481px) {
@@ -60,6 +61,9 @@ export const LandingPageStyle = styled.div`
     max-width: 100%;
     display: block;
     margin: 20px auto;
+    width: 480px;
+    margin-top: 150px;
+}
   }
   @media (min-width: 940px) {
     .image-box-third {
@@ -117,15 +121,15 @@ export const LandingPageStyle = styled.div`
     border: 0;
     -webkit-apparience: none;
     cursor: pointer;
-    background-color: #0e4de3;
     box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.1);
     text-decoration: none;
+    background: #007bff;
     @media (min-width: 940px) {
       margin: 7% 0;
       max-width: 150px;
       padding: 19px 20.5px;
       &:hover {
-        background: #007bff;
+    background-color: #0e4de3;
         box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
       }
     }
