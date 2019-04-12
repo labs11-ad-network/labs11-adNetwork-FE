@@ -12,7 +12,7 @@ export const Container = styled.div`
     margin-right: 0;
     padding-right: 0;
     padding-left: 0;
-    min-width: 49px;
+    min-width: 0px;
   }
 
   .notif-list-item {
