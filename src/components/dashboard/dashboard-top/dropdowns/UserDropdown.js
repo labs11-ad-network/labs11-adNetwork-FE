@@ -43,7 +43,7 @@ class UserDropdown extends React.Component {
             aria-owns={userMenuOpen ? "menu-list-grow" : undefined}
             aria-haspopup="true"
             onClick={handleToggle}
-            style={{ textTransform: "none" }}
+            style={{ textTransform: "none", marginLeft: "0" }}
           >
             <img src={currentUser.image_url} alt="" />
             <h2>{currentUser.name}</h2>
