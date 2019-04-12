@@ -155,14 +155,12 @@ class Analytics extends Component {
       <>
         {analytics.length !== 0 && (
           <>
-            <div>
-              <DatePicker
-                startedAt={started_at}
-                endedAt={ended_at}
-                getFilteredAnalytics={this.getFilteredAnalytics}
-                handleDateChange={this.handleDateChange}
-              />
-            </div>
+            <DatePicker
+              startedAt={started_at}
+              endedAt={ended_at}
+              getFilteredAnalytics={this.getFilteredAnalytics}
+              handleDateChange={this.handleDateChange}
+            />
             <CardContainer>
               <Card
                 icon="fas fa-eye"
