@@ -8,7 +8,7 @@ import { changeUserData } from "../../store/actions/authAction.js";
 class SettingTour extends React.Component {
   state = {
     isSettingsOpen: true,
-    settingSteps: [
+    steps: [
       {
         userType: "both",
         selector: ".first-step",
@@ -111,7 +111,11 @@ class SettingTour extends React.Component {
   render() {
     return (
       <Tour
-        steps={this.state.settingSteps}
+        steps={
+          this.state.steps.filter(step => {
+            return ((step.userType.includes("both")) || (step.userType.includes(this.props.currentUser.acct_type)));
+          })
+        }
         isOpen={this.state.isSettingsOpen}
         onRequestClose={this.closeSettingsTour}
         rounded={5}
