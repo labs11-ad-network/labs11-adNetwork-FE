@@ -13,11 +13,11 @@ import { GraphContainer, GraphHeader } from "./GraphStyles.js";
 
 const TopTenOffers = props => {
   
+  props.data.length = 10
+
   const data = props.data.map(offer => {
     return { name: offer.name, ctr: offer.ctr };
   });
-  
-  data.length = 10
 
   return (
     <GraphContainer>
