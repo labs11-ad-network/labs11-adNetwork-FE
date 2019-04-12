@@ -17,8 +17,13 @@ export const TableContainer = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100%;
-    max-height: 700px;
-    overflow-y: hidden;
+    bottom: 0;
+    max-height: 510px;
+    overflow-y: auto;
+    ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
     .no-data{
       display: flex;
       justify-content: center;

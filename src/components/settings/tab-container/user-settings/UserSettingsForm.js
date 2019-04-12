@@ -47,8 +47,9 @@ class UserSettingsForm extends Component {
 
   changeUserData = e => {
     e.preventDefault();
-    this.props.changeUserData(this.state.userData);
+    this.props.changeUserData({...this.state.userData, show_tour: this.props.currentUser.show_tour});
   };
+
   render() {
     const { name, nickname, phone } = this.state.userData;
     return (
