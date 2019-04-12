@@ -1,11 +1,12 @@
 import React, { Component, Suspense } from "react";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 import AdServer from "./containers/ad-server/AdServer.js";
 import StripeCallback from "./containers/stripe-callback/StripeCallback.js";
 import Callback from "./containers/auth-zero/Callback/Callback.js";
 import Auth from "./containers/auth-zero/Auth/Auth.js";
+import NotFound from "./components/landing-page/NotFound";
 
 const LazyLandingPage = React.lazy(() =>
   import("./containers/landing-page/LandingPage.js")
@@ -39,34 +40,37 @@ class App extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div className="App">
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <Suspense fallback={<Callback />}>
-                <LazyLandingPage auth={auth} {...props} />
-              </Suspense>
-            )}
-          />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <Suspense fallback={<Callback />}>
+                  <LazyLandingPage auth={auth} {...props} />
+                </Suspense>
+              )}
+            />
 
-          <Route
-            path="/callback"
-            render={props => {
-              handleAuthentication(props);
-              return <Callback {...props} />;
-            }}
-          />
+            <Route
+              path="/callback"
+              render={props => {
+                handleAuthentication(props);
+                return <Callback {...props} />;
+              }}
+            />
 
-          <Route
-            path="/dashboard"
-            render={props => (
-              <Suspense fallback={<Callback />}>
-                <Dashboard {...props} auth={auth} />
-              </Suspense>
-            )}
-          />
-          <Route path="/ad/:affiliateId/:size" component={AdServer} />
-          <Route path="/stripe-callback" component={StripeCallback} />
+            <Route
+              path="/dashboard"
+              render={props => (
+                <Suspense fallback={<Callback />}>
+                  <Dashboard {...props} auth={auth} />
+                </Suspense>
+              )}
+            />
+            <Route path="/ad/:affiliateId/:size" component={AdServer} />
+            <Route path="/stripe-callback" component={StripeCallback} />
+            <Route path="*" component={NotFound} />
+          </Switch>
         </div>
       </MuiThemeProvider>
     );

@@ -38,12 +38,11 @@ class SettingTour extends React.Component {
       {
         userType: "both",
         selector: "[data-btn='offer-list']",
-        content:
-        `${this.props.currentUser.acct_type === "affiliate" ? 
-          "This is where you can accept agreements from advertisers that you would like to display on your website, you can filter the table to see which offers suit you and once its accepted you can view the related ads.":
-          "This is where you can view offers once you've created them, you can also enable/disable offers if you no longer want to have them displayed on our affiliates websites (This will send a notification to affiliates stating your offer has been disabled)"
-        }`
-          ,
+        content: `${
+          this.props.currentUser.acct_type === "affiliate"
+            ? "This is where you can accept agreements from advertisers that you would like to display on your website, you can filter the table to see which offers suit you and once its accepted you can view the related ads."
+            : "This is where you can view offers once you've created them, you can also enable/disable offers if you no longer want to have them displayed on our affiliates websites (This will send a notification to affiliates stating your offer has been disabled)"
+        }`,
         style: {
           fontSize: 15,
           lineHeight: 1.5
@@ -52,7 +51,8 @@ class SettingTour extends React.Component {
       {
         userType: "advertiser",
         selector: "[data-btn='create_offer-button']",
-        content: "You can create an offer by clicking on this button and filling out the information about your offer/product.",
+        content:
+          "You can create an offer by clicking on this button and filling out the information about your offer/product.",
         style: {
           fontSize: 15,
           lineHeight: 1.5
@@ -62,7 +62,8 @@ class SettingTour extends React.Component {
       {
         userType: "affiliate",
         selector: "[data-btn='offer-list']",
-        content: "You can also enable/disable the agreement if you decide you no longer want to display these ads on your website by clicking the little blue switch attached to the table row once the agreement is accepted.",
+        content:
+          "You can also enable/disable the agreement if you decide you no longer want to display these ads on your website by clicking the little blue switch attached to the table row once the agreement is accepted.",
         style: {
           fontSize: 15,
           lineHeight: 1.5
@@ -77,7 +78,7 @@ class SettingTour extends React.Component {
               <Button
                 color="primary"
                 onClick={() => {
-                  this.props.history.push('/dashboard/settings')
+                  this.props.history.push("/dashboard/settings");
                 }}
               >
                 Lets Go
@@ -100,11 +101,12 @@ class SettingTour extends React.Component {
   render() {
     return (
       <Tour
-        steps={
-          this.state.steps.filter(step => {
-            return ((step.userType.includes("both")) || (step.userType.includes(this.props.currentUser.acct_type)));
-          })
-        }
+        steps={this.state.steps.filter(step => {
+          return (
+            step.userType.includes("both") ||
+            step.userType.includes(this.props.currentUser.acct_type)
+          );
+        })}
         isOpen={this.state.isOffersOpen}
         onRequestClose={this.closeOffersTour}
         rounded={5}

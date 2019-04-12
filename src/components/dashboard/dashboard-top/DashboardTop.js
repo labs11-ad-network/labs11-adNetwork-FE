@@ -149,11 +149,13 @@ class DashboardTop extends React.Component {
             )}
           </RightSection>
         </NavContainer>
-        {!isLoadingNotifications && (isLoadingAds ||
-          isLoadingAgreements ||
-          isLoadingOffers ||
-          isLoadingStripe ||
-          isLoadingAnalytics) && <LinearLoader />}
+        {!isLoadingNotifications &&
+          !isLoadingAnalytics &&
+          (isLoadingAds ||
+            isLoadingAgreements ||
+            isLoadingOffers ||
+            isLoadingStripe ||
+            isLoadingAnalytics) && <LinearLoader />}
       </>
     );
   }
@@ -165,7 +167,7 @@ const mapStateToProps = state => ({
   isLoadingAgreements: state.agreementsReducer.isLoading,
   isLoadingOffers: state.offersReducer.isLoading,
   isLoadingStripe: state.stripeReducer.isLoading,
-  isLoadingNotifications: state.notificationsReducer.isLoading,
+  isLoadingNotifications: state.notificationsReducer.isLoading
 });
 
 export default connect(

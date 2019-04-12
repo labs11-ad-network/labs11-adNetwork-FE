@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
 
-import contact1 from "../../assets/contact1.png";
+import contact1 from "../../assets/contact1.svg";
 
 class Contact extends Component {
   state = {
@@ -80,8 +80,8 @@ class Contact extends Component {
               data-wow-delay=".2s"
               data-wow-duration="2s"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              sollicitudin lobortis turpis, sit amet aliquet metus.
+              Get in touch with us to get started, or to get answers to any
+              questions you may have—we’ll get back to you quickly.
             </p>
           </div>
 
