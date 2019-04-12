@@ -16,6 +16,7 @@ import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";
 import MapChart from "../../../components/analytics/map/MapChart.js";
 import TopTenOffers from "../../../components/analytics/graphs/TopTenOffers.js";
+import RadarChart from "../../../components/analytics/graphs/RadarChart.js";
 
 const CardContainer = styled.div`
   display: flex;
@@ -241,6 +242,7 @@ class Analytics extends Component {
 
             <RowContainer>
               <TopTenOffers data={analytics.offersRanking} />
+              <RadarChart data={analytics.devices} />
             </RowContainer>
           </>
         )}
