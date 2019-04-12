@@ -22,9 +22,6 @@ class MapChart extends Component {
             <h2>Locations</h2>
             <h3>based on clicks and impressions per city</h3>
           </div>
-          <div>
-            <h2 className="percentage">+50%<i className="fas fa-arrow-circle-up"/></h2>
-          </div>
         </MapHeader>
         <ComposableMap
           projectionConfig={{ scale: 205 }}
