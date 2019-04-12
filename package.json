@@ -11,7 +11,7 @@
     "axios": "^0.18.0",
     "d3-scale": "^3.0.0",
     "date-fns": "^2.0.0-alpha.27",
-    "html2canvas": "^1.0.0-alpha.12",
+    "html2canvas": "^1.0.0-rc.1",
     "jwt-decode": "^2.2.0",
     "material-datatable": "^0.3.8",
     "material-ui-pickers": "^2.2.4",
