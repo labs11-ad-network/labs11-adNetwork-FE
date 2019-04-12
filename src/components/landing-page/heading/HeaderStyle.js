@@ -152,7 +152,7 @@ export const HeroHome = styled.section`
       display: block;
       position: absolute;
       right: -140px;
-      top: -15%;
+      top: -26%;
       height: 621px;
       left: -97%;
       width: 193%;
@@ -165,7 +165,7 @@ export const HeroHome = styled.section`
   .navBar {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     @media (min-width: 940px) {
       padding: 20px 0;
       position: relative;
@@ -226,10 +226,11 @@ export const HeroHome = styled.section`
     padding: 13px 0;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
     background: white;
+    padding: 10px 0;
+
     @media (min-width: 940px) {
-      padding: 33px 0;
       .desktop-anchor {
         display: block;
       }

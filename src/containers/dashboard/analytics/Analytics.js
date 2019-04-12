@@ -43,6 +43,7 @@ const RowContainer = styled.div`
       flex-direction: column;
     }
   }
+
   .tables-container {
     display: flex;
     width: 100%;
@@ -51,6 +52,7 @@ const RowContainer = styled.div`
       flex-direction: column;
     }
   }
+
   .revenue-browser-row {
     display: flex;
     width: 100%;
@@ -60,7 +62,8 @@ const RowContainer = styled.div`
       flex-direction: column;
     }
   }
-  .top-offers-row{
+
+  .top-offers-row {
     display: flex;
     width: 100%;
     height: 500px;

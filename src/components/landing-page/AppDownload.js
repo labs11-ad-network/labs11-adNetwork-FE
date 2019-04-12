@@ -176,7 +176,7 @@ class AppDownload extends Component {
                 Advanced Features
               </h2>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />
+                Lorem ipsum dolior sit amet consectetur adipisicing elit. <br />
                 Dicta, reprehenderit?
               </p>
 

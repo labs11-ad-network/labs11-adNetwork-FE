@@ -14,17 +14,31 @@ class UserSettingsForm extends Component {
     }
   };
 
-  componentDidMount() {
-    const { name, nickname, phone } = this.props.currentUser;
-    this.setState({
-      userData: {
-        name,
-        nickname,
-        phone: phone || "",
-        user_img: ""
-      }
-    });
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentUser !== this.props.currentUser) {
+      const { name, nickname, phone } = this.props.currentUser;
+      this.setState({
+        userData: {
+          name,
+          nickname,
+          phone: phone || "",
+          user_img: ""
+        }
+      });
+    }
   }
+
+  // componentDidMount() {
+  //   const { name, nickname, phone } = this.props.currentUser;
+  //   this.setState({
+  //     userData: {
+  //       name,
+  //       nickname,
+  //       phone: phone || "",
+  //       user_img: ""
+  //     }
+  //   });
+  // }
 
   handleChange = e => {
     e.persist();
