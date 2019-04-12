@@ -80,8 +80,8 @@ class Contact extends Component {
               data-wow-delay=".2s"
               data-wow-duration="2s"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              sollicitudin lobortis turpis, sit amet aliquet metus.
+              Get in touch with us to get started, or to get answers to any
+              questions you may have—we’ll get back to you quickly.
             </p>
           </div>
 

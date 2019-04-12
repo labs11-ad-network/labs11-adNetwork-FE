@@ -57,7 +57,7 @@ class ExpertTeam extends Component {
           >
             <div className="item">
               <ExpertTeamCard
-                name="Name Here"
+                name="Hamza Elkhoudiri"
                 teamBg={teambg1}
                 profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
               />
@@ -65,14 +65,14 @@ class ExpertTeam extends Component {
 
             <div className="item">
               <ExpertTeamCard
-                name="Name Here"
+                name="Kieran Vieira"
                 teamBg={teambg2}
                 profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
               />
             </div>
             <div className="item">
               <ExpertTeamCard
-                name="Name Here"
+                name="Max McFerren"
                 teamBg={teambg3}
                 profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
               />
@@ -86,15 +86,8 @@ class ExpertTeam extends Component {
             </div>
             <div className="item">
               <ExpertTeamCard
-                name="Name Here"
+                name="Jordan Marsaw"
                 teamBg={teambg2}
-                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
-              />
-            </div>
-            <div className="item">
-              <ExpertTeamCard
-                name="Name Here"
-                teamBg={teambg3}
                 profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
               />
             </div>
@@ -115,8 +108,7 @@ class ExpertTeam extends Component {
             <div className="video-content">
               <h2 className="center-me">Watch This App Intro</h2>
               <p className="center-me">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel,
-                officia deserunt! Placeat quos nihil dolores.
+                Increase Traffic, Get Conversions, and Grow Revenue
               </p>
             </div>
           </div>

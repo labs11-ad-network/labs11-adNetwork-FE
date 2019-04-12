@@ -120,22 +120,18 @@ class AppDownload extends Component {
                   >
                     How does this App Work?
                   </h2>
-                  <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    <br />
-                    Porro, fugit?
-                  </p>
+                  <p>Simple Setup and Customization</p>
 
                   <div className="work-content-lists">
                     <div className="work-list-item">
                       <img src={tool1} alt="icon" />
                       <div className="work-list-content">
                         <h3 className="main-heading-three">
-                          Lorem Ipsum Dolor
+                          Choose an Ad Network
                         </h3>
                         <p>
-                          Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit. <br /> Voluptates, rerum ipsum!
+                          Choose your desired Interstitial Ads size to fit your
+                          display style
                         </p>
                       </div>
                     </div>
@@ -144,11 +140,10 @@ class AppDownload extends Component {
                       <img src={tool2} alt="icon" />
                       <div className="work-list-content">
                         <h3 className="main-heading-three">
-                          Lorem Ipsum Dolor
+                          Select the Right In-App Ad Format
                         </h3>
                         <p>
-                          Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit. <br /> Voluptates, rerum ipsum!
+                          Access high paying Banner Ads to maximize your revenue
                         </p>
                       </div>
                     </div>
@@ -156,12 +151,12 @@ class AppDownload extends Component {
                     <div className="work-list-item">
                       <img src={tool5} alt="icon" />
                       <div className="work-list-content">
-                        <h3 className="main-heading-three">
-                          Lorem Ipsum Dolor
-                        </h3>
+                        <h3 className="main-heading-three">Banner Ads</h3>
                         <p>
-                          Lorem ipsum dolor sit amet consectetur, adipisicing
-                          elit. <br /> Voluptates, rerum ipsum!
+                          Also called display advertising, is perhaps the ad
+                          type most familiar to users. These are typically text
+                          and/or images displayed at the top or bottom,
+                          alongside the app content.
                         </p>
                       </div>
                     </div>
@@ -192,10 +187,10 @@ class AppDownload extends Component {
                   data-wow-duration="2s"
                 >
                   <img src={tool3} alt="icon" />
-                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <h3 className="main-heading-three">Performance</h3>
                   <p>
-                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
-                    more eiusmod tempor incididunt.
+                    Maximize your profits with our Network by using custom
+                    developed ads you can only find on Lad Network.
                   </p>
                 </div>
 
@@ -207,8 +202,8 @@ class AppDownload extends Component {
                   <img src={tool4} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
-                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
-                    more eiusmod tempor incididunt.
+                    Instant access to thousands of display and mobile offers
+                    including exclusive and premium offers.
                   </p>
                 </div>
 
@@ -218,10 +213,10 @@ class AppDownload extends Component {
                   data-wow-duration="2s"
                 >
                   <img src={tool5} alt="icon" />
-                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <h3 className="main-heading-three">Payment</h3>
                   <p>
-                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
-                    more eiusmod tempor incididunt.
+                    Competitive prepaid payment terms with instant payments on
+                    Lad Mastercard (available for all Affiliates).
                   </p>
                 </div>
 
@@ -231,11 +226,8 @@ class AppDownload extends Component {
                   data-wow-duration="2s"
                 >
                   <img src={tool6} alt="icon" />
-                  <h3 className="main-heading-three">Powerfull System</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
-                    more eiusmod tempor incididunt.
-                  </p>
+                  <h3 className="main-heading-three">Support</h3>
+                  <p>Dedicated account managers support 24/7</p>
                 </div>
 
                 <div
@@ -246,8 +238,8 @@ class AppDownload extends Component {
                   <img src={tool7} alt="icon" />
                   <h3 className="main-heading-three">Powerfull System</h3>
                   <p>
-                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
-                    more eiusmod tempor incididunt.
+                    Get results and run performance-based campaigns (CPC, CPM
+                    and CPA/CPI).
                   </p>
                 </div>
 
@@ -257,10 +249,9 @@ class AppDownload extends Component {
                   data-wow-duration="2s"
                 >
                   <img src={tool8} alt="icon" />
-                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <h3 className="main-heading-three">Statistics</h3>
                   <p>
-                    Lorem ipsum dolor sit amet adipisicing of more of sedis do
-                    more eiusmod tempor incididunt.
+                    Detailed Statistics and advanced Conversion Tracking System.
                   </p>
                 </div>
               </div>
