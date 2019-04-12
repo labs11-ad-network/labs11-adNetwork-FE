@@ -375,14 +375,17 @@ class OffersList extends React.Component {
     } = this.state;
 
     return (
-      <div className={classes.root} data-btn="create_offer-button">
+      <div className={classes.root} data-btn="offer-list">
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
             <Tab label="Offers" className={classes.tab} />
             {tabValue === 1 && <Tab label="Ads" className={classes.tab} />}
             <TabButtonContainer>
               {this.props.currentUser.acct_type === "advertiser" && (
-                <OfferModalButton onClick={() => this.props.toggleModal()}>
+                <OfferModalButton 
+                  onClick={() => this.props.toggleModal()} 
+                  data-btn='create_offer-button'
+                >
                   Create Offer
                 </OfferModalButton>
               )}

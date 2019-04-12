@@ -73,9 +73,10 @@ class Settings extends Component {
               clicked={e => this.handleTabChange(e, 1)}
             />
           </div>
+          <div data-btn="snippet">
           <SnippetCard currentUser={currentUser} />
+          </div>
         </div>
-
         <TabContainer
           payouts={payouts}
           payments={payments}

@@ -16,6 +16,7 @@ import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";
 import MapChart from "../../../components/analytics/map/MapChart.js";
 import TopTenOffers from "../../../components/analytics/graphs/TopTenOffers.js";
+import RadarChart from "../../../components/analytics/graphs/RadarChart.js";
 
 const CardContainer = styled.div`
   display: flex;
@@ -52,6 +53,17 @@ const RowContainer = styled.div`
   .revenue-browser-row {
     display: flex;
     width: 100%;
+    @media (max-width: 1200px) {
+      width: 100%;
+      box-sizing: border-box;
+      flex-direction: column;
+    }
+  }
+  .top-offers-row{
+    display: flex;
+    width: 100%;
+    height: 500px;
+    max-height: 500px;
     @media (max-width: 1200px) {
       width: 100%;
       box-sizing: border-box;
@@ -156,14 +168,12 @@ class Analytics extends Component {
       <>
         {analytics.length !== 0 && (
           <>
-            <div>
-              <DatePicker
-                startedAt={started_at}
-                endedAt={ended_at}
-                getFilteredAnalytics={this.getFilteredAnalytics}
-                handleDateChange={this.handleDateChange}
-              />
-            </div>
+            <DatePicker
+              startedAt={started_at}
+              endedAt={ended_at}
+              getFilteredAnalytics={this.getFilteredAnalytics}
+              handleDateChange={this.handleDateChange}
+            />
             <CardContainer>
               <Card
                 icon="fas fa-eye"
@@ -240,7 +250,10 @@ class Analytics extends Component {
             </RowContainer>
 
             <RowContainer>
-              <TopTenOffers data={analytics.offersRanking} />
+              <div className="top-offers-row">
+                <TopTenOffers data={analytics.offersRanking} />
+                <RadarChart data={analytics.devices} />
+              </div>
             </RowContainer>
           </>
         )}

@@ -17,7 +17,7 @@ class TabContainer extends React.Component {
     } = this.props;
 
     return (
-      <MainTabContainer>
+      <MainTabContainer data-btn='edit_profile-tab'>
         <Tabs
           value={tabValue}
           indicatorColor="primary"
@@ -29,6 +29,7 @@ class TabContainer extends React.Component {
             label={
               currentUser.acct_type === "advertiser" ? "Payments" : "Payouts"
             }
+            data-btn='view_payments-tab'
           />
         </Tabs>
 
