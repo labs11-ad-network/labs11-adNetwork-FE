@@ -34,8 +34,8 @@ class AppDownload extends Component {
                 <p>#Lad Download </p>
                 <h3 id="lad">The Best Lad Network</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt.
+                  One of the largest and perhaps the best known display
+                  advertising network.
                 </p>
                 <img src={appStore} alt="app store" className="app-store-img" />
                 <img
@@ -66,8 +66,8 @@ class AppDownload extends Component {
                 <i className="fas fa-shield-alt promo-icon" />
                 <h2>Highly Secured</h2>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quibusdam recusandae perferendis ipsum perspiciatis.
+                  Protect critical access systems while generating revenue with
+                  a powerful user-targeted advertising engine.
                 </p>
               </div>
 
@@ -77,10 +77,10 @@ class AppDownload extends Component {
                 data-wow-duration="2s"
               >
                 <i className="fas fa-layer-group promo-icon" />{" "}
-                <h2>Highly Secured</h2>
+                <h2>Ad Server</h2>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quibusdam recusandae perferendis ipsum perspiciatis
+                  Our Ad Server will automatically choose the ads that perform
+                  best for your website, and many other parameters.
                 </p>
               </div>
 
@@ -89,11 +89,10 @@ class AppDownload extends Component {
                 data-wow-delay=".3s"
                 data-wow-duration="2s"
               >
-                <i className="fas fa-chart-bar promo-icon" />{" "}
-                <h2>Highly Secured</h2>
+                <i className="fas fa-chart-bar promo-icon" /> <h2>Marketing</h2>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Quibusdam recusandae perferendis ipsum perspiciatis
+                  This platform allows publishers to monetize standard display
+                  ads, mobile and video, and search results as well.
                 </p>
               </div>
             </div>
