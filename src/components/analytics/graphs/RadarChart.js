@@ -10,9 +10,24 @@ import {
 import { GraphContainer, GraphHeader } from "./GraphStyles.js";
 
 const RadarChartContainer = props => {
-  const data = props.data.map((offer, i) => {
-    return { device: offer.device, actions: offer.count, fullMark: 100 };
-  });
+
+  const getData = () => {
+    if(props.data.length){
+      return props.data.map((offer, i) => {
+        return { device: offer.device, actions: offer.count, fullMark: 100 };
+      });
+    }
+    else{
+      return [
+        {actions: 0, fullMark: 100 },
+        {actions: 0, fullMark: 100 },
+        {actions: 0, fullMark: 100 },
+        {actions: 0, fullMark: 100 },
+      ]
+    }
+  }
+
+  const data = getData();
 
   return (
     <GraphContainer>
@@ -22,7 +37,7 @@ const RadarChartContainer = props => {
           <h3>based on all actions</h3>
         </div>
       </GraphHeader>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="90%">
         <RadarChart
           outerRadius={160}
           data={data}

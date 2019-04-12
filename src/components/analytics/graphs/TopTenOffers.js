@@ -12,12 +12,13 @@ import {
 import { GraphContainer, GraphHeader } from "./GraphStyles.js";
 
 const TopTenOffers = props => {
-  const data = props.data.map((offer, i) => {
-    if (i <= 10) {
-      return { name: offer.name, ctr: offer.ctr };
-    }
-    return null;
+  
+  const data = props.data.map(offer => {
+    return { name: offer.name, ctr: offer.ctr };
   });
+  
+  data.length = 10
+
   return (
     <GraphContainer>
       <GraphHeader bottomBorder>
