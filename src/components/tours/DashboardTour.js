@@ -16,7 +16,6 @@ class DashboardTour extends React.Component {
           return (
             <>
               <h1>Welcome to the LAD Network</h1>
-              <h2>Would you like a tour of the app?</h2>
               <Button
                 color="primary"
                 onClick={() => {

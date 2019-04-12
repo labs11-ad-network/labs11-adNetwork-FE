@@ -18,7 +18,7 @@ const BillingCard = props => {
   } = props.currentUser;
   const { title, currentUser, balance, button, clicked } = props;
   return (
-    <BillingCardContainer>
+    <BillingCardContainer data-btn="billing-card">
       {currentUser && title ? (
         <div>
           <h1>{title}</h1>
@@ -55,7 +55,7 @@ const BillingCard = props => {
         </div>
       ) : (
         acct_type === "advertiser" && (
-          <div data-btn="amount_due-card">
+          <div data-btn="billing-card">
             <h1>Amount Due</h1>
             <h2>{`$ ${amount}`}</h2>
             {stripe_cust_id ? (

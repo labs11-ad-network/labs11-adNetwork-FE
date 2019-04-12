@@ -3,10 +3,38 @@ import Tour from "reactour";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 
+import { changeUserData } from "../../store/actions/authAction.js";
+
 class SettingTour extends React.Component {
   state = {
     isOffersOpen: true,
     steps: [
+      {
+        userType: "both",
+        selector: ".first-step",
+        content: () => {
+          return (
+            <>
+              <h1>Welcome to the Offers page</h1>
+              <Button
+                color="primary"
+                onClick={() => {
+                  this.props.changeUserData({
+                    ...this.props.currentUser,
+                    show_tour: false
+                  });
+                }}
+              >
+                Never see this again
+              </Button>
+            </>
+          );
+        },
+        style: {
+          fontSize: 15,
+          lineHeight: 1.5
+        }
+      },
       {
         userType: "both",
         selector: "[data-btn='offer-list']",
@@ -93,5 +121,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  null
+  {
+    changeUserData
+  }
 )(SettingTour);
