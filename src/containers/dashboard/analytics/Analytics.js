@@ -16,7 +16,7 @@ import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";
 import MapChart from "../../../components/analytics/map/MapChart.js";
 import TopTenOffers from "../../../components/analytics/graphs/TopTenOffers.js";
-import RadarChart from "../../../components/analytics/graphs/RadarChart.js";
+// import RadarChart from "../../../components/analytics/graphs/RadarChart.js";
 import DeviceChart from "../../../components/analytics/graphs/DeviceChart.js";
 
 const CardContainer = styled.div`
@@ -70,6 +70,8 @@ const RowContainer = styled.div`
     max-height: 500px;
     @media (max-width: 1200px) {
       width: 100%;
+      height: unset;
+      max-height: unset;
       box-sizing: border-box;
       flex-direction: column;
     }
@@ -254,8 +256,11 @@ class Analytics extends Component {
             </RowContainer>
 
             <RowContainer>
-              <TopTenOffers data={analytics.offersRanking} />
-              <DeviceChart data={analytics.devices} />
+              <div className="top-offers-row">
+                <TopTenOffers data={analytics.offersRanking} />
+                {/* <RadarChart data={analytics.devices} /> */}
+                <DeviceChart data={analytics.devices} />
+              </div>
             </RowContainer>
           </>
         )}
