@@ -226,7 +226,11 @@ export class AdGenerator extends Component {
           </div>
           <div className="ad-preview">
             <div id="advertisment">
-              <AdHoc ad={productData} handleElementChange={this.handleElementChange}/>
+              <AdHoc 
+                ad={productData} 
+                handleElementChange={this.handleElementChange}
+                selected={currentElement}
+              />
             </div>
           </div>
           <CreateAdButton onClick={this.createAd}>

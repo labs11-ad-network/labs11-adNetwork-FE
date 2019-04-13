@@ -19,6 +19,7 @@ const AdHoc = props => {
             image={props.image}
             recordAction={props.recordAction}
             handleElementChange={props.handleElementChange}
+            selected={props.selected}
           />
         ) : props.ad.size.includes("vertical_banner") ? (
           <VerticalBanner
@@ -26,6 +27,7 @@ const AdHoc = props => {
             image={props.image}
             recordAction={props.recordAction}
             handleElementChange={props.handleElementChange}
+            selected={props.selected}
           />
         ) : props.ad.size.includes("square_banner") ? (
           <SquareBanner
@@ -33,6 +35,7 @@ const AdHoc = props => {
             image={props.image}
             recordAction={props.recordAction}
             handleElementChange={props.handleElementChange}
+            selected={props.selected}
           />
         ) : props.ad.size.includes("plain_horizontal") ? (
           <PlainHorizontalBanner
