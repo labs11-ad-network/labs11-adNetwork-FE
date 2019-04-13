@@ -4,9 +4,8 @@ export const HorizontalBannerContainer = styled.a`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  width: 650px;
-  height: 80px;
-  padding: 10px;
+  width: 670px;
+  height: 100px;
   text-decoration: none;
   background-color: #f1f1f1;
   background-image: url(${props => props.ad.file || props.image});
@@ -67,7 +66,6 @@ export const SquareBannerContainer = styled.a`
   justify-content: space-between;
   width: 250px;
   height: 250px;
-  padding: 10px;
   text-decoration: none;
   background-color: #f1f1f1;
   background-image: url(${props => props.ad.file || props.image});
@@ -128,9 +126,8 @@ export const VerticalBannerContainer = styled.a`
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  width: 80px;
-  height: 650px;
-  padding: 10px;
+  width: 120px;
+  height: 600px;
   text-decoration: none;
   background-color: #f1f1f1;
   background-image: url(${props => props.ad.file || props.image});
@@ -192,9 +189,8 @@ export const PlainHorizontalContainer = styled.a`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  width: 650px;
-  height: 80px;
-  padding: 10px;
+  width: 670px;
+  height: 100px;
   text-decoration: none;
   background-color: #f1f1f1;
   background-image: url(${props => props.ad.file || props.image});
@@ -209,7 +205,6 @@ export const PlainSquareContainer = styled.a`
   justify-content: space-between;
   width: 250px;
   height: 250px;
-  padding: 10px;
   text-decoration: none;
   background-color: #f1f1f1;
   background-image: url(${props => props.ad.file || props.image});
@@ -224,9 +219,8 @@ export const PlainVerticalContainer = styled.a`
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  width: 80px;
-  height: 650px;
-  padding: 10px;
+  width: 120px;
+  height: 600px;
   text-decoration: none;
   background-color: #f1f1f1;
   background-image: url(${props => props.ad.file || props.image});

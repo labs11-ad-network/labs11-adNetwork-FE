@@ -173,11 +173,11 @@ export class AdGenerator extends Component {
     });
   };
 
-  handleElementChange = e => {
+  handleElementChange = (e, name, value) => {
     e.preventDefault();
     this.setState({
       ...this.state,
-      [e.target.name]: e.target.value
+      [e.target.name || name]: e.target.value || value
     });
   };
 
@@ -226,7 +226,7 @@ export class AdGenerator extends Component {
           </div>
           <div className="ad-preview">
             <div id="advertisment">
-              <AdHoc ad={productData} />
+              <AdHoc ad={productData} handleElementChange={this.handleElementChange}/>
             </div>
           </div>
           <CreateAdButton onClick={this.createAd}>

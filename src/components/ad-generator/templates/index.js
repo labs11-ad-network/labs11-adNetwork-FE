@@ -57,17 +57,31 @@ export const HorizontalBanner = props => {
     >
       <div>
         <Draggable>
-          <h1>{props.ad.headline_text}</h1>
+          <h1 
+            onClick={(e) => props.handleElementChange(e, "currentElement", "headline")}
+          >
+          {props.ad.headline_text}
+          </h1>
         </Draggable>
         <Draggable>
-          <h3>{props.ad.tagline_text}</h3>
+          <h3
+            onClick={(e) => props.handleElementChange(e, "currentElement", "tagline")}
+          >
+          {props.ad.tagline_text}
+          </h3>
         </Draggable>
         <Draggable>
-          <p>{props.ad.message_text}</p>
+          <p
+            onClick={(e) => props.handleElementChange(e, "currentElement", "message")}
+          >
+          {props.ad.message_text}
+          </p>
         </Draggable>
       </div>
       <Draggable>
-        <button>{props.ad.button_text}</button>
+        <button
+          onClick={(e) => props.handleElementChange(e, "currentElement", "button")}
+        >{props.ad.button_text}</button>
       </Draggable>
     </HorizontalBannerContainer>
   );
