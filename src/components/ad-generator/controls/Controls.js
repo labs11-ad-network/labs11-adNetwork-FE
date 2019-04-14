@@ -16,7 +16,7 @@ const Controls = props => {
       <TopSection>
         <div>
           <Slider
-            customizeElementSize={props.customizeElementSize}
+            customizeElement={props.customizeElement}
             sizeValue={props.sizeValue}
           />
           <SliderLabels>
@@ -33,20 +33,20 @@ const Controls = props => {
           </button>
         </BottomLeft>
         <BottomMiddle>
-          <button name="bold" onClick={props.toggleElementStyle}>
-            <i className="fas fa-bold" />
+          <button name="bold" onClick={(e) => props.toggleElementStyle(e, "bold")}>
+            <i className="fas fa-bold" onClick={(e) => props.toggleElementStyle(e, "bold")}/>
           </button>
-          <button name="italic" onClick={props.toggleElementStyle}>
-            <i className="fas fa-italic" />
+          <button name="italic" onClick={(e) => props.toggleElementStyle(e, "italic")}>
+            <i className="fas fa-italic" onClick={(e) => props.toggleElementStyle(e, "italic")}/>
           </button>
-          <button name="align" value="left" onClick={props.customizeElement}>
-            <i className="fas fa-align-left" />
+          <button name="align" value="left" onClick={e => props.customizeElement(e, "align", "left")}>
+            <i className="fas fa-align-left" onClick={e => props.customizeElement(e, "align", "left")} />
           </button>
-          <button name="align" value="center" onClick={props.customizeElement}>
-            <i className="fas fa-align-center" />
+          <button name="align" value="center" onClick={e => props.customizeElement(e, "align", "center")}>
+            <i className="fas fa-align-center" onClick={e => props.customizeElement(e, "align", "center")} />
           </button>
-          <button name="align" value="right" onClick={props.customizeElement}>
-            <i className="fas fa-align-right" />
+          <button name="align" value="right" onClick={e => props.customizeElement(e, "align", "right")}>
+            <i className="fas fa-align-right" onClick={e => props.customizeElement(e, "align", "right")} />
           </button>
         </BottomMiddle>
         <BottomRight>

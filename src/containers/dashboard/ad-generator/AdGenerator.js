@@ -132,42 +132,30 @@ export class AdGenerator extends Component {
     });
   };
 
-  customizeElement = e => {
+  customizeElement = (e, name, value) => {
+    e.stopPropagation();
+    console.log(e, name, value)
     this.setState({
       ...this.state,
       productData: {
         ...this.state.productData,
         [this.state.currentElement]: {
           ...this.state.productData[this.state.currentElement],
-          [e.target.name]: e.target.value
+          [e.target.name || name]: e.target.value || value
         }
       }
     });
   };
 
-  customizeElementSize = (e, value) => {
+  toggleElementStyle = (e, name) => {
+    console.log(e, name)
     this.setState({
       ...this.state,
       productData: {
         ...this.state.productData,
         [this.state.currentElement]: {
           ...this.state.productData[this.state.currentElement],
-          size: value
-        }
-      }
-    });
-  };
-
-  toggleElementStyle = e => {
-    this.setState({
-      ...this.state,
-      productData: {
-        ...this.state.productData,
-        [this.state.currentElement]: {
-          ...this.state.productData[this.state.currentElement],
-          [e.target.name]: !this.state.productData[this.state.currentElement][
-            e.target.name
-          ]
+          [e.target.name || name]: !this.state.productData[this.state.currentElement][e.target.name || name]
         }
       }
     });
@@ -241,7 +229,6 @@ export class AdGenerator extends Component {
               <Controls
                 customizeElement={this.customizeElement}
                 toggleElementStyle={this.toggleElementStyle}
-                customizeElementSize={this.customizeElementSize}
                 sizeValue={productData[currentElement].size}
               />
             </div>
