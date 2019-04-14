@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const HorizontalBannerContainer = styled.a`
+export const HorizontalBannerContainer = styled.div`
+  position: relative;
+  word-wrap: break-word;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -12,10 +14,9 @@ export const HorizontalBannerContainer = styled.a`
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  div{
+    max-height: 100%;
+    max-width: 100%;
     h1 {
       display: flex;
       font-size: ${props =>
@@ -80,7 +81,9 @@ export const HorizontalBannerContainer = styled.a`
   }
 `;
 
-export const SquareBannerContainer = styled.a`
+export const SquareBannerContainer = styled.div`
+  position: relative;
+  word-wrap: break-word;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -92,10 +95,9 @@ export const SquareBannerContainer = styled.a`
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  div{
+    max-height: 100%;
+    max-width: 100%;
     h1 {
       font-size: ${props =>
         props.ad.headline.size ? `${props.ad.headline.size}px` : "2.3rem"};
@@ -137,26 +139,28 @@ export const SquareBannerContainer = styled.a`
         cursor: pointer;
       }
     }
-  }
-  button {
-    font-size: ${props => `${props.ad.button.size}px` || "1rem"};
-    border: unset;
-    color: ${props => props.ad.button.color};
-    text-decoration: none;
-    background-color: ${props => props.ad.button.bg_color || "transparent"};
-    font-weight: ${props => props.ad.button.bold && "bold"};
-    font-style: ${props => props.ad.button.italic && "italic"};
-    text-align: ${props => props.ad.button.align};
-    outline: ${props => ((props.selected === "button") && props.ad.button_text) && "2px solid #0A88DC"};
-    padding: 8px 15px;
-    border-radius: 3px;
-    &:hover{
-      cursor: pointer;
+    button {
+      font-size: ${props => `${props.ad.button.size}px` || "1rem"};
+      border: unset;
+      color: ${props => props.ad.button.color};
+      text-decoration: none;
+      background-color: ${props => props.ad.button.bg_color || "transparent"};
+      font-weight: ${props => props.ad.button.bold && "bold"};
+      font-style: ${props => props.ad.button.italic && "italic"};
+      text-align: ${props => props.ad.button.align};
+      outline: ${props => ((props.selected === "button") && props.ad.button_text) && "2px solid #0A88DC"};
+      padding: 8px 15px;
+      border-radius: 3px;
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
 `;
 
-export const VerticalBannerContainer = styled.a`
+export const VerticalBannerContainer = styled.div`
+  position: relative;
+  word-wrap: break-word;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -170,11 +174,9 @@ export const VerticalBannerContainer = styled.a`
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 25px;
+  div{
+    max-height: 100%;
+    max-width: 100%;
     h1 {
       font-size: ${props =>
         props.ad.headline.size ? `${props.ad.headline.size}px` : "2.3rem"};
@@ -216,28 +218,27 @@ export const VerticalBannerContainer = styled.a`
         cursor: pointer;
       }
     }
-  }
-  button {
-    display: inline-block;
-    width: 100%;
-    border: unset;
-    font-size: ${props => `${props.ad.button.size}px` || "1rem"};
-    color: ${props => props.ad.button.color};
-    text-decoration: none;
-    background-color: ${props => props.ad.button.bg_color || "transparent"};
-    font-weight: ${props => props.ad.button.bold && "bold"};
-    font-style: ${props => props.ad.button.italic && "italic"};
-    text-align: ${props => props.ad.button.align};
-    outline: ${props => ((props.selected === "button") && props.ad.button_text) && "2px solid #0A88DC"};
-    padding: 8px 0;
-    border-radius: 3px;
-    &:hover{
-      cursor: pointer;
+    button {
+      display: inline-block;
+      border: unset;
+      font-size: ${props => `${props.ad.button.size}px` || "1rem"};
+      color: ${props => props.ad.button.color};
+      text-decoration: none;
+      background-color: ${props => props.ad.button.bg_color || "transparent"};
+      font-weight: ${props => props.ad.button.bold && "bold"};
+      font-style: ${props => props.ad.button.italic && "italic"};
+      text-align: ${props => props.ad.button.align};
+      outline: ${props => ((props.selected === "button") && props.ad.button_text) && "2px solid #0A88DC"};
+      padding: 8px 0;
+      border-radius: 3px;
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
 `;
 
-export const PlainHorizontalContainer = styled.a`
+export const PlainHorizontalContainer = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -251,7 +252,7 @@ export const PlainHorizontalContainer = styled.a`
   background-position: center;
 `;
 
-export const PlainSquareContainer = styled.a`
+export const PlainSquareContainer = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -265,7 +266,7 @@ export const PlainSquareContainer = styled.a`
   background-position: center;
 `;
 
-export const PlainVerticalContainer = styled.a`
+export const PlainVerticalContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

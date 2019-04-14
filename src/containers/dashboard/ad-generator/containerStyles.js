@@ -48,6 +48,7 @@ export const RightSection = styled.div`
     display: flex;
     flex-direction: column;
     width: 50%;
+    min-width: 700px;
     .ad-preview {
       display: flex;
       flex-direction: column;

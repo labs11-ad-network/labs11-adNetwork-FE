@@ -51,35 +51,36 @@ export const HorizontalBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       selected={props.selected}
+      id="parent"
     >
-      <div>
-        <Draggable>
-          <h1 
-            onClick={(e) => props.handleElementChange(e, "currentElement", "headline")}
-          >
-          {props.ad.headline_text}
-          </h1>
-        </Draggable>
-        <Draggable>
-          <h3
-            onClick={(e) => props.handleElementChange(e, "currentElement", "tagline")}
-          >
-          {props.ad.tagline_text}
-          </h3>
-        </Draggable>
-        <Draggable>
-          <p
-            onClick={(e) => props.handleElementChange(e, "currentElement", "message")}
-          >
-          {props.ad.message_text}
-          </p>
-        </Draggable>
-      </div>
-      <Draggable>
+    <div>
+      <Draggable bounds="#parent">
+        <h1 
+          onClick={(e) => props.handleElementChange(e, "currentElement", "headline")}
+        >
+        {props.ad.headline_text}
+        </h1>
+      </Draggable>
+      <Draggable bounds="#parent">
+        <h3
+          onClick={(e) => props.handleElementChange(e, "currentElement", "tagline")}
+        >
+        {props.ad.tagline_text}
+        </h3>
+      </Draggable>
+      <Draggable bounds="#parent">
+        <p
+          onClick={(e) => props.handleElementChange(e, "currentElement", "message")}
+        >
+        {props.ad.message_text}
+        </p>
+      </Draggable>
+      <Draggable bounds="#parent">
         <button
           onClick={(e) => props.handleElementChange(e, "currentElement", "button")}
         >{props.ad.button_text}</button>
       </Draggable>
+    </div>
     </HorizontalBannerContainer>
   );
 };
@@ -92,37 +93,38 @@ export const SquareBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       selected={props.selected}
+      id="parent"
     >
-      <div>
-        <Draggable>
-          <h1
-            onClick={(e) => props.handleElementChange(e, "currentElement", "headline")}
-          >
-          {props.ad.headline_text}
-          </h1>
-        </Draggable>
-        <Draggable>
-          <h3
-            onClick={(e) => props.handleElementChange(e, "currentElement", "tagline")}
-          >
-          {props.ad.tagline_text}
-          </h3>
-        </Draggable>
-        <Draggable>
-          <p
-            onClick={(e) => props.handleElementChange(e, "currentElement", "message")}
-          >
-          {props.ad.message_text}
-          </p>
-        </Draggable>
-      </div>
-      <Draggable>
+    <div>
+      <Draggable bounds="#parent">
+        <h1
+          onClick={(e) => props.handleElementChange(e, "currentElement", "headline")}
+        >
+        {props.ad.headline_text}
+        </h1>
+      </Draggable>
+      <Draggable bounds="#parent">
+        <h3
+          onClick={(e) => props.handleElementChange(e, "currentElement", "tagline")}
+        >
+        {props.ad.tagline_text}
+        </h3>
+      </Draggable>
+      <Draggable bounds="#parent">
+        <p
+          onClick={(e) => props.handleElementChange(e, "currentElement", "message")}
+        >
+        {props.ad.message_text}
+        </p>
+      </Draggable>
+      <Draggable bounds="#parent">
         <button
           onClick={(e) => props.handleElementChange(e, "currentElement", "button")}
         >
         {props.ad.button_text}
         </button>
       </Draggable>
+    </div>
     </SquareBannerContainer>
   );
 };
@@ -135,37 +137,39 @@ export const VerticalBanner = props => {
       target="_blank"
       rel="noopener noreferrer"
       selected={props.selected}
+      id="parent"
     >
       <div>
-        <Draggable>
+        <Draggable bounds="#parent">
           <h1
             onClick={(e) => props.handleElementChange(e, "currentElement", "headline")}
           >
           {props.ad.headline_text}
           </h1>
         </Draggable>
-        <Draggable>
+      
+        <Draggable bounds="#parent">
           <h3
             onClick={(e) => props.handleElementChange(e, "currentElement", "tagline")}
           >
           {props.ad.tagline_text}
           </h3>
         </Draggable>
-        <Draggable>
+        <Draggable bounds="#parent">
           <p
             onClick={(e) => props.handleElementChange(e, "currentElement", "message")}
           >
           {props.ad.message_text}
           </p>
         </Draggable>
+        <Draggable bounds="#parent">
+          <button
+            onClick={(e) => props.handleElementChange(e, "currentElement", "button")}
+          >
+          {props.ad.button_text}
+          </button>
+        </Draggable>
       </div>
-      <Draggable>
-        <button
-          onClick={(e) => props.handleElementChange(e, "currentElement", "button")}
-        >
-        {props.ad.button_text}
-        </button>
-      </Draggable>
     </VerticalBannerContainer>
   );
 };
