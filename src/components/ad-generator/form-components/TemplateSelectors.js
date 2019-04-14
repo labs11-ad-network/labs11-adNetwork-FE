@@ -1,42 +1,38 @@
 import React from "react";
 
-import { TemplateSelectors } from "../forms/formStyles.js";
+import { TemplateSelectors, TemplateButton } from "../forms/formStyles.js";
 
 const TemplateSelector = props => {
   return (
     <TemplateSelectors>
-      <button
-        value="horizontal_banner"
-        name="size"
-        onClick={props.handleChange}
-      >
+      <TemplateButton value="horizontal_banner" name="size" onClick={props.handleChange} selected={props.selected}>
         Horizontal banner
         (670x100)
-      </button>
+      </TemplateButton>
 
-      <button value="vertical_banner" name="size" onClick={props.handleChange}>
+      <TemplateButton value="vertical_banner" name="size" onClick={props.handleChange} selected={props.selected}>
         Vertical banner
         (120x600)
-      </button>
+      </TemplateButton>
 
-      <button value="square_banner" name="size" onClick={props.handleChange}>
+      <TemplateButton value="square_banner" name="size" onClick={props.handleChange} selected={props.selected}>
         Square banner
         (250x250)
-      </button>
+      </TemplateButton>
 
-      <button value="plain_horizontal" name="size" onClick={props.handleChange}>
+      <TemplateButton value="plain_horizontal" name="size" onClick={props.handleChange} selected={props.selected}>
         Plain Horizontal Banner
         (670x100)
-      </button>
-      <button value="plain_square" name="size" onClick={props.handleChange}>
+      </TemplateButton>
+      <TemplateButton value="plain_square" name="size" onClick={props.handleChange} selected={props.selected}>
         Plain Square Banner
         (250x250)
-      </button>
+      </TemplateButton>
 
-      <button value="plain_vertical" name="size" onClick={props.handleChange}>
+      <TemplateButton value="plain_vertical" name="size" onClick={props.handleChange} selected={props.selected}>
         Plain Vertical Banner
         (120x600)
-      </button>
+      </TemplateButton>
     </TemplateSelectors>
   );
 };

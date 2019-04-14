@@ -27,6 +27,9 @@ export const HorizontalBannerContainer = styled.a`
       font-style: ${props => props.ad.headline.italic && "italic"};
       text-align: ${props => props.ad.headline.align};
       outline: ${props => ((props.selected === "headline") && props.ad.headline_text) && "2px solid #0A88DC"};
+      &:hover{
+        cursor: pointer;
+      }
     }
     h3 {
       display: flex;
@@ -39,6 +42,9 @@ export const HorizontalBannerContainer = styled.a`
       font-style: ${props => props.ad.tagline.italic && "italic"};
       text-align: ${props => props.ad.tagline.align};
       outline: ${props => ((props.selected === "tagline") && props.ad.tagline_text) && "2px solid #0A88DC"};
+      &:hover{
+        cursor: pointer;
+      }
     }
     p {
       display: flex;
@@ -50,6 +56,9 @@ export const HorizontalBannerContainer = styled.a`
       font-style: ${props => props.ad.message.italic && "italic"};
       text-align: ${props => props.ad.message.align};
       outline: ${props => ((props.selected === "message") && props.ad.message_text) && "2px solid #0A88DC"};
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
   button {
@@ -65,6 +74,9 @@ export const HorizontalBannerContainer = styled.a`
     outline: ${props => ((props.selected === "button") && props.ad.button_text) && "2px solid #0A88DC"};
     padding: 8px 15px;
     border-radius: 3px;
+    &:hover{
+      cursor: pointer;
+    }
   }
 `;
 
@@ -94,6 +106,9 @@ export const SquareBannerContainer = styled.a`
       font-style: ${props => props.ad.headline.italic && "italic"};
       text-align: ${props => props.ad.headline.align};
       outline: ${props => ((props.selected === "headline") && props.ad.headline_text) && "2px solid #0A88DC"};
+      &:hover{
+        cursor: pointer;
+      }
     }
     h3 {
       font-size: ${props =>
@@ -105,6 +120,9 @@ export const SquareBannerContainer = styled.a`
       font-style: ${props => props.ad.tagline.italic && "italic"};
       text-align: ${props => props.ad.tagline.align};
       outline: ${props => ((props.selected === "tagline") && props.ad.tagline_text) && "2px solid #0A88DC"};
+      &:hover{
+        cursor: pointer;
+      }
     }
     p {
       font-size: ${props =>
@@ -115,6 +133,9 @@ export const SquareBannerContainer = styled.a`
       font-style: ${props => props.ad.message.italic && "italic"};
       text-align: ${props => props.ad.message.align};
       outline: ${props => ((props.selected === "message") && props.ad.message_text) && "2px solid #0A88DC"};
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
   button {
@@ -129,6 +150,9 @@ export const SquareBannerContainer = styled.a`
     outline: ${props => ((props.selected === "button") && props.ad.button_text) && "2px solid #0A88DC"};
     padding: 8px 15px;
     border-radius: 3px;
+    &:hover{
+      cursor: pointer;
+    }
   }
 `;
 
@@ -161,6 +185,9 @@ export const VerticalBannerContainer = styled.a`
       font-style: ${props => props.ad.headline.italic && "italic"};
       text-align: ${props => props.ad.headline.align};
       outline: ${props => ((props.selected === "headline") && props.ad.headline_text) && "2px solid #0A88DC"};
+      &:hover{
+        cursor: pointer;
+      }
     }
     h3 {
       font-size: ${props =>
@@ -172,6 +199,9 @@ export const VerticalBannerContainer = styled.a`
       font-style: ${props => props.ad.tagline.italic && "italic"};
       text-align: ${props => props.ad.tagline.align};
       outline: ${props => ((props.selected === "tagline") && props.ad.tagline_text) && "2px solid #0A88DC"};
+      &:hover{
+        cursor: pointer;
+      }
     }
     p {
       font-size: ${props =>
@@ -181,7 +211,10 @@ export const VerticalBannerContainer = styled.a`
       font-weight: ${props => props.ad.message.bold && "bold"};
       font-style: ${props => props.ad.message.italic && "italic"};
       text-align: ${props => props.ad.message.align};
-      outline: ${props => ((props.selected === "message") && props.ad.message_text) && "2px solid #0A88DC"}
+      outline: ${props => ((props.selected === "message") && props.ad.message_text) && "2px solid #0A88DC"};
+      &:hover{
+        cursor: pointer;
+      }
     }
   }
   button {
@@ -198,6 +231,9 @@ export const VerticalBannerContainer = styled.a`
     outline: ${props => ((props.selected === "button") && props.ad.button_text) && "2px solid #0A88DC"};
     padding: 8px 0;
     border-radius: 3px;
+    &:hover{
+      cursor: pointer;
+    }
   }
 `;
 

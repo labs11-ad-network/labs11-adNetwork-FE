@@ -184,6 +184,7 @@ export class AdGenerator extends Component {
   generateSnapshot = async id => {
     const ad = document.getElementById(id);
     const canvas = await html2canvas(ad);
+    console.log(canvas.toDataURL())
     return canvas.toDataURL();
   };
 
@@ -204,27 +205,30 @@ export class AdGenerator extends Component {
     return this.props.offers.length ? (
       <AdGeneratorContainer>
         <LeftSection>
-          <AdForm
-            handleChange={this.handleChange}
-            handleElementChange={this.handleElementChange}
-            handleTextChange={this.handleTextChange}
-            handleFileChange={this.handleFileChange}
-            productData={productData}
-            offers={offers}
-            selected={currentElement}
-          />
-          <Controls
-            customizeElement={this.customizeElement}
-            toggleElementStyle={this.toggleElementStyle}
-            customizeElementSize={this.customizeElementSize}
-            sizeValue={productData[currentElement].size}
-          />
+          <div className="template-selector">
+            <h1>Select Size</h1>
+            <TemplateSelectors handleChange={this.handleChange} selected={currentElement}/>
+          </div>
+          <div className="form">
+            <h1>Customize Your Ad</h1>
+            <AdForm
+              handleChange={this.handleChange}
+              handleElementChange={this.handleElementChange}
+              handleTextChange={this.handleTextChange}
+              handleFileChange={this.handleFileChange}
+              productData={productData}
+              offers={offers}
+              selected={currentElement}
+            />
+          </div>
+          <CreateAdButton onClick={this.createAd}>
+            Create Ad
+          </CreateAdButton>
         </LeftSection>
         <RightSection>
-          <div className="template-selector">
-            <TemplateSelectors handleChange={this.handleChange} />
-          </div>
           <div className="ad-preview">
+          <div></div>
+          <div className="ad-container">
             <div id="advertisment">
               <AdHoc 
                 ad={productData} 
@@ -232,10 +236,16 @@ export class AdGenerator extends Component {
                 selected={currentElement}
               />
             </div>
+            </div>
+            <div className="controls">
+              <Controls
+                customizeElement={this.customizeElement}
+                toggleElementStyle={this.toggleElementStyle}
+                customizeElementSize={this.customizeElementSize}
+                sizeValue={productData[currentElement].size}
+              />
+            </div>
           </div>
-          <CreateAdButton onClick={this.createAd}>
-            Create Ad
-          </CreateAdButton>
         </RightSection>
       </AdGeneratorContainer>
     ) : (

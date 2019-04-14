@@ -3,50 +3,83 @@ import styled from 'styled-components';
 export const AdGeneratorContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  height: 95%;
 `;
 
 export const LeftSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 100%;
+  margin: 15px;
+  .template-selector {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     background-color: #ffffff;
-    margin: 15px;
+    margin: 0 0 10px 0;
+    padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     border-radius: 15px;
-    width: 50%;
+    h1{
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 15px 0;
+    }
+  }
+  .form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+    margin: 15px 0;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    border-radius: 15px;
+    h1{
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 15px 0;
+    }
+  }
 `
 
 export const RightSection = styled.div`
+    display: flex;
+    flex-direction: column;
     width: 50%;
-    .template-selector {
-      display: flex;
-      background-color: #ffffff;
-      margin: 15px;
-      padding: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-      border-radius: 15px;
-      justify-content: center;
-    }
     .ad-preview {
       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       background-color: #ffffff;
       margin: 15px;
-      min-height: 670px;
-      padding: 10px;
+      min-height: 100%;
+      max-height: 100%;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
       border-radius: 15px;
-      padding: 25px;
-      justify-content: center;
-      align-items: center;
+      .ad-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 600px;
+      }
+      .controls{
+        display: flex;
+        flex-direction: column;
+        justify-self: flex-end;
+        width: 100%;
+      }
     }
 `
 
 export const CreateAdButton = styled.button`
   display: flex;
   justify-content: center;
-  width: 96.5%;
-  margin:  0 15px 15px 15px;
+  width: 100%;
   padding: 20px 0;
+  margin: 10px 0 0 0;
   border-radius: 8px;
   border: unset;
   font-size: 1.2rem;
