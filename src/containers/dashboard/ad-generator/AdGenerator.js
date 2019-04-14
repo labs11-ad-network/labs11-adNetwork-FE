@@ -132,58 +132,47 @@ export class AdGenerator extends Component {
     });
   };
 
-  customizeElement = e => {
+  customizeElement = (e, name, value) => {
+    e.stopPropagation();
+    console.log(e, name, value)
     this.setState({
       ...this.state,
       productData: {
         ...this.state.productData,
         [this.state.currentElement]: {
           ...this.state.productData[this.state.currentElement],
-          [e.target.name]: e.target.value
+          [e.target.name || name]: e.target.value || value
         }
       }
     });
   };
 
-  customizeElementSize = (e, value) => {
+  toggleElementStyle = (e, name) => {
+    console.log(e, name)
     this.setState({
       ...this.state,
       productData: {
         ...this.state.productData,
         [this.state.currentElement]: {
           ...this.state.productData[this.state.currentElement],
-          size: value
+          [e.target.name || name]: !this.state.productData[this.state.currentElement][e.target.name || name]
         }
       }
     });
   };
 
-  toggleElementStyle = e => {
-    this.setState({
-      ...this.state,
-      productData: {
-        ...this.state.productData,
-        [this.state.currentElement]: {
-          ...this.state.productData[this.state.currentElement],
-          [e.target.name]: !this.state.productData[this.state.currentElement][
-            e.target.name
-          ]
-        }
-      }
-    });
-  };
-
-  handleElementChange = e => {
+  handleElementChange = (e, name, value) => {
     e.preventDefault();
     this.setState({
       ...this.state,
-      [e.target.name]: e.target.value
+      [e.target.name || name]: e.target.value || value
     });
   };
 
   generateSnapshot = async id => {
     const ad = document.getElementById(id);
     const canvas = await html2canvas(ad);
+    console.log(canvas.toDataURL())
     return canvas.toDataURL();
   };
 
@@ -204,34 +193,46 @@ export class AdGenerator extends Component {
     return this.props.offers.length ? (
       <AdGeneratorContainer>
         <LeftSection>
-          <AdForm
-            handleChange={this.handleChange}
-            handleElementChange={this.handleElementChange}
-            handleTextChange={this.handleTextChange}
-            handleFileChange={this.handleFileChange}
-            productData={productData}
-            offers={offers}
-            selected={currentElement}
-          />
-          <Controls
-            customizeElement={this.customizeElement}
-            toggleElementStyle={this.toggleElementStyle}
-            customizeElementSize={this.customizeElementSize}
-            sizeValue={productData[currentElement].size}
-          />
-        </LeftSection>
-        <RightSection>
           <div className="template-selector">
-            <TemplateSelectors handleChange={this.handleChange} />
+            <h1>Select Size</h1>
+            <TemplateSelectors handleChange={this.handleChange} selected={currentElement}/>
           </div>
-          <div className="ad-preview">
-            <div id="advertisment">
-              <AdHoc ad={productData} />
-            </div>
+          <div className="form">
+            <h1>Customize Your Ad</h1>
+            <AdForm
+              handleChange={this.handleChange}
+              handleElementChange={this.handleElementChange}
+              handleTextChange={this.handleTextChange}
+              handleFileChange={this.handleFileChange}
+              productData={productData}
+              offers={offers}
+              selected={currentElement}
+            />
           </div>
           <CreateAdButton onClick={this.createAd}>
             Create Ad
           </CreateAdButton>
+        </LeftSection>
+        <RightSection>
+          <div className="ad-preview">
+          <div></div>
+          <div className="ad-container">
+            <div id="advertisment">
+              <AdHoc 
+                ad={productData} 
+                handleElementChange={this.handleElementChange}
+                selected={currentElement}
+              />
+            </div>
+            </div>
+            <div className="controls">
+              <Controls
+                customizeElement={this.customizeElement}
+                toggleElementStyle={this.toggleElementStyle}
+                sizeValue={productData[currentElement].size}
+              />
+            </div>
+          </div>
         </RightSection>
       </AdGeneratorContainer>
     ) : (

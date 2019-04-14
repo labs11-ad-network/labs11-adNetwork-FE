@@ -1,17 +1,13 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-import { 
-    Nav,
-    HomeButton, 
-    ButtonContainer
-} from '../dashboardStyles.js';
-import NavButton from './NavButton.js';
+import { Nav, HomeButton, ButtonContainer } from "../dashboardStyles.js";
+import NavButton from "./NavButton.js";
 
 export class DashboardNav extends Component {
-  state={
-      navOpen: false
-  }
+  state = {
+    navOpen: false
+  };
 
   render() {
     return (
@@ -19,27 +15,33 @@ export class DashboardNav extends Component {
         <Nav>
           <HomeButton>
             <Link to="/">
-                <i className="fas fa-home"/>
+              <i className="fas fa-home" />
             </Link>
           </HomeButton>
           <ButtonContainer>
-              <NavButton 
-                  iconClass="fas fa-chart-line" 
-                  pathExtension="/dashboard"
+            <div data-btn="dashboard-button">
+              <NavButton
+                iconClass="fas fa-chart-line"
+                pathExtension="/dashboard"
               />
-              <NavButton 
-                  iconClass="fas fa-list" 
-                  pathExtension="/dashboard/offers"
+            </div>
+            <div data-btn="offers-button">
+              <NavButton
+                iconClass="fas fa-list"
+                pathExtension="/dashboard/offers"
               />
-              <NavButton 
-                  iconClass="fas fa-cog"
-                  pathExtension="/dashboard/settings"
+            </div>
+            <div data-btn="settings-button">
+              <NavButton
+                iconClass="fas fa-cog"
+                pathExtension="/dashboard/settings"
               />
-          </ButtonContainer>   
+            </div>
+          </ButtonContainer>
         </Nav>
       </>
-    )
+    );
   }
 }
 
-export default DashboardNav
+export default DashboardNav;

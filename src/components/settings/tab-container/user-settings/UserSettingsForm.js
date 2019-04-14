@@ -6,24 +6,15 @@ import { Form } from "../../settingsStyles.js";
 
 class UserSettingsForm extends Component {
   state = {
-    userData: {
-      name: "",
-      nickname: "",
-      phone: "",
-      user_img: ""
-    }
+    userData: {}
   };
 
-  componentDidMount() {
-    const { name, nickname, phone } = this.props.currentUser;
-    this.setState({
-      userData: {
-        name,
-        nickname,
-        phone: phone || "",
-        user_img: ""
-      }
-    });
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentUser !== this.props.currentUser) {
+      this.setState({
+        userData: this.props.currentUser
+      });
+    }
   }
 
   handleChange = e => {
@@ -47,8 +38,9 @@ class UserSettingsForm extends Component {
 
   changeUserData = e => {
     e.preventDefault();
-    this.props.changeUserData(this.state.userData);
+    this.props.changeUserData({...this.props.currentUser, ...this.state.userData});
   };
+
   render() {
     const { name, nickname, phone } = this.state.userData;
     return (
@@ -79,7 +71,7 @@ class UserSettingsForm extends Component {
             onChange={this.handleChange}
           />
           {/* --------------------- image upload --------------------- */}
-          <label htmlFor="user_img">Profile Picture</label>          
+          <label htmlFor="user_img">Profile Picture</label>
           <input
             accept="image/*"
             type="file"
@@ -102,7 +94,7 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { 
-    changeUserData,
+  {
+    changeUserData
   }
 )(UserSettingsForm);

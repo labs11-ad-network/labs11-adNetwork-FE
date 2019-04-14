@@ -4,7 +4,10 @@ import { scaleLinear } from "d3-scale";
 import { connect } from "react-redux";
 import moment from "moment";
 
-import { getPayouts, getPayments } from "../../../store/actions/stripeAction.js";
+import {
+  getPayouts,
+  getPayments
+} from "../../../store/actions/stripeAction.js";
 import { getAnalytics } from "../../../store/actions/analyticsAction.js";
 import DatePicker from "../../../components/analytics/datepicker/DatePicker.js";
 import { BrowserInfo } from "../../../components/analytics/graphs/PieChart";
@@ -12,14 +15,17 @@ import RevenueChart from "../../../components/analytics/graphs/AreaChart";
 import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";
 import MapChart from "../../../components/analytics/map/MapChart.js";
+import TopTenOffers from "../../../components/analytics/graphs/TopTenOffers.js";
+// import RadarChart from "../../../components/analytics/graphs/RadarChart.js";
+import DeviceChart from "../../../components/analytics/graphs/DeviceChart.js";
 
 const CardContainer = styled.div`
   display: flex;
-  @media (max-width: 1350px){
+  @media (max-width: 1350px) {
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  @media (max-width: 1200px){
+  @media (max-width: 1200px) {
     width: 95%;
     margin: 0 auto;
   }
@@ -28,33 +34,46 @@ const CardContainer = styled.div`
 const RowContainer = styled.div`
   display: flex;
   width: 100%;
-  .main-tables-container{
+  .main-tables-container {
     width: 100%;
     display: flex;
-    @media(max-width: 1200px){
+    @media (max-width: 1200px) {
       width: 100%;
       box-sizing: border-box;
       flex-direction: column;
     }
   }
-  .tables-container{
+  .tables-container {
     display: flex;
     width: 100%;
-    @media(max-width: 1200px){
+    @media (max-width: 1200px) {
       box-sizing: border-box;
       flex-direction: column;
     }
   }
-  .revenue-browser-row{
+  .revenue-browser-row {
     display: flex;
     width: 100%;
-    @media (max-width: 1200px){
+    @media (max-width: 1200px) {
       width: 100%;
       box-sizing: border-box;
       flex-direction: column;
     }
   }
-  @media (max-width: 1200px){
+  .top-offers-row{
+    display: flex;
+    width: 100%;
+    height: 500px;
+    max-height: 500px;
+    @media (max-width: 1200px) {
+      width: 100%;
+      height: unset;
+      max-height: unset;
+      box-sizing: border-box;
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 1200px) {
     box-sizing: border-box;
     flex-direction: column;
     width: 95%;
@@ -66,9 +85,9 @@ class Analytics extends Component {
   state = {
     started_at: "",
     ended_at: ""
-  }
+  };
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.getPayouts();
     this.props.getPayments();
     this.props.getAnalytics(this.props.currentAnalyticId);
@@ -83,23 +102,27 @@ class Analytics extends Component {
   componentWillUnmount() {
     clearInterval(this.analyticsInterval);
   }
-  
+
   getFilteredAnalytics = () => {
     this.props.getAnalytics(
       this.props.currentAnalyticId,
       this.getQueryString()
     );
   };
-    
+
   getQueryString = () => {
-    if(this.state.started_at && this.state.ended_at){
-      const started = `${moment(this.state.started_at).format("YYYY-MM-DD")}T00:00:00Z`;
-      const ended = `${moment(this.state.ended_at).format("YYYY-MM-DD")}T23:59:00Z`;
-      return `?started_at=${started}&ended_at=${ended}`
-    }else{
-      return ""
+    if (this.state.started_at && this.state.ended_at) {
+      const started = `${moment(this.state.started_at).format(
+        "YYYY-MM-DD"
+      )}T00:00:00Z`;
+      const ended = `${moment(this.state.ended_at).format(
+        "YYYY-MM-DD"
+      )}T23:59:00Z`;
+      return `?started_at=${started}&ended_at=${ended}`;
+    } else {
+      return "";
     }
-  }
+  };
 
   handleDateChange = (date, name) => {
     this.setState({ [name]: date });
@@ -140,29 +163,20 @@ class Analytics extends Component {
   };
 
   render() {
-    const { 
-      analytics, 
-      payouts, 
-      payments,
-    } = this.props;
+    const { analytics, payouts, payments } = this.props;
 
-    const {
-      started_at,
-      ended_at
-    } = this.state;
-    
+    const { started_at, ended_at } = this.state;
+
     return (
       <>
         {analytics.length !== 0 && (
           <>
-            <div>
-              <DatePicker
-                startedAt={started_at}
-                endedAt={ended_at}
-                getFilteredAnalytics={this.getFilteredAnalytics}
-                handleDateChange={this.handleDateChange}
-              />
-            </div>
+            <DatePicker
+              startedAt={started_at}
+              endedAt={ended_at}
+              getFilteredAnalytics={this.getFilteredAnalytics}
+              handleDateChange={this.handleDateChange}
+            />
             <CardContainer>
               <Card
                 icon="fas fa-eye"
@@ -194,11 +208,9 @@ class Analytics extends Component {
                 }
                 ctr={this.getCTR()}
                 actions={[...analytics.clicks, ...analytics.impressions].sort(
-                    (first, second) =>
-                      Date.parse(second.created_at) - 
-                      Date.parse(first.created_at)
-                    )
-                }
+                  (first, second) =>
+                    Date.parse(second.created_at) - Date.parse(first.created_at)
+                )}
                 firstColor="#ef5350"
                 secondColor="#e53935"
               />
@@ -214,29 +226,37 @@ class Analytics extends Component {
             </CardContainer>
             <RowContainer>
               <div className="revenue-browser-row">
-                <RevenueChart 
-                  data={payments.length ? payments : payouts.length ? payouts : []}
+                <RevenueChart
+                  data={
+                    payments.length ? payments : payouts.length ? payouts : []
+                  }
                 />
-                <BrowserInfo data={analytics.browserCount}/>
+                <BrowserInfo data={analytics.browserCount} />
               </div>
             </RowContainer>
             <RowContainer>
               <div className="main-tables-container">
                 <div className="tables-container">
-                  <Table 
+                  <Table
                     data={analytics.impressions}
                     dataType="Impressions"
                     growth={analytics.growth.impressions || 0}
                   />
-                  <Table 
-                    data={analytics.clicks} 
+                  <Table
+                    data={analytics.clicks}
                     dataType="Clicks"
                     growth={analytics.growth.clicks || 0}
                   />
                 </div>
-                <MapChart 
-                  data={this.getCityData()} 
-                />
+                <MapChart data={this.getCityData()} />
+              </div>
+            </RowContainer>
+
+            <RowContainer>
+              <div className="top-offers-row">
+                <TopTenOffers data={analytics.offersRanking} />
+                {/* <RadarChart data={analytics.devices} /> */}
+                <DeviceChart data={analytics.devices} />
               </div>
             </RowContainer>
           </>
@@ -249,8 +269,8 @@ class Analytics extends Component {
 const mapStateToProps = state => ({
   analytics: state.analyticsReducer.analytics,
   payments: state.stripeReducer.payments,
-  payouts: state.stripeReducer.payouts,
-})
+  payouts: state.stripeReducer.payouts
+});
 
 export default connect(
   mapStateToProps,

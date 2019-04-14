@@ -1,5 +1,5 @@
-import React from 'react';
-import LiveChat from 'react-livechat'
+import React from "react";
+import LiveChat from "react-livechat";
 
 const ChatWidget = () => {
   return (

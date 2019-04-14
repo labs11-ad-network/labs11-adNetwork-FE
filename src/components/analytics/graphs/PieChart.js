@@ -79,13 +79,10 @@ export const BrowserInfo = props => {
 
   return (
     <GraphContainer>
-      <GraphHeader>
+      <GraphHeader  bottomBorder>
         <div>
           <h2>Browsers</h2>
           <h3>based on clicks and impressions</h3>
-        </div>
-        <div>
-          <h2 className="percentage">+23%<i className="fas fa-arrow-circle-up"/></h2>
         </div>
       </GraphHeader>
       <PieChart width={225} height={225}>

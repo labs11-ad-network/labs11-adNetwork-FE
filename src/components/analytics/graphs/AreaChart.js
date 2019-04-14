@@ -17,7 +17,7 @@ class RevenueChart extends React.Component {
   render() {
     return (
       <GraphContainer>
-          <GraphHeader>
+          <GraphHeader bottomBorder>
             <div>
               <h2>Revenue</h2>
               <h3>growth over time</h3>
@@ -32,7 +32,7 @@ class RevenueChart extends React.Component {
                   data={this.props.data}
                   margin={{
                     top: 10,
-                    right: 30,
+                    right: 50,
                     left: 0,
                     bottom: 0
                   }}

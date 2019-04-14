@@ -6,6 +6,11 @@ export const DatePickerContainer = styled.div`
     justify-content: flex-end;
     align-items: flex-end;
     margin: 11px 15px 0 10px;
+    div{
+        display: flex;
+        justify-content: flex-end;
+    align-items: flex-end;
+    }
 `;
 
 export const DatePickerInput = styled.div`

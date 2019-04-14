@@ -15,7 +15,7 @@ const ExpertTeamCard = ({ teamBg, profilePic, name }) => {
         <p className="team-sub_title">Web Developer</p>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate
-          quis debitis officia optio.
+          quis debitis officia.
         </p>
 
         <div className="team-socials">

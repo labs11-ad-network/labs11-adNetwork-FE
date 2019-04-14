@@ -14,7 +14,7 @@ const styles = {
 
 class SimpleSlider extends React.Component {
   render() {
-    const { classes, customizeElementSize, sizeValue } = this.props;
+    const { classes, customizeElement, sizeValue } = this.props;
 
     return (
       <div className={classes.root}>
@@ -23,7 +23,7 @@ class SimpleSlider extends React.Component {
           value={sizeValue}
           name="size"
           aria-labelledby="label"
-          onChange={customizeElementSize}
+          onChange={(e, value) => customizeElement(e, "size", value)}
         />
       </div>
     );

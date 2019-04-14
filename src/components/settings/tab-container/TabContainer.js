@@ -8,17 +8,16 @@ import Timeline from "./payments/Timeline.js";
 
 class TabContainer extends React.Component {
   render() {
-    
-    const { 
-      currentUser, 
+    const {
+      currentUser,
       payments,
-      payouts, 
+      payouts,
       handleTabChange,
       tabValue
     } = this.props;
 
     return (
-      <MainTabContainer>
+      <MainTabContainer data-btn='edit_profile-tab'>
         <Tabs
           value={tabValue}
           indicatorColor="primary"
@@ -30,6 +29,7 @@ class TabContainer extends React.Component {
             label={
               currentUser.acct_type === "advertiser" ? "Payments" : "Payouts"
             }
+            data-btn='view_payments-tab'
           />
         </Tabs>
 

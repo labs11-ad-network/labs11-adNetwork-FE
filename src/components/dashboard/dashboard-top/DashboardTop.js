@@ -68,6 +68,7 @@ class DashboardTop extends React.Component {
       isLoadingOffers,
       isLoadingStripe,
       isLoadingAnalytics,
+      isLoadingNotifications,
       auth
     } = this.props;
 
@@ -120,7 +121,9 @@ class DashboardTop extends React.Component {
             />
             {/* --------------------- Create Advertisement Button ------------------ */}
             {currentUser.acct_type === "advertiser" && (
-              <Link to="/dashboard/create-ad">Create Advertisement</Link>
+              <Link data-btn="create_ad-button" to="/dashboard/create-ad">
+                Create Advertisement
+              </Link>
             )}
           </LeftSection>
           <RightSection>
@@ -132,6 +135,7 @@ class DashboardTop extends React.Component {
                   userNotifications={userNotifications}
                   handleToggle={this.handleNotificationsToggle}
                   handleClose={this.handleNotificationsClose}
+                  location={this.props.location}
                 />
                 {/* --------------------- User menu ------------------ */}
                 <UserDropdown
@@ -145,11 +149,13 @@ class DashboardTop extends React.Component {
             )}
           </RightSection>
         </NavContainer>
-        {(isLoadingAds ||
-          isLoadingAgreements ||
-          isLoadingOffers ||
-          isLoadingStripe ||
-          isLoadingAnalytics) && <LinearLoader />}
+        {!isLoadingNotifications &&
+          !isLoadingAnalytics &&
+          (isLoadingAds ||
+            isLoadingAgreements ||
+            isLoadingOffers ||
+            isLoadingStripe ||
+            isLoadingAnalytics) && <LinearLoader />}
       </>
     );
   }
@@ -160,7 +166,8 @@ const mapStateToProps = state => ({
   isLoadingAds: state.adReducer.isLoading,
   isLoadingAgreements: state.agreementsReducer.isLoading,
   isLoadingOffers: state.offersReducer.isLoading,
-  isLoadingStripe: state.stripeReducer.isLoading
+  isLoadingStripe: state.stripeReducer.isLoading,
+  isLoadingNotifications: state.notificationsReducer.isLoading
 });
 
 export default connect(

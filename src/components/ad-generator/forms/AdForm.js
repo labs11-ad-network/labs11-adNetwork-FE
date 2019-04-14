@@ -6,7 +6,6 @@ const AdForm = props => {
   return (
     <>
       <Form onSubmit={props.createAd}>
-        <h2>Create your ad.</h2>
         <div className="form-container">
           <InputGroup>
             <label htmlFor="offer_id" />
