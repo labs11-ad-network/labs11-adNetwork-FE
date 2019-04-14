@@ -10,25 +10,30 @@ import Checkout from '../../checkout/Checkout.js';
 
 const ProfileCard = props => {
   const { currentUser } = props;
-  const { offers, ads, agreements } = props.currentUser;
+  const { offers, ads, agreements, name, acct_type, email, image_url, stripe_payout_id } = props.currentUser;
   if (!currentUser) {
     return <></>;
   }
   return (
     <ProfileCardContainer>
       <ProfileCardTop>
-        <img src={currentUser.image_url} alt="" />
+        <img src={image_url} alt="" />
         <div>
-          <h1>{currentUser.name}</h1>
-          <h2>{currentUser.acct_type}</h2>
-          <h3>{currentUser.email}</h3>
-          <Checkout
-            btn_text={
-              currentUser.acct_type === 'advertiser'
-                ? 'Change Payment Info'
-                : 'Change Payout Method'
-            }
-          />
+          <h1>{name}</h1>
+          <h2>{acct_type}</h2>
+          <h3>{email}</h3>
+          {currentUser.acct_type === 'advertiser' ?
+            <Checkout
+              btn_text='Change Payment Info'
+            /> :
+            <a
+              href={`https://connect.stripe.com/express/oauth/authorize?client_id=ca_Eq3JPTMy0ZrHBcEaY2cQLuaIeCGQNUR9&stripe_user[email]=${email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button>{stripe_payout_id ? "Change Stripe Account" : "Connect Stripe"}</button>
+            </a>
+          }
         </div>
       </ProfileCardTop>
       <ProfileCardBottom>

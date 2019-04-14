@@ -101,9 +101,8 @@ export const BottomLeft = styled.div`
         border: unset;
         color: #FFFFFF;
         transition: .2s;
-        &:hover{
-            cursor: pointer;
-            background-color: #086FB3;
+        &:focus{
+            outline: none;
         }
     }
 `;

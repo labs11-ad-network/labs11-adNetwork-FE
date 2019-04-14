@@ -5,28 +5,23 @@ export const TemplateSelectors = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin: 15px;
-  h2 {
-    color: #6f6f6f;
-    text-align: center;
-    font-size: 1.5rem;
-    margin: 10px 0;
+  margin: 0 0 10px 0;
+`;
+
+export const TemplateButton = styled.button`
+  border-radius: 15px;
+  border: 5px solid rgba(0, 0, 0, 0.1);
+  background: #F1F1F1;
+  height: 110px;
+  width: 110px;
+  margin: 10px;
+  transition: .2s;
+  border: ${props => props.selected === props.value && "5px solid #16B7FF"};
+  &:hover{
+    cursor: pointer;
   }
-  button {
-    border-radius: 15px;
-    border: 5px solid rgba(0, 0, 0, 0.1);
-    background: #F1F1F1;
-    height: 110px;
-    width: 110px;
-    margin: 10px;
-    transition: .2s;
-    &:hover{
-      cursor: pointer;
-    }
-    &:focus{
-      outline: none;
-      border: 5px solid #16B7FF;
-    }
+  &:focus{
+    outline: none;
   }
 `;
 
@@ -37,12 +32,7 @@ export const Form = styled.form`
   justify-content: space-between;
   width: 93%;
   height: 100%;
-  margin : 25px auto;
-  h2{
-    font-size: 1.6rem;
-    text-align: center;
-    margin: 10px 0 20px 0;
-  }
+  margin : 0 auto 20px auto;
   .form-container{
     display: flex;
     flex-direction: column;
@@ -93,8 +83,9 @@ export const InputGroup = styled.div`
 `;
 
 export const ImageUpload = styled.input`
-  height: 20%;
+  height: 50px;
   padding: 10px;
+  margin-top: 10px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);  
