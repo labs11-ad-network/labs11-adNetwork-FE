@@ -11,34 +11,11 @@ class UserSettingsForm extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.currentUser !== this.props.currentUser) {
-<<<<<<< HEAD
-      const { name, nickname, phone } = this.props.currentUser;
-      this.setState({
-        userData: {
-          name,
-          nickname,
-          phone: phone || "",
-          user_img: ""
-        }
-=======
       this.setState({
         userData: this.props.currentUser
->>>>>>> master
       });
     }
   }
-
-  // componentDidMount() {
-  //   const { name, nickname, phone } = this.props.currentUser;
-  //   this.setState({
-  //     userData: {
-  //       name,
-  //       nickname,
-  //       phone: phone || "",
-  //       user_img: ""
-  //     }
-  //   });
-  // }
 
   handleChange = e => {
     e.persist();
@@ -61,7 +38,10 @@ class UserSettingsForm extends Component {
 
   changeUserData = e => {
     e.preventDefault();
-    this.props.changeUserData({...this.props.currentUser, ...this.state.userData});
+    this.props.changeUserData({
+      ...this.props.currentUser,
+      ...this.state.userData
+    });
   };
 
   render() {
