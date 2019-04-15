@@ -5,6 +5,7 @@ import { TwoPersonSvg, BirdSvg, SkyCloudSvg } from "./HeaderSvg";
 
 import classnames from "classnames";
 
+import logo from "../../../assets/landing-logo.png";
 import NavList from "../NavList";
 import NavDrawer from "../NavDrawer";
 
@@ -92,8 +93,9 @@ class Header extends Component {
               })}
               ref={this.myRef}
             >
-              <a name="header" href="/" className="logo">
-                LOGO
+              <a name="header" href="/" className="landing-logo">
+                {/* LOGO */}
+                {/* <img src={logo} alt="logo" className="landing-logo" /> */}
               </a>
 
               <NavList history={history} />

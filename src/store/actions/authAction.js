@@ -49,6 +49,10 @@ export const changeUserData = user => dispatch => {
     newUser.append("stripe_cust_id", user.stripe_cust_id)
   }
   newUser.append("show_tour", user.show_tour);
+<<<<<<< HEAD
+  newUser.append("stripe_cust_id", user.stripe_cust_id);
+=======
+>>>>>>> master
 
   axios
     .put(`${URL}/api/users`, newUser)

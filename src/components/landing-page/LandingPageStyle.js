@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import checks from "../../assets/checks.svg";
+import logo from "../../assets/landing-logo.png";
 
 export const LandingPageStyle = styled.div`
   @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
@@ -21,7 +22,7 @@ export const LandingPageStyle = styled.div`
     line-height: normal;
     letter-spacing: normal;
     /* color: #0e4de3; */
-    color: #0A88DC;
+    color: #0a88dc;
     text-align: center;
     font-size: 13px;
     @media (min-width: 481px) {
@@ -63,8 +64,8 @@ export const LandingPageStyle = styled.div`
     margin: 20px auto;
     width: 480px;
     margin-top: 150px;
-}
   }
+
   @media (min-width: 940px) {
     .image-box-third {
       margin: 50px 0 0 0;
@@ -129,7 +130,7 @@ export const LandingPageStyle = styled.div`
       max-width: 150px;
       padding: 19px 20.5px;
       &:hover {
-    background-color: #0e4de3;
+        background-color: #0e4de3;
         box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
       }
     }
@@ -164,18 +165,17 @@ export const LandingPageStyle = styled.div`
     height: 100%;
     @media (min-width: 940px) {
       margin-top: 150px;
-
     }
-      .footer-ptag {
-        text-align:center;
-      }
+    .footer-ptag {
+      text-align: center;
+    }
+
     p {
       color: #5b5d61;
       font-size: 13px;
-      text-align:center;
+      text-align: center;
       @media (min-width: 481px) {
         font-size: 15px;
-       
       }
       @media (min-width: 940px) {
         font-size: 17px;
@@ -189,15 +189,13 @@ export const LandingPageStyle = styled.div`
       align-items: center;
       flex-direction: column;
       @media (min-width: 481px) {
-      flex-direction: column;
-      justify-content: space-between;
+        flex-direction: column;
+        justify-content: space-between;
       }
       @media (min-width: 940px) {
         flex-direction: row;
       }
     }
-  }
-
 
     .footer-flex {
       display: flex;
@@ -239,6 +237,19 @@ export const LandingPageStyle = styled.div`
       &:hover {
         background: #2f5bea;
       }
+    }
+  }
+
+  .landing-logo {
+    width: 60px;
+    height: 60px;
+    background: url(${logo});
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    top: 7px;
+    @media (min-width: 481px) {
+      position: initial;
     }
   }
 `;
