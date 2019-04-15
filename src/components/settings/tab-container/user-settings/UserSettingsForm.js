@@ -38,7 +38,10 @@ class UserSettingsForm extends Component {
 
   changeUserData = e => {
     e.preventDefault();
-    this.props.changeUserData({...this.props.currentUser, ...this.state.userData});
+    this.props.changeUserData({
+      ...this.props.currentUser,
+      ...this.state.userData
+    });
   };
 
   render() {
