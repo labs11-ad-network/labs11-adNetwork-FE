@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 
 import { changeUserData } from "../../store/actions/authAction.js";
+import { TourWelcome } from "./tourStyles.js";
 
 class SettingTour extends React.Component {
   state = {
@@ -12,22 +13,32 @@ class SettingTour extends React.Component {
       {
         userType: "both",
         selector: ".first-step",
-        content: () => {
+        content: (props) => {
           return (
-            <>
-              <h1>Welcome to the Offers page</h1>
-              <Button
-                color="primary"
-                onClick={() => {
-                  this.props.changeUserData({
-                    ...this.props.currentUser,
-                    show_tour: false
-                  });
-                }}
-              >
-                Never see this again
-              </Button>
-            </>
+            <TourWelcome>
+              <h2>Would you like to continue your tour?</h2>
+              <div>
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    props.goTo(2)
+                  }}
+                >
+                  Yes
+                </Button>
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    this.props.changeUserData({
+                      ...this.props.currentUser,
+                      show_tour: false
+                    });
+                  }}
+                >
+                  No
+                </Button>
+              </div>
+            </TourWelcome>
           );
         },
         style: {
@@ -73,7 +84,7 @@ class SettingTour extends React.Component {
         userType: "both",
         content: () => {
           return (
-            <>
+            <TourWelcome>
               <h2> Now lets go learn about the Settings page</h2>
               <Button
                 color="primary"
@@ -83,7 +94,7 @@ class SettingTour extends React.Component {
               >
                 Lets Go
               </Button>
-            </>
+            </TourWelcome>
           );
         },
         style: {
