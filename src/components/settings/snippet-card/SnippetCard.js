@@ -38,7 +38,7 @@ class SnippetCard extends React.Component {
                 spellCheck={false}
                 value={`<iframe src="https://ladnetwork.netlify.com/ad/${
                   this.props.currentUser.id
-                }/vertical" frameborder="0" scrolling="no" height="670" width="100"></iframe>`}
+                }/vertical" frameborder="0" scrolling="no" height="600" width="120"></iframe>`}
                 readOnly
               />
             </Snippet>
@@ -50,7 +50,7 @@ class SnippetCard extends React.Component {
                 spellCheck={false}
                 value={`<iframe src="https://ladnetwork.netlify.com/ad/${
                   this.props.currentUser.id
-                }/square" frameborder="0" scrolling="no" height="255" width="255"></iframe>`}
+                }/square" frameborder="0" scrolling="no" height="250" width="250"></iframe>`}
                 readOnly
               />
             </Snippet>
