@@ -13,7 +13,8 @@ class TabContainer extends React.Component {
       payments,
       payouts,
       handleTabChange,
-      tabValue
+      tabValue,
+      history
     } = this.props;
 
     return (
@@ -35,7 +36,9 @@ class TabContainer extends React.Component {
 
         {tabValue === 0 && (
           <div>
-            <UserSettingsForm />
+            <UserSettingsForm 
+              history={history}
+            />
           </div>
         )}
 

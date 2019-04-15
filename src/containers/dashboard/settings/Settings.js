@@ -49,7 +49,7 @@ class Settings extends Component {
 
   render() {
     const { tabValue } = this.state;
-    const { currentUser, payouts, payments } = this.props;
+    const { currentUser, payouts, payments, history } = this.props;
 
     return (
       <PageContainer>
@@ -83,6 +83,7 @@ class Settings extends Component {
           currentUser={currentUser}
           handleTabChange={this.handleTabChange}
           tabValue={tabValue}
+          history={history}
         />
       </PageContainer>
     );

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Button from "@material-ui/core/Button";
 
 import { changeUserData } from "../../store/actions/authAction.js";
+import { TourWelcome } from "./tourStyles.js";
 
 class SettingTour extends React.Component {
   state = {
@@ -12,22 +13,32 @@ class SettingTour extends React.Component {
       {
         userType: "both",
         selector: ".first-step",
-        content: () => {
+        content: (props) => {
           return (
-            <>
-              <h1>Welcome to the Settings page</h1>
-              <Button
-                color="primary"
-                onClick={() => {
-                  this.props.changeUserData({
-                    ...this.props.currentUser,
-                    show_tour: false
-                  });
-                }}
-              >
-                Never see this again
-              </Button>
-            </>
+            <TourWelcome>
+              <h2>Would you like to continue the tour?</h2>
+              <div>
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    props.goTo(1)
+                  }}
+                >
+                  Yes
+                </Button>
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    this.props.changeUserData({
+                      ...this.props.currentUser,
+                      show_tour: false
+                    });
+                  }}
+                >
+                  No
+                </Button>
+              </div>
+            </TourWelcome>
           );
         },
         style: {
@@ -79,9 +90,18 @@ class SettingTour extends React.Component {
       },
       {
         userType: "both",
+        selector: "[data-btn='toggle-tour']",
+        content: "You can toggle the tour here if you ever accidently close it and want to learn more.",
+        style: {
+          fontSize: 15,
+          lineHeight: 1.5
+        }
+      },
+      {
+        userType: "both",
         content: () => {
           return (
-            <>
+            <TourWelcome>
               <h1>This is the end of the tour, to finish and stop seeing the tour popups, click the button below.</h1>
               <Button
                 color="primary"
@@ -94,7 +114,7 @@ class SettingTour extends React.Component {
               >
                 Finish Tour
               </Button>
-            </>
+            </TourWelcome>
           );
         },
         style: {
