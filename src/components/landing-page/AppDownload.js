@@ -175,10 +175,7 @@ class AppDownload extends Component {
               >
                 Advanced Features
               </h2>
-              <p>
-                Lorem ipsum dolior sit amet consectetur adipisicing elit. <br />
-                Dicta, reprehenderit?
-              </p>
+              <p />
 
               <div className="feature-row">
                 <div
@@ -267,10 +264,7 @@ class AppDownload extends Component {
               >
                 Screenshots
               </h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />{" "}
-                Dicta, reprehenderit?
-              </p>
+              <p />
               <img
                 className="placeholder-white-iphone"
                 src={placeholder3}
