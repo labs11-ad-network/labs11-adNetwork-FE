@@ -2,8 +2,10 @@ import React from "react";
 import Tour from "reactour";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
+import Logo from "../../assets/256x256.png";
 
 import { changeUserData } from "../../store/actions/authAction.js";
+import { TourWelcome } from "./tourStyles.js";
 
 class DashboardTour extends React.Component {
   state = {
@@ -12,22 +14,36 @@ class DashboardTour extends React.Component {
       {
         userType: "both",
         selector: ".first-step",
-        content: () => {
+        content: (props) => {
           return (
-            <>
-              <h1>Welcome to the LAD Network</h1>
-              <Button
-                color="primary"
-                onClick={() => {
-                  this.props.changeUserData({
-                    ...this.props.currentUser,
-                    show_tour: false
-                  });
-                }}
-              >
-                Never see this again
-              </Button>
-            </>
+            <TourWelcome>
+              <div className="tour-header">
+                <img src={Logo} alt=""/>
+                <h1>Welcome to the LAD Network</h1>
+              </div>
+              <h2>Would you like a tour of our application?</h2>
+              <div>
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    props.goTo(1)
+                  }}
+                >
+                  Yes
+                </Button>
+                <Button
+                  color="primary"
+                  onClick={() => {
+                    this.props.changeUserData({
+                      ...this.props.currentUser,
+                      show_tour: false
+                    });
+                  }}
+                >
+                  No
+                </Button>
+              </div>
+            </TourWelcome>
           );
         },
         style: {
@@ -134,7 +150,7 @@ class DashboardTour extends React.Component {
         userType: "both",
         content: () => {
           return (
-            <>
+            <TourWelcome>
               <h2> Now lets go learn about the Offers page</h2>
               <Button
                 color="primary"
@@ -144,7 +160,7 @@ class DashboardTour extends React.Component {
               >
                 Lets Go
               </Button>
-            </>
+            </TourWelcome>
           );
         },
         style: {
