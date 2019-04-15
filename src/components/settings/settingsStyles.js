@@ -142,7 +142,7 @@ export const Form = styled.form`
         }
         @media (max-width: 665px){
             width: 90%;
-            padding: unset;
+            padding: 15px 0;
         }
     }
 `;
@@ -286,22 +286,29 @@ export const TimelineContainerComponent = styled.div`
     margin: 10px;
 `;
 
-export const ToggleTour = styled.button`
-    width: 500px;
-    font-size: 1.3rem;
-    font-weight: 100;
-    padding: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
-    color: #FFFFFF;
-    background-color: #0A88DC;
-    transition: .2s;
-    &:hover{
-        cursor: pointer;
-        background-color: #086FB3;
-    }
-    @media (max-width: 665px){
-        width: 100%;
+export const ToggleTour = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    button{
+        width: 500px;
+        font-size: 1.3rem;
+        font-weight: 100;
+        padding: 15px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+        color: #FFFFFF;
+        background-color: #0A88DC;
+        transition: .2s;
+        &:hover{
+            cursor: pointer;
+            background-color: #086FB3;
+        }
+        @media (max-width: 665px){
+            width: 90%;
+        }
     }
 `

@@ -85,16 +85,18 @@ class UserSettingsForm extends Component {
             <button type="submit">Save Changes</button>
           </div>
         </Form>
-        <ToggleTour 
-          onClick={async() => {
-            if(!this.props.currentUser.show_tour){
-              await this.props.history.push('/dashboard')
-            }
-            this.props.changeUserData({...this.props.currentUser, show_tour: !this.props.currentUser.show_tour })
-          }}
-          data-btn='toggle-tour'
-        >
-          Toggle Tour
+        <ToggleTour>
+          <button 
+            onClick={async() => {
+              if(!this.props.currentUser.show_tour){
+                await this.props.history.push('/dashboard')
+              }
+              this.props.changeUserData({...this.props.currentUser, show_tour: !this.props.currentUser.show_tour })
+            }}
+            data-btn='toggle-tour'
+          >
+            Toggle Tour
+          </button>
         </ToggleTour>
       </>
     );
