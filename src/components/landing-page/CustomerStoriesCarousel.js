@@ -30,14 +30,7 @@ class CustomerStoriesCarousel extends Component {
           >
             Costumer Stories
           </h2>
-          <p
-            className="wow fadeInUp"
-            data-wow-delay=".2s"
-            data-wow-duration="2s"
-          >
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam
-            quae autem beatae delectus, tempore voluptatum?
-          </p>
+          <p />
 
           <div className="card-testimonial">
             <OwlCarousel
