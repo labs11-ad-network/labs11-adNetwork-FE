@@ -2,8 +2,10 @@ import React from "react";
 import Tour from "reactour";
 import Button from "@material-ui/core/Button";
 import { connect } from "react-redux";
+import Logo from "../../assets/256x256.png";
 
 import { changeUserData } from "../../store/actions/authAction.js";
+import { TourWelcome } from "./tourStyles.js";
 
 class DashboardTour extends React.Component {
   state = {
@@ -14,8 +16,11 @@ class DashboardTour extends React.Component {
         selector: ".first-step",
         content: () => {
           return (
-            <>
-              <h1>Welcome to the LAD Network</h1>
+            <TourWelcome>
+              <div>
+                <img src={Logo} alt=""/>
+                <h1>Welcome to the LAD Network</h1>
+              </div>
               <Button
                 color="primary"
                 onClick={() => {
@@ -25,9 +30,9 @@ class DashboardTour extends React.Component {
                   });
                 }}
               >
-                Never see this again
+                Stop Seeing This
               </Button>
-            </>
+            </TourWelcome>
           );
         },
         style: {
