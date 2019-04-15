@@ -101,12 +101,13 @@ export const Form = styled.form`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 15px 35px;
     div{
         display: flex;
         flex-direction: column;
         width: 500px;
-        margin: 0 auto;
+        padding: 35px;
+        margin: 15px auto;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         h2{
             color: #6F6F6F;
             text-align: center;
@@ -140,7 +141,8 @@ export const Form = styled.form`
             }
         }
         @media (max-width: 665px){
-            width: 100%;
+            width: 90%;
+            padding: unset;
         }
     }
 `;
@@ -283,3 +285,23 @@ export const TimelineItem = styled.div`
 export const TimelineContainerComponent = styled.div`
     margin: 10px;
 `;
+
+export const ToggleTour = styled.button`
+    width: 500px;
+    font-size: 1.3rem;
+    font-weight: 100;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+    color: #FFFFFF;
+    background-color: #0A88DC;
+    transition: .2s;
+    &:hover{
+        cursor: pointer;
+        background-color: #086FB3;
+    }
+    @media (max-width: 665px){
+        width: 100%;
+    }
+`

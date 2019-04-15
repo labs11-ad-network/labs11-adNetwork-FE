@@ -43,9 +43,9 @@ export const changeUserData = user => dispatch => {
   }
   newUser.append("nickname", user.nickname);
   newUser.append("phone", user.phone);
-  if(user.acct_type === "affiliate"){
+  if((user.acct_type === "affiliate") && user.stripe_payout_id){
     newUser.append("stripe_payout_id", user.stripe_payout_id);
-  }else{
+  }else if((user.acct_type === "advertiser") && user.stripe_cust_id){
     newUser.append("stripe_cust_id", user.stripe_cust_id)
   }
   newUser.append("show_tour", user.show_tour);

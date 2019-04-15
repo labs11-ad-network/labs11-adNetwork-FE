@@ -21,7 +21,7 @@ class SettingTour extends React.Component {
                 <Button
                   color="primary"
                   onClick={() => {
-                    props.goTo(2)
+                    props.goTo(1)
                   }}
                 >
                   Yes
@@ -83,6 +83,15 @@ class SettingTour extends React.Component {
         userType: "both",
         selector: "[data-btn='view_payments-tab']",
         content: "You can view a list of payments here",
+        style: {
+          fontSize: 15,
+          lineHeight: 1.5
+        }
+      },
+      {
+        userType: "both",
+        selector: "[data-btn='toggle-tour']",
+        content: "You can toggle the tour here if you ever accidently close it and want to learn more.",
         style: {
           fontSize: 15,
           lineHeight: 1.5

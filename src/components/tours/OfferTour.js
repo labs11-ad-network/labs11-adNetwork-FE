@@ -21,7 +21,7 @@ class SettingTour extends React.Component {
                 <Button
                   color="primary"
                   onClick={() => {
-                    props.goTo(2)
+                    props.goTo(1)
                   }}
                 >
                   Yes

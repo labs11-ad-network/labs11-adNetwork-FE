@@ -61,14 +61,14 @@ class AdGeneratorTour extends React.Component {
           content: () => {
             return (
               <TourWelcome>
-                <h2> Now lets go learn about the settings page</h2>
+                <h2>This is the end of the Ad Generator tour</h2>
                 <Button
                   color="primary"
                   onClick={() => {
-                    this.props.history.push('/dashboard/settings')
+                    this.closeAdGeneratorTour();
                   }}
                 >
-                  Lets Go
+                  Finish
                 </Button>
               </TourWelcome>
             );
