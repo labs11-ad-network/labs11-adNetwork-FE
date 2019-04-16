@@ -231,6 +231,7 @@ class Analytics extends Component {
                       ? analytics.payouts
                       : []
                   }
+                  growth={analytics.stripeGrowth}
                 />
                 <BrowserInfo data={analytics.browserCount} />
               </div>
