@@ -16,7 +16,6 @@
     "material-datatable": "^0.3.8",
     "material-ui-pickers": "^2.2.4",
     "moment": "^2.24.0",
-    "pusher-js": "^4.4.0",
     "radium": "^0.25.1",
     "react": "^16.8.6",
     "react-burgers": "^1.2.0",

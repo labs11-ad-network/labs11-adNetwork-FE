@@ -49,9 +49,9 @@ const RowContainer = styled.div`
     }
   }
 
-  .revenue-browser-row {
+  .browser-chart {
     display: flex;
-    width: 100%;
+    width: 50%;
     @media (max-width: 1200px) {
       width: 100%;
       box-sizing: border-box;
@@ -222,17 +222,17 @@ class Analytics extends Component {
               />
             </CardContainer>
             <RowContainer>
-              <div className="revenue-browser-row">
-                <RevenueChart
-                  data={
-                    analytics.payments
-                      ? analytics.payments
-                      : analytics.payouts
-                      ? analytics.payouts
-                      : []
-                  }
-                  growth={analytics.stripeGrowth}
-                />
+              <RevenueChart
+                data={
+                  analytics.payments
+                    ? analytics.payments
+                    : analytics.payouts
+                    ? analytics.payouts
+                    : []
+                }
+                growth={analytics.stripeGrowth}
+              />
+              <div className="browser-chart">
                 <BrowserInfo data={analytics.browserCount} />
               </div>
             </RowContainer>
