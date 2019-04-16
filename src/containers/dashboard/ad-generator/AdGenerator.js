@@ -190,11 +190,33 @@ export class AdGenerator extends Component {
     return this.props.offers.length ? (
       <AdGeneratorContainer>
         <LeftSection>
-          {/* <div className="template-selector">
-          </div> */}
+          
+          
           <div className="form">
-            <h1>Select Size</h1>
-            <TemplateSelectors handleChange={this.handleChange} selected={currentElement}/>
+            <div className="template-selectors">
+              <h1>Select Size</h1>
+              <div className="template-buttons">
+                <TemplateSelectors 
+                  handleChange={this.handleChange} 
+                  selected={productData.size}
+                />
+              </div>
+              <div className="template-select">
+                <select 
+                  type="text"
+                  name="size"
+                  value={productData.size}
+                  onChange={this.handleChange}
+                >
+                  <option value="square_banner">Square Banner</option>
+                  <option value="vertical_banner">Vertical Banner</option>
+                  <option value="horizontal_banner">Horizontal Banner</option>
+                  <option value="plain_horizontal">Plain (img/gif only) Horizontal Banner</option>
+                  <option value="plain_square">Plain (img/gif only) Square Banner</option>
+                  <option value="plain_vertical">Plain (img/gif only) Vertical Banner</option>
+                </select>
+              </div>
+            </div>
             <h1>Customize Your Ad</h1>
             <AdForm
               handleChange={this.handleChange}

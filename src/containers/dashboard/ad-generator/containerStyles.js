@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const AdGeneratorContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1150px){
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 export const LeftSection = styled.div`
@@ -25,36 +29,78 @@ export const LeftSection = styled.div`
       font-size: 1.5rem;
       margin: 15px 0;
     }
+    .template-selectors{
+      .template-buttons{
+        @media (max-width: 1475px){
+          display: none;
+        }
+        @media (max-width: 1150px){
+          display: flex;
+        }
+      }
+      .template-select{
+        display: none;
+        justify-content: center;
+        select{
+          font-size: 1rem;
+          font-weight: 100;
+          width: 90%;
+          padding: 15px 10px;
+          margin-top: 10px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+          &::placeholder {
+            color: #999999;
+          }
+        }
+        @media (max-width: 1475px){
+          display: flex;
+        }
+        @media (max-width: 1150px){
+          display: none;
+        }
+      }
+    }
+  }
+  @media (max-width: 1150px){
+    width: 95%;
   }
 `
 
 export const RightSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-width: 700px;
+  .ad-preview {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    min-width: 700px;
-    .ad-preview {
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    border-radius: 15px;
+    .ad-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 650px;
+    }
+    .controls{
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      background-color: #ffffff;
-      margin: 15px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-      border-radius: 15px;
-      .ad-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        min-height: 650px;
-      }
-      .controls{
-        display: flex;
-        flex-direction: column;
-        justify-self: flex-end;
-        width: 100%;
-      }
+      justify-self: flex-end;
+      width: 100%;
     }
+  }
+  @media (max-width: 1150px){
+    width: 95%;
+    .ad-preview {
+      margin: 15px 0;
+    }
+  }
 `
 
 export const CreateAdButton = styled.button`

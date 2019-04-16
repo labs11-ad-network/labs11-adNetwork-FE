@@ -10,13 +10,13 @@ export const TemplateSelectors = styled.div`
 
 export const TemplateButton = styled.button`
   border-radius: 15px;
-  border: 5px solid rgba(0, 0, 0, 0.1);
+  border: 4px solid rgba(0, 0, 0, 0.1);
   background: #F1F1F1;
-  height: 110px;
-  width: 110px;
-  margin: 10px;
+  height: 100px;
+  width: 100px;
+  margin: 5px;
   transition: .2s;
-  border: ${props => props.selected === props.value && "5px solid #16B7FF"};
+  border: ${props => props.selected && "5px solid #16B7FF"};
   &:hover{
     cursor: pointer;
   }
