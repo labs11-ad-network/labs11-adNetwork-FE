@@ -46,6 +46,7 @@ class UserSettingsForm extends Component {
 
   render() {
     const { name, nickname, phone } = this.state.userData;
+
     return (
       <>
         <Form onSubmit={this.changeUserData}>
@@ -55,7 +56,7 @@ class UserSettingsForm extends Component {
               type="text"
               placeholder="Name"
               name="name"
-              value={name}
+              value={name || ""}
               onChange={this.handleChange}
             />
             <label htmlFor="nickname">Username</label>
@@ -63,7 +64,7 @@ class UserSettingsForm extends Component {
               type="text"
               placeholder="Nickname"
               name="nickname"
-              value={nickname}
+              value={nickname || ""}
               onChange={this.handleChange}
             />
             <label htmlFor="phone">Phone Number</label>
@@ -71,7 +72,7 @@ class UserSettingsForm extends Component {
               type="number"
               placeholder="Phone"
               name="phone"
-              value={phone}
+              value={phone || ""}
               onChange={this.handleChange}
             />
             {/* --------------------- image upload --------------------- */}
@@ -89,14 +90,17 @@ class UserSettingsForm extends Component {
           </div>
         </Form>
         <ToggleTour>
-          <button 
-            onClick={async() => {
-              if(!this.props.currentUser.show_tour){
-                await this.props.history.push('/dashboard')
+          <button
+            onClick={async () => {
+              if (!this.props.currentUser.show_tour) {
+                await this.props.history.push("/dashboard");
               }
-              this.props.changeUserData({...this.props.currentUser, show_tour: !this.props.currentUser.show_tour })
+              this.props.changeUserData({
+                ...this.props.currentUser,
+                show_tour: !this.props.currentUser.show_tour
+              });
             }}
-            data-btn='toggle-tour'
+            data-btn="toggle-tour"
           >
             Toggle Tour
           </button>

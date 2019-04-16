@@ -23,6 +23,9 @@ class AppDownload extends Component {
   render() {
     return (
       <>
+        {/* <------------- nav slide to reviews ---------------> */}
+
+        <span id="lad" />
         <AppDownloadStyle>
           <section className="app-download-flex">
             <div className="container">
@@ -32,7 +35,7 @@ class AppDownload extends Component {
                 data-wow-duration="2s"
               >
                 <p>#Lad Download </p>
-                <h3 id="lad">The Best Lad Network</h3>
+                <h3>The Best Lad Network</h3>
                 <p>
                   One of the largest and perhaps the best known display
                   advertising network.
@@ -56,6 +59,8 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
+          {/* <------------- Three vertical icon and text below big phone ---------------> */}
+
           <section className="promo-section">
             <div className="promo-row container">
               <div
@@ -97,6 +102,7 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
+          {/* <------------- How does this App work Section ---------------> */}
 
           <section className="work-content-section padding bg-gray">
             <div className="container">
@@ -114,13 +120,13 @@ class AppDownload extends Component {
 
                 <div className="work-content-col work-content-second_child">
                   <h2
-                    className="main-title wow fadeInUp"
+                    className="main-title space-left wow fadeInUp"
                     data-wow-delay=".2s"
                     data-wow-duration="2s"
                   >
                     How does this App Work?
                   </h2>
-                  <p>Simple Setup and Customization</p>
+                  <p className="space-left">Simple Setup and Customization</p>
 
                   <div className="work-content-lists">
                     <div className="work-list-item">
@@ -165,6 +171,7 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
+          {/* <------------- Advanced feature section ---------------> */}
 
           <section className="feature-section">
             <div className="container">
@@ -252,13 +259,15 @@ class AppDownload extends Component {
                   </p>
                 </div>
               </div>
+              {/* <------------- nav slide to screenshot ---------------> */}
+              <span id="screenshots" />
             </div>
           </section>
+
           <section className="screenshot-section padding bg-gray">
             <div className="swiper-container swiper-container-horizontal container">
               <h2
                 className="main-title wow fadeInUp"
-                id="screenshots"
                 data-wow-delay=".1s"
                 data-wow-duration="2s"
               >
@@ -270,6 +279,7 @@ class AppDownload extends Component {
                 src={placeholder3}
                 alt="phone placeholder"
               />
+              {/* <------------- 3d Carousel Component ---------------> */}
 
               <div className="swiper-wrapper-flex">
                 <StyleRoot>
@@ -319,6 +329,7 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
+          <span id="team" />
         </AppDownloadStyle>
       </>
     );
