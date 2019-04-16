@@ -71,9 +71,12 @@ export const NavContainer = styled.nav`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  min-height: 65px;
   height: 65px;
+  max-height: 65px;
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+  z-index: 999999;
 `;
 
 export const LeftSection = styled.div`
@@ -146,6 +149,8 @@ export const RightSection = styled.div`
       margin-right: 8px;
       border: 1px solid rgba(103, 103, 103, 0.25);
       border-radius: 25px;
+      object-fit: cover;
+
       @media (max-width: 900px) {
         margin: unset;
       }

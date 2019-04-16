@@ -11,7 +11,7 @@ export default class Auth {
   userProfile;
   tokenRenewalTimeout;
 
-  // Auth Config
+  //-------------------- Auth Config --------------------
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
@@ -21,12 +21,12 @@ export default class Auth {
     sso: false
   });
 
-  // handle login built in function from Auth0
+  //-------------------- handle login built in function from Auth0 --------------------
   login = () => {
     this.auth0.authorize();
   };
 
-  //once user is authenticated with login we will invoke setSession
+  // -------------------- once user is authenticated with login we will invoke setSession --------------------
   handleAuthentication = () => {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
@@ -49,7 +49,7 @@ export default class Auth {
 
   // once user is authenticated we will make a request to lad backend and create this user to our backend if it does not exists
   setSession = authResult => {
-    // Set the time that the access token will expire at
+    //-------------------- Set the time that the access token will expire at --------------------
     let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
     this.accessToken = authResult.accessToken;
     this.idToken = authResult.idToken;
@@ -60,7 +60,7 @@ export default class Auth {
     localStorage.setItem("id_token", authResult.idToken);
     localStorage.setItem("expires_at", expiresAt);
 
-    // schedule a token renewal
+    //-------------------- schedule a token renewal --------------------
     const decoded = jwtDecode(localStorage.id_token && localStorage.id_token);
     const user = {
       name: decoded.name,
@@ -78,18 +78,12 @@ export default class Auth {
 
     axios
       .post(`https://lad-network.herokuapp.com/api/auth/register`, user, config)
-      .then(res => {
-        // console.log('--- hit response -- ', res.data)
-      })
-      .catch(err => {
-        // if there's error with registering user with our backend clear localstorage and redirect to landing page
-        window.localStorage.clear();
-        history.replace("/");
-      });
+      .then(res => {})
+      .catch(err => {});
     history.replace("/dashboard");
   };
 
-  // logout user
+  // -------------------- logout user --------------------
   logout = async () => {
     // Remove tokens and expiry time
     this.accessToken = null;
