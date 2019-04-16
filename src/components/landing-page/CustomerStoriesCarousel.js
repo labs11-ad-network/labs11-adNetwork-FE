@@ -24,7 +24,6 @@ class CustomerStoriesCarousel extends Component {
         <div className="container">
           <h2
             className="testimonial-heading wow fadeInUp"
-            id="reviews"
             data-wow-delay=".1s"
             data-wow-duration="2s"
           >

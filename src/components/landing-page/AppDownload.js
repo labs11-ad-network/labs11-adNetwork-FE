@@ -114,13 +114,13 @@ class AppDownload extends Component {
 
                 <div className="work-content-col work-content-second_child">
                   <h2
-                    className="main-title wow fadeInUp"
+                    className="main-title space-left wow fadeInUp"
                     data-wow-delay=".2s"
                     data-wow-duration="2s"
                   >
                     How does this App Work?
                   </h2>
-                  <p>Simple Setup and Customization</p>
+                  <p className="space-left">Simple Setup and Customization</p>
 
                   <div className="work-content-lists">
                     <div className="work-list-item">
@@ -252,13 +252,15 @@ class AppDownload extends Component {
                   </p>
                 </div>
               </div>
+              {/* <------------- nav slide to screenshot ---------------> */}
+              <span id="screenshots" />
             </div>
           </section>
+
           <section className="screenshot-section padding bg-gray">
             <div className="swiper-container swiper-container-horizontal container">
               <h2
                 className="main-title wow fadeInUp"
-                id="screenshots"
                 data-wow-delay=".1s"
                 data-wow-duration="2s"
               >
@@ -319,6 +321,7 @@ class AppDownload extends Component {
               </div>
             </div>
           </section>
+          <span id="team" />
         </AppDownloadStyle>
       </>
     );

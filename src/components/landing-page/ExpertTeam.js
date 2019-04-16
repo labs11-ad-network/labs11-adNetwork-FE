@@ -29,7 +29,7 @@ class ExpertTeam extends Component {
     return (
       <ExpertTeamStyle>
         <div className="container">
-          <div className="team-content" id="team">
+          <div className="team-content">
             <h2
               className="wow fadeInUp"
               data-wow-delay=".2s"
@@ -105,6 +105,8 @@ class ExpertTeam extends Component {
               </p>
             </div>
           </div>
+          {/* <------------- nav slide to reviews ---------------> */}
+          <span id="reviews" />
         </section>
 
         <section className="costumer-stories">

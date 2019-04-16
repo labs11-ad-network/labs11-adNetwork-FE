@@ -187,7 +187,7 @@ export const LandingPageStyle = styled.div`
     .footer-wrapper {
       display: flex;
       justify-content: center;
-      padding: 80px 0;
+      padding: 40px 0;
       align-items: center;
       flex-direction: column;
       @media (min-width: 481px) {
@@ -235,6 +235,7 @@ export const LandingPageStyle = styled.div`
       -o-transition: 0.3s;
       transition: 0.3s;
       font-size: 14px;
+      cursor: initial;
       text-decoration: none;
       &:hover {
         background: #2f5bea;
