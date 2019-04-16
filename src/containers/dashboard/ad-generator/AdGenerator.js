@@ -134,7 +134,6 @@ export class AdGenerator extends Component {
 
   customizeElement = (e, name, value) => {
     e.stopPropagation();
-    console.log(e, name, value)
     this.setState({
       ...this.state,
       productData: {
@@ -148,7 +147,6 @@ export class AdGenerator extends Component {
   };
 
   toggleElementStyle = (e, name) => {
-    console.log(e, name)
     this.setState({
       ...this.state,
       productData: {
@@ -172,7 +170,6 @@ export class AdGenerator extends Component {
   generateSnapshot = async id => {
     const ad = document.getElementById(id);
     const canvas = await html2canvas(ad);
-    console.log(canvas.toDataURL())
     return canvas.toDataURL();
   };
 
@@ -193,11 +190,11 @@ export class AdGenerator extends Component {
     return this.props.offers.length ? (
       <AdGeneratorContainer>
         <LeftSection>
-          <div className="template-selector">
+          {/* <div className="template-selector">
+          </div> */}
+          <div className="form">
             <h1>Select Size</h1>
             <TemplateSelectors handleChange={this.handleChange} selected={currentElement}/>
-          </div>
-          <div className="form">
             <h1>Customize Your Ad</h1>
             <AdForm
               handleChange={this.handleChange}

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const AdGeneratorContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 95%;
 `;
 
 export const LeftSection = styled.div`
@@ -12,27 +11,12 @@ export const LeftSection = styled.div`
   width: 50%;
   height: 100%;
   margin: 15px;
-  .template-selector {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #ffffff;
-    margin: 0 0 10px 0;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-    border-radius: 15px;
-    h1{
-      text-align: center;
-      font-size: 1.5rem;
-      margin: 15px 0;
-    }
-  }
   .form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #ffffff;
-    margin: 15px 0;
+    margin-bottom: 15px;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     border-radius: 15px;
@@ -55,8 +39,6 @@ export const RightSection = styled.div`
       justify-content: space-between;
       background-color: #ffffff;
       margin: 15px;
-      min-height: 100%;
-      max-height: 100%;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
       border-radius: 15px;
       .ad-container{
@@ -64,7 +46,7 @@ export const RightSection = styled.div`
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 600px;
+        min-height: 650px;
       }
       .controls{
         display: flex;
