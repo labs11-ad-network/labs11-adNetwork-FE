@@ -8,7 +8,7 @@ const OfferForm = props => {
     <>
         <Form onSubmit={e => props.handleSubmit(e)}>
             <div>
-                <label htmlFor="budget">Budget</label>
+                <label htmlFor="budget">Budget <span>(when this amount reaches 0 ads will stop running)</span></label>
                 <input 
                     type="number"
                     name="budget"
@@ -62,6 +62,9 @@ const OfferForm = props => {
                     <option value="Health + Wellness">Health + Wellness</option>
                     <option value="Beauty">Beauty</option>
                     <option value="Finance">Finance</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Outdoors">Outdoors</option>
+                    <option value="Travel">Travel</option>
                     <option value="Gaming">Gaming</option>
                     <option value="Crypto">Crypto</option>
                     <option value="Weight Loss">Weight Loss</option>

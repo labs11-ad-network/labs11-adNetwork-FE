@@ -46,7 +46,7 @@ export const OfferButton = styled.button`
     color: #FFFFFF;
     border: unset;
     padding: 5px 10px;
-    margin-right: ${props => props.first && "5px"};
+    margin: 2px;
     border-radius: 4px;
     transition: .3s;
     &:hover{

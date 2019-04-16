@@ -3,7 +3,13 @@ import styled from 'styled-components';
 export const AdGeneratorContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 95%;
+  @media (max-width: 1150px){
+    align-items: center;
+    flex-direction: column;
+  }
+  @media (max-width: 740px){
+    display: none;
+  }
 `;
 
 export const LeftSection = styled.div`
@@ -12,27 +18,12 @@ export const LeftSection = styled.div`
   width: 50%;
   height: 100%;
   margin: 15px;
-  .template-selector {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: #ffffff;
-    margin: 0 0 10px 0;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-    border-radius: 15px;
-    h1{
-      text-align: center;
-      font-size: 1.5rem;
-      margin: 15px 0;
-    }
-  }
   .form{
     display: flex;
     flex-direction: column;
     justify-content: center;
     background-color: #ffffff;
-    margin: 15px 0;
+    margin-bottom: 15px;
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
     border-radius: 15px;
@@ -41,38 +32,85 @@ export const LeftSection = styled.div`
       font-size: 1.5rem;
       margin: 15px 0;
     }
+    .template-selectors{
+      .template-buttons{
+        display: flex;
+        justify-content: center;
+        @media (max-width: 1475px){
+          display: none;
+        }
+      }
+      .template-select{
+        display: none;
+        justify-content: center;
+        select{
+          font-size: 1rem;
+          font-weight: 100;
+          width: 93%;
+          padding: 15px 10px;
+          margin-top: 10px;
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+          &::placeholder {
+            color: #999999;
+          }
+        }
+        @media (max-width: 1475px){
+          display: flex;
+        }
+      }
+    }
+  }
+  @media (max-width: 1150px){
+    width: 95%;
+    margin-bottom: unset;
+    .desktop-create-btn{
+      display: none;
+    }
   }
 `
 
 export const RightSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-width: 700px;
+  .ad-preview {
     display: flex;
     flex-direction: column;
-    width: 50%;
-    min-width: 700px;
-    .ad-preview {
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+    border-radius: 15px;
+    .ad-container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      min-height: 650px;
+    }
+    .controls{
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      background-color: #ffffff;
-      margin: 15px;
-      min-height: 100%;
-      max-height: 100%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-      border-radius: 15px;
-      .ad-container{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 600px;
-      }
-      .controls{
-        display: flex;
-        flex-direction: column;
-        justify-self: flex-end;
-        width: 100%;
-      }
+      justify-self: flex-end;
+      width: 100%;
     }
+  }
+  .tablet-create-btn{
+    display: none;
+  }
+  @media (max-width: 1150px){
+    width: 95%;
+    .ad-preview {
+      margin: 15px 0;
+    }
+    .tablet-create-btn{
+      display: flex;
+      margin-bottom: 15px;
+    }
+  }
 `
 
 export const CreateAdButton = styled.button`
@@ -124,5 +162,40 @@ export const NoOffersContent = styled.div`
       background-color: #0B6FB1;
       box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); 
     }
+  }
+`;
+
+export const WidthNotSupported = styled.div`
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  font-size: 2rem;
+  font-weight: 100;
+  line-height: 2.8rem;
+  a{
+    margin: 15px;
+    padding: 5px 25px;
+    border: unset;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 100;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); 
+    color: #FFFFFF;
+    background-color: #0A88DC; 
+    transition: .2s;
+    &:hover{
+      cursor: pointer;
+      background-color: #0B6FB1;
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2); 
+    }
+  }
+  @media (max-width: 740px){
+    display: flex;
   }
 `;
