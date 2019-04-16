@@ -31,12 +31,14 @@ export const LeftSection = styled.div`
     }
     .template-selectors{
       .template-buttons{
+        display: flex;
+        justify-content: center;
         @media (max-width: 1475px){
           display: none;
         }
-        @media (max-width: 1150px){
+        /* @media (max-width: 1150px){
           display: flex;
-        }
+        } */
       }
       .template-select{
         display: none;
@@ -44,7 +46,7 @@ export const LeftSection = styled.div`
         select{
           font-size: 1rem;
           font-weight: 100;
-          width: 90%;
+          width: 93%;
           padding: 15px 10px;
           margin-top: 10px;
           border: 1px solid rgba(0, 0, 0, 0.2);
@@ -57,14 +59,18 @@ export const LeftSection = styled.div`
         @media (max-width: 1475px){
           display: flex;
         }
-        @media (max-width: 1150px){
+        /* @media (max-width: 1150px){
           display: none;
-        }
+        } */
       }
     }
   }
   @media (max-width: 1150px){
     width: 95%;
+    margin-bottom: unset;
+    .desktop-create-btn{
+      display: none;
+    }
   }
 `
 
@@ -95,10 +101,17 @@ export const RightSection = styled.div`
       width: 100%;
     }
   }
+  .tablet-create-btn{
+    display: none;
+  }
   @media (max-width: 1150px){
     width: 95%;
     .ad-preview {
       margin: 15px 0;
+    }
+    .tablet-create-btn{
+      display: flex;
+      margin-bottom: 15px;
     }
   }
 `

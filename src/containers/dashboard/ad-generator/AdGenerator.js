@@ -228,30 +228,33 @@ export class AdGenerator extends Component {
               selected={currentElement}
             />
           </div>
-          <CreateAdButton onClick={this.createAd}>
+          <CreateAdButton onClick={this.createAd} className="desktop-create-btn">
             Create Ad
           </CreateAdButton>
         </LeftSection>
         <RightSection>
           <div className="ad-preview">
-          <div></div>
-          <div className="ad-container">
-            <div id="advertisment">
-              <AdHoc 
-                ad={productData} 
-                handleElementChange={this.handleElementChange}
-                selected={currentElement}
-              />
-            </div>
+            <div/>
+            <div className="ad-container">
+              <div id="advertisment">
+                <AdHoc 
+                  ad={productData} 
+                  handleElementChange={this.handleElementChange}
+                  selected={currentElement}
+                />
+              </div>
             </div>
             <div className="controls">
-              <Controls
-                customizeElement={this.customizeElement}
-                toggleElementStyle={this.toggleElementStyle}
-                sizeValue={productData[currentElement].size}
-              />
+                <Controls
+                  customizeElement={this.customizeElement}
+                  toggleElementStyle={this.toggleElementStyle}
+                  sizeValue={productData[currentElement].size}
+                />
             </div>
           </div>
+          <CreateAdButton onClick={this.createAd} className="tablet-create-btn">
+            Create Ad
+          </CreateAdButton>
         </RightSection>
       </AdGeneratorContainer>
     ) : (
