@@ -99,6 +99,8 @@ export const LandingPageStyle = styled.div`
       top: 1px;
     }
   }
+  /* --------------- Blue Buttons --------------- */
+
   .buttons_container .btn_blue {
     display: block;
     max-width: 279px;
@@ -239,6 +241,8 @@ export const LandingPageStyle = styled.div`
       }
     }
   }
+
+  /* --------------- Landing Logo --------------- */
 
   .landing-logo {
     width: 60px;
