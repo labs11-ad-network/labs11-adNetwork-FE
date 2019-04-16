@@ -37,14 +37,7 @@ class ExpertTeam extends Component {
             >
               Expert Member
             </h2>
-            <p
-              className="wow fadeOut"
-              data-wow-delay=".3s"
-              data-wow-duration="2s"
-            >
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi
-              mollitia similique nostrum!
-            </p>
+            <p />
           </div>
 
           <OwlCarousel

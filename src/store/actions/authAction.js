@@ -38,15 +38,15 @@ export const changeUserData = user => dispatch => {
   newUser.append("name", user.name);
   if (user.user_img) {
     newUser.append("image_url", user.user_img);
-  }else{
+  } else {
     newUser.append("image_url", user.image_url);
   }
   newUser.append("nickname", user.nickname);
   newUser.append("phone", user.phone);
-  if((user.acct_type === "affiliate") && user.stripe_payout_id){
+  if (user.acct_type === "affiliate" && user.stripe_payout_id) {
     newUser.append("stripe_payout_id", user.stripe_payout_id);
-  }else if((user.acct_type === "advertiser") && user.stripe_cust_id){
-    newUser.append("stripe_cust_id", user.stripe_cust_id)
+  } else if (user.acct_type === "advertiser" && user.stripe_cust_id) {
+    newUser.append("stripe_cust_id", user.stripe_cust_id);
   }
   newUser.append("show_tour", user.show_tour);
   axios

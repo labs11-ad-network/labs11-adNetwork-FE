@@ -86,7 +86,7 @@ const LandingContentSection = () => {
             data-wow-delay=".2s"
             data-wow-duration="2s"
           >
-            Mobile and In App Ads Amet natus id ab vero, veniam fuga labore.
+            Mobile and In App.
           </h3>
           <p className="landing-ptag">
             Optimized to reach more audience across all mobile devices and
