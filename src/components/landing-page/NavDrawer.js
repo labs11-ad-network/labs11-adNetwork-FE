@@ -39,11 +39,7 @@ const NavDrawer = ({ history, toggleDrawer, left, login, logout }) => {
           <a href="#contact">Contact</a>
           <a href="#screenshots">Screenshots</a>
           <a href="#reviews">Reviews</a>
-          <a
-            href="/dashboard"
-            hidden={!localStorage.id_token}
-            onClick={() => history.push("/dashboard")}
-          >
+          <a href="/dashboard" hidden={!localStorage.id_token}>
             Dashboard
           </a>
 
