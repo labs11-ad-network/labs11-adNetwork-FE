@@ -3,7 +3,14 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import html2canvas from "html2canvas";
 
-import { AdGeneratorContainer, LeftSection, RightSection, CreateAdButton, NoOffersContent } from "./containerStyles.js";
+import { 
+  AdGeneratorContainer, 
+  LeftSection, 
+  RightSection, 
+  CreateAdButton, 
+  WidthNotSupported,
+  NoOffersContent 
+} from "./containerStyles.js";
 import { createAd } from "../../../store/actions/adAction.js";
 import { getOffers } from "../../../store/actions/offersAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
@@ -188,75 +195,79 @@ export class AdGenerator extends Component {
     const { productData, currentElement } = this.state; 
 
     return this.props.offers.length ? (
-      <AdGeneratorContainer>
-        <LeftSection>
-          
-          
-          <div className="form">
-            <div className="template-selectors">
-              <h1>Select Size</h1>
-              <div className="template-buttons">
-                <TemplateSelectors 
-                  handleChange={this.handleChange} 
-                  selected={productData.size}
-                />
+      <>
+        <AdGeneratorContainer>
+          <LeftSection>
+            <div className="form">
+              <div className="template-selectors">
+                <h1>Select Size</h1>
+                <div className="template-buttons">
+                  <TemplateSelectors 
+                    handleChange={this.handleChange} 
+                    selected={productData.size}
+                  />
+                </div>
+                <div className="template-select">
+                  <select 
+                    type="text"
+                    name="size"
+                    value={productData.size}
+                    onChange={this.handleChange}
+                  >
+                    <option value="square_banner">Square Banner</option>
+                    <option value="vertical_banner">Vertical Banner</option>
+                    <option value="horizontal_banner">Horizontal Banner</option>
+                    <option value="plain_horizontal">Plain (img/gif only) Horizontal Banner</option>
+                    <option value="plain_square">Plain (img/gif only) Square Banner</option>
+                    <option value="plain_vertical">Plain (img/gif only) Vertical Banner</option>
+                  </select>
+                </div>
               </div>
-              <div className="template-select">
-                <select 
-                  type="text"
-                  name="size"
-                  value={productData.size}
-                  onChange={this.handleChange}
-                >
-                  <option value="square_banner">Square Banner</option>
-                  <option value="vertical_banner">Vertical Banner</option>
-                  <option value="horizontal_banner">Horizontal Banner</option>
-                  <option value="plain_horizontal">Plain (img/gif only) Horizontal Banner</option>
-                  <option value="plain_square">Plain (img/gif only) Square Banner</option>
-                  <option value="plain_vertical">Plain (img/gif only) Vertical Banner</option>
-                </select>
+              <h1>Customize Your Ad</h1>
+              <AdForm
+                handleChange={this.handleChange}
+                handleElementChange={this.handleElementChange}
+                handleTextChange={this.handleTextChange}
+                handleFileChange={this.handleFileChange}
+                productData={productData}
+                offers={offers}
+                selected={currentElement}
+              />
+            </div>
+            <CreateAdButton onClick={this.createAd} className="desktop-create-btn">
+              Create Ad
+            </CreateAdButton>
+          </LeftSection>
+          <RightSection>
+            <div className="ad-preview">
+              <div/>
+              <div className="ad-container">
+                <div id="advertisment">
+                  <AdHoc 
+                    ad={productData} 
+                    handleElementChange={this.handleElementChange}
+                    selected={currentElement}
+                  />
+                </div>
+              </div>
+              <div className="controls">
+                  <Controls
+                    customizeElement={this.customizeElement}
+                    toggleElementStyle={this.toggleElementStyle}
+                    sizeValue={productData[currentElement].size}
+                  />
               </div>
             </div>
-            <h1>Customize Your Ad</h1>
-            <AdForm
-              handleChange={this.handleChange}
-              handleElementChange={this.handleElementChange}
-              handleTextChange={this.handleTextChange}
-              handleFileChange={this.handleFileChange}
-              productData={productData}
-              offers={offers}
-              selected={currentElement}
-            />
-          </div>
-          <CreateAdButton onClick={this.createAd} className="desktop-create-btn">
-            Create Ad
-          </CreateAdButton>
-        </LeftSection>
-        <RightSection>
-          <div className="ad-preview">
-            <div/>
-            <div className="ad-container">
-              <div id="advertisment">
-                <AdHoc 
-                  ad={productData} 
-                  handleElementChange={this.handleElementChange}
-                  selected={currentElement}
-                />
-              </div>
-            </div>
-            <div className="controls">
-                <Controls
-                  customizeElement={this.customizeElement}
-                  toggleElementStyle={this.toggleElementStyle}
-                  sizeValue={productData[currentElement].size}
-                />
-            </div>
-          </div>
-          <CreateAdButton onClick={this.createAd} className="tablet-create-btn">
-            Create Ad
-          </CreateAdButton>
-        </RightSection>
-      </AdGeneratorContainer>
+            <CreateAdButton onClick={this.createAd} className="tablet-create-btn">
+              Create Ad
+            </CreateAdButton>
+          </RightSection>
+        </AdGeneratorContainer>
+        <WidthNotSupported>
+            <h1>Your device width is not supported for our advertisement creator. Try to go into horizontal mode otherwise move to a bigger device.</h1>
+            <Link to="/dashboard">Back to Dashboard</Link>
+        </WidthNotSupported>
+      </>
     ) : (
       <NoOffersContent>
         <h1>You don't have any offers to attach the advertisement to.</h1>
