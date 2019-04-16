@@ -67,6 +67,7 @@ class App extends Component {
                 </Suspense>
               )}
             />
+            <Route path="/dashboard" component={Dashboard} />
             <Route path="/ad/:affiliateId/:size" component={AdServer} />
             <Route path="/stripe-callback" component={StripeCallback} />
             <Route path="*" component={NotFound} />
