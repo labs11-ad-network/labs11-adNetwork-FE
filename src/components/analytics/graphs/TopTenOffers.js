@@ -12,12 +12,16 @@ import {
 import { GraphContainer, GraphHeader } from "./GraphStyles.js";
 
 const TopTenOffers = props => {
-  
-  props.data.length = 10
+  let data;
+  if (props.data.length) {
+    props.data.length = 10;
 
-  const data = props.data.map(offer => {
-    return { name: offer.name, ctr: offer.ctr };
-  });
+    data = props.data.map(offer => {
+      return { name: offer.name, ctr: offer.ctr };
+    });
+  } else {
+    data = [];
+  }
 
   return (
     <GraphContainer>
@@ -33,7 +37,7 @@ const TopTenOffers = props => {
           height={250}
           data={data}
           margin={{
-            right: 50,
+            right: 50
           }}
         >
           <XAxis dataKey="name" />

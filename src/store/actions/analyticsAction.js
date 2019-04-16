@@ -54,23 +54,20 @@ export const GET_ANALYTICS_SUCCESS = "GET_ANALYTICS_SUCCESS";
 export const GET_ANALYTICS_FAILURE = "GET_ANALYTICS_FAILURE";
 
 export const getAnalytics = (id, query_string) => dispatch => {
-
   dispatch({ type: GET_ANALYTICS_START });
-    axios
-      .get(
-        `${URL}/api/analytics/${id}${query_string || ""}`
-      )
-      .then(res => {
-        dispatch({ type: GET_ANALYTICS_SUCCESS, payload: res.data });
-      })
-      .catch(err => {
-        dispatch({
-          type: GET_ANALYTICS_FAILURE,
-          payload:
-            err.response.status === 500
-              ? { message: "Internal server error" }
-              : err.response.data
-        });
+  axios
+    .get(`${URL}/api/analytics/${id}${query_string || ""}`)
+    .then(res => {
+      dispatch({ type: GET_ANALYTICS_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err.response);
+      dispatch({
+        type: GET_ANALYTICS_FAILURE,
+        payload:
+          err.response.status === 500
+            ? { message: "Internal server error" }
+            : err.response.data
       });
-
+    });
 };
