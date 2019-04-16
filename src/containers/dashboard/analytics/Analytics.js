@@ -12,7 +12,7 @@ import Card from "../../../components/analytics/cards/Card.js";
 import Table from "../../../components/analytics/tables/Table.js";
 import MapChart from "../../../components/analytics/map/MapChart.js";
 import TopTenOffers from "../../../components/analytics/graphs/TopTenOffers.js";
-// import RadarChart from "../../../components/analytics/graphs/RadarChart.js";
+import RadarChart from "../../../components/analytics/graphs/RadarChart.js";
 import DeviceChart from "../../../components/analytics/graphs/DeviceChart.js";
 
 const CardContainer = styled.div`
@@ -257,7 +257,7 @@ class Analytics extends Component {
             <RowContainer>
               <div className="top-offers-row">
                 <TopTenOffers data={analytics.offersRanking} />
-                {/* <RadarChart data={analytics.devices} /> */}
+                <RadarChart data={analytics.categories} />
                 <DeviceChart data={analytics.devices} />
               </div>
             </RowContainer>
