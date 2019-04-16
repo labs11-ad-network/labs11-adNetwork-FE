@@ -4,10 +4,6 @@ import { scaleLinear } from "d3-scale";
 import { connect } from "react-redux";
 import moment from "moment";
 
-import {
-  getPayouts,
-  getPayments
-} from "../../../store/actions/stripeAction.js";
 import { getAnalytics } from "../../../store/actions/analyticsAction.js";
 import DatePicker from "../../../components/analytics/datepicker/DatePicker.js";
 import { BrowserInfo } from "../../../components/analytics/graphs/PieChart";
@@ -91,8 +87,6 @@ class Analytics extends Component {
   };
 
   componentDidMount() {
-    this.props.getPayouts();
-    this.props.getPayments();
     this.props.getAnalytics(this.props.currentAnalyticId);
     this.analyticsInterval = setInterval(() => {
       this.props.getAnalytics(
@@ -166,7 +160,7 @@ class Analytics extends Component {
   };
 
   render() {
-    const { analytics, payouts, payments } = this.props;
+    const { analytics } = this.props;
 
     const { started_at, ended_at } = this.state;
 
@@ -231,7 +225,11 @@ class Analytics extends Component {
               <div className="revenue-browser-row">
                 <RevenueChart
                   data={
-                    payments.length ? payments : payouts.length ? payouts : []
+                    analytics.payments
+                      ? analytics.payments
+                      : analytics.payouts
+                      ? analytics.payouts
+                      : []
                   }
                 />
                 <BrowserInfo data={analytics.browserCount} />
@@ -270,16 +268,12 @@ class Analytics extends Component {
 }
 
 const mapStateToProps = state => ({
-  analytics: state.analyticsReducer.analytics,
-  payments: state.stripeReducer.payments,
-  payouts: state.stripeReducer.payouts
+  analytics: state.analyticsReducer.analytics
 });
 
 export default connect(
   mapStateToProps,
   {
-    getPayouts,
-    getPayments,
     getAnalytics
   }
 )(Analytics);
