@@ -16,7 +16,14 @@
 - Upon successful completion of dependency introduction, you can type *yarn start* or *npm start* to spin up a local instance of the LAD Network front end
 
   ### Environmental Variables
-
+  ```
+  SKIP_PREFLIGHT_CHECK=true
+  REACT_APP_AUTH0_CALLBACK_URL=
+  REACT_APP_AUTH0_CLIENT_ID=
+  REACT_APP_AUTH0_DOMAIN=
+  REACT_APP_BACKEND_URL=
+  REACT_APP_STRIPE_CLIENT=
+  ```
 
 
 ### Built With :heart: using: 
