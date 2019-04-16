@@ -76,7 +76,7 @@ export const NavContainer = styled.nav`
   max-height: 65px;
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-  z-index: 999999;
+  z-index: 9999;
 `;
 
 export const LeftSection = styled.div`
