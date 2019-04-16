@@ -29,6 +29,7 @@ export class AdGenerator extends Component {
       button_text: "",
       destination_url: "",
       file: "",
+      fileObject: "",
       size: "square_banner",
       headline: {
         size: "",

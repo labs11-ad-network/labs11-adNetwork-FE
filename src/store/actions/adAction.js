@@ -28,8 +28,17 @@ export const CREATE_AD_FAILURE = "CREATE_AD_FAILURE";
 
 export const createAd = (ad, props) => dispatch => {
   dispatch({ type: CREATE_AD_START });
+
+  const advertisement = new FormData();
+
+  advertisement.append("offer_id", ad.offer_id);
+  advertisement.append("image", ad.image);
+  advertisement.append("name", ad.name);
+  advertisement.append("size", ad.size);
+  advertisement.append("destination_url", ad.destination_url);
+
   axios
-    .post(`${URL}/api/ads`, ad)
+    .post(`${URL}/api/ads`, advertisement)
     .then(res => {
       dispatch({ type: CREATE_AD_SUCCESS, payload: res.data });
     })

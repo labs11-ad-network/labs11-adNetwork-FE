@@ -39,7 +39,7 @@ const RadarChartContainer = props => {
       </GraphHeader>
       <ResponsiveContainer width="90%" height="90%">
         <RadarChart
-          outerRadius={160}
+          outerRadius={130}
           data={data}
         >
           <PolarGrid />

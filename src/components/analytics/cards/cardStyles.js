@@ -43,7 +43,7 @@ export const Top = styled.div`
   .right-section {
     display: flex;
     flex-direction: column;
-    text-align: end;
+    text-align: right;
     margin-top: 10px;
     h2 {
       color: #7a7a7a;
