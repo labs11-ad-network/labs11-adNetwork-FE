@@ -73,7 +73,7 @@ class Contact extends Component {
               data-wow-delay=".1s"
               data-wow-duration="2s"
             >
-              Don’t Hasitate to Contact Us
+              Don’t Hesitate to Contact Us
             </h2>
             <p
               className="wow fadeInUp"
