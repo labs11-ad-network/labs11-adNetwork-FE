@@ -32,7 +32,7 @@ const PieLabels = styled.div`
         background-color: gray;
       }
       .no-data{
-        background-color: gray;
+        background-color: #ECEFF1;
       }
       p {
         margin-left: 5px;
@@ -57,7 +57,7 @@ export const BrowserInfo = props => {
     { name: "No Data Yet", value: 1 }
   ];
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#686868", "gray"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#686868", "#ECEFF1"];
 
   const RADIAN = Math.PI / 180;
 

@@ -63,11 +63,9 @@ const RowContainer = styled.div`
     display: flex;
     width: 100%;
     height: 500px;
-    max-height: 500px;
     @media (max-width: 1200px) {
       width: 100%;
       height: unset;
-      max-height: unset;
       box-sizing: border-box;
       flex-direction: column;
     }
