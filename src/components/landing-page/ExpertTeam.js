@@ -13,7 +13,7 @@ import jbmiranda from "../../assets/jbmiranda.jpg";
 import kieranvieira from "../../assets/kieranvieira.jpg";
 
 import video2 from "../../assets/video2.png";
-import CustomerStoriesCarousel from "./CustomerStoriesCarousel";
+// import CustomerStoriesCarousel from "./CustomerStoriesCarousel";
 let responsive = {
   0: {
     items: 1
@@ -57,7 +57,8 @@ class ExpertTeam extends Component {
                 profilePic="https://ca.slack-edge.com/T4JUEB3ME-UDN3J2GAU-250848c689ed-512"
                 links={{
                   github: "https://github.com/elkhoudh",
-                  linkedin: "https://www.linkedin.com/in/hamza-elkhoudiri-a606aa162/",
+                  linkedin:
+                    "https://www.linkedin.com/in/hamza-elkhoudiri-a606aa162/",
                   twitter: "",
                   website: "https://hamzaelk.com/"
                 }}
@@ -97,7 +98,8 @@ class ExpertTeam extends Component {
                 name="John Benedict Miranda"
                 links={{
                   github: "https://github.com/john2796",
-                  linkedin: "https://www.linkedin.com/in/john-benedict-miranda-7b2357180/",
+                  linkedin:
+                    "https://www.linkedin.com/in/john-benedict-miranda-7b2357180/",
                   twitter: "",
                   website: "https://www.johnbenedictmiranda.com/"
                 }}
@@ -141,9 +143,10 @@ class ExpertTeam extends Component {
           <span id="reviews" />
         </section>
 
-        <section className="costumer-stories">
-          <CustomerStoriesCarousel />
-        </section>
+        {/* <section className="costumer-stories">
+        //   <CustomerStoriesCarousel />
+        // </section>
+        */}
       </ExpertTeamStyle>
     );
   }

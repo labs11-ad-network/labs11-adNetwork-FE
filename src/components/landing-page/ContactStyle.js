@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const ContactStyle = styled.div`
+  background: #eff4ff;
+  padding: 80px 0;
   /* contact contents  */
   .contact-title {
     text-align: center;
