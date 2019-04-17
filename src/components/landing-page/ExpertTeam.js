@@ -10,6 +10,8 @@ import teambg1 from "../../assets/teambg1.jpg";
 import teambg2 from "../../assets/teambg2.jpg";
 import teambg3 from "../../assets/teambg3.jpg";
 import jbmiranda from "../../assets/jbmiranda.jpg";
+import kieranvieira from "../../assets/kieranvieira.jpg";
+
 import video2 from "../../assets/video2.png";
 import CustomerStoriesCarousel from "./CustomerStoriesCarousel";
 let responsive = {
@@ -35,7 +37,7 @@ class ExpertTeam extends Component {
               data-wow-delay=".2s"
               data-wow-duration="2s"
             >
-              Expert Member
+              Meet the Team
             </h2>
             <p />
           </div>
@@ -52,7 +54,13 @@ class ExpertTeam extends Component {
               <ExpertTeamCard
                 name="Hamza Elkhoudiri"
                 teamBg={teambg1}
-                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+                profilePic="https://ca.slack-edge.com/T4JUEB3ME-UDN3J2GAU-250848c689ed-512"
+                links={{
+                  github: "https://github.com/elkhoudh",
+                  linkedin: "https://www.linkedin.com/in/hamza-elkhoudiri-a606aa162/",
+                  twitter: "",
+                  website: "https://hamzaelk.com/"
+                }}
               />
             </div>
 
@@ -60,7 +68,13 @@ class ExpertTeam extends Component {
               <ExpertTeamCard
                 name="Kieran Vieira"
                 teamBg={teambg2}
-                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+                profilePic={kieranvieira}
+                links={{
+                  github: "https://github.com/KieranVieira",
+                  linkedin: "https://www.linkedin.com/in/kieran-vieira/",
+                  twitter: "",
+                  website: "https://kieranvieira.com/"
+                }}
               />
             </div>
             <div className="item">
@@ -68,6 +82,12 @@ class ExpertTeam extends Component {
                 name="Max McFerren"
                 teamBg={teambg3}
                 profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+                links={{
+                  github: "",
+                  linkedin: "",
+                  twitter: "",
+                  website: "a"
+                }}
               />
             </div>
             <div className="item">
@@ -75,6 +95,12 @@ class ExpertTeam extends Component {
                 teamBg={teambg1}
                 profilePic={jbmiranda}
                 name="John Benedict Miranda"
+                links={{
+                  github: "https://github.com/john2796",
+                  linkedin: "https://www.linkedin.com/in/john-benedict-miranda-7b2357180/",
+                  twitter: "",
+                  website: "https://www.johnbenedictmiranda.com/"
+                }}
               />
             </div>
             <div className="item">
@@ -82,6 +108,12 @@ class ExpertTeam extends Component {
                 name="Jordan Marsaw"
                 teamBg={teambg2}
                 profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+                links={{
+                  github: "",
+                  linkedin: "",
+                  twitter: "",
+                  website: "a"
+                }}
               />
             </div>
           </OwlCarousel>
