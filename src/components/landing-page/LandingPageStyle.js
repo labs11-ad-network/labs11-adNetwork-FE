@@ -13,7 +13,7 @@ export const LandingPageStyle = styled.div`
     width: calc(100vw - 10vw);
     margin: 0 auto;
     @media (min-width: 940px) {
-      width: calc(100vw - 5vw);
+      width: 90%;
     }
   }
   .blue-subtitle {
