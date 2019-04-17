@@ -21,7 +21,7 @@ export const createAgreement = offer => dispatch => {
       dispatch(getOffers());
     })
     .catch(err => {
-      dispatch({ type: CREATE_AGREEMENT_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({ type: CREATE_AGREEMENT_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data });
     });
 };
 
@@ -39,7 +39,7 @@ export const getAgreements = () => dispatch => {
       dispatch({ type: GET_AGREEMENTS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_AGREEMENTS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({ type: GET_AGREEMENTS_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data });
     });
 };
 
@@ -60,7 +60,7 @@ export const updateAgreement = (id, agreement) => dispatch => {
       dispatch(getOffers());
     })
     .catch(err => {
-      dispatch({ type: CHANGE_AGREEMENT_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({ type: CHANGE_AGREEMENT_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data });
     });
 };
 
@@ -81,7 +81,7 @@ export const deleteAgreement = id => dispatch => {
       dispatch(getOffers());
     })
     .catch(err => {
-      dispatch({ type: DELETE_AGREEMENT_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
+      dispatch({ type: DELETE_AGREEMENT_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data })
     })
 }
 
