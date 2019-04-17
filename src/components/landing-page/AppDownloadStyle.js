@@ -412,7 +412,7 @@ export const AppDownloadStyle = styled.div`
     @media (min-width: 940px) {
       width: 202px;
       position: absolute;
-      top: 249px;
+      top: 262px;
       height: 343px;
       max-width: 100%;
       z-index: 22;

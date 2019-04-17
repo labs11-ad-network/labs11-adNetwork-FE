@@ -8,6 +8,7 @@ export const LandingPageStyle = styled.div`
 
   /* --------------- global landing info style --------------- */
   .container {
+    zoom: 80%;
     max-width: 1100px;
     width: calc(100vw - 10vw);
     margin: 0 auto;
