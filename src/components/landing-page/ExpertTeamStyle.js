@@ -85,7 +85,7 @@ export const ExpertTeamStyle = styled.div`
       -ms-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
-      a{
+      a {
         color: #cadce2;
       }
       &:hover {

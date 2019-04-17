@@ -35,10 +35,10 @@ class AppDownload extends Component {
                 data-wow-duration="2s"
               >
                 <p>#Lad Download </p>
-                <h3>The Best Lad Network</h3>
+                <h3>The Best Ad Network</h3>
                 <p>
-                  One of the largest and perhaps the best known display
-                  advertising network.
+                  One of the best and perhaps the most non creepy advertising
+                  network.
                 </p>
                 <img src={appStore} alt="app store" className="app-store-img" />
                 <img
@@ -84,8 +84,8 @@ class AppDownload extends Component {
                 <i className="fas fa-layer-group promo-icon" />{" "}
                 <h2>Ad Server</h2>
                 <p>
-                  Our Ad Server will automatically choose the ads that perform
-                  best for your website, and many other parameters.
+                  Our Ad Server will display advertisements that you have accepted 
+                  based on the sizes that you select as an affiliate.
                 </p>
               </div>
 
@@ -94,10 +94,10 @@ class AppDownload extends Component {
                 data-wow-delay=".3s"
                 data-wow-duration="2s"
               >
-                <i className="fas fa-chart-bar promo-icon" /> <h2>Marketing</h2>
+                <i className="fas fa-chart-bar promo-icon" /> <h2>Analytics</h2>
                 <p>
-                  This platform allows publishers to monetize standard display
-                  ads, mobile and video, and search results as well.
+                  We provide detailed analytics, track key metrics, and display them in
+                  a very clean and easy to read visual report.
                 </p>
               </div>
             </div>
@@ -219,8 +219,8 @@ class AppDownload extends Component {
                   <img src={tool5} alt="icon" />
                   <h3 className="main-heading-three">Payment</h3>
                   <p>
-                    Competitive prepaid payment terms with instant payments on
-                    Lad Mastercard (available for all Affiliates).
+                    Competitive prepaid payment terms with instant payments powered
+                    by the secure stripe payment system.
                   </p>
                 </div>
 
@@ -231,7 +231,7 @@ class AppDownload extends Component {
                 >
                   <img src={tool6} alt="icon" />
                   <h3 className="main-heading-three">Support</h3>
-                  <p>Dedicated account managers support 24/7</p>
+                  <p>Dedicated account managers and a meaningful support team ready for any of your questions.</p>
                 </div>
 
                 <div
