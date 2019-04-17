@@ -10,7 +10,7 @@ import {
 import moment from "moment";
 import styled from "styled-components";
 
-import { GraphContainer, GraphHeader } from "./GraphStyles.js";
+import { GraphContainer, GraphHeader } from "./graphStyles.js";
 
 const Chart = styled.div`
   height: 300px;
@@ -22,6 +22,8 @@ const Chart = styled.div`
 
 class RevenueChart extends React.Component {
   render() {
+    const data = this.props.data.length ? this.props.data : [ { created: "no data yet", amount: "no data yet" } ];
+
     return (
       <GraphContainer>
         <GraphHeader bottomBorder>
@@ -39,7 +41,7 @@ class RevenueChart extends React.Component {
         <Chart>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart
-              data={this.props.data}
+              data={data}
               margin={{
                 top: 10,
                 right: 50,
@@ -50,7 +52,8 @@ class RevenueChart extends React.Component {
               <XAxis
                 dataKey={"created"}
                 tickFormatter={date => {
-                  return moment.unix(date).format("MM/DD/YYYY");
+                  const time = moment.unix(date).format("MM/DD/YYYY");
+                  return time.includes("Invalid date") ? "No Data Yet" : time;
                 }}
               />
               <YAxis />
@@ -62,13 +65,6 @@ class RevenueChart extends React.Component {
                 stroke="#8884d8"
                 fill="#2C7AFC"
               />
-              {/* <Area
-                    type="monotone"
-                    dataKey="pv"
-                    stackId="1"
-                    stroke="#82ca9d"
-                    fill="#48F39F"
-                  /> */}
             </AreaChart>
           </ResponsiveContainer>
         </Chart>

@@ -25,11 +25,12 @@ class TabContainer extends React.Component {
           textColor="primary"
           onChange={handleTabChange}
         >
-          <Tab label="User Settings" />
+          <Tab label="User Settings" className="tab"/>
           <Tab
             label={
               currentUser.acct_type === "advertiser" ? "Payments" : "Payouts"
             }
+            className="tab"
             data-btn='view_payments-tab'
           />
         </Tabs>
