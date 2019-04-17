@@ -83,7 +83,7 @@ const stripeReducer = (state = initialState, action) => {
       };
 
     case PAYOUT_CUSTOMER_FAILURE:
-      toast.error(action.payload.message.message);
+      toast.error(action.payload.message);
       return {
         ...state,
         isLoading: false

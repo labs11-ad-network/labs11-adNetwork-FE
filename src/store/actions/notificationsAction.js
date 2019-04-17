@@ -18,7 +18,7 @@ export const getUserNotifications = () => dispatch => {
     .catch(err => {
       dispatch({
         type: GET_USER_NOTIFICATIONS_FAILURE,
-        payload: err.response.data
+        payload:  err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };
@@ -41,7 +41,7 @@ export const updateUserNotification = notification => dispatch => {
     .catch(err => {
       dispatch({
         type: UPDATE_USER_NOTIFICATION_FAILURE,
-        payload: err.response.data
+        payload:  err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };

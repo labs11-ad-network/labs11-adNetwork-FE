@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = process.env.REACT_APP_BACKEND_URL;
+const URL = "http://71.65.239.221:5000";
 
 // ------------------------------------ Get Ad by ID ------------------------------------
 
@@ -16,7 +16,7 @@ export const getAd = adId => dispatch => {
       dispatch({ type: GET_AD_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_AD_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({ type: GET_AD_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data });
     });
 };
 
@@ -28,8 +28,17 @@ export const CREATE_AD_FAILURE = "CREATE_AD_FAILURE";
 
 export const createAd = (ad, props) => dispatch => {
   dispatch({ type: CREATE_AD_START });
+
+  const advertisement = new FormData();
+
+  advertisement.append("offer_id", ad.offer_id);
+  advertisement.append("image", ad.image);
+  advertisement.append("name", ad.name);
+  advertisement.append("size", ad.size);
+  advertisement.append("destination_url", ad.destination_url);
+
   axios
-    .post(`${URL}/api/ads`, ad)
+    .post(`${URL}/api/ads`, advertisement)
     .then(res => {
       dispatch({ type: CREATE_AD_SUCCESS, payload: res.data });
     })
@@ -37,7 +46,7 @@ export const createAd = (ad, props) => dispatch => {
       props.history.push("/dashboard/offers");
     })
     .catch(err => {
-      dispatch({ type: CREATE_AD_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({ type: CREATE_AD_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data });
     });
 };
 
@@ -55,7 +64,7 @@ export const getOfferAds = offer_id => dispatch => {
       dispatch({ type: GET_OFFER_ADS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_OFFER_ADS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({ type: GET_OFFER_ADS_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data });
     });
 };
 
@@ -73,7 +82,7 @@ export const deleteAd = id => dispatch => {
       dispatch({ type: DELETE_AD_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: DELETE_AD_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
+      dispatch({ type: DELETE_AD_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data })
     })
 }
 
@@ -98,7 +107,7 @@ export const changeAdStatus = (ad, offer_id) => dispatch => {
       dispatch(getOfferAds(offer_id));
     })
     .catch(err => {
-      dispatch({ type: UPDATE_AD_STATUS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
+      dispatch({ type: UPDATE_AD_STATUS_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data })
     })
 }
 
@@ -117,7 +126,7 @@ export const getAffiliateAds = affiliateId => dispatch => {
       dispatch({ type: GET_AFFILIATE_ADS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_AFFILIATE_ADS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
+      dispatch({ type: GET_AFFILIATE_ADS_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data })
     })
 }
 

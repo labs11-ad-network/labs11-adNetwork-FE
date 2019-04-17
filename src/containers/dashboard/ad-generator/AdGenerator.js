@@ -13,6 +13,7 @@ import {
 } from "./containerStyles.js";
 import { createAd } from "../../../store/actions/adAction.js";
 import { getOffers } from "../../../store/actions/offersAction.js";
+import { changeUserData } from "../../../store/actions/authAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
 import TemplateSelectors from "../../../components/ad-generator/form-components/TemplateSelectors.js";
 import Controls from "../../../components/ad-generator/controls/Controls.js";
@@ -29,6 +30,7 @@ export class AdGenerator extends Component {
       button_text: "",
       destination_url: "",
       file: "",
+      fileObject: "",
       size: "square_banner",
       headline: {
         size: "",
@@ -199,7 +201,7 @@ export class AdGenerator extends Component {
   };
 
   render() {
-    const { offers } = this.props;
+    const { offers, changeUserData, currentUser } = this.props;
     const { productData, currentElement } = this.state;
 
     return this.props.offers.length ? (
@@ -259,7 +261,7 @@ export class AdGenerator extends Component {
             <div className="ad-preview">
               <div />
               <div className="ad-container">
-                <div id="advertisment">
+                <div id="advertisment" data-btn='advertisement'>
                   <AdHoc
                     ad={productData}
                     handleElementChange={this.handleElementChange}
@@ -272,6 +274,8 @@ export class AdGenerator extends Component {
                   customizeElement={this.customizeElement}
                   toggleElementStyle={this.toggleElementStyle}
                   sizeValue={productData[currentElement].size}
+                  changeUserData={changeUserData}
+                  currentUser={currentUser}
                 />
               </div>
             </div>
@@ -302,7 +306,8 @@ export class AdGenerator extends Component {
 
 const mapStateToProps = state => {
   return {
-    offers: state.offersReducer.offers
+    offers: state.offersReducer.offers,
+    currentUser: state.authReducer.currentUser
   };
 };
 
@@ -310,6 +315,7 @@ export default connect(
   mapStateToProps,
   {
     createAd,
-    getOffers
+    getOffers,
+    changeUserData
   }
 )(AdGenerator);

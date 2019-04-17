@@ -6,13 +6,14 @@ const AdForm = props => {
   return (
     <>
       <Form onSubmit={props.createAd}>
-        <div className="form-container">
+        <div className="form-container" data-btn='ad-form-inputs'>
           <InputGroup>
             <label htmlFor="offer_id" />
             <select
               type="text"
               placeholder="Offer"
               name="offer_id"
+              data-btn='select-offer'
               value={props.productData.offer_id}
               onChange={props.handleChange}
               required
@@ -45,6 +46,7 @@ const AdForm = props => {
                 <button
                   name="currentElement"
                   value="headline"
+                  data-btn='selected-element'
                   onClick={props.handleElementChange}
                 />
               </div>
