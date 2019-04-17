@@ -11,8 +11,12 @@ export const LandingPageStyle = styled.div`
     max-width: 1100px;
     width: calc(100vw - 10vw);
     margin: 0 auto;
+    @media (min-width: 481px) {
+      zoom: 90%;
+    }
     @media (min-width: 940px) {
-      width: calc(100vw - 5vw);
+      zoom: 80%;
+      width: 90%;
     }
   }
   .blue-subtitle {

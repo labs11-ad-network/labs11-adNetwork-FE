@@ -410,9 +410,9 @@ export const AppDownloadStyle = styled.div`
   .placeholder-white-iphone {
     display: none;
     @media (min-width: 940px) {
-      width: 202px;
+      width: 214px;
       position: absolute;
-      top: 249px;
+      top: 262px;
       height: 343px;
       max-width: 100%;
       z-index: 22;
