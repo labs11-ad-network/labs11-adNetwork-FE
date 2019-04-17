@@ -4,6 +4,7 @@ import { GraphContainer, GraphHeader } from "./graphStyles.js";
 
 const renderActiveShape = props => {
   const RADIAN = Math.PI / 180;
+
   const {
     cx,
     cy,
@@ -17,6 +18,7 @@ const renderActiveShape = props => {
     percent,
     value
   } = props;
+
   const sin = Math.sin(-RADIAN * midAngle);
   const cos = Math.cos(-RADIAN * midAngle);
   const sx = cx + (outerRadius + 10) * cos;
@@ -87,9 +89,12 @@ export default class Example extends PureComponent {
   };
 
   render() {
-    const data = this.props.data.map((offer, i) => {
+    const data = this.props.data.length ? this.props.data.map((offer, i) => {
       return { name: offer.device, value: Number(offer.count) };
-    });
+    }) : [
+      { name: "No Data Yet", value: 1 },
+    ]
+    ;
     return (
       <GraphContainer>
         <GraphHeader bottomBorder>

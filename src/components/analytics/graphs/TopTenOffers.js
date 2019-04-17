@@ -20,7 +20,9 @@ const TopTenOffers = props => {
       return { name: offer.name, ctr: offer.ctr };
     });
   } else {
-    data = [];
+    data = [
+      { name: "No Data Yet", ctr: 0 }
+    ];
   }
 
   return (
