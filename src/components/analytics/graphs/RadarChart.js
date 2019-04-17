@@ -19,10 +19,10 @@ const RadarChartContainer = props => {
     }
     else{
       return [
-        {category: 0, fullMark: 100 },
-        {category: 0, fullMark: 100 },
-        {category: 0, fullMark: 100 },
-        {category: 0, fullMark: 100 },
+        {category: "No Data", actions: 0, fullMark: 100 },
+        {category: "No Data", actions: 0, fullMark: 100 },
+        {category: "No Data", actions: 0, fullMark: 100 },
+        {category: "No Data", actions: 0, fullMark: 100 },
       ]
     }
   }
