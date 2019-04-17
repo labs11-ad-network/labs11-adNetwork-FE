@@ -34,8 +34,8 @@ class AppDownload extends Component {
                 <p>#Lad Download </p>
                 <h3 id="lad">The Best Lad Network</h3>
                 <p>
-                  One of the largest and perhaps the best known display
-                  advertising network.
+                  One of the best and perhaps the most non creepy advertising
+                  network.
                 </p>
                 <img src={appStore} alt="app store" className="app-store-img" />
                 <img
