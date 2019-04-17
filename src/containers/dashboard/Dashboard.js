@@ -22,6 +22,7 @@ import Settings from "./settings/Settings.js";
 import DashboardTour from "../../components/tours/DashboardTour.js";
 import SettingsTour from "../../components/tours/SettingsTour.js";
 import OfferTour from "../../components/tours/OfferTour.js";
+import AdGeneratorTour from "../../components/tours/AdGeneratorTour.js";
 
 const DashboardContainer = styled.div`
   display: flex;
@@ -115,9 +116,15 @@ class Dashboard extends Component {
                 <DashboardTour history={this.props.history} />
               ) : this.props.location.pathname === "/dashboard/offers" ? (
                 <OfferTour history={this.props.history} />
-              ) : this.props.location.pathname === "/dashboard/settings" ? (
+              ) : this.props.location.pathname === "/dashboard/settings" && (
                 <SettingsTour history={this.props.history} />
-              ) : null)}
+              )
+            )}
+            {(this.props.location.pathname === "/dashboard/create-ad" && 
+              currentUser.show_ad_tour &&
+              this.props.offers.length) && 
+                <AdGeneratorTour />
+            }
           </div>
         </div>
       </DashboardContainer>

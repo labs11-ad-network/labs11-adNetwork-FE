@@ -16,7 +16,7 @@ export const getOffers = () => dispatch => {
       dispatch({ type: GET_OFFERS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: GET_OFFERS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({ type: GET_OFFERS_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data });
     });
 };
 
@@ -37,7 +37,7 @@ export const createOffer = offer => dispatch => {
       dispatch(getOffers());
     })
     .catch(err => {
-      dispatch({ type: CREATE_OFFER_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({ type: CREATE_OFFER_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data });
     });
 };
 
@@ -61,7 +61,7 @@ export const changeOfferStatus = offer => dispatch => {
       dispatch(getOffers())
     })
     .catch(err => {
-      dispatch({ type: CHANGE_OFFER_STATUS_FAILURE, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data });
+      dispatch({ type: CHANGE_OFFER_STATUS_FAILURE, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data });
 
     });
 };
@@ -89,7 +89,7 @@ export const updateOffer = offer => dispatch => {
       dispatch(getOffers())
     })
     .catch(err => {
-      dispatch({ type:UPDATE_OFFER_SUCCESS, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
+      dispatch({ type:UPDATE_OFFER_SUCCESS, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data })
     })
 }
 
@@ -113,7 +113,7 @@ export const deleteOffer = offer => dispatch => {
       dispatch(getOffers())
     })
     .catch(err => {
-      dispatch({ type: DELETE_OFFER_SUCCESS, payload: err.response.status === 500 ? { message: "Internal server error" } : err.response.data })
+      dispatch({ type: DELETE_OFFER_SUCCESS, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data })
     })
 }
 

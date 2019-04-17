@@ -97,12 +97,6 @@ export default class Example extends PureComponent {
             <h2>Devices</h2>
             <h3>based on all actions</h3>
           </div>
-          <div>
-            <h2 className="percentage">
-              +23%
-              <i className="fas fa-arrow-circle-up" />
-            </h2>
-          </div>
         </GraphHeader>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>

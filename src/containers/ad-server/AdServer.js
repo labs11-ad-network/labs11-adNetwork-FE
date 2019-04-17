@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { AdContainer } from "./containerStyles";
 
 import { getAffiliateAds } from "../../store/actions/adAction.js";
 import { addStats } from "../../store/actions/analyticsAction";
@@ -65,8 +66,17 @@ class AdServer extends Component {
   render() {
     return (
       this.state.randomAd ?
-      <a href={`${this.state.randomAd.destination_url}/?affiliate=${this.props.match.params.affiliateId}&agreement=${this.state.randomAd.agreement_id || 0}`} target="_blank" rel="noopener noreferrer">
-        <img src={this.state.randomAd.image} onClick={this.recordAction} alt=""/>
+      <a 
+        href={`${this.state.randomAd.destination_url}/?affiliate=${this.props.match.params.affiliateId}&agreement=${this.state.randomAd.agreement_id || 0}`} 
+        target="_blank" 
+        rel="noopener noreferrer"
+      >
+        <AdContainer 
+          image={this.state.randomAd.image} 
+          onClick={this.recordAction} 
+          size={this.state.randomAd.size}
+          alt=""
+        />
       </a> :
       <h1>loading...</h1>
     );

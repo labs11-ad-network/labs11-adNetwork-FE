@@ -159,7 +159,7 @@ export const RightSection = styled.div`
       color: #6f6f6f;
       margin: unset;
       font-size: 1.1rem;
-      font-weight: 100;
+      font-weight: 400;
       @media (max-width: 900px) {
         display: none;
       }
@@ -174,7 +174,7 @@ export const Header = styled.h1`
   color: #7a7a7a;
   margin: 0 20px;
   font-size: 1.3rem;
-  font-weight: 500;
+  font-weight: 400;
   i {
     margin-right: 5px;
   }

@@ -18,10 +18,7 @@ export const getUserData = () => dispatch => {
     .catch(err => {
       dispatch({
         type: GET_USER_FAILURE,
-        payload:
-          err.response.status === 500
-            ? { message: "Internal server error" }
-            : err.response.data
+        payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };
@@ -34,7 +31,9 @@ export const CHANGE_USER_FAILURE = "CHANGE_USER_FAILURE";
 
 export const changeUserData = user => dispatch => {
   dispatch({ type: CHANGE_USER_START });
+
   let newUser = new FormData();
+  
   newUser.append("name", user.name);
   if (user.user_img) {
     newUser.append("image_url", user.user_img);
@@ -49,6 +48,8 @@ export const changeUserData = user => dispatch => {
     newUser.append("stripe_cust_id", user.stripe_cust_id);
   }
   newUser.append("show_tour", user.show_tour);
+  newUser.append("show_ad_tour", user.show_ad_tour);
+
   axios
     .put(`${URL}/api/users`, newUser)
     .then(res => {
@@ -60,10 +61,7 @@ export const changeUserData = user => dispatch => {
     .catch(err => {
       dispatch({
         type: CHANGE_USER_FAILURE,
-        payload:
-          err.response.status === 500
-            ? { message: "Internal server error" }
-            : err.response.data
+        payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };

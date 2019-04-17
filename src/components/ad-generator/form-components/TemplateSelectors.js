@@ -4,7 +4,7 @@ import { TemplateSelectors, TemplateButton } from "../forms/formStyles.js";
 
 const TemplateSelector = props => {
   return (
-    <TemplateSelectors>
+    <TemplateSelectors data-btn='template-selectors'>
       <TemplateButton 
         value="horizontal_banner" 
         name="size" 
