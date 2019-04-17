@@ -10,7 +10,7 @@ import {
 import moment from "moment";
 import styled from "styled-components";
 
-import { GraphContainer, GraphHeader } from "./GraphStyles.js";
+import { GraphContainer, GraphHeader } from "./graphStyles.js";
 
 const Chart = styled.div`
   height: 300px;

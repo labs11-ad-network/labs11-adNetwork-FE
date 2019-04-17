@@ -304,6 +304,7 @@ export const TimelineItem = styled.div`
   }
   p {
     font-size: 1rem;
+    line-height: 1.2rem;
     margin: 5px 0;
     @media (max-width: 665px) {
       font-size: 0.9rem;

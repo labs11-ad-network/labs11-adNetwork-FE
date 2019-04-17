@@ -2,7 +2,7 @@ import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 import styled from "styled-components";
 
-import { GraphContainer, GraphHeader } from './GraphStyles.js';
+import { GraphContainer, GraphHeader } from './graphStyles.js';
 
 const PieLabels = styled.div`
     display: flex;

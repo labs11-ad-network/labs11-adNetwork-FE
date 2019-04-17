@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
-import { GraphContainer, GraphHeader } from "./GraphStyles.js";
+import { GraphContainer, GraphHeader } from "./graphStyles.js";
 
 const renderActiveShape = props => {
   const RADIAN = Math.PI / 180;

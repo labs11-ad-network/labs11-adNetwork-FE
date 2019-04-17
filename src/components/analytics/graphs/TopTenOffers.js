@@ -9,7 +9,7 @@ import {
   ResponsiveContainer
 } from "recharts";
 
-import { GraphContainer, GraphHeader } from "./GraphStyles.js";
+import { GraphContainer, GraphHeader } from "./graphStyles.js";
 
 const TopTenOffers = props => {
   let data;
