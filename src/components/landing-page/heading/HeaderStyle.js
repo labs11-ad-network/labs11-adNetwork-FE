@@ -85,7 +85,7 @@ export const HeroHome = styled.section`
         max-width: 800px;
         width: 175%;
         left: 43px;
-        top: 105%;
+        top: 109%;
       }
     }
   }

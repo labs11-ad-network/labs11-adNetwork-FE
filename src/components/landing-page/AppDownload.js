@@ -84,8 +84,8 @@ class AppDownload extends Component {
                 <i className="fas fa-layer-group promo-icon" />{" "}
                 <h2>Ad Server</h2>
                 <p>
-                  Our Ad Server will display advertisements that you have accepted 
-                  based on the sizes that you select as an affiliate.
+                  Our Ad Server will display advertisements that you have
+                  accepted based on the sizes that you select as an affiliate.
                 </p>
               </div>
 
@@ -96,8 +96,8 @@ class AppDownload extends Component {
               >
                 <i className="fas fa-chart-bar promo-icon" /> <h2>Analytics</h2>
                 <p>
-                  We provide detailed analytics, track key metrics, and display them in
-                  a very clean and easy to read visual report.
+                  We provide detailed analytics, track key metrics, and display
+                  them in a very clean and easy to read visual report.
                 </p>
               </div>
             </div>
@@ -219,8 +219,8 @@ class AppDownload extends Component {
                   <img src={tool5} alt="icon" />
                   <h3 className="main-heading-three">Payment</h3>
                   <p>
-                    Competitive prepaid payment terms with instant payments powered
-                    by the secure stripe payment system.
+                    Competitive prepaid payment terms with instant payments
+                    powered by the secure stripe payment system.
                   </p>
                 </div>
 
@@ -231,7 +231,10 @@ class AppDownload extends Component {
                 >
                   <img src={tool6} alt="icon" />
                   <h3 className="main-heading-three">Support</h3>
-                  <p>Dedicated account managers and a meaningful support team ready for any of your questions.</p>
+                  <p>
+                    Dedicated account managers and a meaningful support team
+                    ready for any of your questions.
+                  </p>
                 </div>
 
                 <div
@@ -289,7 +292,7 @@ class AppDownload extends Component {
                     infiniteScroll={true}
                     enableHeading={false}
                     enableScroll={false}
-                    currentFigureScale={0.9}
+                    currentFigureScale={0.95}
                     otherFigureScale={0.71}
                     media={{
                       "@media (max-width: 479px)": {
