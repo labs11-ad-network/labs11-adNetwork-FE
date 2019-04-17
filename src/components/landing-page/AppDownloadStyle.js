@@ -184,12 +184,7 @@ export const AppDownloadStyle = styled.div`
   }
 
   .promo-icon {
-    background-image: linear-gradient(
-      -45deg,
-      #2b18dd 0%,
-      #1151d3 50%,
-      #1151d3 100%
-    );
+    background: #0a88dc;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700;
