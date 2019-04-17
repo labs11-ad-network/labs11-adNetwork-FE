@@ -57,8 +57,8 @@ const LandingContentSection = () => {
             Choose the most converting banner Ads for higher eCPM or CPC
           </p>
           <p className="landing-ptag">
-            Select your desired banner size to fit your space, and display your
-            chosen ads and increase your revenue.
+            Select your desired banner size to fit your space, display your
+            chosen ads, and increase your revenue.
           </p>
           <div className="buttons_container">
             <a href="#lad" className="btn_blue">
@@ -94,7 +94,7 @@ const LandingContentSection = () => {
 
           <p className="landing-ptag">
             We support all your desired sizes to maintain your audience
-            engagement, and reach more mobile users and increase your revenue as
+            engagement, reach more mobile users, and increase your revenue as
             a publisher.
           </p>
           <div className="buttons_container">
