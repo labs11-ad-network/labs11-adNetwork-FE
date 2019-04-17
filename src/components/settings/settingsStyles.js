@@ -232,7 +232,7 @@ export const SnippetCardContainer = styled.div`
   @media (max-width: 1170px) {
     box-sizing: border-box;
     width: 100%;
-    margin: 15px 0 0 0;
+    margin: 0 0 15px 0;
   }
 `;
 
