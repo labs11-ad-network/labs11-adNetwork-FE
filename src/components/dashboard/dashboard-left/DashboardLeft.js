@@ -23,18 +23,21 @@ export class DashboardNav extends Component {
               <NavButton
                 iconClass="fas fa-chart-line"
                 pathExtension="/dashboard"
+                tooltip="Dashboard"
               />
             </div>
             <div data-btn="offers-button">
               <NavButton
                 iconClass="fas fa-list"
                 pathExtension="/dashboard/offers"
+                tooltip="Offers"
               />
             </div>
             <div data-btn="settings-button">
               <NavButton
                 iconClass="fas fa-cog"
                 pathExtension="/dashboard/settings"
+                tooltip="Settings"
               />
             </div>
           </ButtonContainer>

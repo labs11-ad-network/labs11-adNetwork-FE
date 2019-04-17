@@ -20,10 +20,7 @@ export const getPayouts = () => dispatch => {
     .catch(err => {
       dispatch({
         type: GET_PAYOUT_FAILURE,
-        payload:
-          err.response.status === 500
-            ? { message: "Internal server error" }
-            : err.response.data
+        payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };
@@ -44,10 +41,7 @@ export const getPayments = () => dispatch => {
     .catch(err => {
       dispatch({
         type: GET_PAYMENTS_FAILURE,
-        payload:
-          err.response.status === 500
-            ? { message: "Internal server error" }
-            : err.response.data
+        payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };
@@ -71,10 +65,7 @@ export const createCustomer = () => dispatch => {
     .catch(err => {
       dispatch({
         type: CREATE_CUSTOMER_FAILURE,
-        payload:
-          err.response.status === 500
-            ? { message: "Internal server error" }
-            : err.response.data
+        payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };
@@ -99,10 +90,7 @@ export const chargeCustomer = () => dispatch => {
     .catch(err => {
       dispatch({
         type: CHARGE_CUSTOMER_FAILURE,
-        payload:
-          err.response.status === 500
-            ? { message: "Internal server error" }
-            : err.response.data
+        payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };
@@ -127,10 +115,7 @@ export const payoutCustomer = () => dispatch => {
     .catch(err => {
       dispatch({
         type: PAYOUT_CUSTOMER_FAILURE,
-        payload:
-          err.response.status === 500
-            ? { message: "Internal server error" }
-            : err.response.data
+        payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };
@@ -151,6 +136,6 @@ export const connectCustomer = (code, history) => dispatch => {
     })
     .catch(err => {
       history.push("/dashboard/settings");
-      dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: err });
+      dispatch({ type: CONNECT_CUSTOMER_SUCCESS, payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data });
     });
 };

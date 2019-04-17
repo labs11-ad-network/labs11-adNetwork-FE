@@ -10,7 +10,8 @@ import { connect } from "react-redux";
 import {
   OfferButton,
   OfferModalButton,
-  TabButtonContainer
+  TabButtonContainer,
+  AdPreview
 } from "./offersStyles.js";
 import {
   getOfferAds,
@@ -313,7 +314,8 @@ class OffersList extends React.Component {
       options: {
         width: 170,
         customBodyRender: value => {
-          return <img src={value.image} alt="..." />;
+          console.log(value)
+          return <AdPreview image={value.image} size={value.size}/>;
         }
       }
     },
@@ -357,7 +359,7 @@ class OffersList extends React.Component {
       options: {
         width: 170,
         customBodyRender: value => {
-          return <img src={value.image} alt="..." />;
+          return <AdPreview image={value.image} size={value.size}/>;
         }
       }
     }

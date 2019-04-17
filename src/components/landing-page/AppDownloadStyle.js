@@ -474,6 +474,10 @@ export const AppDownloadStyle = styled.div`
     }
   }
 
+  .space-left {
+    margin-left: 25px;
+  }
+
   .main-title {
     font-size: 20px;
     color: #333;

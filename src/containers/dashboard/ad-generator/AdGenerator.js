@@ -3,16 +3,17 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import html2canvas from "html2canvas";
 
-import { 
-  AdGeneratorContainer, 
-  LeftSection, 
-  RightSection, 
-  CreateAdButton, 
+import {
+  AdGeneratorContainer,
+  LeftSection,
+  RightSection,
+  CreateAdButton,
   WidthNotSupported,
-  NoOffersContent 
+  NoOffersContent
 } from "./containerStyles.js";
 import { createAd } from "../../../store/actions/adAction.js";
 import { getOffers } from "../../../store/actions/offersAction.js";
+import { changeUserData } from "../../../store/actions/authAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
 import TemplateSelectors from "../../../components/ad-generator/form-components/TemplateSelectors.js";
 import Controls from "../../../components/ad-generator/controls/Controls.js";
@@ -29,6 +30,7 @@ export class AdGenerator extends Component {
       button_text: "",
       destination_url: "",
       file: "",
+      fileObject: "",
       size: "square_banner",
       headline: {
         size: "",
@@ -71,7 +73,12 @@ export class AdGenerator extends Component {
 
   createAd = async e => {
     e.preventDefault();
-    const image = await this.generateSnapshot("advertisment");
+    let image;
+    if (this.state.productData.size.includes("plain")) {
+      image = this.state.productData.fileObject;
+    } else {
+      image = await this.generateSnapshot("advertisment");
+    }
     await this.props.createAd(
       {
         offer_id: this.state.productData.offer_id,
@@ -93,6 +100,7 @@ export class AdGenerator extends Component {
         button_text: "",
         destination_url: "",
         file: "",
+        fileObject: "",
         size: "square_banner",
         headline: {
           size: "",
@@ -160,7 +168,9 @@ export class AdGenerator extends Component {
         ...this.state.productData,
         [this.state.currentElement]: {
           ...this.state.productData[this.state.currentElement],
-          [e.target.name || name]: !this.state.productData[this.state.currentElement][e.target.name || name]
+          [e.target.name || name]: !this.state.productData[
+            this.state.currentElement
+          ][e.target.name || name]
         }
       }
     });
@@ -184,15 +194,15 @@ export class AdGenerator extends Component {
     this.setState({
       productData: {
         ...this.state.productData,
-        file: URL.createObjectURL(e.target.files[0])
+        file: URL.createObjectURL(e.target.files[0]),
+        fileObject: e.target.files[0]
       }
     });
   };
 
   render() {
-
-    const { offers } = this.props;
-    const { productData, currentElement } = this.state; 
+    const { offers, changeUserData, currentUser } = this.props;
+    const { productData, currentElement } = this.state;
 
     return this.props.offers.length ? (
       <>
@@ -202,13 +212,13 @@ export class AdGenerator extends Component {
               <div className="template-selectors">
                 <h1>Select Size</h1>
                 <div className="template-buttons">
-                  <TemplateSelectors 
-                    handleChange={this.handleChange} 
+                  <TemplateSelectors
+                    handleChange={this.handleChange}
                     selected={productData.size}
                   />
                 </div>
                 <div className="template-select">
-                  <select 
+                  <select
                     type="text"
                     name="size"
                     value={productData.size}
@@ -217,9 +227,15 @@ export class AdGenerator extends Component {
                     <option value="square_banner">Square Banner</option>
                     <option value="vertical_banner">Vertical Banner</option>
                     <option value="horizontal_banner">Horizontal Banner</option>
-                    <option value="plain_horizontal">Plain (img/gif only) Horizontal Banner</option>
-                    <option value="plain_square">Plain (img/gif only) Square Banner</option>
-                    <option value="plain_vertical">Plain (img/gif only) Vertical Banner</option>
+                    <option value="plain_horizontal">
+                      Plain (img/gif only) Horizontal Banner
+                    </option>
+                    <option value="plain_square">
+                      Plain (img/gif only) Square Banner
+                    </option>
+                    <option value="plain_vertical">
+                      Plain (img/gif only) Vertical Banner
+                    </option>
                   </select>
                 </div>
               </div>
@@ -234,38 +250,49 @@ export class AdGenerator extends Component {
                 selected={currentElement}
               />
             </div>
-            <CreateAdButton onClick={this.createAd} className="desktop-create-btn">
+            <CreateAdButton
+              onClick={this.createAd}
+              className="desktop-create-btn"
+            >
               Create Ad
             </CreateAdButton>
           </LeftSection>
           <RightSection>
             <div className="ad-preview">
-              <div/>
+              <div />
               <div className="ad-container">
-                <div id="advertisment">
-                  <AdHoc 
-                    ad={productData} 
+                <div id="advertisment" data-btn='advertisement'>
+                  <AdHoc
+                    ad={productData}
                     handleElementChange={this.handleElementChange}
                     selected={currentElement}
                   />
                 </div>
               </div>
               <div className="controls">
-                  <Controls
-                    customizeElement={this.customizeElement}
-                    toggleElementStyle={this.toggleElementStyle}
-                    sizeValue={productData[currentElement].size}
-                  />
+                <Controls
+                  customizeElement={this.customizeElement}
+                  toggleElementStyle={this.toggleElementStyle}
+                  sizeValue={productData[currentElement].size}
+                  changeUserData={changeUserData}
+                  currentUser={currentUser}
+                />
               </div>
             </div>
-            <CreateAdButton onClick={this.createAd} className="tablet-create-btn">
+            <CreateAdButton
+              onClick={this.createAd}
+              className="tablet-create-btn"
+            >
               Create Ad
             </CreateAdButton>
           </RightSection>
         </AdGeneratorContainer>
         <WidthNotSupported>
-            <h1>Your device width is not supported for our advertisement creator. Try to go into horizontal mode otherwise move to a bigger device.</h1>
-            <Link to="/dashboard">Back to Dashboard</Link>
+          <h1>
+            Your device width is not supported for our advertisement creator.
+            Try to go into horizontal mode otherwise move to a bigger device.
+          </h1>
+          <Link to="/dashboard">Back to Dashboard</Link>
         </WidthNotSupported>
       </>
     ) : (
@@ -279,7 +306,8 @@ export class AdGenerator extends Component {
 
 const mapStateToProps = state => {
   return {
-    offers: state.offersReducer.offers
+    offers: state.offersReducer.offers,
+    currentUser: state.authReducer.currentUser
   };
 };
 
@@ -287,6 +315,7 @@ export default connect(
   mapStateToProps,
   {
     createAd,
-    getOffers
+    getOffers,
+    changeUserData
   }
 )(AdGenerator);

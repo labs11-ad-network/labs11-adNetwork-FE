@@ -76,7 +76,7 @@ export const NavContainer = styled.nav`
   max-height: 65px;
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-  z-index: 999999;
+  z-index: 9999;
 `;
 
 export const LeftSection = styled.div`
@@ -159,7 +159,7 @@ export const RightSection = styled.div`
       color: #6f6f6f;
       margin: unset;
       font-size: 1.1rem;
-      font-weight: 100;
+      font-weight: 400;
       @media (max-width: 900px) {
         display: none;
       }
@@ -174,7 +174,7 @@ export const Header = styled.h1`
   color: #7a7a7a;
   margin: 0 20px;
   font-size: 1.3rem;
-  font-weight: 500;
+  font-weight: 400;
   i {
     margin-right: 5px;
   }

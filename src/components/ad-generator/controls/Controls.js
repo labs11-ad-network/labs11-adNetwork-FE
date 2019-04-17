@@ -12,7 +12,7 @@ import {
 
 const Controls = props => {
   return (
-    <div>
+    <div data-btn='ad-controls'>
       <TopSection>
         <div>
           <Slider
@@ -28,8 +28,16 @@ const Controls = props => {
       </TopSection>
       <BottomSection>
         <BottomLeft>
-          <button>
-            <i className="fas fa-pencil-alt"/>
+          <button 
+            data-btn='toggle-ad-tour' 
+            onClick={() => {
+              props.changeUserData({
+                ...props.currentUser,
+                show_ad_tour: !props.currentUser.show_ad_tour
+              });
+            }}
+          >
+            <i className="fas fa-info-circle"/>
           </button>
         </BottomLeft>
         <BottomMiddle>

@@ -13,16 +13,16 @@ const RadarChartContainer = props => {
 
   const getData = () => {
     if(props.data.length){
-      return props.data.map((offer, i) => {
-        return { device: offer.device, actions: offer.count, fullMark: 100 };
+      return props.data.map((c, i) => {
+        return { category: c.category, actions: c.count, fullMark: 100 };
       });
     }
     else{
       return [
-        {actions: 0, fullMark: 100 },
-        {actions: 0, fullMark: 100 },
-        {actions: 0, fullMark: 100 },
-        {actions: 0, fullMark: 100 },
+        {category: 0, fullMark: 100 },
+        {category: 0, fullMark: 100 },
+        {category: 0, fullMark: 100 },
+        {category: 0, fullMark: 100 },
       ]
     }
   }
@@ -33,17 +33,17 @@ const RadarChartContainer = props => {
     <GraphContainer>
       <GraphHeader bottomBorder>
         <div>
-          <h2>Devices</h2>
+          <h2>Best Categories</h2>
           <h3>based on all actions</h3>
         </div>
       </GraphHeader>
-      <ResponsiveContainer width="100%" height="90%">
+      <ResponsiveContainer width="90%" height="90%">
         <RadarChart
-          outerRadius={160}
+          outerRadius={130}
           data={data}
         >
           <PolarGrid />
-          <PolarAngleAxis dataKey="device" />
+          <PolarAngleAxis dataKey="category" />
           <PolarRadiusAxis />
           <Radar
             name="Mike"

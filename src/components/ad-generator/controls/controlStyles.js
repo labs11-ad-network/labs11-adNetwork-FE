@@ -104,5 +104,9 @@ export const BottomLeft = styled.div`
         &:focus{
             outline: none;
         }
+        &:hover{
+            cursor: pointer;
+            background-color: #0B6FB2;
+        }
     }
 `;

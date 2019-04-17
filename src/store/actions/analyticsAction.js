@@ -14,10 +14,7 @@ const URL = process.env.REACT_APP_BACKEND_URL;
 //     .catch(err => {
 //       dispatch({
 //         type: AD_ACTION_FAILED,
-//         payload:
-//           err.response.status === 500
-//             ? { message: "Internal server error" }
-//             : err.response.data
+//         payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
 //       });
 //     });
 // };
@@ -39,10 +36,7 @@ export const addStats = stats => dispatch => {
     .catch(err => {
       dispatch({
         type: AD_ACTION_FAILED,
-        payload:
-          err.response.status === 500
-            ? { message: "Internal server error" }
-            : err.response.data
+        payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };
@@ -61,13 +55,9 @@ export const getAnalytics = (id, query_string) => dispatch => {
       dispatch({ type: GET_ANALYTICS_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      console.log(err.response);
       dispatch({
         type: GET_ANALYTICS_FAILURE,
-        payload:
-          err.response.status === 500
-            ? { message: "Internal server error" }
-            : err.response.data
+        payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
       });
     });
 };
