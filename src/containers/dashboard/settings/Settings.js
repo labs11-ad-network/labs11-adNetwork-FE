@@ -1,45 +1,13 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { connect } from "react-redux";
 
+import { SettingsContainer, BillingContainer } from "./containerStyles.js";
 import { getUserData } from "../../../store/actions/authAction.js";
-import {
-  getPayouts,
-  getPayments
-} from "../../../store/actions/stripeAction.js";
+import { getPayouts, getPayments } from "../../../store/actions/stripeAction.js";
 import ProfileCard from "../../../components/settings/profile-card/ProfileCard.js";
 import BillingCard from "../../../components/settings/billing-card/BillingCard.js";
 import SnippetCard from "../../../components/settings/snippet-card/SnippetCard.js";
 import TabContainer from "../../../components/settings/tab-container/TabContainer.js";
-
-const SettingsContainer = styled.div`
-  display: flex;
-  margin: 10px;
-  .billing-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px;
-  }
-  .mobile-snippet{
-    display: none;
-  }
-  @media (max-width: 1170px) {
-    flex-direction: column;
-    margin: unset;
-    width: 95%;
-    margin: 0 auto;
-    .billing-container {
-      width: 100%;
-      margin: 0 auto;
-    }
-    .desktop-snippet{
-      display: none;
-    }
-    .mobile-snippet{
-      display: flex;
-    }
-  }
-`;
 
 class Settings extends Component {
   state = {
@@ -62,10 +30,14 @@ class Settings extends Component {
 
     return (
       <SettingsContainer>
+        {/* ------------------------------ Left Section ------------------------------ */}        
         <div>
+          {/* ------------------------------ Profile Card ------------------------------ */}
           <ProfileCard currentUser={currentUser} />
-          <div className="billing-container">
+          <BillingContainer>
+            {/* ------------------------------ Amount Due/Made ------------------------------ */}
             <BillingCard currentUser={currentUser} />
+            {/* ------------------------------ Total Spent/Made ------------------------------ */}
             <BillingCard
               currentUser={currentUser}
               title={
@@ -81,11 +53,13 @@ class Settings extends Component {
               }
               clicked={e => this.handleTabChange(e, 1)}
             />
-          </div>
+          </BillingContainer>
+          {/* ------------------------------ Desktop Snippet ------------------------------ */}          
           <div data-btn="snippet" className="desktop-snippet">
             <SnippetCard currentUser={currentUser}/>
           </div>
         </div>
+        {/* ------------------------------ Tab Container (right section) ------------------------------ */} 
         <TabContainer
           payouts={payouts}
           payments={payments}
@@ -94,6 +68,7 @@ class Settings extends Component {
           tabValue={tabValue}
           history={history}
         />
+        {/* ------------------------------ Mobile Snippet ------------------------------ */} 
         <div data-btn="snippet" className="mobile-snippet">
           <SnippetCard currentUser={currentUser}/>
         </div>
@@ -104,6 +79,7 @@ class Settings extends Component {
 
 const mapStateToProps = state => {
   return {
+    currentUser: state.authReducer.currentUser,
     payouts: state.stripeReducer.payouts,
     payments: state.stripeReducer.payments
   };
