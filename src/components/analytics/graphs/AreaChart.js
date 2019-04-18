@@ -22,10 +22,12 @@ const Chart = styled.div`
 
 class RevenueChart extends React.Component {
   render() {
+    const { growth } = this.props;
     const data = this.props.data.length ? this.props.data : [ { created: "no data yet", amount: "no data yet" } ];
 
     return (
       <GraphContainer>
+        {/* ------------------------------  Graph Header ------------------------------ */}
         <GraphHeader bottomBorder>
           <div>
             <h2>Revenue</h2>
@@ -33,11 +35,12 @@ class RevenueChart extends React.Component {
           </div>
           <div>
             <h2 className="percentage">
-              +{this.props.growth}%
+              +{growth}%
               <i className="fas fa-arrow-circle-up" />
             </h2>
           </div>
         </GraphHeader>
+        {/* ------------------------------ Chart ------------------------------ */}
         <Chart>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart

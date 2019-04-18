@@ -99,25 +99,30 @@ export default class Example extends PureComponent {
   };
 
   render() {
+    const { activeIndex } = this.state;
+    /* ------------------------------ Data Rendering ------------------------------ */
     const data = this.props.data.length ? this.props.data.map((offer, i) => {
+
       return { name: offer.device, value: Number(offer.count) };
     }) : [
       { name: "No Data Yet", value: 1 },
-    ]
-    ;
+    ];
+    
     return (
       <GraphContainer>
+        {/* ------------------------------ Header ------------------------------ */}
         <GraphHeader bottomBorder>
           <div>
             <h2>Devices</h2>
             <h3>based on all actions</h3>
           </div>
         </GraphHeader>
+        {/* ------------------------------ Chart ------------------------------ */}
         <Chart>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
-                activeIndex={this.state.activeIndex}
+                activeIndex={activeIndex}
                 activeShape={renderActiveShape}
                 data={data}
                 innerRadius={90}

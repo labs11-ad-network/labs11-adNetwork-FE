@@ -19,20 +19,17 @@ const styles = {
   }
 };
 
-const CustomInput = props => {
-  return (
-    <DatePickerInput onClick={props.datePicker.onClick}>
-      <label htmlFor={props.name}> {props.datePicker.label} </label>
-
-      <input
-        name={props.name}
-        value={props.datePicker.value}
-        onChange={date => this.props.handleDateChange(date, "started_at")}
-      />
-
-    </DatePickerInput>
-  );
-};
+/* ------------------------------ Custom Input for Date Pickers ------------------------------ */
+const CustomInput = ({ datePicker, name, handleDateChange }) => (
+  <DatePickerInput onClick={datePicker.onClick}>
+    <label htmlFor={name}> {datePicker.label} </label>
+    <input
+      name={name}
+      value={datePicker.value}
+      onChange={date => handleDateChange(date, "started_at")}
+    />
+  </DatePickerInput>
+);
 
 class MaterialUIPickers extends React.Component {
   render() {
@@ -49,6 +46,7 @@ class MaterialUIPickers extends React.Component {
         <Grid container className={classes.grid}>
           <DatePickerContainer>
             <div data-btn="report_filter-button">
+              {/* ------------------------------ Date Picker Start Date ------------------------------ */}
               <DatePicker
                 className={classes.datepicker}
                 margin="normal"
@@ -59,6 +57,7 @@ class MaterialUIPickers extends React.Component {
                   <CustomInput datePicker={datePicker} />
                 )}
               />
+              {/* ------------------------------ Date Picker End Date ------------------------------ */}
               <DatePicker
                 margin="normal"
                 label="End Date"
@@ -68,6 +67,7 @@ class MaterialUIPickers extends React.Component {
                   <CustomInput datePicker={datePicker} />
                 )}
               />
+              {/* ------------------------------ Date Picker Filter Button ------------------------------ */}
               <DateFilterButton onClick={getFilteredAnalytics}>
                 Filter
               </DateFilterButton>

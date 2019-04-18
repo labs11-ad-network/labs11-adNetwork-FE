@@ -4,18 +4,20 @@ import moment from 'moment';
 import { TableContainer, TableHeader, TableRow } from "./tableStyles";
 
 const Table = props => {
-  const { data } = props;
+  const { data, growth, dataType } = props;
   return (
     <TableContainer>
+      {/* ------------------------------ Table Header ------------------------------ */}
       <TableHeader bottomBorder={true}>
         <div>
-          <h2>{props.dataType}</h2>
+          <h2>{dataType}</h2>
           <h3>most recent</h3>
         </div>
         <div>
-          <h2 className="percentage">{`+${props.growth}%`}<i className="fas fa-arrow-circle-up"/></h2>
+          <h2 className="percentage">{`+${growth}%`}<i className="fas fa-arrow-circle-up"/></h2>
         </div>
       </TableHeader>
+      {/* ------------------------------ Table ------------------------------ */}
       <table>
         <tbody>
           {data.length ? data.sort((first, second) => {

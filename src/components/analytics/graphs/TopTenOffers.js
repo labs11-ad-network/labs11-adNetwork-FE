@@ -21,6 +21,7 @@ const Chart = styled.div`
 `;
 
 const TopTenOffers = props => {
+  /* ------------------------------ Data Rendering ------------------------------ */
   let data;
   if (props.data.length) {
     props.data.length = 10;
@@ -36,12 +37,14 @@ const TopTenOffers = props => {
 
   return (
     <GraphContainer>
+      {/* ------------------------------ Header ------------------------------ */}
       <GraphHeader bottomBorder>
         <div>
           <h2>Top Ranking Offers</h2>
           <h3>based on click through rate</h3>
         </div>
       </GraphHeader>
+      {/* ------------------------------ Bar Chart ------------------------------ */}
       <Chart>
         <ResponsiveContainer width="100%" height="100%">
           <BarChart

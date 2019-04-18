@@ -44,3 +44,40 @@ export const GraphHeader = styled.div`
         color: #0CB200;
     }
 `;
+
+export const PieLabels = styled.div`
+    display: flex;
+    margin: 10px;
+    .label {
+      display: flex;
+      align-items: center;
+      margin-right: 10px;
+      .circle {
+        width: 10px;
+        height: 10px;
+        border-radius: 5px;
+      }
+      .chrome {
+        background-color: #0088fe;
+      }
+      .firefox {
+        background-color: #ffbb28;
+      }
+      .safari {
+        background-color: #00c49f;
+      }
+      .edge {
+        background-color: #ff8042;
+      }
+      .other {
+        background-color: gray;
+      }
+      .no-data{
+        background-color: #ECEFF1;
+      }
+      p {
+        margin-left: 5px;
+        font-size: 0.7rem;
+      }
+    }
+`;
