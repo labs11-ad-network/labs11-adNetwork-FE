@@ -74,7 +74,6 @@ class UserDropdown extends React.Component {
                           auth.logout();
                         }}
                         component={Link}
-                        to="/"
                       >
                         Logout
                       </MenuItem>
