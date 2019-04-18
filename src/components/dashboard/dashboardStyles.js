@@ -264,7 +264,8 @@ export const MobileNav = styled.div`
   z-index: 9999;
   left: ${props => (props.status ? "0" : "-100vw")};
   top: 0;
-  transition: 300ms all;
+  transition: 100ms cubic-bezier(0.4, 0, 1, 1);
+
   button {
     width: 65px;
     height: 65px;
