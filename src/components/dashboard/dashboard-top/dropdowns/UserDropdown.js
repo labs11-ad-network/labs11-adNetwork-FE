@@ -28,6 +28,13 @@ class UserDropdown extends React.Component {
     this.setState(state => ({ open: !state.open }));
   };
 
+  handleClose = event => {
+    if (this.anchorEl.contains(event.target)) {
+      return;
+    }
+    this.setState({ open: false });
+  };
+
   render() {
     const { classes, currentUser, auth } = this.props;
 
@@ -46,6 +53,7 @@ class UserDropdown extends React.Component {
             <img src={currentUser.image_url} alt="" />
             <h2>{currentUser.name}</h2>
           </Button>
+
           <Popper
             id={1}
             open={this.state.open}
@@ -57,12 +65,10 @@ class UserDropdown extends React.Component {
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={350}>
                 <Paper>
-                  <ClickAwayListener onClickAway={this.handleClose}>
+                  <ClickAwayListener onClickAway={e => this.handleClose(e)}>
                     <MenuList>
                       <MenuItem
-                        onClick={e => {
-                          this.handleClose(e);
-                        }}
+                        onClick={this.handleToggle}
                         component={Link}
                         to="/dashboard/settings"
                       >
@@ -70,9 +76,10 @@ class UserDropdown extends React.Component {
                       </MenuItem>
                       <MenuItem
                         onClick={e => {
-                          this.handleClose(e);
+                          this.handleToggle();
                           auth.logout();
                         }}
+                        to="/"
                         component={Link}
                       >
                         Logout

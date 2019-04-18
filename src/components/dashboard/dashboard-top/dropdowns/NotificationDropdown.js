@@ -1,8 +1,9 @@
 import React from "react";
-import moment from "moment";
 import { Link } from "react-router-dom";
-
+import { Container } from "./notificationDropDownStyles";
 import { withStyles } from "@material-ui/core/styles";
+
+import moment from "moment";
 
 import Button from "@material-ui/core/Button";
 import Badge from "@material-ui/core/Badge";
@@ -12,8 +13,6 @@ import Paper from "@material-ui/core/Paper";
 import Popper from "@material-ui/core/Popper";
 import MenuItem from "@material-ui/core/MenuItem";
 import MenuList from "@material-ui/core/MenuList";
-
-import { Container } from "./notificationDropDownStyles";
 
 const styles = theme => ({
   root: {
