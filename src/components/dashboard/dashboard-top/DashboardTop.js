@@ -36,6 +36,7 @@ class DashboardTop extends React.Component {
       agreements,
       isLoadingAds,
       isLoadingAgreements,
+      location,
       isLoadingOffers,
       isLoadingStripe,
       auth
@@ -55,21 +56,21 @@ class DashboardTop extends React.Component {
             {/* --------------------- Mobile Hamburger and Create Ad buttons ------------------ */}
             <MobileMenuButtons
               movileNavOpen={movileNavOpen}
-              location={this.props.location}
+              location={location}
               toggleNav={this.toggleNav}
               currentUser={currentUser}
             />
             {/* --------------------- Conditional Header Rendering ------------------ */}
             <Header>
-              {this.props.location.pathname.includes("offers") ? (
+              {location.pathname.includes("offers") ? (
                 <>
                   <i className="fas fa-list" /> Offers
                 </>
-              ) : this.props.location.pathname.includes("settings") ? (
+              ) : location.pathname.includes("settings") ? (
                 <>
                   <i className="fas fa-cog" /> Settings
                 </>
-              ) : this.props.location.pathname.includes("create") ? (
+              ) : location.pathname.includes("create") ? (
                 <>
                   <i className="fas fa-pencil-alt" /> Create Ad
                 </>
@@ -83,7 +84,7 @@ class DashboardTop extends React.Component {
             <AnalyticsDropdown
               currentUser={currentUser}
               handleOfferSelect={handleOfferSelect}
-              location={this.props.location}
+              location={location}
               currentOffer={currentOffer}
               offers={offers}
               agreements={agreements}
@@ -102,7 +103,7 @@ class DashboardTop extends React.Component {
                 <NotificationDropdown
                   userNotifications={userNotifications}
                   updateUserNotification={updateUserNotification}
-                  location={this.props.location}
+                  location={location}
                 />
                 {/* --------------------- User menu ------------------ */}
                 <UserDropdown auth={auth} currentUser={currentUser} />

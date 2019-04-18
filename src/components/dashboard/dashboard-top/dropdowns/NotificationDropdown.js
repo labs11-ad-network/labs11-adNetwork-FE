@@ -66,6 +66,7 @@ class NotificationDropdown extends React.Component {
       <Container>
         <div className={classes.root}>
           <div data-btn="notifications_menu-button">
+            {/* ------------------------------ Dropdown Toggle ------------------------------ */}
             <Button
               buttonRef={node => {
                 this.anchorEl = node;
@@ -79,6 +80,7 @@ class NotificationDropdown extends React.Component {
                 <i className="fas fa-bell" />
               </Badge>
             </Button>
+            {/* ------------------------------ Dropdown ------------------------------ */}
             <Popper
               open={open}
               anchorEl={this.anchorEl}
@@ -100,6 +102,7 @@ class NotificationDropdown extends React.Component {
                       <MenuList>
                         {userNotifications.length !== 0 ? (
                           userNotifications.map(n => (
+                            /* ------------------------------ Notification ------------------------------ */
                             <MenuItem
                               style={
                                 n.unread

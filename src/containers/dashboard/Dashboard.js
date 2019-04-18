@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
 import { Route } from "react-router-dom";
 
+import { DashboardContainer } from "./containerStyles.js";
 import { getOffers } from "../../store/actions/offersAction.js";
 import { getUserData } from "../../store/actions/authAction.js";
 import { getAgreements } from "../../store/actions/agreementsAction.js";
@@ -24,22 +24,6 @@ import SettingsTour from "../../components/tours/SettingsTour.js";
 import OfferTour from "../../components/tours/OfferTour.js";
 import AdGeneratorTour from "../../components/tours/AdGeneratorTour.js";
 
-const DashboardContainer = styled.div`
-  display: flex;
-  background-color: #f1f1f1;
-  .main-content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    .dashboard-view {
-      width: 100%;
-      height: 100%;
-      overflow-y: auto;
-    }
-  }
-`;
-
 class Dashboard extends Component {
   state = {
     currentAnalyticId: ""
@@ -49,7 +33,6 @@ class Dashboard extends Component {
     this.props.getUserData();
     this.props.getOffers();
     this.props.getAgreements();
-    this.props.getUserNotifications();
     this.startGettingNotifications();
   }
 
@@ -58,6 +41,7 @@ class Dashboard extends Component {
   }
 
   startGettingNotifications = () => {
+    this.props.getUserNotifications();
     this.notificationsInterval = setInterval(() => {
       this.props.getUserNotifications();
     }, 15000);
@@ -79,10 +63,13 @@ class Dashboard extends Component {
       auth,
       updateUserNotification
     } = this.props;
+
     return (
       <DashboardContainer>
+        {/* ------------------------------ Left Navigation ------------------------------ */}
         <DashboardLeft />
         <div className="main-content">
+          {/* ------------------------------ Top Navigation ------------------------------ */}
           <DashboardTop
             {...this.props}
             auth={auth}
@@ -92,6 +79,7 @@ class Dashboard extends Component {
             updateUserNotification={updateUserNotification}
           />
           <div className="dashboard-view">
+            {/* ------------------------------ Analytics Route ------------------------------ */}
             <Route
               exact
               path="/dashboard"
@@ -99,13 +87,15 @@ class Dashboard extends Component {
                 <Analytics {...props} currentAnalyticId={currentAnalyticId} />
               )}
             />
-            <Route
-              path="/dashboard/offers"
-              render={props => <Offers {...props} currentUser={currentUser} />}
-            />
+            {/* ------------------------------ Offers Route ------------------------------ */}
+            <Route path="/dashboard/offers" component={Offers}/>
+            {/* ------------------------------ Settings Route ------------------------------ */}
             <Route path="/dashboard/settings" component={Settings}/>
+            {/* ------------------------------ Ad Generator route ------------------------------ */}
             <Route path="/dashboard/create-ad" component={AdGenerator} />
+            {/* ------------------------------ Live Chat ------------------------------ */}
             <ChatWidget />
+            {/* ------------------------------ Conditionally Rendering Tours For Each Page ------------------------------ */}
             {currentUser.show_tour &&
               (this.props.location.pathname === "/dashboard" ? (
                 <DashboardTour history={this.props.history} />

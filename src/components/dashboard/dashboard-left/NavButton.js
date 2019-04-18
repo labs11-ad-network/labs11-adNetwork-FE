@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Tooltip from "@material-ui/core/Tooltip";
 
 import { NavButtonContainer } from "../dashboardStyles.js";
+
 function arrowGenerator(color) {
   return {
     '&[x-placement*="bottom"] $arrow': {
@@ -90,7 +91,9 @@ class NavButton extends React.Component {
 
   render() {
     const { classes, tooltip, pathExtension, iconClass } = this.props;
+    const { arrowRef } = this.state;
     return (
+      /* ------------------------------ Nav Button ToolTip ------------------------------ */
       <Tooltip
         title={
           <>
@@ -103,14 +106,15 @@ class NavButton extends React.Component {
           popperOptions: {
             modifiers: {
               arrow: {
-                enabled: Boolean(this.state.arrowRef),
-                element: this.state.arrowRef
+                enabled: Boolean(arrowRef),
+                element: arrowRef
               }
             }
           }
         }}
         placement="right"
       >
+      {/* ------------------------------ Nav Button ------------------------------ */}
         <NavButtonContainer>
           <NavLink exact to={pathExtension}>
             <i className={iconClass} />

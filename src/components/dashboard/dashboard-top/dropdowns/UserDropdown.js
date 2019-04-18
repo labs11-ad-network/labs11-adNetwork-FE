@@ -37,15 +37,17 @@ class UserDropdown extends React.Component {
 
   render() {
     const { classes, currentUser, auth } = this.props;
+    const { open } = this.state
 
     return (
       <div className={classes.root}>
         <div data-btn="user_menu-button">
+          {/* ------------------------------ Fropdown Toggle ------------------------------ */}
           <Button
             buttonRef={node => {
               this.anchorEl = node;
             }}
-            aria-owns={this.state.open ? "menu-list-grow" : undefined}
+            aria-owns={open ? "menu-list-grow" : undefined}
             aria-haspopup="true"
             onClick={this.handleToggle}
             style={{ textTransform: "none", marginLeft: "0" }}
@@ -53,10 +55,11 @@ class UserDropdown extends React.Component {
             <img src={currentUser.image_url} alt="" />
             <h2>{currentUser.name}</h2>
           </Button>
-
+          
+          {/* ------------------------------ Dropdown ------------------------------ */}
           <Popper
             id={1}
-            open={this.state.open}
+            open={open}
             anchorEl={this.anchorEl}
             transition
             position="left"
@@ -67,6 +70,7 @@ class UserDropdown extends React.Component {
                 <Paper>
                   <ClickAwayListener onClickAway={e => this.handleClose(e)}>
                     <MenuList>
+                      {/* ------------------------------ Profile Button ------------------------------ */}
                       <MenuItem
                         onClick={this.handleToggle}
                         component={Link}
@@ -74,6 +78,7 @@ class UserDropdown extends React.Component {
                       >
                         Profile
                       </MenuItem>
+                      {/* ------------------------------ Logout Button ------------------------------ */}
                       <MenuItem
                         onClick={e => {
                           this.handleToggle();
