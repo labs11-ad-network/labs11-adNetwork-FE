@@ -88,21 +88,27 @@ class Offers extends Component {
   };
 
   render() {
+    const { offers, userAgreements, isUpdatingOffer, currentUser } = this.props;
+
+    const { modalIsOpen, offerData } = this.state;
+
     return (
       <div>
+        {/* ------------------------------ Offer List Component ------------------------------ */}
         <OffersList
-          offers={this.props.offers}
-          agreements={this.props.userAgreements}
+          offers={offers}
+          agreements={userAgreements}
           toggleModal={this.toggleModal}
         />
-        {(this.props.currentUser.acct_type === "advertiser" && this.state.modalIsOpen) && (
+        {/* ------------------------------ Create Offer Modal Component ------------------------------ */}
+        {(currentUser.acct_type === "advertiser" && modalIsOpen) && (
           <OfferModal
-            offerData={this.state.offerData}
+            offerData={offerData}
             handleChange={this.handleChange}
             createOffer={this.createOffer}
             updateOffer={this.updateOffer}
             toggleModal={this.toggleModal}
-            isUpdatingOffer={this.props.isUpdatingOffer}
+            isUpdatingOffer={isUpdatingOffer}
           />
         )}
       </div>

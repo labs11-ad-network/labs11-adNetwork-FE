@@ -8,6 +8,12 @@ class UserSettingsForm extends Component {
   state = {
     userData: {}
   };
+  
+  componentDidMount() {
+    this.setState({
+      userData: this.props.currentUser
+    });
+  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.currentUser !== this.props.currentUser) {
@@ -36,7 +42,7 @@ class UserSettingsForm extends Component {
     });
   };
 
-  changeUserData = e => {
+  submitChanges = e => {
     e.preventDefault();
     this.props.changeUserData({
       ...this.props.currentUser,
@@ -46,11 +52,13 @@ class UserSettingsForm extends Component {
 
   render() {
     const { name, nickname, phone } = this.state.userData;
+    const { history, currentUser, changeUserData } = this.props;
 
     return (
       <>
-        <Form onSubmit={this.changeUserData}>
+        <Form onSubmit={this.submitChanges}>
           <div>
+            {/* ------------------------------ Full Name Input ------------------------------ */} 
             <label htmlFor="name">Full Name</label>
             <input
               type="text"
@@ -59,6 +67,7 @@ class UserSettingsForm extends Component {
               value={name || ""}
               onChange={this.handleChange}
             />
+            {/* ------------------------------ Username Input ------------------------------ */}
             <label htmlFor="nickname">Username</label>
             <input
               type="text"
@@ -67,6 +76,7 @@ class UserSettingsForm extends Component {
               value={nickname || ""}
               onChange={this.handleChange}
             />
+            {/* ------------------------------ Phone Number ------------------------------ */}
             <label htmlFor="phone">Phone Number</label>
             <input
               type="number"
@@ -75,7 +85,7 @@ class UserSettingsForm extends Component {
               value={phone || ""}
               onChange={this.handleChange}
             />
-            {/* --------------------- image upload --------------------- */}
+            {/* ------------------------------ Image Upload Input ------------------------------ */}
             <label htmlFor="user_img">Profile Picture</label>
             <input
               accept="image/*"
@@ -85,20 +95,18 @@ class UserSettingsForm extends Component {
               multiple
               onChange={this.handleFileChange}
             />
-            {/* --------------------- image upload --------------------- */}
+            {/* ------------------------------ Submit Button ------------------------------ */}
             <button type="submit">Save Changes</button>
           </div>
         </Form>
+        {/* ------------------------------ Toggle Tour ------------------------------ */}
         <ToggleTour>
           <button
             onClick={async () => {
-              if (!this.props.currentUser.show_tour) {
-                await this.props.history.push("/dashboard");
+              if (!currentUser.show_tour) {
+                await history.push("/dashboard");
               }
-              this.props.changeUserData({
-                ...this.props.currentUser,
-                show_tour: !this.props.currentUser.show_tour
-              });
+              changeUserData({ ...currentUser, show_tour: !currentUser.show_tour });
             }}
             data-btn="toggle-tour"
           >

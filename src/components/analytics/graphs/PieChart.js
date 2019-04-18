@@ -42,7 +42,7 @@ const PieLabels = styled.div`
 `;
 
 export const BrowserInfo = props => {
-  const data = props.data.length ? [
+  const data = Object.keys(props.data).filter(key => props.data[key] > 0).length ? [
     { name: "Chrome", value: props.data.chrome },
     { name: "Safari", value: props.data.safari },
     { name: "Firefox", value: props.data.firefox },
@@ -112,7 +112,7 @@ export const BrowserInfo = props => {
         </Pie>
       </PieChart>
       <PieLabels>
-        {props.data.length ? 
+        {data.length === 5 ? 
         <>
           <div className="label">
             <div className="circle chrome" />

@@ -7,7 +7,17 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer 
 } from "recharts";
+import styled from "styled-components";
+
 import { GraphContainer, GraphHeader } from "./graphStyles.js";
+
+const Chart = styled.div`
+  height: 350px;
+  width: 99%;
+  @media (max-width: 780px) {
+    height: 300px;
+  }
+`;
 
 const RadarChartContainer = props => {
 
@@ -37,23 +47,25 @@ const RadarChartContainer = props => {
           <h3>based on all actions</h3>
         </div>
       </GraphHeader>
-      <ResponsiveContainer width="90%" height="90%">
-        <RadarChart
-          outerRadius={130}
-          data={data}
-        >
-          <PolarGrid />
-          <PolarAngleAxis dataKey="category" />
-          <PolarRadiusAxis />
-          <Radar
-            name="Mike"
-            dataKey="actions"
-            stroke="#8884d8"
-            fill="#8884d8"
-            fillOpacity={0.6}
-          />
-        </RadarChart>
-      </ResponsiveContainer>
+      <Chart>
+        <ResponsiveContainer width="100%" height="100%">
+          <RadarChart
+            outerRadius={125}
+            data={data}
+          >
+            <PolarGrid />
+            <PolarAngleAxis dataKey="category" />
+            <PolarRadiusAxis />
+            <Radar
+              name="Mike"
+              dataKey="actions"
+              stroke="#8884d8"
+              fill="#8884d8"
+              fillOpacity={0.6}
+            />
+          </RadarChart>
+        </ResponsiveContainer>
+      </Chart>
     </GraphContainer>
   );
 };

@@ -35,7 +35,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper
   },
   tab: {
-    width: "100%",
+    width: "30%",
     fontSize: "0.9rem",
     fontWeight: "500"
   },
@@ -94,7 +94,9 @@ class OffersList extends React.Component {
     this.setState({ tabValue });
   };
 
+  /* ------------------------------ Columns for Affiliate Offers ------------------------------ */
   affiliateOfferColumns = [
+    /* ------------------------------ Offer Name Column ------------------------------ */
     {
       name: "Name",
       field: "name",
@@ -102,6 +104,7 @@ class OffersList extends React.Component {
         width: 70
       }
     },
+    /* ------------------------------ Offer Description Column ------------------------------ */
     {
       name: "Description",
       field: "description",
@@ -109,6 +112,7 @@ class OffersList extends React.Component {
         width: 550
       }
     },
+    /* ------------------------------ Offer Category Column ------------------------------ */
     {
       name: "Category",
       field: "category",
@@ -116,6 +120,7 @@ class OffersList extends React.Component {
         width: 170
       }
     },
+    /* ------------------------------ Offer PPC Column ------------------------------ */
     {
       name: "Price Per Click",
       field: "price_per_click",
@@ -125,6 +130,7 @@ class OffersList extends React.Component {
         }
       }
     },
+    /* ------------------------------ Offer PPI Column ------------------------------ */
     {
       name: "Price Per Impression",
       field: "price_per_impression",
@@ -134,6 +140,7 @@ class OffersList extends React.Component {
         }
       }
     },
+    /* ------------------------------ Offer Agreement Options Column ------------------------------ */
     {
       name: "Agreement",
       options: {
@@ -167,6 +174,7 @@ class OffersList extends React.Component {
         }
       }
     },
+    /* ------------------------------ Offer Agreement Status Column ------------------------------ */
     {
       name: "Status",
       options: {
@@ -192,7 +200,9 @@ class OffersList extends React.Component {
     }
   ];
 
+  /* ------------------------------ Columns for Advertiser Offers ------------------------------ */
   advertiserOfferColumns = [
+    /* ------------------------------ Offer Name Column ------------------------------ */
     {
       name: "Name",
       field: "name",
@@ -200,6 +210,7 @@ class OffersList extends React.Component {
         width: 70
       }
     },
+    /* ------------------------------ Offer Description Column ------------------------------ */
     {
       name: "Description",
       field: "description",
@@ -207,6 +218,7 @@ class OffersList extends React.Component {
         width: 550
       }
     },
+    /* ------------------------------ Offer Category Column ------------------------------ */
     {
       name: "Category",
       field: "category",
@@ -214,6 +226,7 @@ class OffersList extends React.Component {
         width: 170
       }
     },
+    /* ------------------------------ Offer Budget Column ------------------------------ */
     {
       name: "Budget",
       field: "budget",
@@ -223,6 +236,7 @@ class OffersList extends React.Component {
         }
       }
     },
+    /* ------------------------------ Offer PPC Column ------------------------------ */
     {
       name: "Price Per Click",
       field: "price_per_click",
@@ -232,6 +246,7 @@ class OffersList extends React.Component {
         }
       }
     },
+    /* ------------------------------ Offer PPI Column ------------------------------ */
     {
       name: "Price Per Impression",
       field: "price_per_impression",
@@ -241,6 +256,7 @@ class OffersList extends React.Component {
         }
       }
     },
+    /* ------------------------------ Offer Status Column ------------------------------ */
     {
       name: "Offer Status",
       options: {
@@ -258,6 +274,7 @@ class OffersList extends React.Component {
         }
       }
     },
+    /* ------------------------------ Offer Options Column ------------------------------ */
     {
       name: "Offer Options",
       options: {
@@ -293,7 +310,9 @@ class OffersList extends React.Component {
     }
   ];
 
+  /* ------------------------------ Columns for Advertiser Ads ------------------------------ */
   advertiserAdColumns = [
+    /* ------------------------------ Ad Size Column ------------------------------ */
     {
       name: "Size",
       field: "size",
@@ -301,6 +320,7 @@ class OffersList extends React.Component {
         width: 70
       }
     },
+    /* ------------------------------ Ad Name Column ------------------------------ */
     {
       name: "Ad",
       field: "name",
@@ -308,6 +328,7 @@ class OffersList extends React.Component {
         width: 150
       }
     },
+    /* ------------------------------ Ad Preview Column ------------------------------ */
     {
       name: "Preview",
       field: "image",
@@ -338,7 +359,9 @@ class OffersList extends React.Component {
     }
   ];
 
+  /* ------------------------------ Columns for Affiliate Ads ------------------------------ */
   affiliateAdColumns = [
+    /* ------------------------------ Ad Size Column ------------------------------ */
     {
       name: "Size",
       field: "size",
@@ -346,6 +369,7 @@ class OffersList extends React.Component {
         width: 70
       }
     },
+    /* ------------------------------ Ad Name Column ------------------------------ */
     {
       name: "Ad",
       field: "name",
@@ -353,6 +377,7 @@ class OffersList extends React.Component {
         width: 150
       }
     },
+    /* ------------------------------ Ad Preview Column ------------------------------ */
     {
       name: "Preview",
       field: "image",
@@ -366,7 +391,7 @@ class OffersList extends React.Component {
   ];
 
   render() {
-    const { classes, offerAds, offers, currentUser } = this.props;
+    const { classes, offerAds, offers, currentUser, toggleModal } = this.props;
 
     const {
       tabValue,
@@ -380,12 +405,17 @@ class OffersList extends React.Component {
       <div className={classes.root} data-btn="offer-list">
         <AppBar position="static">
           <Tabs value={tabValue} onChange={this.handleTabChange}>
+            {/* ------------------------------ Offers Tab ------------------------------ */}
             <Tab label="Offers" className={classes.tab} />
-            {tabValue === 1 && <Tab label="Ads" className={classes.tab} />}
+            {/* ------------------------------ Ads Tab ------------------------------ */}
+            {tabValue === 1 && 
+              <Tab label="Ads" className={classes.tab} />
+            }
             <TabButtonContainer>
-              {this.props.currentUser.acct_type === "advertiser" && (
+              {/* ------------------------------ Create Offer Button ------------------------------ */}
+              {currentUser.acct_type === "advertiser" && (
                 <OfferModalButton 
-                  onClick={() => this.props.toggleModal()} 
+                  onClick={() => toggleModal()} 
                   data-btn='create_offer-button'
                 >
                   Create Offer
@@ -395,20 +425,24 @@ class OffersList extends React.Component {
           </Tabs>
         </AppBar>
         <div className={classes.table}>
+          {/* ------------------------------ Offers Tab ------------------------------ */}
           {tabValue === 0 && (
             <MaterialDatatable
               className={classes.table}
               title={"Offers List"}
+              /* ------------------------------ Conditionally filtering Offers ------------------------------ */
               data={
                 currentUser.acct_type === "affiliate"
                   ? offers.filter(offer => offer.status)
                   : offers
               }
+              /* ------------------------------ Conditionally rendering Columns ------------------------------ */
               columns={
                 currentUser.acct_type === "affiliate"
                   ? this.affiliateOfferColumns
                   : this.advertiserOfferColumns
               }
+              /* ------------------------------ Conditionally rendering Options ------------------------------ */
               options={
                 currentUser.acct_type === "affiliate"
                   ? affiliateOfferOptions
@@ -416,16 +450,18 @@ class OffersList extends React.Component {
               }
             />
           )}
-
+          {/* ------------------------------ Ads Tab ------------------------------ */}
           {tabValue === 1 && (
             <MaterialDatatable
               title={"Ads List"}
               data={offerAds}
+              /* ------------------------------ Conditionally rendering Columns ------------------------------ */
               columns={
                 currentUser.acct_type === "affiliate"
                   ? this.affiliateAdColumns
                   : this.advertiserAdColumns
               }
+              /* ------------------------------ Conditionally rendering Options ------------------------------ */
               options={
                 currentUser.acct_type === "affiliate"
                   ? affiliateAdOptions

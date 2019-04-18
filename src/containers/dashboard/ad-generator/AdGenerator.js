@@ -15,7 +15,7 @@ import { createAd } from "../../../store/actions/adAction.js";
 import { getOffers } from "../../../store/actions/offersAction.js";
 import { changeUserData } from "../../../store/actions/authAction.js";
 import AdForm from "../../../components/ad-generator/forms/AdForm.js";
-import TemplateSelectors from "../../../components/ad-generator/form-components/TemplateSelectors.js";
+import { TemplateButtons, TemplateSelect } from "../../../components/ad-generator/form-components/TemplateSelectors.js";
 import Controls from "../../../components/ad-generator/controls/Controls.js";
 import AdHoc from "../../../components/ad-generator/AdHoc.js";
 
@@ -73,12 +73,15 @@ export class AdGenerator extends Component {
 
   createAd = async e => {
     e.preventDefault();
+
     let image;
+
     if (this.state.productData.size.includes("plain")) {
       image = this.state.productData.fileObject;
     } else {
       image = await this.generateSnapshot("advertisment");
     }
+
     await this.props.createAd(
       {
         offer_id: this.state.productData.offer_id,
@@ -168,9 +171,7 @@ export class AdGenerator extends Component {
         ...this.state.productData,
         [this.state.currentElement]: {
           ...this.state.productData[this.state.currentElement],
-          [e.target.name || name]: !this.state.productData[
-            this.state.currentElement
-          ][e.target.name || name]
+          [e.target.name || name]: !this.state.productData[this.state.currentElement][e.target.name || name]
         }
       }
     });
@@ -204,60 +205,47 @@ export class AdGenerator extends Component {
     const { offers, changeUserData, currentUser } = this.props;
     const { productData, currentElement } = this.state;
 
-    return this.props.offers.length ? (
+    return offers.length ? (
       <>
         <AdGeneratorContainer>
           <LeftSection>
             <div className="form">
+              {/* ------------------------------ Template Selectors ------------------------------ */}
               <div className="template-selectors">
                 <h1>Select Size</h1>
                 <div className="template-buttons">
-                  <TemplateSelectors
+                  <TemplateButtons
                     handleChange={this.handleChange}
                     selected={productData.size}
                   />
                 </div>
                 <div className="template-select">
-                  <select
-                    type="text"
-                    name="size"
-                    value={productData.size}
-                    onChange={this.handleChange}
-                  >
-                    <option value="square_banner">Square Banner</option>
-                    <option value="vertical_banner">Vertical Banner</option>
-                    <option value="horizontal_banner">Horizontal Banner</option>
-                    <option value="plain_horizontal">
-                      Plain (img/gif only) Horizontal Banner
-                    </option>
-                    <option value="plain_square">
-                      Plain (img/gif only) Square Banner
-                    </option>
-                    <option value="plain_vertical">
-                      Plain (img/gif only) Vertical Banner
-                    </option>
-                  </select>
+                  <TemplateSelect
+                    size={productData.size}
+                    handleChange={this.handleChange}
+                  />
                 </div>
               </div>
-              <h1>Customize Your Ad</h1>
-              <AdForm
-                handleChange={this.handleChange}
-                handleElementChange={this.handleElementChange}
-                handleTextChange={this.handleTextChange}
-                handleFileChange={this.handleFileChange}
-                productData={productData}
-                offers={offers}
-                selected={currentElement}
-              />
+              {/* ------------------------------ Customization Form ------------------------------ */}              
+              <div>
+                <h1>Customize Your Ad</h1>
+                <AdForm
+                  handleChange={this.handleChange}
+                  handleElementChange={this.handleElementChange}
+                  handleFileChange={this.handleFileChange}
+                  productData={productData}
+                  offers={offers}
+                  selected={currentElement}
+                />
+              </div>
             </div>
-            <CreateAdButton
-              onClick={this.createAd}
-              className="desktop-create-btn"
-            >
+            {/* ------------------------------ Create Button Desktop ------------------------------ */}
+            <CreateAdButton onClick={this.createAd} className="desktop-create-btn" >
               Create Ad
             </CreateAdButton>
           </LeftSection>
           <RightSection>
+            {/* ------------------------------ Ad Preview ------------------------------ */}
             <div className="ad-preview">
               <div />
               <div className="ad-container">
@@ -269,6 +257,7 @@ export class AdGenerator extends Component {
                   />
                 </div>
               </div>
+              {/* ------------------------------ Customization Controls ------------------------------ */}
               <div className="controls">
                 <Controls
                   customizeElement={this.customizeElement}
@@ -279,14 +268,13 @@ export class AdGenerator extends Component {
                 />
               </div>
             </div>
-            <CreateAdButton
-              onClick={this.createAd}
-              className="tablet-create-btn"
-            >
+            {/* ------------------------------ Create Button Mobile ------------------------------ */}
+            <CreateAdButton onClick={this.createAd} className="tablet-create-btn">
               Create Ad
             </CreateAdButton>
           </RightSection>
         </AdGeneratorContainer>
+        {/* ------------------------------ Message for Unsupported Widths ------------------------------ */}
         <WidthNotSupported>
           <h1>
             Your device width is not supported for our advertisement creator.
@@ -296,6 +284,7 @@ export class AdGenerator extends Component {
         </WidthNotSupported>
       </>
     ) : (
+      /* ------------------------------ Message when user has no offers ------------------------------ */
       <NoOffersContent>
         <h1>You don't have any offers to attach the advertisement to.</h1>
         <Link to="/dashboard/offers">Create an Offer</Link>

@@ -62,14 +62,11 @@ const RowContainer = styled.div`
   .top-offers-row {
     display: flex;
     width: 100%;
-    height: 500px;
     @media (max-width: 1200px) {
-      width: 100%;
-      height: unset;
-      box-sizing: border-box;
       flex-direction: column;
     }
   }
+
   @media (max-width: 1200px) {
     box-sizing: border-box;
     flex-direction: column;

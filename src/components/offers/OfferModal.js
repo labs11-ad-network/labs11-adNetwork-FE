@@ -3,31 +3,38 @@ import React from "react";
 import { OfferModalContainer, OfferModalContent } from "./offersStyles.js";
 import OfferForm from "./OfferForm.js";
 
-const OfferModal = props => {
-  return (
-    <>
-      <OfferModalContainer onClick={() => props.toggleModal()}>
-        <OfferModalContent
-          onClick={e => {
-            e.stopPropagation();
-          }}
-        >
-          <h1>
-            {props.isUpdatingOffer ? "Update your Offer" : "Create an Offer"}
-          </h1>
-          <OfferForm
-            offerData={props.offerData}
-            handleChange={props.handleChange}
-            handleSubmit={
-              props.isUpdatingOffer ? props.updateOffer : props.createOffer
-            }
-            isUpdatingOffer={props.isUpdatingOffer}
-            toggleModal={props.toggleModal}
-          />
-        </OfferModalContent>
-      </OfferModalContainer>
-    </>
-  );
-};
+const OfferModal = ({ 
+  toggleModal, 
+  isUpdatingOffer, 
+  offerData, 
+  handleChange, 
+  updateOffer, 
+  createOffer 
+}) => (
+  <>
+    <OfferModalContainer onClick={() => toggleModal()}>
+      <OfferModalContent
+        onClick={e => {
+          e.stopPropagation();
+        }}
+      >
+        {/* ------------------------------ Conditional Rendering Header ------------------------------ */}
+        <h1>
+          {isUpdatingOffer ? "Update your Offer" : "Create an Offer"}
+        </h1>
+        {/* ------------------------------ Offer Creation/Updating Form ------------------------------ */}
+        <OfferForm
+          offerData={offerData}
+          handleChange={handleChange}
+          handleSubmit={
+            isUpdatingOffer ? updateOffer : createOffer
+          }
+          isUpdatingOffer={isUpdatingOffer}
+          toggleModal={toggleModal}
+        />
+      </OfferModalContent>
+    </OfferModalContainer>
+  </>
+);
 
 export default OfferModal;
