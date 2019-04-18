@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { scaleLinear } from "d3-scale";
 import { connect } from "react-redux";
 import moment from "moment";
 
+import { CardContainer, RowContainer } from "./containerStyles.js";
 import { getAnalytics } from "../../../store/actions/analyticsAction.js";
 import DatePicker from "../../../components/analytics/datepicker/DatePicker.js";
 import { BrowserInfo } from "../../../components/analytics/graphs/PieChart";
@@ -14,66 +14,6 @@ import MapChart from "../../../components/analytics/map/MapChart.js";
 import TopTenOffers from "../../../components/analytics/graphs/TopTenOffers.js";
 import RadarChart from "../../../components/analytics/graphs/RadarChart.js";
 import DeviceChart from "../../../components/analytics/graphs/DeviceChart.js";
-
-const CardContainer = styled.div`
-  display: flex;
-  @media (max-width: 1350px) {
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  @media (max-width: 1200px) {
-    width: 95%;
-    margin: 0 auto;
-  }
-`;
-
-const RowContainer = styled.div`
-  display: flex;
-  width: 100%;
-  .main-tables-container {
-    width: 100%;
-    display: flex;
-    @media (max-width: 1200px) {
-      width: 100%;
-      box-sizing: border-box;
-      flex-direction: column;
-    }
-  }
-
-  .tables-container {
-    display: flex;
-    width: 100%;
-    @media (max-width: 1200px) {
-      box-sizing: border-box;
-      flex-direction: column;
-    }
-  }
-
-  .browser-chart {
-    display: flex;
-    width: 50%;
-    @media (max-width: 1200px) {
-      width: 100%;
-      box-sizing: border-box;
-      flex-direction: column;
-    }
-  }
-
-  .top-offers-row {
-    display: flex;
-    width: 100%;
-    @media (max-width: 1200px) {
-      flex-direction: column;
-    }
-  }
-
-  @media (max-width: 1200px) {
-    box-sizing: border-box;
-    flex-direction: column;
-    width: 95%;
-    margin: 0 auto;
-  }
-`;
 
 class Analytics extends Component {
   state = {
@@ -86,7 +26,7 @@ class Analytics extends Component {
     this.analyticsInterval = setInterval(() => {
       this.props.getAnalytics(
         this.props.currentAnalyticId,
-        this.getQueryString()
+        this.getDateQueryString()
       );
     }, 15000);
   }
@@ -98,11 +38,11 @@ class Analytics extends Component {
   getFilteredAnalytics = () => {
     this.props.getAnalytics(
       this.props.currentAnalyticId,
-      this.getQueryString()
+      this.getDateQueryString()
     );
   };
 
-  getQueryString = () => {
+  getDateQueryString = () => {
     if (this.state.started_at && this.state.ended_at) {
       const started = `${moment(this.state.started_at).format(
         "YYYY-MM-DD"
@@ -163,6 +103,7 @@ class Analytics extends Component {
       <>
         {analytics.length !== 0 && (
           <>
+          {/* ------------------------------ Date Pickers ------------------------------ */}
             <DatePicker
               startedAt={started_at}
               endedAt={ended_at}
@@ -170,6 +111,7 @@ class Analytics extends Component {
               handleDateChange={this.handleDateChange}
             />
             <CardContainer>
+              {/* ------------------------------ Impressions card ------------------------------ */}
               <Card
                 icon="fas fa-eye"
                 dataType="Impressions"
@@ -179,6 +121,7 @@ class Analytics extends Component {
                 secondColor="#fb8c00"
                 growth={analytics.growth.impressions || 0}
               />
+              {/* ------------------------------ Clicks Card ------------------------------ */}
               <Card
                 icon="fas fa-mouse-pointer"
                 dataType="Clicks"
@@ -188,6 +131,7 @@ class Analytics extends Component {
                 secondColor="#43a047"
                 growth={analytics.growth.clicks || 0}
               />
+              {/* ------------------------------ Click Through Rate Card ------------------------------ */}
               <Card
                 icon="fas fa-percentage"
                 dataType="Click Through Rate"
@@ -206,6 +150,7 @@ class Analytics extends Component {
                 firstColor="#ef5350"
                 secondColor="#e53935"
               />
+              {/* ------------------------------ Conversions Card ------------------------------ */}
               <Card
                 icon="fas fa-exchange-alt"
                 dataType="Conversions"
@@ -217,9 +162,10 @@ class Analytics extends Component {
               />
             </CardContainer>
             <RowContainer>
+              {/* ------------------------------ Revenue Chart ------------------------------ */}
               <RevenueChart
                 data={
-                  analytics.payments
+                    analytics.payments
                     ? analytics.payments
                     : analytics.payouts
                     ? analytics.payouts
@@ -227,6 +173,7 @@ class Analytics extends Component {
                 }
                 growth={analytics.stripeGrowth}
               />
+              {/* ------------------------------ Browser Chart ------------------------------ */}
               <div className="browser-chart">
                 <BrowserInfo data={analytics.browserCount} />
               </div>
@@ -234,25 +181,31 @@ class Analytics extends Component {
             <RowContainer>
               <div className="main-tables-container">
                 <div className="tables-container">
+                  {/* ------------------------------ Impressions Table ------------------------------ */}
                   <Table
                     data={analytics.impressions}
                     dataType="Impressions"
                     growth={analytics.growth.impressions || 0}
                   />
+                  {/* ------------------------------ Clicks Table ------------------------------ */}
                   <Table
                     data={analytics.clicks}
                     dataType="Clicks"
                     growth={analytics.growth.clicks || 0}
                   />
                 </div>
+                {/* ------------------------------ Map Chart ------------------------------ */}
                 <MapChart data={this.getCityData()} />
               </div>
             </RowContainer>
 
             <RowContainer>
               <div className="top-offers-row">
+                {/* ------------------------------ Top Ten Offers ------------------------------ */}
                 <TopTenOffers data={analytics.offersRanking} />
+                {/* ------------------------------ Category Rank Chart ------------------------------ */}
                 <RadarChart data={analytics.categories} />
+                {/* ------------------------------ Device rank chart ------------------------------ */}
                 <DeviceChart data={analytics.devices} />
               </div>
             </RowContainer>

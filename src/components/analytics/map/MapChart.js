@@ -15,14 +15,17 @@ import map from "./map.json";
 class MapChart extends Component {
 
   render() {
+    const { data } = this.props;
     return (
       <MapContainer>
+        {/* ------------------------------ Map Header ------------------------------ */}
         <MapHeader bottomBorder>
           <div>
             <h2>Locations</h2>
             <h3>based on clicks and impressions per city</h3>
           </div>
         </MapHeader>
+        {/* ------------------------------ Map ------------------------------ */}
         <ComposableMap
           projectionConfig={{ scale: 205 }}
           width={980}
@@ -66,14 +69,15 @@ class MapChart extends Component {
                     />
               ))}
             </Geographies>
+            {/* ------------------------------ Map Markers ------------------------------ */}
             <Markers>
               {
-                this.props.data.cities.map((city, i) => (
+                data.cities.map((city, i) => (
                   <Marker key={i} marker={city}>
                     <circle
                       cx={0}
                       cy={0}
-                      r={this.props.data.cityScale(city.population)}
+                      r={data.cityScale(city.population)}
                       fill="rgba(255,87,34,0.8)"
                       stroke="#607D8B"
                       strokeWidth="2"

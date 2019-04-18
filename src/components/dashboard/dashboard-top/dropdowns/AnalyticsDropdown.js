@@ -21,6 +21,7 @@ const AnalyticsDropdown = props => {
       >
         {currentUser.acct_type === "advertiser" ? (
           <>
+            {/* ------------------------------ Mapping to populate Offers ------------------------------ */}
             <option value="">All Offers</option>
             {offers.length &&
               offers.map(offer => {
@@ -33,6 +34,7 @@ const AnalyticsDropdown = props => {
           </>
         ) : (
           <>
+            {/* ------------------------------ Mapping to populate agreements ------------------------------ */}
             <option value="">All Agreements</option>
             {agreements.length &&
               agreements.map(a => {

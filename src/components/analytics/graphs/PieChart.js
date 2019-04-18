@@ -1,45 +1,7 @@
 import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
-import styled from "styled-components";
 
-import { GraphContainer, GraphHeader } from './graphStyles.js';
-
-const PieLabels = styled.div`
-    display: flex;
-    margin: 10px;
-    .label {
-      display: flex;
-      align-items: center;
-      margin-right: 10px;
-      .circle {
-        width: 10px;
-        height: 10px;
-        border-radius: 5px;
-      }
-      .chrome {
-        background-color: #0088fe;
-      }
-      .firefox {
-        background-color: #ffbb28;
-      }
-      .safari {
-        background-color: #00c49f;
-      }
-      .edge {
-        background-color: #ff8042;
-      }
-      .other {
-        background-color: gray;
-      }
-      .no-data{
-        background-color: #ECEFF1;
-      }
-      p {
-        margin-left: 5px;
-        font-size: 0.7rem;
-      }
-    }
-`;
+import { GraphContainer, GraphHeader, PieLabels } from './graphStyles.js';
 
 export const BrowserInfo = props => {
   const data = Object.keys(props.data).filter(key => props.data[key] > 0).length ? [
@@ -89,12 +51,14 @@ export const BrowserInfo = props => {
 
   return (
     <GraphContainer>
+      {/* ------------------------------ Header ------------------------------ */}
       <GraphHeader  bottomBorder>
         <div>
           <h2>Browsers</h2>
           <h3>based on clicks and impressions</h3>
         </div>
       </GraphHeader>
+      {/* ------------------------------ Pie Chart ------------------------------ */}
       <PieChart width={225} height={225}>
         <Pie
           data={data}
@@ -111,6 +75,7 @@ export const BrowserInfo = props => {
           ))}
         </Pie>
       </PieChart>
+      {/* ------------------------------ Pie Labels ------------------------------ */}
       <PieLabels>
         {data.length === 5 ? 
         <>

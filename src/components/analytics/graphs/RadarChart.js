@@ -20,7 +20,7 @@ const Chart = styled.div`
 `;
 
 const RadarChartContainer = props => {
-
+  /* ------------------------------ Data Rendering ------------------------------ */
   const getData = () => {
     if(props.data.length){
       return props.data.map((c, i) => {
@@ -41,12 +41,14 @@ const RadarChartContainer = props => {
 
   return (
     <GraphContainer>
+      {/* ------------------------------ Header ------------------------------ */}
       <GraphHeader bottomBorder>
         <div>
           <h2>Best Categories</h2>
           <h3>based on all actions</h3>
         </div>
       </GraphHeader>
+      {/* ------------------------------ Radar Chart ------------------------------ */}
       <Chart>
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart

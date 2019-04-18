@@ -6,6 +6,7 @@ import {
   createOffer,
   updateOffer
 } from "../../../store/actions/offersAction.js";
+import { getUserData } from "../../../store/actions/authAction.js";
 import OffersList from "../../../components/offers/OffersList.js";
 import OfferModal from "../../../components/offers/OfferModal.js";
 
@@ -26,6 +27,7 @@ class Offers extends Component {
 
   componentDidMount() {
     this.props.getOffers();
+    this.props.getUserData();
   }
 
   createOffer = async e => {
@@ -118,6 +120,7 @@ class Offers extends Component {
 
 const mapStateToProps = state => {
   return {
+    currentUser: state.authReducer.currentUser,
     offers: state.offersReducer.offers,
     isUpdatingOffer: state.offersReducer.isUpdatingOffer,
     updatingOffer: state.offersReducer.updatingOffer
@@ -129,6 +132,7 @@ export default connect(
   {
     getOffers,
     createOffer,
-    updateOffer
+    updateOffer,
+    getUserData
   }
 )(Offers);
