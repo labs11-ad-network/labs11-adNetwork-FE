@@ -35,7 +35,7 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper
   },
   tab: {
-    width: "100%",
+    width: "30%",
     fontSize: "0.9rem",
     fontWeight: "500"
   },
