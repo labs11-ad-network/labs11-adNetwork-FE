@@ -3,8 +3,6 @@ import { AppDownloadStyle } from "./AppDownloadStyle";
 import Coverflow from "react-coverflow";
 import { StyleRoot } from "radium";
 
-import appStore from "../../assets/appstore.png";
-import googlePlay from "../../assets/playstore.png";
 import phoneTesting from "../../assets/phone-img.png";
 import screenshot1 from "../../assets/screenshot1.jpg";
 import screenshot2 from "../../assets/screenshot2.jpg";
@@ -40,12 +38,6 @@ class AppDownload extends Component {
                   One of the best and perhaps the most non creepy advertising
                   network.
                 </p>
-                <img src={appStore} alt="app store" className="app-store-img" />
-                <img
-                  src={googlePlay}
-                  alt="google play"
-                  className="app-store-img"
-                />
               </div>
 
               <div className="hero-moc">

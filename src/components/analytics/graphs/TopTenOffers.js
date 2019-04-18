@@ -8,8 +8,17 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
+import styled from "styled-components";
 
 import { GraphContainer, GraphHeader } from "./graphStyles.js";
+
+const Chart = styled.div`
+  height: 350px;
+  width: 99%;
+  @media (max-width: 780px) {
+    height: 250px;
+  }
+`;
 
 const TopTenOffers = props => {
   let data;
@@ -33,22 +42,23 @@ const TopTenOffers = props => {
           <h3>based on click through rate</h3>
         </div>
       </GraphHeader>
-      <ResponsiveContainer width="100%" height="80%">
-        <BarChart
-          width={400}
-          height={250}
-          data={data}
-          margin={{
-            right: 50
-          }}
-        >
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="ctr" fill="#82ca9d" />
-        </BarChart>
-      </ResponsiveContainer>
+      <Chart>
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            height={250}
+            data={data}
+            margin={{
+              right: 50
+            }}
+          >
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="ctr" fill="#82ca9d" />
+          </BarChart>
+        </ResponsiveContainer>
+      </Chart>
     </GraphContainer>
   );
 };

@@ -14,7 +14,7 @@ import { GraphContainer, GraphHeader } from "./graphStyles.js";
 
 const Chart = styled.div`
   height: 300px;
-  width: 100%;
+  width: 99%;
   @media (max-width: 780px) {
     height: 200px;
   }

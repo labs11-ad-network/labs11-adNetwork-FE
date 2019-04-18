@@ -1,6 +1,16 @@
 import React, { PureComponent } from "react";
 import { PieChart, Pie, Sector, ResponsiveContainer } from "recharts";
+import styled from "styled-components";
+
 import { GraphContainer, GraphHeader } from "./graphStyles.js";
+
+const Chart = styled.div`
+  height: 350px;
+  width: 99%;
+  @media (max-width: 780px) {
+    height: 300px;
+  }
+`;
 
 const renderActiveShape = props => {
   const RADIAN = Math.PI / 180;
@@ -103,20 +113,22 @@ export default class Example extends PureComponent {
             <h3>based on all actions</h3>
           </div>
         </GraphHeader>
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              activeIndex={this.state.activeIndex}
-              activeShape={renderActiveShape}
-              data={data}
-              innerRadius={90}
-              outerRadius={130}
-              fill="#0A88DC"
-              dataKey="value"
-              onMouseEnter={this.onPieEnter}
-            />
-          </PieChart>
-        </ResponsiveContainer>
+        <Chart>
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                activeIndex={this.state.activeIndex}
+                activeShape={renderActiveShape}
+                data={data}
+                innerRadius={90}
+                outerRadius={130}
+                fill="#0A88DC"
+                dataKey="value"
+                onMouseEnter={this.onPieEnter}
+              />
+            </PieChart>
+          </ResponsiveContainer>
+        </Chart>
       </GraphContainer>
     );
   }
