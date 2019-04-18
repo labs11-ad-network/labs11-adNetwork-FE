@@ -195,6 +195,7 @@ export const MobileHamburger = styled.div`
   background-color: #0b6fb2;
   color: white;
   font-size: 1.7rem;
+
   &:hover {
     cursor: pointer;
     background-color: #0b67a4;
@@ -262,7 +263,7 @@ export const MobileNav = styled.div`
   background-color: #0a88dc;
   height: 100vh;
   width: 100%;
-  z-index: 9999;
+  z-index: 99999;
   left: ${props => (props.status ? "0" : "-100vw")};
   top: 0;
   transition: 300ms all;

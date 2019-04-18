@@ -110,7 +110,6 @@ class DashboardTop extends React.Component {
             )}
           </RightSection>
         </NavContainer>
-
         {(isLoadingAds ||
           isLoadingAgreements ||
           isLoadingOffers ||
