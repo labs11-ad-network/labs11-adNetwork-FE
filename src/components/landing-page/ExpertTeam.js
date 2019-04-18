@@ -83,7 +83,7 @@ class ExpertTeam extends Component {
               <ExpertTeamCard
                 name="Max McFerren"
                 teamBg={teambg3}
-                profilePic="mcferrenm"
+                profilePic={mcferrenm}
                 links={{
                   github: "https://github.com/mcferrenm",
                   linkedin: "https://www.linkedin.com/in/max-mcferren",
