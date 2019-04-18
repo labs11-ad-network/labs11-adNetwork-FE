@@ -103,12 +103,7 @@ class Dashboard extends Component {
               path="/dashboard/offers"
               render={props => <Offers {...props} currentUser={currentUser} />}
             />
-            <Route
-              path="/dashboard/settings"
-              render={props => (
-                <Settings {...props} currentUser={currentUser} />
-              )}
-            />
+            <Route path="/dashboard/settings" component={Settings}/>
             <Route path="/dashboard/create-ad" component={AdGenerator} />
             <ChatWidget />
             {currentUser.show_tour &&
@@ -120,7 +115,8 @@ class Dashboard extends Component {
                 <SettingsTour history={this.props.history} />
               )
             )}
-            {(this.props.location.pathname === "/dashboard/create-ad" && 
+            {
+              (this.props.location.pathname === "/dashboard/create-ad" && 
               currentUser.show_ad_tour &&
               this.props.offers.length) && 
                 <AdGeneratorTour />

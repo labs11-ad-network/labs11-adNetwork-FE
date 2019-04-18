@@ -23,7 +23,7 @@ const CustomInput = props => {
   return (
     <DatePickerInput onClick={props.datePicker.onClick}>
       <label htmlFor={props.name}> {props.datePicker.label} </label>
-      <input name={props.name} value={props.datePicker.value} />
+      <input name={props.name} value={props.datePicker.value} onChange={() => console.log("Date Changed")}/>
     </DatePickerInput>
   );
 };

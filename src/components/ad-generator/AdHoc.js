@@ -9,51 +9,45 @@ import {
   PlainVerticalBanner
 } from "./templates";
 
-const AdHoc = props => {
+const AdHoc = ({ ad, image, handleElementChange, selected }) => {
   return (
     <>
-      {props.ad.size &&
-        (props.ad.size.includes("horizontal_banner") ? (
+      {ad.size &&
+        (ad.size.includes("horizontal_banner") ? (
           <HorizontalBanner
-            ad={props.ad}
-            image={props.image}
-            recordAction={props.recordAction}
-            handleElementChange={props.handleElementChange}
-            selected={props.selected}
+            ad={ad}
+            image={image}
+            handleElementChange={handleElementChange}
+            selected={selected}
           />
-        ) : props.ad.size.includes("vertical_banner") ? (
+        ) : ad.size.includes("vertical_banner") ? (
           <VerticalBanner
-            ad={props.ad}
-            image={props.image}
-            recordAction={props.recordAction}
-            handleElementChange={props.handleElementChange}
-            selected={props.selected}
+            ad={ad}
+            image={image}
+            handleElementChange={handleElementChange}
+            selected={selected}
           />
-        ) : props.ad.size.includes("square_banner") ? (
+        ) : ad.size.includes("square_banner") ? (
           <SquareBanner
-            ad={props.ad}
-            image={props.image}
-            recordAction={props.recordAction}
-            handleElementChange={props.handleElementChange}
-            selected={props.selected}
+            ad={ad}
+            image={image}
+            handleElementChange={handleElementChange}
+            selected={selected}
           />
-        ) : props.ad.size.includes("plain_horizontal") ? (
+        ) : ad.size.includes("plain_horizontal") ? (
           <PlainHorizontalBanner
-            image={props.image}
-            ad={props.ad}
-            recordAction={props.recordAction}
+            image={image}
+            ad={ad}
           />
-        ) : props.ad.size.includes("plain_square") ? (
+        ) : ad.size.includes("plain_square") ? (
           <PlainSquareBanner
-            ad={props.ad}
-            image={props.image}
-            recordAction={props.recordAction}
+            ad={ad}
+            image={image}
           />
-        ) : props.ad.size.includes("plain_vertical") ? (
+        ) : ad.size.includes("plain_vertical") ? (
           <PlainVerticalBanner
-            image={props.image}
-            ad={props.ad}
-            recordAction={props.recordAction}
+            image={image}
+            ad={ad}
           />
         ) : (
           <h1>

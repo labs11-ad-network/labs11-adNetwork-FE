@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://71.65.239.221:5000";
+const URL = process.env.REACT_APP_BACKEND_URL;
 
 // ------------------------------------ Get Ad by ID ------------------------------------
 
