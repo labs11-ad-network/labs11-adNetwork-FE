@@ -71,7 +71,7 @@ class AppDownload extends Component {
                 <i className="fas fa-shield-alt promo-icon" />
                 <h2>Highly Secured</h2>
                 <p>
-                  Protect critical access systems while generating revenue with
+                  We protect critical access systems while generating revenue with
                   a powerful user-targeted advertising engine.
                 </p>
               </div>
@@ -159,7 +159,7 @@ class AppDownload extends Component {
                       <div className="work-list-content">
                         <h3 className="main-heading-three">Banner Ads</h3>
                         <p>
-                          Also called display advertising, is perhaps the ad
+                          Also called display advertising, are perhaps the ad
                           type most familiar to users. These are typically text
                           and/or images displayed at the top or bottom,
                           alongside the app content.
@@ -204,9 +204,9 @@ class AppDownload extends Component {
                   data-wow-duration="2s"
                 >
                   <img src={tool4} alt="icon" />
-                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <h3 className="main-heading-three">Powerful System</h3>
                   <p>
-                    Instant access to thousands of display and mobile offers
+                    Instant access to thousands of web and mobile offers
                     including exclusive and premium offers.
                   </p>
                 </div>
@@ -220,7 +220,7 @@ class AppDownload extends Component {
                   <h3 className="main-heading-three">Payment</h3>
                   <p>
                     Competitive prepaid payment terms with instant payments
-                    powered by the secure stripe payment system.
+                    powered by the secure Stripe payment system.
                   </p>
                 </div>
 
@@ -232,7 +232,7 @@ class AppDownload extends Component {
                   <img src={tool6} alt="icon" />
                   <h3 className="main-heading-three">Support</h3>
                   <p>
-                    Dedicated account managers and a meaningful support team
+                    Dedicated account managers and a helpful support team
                     ready for any of your questions.
                   </p>
                 </div>
@@ -243,7 +243,7 @@ class AppDownload extends Component {
                   data-wow-duration="2s"
                 >
                   <img src={tool7} alt="icon" />
-                  <h3 className="main-heading-three">Powerfull System</h3>
+                  <h3 className="main-heading-three">Advanced Architecture</h3>
                   <p>
                     Get results and run performance-based campaigns (CPC, CPM
                     and CPA/CPI).
@@ -258,7 +258,7 @@ class AppDownload extends Component {
                   <img src={tool8} alt="icon" />
                   <h3 className="main-heading-three">Statistics</h3>
                   <p>
-                    Detailed Statistics and advanced Conversion Tracking System.
+                    Detailed statistics and advanced Conversion Tracking System.
                   </p>
                 </div>
               </div>
