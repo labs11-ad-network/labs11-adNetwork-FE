@@ -76,7 +76,8 @@ export const NavContainer = styled.nav`
   max-height: 65px;
   background-color: #ffffff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
-  z-index: 9999;
+  overflow: none;
+  z-index: 1;
 `;
 
 export const LeftSection = styled.div`
@@ -88,7 +89,7 @@ export const LeftSection = styled.div`
     width: 250px;
     height: 100%;
     border: 1px solid rgba(103, 103, 103, 0.5);
-    border-radius: 8px;
+    border-radius: 4px;
     font-size: 0.9rem;
     @media (max-width: 900px) {
       margin-right: unset;
@@ -106,7 +107,7 @@ export const LeftSection = styled.div`
     height: 100%;
     padding: 0 25px;
     margin: 0 15px;
-    border-radius: 8px;
+    border-radius: 4px;
     font-size: 0.9rem;
     text-decoration: none;
     transition: 0.2s;
