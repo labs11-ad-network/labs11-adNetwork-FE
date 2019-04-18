@@ -82,8 +82,8 @@ class ExpertTeam extends Component {
             <div className="item">
               <ExpertTeamCard
                 name="Max McFerren"
-                teamBg={mcferrenm}
-                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+                teamBg={teambg3}
+                profilePic="mcferrenm"
                 links={{
                   github: "https://github.com/mcferrenm",
                   linkedin: "https://www.linkedin.com/in/max-mcferren",
