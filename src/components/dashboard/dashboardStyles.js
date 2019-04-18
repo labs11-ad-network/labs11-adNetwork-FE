@@ -257,15 +257,15 @@ export const MobileCreate = styled.div`
 
 export const MobileNav = styled.div`
   position: absolute;
+  left: ${props => (props.status ? "0" : "-200vw")};
+  top: 0;
   display: flex;
   flex-direction: column;
   background-color: #0a88dc;
   height: 100vh;
-  width: 100%;
   z-index: 99999;
-  left: ${props => (props.status ? "0" : "-100vw")};
-  top: 0;
-  transition: 100ms cubic-bezier(0.4, 0, 1, 1);
+  width: 100%;
+  transition: 200ms ease-in-out;
 
   button {
     width: 65px;
