@@ -17,18 +17,18 @@ export const Container = styled.div`
 
   .notif-list-item {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-
-    i {
-      font-size: 0.8rem;
-      color: #6f6f6f;
-      margin: 0 4px 0 15px;
-    }
+    flex-direction: column;
+    height: 35px;
+    align-items: flex-start;
   }
 
   .notif-time {
-    /* font-size: 0.7rem; */
+    font-size: 0.6rem;
+    i {
+      font-size: 0.6rem;
+      color: #6f6f6f;
+      margin-right: 5px;
+    }
   }
   @media (max-width: 560px) {
     /* width: 200px; */

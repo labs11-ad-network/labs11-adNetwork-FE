@@ -3,7 +3,14 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 
 function LinearIndeterminate(props) {
   return (
-    <LinearProgress style={{ position: "fixed", top: "61px", width: "100%" }} />
+    <LinearProgress
+      style={{
+        position: "fixed",
+        top: "62px",
+        width: "100%",
+        zIndex: 9999
+      }}
+    />
   );
 }
 

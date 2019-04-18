@@ -2,7 +2,7 @@ import React from "react";
 import { PieChart, Pie, Cell } from "recharts";
 import styled from "styled-components";
 
-import { GraphContainer, GraphHeader } from './GraphStyles.js';
+import { GraphContainer, GraphHeader } from './graphStyles.js';
 
 const PieLabels = styled.div`
     display: flex;
@@ -31,6 +31,9 @@ const PieLabels = styled.div`
       .other {
         background-color: gray;
       }
+      .no-data{
+        background-color: #ECEFF1;
+      }
       p {
         margin-left: 5px;
         font-size: 0.7rem;
@@ -39,15 +42,22 @@ const PieLabels = styled.div`
 `;
 
 export const BrowserInfo = props => {
-  const data = [
+  const data = props.data.length ? [
     { name: "Chrome", value: props.data.chrome },
     { name: "Safari", value: props.data.safari },
     { name: "Firefox", value: props.data.firefox },
     { name: "Edge", value: props.data.edge },
     { name: "Other", value: props.data.other }
+  ] : [ 
+    { name: "Chrome", value: props.data.chrome },
+    { name: "Safari", value: props.data.safari },
+    { name: "Firefox", value: props.data.firefox },
+    { name: "Edge", value: props.data.edge },
+    { name: "Other", value: props.data.other },
+    { name: "No Data Yet", value: 1 }
   ];
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#686868"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#686868", "#ECEFF1"];
 
   const RADIAN = Math.PI / 180;
 
@@ -102,26 +112,34 @@ export const BrowserInfo = props => {
         </Pie>
       </PieChart>
       <PieLabels>
+        {props.data.length ? 
+        <>
+          <div className="label">
+            <div className="circle chrome" />
+            <p>Chrome</p>
+          </div>
+          <div className="label">
+            <div className="circle firefox" />
+            <p>Firefox</p>
+          </div>
+          <div className="label">
+            <div className="circle safari" />
+            <p>Safari</p>
+          </div>
+          <div className="label">
+            <div className="circle edge" />
+            <p>Edge</p>
+          </div>
+          <div className="label">
+            <div className="circle other" />
+            <p>Other</p>
+          </div>
+        </> :
         <div className="label">
-          <div className="circle chrome" />
-          <p>Chrome</p>
+          <div className="circle no-data" />
+          <p>No Data Yet</p>
         </div>
-        <div className="label">
-          <div className="circle firefox" />
-          <p>Firefox</p>
-        </div>
-        <div className="label">
-          <div className="circle safari" />
-          <p>Safari</p>
-        </div>
-        <div className="label">
-          <div className="circle edge" />
-          <p>Edge</p>
-        </div>
-        <div className="label">
-          <div className="circle other" />
-          <p>Other</p>
-        </div>
+        }
       </PieLabels>
     </GraphContainer>
   );

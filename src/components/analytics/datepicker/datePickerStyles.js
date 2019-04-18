@@ -9,7 +9,7 @@ export const DatePickerContainer = styled.div`
     div{
         display: flex;
         justify-content: flex-end;
-    align-items: flex-end;
+        align-items: flex-end;
     }
 `;
 
@@ -17,7 +17,7 @@ export const DatePickerInput = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 8px;
-    transition: 0.2s;
+    transition: 0.4s;
     label{
         font-size: 0.7rem;
         font-weight: 500;
@@ -33,7 +33,8 @@ export const DatePickerInput = styled.div`
         max-width: 130px;
         border: 1px solid rgba(103,103,103,0.2);
         border-radius: 4px;        
-        transition: 0.2s;
+        box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+        transition: 0.4s;
         &:hover{
             cursor: pointer
         }
@@ -41,7 +42,7 @@ export const DatePickerInput = styled.div`
     &:hover{
         cursor: pointer;
         input{
-            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
         }
     }
 `;
@@ -55,5 +56,11 @@ export const DateFilterButton = styled.button`
     border-radius: 4px;
     color: white;
     background-color: #0A88DC;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.35);
     transition: 0.2s;
+    &:hover{
+        cursor: pointer;
+        background-color: #0B6FB2;
+        box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    }
 `;

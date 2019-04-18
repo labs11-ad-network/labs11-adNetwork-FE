@@ -104,60 +104,73 @@ export const MainTabContainer = styled.div`
   @media (max-width: 1170px) {
     width: 100%;
     margin: 20px auto;
+    min-height: 500px;
+  }
+  @media (max-width: 655px){
+    .tab{
+      width: 50%;
+      margin-top: 0;
+    }
   }
 `;
 
 export const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  div {
     display: flex;
     flex-direction: column;
-    width: 500px;
-    padding: 35px;
-    margin: 15px auto;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-    h2 {
-      color: #6f6f6f;
-      text-align: center;
-      font-size: 1.5rem;
-      margin: 10px 0;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 35px;
+    div{
+        display: flex;
+        flex-direction: column;
+        width: 450px;
+        margin: 0 auto;
+        padding-bottom: 15px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        h2{
+            color: #6F6F6F;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+        input, select, button{
+            font-size: 1.1rem;
+            font-weight: 100;
+            padding: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+            &::placeholder{
+                color: #999999;
+                font-weight: 100;
+            }
+        }
+        button{
+          color: #FFFFFF;
+          background-color: #0A88DC;
+          margin-top: 15px;
+          transition: .2s;
+          &:hover{
+            cursor: pointer;
+            background-color: #0B6FB2;
+          }
+        }
+        label{
+            font-size: 0.9rem;
+            margin: 10px 8px 4px 0px;
+            span{
+                font-size: 0.6rem;
+            }
+        }
+        @media (max-width: 655px){
+            width: 100%;
+        }
     }
-    input,
-    button,
-    select {
-      font-size: 1.3rem;
-      font-weight: 100;
-      padding: 15px;
-      margin-top: 8px;
-      border: 1px solid rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
-      &::placeholder {
-        color: #999999;
-      }
+    @media (max-width: 655px){
+      width: 85%;
+      padding: unset;
+      margin: 15px auto;
     }
-    label {
-      font-size: 1.2rem;
-      margin-top: 18px;
-    }
-    button {
-      color: #ffffff;
-      background-color: #0a88dc;
-      margin-top: 15px;
-      transition: 0.2s;
-      &:hover {
-        cursor: pointer;
-        background-color: #086fb3;
-      }
-    }
-    @media (max-width: 665px) {
-      width: 90%;
-      padding: 15px 0;
-    }
-  }
 `;
 
 export const BillingCardContainer = styled.div`
@@ -219,7 +232,7 @@ export const SnippetCardContainer = styled.div`
   @media (max-width: 1170px) {
     box-sizing: border-box;
     width: 100%;
-    margin: 20px auto;
+    margin: 0 0 15px 0;
   }
 `;
 
@@ -291,12 +304,16 @@ export const TimelineItem = styled.div`
   }
   p {
     font-size: 1rem;
+    line-height: 1.2rem;
     margin: 5px 0;
+    @media (max-width: 665px) {
+      font-size: 0.9rem;
+    }
   }
 `;
 
 export const TimelineContainerComponent = styled.div`
-  margin: 10px;
+  margin: 20px;
 `;
 
 export const ToggleTour = styled.div`
@@ -306,12 +323,12 @@ export const ToggleTour = styled.div`
   width: 100%;
   margin-bottom: 20px;
   button {
-    width: 500px;
-    font-size: 1.3rem;
+    width: 450px;
+    font-size: 1.1rem;
     font-weight: 100;
-    padding: 15px;
+    padding: 8px;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
+    border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
     color: #ffffff;
     background-color: #0a88dc;
@@ -321,7 +338,7 @@ export const ToggleTour = styled.div`
       background-color: #086fb3;
     }
     @media (max-width: 665px) {
-      width: 90%;
+      width: 85%;
     }
   }
 `;

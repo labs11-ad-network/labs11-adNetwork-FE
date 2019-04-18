@@ -15,23 +15,21 @@ const styles = theme => ({
     display: "flex"
   },
   menu: {
-    zIndex: 999999999999999999
-  },
-  paper: {
-    marginRight: theme.spacing.unit * 2
+    zIndex: 9999
   }
 });
 
 class UserDropdown extends React.Component {
+  state = {
+    open: false
+  };
+
+  handleToggle = () => {
+    this.setState(state => ({ open: !state.open }));
+  };
+
   render() {
-    const {
-      classes,
-      userMenuOpen,
-      currentUser,
-      handleToggle,
-      handleClose,
-      auth
-    } = this.props;
+    const { classes, currentUser, auth } = this.props;
 
     return (
       <div className={classes.root}>
@@ -40,9 +38,9 @@ class UserDropdown extends React.Component {
             buttonRef={node => {
               this.anchorEl = node;
             }}
-            aria-owns={userMenuOpen ? "menu-list-grow" : undefined}
+            aria-owns={this.state.open ? "menu-list-grow" : undefined}
             aria-haspopup="true"
-            onClick={handleToggle}
+            onClick={this.handleToggle}
             style={{ textTransform: "none", marginLeft: "0" }}
           >
             <img src={currentUser.image_url} alt="" />
@@ -50,10 +48,11 @@ class UserDropdown extends React.Component {
           </Button>
           <Popper
             id={1}
-            open={userMenuOpen}
+            open={this.state.open}
             anchorEl={this.anchorEl}
             transition
             position="left"
+            className={classes.menu}
           >
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={350}>
@@ -62,7 +61,7 @@ class UserDropdown extends React.Component {
                     <MenuList>
                       <MenuItem
                         onClick={e => {
-                          handleClose(e);
+                          this.handleClose(e);
                         }}
                         component={Link}
                         to="/dashboard/settings"
@@ -71,7 +70,7 @@ class UserDropdown extends React.Component {
                       </MenuItem>
                       <MenuItem
                         onClick={e => {
-                          handleClose(e);
+                          this.handleClose(e);
                           auth.logout();
                         }}
                         component={Link}

@@ -18,47 +18,18 @@ import {
 
 class DashboardTop extends React.Component {
   state = {
-    movileNavOpen: false,
-    userMenuOpen: false,
-    notificationsMenuOpen: false
+    movileNavOpen: false
   };
 
   toggleNav = () => {
     this.setState({ movileNavOpen: !this.state.movileNavOpen });
   };
 
-  handleUserMenuToggle = () => {
-    this.setState(state => ({ userMenuOpen: !state.userMenuOpen }));
-  };
-
-  handleNotificationsToggle = () => {
-    this.setState(state => ({
-      notificationsMenuOpen: !state.notificationsMenuOpen
-    }));
-  };
-
-  handleUserMenuClose = e => {
-    e.stopPropagation();
-
-    this.setState({ userMenuOpen: false });
-  };
-
-  handleNotificationsClose = e => {
-    e.stopPropagation();
-    const { userNotifications, updateUserNotification } = this.props;
-
-    this.setState({ notificationsMenuOpen: false });
-
-    userNotifications &&
-      userNotifications
-        .filter(n => n.unread !== false)
-        .map(n => updateUserNotification({ ...n, unread: false }));
-  };
-
   render() {
     const {
       currentUser,
       userNotifications,
+      updateUserNotification,
       handleOfferSelect,
       currentOffer,
       offers,
@@ -70,7 +41,7 @@ class DashboardTop extends React.Component {
       auth
     } = this.props;
 
-    const { userMenuOpen, notificationsMenuOpen, movileNavOpen } = this.state;
+    const { movileNavOpen } = this.state;
 
     return (
       <>
@@ -129,25 +100,16 @@ class DashboardTop extends React.Component {
               <>
                 {/* --------------------- Notifications Menu ------------------ */}
                 <NotificationDropdown
-                  notificationsMenuOpen={notificationsMenuOpen}
                   userNotifications={userNotifications}
-                  handleToggle={this.handleNotificationsToggle}
-                  handleClose={this.handleNotificationsClose}
+                  updateUserNotification={updateUserNotification}
                   location={this.props.location}
                 />
                 {/* --------------------- User menu ------------------ */}
-                <UserDropdown
-                  auth={auth}
-                  userMenuOpen={userMenuOpen}
-                  currentUser={currentUser}
-                  handleToggle={this.handleUserMenuToggle}
-                  handleClose={this.handleUserMenuClose}
-                />
+                <UserDropdown auth={auth} currentUser={currentUser} />
               </>
             )}
           </RightSection>
         </NavContainer>
-
         {(isLoadingAds ||
           isLoadingAgreements ||
           isLoadingOffers ||

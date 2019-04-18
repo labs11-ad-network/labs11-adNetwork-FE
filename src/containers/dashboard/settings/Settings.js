@@ -12,13 +12,16 @@ import BillingCard from "../../../components/settings/billing-card/BillingCard.j
 import SnippetCard from "../../../components/settings/snippet-card/SnippetCard.js";
 import TabContainer from "../../../components/settings/tab-container/TabContainer.js";
 
-const PageContainer = styled.div`
+const SettingsContainer = styled.div`
   display: flex;
   margin: 10px;
   .billing-container {
     display: flex;
     justify-content: space-between;
     margin: 15px;
+  }
+  .mobile-snippet{
+    display: none;
   }
   @media (max-width: 1170px) {
     flex-direction: column;
@@ -28,6 +31,12 @@ const PageContainer = styled.div`
     .billing-container {
       width: 100%;
       margin: 0 auto;
+    }
+    .desktop-snippet{
+      display: none;
+    }
+    .mobile-snippet{
+      display: flex;
     }
   }
 `;
@@ -52,7 +61,7 @@ class Settings extends Component {
     const { currentUser, payouts, payments, history } = this.props;
 
     return (
-      <PageContainer>
+      <SettingsContainer>
         <div>
           <ProfileCard currentUser={currentUser} />
           <div className="billing-container">
@@ -73,8 +82,8 @@ class Settings extends Component {
               clicked={e => this.handleTabChange(e, 1)}
             />
           </div>
-          <div data-btn="snippet">
-          <SnippetCard currentUser={currentUser} />
+          <div data-btn="snippet" className="desktop-snippet">
+            <SnippetCard currentUser={currentUser}/>
           </div>
         </div>
         <TabContainer
@@ -85,7 +94,10 @@ class Settings extends Component {
           tabValue={tabValue}
           history={history}
         />
-      </PageContainer>
+        <div data-btn="snippet" className="mobile-snippet">
+          <SnippetCard currentUser={currentUser}/>
+        </div>
+      </SettingsContainer>
     );
   }
 }

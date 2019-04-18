@@ -130,13 +130,13 @@ export const LandingPageStyle = styled.div`
     cursor: pointer;
     box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.1);
     text-decoration: none;
-    background: #007bff;
+    background: #0a88dc;
     @media (min-width: 940px) {
       margin: 7% 0;
       max-width: 150px;
       padding: 19px 20.5px;
       &:hover {
-        background-color: #0e4de3;
+        background-color: #0b6fb1;
         box-shadow: 0 2px 4px 0 rgba(0, 25, 85, 0.4);
       }
     }

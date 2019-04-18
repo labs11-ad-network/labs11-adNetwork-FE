@@ -35,15 +35,29 @@ const notificationStyles = {
 };
 
 class NotificationDropdown extends React.Component {
+  state = {
+    open: false
+  };
+
+  handleToggle = () => {
+    this.setState(state => ({ open: !state.open }));
+  };
+
+  handleClose = event => {
+    if (this.anchorEl.contains(event.target)) {
+      return;
+    }
+
+    this.setState({ open: false });
+    this.props.userNotifications &&
+      this.props.userNotifications
+        .filter(n => n.unread !== false)
+        .map(n => this.props.updateUserNotification({ ...n, unread: false }));
+  };
+
   render() {
-    const {
-      classes,
-      notificationsMenuOpen,
-      handleToggle,
-      handleClose,
-      userNotifications,
-      location
-    } = this.props;
+    const { classes, userNotifications, location } = this.props;
+    const { open } = this.state;
 
     const unreadBadgeCount =
       userNotifications &&
@@ -57,9 +71,9 @@ class NotificationDropdown extends React.Component {
               buttonRef={node => {
                 this.anchorEl = node;
               }}
-              aria-owns={notificationsMenuOpen ? "menu-list-grow" : undefined}
+              aria-owns={open ? "menu-list-grow" : undefined}
               aria-haspopup="true"
-              onClick={handleToggle}
+              onClick={this.handleToggle}
               className="button-margin-fix"
             >
               <Badge badgeContent={unreadBadgeCount} color="primary">
@@ -67,7 +81,7 @@ class NotificationDropdown extends React.Component {
               </Badge>
             </Button>
             <Popper
-              open={notificationsMenuOpen}
+              open={open}
               anchorEl={this.anchorEl}
               transition
               disablePortal
@@ -83,7 +97,7 @@ class NotificationDropdown extends React.Component {
                   }}
                 >
                   <Paper>
-                    <ClickAwayListener onClickAway={handleClose}>
+                    <ClickAwayListener onClickAway={this.handleClose}>
                       <MenuList>
                         {userNotifications.length !== 0 ? (
                           userNotifications.map(n => (
@@ -97,7 +111,7 @@ class NotificationDropdown extends React.Component {
                               className="notif-list-item"
                             >
                               <span>
-                                {`${n.msg_body} 
+                                {`${n.msg_body}
                                 `}
                               </span>
                               <span className="notif-time">
@@ -117,7 +131,7 @@ class NotificationDropdown extends React.Component {
                             <Link
                               className="see-more-link"
                               to="/dashboard/settings"
-                              onClick={handleClose}
+                              onClick={this.handleClose}
                             >
                               <MenuItem>See all activity...</MenuItem>
                             </Link>

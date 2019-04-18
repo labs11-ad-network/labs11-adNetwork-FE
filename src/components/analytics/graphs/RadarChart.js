@@ -7,7 +7,7 @@ import {
   PolarRadiusAxis,
   ResponsiveContainer 
 } from "recharts";
-import { GraphContainer, GraphHeader } from "./GraphStyles.js";
+import { GraphContainer, GraphHeader } from "./graphStyles.js";
 
 const RadarChartContainer = props => {
 
@@ -19,10 +19,10 @@ const RadarChartContainer = props => {
     }
     else{
       return [
-        {category: 0, fullMark: 100 },
-        {category: 0, fullMark: 100 },
-        {category: 0, fullMark: 100 },
-        {category: 0, fullMark: 100 },
+        {category: "No Data", actions: 0, fullMark: 100 },
+        {category: "No Data", actions: 0, fullMark: 100 },
+        {category: "No Data", actions: 0, fullMark: 100 },
+        {category: "No Data", actions: 0, fullMark: 100 },
       ]
     }
   }
