@@ -11,6 +11,7 @@ import teambg2 from "../../assets/teambg2.jpg";
 import teambg3 from "../../assets/teambg3.jpg";
 import jbmiranda from "../../assets/jbmiranda.jpg";
 import kieranvieira from "../../assets/kieranvieira.jpg";
+import mcferrenm from "../../assets/mcferrenm.jpeg";
 
 import video2 from "../../assets/video2.png";
 // import CustomerStoriesCarousel from "./CustomerStoriesCarousel";
@@ -82,12 +83,12 @@ class ExpertTeam extends Component {
               <ExpertTeamCard
                 name="Max McFerren"
                 teamBg={teambg3}
-                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+                profilePic={mcferrenm}
                 links={{
-                  github: "",
-                  linkedin: "",
+                  github: "https://github.com/mcferrenm",
+                  linkedin: "https://www.linkedin.com/in/max-mcferren",
                   twitter: "",
-                  website: "a"
+                  website: "https://maxmcferren.com"
                 }}
               />
             </div>
