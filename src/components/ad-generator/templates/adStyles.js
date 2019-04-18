@@ -10,7 +10,7 @@ export const HorizontalBannerContainer = styled.div`
   height: 100px;
   text-decoration: none;
   background-color: #f1f1f1;
-  background-image: url(${props => props.ad.file || props.image});
+  background-image: url(${props => props.ad.file});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -91,7 +91,7 @@ export const SquareBannerContainer = styled.div`
   height: 250px;
   text-decoration: none;
   background-color: #f1f1f1;
-  background-image: url(${props => props.ad.file || props.image});
+  background-image: url(${props => props.ad.file});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -170,7 +170,7 @@ export const VerticalBannerContainer = styled.div`
   height: 600px;
   text-decoration: none;
   background-color: #f1f1f1;
-  background-image: url(${props => props.ad.file || props.image});
+  background-image: url(${props => props.ad.file});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -246,7 +246,7 @@ export const PlainHorizontalContainer = styled.div`
   height: 100px;
   text-decoration: none;
   background-color: #f1f1f1;
-  background-image: url(${props => props.ad.file || props.image});
+  background-image: url(${props => props.ad.file});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -260,7 +260,7 @@ export const PlainSquareContainer = styled.div`
   height: 250px;
   text-decoration: none;
   background-color: #f1f1f1;
-  background-image: url(${props => props.ad.file || props.image});
+  background-image: url(${props => props.ad.file});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;
@@ -276,7 +276,7 @@ export const PlainVerticalContainer = styled.div`
   height: 600px;
   text-decoration: none;
   background-color: #f1f1f1;
-  background-image: url(${props => props.ad.file || props.image});
+  background-image: url(${props => props.ad.file});
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: center;

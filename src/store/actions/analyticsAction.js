@@ -2,23 +2,6 @@ import axios from "axios";
 
 const URL = process.env.REACT_APP_BACKEND_URL;
 
-// ------------------------------ Get analytics ------------------------------
-
-// export const getAnalyticsByDate = (started_at, ended_at) => dispatch => {
-//   dispatch({ type: AD_ACTION_START });
-//   axios
-//     .get(`${URL}/api/analytics/?started_at=${started_at}&ended_at=${ended_at}`)
-//     .then(res => {
-//       dispatch({ type: GET_ANALYTICS_SUCCESS, payload: res.data });
-//     })
-//     .catch(err => {
-//       dispatch({
-//         type: AD_ACTION_FAILED,
-//         payload: err.message.includes("Network Error") ? { message: err.message } : err.response.data 
-//       });
-//     });
-// };
-
 // ------------------------------ POST analytic action ------------------------------
 
 export const AD_ACTION_START = "AD_ACTION_START";
