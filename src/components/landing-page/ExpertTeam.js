@@ -12,6 +12,7 @@ import teambg3 from "../../assets/teambg3.jpg";
 import jbmiranda from "../../assets/jbmiranda.jpg";
 import kieranvieira from "../../assets/kieranvieira.jpg";
 import mcferrenm from "../../assets/mcferrenm.jpeg";
+import jm from "../../assets/IMG_0504.jpeg";
 
 import video2 from "../../assets/video2.png";
 // import CustomerStoriesCarousel from "./CustomerStoriesCarousel";
@@ -110,9 +111,9 @@ class ExpertTeam extends Component {
               <ExpertTeamCard
                 name="Jordan Marsaw"
                 teamBg={teambg2}
-                profilePic="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ"
+                profilePic={jm}
                 links={{
-                  github: "",
+                  github: "https://github.com/blokboy",
                   linkedin: "",
                   twitter: "",
                   website: "a"
